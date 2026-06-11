@@ -37,6 +37,7 @@
   ],
   "exclude": [
     "node_modules",
-    "slp-career-suite.jsx"
+    "slp-career-suite.jsx",
+    "language-sample-app"
   ]
 }
