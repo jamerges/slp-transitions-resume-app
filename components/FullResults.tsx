@@ -164,10 +164,12 @@ export default function FullResults({
       </Section>
 
       {companies.length > 0 && (
-        <Section title={`Companies Hiring for ${jobTitle}-type Roles`} id="companies">
-          <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12 }}>From our curated database of 123 ed-tech and health-tech companies that hire former clinicians. Sorted by best match for your background.</p>
+        <Section title="Companies Known to Hire Former SLPs" id="companies">
+          <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12 }}>From our curated database of 123 ed-tech and health-tech companies with a track record of hiring former clinicians, sorted by best match for your background. We don't track live vacancies — tap <strong>See open roles</strong> on any company to run a live job search for {jobTitle}-type openings there.</p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
-            {companies.map((c, i) => (
+            {companies.map((c, i) => {
+              const jobsUrl = `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(`${c.name} ${jobTitle}`)}`;
+              return (
               <div key={i} style={{ padding: "14px 16px", background: "var(--accent-bg-subtle)", borderRadius: 8, display: "flex", flexDirection: "column", gap: 4 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 6 }}>
                   <div style={{ fontSize: 14, fontWeight: 600 }}>{c.name}</div>
@@ -178,18 +180,22 @@ export default function FullResults({
                   )}
                 </div>
                 <div style={{ fontSize: 12, color: "var(--accent)" }}>{c.categories?.join(" • ")}</div>
-                <a href={`https://${c.url}`} target="_blank" rel="noreferrer" style={{ fontSize: 12, color: "var(--muted)", textDecoration: "none" }}>{c.url} ↗</a>
                 {c.note && <div style={{ fontSize: 12, color: "var(--muted)", lineHeight: 1.5, marginTop: 2 }}>{c.note}</div>}
                 {c.roles?.length > 0 && (
                   <div style={{ fontSize: 11, color: "var(--light)", marginTop: 4 }}>
                     Roles: {c.roles.slice(0, 4).join(", ")}{c.roles.length > 4 ? "..." : ""}
                   </div>
                 )}
+                <div style={{ display: "flex", gap: 12, marginTop: 8, alignItems: "center" }}>
+                  <a href={jobsUrl} target="_blank" rel="noreferrer" style={{ fontSize: 12, fontWeight: 600, color: "var(--accent)", textDecoration: "none", padding: "4px 10px", border: "1px solid var(--accent)", borderRadius: 6 }}>See open roles ↗</a>
+                  <a href={`https://${c.url}`} target="_blank" rel="noreferrer" style={{ fontSize: 12, color: "var(--muted)", textDecoration: "none" }}>{c.url} ↗</a>
+                </div>
               </div>
-            ))}
+              );
+            })}
           </div>
           <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 12, padding: "10px 14px", background: "#F9FAFB", borderRadius: 6 }}>
-            💡 <strong>Pro tip:</strong> Visit each company's careers page directly. Filter for the role types listed and reference your translated bullets above when applying.
+            💡 <strong>Pro tip:</strong> "See open roles" runs a live LinkedIn Jobs search for that company. If nothing's posted today, check back or follow the company — and reference your translated bullets above when you apply.
           </div>
         </Section>
       )}
