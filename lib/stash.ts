@@ -10,7 +10,10 @@ export interface StashedInputs {
   writingSample?: string;
 }
 
-const STRIPE_METADATA_LIMIT = 7000;
+// Stripe caps each individual metadata VALUE at 500 characters — not the
+// total metadata size. Since the whole payload is stored under one key
+// ("payload"), this is effectively the real ceiling. Leave a safety margin.
+const STRIPE_METADATA_VALUE_LIMIT = 450;
 const TTL_SECONDS = 60 * 60 * 6;
 
 let redis: Redis | null = null;
@@ -28,13 +31,13 @@ export async function stashInputs(
   inputs: StashedInputs
 ): Promise<{ inMetadata: boolean; payload: string | null }> {
   const json = JSON.stringify(inputs);
-  if (json.length <= STRIPE_METADATA_LIMIT) {
+  if (json.length <= STRIPE_METADATA_VALUE_LIMIT) {
     return { inMetadata: true, payload: json };
   }
   const r = getRedis();
   if (!r) {
     throw new Error(
-      "Inputs exceed Stripe metadata limit and Upstash Redis is not configured. Add the Upstash Redis integration in your Vercel project (Storage → Marketplace → Upstash Redis)."
+      "Inputs are too large for Stripe metadata (500-char limit per value) and Upstash Redis is not configured. Add the Upstash Redis integration in your Vercel project (Storage → Marketplace → Upstash Redis)."
     );
   }
   await r.set(`inputs:${sessionKey}`, json, { ex: TTL_SECONDS });
