@@ -38,8 +38,10 @@ export async function POST(req: Request) {
       return NextResponse.json(cached);
     }
 
+    // Inputs were stashed in Redis under the random `stash_key` (not the
+    // Stripe session id). Fall back to sessionId only for safety.
     const inputs = await retrieveInputs(
-      sessionId,
+      session.metadata?.stash_key || sessionId,
       session.metadata?.payload || null
     );
     if (!inputs) {

@@ -10,7 +10,11 @@ function getResend(): Resend {
   return resend;
 }
 
-const FROM_ADDRESS = "SLP Transitions <results@slptransitions.com>";
+// Override with RESEND_FROM once a sending domain is verified in Resend.
+// For pre-verification testing you can set it to "SLP Transitions <onboarding@resend.dev>"
+// (Resend's sandbox sender — only delivers to the Resend account owner's email).
+const FROM_ADDRESS =
+  process.env.RESEND_FROM || "SLP Transitions <results@slptransitions.com>";
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://app.slptransitions.com";
 
 interface FullResultsEmailInput {
