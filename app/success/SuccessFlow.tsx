@@ -15,7 +15,7 @@ const LOADING_MSGS = [
   "Rewriting every bullet for hiring managers...",
   "Drafting your cover letter and interview prep...",
   "Building your gap analysis and LinkedIn headline...",
-  "Almost done — packaging up your results...",
+  "Still working — thorough results take a little longer. Hang tight...",
 ];
 
 export default function SuccessFlow({ sessionId }: { sessionId?: string }) {
@@ -31,14 +31,19 @@ export default function SuccessFlow({ sessionId }: { sessionId?: string }) {
         s.status === "loading"
           ? {
               status: "loading",
+              // Advance through the messages, then hold on the final honest
+              // "still working" line — never loop back or claim near-completion.
               message:
                 LOADING_MSGS[
-                  (LOADING_MSGS.indexOf(s.message) + 1) % LOADING_MSGS.length
+                  Math.min(
+                    LOADING_MSGS.indexOf(s.message) + 1,
+                    LOADING_MSGS.length - 1
+                  )
                 ],
             }
           : s
       );
-    }, 5000);
+    }, 6000);
     return () => clearInterval(i);
   }, []);
 
