@@ -65,7 +65,7 @@ export async function POST(req: Request) {
           goals: inputs.goals,
           writingSample: inputs.writingSample,
         }),
-        maxTokens: 8000,
+        maxTokens: 12000,
       });
       if (!results.professionalSummary || !results.translatedBullets) {
         throw new Error("Generated response missing required fields");

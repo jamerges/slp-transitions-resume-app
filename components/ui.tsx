@@ -125,6 +125,37 @@ export function ProgressBar({ step, total }: { step: number; total: number }) {
   );
 }
 
+const COVERAGE_STYLES: Record<string, { icon: string; bg: string; color: string; label: string }> = {
+  covered: { icon: "✓", bg: "#D1FAE5", color: "#065F46", label: "Covered" },
+  partial: { icon: "◐", bg: "#FEF3C7", color: "#92400E", label: "Partial" },
+  missing: { icon: "○", bg: "#FEE2E2", color: "#991B1B", label: "Gap" },
+};
+
+export function CoverageTable({ items }: { items: Array<{ requirement: string; status: string; evidence?: string; action?: string }> }) {
+  if (!items?.length) return null;
+  return (
+    <div>
+      {items.map((r, i) => {
+        const st = COVERAGE_STYLES[r.status] || COVERAGE_STYLES.partial;
+        return (
+          <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", padding: "10px 0", borderBottom: i < items.length - 1 ? "1px solid var(--border)" : "none" }}>
+            <span style={{ fontSize: 11, fontWeight: 700, padding: "3px 8px", borderRadius: 4, background: st.bg, color: st.color, whiteSpace: "nowrap", flexShrink: 0, marginTop: 1 }}>
+              {st.icon} {st.label}
+            </span>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ fontSize: 14, fontWeight: 600, lineHeight: 1.45 }}>{r.requirement}</div>
+              {r.evidence && <div style={{ fontSize: 13, color: "var(--muted)", marginTop: 2, lineHeight: 1.5 }}>{r.evidence}</div>}
+              {r.action && r.status !== "covered" && (
+                <div style={{ fontSize: 13, color: "var(--accent)", marginTop: 4, lineHeight: 1.5 }}>→ {r.action}</div>
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export function PageShell({ children }: { children: ReactNode }) {
   return (
     <div style={S.root}>

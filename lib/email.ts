@@ -68,6 +68,17 @@ function renderResultsHTML(jobTitle: string, r: any): string {
     )
     .join("");
 
+  const artifacts = (r.proofArtifacts || [])
+    .map(
+      (a: any) => `
+      <div style="padding:12px 14px;background:#F0FAF3;border-radius:8px;margin-bottom:10px;">
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px;">${esc(a.artifact)}</div>
+        <div style="font-size:13px;color:#6B7280;line-height:1.6;">${esc(a.why)}</div>
+        <div style="font-size:12px;color:#9CA3AF;margin-top:6px;">${a.timeEstimate ? `⏱ ${esc(a.timeEstimate)}` : ""}${a.timeEstimate && a.cost ? " &nbsp;·&nbsp; " : ""}${a.cost ? `💰 ${esc(a.cost)}` : ""}</div>
+      </div>`
+    )
+    .join("");
+
   const interviews = (r.talkingPoints || [])
     .map(
       (t: any) => `
@@ -104,6 +115,14 @@ function renderResultsHTML(jobTitle: string, r: any): string {
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
           <div style="font-size:11px;font-weight:600;color:#2D6A4F;letter-spacing:0.04em;margin-bottom:4px;">LINKEDIN HEADLINE</div>
           <div style="font-size:15px;font-weight:500;">${esc(r.linkedinHeadline)}</div>
+          ${
+            r.linkedinAbout
+              ? `<div style="border-top:1px solid #E5E7EB;margin-top:12px;padding-top:12px;">
+                  <div style="font-size:11px;font-weight:600;color:#2D6A4F;letter-spacing:0.04em;margin-bottom:6px;">LINKEDIN ABOUT SECTION</div>
+                  <div style="font-size:14px;line-height:1.7;">${nl2br(r.linkedinAbout)}</div>
+                </div>`
+              : ""
+          }
         </div>`
       : ""
   }
@@ -151,6 +170,16 @@ function renderResultsHTML(jobTitle: string, r: any): string {
           <h2 style="font-size:16px;margin:0 0 6px;">Gap Analysis</h2>
           <p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">Honest assessment + action plan.</p>
           ${gaps}
+        </div>`
+      : ""
+  }
+
+  ${
+    artifacts
+      ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
+          <h2 style="font-size:16px;margin:0 0 6px;">Build Your Proof</h2>
+          <p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">Career changers get hired on evidence, not claims.</p>
+          ${artifacts}
         </div>`
       : ""
   }

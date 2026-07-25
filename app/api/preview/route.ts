@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     }
     const result = await callClaude({
       userPrompt: buildPreviewPrompt(body),
-      maxTokens: 2000,
+      maxTokens: 3000,
     });
     return NextResponse.json(result);
   } catch (err: any) {

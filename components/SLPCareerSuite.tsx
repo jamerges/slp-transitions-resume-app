@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import {
-  S, Card, CopyButton, Chip, ProgressBar, focusB, blurB,
+  S, Card, CopyButton, Chip, ProgressBar, CoverageTable, focusB, blurB,
 } from "./ui";
 import {
   ROLE_OPTIONS, NOT_SURE_OPTION, SETTING_OPTIONS, WORK_PREFERENCES,
@@ -234,14 +234,14 @@ export default function SLPCareerSuite() {
         <div style={{ fontSize: 14, fontWeight: 600, color: "var(--accent)", marginBottom: 10 }}>What you'll get:</div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px 20px" }}>
           {([
-            ["✓", "Skills match score", true],
+            ["✓", "Match score + requirements breakdown", true],
             ["✓", "3 sample bullet translations", true],
             ["⟡", "Full resume rewrite", false],
             ["⟡", "Tailored cover letter", false],
-            ["⟡", "Gap analysis + action plan", false],
+            ["⟡", "Gap analysis + proof-artifact plan", false],
             ["⟡", "Interview talking points", false],
-            ["⟡", "LinkedIn headline", false],
-            ["⟡", "Companies hiring for your role", false],
+            ["⟡", "LinkedIn headline + About section", false],
+            ["⟡", "Companies that hire former SLPs", false],
           ] as const).map(([icon, text, free], i) => (
             <div key={i} style={{ fontSize: 14, display: "flex", gap: 8, padding: "3px 0", color: free ? "var(--text)" : "var(--muted)" }}>
               <span style={{ color: free ? "var(--accent)" : "var(--light)", flexShrink: 0 }}>{icon}</span>
@@ -601,7 +601,7 @@ export default function SLPCareerSuite() {
 
   const renderPreview = () => {
     if (!preview) return null;
-    const { matchScore, matchLevel, snapshot, translatedBullets, quickWins, fullVersionIncludes } = preview;
+    const { matchScore, matchLevel, snapshot, requirementsCoverage, translatedBullets, quickWins, fullVersionIncludes } = preview;
     const stories = getRelevantStories({ targetRoles: goals.targetRoles, jobTitle });
 
     return (
@@ -620,6 +620,14 @@ export default function SLPCareerSuite() {
             <p style={{ fontSize: 14, color: "var(--muted)", margin: 0, lineHeight: 1.6 }}>{snapshot}</p>
           </div>
         </Card>
+
+        {requirementsCoverage?.length > 0 && (
+          <Card>
+            <h3 style={{ ...S.h3, marginBottom: 4 }}>How your score breaks down</h3>
+            <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 8 }}>The job's top requirements, checked against your resume:</p>
+            <CoverageTable items={requirementsCoverage} />
+          </Card>
+        )}
 
         <Card>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
@@ -671,7 +679,8 @@ export default function SLPCareerSuite() {
             onMouseLeave={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent)")}>
             Get Full Results — $24
           </button>
-          <p style={{ fontSize: 12, color: "var(--light)", marginTop: 8 }}>Secure checkout via Stripe. We'll email your full package.</p>
+          <p style={{ fontSize: 13, fontWeight: 600, color: "var(--accent)", marginTop: 10, marginBottom: 2 }}>One-time payment. No subscription, no auto-renewal — ever.</p>
+          <p style={{ fontSize: 12, color: "var(--light)", marginTop: 4 }}>Secure checkout via Stripe. Results on screen + emailed to you. Not happy? Email us within 30 days for a full refund.</p>
         </Card>
 
         <div style={{ textAlign: "center", marginTop: 12 }}>

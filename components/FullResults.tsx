@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import { S, Card, CopyButton } from "./ui";
+import { S, Card, CopyButton, CoverageTable } from "./ui";
 import { getRelevantCompanies, getRelevantStories } from "@/lib/companies";
 import type { UserGoals } from "@/lib/prompts";
 
@@ -26,13 +26,16 @@ export default function FullResults({
 
   if (!full) return null;
   const {
+    requirementsCoverage,
     professionalSummary,
     translatedBullets,
     skillsSection,
     gapAnalysis,
+    proofArtifacts,
     coverLetter,
     talkingPoints,
     linkedinHeadline,
+    linkedinAbout,
     elevatorPitch,
   } = full;
 
@@ -101,7 +104,26 @@ export default function FullResults({
             </div>
             <CopyButton text={linkedinHeadline} />
           </div>
+          {linkedinAbout && (
+            <div style={{ marginTop: 14, paddingTop: 14, borderTop: "1px solid var(--border)" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 12, fontWeight: 600, color: "var(--accent)", letterSpacing: "0.04em", marginBottom: 6 }}>LINKEDIN ABOUT SECTION</div>
+                  <div style={{ fontSize: 14, lineHeight: 1.7, whiteSpace: "pre-wrap" }}>{linkedinAbout}</div>
+                </div>
+                <CopyButton text={linkedinAbout} />
+              </div>
+              <div style={{ fontSize: 12, color: "var(--light)", marginTop: 8 }}>Recruiters screen LinkedIn before every interview — paste both of these in before you start applying.</div>
+            </div>
+          )}
         </Card>
+      )}
+
+      {requirementsCoverage?.length > 0 && (
+        <Section title="Requirements Coverage" id="coverage">
+          <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 8 }}>The job's top requirements checked against your resume — with a move for every gap.</p>
+          <CoverageTable items={requirementsCoverage} />
+        </Section>
       )}
 
       <Section title="Professional Summary" id="summary" copyText={professionalSummary}>
@@ -149,6 +171,22 @@ export default function FullResults({
           </div>
         ))}
       </Section>
+
+      {proofArtifacts?.length > 0 && (
+        <Section title="Build Your Proof" id="artifacts">
+          <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12 }}>Career changers get hired on evidence, not claims. These artifacts prove you're serious about this field:</p>
+          {proofArtifacts.map((a: any, i: number) => (
+            <div key={i} style={{ padding: "14px 16px", background: "var(--accent-bg-subtle)", borderRadius: 8, marginBottom: 10 }}>
+              <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 4 }}>{a.artifact}</div>
+              <div style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.6 }}>{a.why}</div>
+              <div style={{ display: "flex", gap: 16, marginTop: 6, fontSize: 12, color: "var(--light)" }}>
+                {a.timeEstimate && <span>⏱ {a.timeEstimate}</span>}
+                {a.cost && <span>💰 {a.cost}</span>}
+              </div>
+            </div>
+          ))}
+        </Section>
+      )}
 
       <Section title="Tailored Cover Letter" id="cover" copyText={coverLetter}>
         <div style={{ fontSize: 14, lineHeight: 1.75, padding: "16px 20px", background: "#FEFEFE", border: "1px solid var(--border)", borderRadius: 8, whiteSpace: "pre-wrap" }}>{coverLetter}</div>
