@@ -1,10 +1,17 @@
 export interface UserGoals {
   targetRoles: string[];
+  /** Optional — added after launch, so older stashed sessions may omit it. */
+  targetIndustries?: string[];
   settings: string[];
   workPreferences: string[];
   topSkills: string;
   whyLeaving: string;
   years: string;
+}
+
+function industryLine(goals: UserGoals): string {
+  const list = goals.targetIndustries || [];
+  return list.length ? `, industries: ${list.join(", ")}` : "";
 }
 
 export interface PreviewInput {
@@ -35,7 +42,7 @@ Job Description:
 ---
 ${jobDesc}
 ---
-About: ${goals.years} exp, settings: ${goals.settings.join(", ")}, targets: ${goals.targetRoles.join(", ")}. Skills: ${goals.topSkills}. Why: ${goals.whyLeaving}
+About: ${goals.years} exp, settings: ${goals.settings.join(", ")}, target functions: ${goals.targetRoles.join(", ")}${industryLine(goals)}. Skills: ${goals.topSkills}. Why: ${goals.whyLeaving}
 
 SCORING METHOD (do this first, internally):
 1. Extract the 6-8 most important requirements from the job description (required skills, experience, credentials — weight must-haves over nice-to-haves).
@@ -66,7 +73,7 @@ Job Description:
 ${jobDesc}
 ---
 
-About: ${goals.years} years experience, settings: ${goals.settings.join(", ")}, targets: ${goals.targetRoles.join(", ")}. Skills: ${goals.topSkills}. Why transitioning: ${goals.whyLeaving}${voiceInstruction}
+About: ${goals.years} years experience, settings: ${goals.settings.join(", ")}, target functions: ${goals.targetRoles.join(", ")}${industryLine(goals)}. Skills: ${goals.topSkills}. Why transitioning: ${goals.whyLeaving}${voiceInstruction}
 
 SCORING METHOD for requirementsCoverage (do this first, internally):
 1. Extract the 6-8 most important requirements from the job description.
@@ -114,7 +121,7 @@ ${resumeText}
 ---
 
 Clinical settings: ${goals.settings.join(", ")}
-Years of experience: ${goals.years}
+Years of experience: ${goals.years}${(goals.targetIndustries || []).length ? `\nIndustries they're drawn to: ${(goals.targetIndustries || []).join(", ")}` : ""}
 Work aspects they enjoy: ${workPreferenceLabels.join(", ")}
 Skills they want to highlight: ${goals.topSkills}
 Why they want to transition: ${goals.whyLeaving}

@@ -154,11 +154,19 @@ export const TRANSITION_STORIES: TransitionStory[] = [
   { name: "Transitioner", from: "SNF SLP", to: "Customer Success Manager", setting: "SaaS company", quote: "Managing 50 patients with complex needs? That's a client portfolio. Same skills, better hours.", tags: ["Customer Success", "HealthTech", "SaaS"] },
 ];
 
+// What you'd DO. Ordered roughly by how often SLPs actually land these.
 export const ROLE_OPTIONS = [
-  "EdTech (Product, Sales, Success)", "HealthTech (Customer Success, Implementation)",
-  "UX Research", "Instructional Design", "Product Management",
-  "Corporate Training / L&D", "Content Strategy / Marketing",
-  "Clinical Research / Coordination", "Operations / Program Management",
+  "Customer Success / Implementation", "Project / Program Management",
+  "Data Analysis", "Content Strategy / Marketing", "Product Management",
+  "Instructional Design", "Corporate Training / L&D",
+  "Sales / Business Development", "UX Research", "Operations",
+  "Clinical Liaison / Utilization Review", "Clinical Research / Coordination",
+];
+
+// WHERE you'd do it. Separate axis — most functions exist in every industry.
+export const INDUSTRY_OPTIONS = [
+  "EdTech / Education", "HealthTech / Digital Health",
+  "Speech & AAC companies", "Hospitals / Health systems", "Open to any",
 ];
 
 export const NOT_SURE_OPTION = "Not sure yet — help me explore";
@@ -185,34 +193,50 @@ export function getRelevantCompanies(opts: {
   targetRoles: string[];
   settings: string[];
   jobTitle: string;
+  industries?: string[];
 }): ScoredCompany[] {
   const targetText = opts.targetRoles.join(" ").toLowerCase();
   const titleText = opts.jobTitle.toLowerCase();
   const settingText = opts.settings.join(" ").toLowerCase();
-  const allText = targetText + " " + titleText + " " + settingText;
+  const industryText = (opts.industries || []).join(" ").toLowerCase();
+  const openToAny = industryText.includes("open to any");
+  const allText = targetText + " " + titleText + " " + settingText + " " + industryText;
 
   const roleSignals: Record<string, string[]> = {
     "Customer Success": ["customer success", "account", "care coordinator", "implementation", "onboarding", "client success"],
-    "Product": ["product", "edtech (product"],
+    "Product": ["product"],
     "Marketing": ["marketing", "content strategy"],
     "Content": ["content", "writing", "editorial"],
     "Sales": ["sales", "business development"],
+    "Data": ["data analysis", "data analyst", "analytics", "analyst", "data"],
     "Research": ["ux research", "research", "user research", "clinical research"],
     "Operations": ["operations", "ops", "program management"],
-    "Project Management": ["project management", "program management"],
+    "Project Management": ["project management", "program management", "project /"],
     "Engineering": ["engineering", "developer"],
     "Design": ["design", "ux", "instructional design"],
     "Coaching": ["coaching", "training", "l&d", "learning and development", "corporate training"],
+    "Clinical": ["clinical liaison", "utilization review", "clinical research", "liaison"],
     "Recruiting/HR": ["recruiting", "talent", "hr", "people ops"],
   };
 
   const categorySignals: Record<string, string[]> = {
     "EdTech": ["edtech", "ed-tech", "education", "instructional design", "curriculum", "school", "k-12", "higher ed", "e-learning"],
-    "HealthTech": ["healthtech", "health-tech", "telehealth", "telepractice", "medical", "clinical", "hospital", "snf", "rehab"],
+    "HealthTech": ["healthtech", "health-tech", "digital health", "telehealth", "telepractice", "medical", "clinical", "hospital", "health system", "snf", "rehab"],
     "SLP-Adjacent": ["slp", "speech", "language", "audiology", "aac"],
     "Coaching": ["coaching", "wellness"],
     "Recruiting": ["recruiting", "recruitment"],
   };
+
+  // Explicitly chosen industries weigh more than incidental keyword overlap.
+  const industryCategories: Record<string, string[]> = {
+    "EdTech / Education": ["EdTech"],
+    "HealthTech / Digital Health": ["HealthTech"],
+    "Speech & AAC companies": ["SLP-Adjacent"],
+    "Hospitals / Health systems": ["HealthTech"],
+  };
+  const chosenCategories = new Set(
+    (opts.industries || []).flatMap((i) => industryCategories[i] || [])
+  );
 
   const scored: ScoredCompany[] = COMPANIES_DB.map((c) => {
     let score = 0;
@@ -229,6 +253,11 @@ export function getRelevantCompanies(opts: {
         score += 2;
       }
     }
+    for (const cat of chosenCategories) {
+      if (c.categories?.includes(cat)) score += 4;
+    }
+    // "Open to any" shouldn't punish companies outside the usual two categories.
+    if (openToAny && score > 0) score += 1;
     if (c.categories?.includes("SLP-Adjacent")) score += 1;
     if (settingText.includes("school") && c.categories?.includes("EdTech")) score += 1;
     if ((settingText.includes("hospital") || settingText.includes("rehab") || settingText.includes("snf")) && c.categories?.includes("HealthTech")) score += 1;

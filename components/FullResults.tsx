@@ -41,6 +41,7 @@ export default function FullResults({
 
   const companies = getRelevantCompanies({
     targetRoles: goals.targetRoles,
+    industries: goals.targetIndustries,
     settings: goals.settings,
     jobTitle,
   });

@@ -5,7 +5,7 @@ import {
   S, Card, CopyButton, Chip, ProgressBar, CoverageTable, focusB, blurB,
 } from "./ui";
 import {
-  ROLE_OPTIONS, NOT_SURE_OPTION, SETTING_OPTIONS, WORK_PREFERENCES,
+  ROLE_OPTIONS, INDUSTRY_OPTIONS, NOT_SURE_OPTION, SETTING_OPTIONS, WORK_PREFERENCES,
   getRelevantStories,
 } from "@/lib/companies";
 import type { UserGoals } from "@/lib/prompts";
@@ -51,6 +51,7 @@ export default function SLPCareerSuite() {
   const [isDragging, setIsDragging] = useState(false);
   const [goals, setGoals] = useState<UserGoals>({
     targetRoles: [],
+    targetIndustries: [],
     settings: [],
     workPreferences: [],
     topSkills: "",
@@ -326,7 +327,7 @@ export default function SLPCareerSuite() {
       <ErrorBanner />
 
       <div style={{ marginBottom: 24 }}>
-        <label style={S.label}>What roles interest you? (pick all that apply)</label>
+        <label style={S.label}>What kind of work interests you? <span style={{ fontWeight: 400, color: "var(--light)" }}>(pick all that apply)</span></label>
         <div style={{ display: "flex", flexWrap: "wrap" }}>
           {ROLE_OPTIONS.map((r) => (
             <Chip key={r} label={r} selected={goals.targetRoles.includes(r)} onClick={() => {
@@ -339,7 +340,31 @@ export default function SLPCareerSuite() {
             }} />
           ))}
         </div>
-        <div style={{ marginTop: 8, padding: "12px 14px", background: isExploreMode ? "var(--accent-bg-subtle)" : "var(--bg)", borderRadius: 8, border: `1px solid ${isExploreMode ? "var(--accent)" : "var(--border)"}` }}>
+        {!isExploreMode && (
+          <div style={{ marginTop: 18 }}>
+            <label style={S.label}>Any industry preference? <span style={{ fontWeight: 400, color: "var(--light)" }}>(optional — most of these roles exist in every industry)</span></label>
+            <div style={{ display: "flex", flexWrap: "wrap" }}>
+              {INDUSTRY_OPTIONS.map((ind) => {
+                const sel = (goals.targetIndustries || []).includes(ind);
+                const isOpen = ind === "Open to any";
+                return (
+                  <Chip key={ind} label={ind} selected={sel} onClick={() => {
+                    setGoals((p) => {
+                      const cur = p.targetIndustries || [];
+                      if (isOpen) return { ...p, targetIndustries: sel ? [] : ["Open to any"] };
+                      const next = cur.includes(ind)
+                        ? cur.filter((x) => x !== ind)
+                        : [...cur.filter((x) => x !== "Open to any"), ind];
+                      return { ...p, targetIndustries: next };
+                    });
+                  }} />
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        <div style={{ marginTop: 18, padding: "12px 14px", background: isExploreMode ? "var(--accent-bg-subtle)" : "var(--bg)", borderRadius: 8, border: `1px solid ${isExploreMode ? "var(--accent)" : "var(--border)"}` }}>
           <Chip label={NOT_SURE_OPTION} selected={isExploreMode} onClick={() => {
             setGoals((p) => ({ ...p, targetRoles: isExploreMode ? [] : [NOT_SURE_OPTION] }));
           }} />
@@ -586,7 +611,7 @@ export default function SLPCareerSuite() {
           <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>Found a role that interests you?</h3>
           <p style={{ ...S.p, maxWidth: 440, margin: "0 auto 16px" }}>Once you've narrowed in, come back and run the Resume Translator on a real job posting to get a tailored resume, cover letter, and interview prep.</p>
           <button style={S.btn} onClick={() => {
-            setGoals((p) => ({ ...p, targetRoles: [], workPreferences: [] }));
+            setGoals((p) => ({ ...p, targetRoles: [], targetIndustries: [], workPreferences: [] }));
             setExploreResults(null);
             setStep(STEPS.GOALS);
           }}>Translate for a Specific Role →</button>
