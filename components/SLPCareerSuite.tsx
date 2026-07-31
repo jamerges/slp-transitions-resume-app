@@ -363,35 +363,68 @@ export default function SLPCareerSuite() {
         onMouseLeave={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent)")}>
         Start Your Translation →
       </button>
-      <p style={{ fontSize: 13, color: "var(--light)", marginTop: 14 }}>Takes ~3 minutes • Full package from $24</p>
+      <p style={{ fontSize: 13, color: "var(--light)", marginTop: 14 }}>Takes ~3 minutes • Full package $24, one-time</p>
 
       <Card style={{ marginTop: 36, textAlign: "left" }} highlight>
-        <div style={{ fontSize: 14, fontWeight: 600, color: "var(--accent)", marginBottom: 10 }}>What you'll get:</div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px 20px" }}>
-          {([
-            ["✓", "Match score + requirements breakdown", true],
-            ["✓", "3 sample bullet translations", true],
-            ["⟡", "Full resume rewrite (editable Word doc)", false],
-            ["⟡", "Tailored cover letter in your voice", false],
-            ["⟡", "Gap analysis + proof-artifact plan", false],
-            ["⟡", "Screening questions + interview prep", false],
-            ["⟡", "LinkedIn headline + About section", false],
-            ["⟡", "Your 90-day transition plan", false],
-            ["⟡", "Refine any section until it's right", false],
-            ["⟡", "Companies that hire former SLPs", false],
-          ] as const).map(([icon, text, free], i) => (
-            <div key={i} style={{ fontSize: 14, display: "flex", gap: 8, padding: "3px 0", color: free ? "var(--text)" : "var(--muted)" }}>
-              <span style={{ color: free ? "var(--accent)" : "var(--light)", flexShrink: 0 }}>{icon}</span>
-              <span>{text}</span>
+        <div style={{ fontSize: 14, fontWeight: 700, color: "var(--accent)", marginBottom: 4 }}>
+          Free — no payment, no account
+        </div>
+        <div style={{ fontSize: 12, color: "var(--muted)", marginBottom: 10 }}>Just your email, so we can send your results.</div>
+        {[
+          "Match score against the job's actual requirements",
+          "Requirement-by-requirement breakdown (covered / partial / gap)",
+          "3 of your bullets translated",
+          "Two things to do this week",
+          "Stories from SLPs who made a similar move",
+        ].map((t, i) => (
+          <div key={i} style={{ fontSize: 14, display: "flex", gap: 8, padding: "3px 0" }}>
+            <span style={{ color: "var(--accent)", flexShrink: 0 }}>✓</span>
+            <span>{t}</span>
+          </div>
+        ))}
+      </Card>
+
+      <Card style={{ marginTop: 8, textAlign: "left" }}>
+        <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>
+          Full package — $24, one-time
+        </div>
+        <div style={{ fontSize: 12, color: "var(--muted)", marginBottom: 10 }}>
+          Everything above, plus:
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px 20px" }}>
+          {[
+            "Every bullet rewritten, not just 3",
+            "Professional summary + ATS skills section",
+            "Tailored cover letter in your voice",
+            "30-second elevator pitch",
+            "LinkedIn headline + About section",
+            "Gap analysis + proof-artifact plan",
+            "Application screening-question answers",
+            "Interview bridge statements",
+            "Your 90-day transition plan",
+            "Companies that hire former SLPs",
+            "Word doc downloads (resume content + cover letter)",
+            "Rewrite the summary, bullets, cover letter, pitch or LinkedIn on request (up to 10 times)",
+          ].map((t, i) => (
+            <div key={i} style={{ fontSize: 14, display: "flex", gap: 8, padding: "3px 0" }}>
+              <span style={{ color: "var(--accent)", flexShrink: 0 }}>✓</span>
+              <span>{t}</span>
             </div>
           ))}
+        </div>
+        <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 10, lineHeight: 1.6 }}>
+          The Word docs give you your rewritten content to drop into your own resume layout — we don't reformat your whole resume file.
         </div>
       </Card>
 
       <Card style={{ marginTop: 8, textAlign: "left" }}>
-        <div style={{ fontSize: 13, color: "var(--muted)", marginBottom: 6 }}>Not sure what role you want yet?</div>
-        <div style={{ fontSize: 14, color: "var(--text)" }}>
-          When you get to the goals screen, select <strong style={{ color: "var(--accent)" }}>"Not sure yet — help me explore"</strong> and we'll switch to a different flow that suggests roles based on what you actually enjoy doing.
+        <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 6 }}>Not sure what role you want yet?</div>
+        <div style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.65, marginBottom: 10 }}>
+          Two options that don't need a job posting. Take the <a href="/quiz" style={{ color: "var(--accent)", fontWeight: 600 }}>2-minute career quiz</a> for a direction with real salary ranges — or start here and select{" "}
+          <strong style={{ color: "var(--accent)" }}>"Not sure yet — help me explore"</strong> on the next screen to get free role matches based on your resume.
+        </div>
+        <div style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.6 }}>
+          From either one you can add the <strong>Pivot Report</strong> ($9) — your readiness profile, which stage you're in, your top 3 paths with entry doors, and a 30-day plan.
         </div>
       </Card>
     </div>
