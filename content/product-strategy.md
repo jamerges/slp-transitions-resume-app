@@ -62,3 +62,16 @@ This is the honest AI-age replacement for the $599 course, at $79-99, and it's s
 4. **Only after list growth:** cohort sprint, then employer layer.
 
 One audience (SLPs leaving clinical), one funnel, one ladder. Everything that doesn't feed it waits.
+
+## Addendum: findings from the main SLP Transitions Notion vault (read July 2026)
+
+The vault confirms James saw this market clearly years early — several notes are now validated:
+- *"WEB APP IDEA: tailor your resume based on job descriptions and your SLP skills… one click"* (✅ built — it's the live tool). The unbuilt half of that same note: **"AND match you with relevant jobs"** — job matching belongs in the Transition OS or the employer layer, not now.
+- *"Resume checker is trending"* (Exploding Topics) — demand spotted pre-AI-boom; the market arrived.
+- **The marketplace note is the sleeper:** *"Bubble marketplace connecting clinical writers with ed and health-tech companies — connecting transitioners to Xceptional Leaders who want interns."* This is the employer layer (Rung 5) in embryo, and it's the idea only James can execute (podcast relationships). Keep parked, but it's the long-game moat: **transitioners on one side, disability/health-tech leaders from the podcast on the other.** Daphne's staffing company proves the end state.
+- *"Package a live webinar for one part of the course, sell it lower, rebundle as full course"* — same laddering instinct as this strategy; superseded by the $9 report → OS ladder.
+- A 2023 note-to-self, verbatim: *"I think I'm gonna decline [consulting] because ultimately I want to make my own SLP products."* The decision was already made — this strategy just executes it.
+- Content gold scattered in the vault (voice-y nuggets for posts/emails): the "anything else I should know?" interview close framed as "getting a language sample"; "take the nail out of your foot" burnout metaphor; permissionless-apprenticeship framing for pilots; SLP→UX writer parallels.
+- The link hoards (Health Tech Nerd job board, Behavioral Health Tech board, Disability Scoop jobs, AgeTech Job Hunt, Crash career guides) are **companies-DB enrichment seeds** — a future afternoon project, not a product.
+
+Verdict on the vault: nothing in it contradicts the ladder; the best ideas in it are either already built, already sequenced, or explicitly parked. It can be archived with a clear conscience.
