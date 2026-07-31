@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { assertKeyPriceMatch } from "@/lib/stripe-guard";
 import Stripe from "stripe";
 import { stashInputs, type StashedInputs } from "@/lib/stash";
 import { randomUUID } from "crypto";
@@ -10,6 +11,7 @@ function getStripe(): Stripe {
   if (!stripe) {
     const key = process.env.STRIPE_SECRET_KEY;
     if (!key) throw new Error("STRIPE_SECRET_KEY is not set");
+    assertKeyPriceMatch(key, PRICE_ID, "STRIPE_PRICE_ID ($24 suite)");
     stripe = new Stripe(key, { apiVersion: "2025-02-24.acacia" });
   }
   return stripe;

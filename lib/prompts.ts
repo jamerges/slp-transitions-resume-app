@@ -26,7 +26,13 @@ function aboutLine(goals: UserGoals): string {
   return bits.join(". ");
 }
 
-const INFER_NOTE = `Infer their years of experience and clinical setting(s) directly from the resume — they were not asked, so never write a placeholder for them. Two rules when you do:
+// The model has no idea what today's date is, so it computes "years of
+// experience" from its training cutoff and systematically undercounts. Tell it.
+const today = () =>
+  new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" });
+
+const INFER_NOTE = `Today is ${today()} — use this to compute durations; do not assume a different current year.
+Infer their years of experience and clinical setting(s) directly from the resume — they were not asked, so never write a placeholder for them. Two rules when you do:
 - ORGANISATION NAMES ARE NAMES, NOT DESCRIPTIONS. "STEM Preparatory Schools" is an employer's name; it does NOT mean they worked at "a STEM school". "Sunrise Senior Living" does not make them a sunrise expert. Describe the setting only from what the resume states about the work itself (grades served, population, care setting). If the setting isn't stated, say "school-based" / "medical" / "outpatient" at that level of generality, or leave it out.
 - COUNT YEARS FROM THE ACTUAL DATES and round honestly (Aug 2018 → today is "nearly eight years", not "seven years"). If dates are missing or ambiguous, use a soft phrase like "several years" rather than inventing a number.`;
 
