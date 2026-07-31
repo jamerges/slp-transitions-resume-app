@@ -345,10 +345,14 @@ export default function FullResults({
 
       {companies.length > 0 && (
         <Section title="Companies Known to Hire Former SLPs" id="companies">
-          <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12 }}>From our curated database of 123 ed-tech and health-tech companies with a track record of hiring former clinicians, sorted by best match for your background. We don't track live vacancies — tap <strong>See open roles</strong> on any company to run a live job search for {jobTitle}-type openings there.</p>
+          <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12 }}>From our curated database of 123 ed-tech and health-tech companies with a track record of hiring former clinicians, sorted by best match for your background. We don't track live vacancies — tap <strong>See open roles</strong> to jump to that company's careers page.</p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
             {companies.map((c, i) => {
-              const jobsUrl = `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(`${c.name} ${jobTitle}`)}`;
+              // We don't store per-company careers URLs (paths vary: /careers,
+              // /jobs, Greenhouse, Lever…), so a "{company} careers" search is
+              // the most reliable route to their actual jobs page — a LinkedIn
+              // keyword search just lands on generic suggested jobs.
+              const jobsUrl = `https://www.google.com/search?q=${encodeURIComponent(`"${c.name}" careers jobs`)}`;
               return (
               <div key={i} style={{ padding: "14px 16px", background: "var(--accent-bg-subtle)", borderRadius: 8, display: "flex", flexDirection: "column", gap: 4 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 6 }}>
@@ -375,7 +379,7 @@ export default function FullResults({
             })}
           </div>
           <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 12, padding: "10px 14px", background: "#F9FAFB", borderRadius: 6 }}>
-            💡 <strong>Pro tip:</strong> "See open roles" runs a live LinkedIn Jobs search for that company. If nothing's posted today, check back or follow the company — and reference your translated bullets above when you apply.
+            💡 <strong>Pro tip:</strong> "See open roles" takes you to the company's careers page (top search result). If nothing fits today, follow them on LinkedIn — and reference your translated bullets above when you apply.
           </div>
         </Section>
       )}
