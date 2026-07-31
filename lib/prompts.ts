@@ -2,17 +2,30 @@ export interface UserGoals {
   targetRoles: string[];
   /** Optional — added after launch, so older stashed sessions may omit it. */
   targetIndustries?: string[];
-  settings: string[];
+  /** Deprecated in the intake form (inferred from the resume). Older sessions may still carry it. */
+  settings?: string[];
   workPreferences: string[];
   topSkills: string;
   whyLeaving: string;
-  years: string;
+  /** Deprecated in the intake form (inferred from the resume). Older sessions may still carry it. */
+  years?: string;
 }
 
-function industryLine(goals: UserGoals): string {
-  const list = goals.targetIndustries || [];
-  return list.length ? `, industries: ${list.join(", ")}` : "";
+// Years of experience and clinical setting are both already in the resume, so we
+// no longer ask for them. Only pass them through when an older session has them.
+function aboutLine(goals: UserGoals): string {
+  const bits: string[] = [];
+  if (goals.years) bits.push(`${goals.years} experience`);
+  if (goals.settings?.length) bits.push(`settings: ${goals.settings.join(", ")}`);
+  if (goals.targetRoles.length) bits.push(`target functions: ${goals.targetRoles.join(", ")}`);
+  if (goals.targetIndustries?.length) bits.push(`industries: ${goals.targetIndustries.join(", ")}`);
+  if (goals.topSkills) bits.push(`skills they want highlighted: ${goals.topSkills}`);
+  if (goals.whyLeaving) bits.push(`why transitioning: ${goals.whyLeaving}`);
+  return bits.join(". ");
 }
+
+const INFER_NOTE =
+  "Infer their years of experience and clinical setting(s) directly from the resume — they were not asked, so never write a placeholder for them.";
 
 export interface PreviewInput {
   resumeText: string;
@@ -42,7 +55,8 @@ Job Description:
 ---
 ${jobDesc}
 ---
-About: ${goals.years} exp, settings: ${goals.settings.join(", ")}, target functions: ${goals.targetRoles.join(", ")}${industryLine(goals)}. Skills: ${goals.topSkills}. Why: ${goals.whyLeaving}
+About: ${aboutLine(goals)}
+${INFER_NOTE}
 
 SCORING METHOD (do this first, internally):
 1. Extract the 6-8 most important requirements from the job description (required skills, experience, credentials — weight must-haves over nice-to-haves).
@@ -73,7 +87,8 @@ Job Description:
 ${jobDesc}
 ---
 
-About: ${goals.years} years experience, settings: ${goals.settings.join(", ")}, target functions: ${goals.targetRoles.join(", ")}${industryLine(goals)}. Skills: ${goals.topSkills}. Why transitioning: ${goals.whyLeaving}${voiceInstruction}
+About: ${aboutLine(goals)}
+${INFER_NOTE}${voiceInstruction}
 
 SCORING METHOD for requirementsCoverage (do this first, internally):
 1. Extract the 6-8 most important requirements from the job description.
@@ -127,8 +142,7 @@ Resume:
 ${resumeText}
 ---
 
-Clinical settings: ${goals.settings.join(", ")}
-Years of experience: ${goals.years}${(goals.targetIndustries || []).length ? `\nIndustries they're drawn to: ${(goals.targetIndustries || []).join(", ")}` : ""}${goals.targetRoles.filter((r) => !r.startsWith("Not sure")).length ? `\nRoles they've considered: ${goals.targetRoles.join(", ")}` : ""}
+${INFER_NOTE}${(goals.targetIndustries || []).length ? `\nIndustries they're drawn to: ${(goals.targetIndustries || []).join(", ")}` : ""}${goals.targetRoles.filter((r) => !r.startsWith("Not sure")).length ? `\nRoles they've considered: ${goals.targetRoles.join(", ")}` : ""}
 Work aspects they enjoy: ${workPreferenceLabels.join(", ")}
 Skills they want to highlight: ${goals.topSkills}
 Why they want to transition: ${goals.whyLeaving}
@@ -168,30 +182,29 @@ Resume:
 ${resumeText}
 ---
 
-Clinical settings: ${goals.settings.join(", ")}
-Years of experience: ${goals.years}${(goals.targetIndustries || []).length ? `\nIndustries they're drawn to: ${(goals.targetIndustries || []).join(", ")}` : ""}
+${INFER_NOTE}${(goals.targetIndustries || []).length ? `\nIndustries they're drawn to: ${(goals.targetIndustries || []).join(", ")}` : ""}
 Work aspects they enjoy: ${workPreferenceLabels.join(", ")}
 Skills they want to highlight: ${goals.topSkills}
 Why they want to transition: ${goals.whyLeaving}
 
 Generate a personalized career exploration report. Return ONLY this JSON:
 {
-  "personalitySnapshot": "2-3 sentences capturing who they are professionally and what they're optimizing for",
+  "personalitySnapshot": "2 sentences capturing who they are professionally and what they're optimizing for",
   "topRoleMatches": [
-    {"role": "Specific role title", "fit": "Why this fits their preferences and SLP background (2-3 sentences)", "matchScore": 85, "salaryRange": "$60k-$95k", "dayInLife": "1 sentence about what the day looks like", "transitionDifficulty": "Easy|Moderate|Stretch"}
+    {"role": "Specific role title", "fit": "Why this fits their preferences and SLP background (2 sentences)", "matchScore": 85, "salaryRange": "$60k-$95k", "dayInLife": "1 short sentence", "transitionDifficulty": "Easy|Moderate|Stretch"}
   ],
   "transferableStrengths": [
-    {"strength": "Strength name", "evidence": "Where in their resume this shows up", "sellsAs": "How to frame this in non-clinical interviews"}
+    {"strength": "Strength name", "evidence": "Where in their resume this shows up (1 short sentence)", "sellsAs": "How to frame this in non-clinical interviews (1 short sentence)"}
   ],
   "exploratoryActions": [
-    {"action": "Specific thing to do this week", "why": "What it teaches you", "timeNeeded": "30 mins"}
+    {"action": "Specific thing to do this week", "why": "What it teaches you (1 short sentence)", "timeNeeded": "30 mins"}
   ],
   "warningQuestions": [
     "Honest question they should ask themselves before pursuing this direction"
   ]
 }
 
-Provide 4-5 topRoleMatches with diverse difficulty levels, 4 transferableStrengths, 4 exploratoryActions, and 3 warningQuestions. Be specific and grounded in their actual resume content.
+Provide exactly 4 topRoleMatches with diverse difficulty levels, 3 transferableStrengths, 3 exploratoryActions, and 2 warningQuestions. Be specific and grounded in their actual resume content, but keep every field tight — this is a free overview, not the full report. Brevity is required.
 
 Ground topRoleMatches in your knowledge of where SLPs actually land (the tiers in your role knowledge): favor documented-success paths (project/program management, healthcare data analyst, customer success/implementation at health-tech and speech-tech companies, marketing/content, clinical liaison, utilization review, clinical educator at device companies, informatics) over aspirational ones. Use realistic salary ranges and transition timelines from real reports, and give honest transitionDifficulty ratings — if they'd love a saturated or long-runway field (UX research, software engineering, product management), include it but rate it honestly and say what it actually takes in the fit description.`;
 }

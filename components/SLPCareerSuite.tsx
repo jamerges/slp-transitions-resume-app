@@ -5,7 +5,7 @@ import {
   S, Card, CopyButton, Chip, ProgressBar, CoverageTable, focusB, blurB,
 } from "./ui";
 import {
-  ROLE_OPTIONS, INDUSTRY_OPTIONS, NOT_SURE_OPTION, SETTING_OPTIONS, WORK_PREFERENCES,
+  ROLE_OPTIONS, INDUSTRY_OPTIONS, NOT_SURE_OPTION, WORK_PREFERENCES,
   getRelevantStories,
 } from "@/lib/companies";
 import type { UserGoals } from "@/lib/prompts";
@@ -52,11 +52,9 @@ export default function SLPCareerSuite() {
   const [goals, setGoals] = useState<UserGoals>({
     targetRoles: [],
     targetIndustries: [],
-    settings: [],
     workPreferences: [],
     topSkills: "",
     whyLeaving: "",
-    years: "",
   });
   const [jobDesc, setJobDesc] = useState("");
   const [jobTitle, setJobTitle] = useState("");
@@ -141,14 +139,25 @@ export default function SLPCareerSuite() {
       const workPreferenceLabels = goals.workPreferences
         .map((id) => WORK_PREFERENCES.find((w) => w.id === id)?.label)
         .filter(Boolean) as string[];
-      const resp = await fetch("/api/explore", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ resumeText, goals, workPreferenceLabels }),
-      });
+      // Generation occasionally exceeds the gateway timeout; retry once before failing.
+      const attempt = async () =>
+        fetch("/api/explore", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ resumeText, goals, workPreferenceLabels }),
+        });
+      let resp = await attempt();
+      if (resp.status === 504 || resp.status === 502) {
+        resp = await attempt();
+      }
       if (!resp.ok) {
         const errBody = await resp.json().catch(() => ({}));
-        throw new Error(errBody.error || `API ${resp.status}`);
+        throw new Error(
+          errBody.error ||
+            (resp.status === 504
+              ? "That took longer than expected. Please try again — it usually works on the second attempt."
+              : `API ${resp.status}`)
+        );
       }
       const parsed = await resp.json();
       setExploreResults(parsed);
@@ -426,32 +435,13 @@ export default function SLPCareerSuite() {
       )}
 
       <div style={{ marginBottom: 20 }}>
-        <label style={S.label}>Clinical setting(s) <span style={{ fontWeight: 400, color: "var(--light)" }}>(pick all that apply)</span></label>
-        <div style={{ display: "flex", flexWrap: "wrap" }}>
-          {SETTING_OPTIONS.map((s) => (
-            <Chip key={s} label={s} selected={goals.settings.includes(s)} onClick={() => {
-              setGoals((p) => ({
-                ...p,
-                settings: p.settings.includes(s) ? p.settings.filter((x) => x !== s) : [...p.settings, s],
-              }));
-            }} />
-          ))}
-        </div>
-      </div>
-
-      <div style={{ marginBottom: 20 }}>
-        <label style={S.label}>Years of experience</label>
-        <input style={{ ...S.input, maxWidth: 200 }} placeholder="e.g., 5 years" value={goals.years} onChange={(e) => setGoals((p) => ({ ...p, years: e.target.value }))} onFocus={focusB} onBlur={blurB} />
-      </div>
-
-      <div style={{ marginBottom: 20 }}>
-        <label style={S.label}>Skills to highlight</label>
+        <label style={S.label}>Skills to highlight <span style={{ fontWeight: 400, color: "var(--light)" }}>(optional)</span></label>
         <textarea style={{ ...S.textarea, minHeight: 70 }} placeholder="data analysis, project management, training..." value={goals.topSkills} onChange={(e) => setGoals((p) => ({ ...p, topSkills: e.target.value }))} onFocus={focusB} onBlur={blurB} />
       </div>
 
       <div style={{ marginBottom: 24 }}>
         <label style={S.label}>Why are you transitioning? <span style={{ fontWeight: 400, color: "var(--light)" }}>(optional)</span></label>
-        <textarea style={{ ...S.textarea, minHeight: 60 }} placeholder="Burnout? Curiosity? Want autonomy?" value={goals.whyLeaving} onChange={(e) => setGoals((p) => ({ ...p, whyLeaving: e.target.value }))} onFocus={focusB} onBlur={blurB} />
+        <textarea style={{ ...S.textarea, minHeight: 60 }} placeholder="Burnout? Curiosity? Want autonomy? Be honest — this never appears in your documents, it just helps us frame your story." value={goals.whyLeaving} onChange={(e) => setGoals((p) => ({ ...p, whyLeaving: e.target.value }))} onFocus={focusB} onBlur={blurB} />
       </div>
 
       <div style={{ display: "flex", gap: 12 }}>

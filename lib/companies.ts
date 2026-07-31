@@ -191,13 +191,18 @@ export const WORK_PREFERENCES: WorkPreference[] = [
 
 export function getRelevantCompanies(opts: {
   targetRoles: string[];
-  settings: string[];
+  /** No longer collected in the intake form — older sessions may still have it. */
+  settings?: string[];
   jobTitle: string;
   industries?: string[];
+  /** Setting keywords now come from the resume itself. */
+  resumeText?: string;
 }): ScoredCompany[] {
   const targetText = opts.targetRoles.join(" ").toLowerCase();
   const titleText = opts.jobTitle.toLowerCase();
-  const settingText = opts.settings.join(" ").toLowerCase();
+  const settingText = (
+    (opts.settings || []).join(" ") + " " + (opts.resumeText || "").slice(0, 2000)
+  ).toLowerCase();
   const industryText = (opts.industries || []).join(" ").toLowerCase();
   const openToAny = industryText.includes("open to any");
   const allText = targetText + " " + titleText + " " + settingText + " " + industryText;
