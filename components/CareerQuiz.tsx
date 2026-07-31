@@ -203,19 +203,6 @@ export default function CareerQuiz({
           </p>
         </Card>
 
-        <Card style={{ textAlign: "center" }}>
-          <p style={{ fontSize: 14, color: "var(--muted)", margin: "0 0 10px", lineHeight: 1.6 }}>
-            Already have a specific job posting in mind? Skip the report — the resume translator shows you
-            free how your experience matches it.
-          </p>
-          <button
-            style={S.btnOut}
-            onClick={() => go(`/?from=quiz&path=${encodeURIComponent(top.roleOption)}`)}
-          >
-            Translate my resume for a real job →
-          </button>
-        </Card>
-
         {emailed && (
           <Card>
             <div style={{ fontSize: 14, color: "var(--accent)" }}>
