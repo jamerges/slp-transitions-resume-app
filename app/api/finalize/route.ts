@@ -6,7 +6,8 @@ import { retrieveInputs, retrieveResult, stashResult } from "@/lib/stash";
 import { sendFullResultsEmail } from "@/lib/email";
 
 export const runtime = "nodejs";
-export const maxDuration = 120;
+// Full generation measured at ~140s with all sections; 300 is the Fluid-compute ceiling on Hobby.
+export const maxDuration = 300;
 
 let stripe: Stripe | null = null;
 function getStripe(): Stripe {

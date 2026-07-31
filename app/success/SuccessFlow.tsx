@@ -61,31 +61,38 @@ export default function SuccessFlow({ sessionId }: { sessionId?: string }) {
     }
 
     (async () => {
-      try {
-        const resp = await fetch("/api/finalize", {
+      // Generation is long (~2 min); a gateway hiccup shouldn't strand a paying
+      // customer, so retry twice before falling back. finalize caches the result
+      // in Redis, so retries are cheap once generation has completed server-side.
+      const attempt = () =>
+        fetch("/api/finalize", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ sessionId }),
         });
-        const data = await resp.json();
-        if (resp.ok && data.results) {
-          setState({ status: "ready", data });
-          return;
+      let lastError = "";
+      for (let i = 0; i < 3; i++) {
+        try {
+          const resp = await attempt();
+          const data = await resp.json().catch(() => ({}));
+          if (resp.ok && data.results) {
+            setState({ status: "ready", data });
+            return;
+          }
+          lastError = data?.error || `Server responded ${resp.status}`;
+          // 402/410 are terminal (unpaid / expired inputs) — don't retry those.
+          if (resp.status === 402 || resp.status === 410) break;
+        } catch {
+          lastError = "Network interruption while generating.";
         }
-        setState({
-          status: "fallback",
-          email: data?.inputs?.email,
-          reason:
-            data?.error ||
-            "We're still working on your full results. They'll arrive in your inbox shortly.",
-        });
-      } catch (err: any) {
-        setState({
-          status: "fallback",
-          reason:
-            "Something went wrong displaying your results. Don't worry — your payment is confirmed and we'll email your full package shortly.",
-        });
+        if (i < 2) await new Promise((r) => setTimeout(r, 4000));
       }
+      setState({
+        status: "fallback",
+        reason:
+          lastError ||
+          "We're still working on your full results. Refresh this page in a minute — your payment is confirmed and nothing is lost.",
+      });
     })();
   }, [sessionId]);
 
@@ -117,21 +124,26 @@ export default function SuccessFlow({ sessionId }: { sessionId?: string }) {
     return (
       <div style={S.wrap}>
         <Card highlight>
-          <h2 style={{ ...S.h2, marginBottom: 8 }}>✅ Payment confirmed</h2>
-          <p style={{ ...S.p, marginBottom: 12 }}>
-            We're finishing your full results in the background. They'll arrive in
-            your inbox{state.email ? ` (${state.email})` : ""} within a few
-            minutes.
+          <h2 style={{ ...S.h2, marginBottom: 8 }}>✅ Payment confirmed — one more step</h2>
+          <p style={{ ...S.p, marginBottom: 14 }}>
+            Generation took longer than expected. Your purchase and inputs are saved —
+            hit the button below and it will pick up where it left off.
           </p>
+          <button
+            style={{ ...S.btn, padding: "13px 32px", fontSize: 15, marginBottom: 14 }}
+            onClick={() => window.location.reload()}
+          >
+            Retry now →
+          </button>
           <p style={{ fontSize: 13, color: "var(--muted)", marginBottom: 0 }}>
-            If nothing arrives in 15 minutes, email us at{" "}
+            Still stuck after a couple of tries? Email{" "}
             <a
               href="mailto:hello@slptransitions.com"
               style={{ color: "var(--accent)" }}
             >
               hello@slptransitions.com
             </a>{" "}
-            with your Stripe receipt and we'll send them manually.
+            with your Stripe receipt and we'll generate it manually{state.email ? ` and send it to ${state.email}` : ""}.
           </p>
         </Card>
         <details style={{ marginTop: 12, fontSize: 12, color: "var(--light)" }}>

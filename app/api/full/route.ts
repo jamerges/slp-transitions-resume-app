@@ -3,7 +3,8 @@ import { callClaude } from "@/lib/anthropic";
 import { buildFullPrompt, type FullInput } from "@/lib/prompts";
 
 export const runtime = "nodejs";
-export const maxDuration = 120;
+// Full generation measured at ~140s with all sections; 300 is the Fluid-compute ceiling on Hobby.
+export const maxDuration = 300;
 
 export async function POST(req: Request) {
   try {
