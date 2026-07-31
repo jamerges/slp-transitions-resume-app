@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { callClaude } from "@/lib/anthropic";
+import { callClaude, assertReadableResume } from "@/lib/anthropic";
 import { buildExplorePrompt, type ExploreInput } from "@/lib/prompts";
 
 export const runtime = "nodejs";
@@ -10,6 +10,11 @@ export async function POST(req: Request) {
     const body = (await req.json()) as ExploreInput;
     if (!body.resumeText) {
       return NextResponse.json({ error: "Missing resumeText" }, { status: 400 });
+    }
+    try {
+      assertReadableResume(body.resumeText);
+    } catch (e: any) {
+      return NextResponse.json({ error: e.message }, { status: 422 });
     }
     const result = await callClaude({
       userPrompt: buildExplorePrompt(body),

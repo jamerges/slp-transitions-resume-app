@@ -16,31 +16,24 @@ const STEPS = {
 } as const;
 type Step = (typeof STEPS)[keyof typeof STEPS];
 
-async function parseFile(file: File): Promise<string> {
-  const ext = file.name.split(".").pop()?.toLowerCase() || "";
-  if (ext === "txt" || ext === "md") return await file.text();
-  if (ext === "pdf") {
-    try {
-      const arrayBuffer = await file.arrayBuffer();
-      const decoder = new TextDecoder("utf-8", { fatal: false });
-      const raw = decoder.decode(new Uint8Array(arrayBuffer));
-      let text = "";
-      const textRuns = raw.match(/\(([^)]+)\)/g);
-      if (textRuns) text = textRuns.map(t => t.slice(1, -1)).join(" ").replace(/\\n/g, "\n").replace(/\\r/g, "").replace(/\s+/g, " ").trim();
-      if (text.length > 100) return text;
-      return "[Could not extract text. Use 'Paste Text' tab.]";
-    } catch { return "[PDF parsing failed. Use 'Paste Text' tab.]"; }
+// Files are parsed server-side (unpdf / mammoth). The old browser-side PDF
+// regex hack produced binary garbage that the model then refused to work with.
+async function parseFile(file: File): Promise<{ text: string; error?: string }> {
+  const form = new FormData();
+  form.append("file", file);
+  try {
+    const resp = await fetch("/api/parse-resume", { method: "POST", body: form });
+    const data = await resp.json();
+    if (!resp.ok) return { text: "", error: data.error || "Could not read that file." };
+    return { text: data.text };
+  } catch {
+    return {
+      text: "",
+      error: 'Could not read that file. Please use the "Paste Text" tab instead.',
+    };
   }
-  if (ext === "docx") {
-    try {
-      const arrayBuffer = await file.arrayBuffer();
-      const result = await (window as any).mammoth?.convertToPlainText({ arrayBuffer });
-      if (result?.value) return result.value;
-      return "[Could not parse .docx. Use 'Paste Text' tab.]";
-    } catch { return "[DOCX parsing failed. Use 'Paste Text' tab.]"; }
-  }
-  return "[Unsupported file. Use .pdf, .docx, .txt or paste text.]";
 }
+
 
 export default function SLPCareerSuite() {
   const [step, setStep] = useState<Step>(STEPS.WELCOME);
@@ -48,6 +41,7 @@ export default function SLPCareerSuite() {
   const [resumeText, setResumeText] = useState("");
   const [fileName, setFileName] = useState("");
   const [fileError, setFileError] = useState("");
+  const [parsing, setParsing] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [goals, setGoals] = useState<UserGoals>({
     targetRoles: [],
@@ -107,14 +101,27 @@ export default function SLPCareerSuite() {
     if (!["pdf", "docx", "txt", "md"].includes(ext)) { setFileError("Please upload .pdf, .docx, or .txt"); return; }
     setFileError("");
     setFileName(file.name);
-    setResumeText(await parseFile(file));
+    setResumeText("");
+    setParsing(true);
+    const { text, error: parseError } = await parseFile(file);
+    setParsing(false);
+    if (parseError) {
+      setFileError(parseError);
+      setFileName("");
+      return;
+    }
+    setResumeText(text);
   };
 
   const handleWritingSampleFile = async (file?: File | null) => {
     if (!file) return;
     if (file.size > 2 * 1024 * 1024) return;
     setWritingSampleFileName(file.name);
-    const text = await parseFile(file);
+    const { text, error: parseError } = await parseFile(file);
+    if (parseError) {
+      setWritingSampleFileName("");
+      return;
+    }
     setWritingSample(text);
   };
 
@@ -321,7 +328,12 @@ export default function SLPCareerSuite() {
           cursor: "pointer", marginBottom: 16,
         }}>
           <input ref={fileInputRef} type="file" accept=".pdf,.docx,.txt,.md" style={{ display: "none" }} onChange={(e) => handleFile(e.target.files?.[0])} />
-          {fileName ? (
+          {parsing ? (
+            <div>
+              <div style={{ fontSize: 32, marginBottom: 8 }}>📄</div>
+              <div style={{ fontSize: 15, fontWeight: 500 }}>Reading your resume…</div>
+            </div>
+          ) : fileName ? (
             <div>
               <div style={{ fontSize: 32, marginBottom: 8 }}>📄</div>
               <div style={{ fontSize: 15, fontWeight: 600 }}>{fileName}</div>
@@ -348,7 +360,7 @@ export default function SLPCareerSuite() {
 
       <div style={{ display: "flex", gap: 12 }}>
         <button style={S.btnOut} onClick={() => setStep(STEPS.WELCOME)}>← Back</button>
-        <button style={{ ...S.btn, opacity: resumeText.length < 50 ? 0.4 : 1 }} disabled={resumeText.length < 50} onClick={() => setStep(STEPS.GOALS)}>Continue →</button>
+        <button style={{ ...S.btn, opacity: resumeText.length < 50 || parsing ? 0.4 : 1 }} disabled={resumeText.length < 50 || parsing} onClick={() => setStep(STEPS.GOALS)}>Continue →</button>
       </div>
     </div>
   );

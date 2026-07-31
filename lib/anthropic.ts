@@ -72,6 +72,39 @@ export function getAnthropic(): Anthropic {
   return client;
 }
 
+// Guard against garbled/binary resume text reaching the model. When it does,
+// the model correctly refuses to invent details — but it answers in prose,
+// which then fails JSON parsing and surfaces as a confusing error.
+const UNREADABLE_MSG =
+  'We couldn\'t read usable text from that file — it may be a scanned image or a protected PDF. Please use the "Paste Text" tab and paste your resume directly.';
+
+export function isReadableProse(s: string): boolean {
+  const t = (s || "").trim();
+  if (t.length < 50) return false;
+  // Real prose is mostly letters...
+  const letters = (t.match(/[A-Za-z]/g) || []).length;
+  if (letters / t.length < 0.5) return false;
+  // ...is broken into words by whitespace (binary dumps often aren't)...
+  const spaces = (t.match(/\s/g) || []).length;
+  const spaceRatio = spaces / t.length;
+  if (spaceRatio < 0.05 || spaceRatio > 0.45) return false;
+  // ...and contains ordinary English function words.
+  const common = ["the", "and", "of", "to", "in", "for", "with", "at", "on", "a"];
+  const words = new Set(t.toLowerCase().match(/[a-z]+/g) || []);
+  const hits = common.filter((w) => words.has(w)).length;
+  return hits >= 2;
+}
+
+export function assertReadableResume(resumeText: string): void {
+  const t = (resumeText || "").trim();
+  if (t.length < 50) {
+    throw new Error(
+      "That resume looks too short to work with. Please paste your full resume text."
+    );
+  }
+  if (!isReadableProse(t)) throw new Error(UNREADABLE_MSG);
+}
+
 export function parseJSONResponse(text: string): any {
   if (!text) throw new Error("Empty response from API");
   let cleaned = text.replace(/```json\s*/gi, "").replace(/```\s*/g, "").trim();

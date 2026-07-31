@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { callClaude } from "@/lib/anthropic";
+import { callClaude, assertReadableResume } from "@/lib/anthropic";
 import { buildPreviewPrompt, type PreviewInput } from "@/lib/prompts";
 
 export const runtime = "nodejs";
@@ -10,6 +10,11 @@ export async function POST(req: Request) {
     const body = (await req.json()) as PreviewInput;
     if (!body.resumeText || !body.jobDesc || !body.jobTitle) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    }
+    try {
+      assertReadableResume(body.resumeText);
+    } catch (e: any) {
+      return NextResponse.json({ error: e.message }, { status: 422 });
     }
     const result = await callClaude({
       userPrompt: buildPreviewPrompt(body),

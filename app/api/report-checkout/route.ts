@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { assertReadableResume } from "@/lib/anthropic";
 import Stripe from "stripe";
 import { stashInputs } from "@/lib/stash";
 import type { ExploreInput } from "@/lib/prompts";
@@ -24,6 +25,11 @@ export async function POST(req: Request) {
     const inputs = (await req.json()) as ExploreInput;
     if (!inputs.resumeText || !inputs.goals) {
       return NextResponse.json({ error: "Missing required inputs" }, { status: 400 });
+    }
+    try {
+      assertReadableResume(inputs.resumeText);
+    } catch (e: any) {
+      return NextResponse.json({ error: e.message }, { status: 422 });
     }
 
     const origin =
