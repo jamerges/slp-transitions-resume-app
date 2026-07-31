@@ -74,8 +74,9 @@ export default function CareerQuiz({ initialPath }: { initialPath?: string }) {
         <div style={{ textAlign: "center", marginBottom: 20 }}>
           <span style={S.tag}>Answers in</span>
           <h2 style={{ ...S.h2, marginTop: 14 }}>Your result is ready.</h2>
-          <p style={{ ...S.p, maxWidth: 460, margin: "0 auto" }}>
-            Tell us where to send a copy so you don't lose it — then we'll show it to you right here.
+          <p style={{ ...S.p, maxWidth: 470, margin: "0 auto 4px" }}>
+            Tell us where to send it and we'll show it to you right here — plus you'll get our database of
+            <strong> 100+ ed-tech and health-tech companies</strong> that hire former clinicians.
           </p>
         </div>
         <Card>
@@ -101,8 +102,8 @@ export default function CareerQuiz({ initialPath }: { initialPath?: string }) {
             onBlur={blurB}
           />
           <p style={{ fontSize: 12, color: "var(--light)", marginBottom: 16, lineHeight: 1.6 }}>
-            You'll also get the occasional note with real SLP transition stories. Unsubscribe any time — we
-            don't share your address with anyone.
+            Plus the occasional note with real SLP transition stories. Unsubscribe any time — we don't share
+            your address with anyone.
           </p>
           <button
             style={{ ...S.btn, width: "100%", padding: "14px", fontSize: 16, opacity: email.includes("@") && !sending ? 1 : 0.5 }}
