@@ -13,10 +13,15 @@ export default function CareerQuiz({ initialPath }: { initialPath?: string }) {
     preset ? { top: preset, runnerUp: null } : null
   );
   const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
+  const [name, setName] = useState("");
+  const [pending, setPending] = useState<{ top: QuizPath; runnerUp: QuizPath | null } | null>(null);
+  const [sending, setSending] = useState(false);
+  const [emailed, setEmailed] = useState(false);
 
   const q = QUESTIONS[idx];
   const selected = answers[q?.id] || [];
+
+  const finish = (final: QuizAnswers) => setPending(scoreQuiz(final));
 
   const choose = (label: string) => {
     if (q.multi) {
@@ -29,23 +34,87 @@ export default function CareerQuiz({ initialPath }: { initialPath?: string }) {
     const next = { ...answers, [q.id]: [label] };
     setAnswers(next);
     if (idx < QUESTIONS.length - 1) setIdx(idx + 1);
-    else setResult(scoreQuiz(next));
+    else finish(next);
   };
 
   const advance = () => {
     if (idx < QUESTIONS.length - 1) setIdx(idx + 1);
-    else setResult(scoreQuiz(answers));
+    else finish(answers);
   };
 
-  const subscribe = () => {
-    if (!email.includes("@")) return;
-    fetch("/api/subscribe", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
-    }).catch(() => {});
-    setSubscribed(true);
+  const revealResult = async () => {
+    if (!pending || !email.includes("@") || sending) return;
+    setSending(true);
+    try {
+      const resp = await fetch("/api/quiz-result", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          name,
+          topSlug: pending.top.slug,
+          runnerUpSlug: pending.runnerUp?.slug || null,
+        }),
+      });
+      const data = await resp.json().catch(() => ({}));
+      setEmailed(!!data.emailed);
+    } catch {
+      // Never hold the result hostage to a delivery problem.
+    } finally {
+      setSending(false);
+      setResult(pending);
+    }
   };
+
+  // Result is ready but held behind name + email. This is the list-building
+  // step — without it the quiz gives away its value and builds no audience.
+  if (pending && !result) {
+    return (
+      <div style={S.wrap}>
+        <div style={{ textAlign: "center", marginBottom: 20 }}>
+          <span style={S.tag}>Answers in</span>
+          <h2 style={{ ...S.h2, marginTop: 14 }}>Your result is ready.</h2>
+          <p style={{ ...S.p, maxWidth: 460, margin: "0 auto" }}>
+            Tell us where to send a copy so you don't lose it — then we'll show it to you right here.
+          </p>
+        </div>
+        <Card>
+          <label style={S.label}>First name</label>
+          <input
+            style={{ ...S.input, marginBottom: 14 }}
+            placeholder="Jane"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            onKeyDown={(e) => { if (e.key === "Enter") revealResult(); }}
+            onFocus={focusB}
+            onBlur={blurB}
+          />
+          <label style={S.label}>Email</label>
+          <input
+            style={{ ...S.input, marginBottom: 6 }}
+            type="email"
+            placeholder="you@email.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onKeyDown={(e) => { if (e.key === "Enter") revealResult(); }}
+            onFocus={focusB}
+            onBlur={blurB}
+          />
+          <p style={{ fontSize: 12, color: "var(--light)", marginBottom: 16, lineHeight: 1.6 }}>
+            You'll also get the occasional note with real SLP transition stories. Unsubscribe any time — we
+            don't share your address with anyone.
+          </p>
+          <button
+            style={{ ...S.btn, width: "100%", padding: "14px", fontSize: 16, opacity: email.includes("@") && !sending ? 1 : 0.5 }}
+            disabled={!email.includes("@") || sending}
+            onClick={revealResult}
+          >
+            {sending ? "Sending…" : "Show me my result →"}
+          </button>
+        </Card>
+      </div>
+    );
+  }
 
   if (result) {
     const { top, runnerUp } = result;
@@ -101,31 +170,12 @@ export default function CareerQuiz({ initialPath }: { initialPath?: string }) {
           </p>
         </Card>
 
-        {!subscribed ? (
+        {emailed && (
           <Card>
-            <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 6 }}>Not ready yet? Get the companies list.</div>
-            <p style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.6, marginBottom: 12 }}>
-              100+ ed-tech and health-tech companies with a track record of hiring former clinicians, plus a
-              weekly note with real transition stories. No spam, unsubscribe anytime.
-            </p>
-            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-              <input
-                style={{ ...S.input, flex: 1, minWidth: 200 }}
-                type="email"
-                placeholder="you@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                onKeyDown={(e) => { if (e.key === "Enter") subscribe(); }}
-                onFocus={focusB}
-                onBlur={blurB}
-              />
-              <button style={{ ...S.btnOut, opacity: email.includes("@") ? 1 : 0.5 }} disabled={!email.includes("@")} onClick={subscribe}>
-                Send it to me
-              </button>
+            <div style={{ fontSize: 14, color: "var(--accent)" }}>
+              ✓ A copy is on its way to {email} — check your inbox (and spam, just in case).
             </div>
           </Card>
-        ) : (
-          <Card><div style={{ fontSize: 14, color: "var(--accent)" }}>✓ On its way — check your inbox.</div></Card>
         )}
 
         <div style={{ textAlign: "center", marginTop: 12, marginBottom: 32 }}>

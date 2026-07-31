@@ -246,6 +246,75 @@ function renderResultsHTML(jobTitle: string, r: any): string {
 </body></html>`;
 }
 
+export async function sendQuizResultEmail(input: {
+  to: string;
+  name?: string;
+  top: { label: string; range: string; timeline: string; why: string; entryDoor: string; firstMove: string; caveat: string };
+  runnerUp?: { label: string; range: string; timeline: string } | null;
+}): Promise<void> {
+  const { to, name, top, runnerUp } = input;
+  const hi = name ? `Hi ${esc(name.split(" ")[0])},` : "Hi,";
+  const html = `<!doctype html>
+<html><body style="margin:0;padding:0;background:#FAFAF9;font-family:-apple-system,'DM Sans',sans-serif;color:#1B1B1E;">
+<div style="max-width:640px;margin:0 auto;padding:32px 20px;">
+  <div style="text-align:center;margin-bottom:24px;">
+    <div style="font-size:20px;font-weight:700;color:#2D6A4F;font-family:Georgia,serif;">SLP Transitions</div>
+  </div>
+  <p style="font-size:15px;line-height:1.7;">${hi}</p>
+  <p style="font-size:15px;line-height:1.7;">Here's your quiz result, saved so you don't lose it.</p>
+
+  <div style="background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;padding:22px;margin:20px 0;">
+    <div style="font-size:11px;font-weight:600;color:#2D6A4F;letter-spacing:0.05em;">YOUR DIRECTION</div>
+    <div style="font-size:24px;font-weight:700;font-family:Georgia,serif;margin:6px 0 4px;">${esc(top.label)}</div>
+    <div style="font-size:14px;color:#2D6A4F;font-weight:600;margin-bottom:12px;">${esc(top.range)} · typically ${esc(top.timeline)}</div>
+    <div style="font-size:14px;line-height:1.75;">${esc(top.why)}</div>
+  </div>
+
+  <div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:14px;">
+    <h2 style="font-size:15px;margin:0 0 8px;">How people actually get in</h2>
+    <div style="font-size:14px;color:#6B7280;line-height:1.7;">${esc(top.entryDoor)}</div>
+    <div style="font-size:14px;line-height:1.65;background:#F0FAF3;border-left:3px solid #2D6A4F;border-radius:6px;padding:10px 14px;margin-top:12px;"><b>Your first move this week:</b> ${esc(top.firstMove)}</div>
+    <div style="font-size:14px;line-height:1.65;background:#FEF3C7;border-radius:6px;padding:10px 14px;margin-top:8px;"><b>The honest caveat:</b> ${esc(top.caveat)}</div>
+  </div>
+
+  ${
+    runnerUp
+      ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 20px;margin-bottom:14px;">
+          <div style="font-size:11px;font-weight:600;color:#2D6A4F;letter-spacing:0.05em;">ALSO WORTH A LOOK</div>
+          <div style="font-size:16px;font-weight:600;margin-top:4px;">${esc(runnerUp.label)}</div>
+          <div style="font-size:13px;color:#6B7280;">${esc(runnerUp.range)} · ${esc(runnerUp.timeline)}</div>
+        </div>`
+      : ""
+  }
+
+  <div style="padding:22px;background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;margin-top:20px;">
+    <div style="font-size:17px;font-weight:700;margin-bottom:8px;">Want the version built on your actual resume?</div>
+    <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">
+      This result came from eight questions. The <b>Pivot Report</b> reads your real resume and tells you which of these paths your specific experience already qualifies you for — your readiness profile, the stage you're actually in, your top three paths with entry doors, and a week-by-week 30-day plan. $9, once.
+    </div>
+    <div style="text-align:center;">
+      <a href="${APP_URL}" style="display:inline-block;padding:13px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:15px;font-weight:600;">Get my Pivot Report →</a>
+    </div>
+  </div>
+
+  <p style="font-size:14px;line-height:1.7;margin-top:22px;">
+    I'll also send you the occasional note with real SLP transition stories and what actually worked. If that's not useful, unsubscribe any time — no hard feelings.
+  </p>
+  <p style="font-size:14px;line-height:1.7;">— James</p>
+  <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:28px;">
+    SLP Transitions • Your degree isn't a prison. Your skills compound.
+  </p>
+</div>
+</body></html>`;
+
+  await getResend().emails.send({
+    from: FROM_ADDRESS,
+    to,
+    subject: `Your result: ${top.label}`,
+    html,
+  });
+}
+
 export async function sendReportEmail(input: {
   to: string;
   report: any;
