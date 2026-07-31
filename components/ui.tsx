@@ -156,23 +156,54 @@ export function CoverageTable({ items }: { items: Array<{ requirement: string; s
   );
 }
 
+// Mirrors the main-site nav so the tool reads as part of slptransitions.com
+// rather than a detached app. Keep in sync if the site menu changes.
+const SITE = "https://slptransitions.com";
+const NAV = [
+  { label: "Articles", href: `${SITE}/` },
+  { label: "Career Quiz", href: "/quiz" },
+  { label: "Companies List", href: `${SITE}/ed-health-tech-jobs/` },
+  { label: "About", href: `${SITE}/about/` },
+  { label: "Contact", href: `${SITE}/contact-us/` },
+];
+
 export function PageShell({ children }: { children: ReactNode }) {
   return (
     <div style={S.root}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
       <div style={{ ...S.wrap, padding: "32px 0 20px", borderBottom: "1px solid var(--border)", marginBottom: 28 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-          <div>
+          <a href={SITE} style={{ textDecoration: "none", color: "inherit" }}>
             <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 20, fontWeight: 700, color: "var(--accent)" }}>SLP Transitions</div>
             <div style={{ fontSize: 13, color: "var(--muted)" }}>Career Pivot Suite</div>
-          </div>
+          </a>
+          <nav style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
+            {NAV.map((n) => (
+              <a
+                key={n.label}
+                href={n.href}
+                style={{ fontSize: 14, color: "var(--muted)", textDecoration: "none", whiteSpace: "nowrap" }}
+              >
+                {n.label}
+              </a>
+            ))}
+          </nav>
         </div>
       </div>
 
       {children}
 
-      <div style={{ ...S.wrap, padding: "24px 0", borderTop: "1px solid var(--border)", marginTop: 32, textAlign: "center" }}>
-        <p style={{ fontSize: 12, color: "var(--light)" }}>SLP Transitions • Your degree isn't a prison. Your skills compound.</p>
+      <div style={{ ...S.wrap, padding: "28px 0", borderTop: "1px solid var(--border)", marginTop: 32, textAlign: "center" }}>
+        <nav style={{ display: "flex", gap: 18, flexWrap: "wrap", justifyContent: "center", marginBottom: 14 }}>
+          {NAV.map((n) => (
+            <a key={n.label} href={n.href} style={{ fontSize: 13, color: "var(--muted)", textDecoration: "none" }}>
+              {n.label}
+            </a>
+          ))}
+        </nav>
+        <p style={{ fontSize: 12, color: "var(--light)", margin: 0 }}>
+          SLP Transitions • Your degree isn't a prison. Your skills compound.
+        </p>
       </div>
     </div>
   );
