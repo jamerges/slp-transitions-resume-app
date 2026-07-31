@@ -9,6 +9,8 @@ export interface UserGoals {
   whyLeaving: string;
   /** Deprecated in the intake form (inferred from the resume). Older sessions may still carry it. */
   years?: string;
+  /** Self-reported transition progress — grounds the stage diagnosis. */
+  transitionStage?: string;
 }
 
 // Years of experience and clinical setting are both already in the resume, so we
@@ -153,13 +155,16 @@ TRANSITION READINESS PROFILES (assign exactly one, based on their inputs):
 - "The Restless Builder": energy and ideas but scattered focus, needs one target; strength is momentum
 - "The Ready Leaper": clear-eyed and prepared, needs tactics not therapy; strength is decisiveness
 
-PIVOT PHASES (diagnose where they are): "Ground" (still clarifying values/strengths/vision), "Explore" (researching roles and talking to people), "Test" (running small experiments/building proof), "Leap" (actively applying/interviewing).
+STAGE (do NOT guess — they told you): they reported "${goals.transitionStage || "not specified"}".
+Map it exactly: "Just thinking about it"/"Reading and researching" → Ground. "Talked with people who've made the jump" → Explore. "Taken a course, built something, or tried a project" → Test. "Applying and/or interviewing now" → Leap. If not specified, say so plainly in the diagnosis and place them in Ground.
+What each stage means: Ground = getting clear on direction and what you already have. Explore = researching real roles and talking to people in them. Test = running small experiments to build proof. Leap = applying, interviewing, negotiating.
+The "diagnosis" field MUST open by naming the evidence — reference what they actually told you (e.g. "You've had conversations but haven't built anything to point at yet, which puts you at the end of Explore"). Never assert a stage without tying it to their own answer. If their resume or answers suggest they're further along than they reported, say that too.
 
 Return ONLY this JSON:
 {
   "headline": "One warm, specific sentence naming what you see in their situation — their years, their setting, their direction",
   "readinessProfile": {"profile": "one of the four names", "meaning": "2-3 sentences on what this profile means for THEM specifically", "watchOutFor": "the trap this profile falls into", "superpower": "the strength this profile underrates"},
-  "phase": {"name": "Ground|Explore|Test|Leap", "diagnosis": "2 sentences: why they're in this phase based on their answers", "focusNow": "the ONE thing to focus on in this phase", "notYet": "what to explicitly NOT worry about yet"},
+  "phase": {"name": "Ground|Explore|Test|Leap", "basedOn": "one short clause naming the specific answer this is based on, e.g. 'you've had conversations but haven't tested a direction yet'", "diagnosis": "2 sentences opening with that evidence, then what it means for them", "focusNow": "the ONE thing to focus on in this stage", "notYet": "what to explicitly NOT worry about yet"},
   "topRoles": [
     {"role": "specific role title", "whyYou": "2-3 sentences tying THEIR resume specifics to this role", "salaryRange": "realistic range", "timeline": "realistic months range", "entryPath": "the realistic entry door (entry roles, certs that matter, certs that don't)", "firstMove": "one concrete action this week"}
   ],

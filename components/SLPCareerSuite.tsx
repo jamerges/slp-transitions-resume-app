@@ -5,7 +5,7 @@ import {
   S, Card, CopyButton, Chip, ProgressBar, CoverageTable, focusB, blurB,
 } from "./ui";
 import {
-  ROLE_OPTIONS, INDUSTRY_OPTIONS, NOT_SURE_OPTION, WORK_PREFERENCES,
+  ROLE_OPTIONS, INDUSTRY_OPTIONS, NOT_SURE_OPTION, WORK_PREFERENCES, STAGE_OPTIONS,
   getRelevantStories,
 } from "@/lib/companies";
 import type { UserGoals } from "@/lib/prompts";
@@ -53,6 +53,9 @@ export default function SLPCareerSuite() {
   });
   const [jobDesc, setJobDesc] = useState("");
   const [jobTitle, setJobTitle] = useState("");
+  const [jobUrl, setJobUrl] = useState("");
+  const [fetchingJob, setFetchingJob] = useState(false);
+  const [jobFetchNote, setJobFetchNote] = useState<{ ok: boolean; msg: string } | null>(null);
   const [email, setEmail] = useState("");
   const [writingSample, setWritingSample] = useState("");
   const [writingSampleFileName, setWritingSampleFileName] = useState("");
@@ -132,13 +135,23 @@ export default function SLPCareerSuite() {
           Array.isArray(savedGoals.targetRoles) &&
           savedGoals.targetRoles.length > 0 &&
           !savedGoals.targetRoles.includes(NOT_SURE_OPTION);
-        setGoals((p) => ({
-          ...p,
-          ...savedGoals,
-          // Explore-mode users still need to pick a real target function.
-          targetRoles: hadRealTarget ? savedGoals.targetRoles : [],
-        }));
-        setStep(hadRealTarget ? STEPS.JOB : STEPS.GOALS);
+
+        // A ?path= from the report's top role stands in for a target function, so
+        // report buyers go straight to the job posting instead of re-picking roles.
+        const norm = (s: string) => s.toLowerCase().replace(/[^a-z]/g, "");
+        const fromPath = quizPath
+          ? ROLE_OPTIONS.find((r) => norm(r) === norm(quizPath)) ||
+            ROLE_OPTIONS.find((r) => norm(quizPath).startsWith(norm(r.split("/")[0]))) ||
+            ROLE_OPTIONS.find((r) => norm(r).includes(norm(quizPath.split("/")[0].split(" ")[0])))
+          : undefined;
+
+        const targetRoles = hadRealTarget
+          ? savedGoals.targetRoles
+          : fromPath
+          ? [fromPath]
+          : [];
+        setGoals((p) => ({ ...p, ...savedGoals, targetRoles }));
+        setStep(targetRoles.length ? STEPS.JOB : STEPS.GOALS);
       } catch {
         // Inputs expired (6h cache) — fall back to a normal start.
         setError(
@@ -187,6 +200,29 @@ export default function SLPCareerSuite() {
     e.preventDefault();
     setIsDragging(false);
     handleFile(e.dataTransfer?.files?.[0]);
+  };
+
+  const fetchJobFromUrl = async () => {
+    const url = jobUrl.trim();
+    if (!url || fetchingJob) return;
+    setFetchingJob(true);
+    setJobFetchNote(null);
+    try {
+      const resp = await fetch("/api/fetch-job", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url }),
+      });
+      const data = await resp.json();
+      if (!resp.ok || !data.text) throw new Error(data.error || "Could not read that link.");
+      setJobDesc(data.text);
+      if (data.title && !jobTitle) setJobTitle(data.title);
+      setJobFetchNote({ ok: true, msg: `✓ Pulled ${data.words} words. Give it a quick scan below — trim anything that isn't the job description.` });
+    } catch (err: any) {
+      setJobFetchNote({ ok: false, msg: err.message });
+    } finally {
+      setFetchingJob(false);
+    }
   };
 
   const subscribeEmail = (addr: string) => {
@@ -501,6 +537,26 @@ export default function SLPCareerSuite() {
               );
             })}
           </div>
+
+          <div style={{ marginTop: 20 }}>
+            <label style={{ ...S.label, color: "var(--accent)", fontSize: 15, marginBottom: 4 }}>Where are you in this so far?</label>
+            <p style={{ fontSize: 13, color: "var(--muted)", marginBottom: 12, marginTop: 0 }}>
+              There's no wrong answer — this tells us which advice is useful to you right now and which would just be noise.
+            </p>
+            {STAGE_OPTIONS.map((s) => {
+              const sel = goals.transitionStage === s.label;
+              return (
+                <div key={s.id} onClick={() => setGoals((prev) => ({ ...prev, transitionStage: s.label }))} style={{
+                  padding: "11px 14px", border: `1.5px solid ${sel ? "var(--accent)" : "var(--border)"}`,
+                  background: sel ? "#fff" : "var(--card)", borderRadius: 8, cursor: "pointer",
+                  marginBottom: 8, fontSize: 14, lineHeight: 1.5,
+                  color: sel ? "var(--accent)" : "var(--text)", fontWeight: sel ? 600 : 400,
+                }}>
+                  {sel && "✓ "}{s.label}
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
 
@@ -538,8 +594,34 @@ export default function SLPCareerSuite() {
         <input style={S.input} placeholder="e.g., Customer Success Manager" value={jobTitle} onChange={(e) => setJobTitle(e.target.value)} onFocus={focusB} onBlur={blurB} />
       </div>
       <div style={{ marginBottom: 20 }}>
-        <label style={S.label}>Full job description</label>
-        <textarea style={{ ...S.textarea, minHeight: 200 }} placeholder="Paste the complete description..." value={jobDesc} onChange={(e) => setJobDesc(e.target.value)} onFocus={focusB} onBlur={blurB} />
+        <label style={S.label}>Job description</label>
+        <div style={{ display: "flex", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
+          <input
+            style={{ ...S.input, flex: 1, minWidth: 220, fontSize: 14 }}
+            placeholder="Paste a job link and we'll try to fetch it…"
+            value={jobUrl}
+            onChange={(e) => setJobUrl(e.target.value)}
+            onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); fetchJobFromUrl(); } }}
+            onFocus={focusB}
+            onBlur={blurB}
+          />
+          <button
+            style={{ ...S.btnOut, whiteSpace: "nowrap", opacity: jobUrl.trim() && !fetchingJob ? 1 : 0.5 }}
+            disabled={!jobUrl.trim() || fetchingJob}
+            onClick={fetchJobFromUrl}
+          >
+            {fetchingJob ? "Fetching…" : "Fetch"}
+          </button>
+        </div>
+        {jobFetchNote && (
+          <div style={{ fontSize: 13, color: jobFetchNote.ok ? "var(--accent)" : "var(--warn)", marginBottom: 10, lineHeight: 1.5 }}>
+            {jobFetchNote.msg}
+          </div>
+        )}
+        <textarea style={{ ...S.textarea, minHeight: 200 }} placeholder="…or paste the complete description here." value={jobDesc} onChange={(e) => setJobDesc(e.target.value)} onFocus={focusB} onBlur={blurB} />
+        <p style={{ fontSize: 12, color: "var(--light)", marginTop: 6 }}>
+          Heads up: LinkedIn and Indeed block automated readers, so links from those usually need a copy-paste. Company career pages and Greenhouse/Lever links normally work.
+        </p>
       </div>
 
       <div style={{ marginBottom: 24 }}>

@@ -246,8 +246,17 @@ function renderResultsHTML(jobTitle: string, r: any): string {
 </body></html>`;
 }
 
-export async function sendReportEmail(input: { to: string; report: any }): Promise<void> {
-  const { to, report: r } = input;
+export async function sendReportEmail(input: {
+  to: string;
+  report: any;
+  sessionId?: string;
+}): Promise<void> {
+  const { to, report: r, sessionId } = input;
+  // Carry their resume forward so the $24 upsell is one paste, not a re-entry.
+  const topRoleLabel = r?.topRoles?.[0]?.role || "";
+  const continueParam = sessionId
+    ? `/?continue=${encodeURIComponent(sessionId)}${topRoleLabel ? `&path=${encodeURIComponent(topRoleLabel)}` : ""}`
+    : "";
   const sec = (title: string, body: string) =>
     `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;"><h2 style="font-size:16px;margin:0 0 10px;">${title}</h2>${body}</div>`;
 
@@ -330,10 +339,25 @@ export async function sendReportEmail(input: { to: string; report: any }): Promi
       : ""
   }
   ${r.closing ? `<p style="font-size:14px;line-height:1.75;font-style:italic;">${nl2br(r.closing)}</p>` : ""}
-  <div style="text-align:center;padding:24px;background:#F0FAF3;border-radius:12px;margin-top:24px;">
-    <div style="font-size:15px;font-weight:600;margin-bottom:6px;">Found your target? Get the materials.</div>
-    <div style="font-size:13px;color:#6B7280;margin-bottom:12px;">The full Career Pivot Suite translates your resume for a real job posting — every bullet, cover letter, LinkedIn, interview prep. $24 once.</div>
-    <a href="${APP_URL}" style="display:inline-block;padding:12px 28px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:15px;font-weight:600;">Open SLP Transitions →</a>
+  <div style="padding:24px;background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;margin-top:24px;">
+    <div style="font-size:18px;font-weight:700;margin-bottom:8px;text-align:center;">Next: turn this into an application</div>
+    <div style="font-size:14px;color:#1B1B1E;line-height:1.7;margin-bottom:14px;">
+      When you find a posting for ${esc(topRoleLabel || "one of these roles")}, the <b>Career Pivot Suite</b> rewrites your actual resume for that specific job:
+    </div>
+    <div style="font-size:13px;color:#1B1B1E;line-height:1.9;margin-bottom:16px;">
+      ✓ Every bullet translated into that employer's language<br/>
+      ✓ A cover letter in your voice — it can match a writing sample<br/>
+      ✓ Which of the job's requirements you already meet, and how to close the rest<br/>
+      ✓ The screening questions that filter out career changers, answered<br/>
+      ✓ LinkedIn headline + About section, and a 90-day plan<br/>
+      ✓ Editable Word docs, and you can refine any section until it sounds like you
+    </div>
+    <div style="text-align:center;">
+      <a href="${APP_URL}${continueParam}" style="display:inline-block;padding:14px 32px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Get the full package — $24 →</a>
+      <div style="font-size:12px;color:#6B7280;margin-top:10px;">
+        ${continueParam ? "Your resume is already saved — just add the job posting. " : ""}Free preview first. One-time payment, no subscription, 30-day refund.
+      </div>
+    </div>
   </div>
   <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:32px;">SLP Transitions • Your degree isn't a prison. Your skills compound.</p>
 </div>

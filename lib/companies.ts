@@ -177,6 +177,17 @@ export const SETTING_OPTIONS = [
   "University / Research", "Telepractice", "Other",
 ];
 
+// Self-reported progress. The stage diagnosis in the Pivot Report is grounded in
+// this rather than guessed from a resume, which carries no signal about it.
+export interface StageOption { id: string; label: string; stage: "Ground" | "Explore" | "Test" | "Leap"; }
+export const STAGE_OPTIONS: StageOption[] = [
+  { id: "thinking", label: "Just thinking about it — I haven't really told anyone", stage: "Ground" },
+  { id: "reading", label: "Reading and researching roles, but haven't talked to anyone in them", stage: "Ground" },
+  { id: "talking", label: "I've talked with people who've made the jump", stage: "Explore" },
+  { id: "building", label: "I've taken a course, built something, or tried a project to test a direction", stage: "Test" },
+  { id: "applying", label: "I'm applying and/or interviewing now", stage: "Leap" },
+];
+
 export interface WorkPreference { id: string; label: string; desc: string; }
 export const WORK_PREFERENCES: WorkPreference[] = [
   { id: "1on1", label: "1:1 client work", desc: "Deep relationships, personalized care" },

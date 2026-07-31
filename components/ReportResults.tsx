@@ -117,6 +117,11 @@ export default function ReportResults({
         <Card>
           <div style={{ fontSize: 12, fontWeight: 600, color: "var(--accent)", letterSpacing: "0.04em", marginBottom: 4 }}>WHERE YOU ARE</div>
           <h3 style={{ ...S.h3, fontSize: 18, marginBottom: 8 }}>Stage {Math.max(1, ARC.findIndex((p) => p.name.toLowerCase() === (r.phase.name || "").toLowerCase()) + 1)} of 4: {r.phase.name}</h3>
+          {r.phase.basedOn && (
+            <div style={{ fontSize: 13, color: "var(--muted)", marginBottom: 10, fontStyle: "italic" }}>
+              Based on what you told us: {r.phase.basedOn}
+            </div>
+          )}
           <p style={{ fontSize: 14, lineHeight: 1.7, marginBottom: 10 }}>{r.phase.diagnosis}</p>
           <div style={{ fontSize: 14, padding: "10px 14px", background: "var(--accent-bg-subtle)", borderLeft: "3px solid var(--accent)", borderRadius: 6, marginBottom: 8 }}>
             <strong>Focus now:</strong> {r.phase.focusNow}
@@ -180,9 +185,11 @@ export default function ReportResults({
         <button
           style={{ ...S.btn, padding: "14px 40px", fontSize: 16 }}
           onClick={() => {
-            // Carry their resume forward — they only need to paste the job posting.
+            // Carry their resume AND their top path forward, so they land on the
+            // job-posting step rather than re-picking a target role.
+            const top = r.topRoles?.[0]?.role || "";
             window.location.href = sessionId
-              ? `/?continue=${encodeURIComponent(sessionId)}`
+              ? `/?continue=${encodeURIComponent(sessionId)}${top ? `&path=${encodeURIComponent(top)}` : ""}`
               : "/";
           }}
         >

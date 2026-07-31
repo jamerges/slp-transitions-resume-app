@@ -73,7 +73,7 @@ export async function POST(req: Request) {
     let emailSent = false;
     if (email) {
       try {
-        await sendReportEmail({ to: email, report });
+        await sendReportEmail({ to: email, report, sessionId });
         emailSent = true;
       } catch (err: any) {
         console.error("[/api/report-finalize] email failed", err);
