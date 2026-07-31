@@ -173,9 +173,13 @@ export function PageShell({ children }: { children: ReactNode }) {
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
       <div style={{ ...S.wrap, padding: "32px 0 20px", borderBottom: "1px solid var(--border)", marginBottom: 28 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-          <a href={SITE} style={{ textDecoration: "none", color: "inherit" }}>
-            <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 20, fontWeight: 700, color: "var(--accent)" }}>SLP Transitions</div>
-            <div style={{ fontSize: 13, color: "var(--muted)" }}>Career Pivot Suite</div>
+          <a href={SITE} style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center", gap: 10 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo-icon.png" alt="" width={34} height={34} style={{ display: "block" }} />
+            <div>
+              <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 20, fontWeight: 700, color: "var(--accent)", lineHeight: 1.15 }}>SLP Transitions</div>
+              <div style={{ fontSize: 13, color: "var(--muted)" }}>Career Pivot Suite</div>
+            </div>
           </a>
           <nav style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
             {NAV.map((n) => (
@@ -201,8 +205,13 @@ export function PageShell({ children }: { children: ReactNode }) {
             </a>
           ))}
         </nav>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 8 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-icon.png" alt="" width={18} height={18} style={{ display: "block" }} />
+          <span style={{ fontSize: 13, fontWeight: 600, color: "var(--accent)", fontFamily: "'Playfair Display', Georgia, serif" }}>SLP Transitions</span>
+        </div>
         <p style={{ fontSize: 12, color: "var(--light)", margin: 0 }}>
-          SLP Transitions • Your degree isn't a prison. Your skills compound.
+          Your degree isn't a prison. Your skills compound.
         </p>
       </div>
     </div>
