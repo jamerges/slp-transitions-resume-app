@@ -42,6 +42,7 @@ export default function SLPCareerSuite() {
   const [fileName, setFileName] = useState("");
   const [fileError, setFileError] = useState("");
   const [parsing, setParsing] = useState(false);
+  const [rehydrating, setRehydrating] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [goals, setGoals] = useState<UserGoals>({
     targetRoles: [],
@@ -93,6 +94,57 @@ export default function SLPCareerSuite() {
   }, [loading, isExploreMode]);
 
   useEffect(() => { topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }); }, [step]);
+
+  // Returning paid customers arrive as /?continue=<stripe_session_id>. Pull their
+  // resume and answers back from the server so they never re-enter anything —
+  // they just add the new job posting.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const continueId = params.get("continue");
+    const quizPath = params.get("path");
+
+    if (quizPath) {
+      const match = ROLE_OPTIONS.find(
+        (r) => r.toLowerCase().replace(/[^a-z]/g, "") === quizPath.toLowerCase().replace(/[^a-z]/g, "")
+      );
+      if (match) setGoals((p) => ({ ...p, targetRoles: [match] }));
+    }
+
+    if (!continueId) return;
+    setRehydrating(true);
+    (async () => {
+      try {
+        const resp = await fetch(`/api/session-inputs?session_id=${encodeURIComponent(continueId)}`);
+        const data = await resp.json();
+        if (!resp.ok || !data.resumeText) throw new Error(data.error || "expired");
+        setResumeText(data.resumeText);
+        setFileName("your saved resume");
+        if (data.email) setEmail(data.email);
+        if (data.writingSample) setWritingSample(data.writingSample);
+        const savedGoals = data.goals || {};
+        const hadRealTarget =
+          Array.isArray(savedGoals.targetRoles) &&
+          savedGoals.targetRoles.length > 0 &&
+          !savedGoals.targetRoles.includes(NOT_SURE_OPTION);
+        setGoals((p) => ({
+          ...p,
+          ...savedGoals,
+          // Explore-mode users still need to pick a real target function.
+          targetRoles: hadRealTarget ? savedGoals.targetRoles : [],
+        }));
+        setStep(hadRealTarget ? STEPS.JOB : STEPS.GOALS);
+      } catch {
+        // Inputs expired (6h cache) — fall back to a normal start.
+        setError(
+          "We couldn't find your saved resume (saved results expire after a few hours). Please add it again — it only takes a moment."
+        );
+        setStep(STEPS.RESUME);
+      } finally {
+        setRehydrating(false);
+        window.history.replaceState({}, "", window.location.pathname);
+      }
+    })();
+  }, []);
 
   const handleFile = async (file?: File | null) => {
     if (!file) return;
@@ -754,6 +806,17 @@ export default function SLPCareerSuite() {
       </div>
     );
   };
+
+  if (rehydrating) {
+    return (
+      <div style={{ ...S.wrap, textAlign: "center", padding: "80px 0" }}>
+        <div style={{ width: 48, height: 48, border: "3px solid var(--border)", borderTopColor: "var(--accent)", borderRadius: "50%", margin: "0 auto 24px", animation: "spin 0.8s linear infinite" }} />
+        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+        <h2 style={{ ...S.h2, marginBottom: 12 }}>Welcome back — loading your resume…</h2>
+        <p style={{ ...S.p, maxWidth: 420, margin: "0 auto" }}>You won't have to enter it again.</p>
+      </div>
+    );
+  }
 
   return (
     <>

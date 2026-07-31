@@ -116,5 +116,12 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
     );
   }
 
-  return <ReportResults report={state.data.report} email={state.data.email} emailSent={state.data.emailSent} />;
+  return (
+    <ReportResults
+      report={state.data.report}
+      email={state.data.email}
+      emailSent={state.data.emailSent}
+      sessionId={sessionId}
+    />
+  );
 }

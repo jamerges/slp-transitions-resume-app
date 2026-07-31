@@ -14,7 +14,10 @@ export interface StashedInputs {
 // total metadata size. Since the whole payload is stored under one key
 // ("payload"), this is effectively the real ceiling. Leave a safety margin.
 const STRIPE_METADATA_VALUE_LIMIT = 450;
-const TTL_SECONDS = 60 * 60 * 6;
+// Paying customers commonly target 2-3 roles over several days, so results and
+// inputs need to outlive a single sitting. 7 days covers "come back this week"
+// without holding resume text indefinitely.
+const TTL_SECONDS = 60 * 60 * 24 * 7;
 
 let redis: Redis | null = null;
 function getRedis(): Redis | null {

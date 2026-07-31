@@ -294,12 +294,32 @@ export async function sendReportEmail(input: { to: string; report: any }): Promi
   }
   ${
     r.phase
-      ? sec(
-          `Where you are: the ${esc(r.phase.name)} phase`,
-          `<div style="font-size:14px;line-height:1.7;">${esc(r.phase.diagnosis)}</div>
-           <div style="font-size:13px;margin-top:8px;"><b>Focus now:</b> ${esc(r.phase.focusNow)}</div>
-           <div style="font-size:13px;color:#6B7280;margin-top:4px;"><b>Not yet:</b> ${esc(r.phase.notYet)}</div>`
-        )
+      ? (() => {
+          const arc = [
+            ["Ground", "Get clear on what you actually want and what you already have."],
+            ["Explore", "Research real roles and talk to people who've made the jump."],
+            ["Test", "Run small, low-risk experiments to build proof and confidence."],
+            ["Leap", "Apply, interview, and negotiate with materials that land."],
+          ];
+          const idx = arc.findIndex(([n]) => n.toLowerCase() === String(r.phase.name || "").toLowerCase());
+          const steps = arc
+            .map(([n, blurb], i) => {
+              const cur = i === idx;
+              return `<div style="padding:8px 12px;border-radius:6px;margin-bottom:5px;border:1px solid ${cur ? "#2D6A4F" : "#E5E7EB"};background:${cur ? "#F0FAF3" : "#fff"};opacity:${idx > -1 && i < idx ? "0.6" : "1"};">
+                <span style="font-size:13px;font-weight:${cur ? 700 : 600};color:${cur ? "#2D6A4F" : "#1B1B1E"};">${i + 1}. ${esc(n)}${cur ? " ← you are here" : ""}</span>
+                <div style="font-size:12px;color:#6B7280;margin-top:2px;">${esc(blurb)}</div>
+              </div>`;
+            })
+            .join("");
+          return sec(
+            `Where you are: Stage ${Math.max(1, idx + 1)} of 4 — ${esc(r.phase.name)}`,
+            `<div style="font-size:14px;line-height:1.7;">${esc(r.phase.diagnosis)}</div>
+             <div style="font-size:13px;margin-top:8px;"><b>Focus now:</b> ${esc(r.phase.focusNow)}</div>
+             <div style="font-size:13px;color:#6B7280;margin-top:4px;"><b>Not yet:</b> ${esc(r.phase.notYet)}</div>
+             <div style="font-size:11px;font-weight:600;color:#6B7280;letter-spacing:0.04em;margin:14px 0 8px;">THE FOUR STAGES OF A TRANSITION</div>
+             ${steps}`
+          );
+        })()
       : ""
   }
   ${roles ? sec("Your top 3 realistic paths", roles) : ""}

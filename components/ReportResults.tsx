@@ -2,14 +2,84 @@
 
 import { S, Card } from "./ui";
 
+// Every transition moves through the same four stages. Showing all of them —
+// not just the one they're in — is what makes the diagnosis mean something.
+const ARC = [
+  { name: "Ground", blurb: "Get clear on what you actually want and what you already have." },
+  { name: "Explore", blurb: "Research real roles and talk to people who've made the jump." },
+  { name: "Test", blurb: "Run small, low-risk experiments to build proof and confidence." },
+  { name: "Leap", blurb: "Apply, interview, and negotiate with materials that land." },
+];
+
+function TransitionArc({ current }: { current?: string }) {
+  const idx = ARC.findIndex((p) => p.name.toLowerCase() === (current || "").toLowerCase());
+  return (
+    <div style={{ marginTop: 14 }}>
+      <div style={{ fontSize: 12, fontWeight: 600, color: "var(--muted)", letterSpacing: "0.04em", marginBottom: 10 }}>
+        THE FOUR STAGES OF A TRANSITION
+      </div>
+      {ARC.map((p, i) => {
+        const isCurrent = i === idx;
+        const isPast = idx > -1 && i < idx;
+        return (
+          <div
+            key={p.name}
+            style={{
+              display: "flex",
+              gap: 12,
+              alignItems: "flex-start",
+              padding: "10px 12px",
+              borderRadius: 8,
+              marginBottom: 6,
+              background: isCurrent ? "var(--accent-bg-subtle)" : "transparent",
+              border: isCurrent ? "1.5px solid var(--accent)" : "1px solid var(--border)",
+              opacity: isPast ? 0.55 : 1,
+            }}
+          >
+            <div
+              style={{
+                width: 24,
+                height: 24,
+                borderRadius: "50%",
+                flexShrink: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: 12,
+                fontWeight: 700,
+                background: isCurrent ? "var(--accent)" : isPast ? "var(--accent-bg)" : "var(--border)",
+                color: isCurrent ? "#fff" : isPast ? "var(--accent)" : "var(--muted)",
+              }}
+            >
+              {isPast ? "✓" : i + 1}
+            </div>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ fontSize: 14, fontWeight: isCurrent ? 700 : 600, color: isCurrent ? "var(--accent)" : "var(--text)" }}>
+                {p.name}
+                {isCurrent && <span style={{ fontSize: 12, fontWeight: 600, marginLeft: 8 }}>← you are here</span>}
+              </div>
+              <div style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.5, marginTop: 2 }}>{p.blurb}</div>
+            </div>
+          </div>
+        );
+      })}
+      <p style={{ fontSize: 12, color: "var(--light)", marginTop: 8, lineHeight: 1.6 }}>
+        Most people try to skip ahead to Leap — polishing a resume before they know what they're aiming at. Working your actual stage is faster.
+      </p>
+    </div>
+  );
+}
+
 export default function ReportResults({
   report: r,
   email,
   emailSent,
+  sessionId,
 }: {
   report: any;
   email?: string;
   emailSent?: boolean;
+  sessionId?: string;
 }) {
   if (!r) return null;
   return (
@@ -46,7 +116,7 @@ export default function ReportResults({
       {r.phase && (
         <Card>
           <div style={{ fontSize: 12, fontWeight: 600, color: "var(--accent)", letterSpacing: "0.04em", marginBottom: 4 }}>WHERE YOU ARE</div>
-          <h3 style={{ ...S.h3, fontSize: 18, marginBottom: 8 }}>The {r.phase.name} phase</h3>
+          <h3 style={{ ...S.h3, fontSize: 18, marginBottom: 8 }}>Stage {Math.max(1, ARC.findIndex((p) => p.name.toLowerCase() === (r.phase.name || "").toLowerCase()) + 1)} of 4: {r.phase.name}</h3>
           <p style={{ fontSize: 14, lineHeight: 1.7, marginBottom: 10 }}>{r.phase.diagnosis}</p>
           <div style={{ fontSize: 14, padding: "10px 14px", background: "var(--accent-bg-subtle)", borderLeft: "3px solid var(--accent)", borderRadius: 6, marginBottom: 8 }}>
             <strong>Focus now:</strong> {r.phase.focusNow}
@@ -54,6 +124,7 @@ export default function ReportResults({
           <div style={{ fontSize: 13, color: "var(--muted)" }}>
             <strong>Explicitly not yet:</strong> {r.phase.notYet}
           </div>
+          <TransitionArc current={r.phase.name} />
         </Card>
       )}
 
@@ -108,11 +179,18 @@ export default function ReportResults({
         </p>
         <button
           style={{ ...S.btn, padding: "14px 40px", fontSize: 16 }}
-          onClick={() => { window.location.href = "/"; }}
+          onClick={() => {
+            // Carry their resume forward — they only need to paste the job posting.
+            window.location.href = sessionId
+              ? `/?continue=${encodeURIComponent(sessionId)}`
+              : "/";
+          }}
         >
           Translate my resume for a real job →
         </button>
-        <p style={{ fontSize: 12, color: "var(--light)", marginTop: 8 }}>Free preview first. No subscription, ever.</p>
+        <p style={{ fontSize: 12, color: "var(--light)", marginTop: 8 }}>
+          {sessionId ? "Your resume carries over — just add the job posting. " : ""}Free preview first. No subscription, ever.
+        </p>
       </Card>
     </div>
   );

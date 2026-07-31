@@ -163,7 +163,8 @@ export default function SuccessFlow({ sessionId }: { sessionId?: string }) {
       writingSample={inputs.writingSample}
       sessionId={sessionId}
       onTranslateAnother={() => {
-        window.location.href = "/";
+        // Carry their resume forward so a second role costs them one paste, not a full re-entry.
+        window.location.href = sessionId ? `/?continue=${encodeURIComponent(sessionId)}` : "/";
       }}
     />
   );
