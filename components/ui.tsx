@@ -197,14 +197,9 @@ export function PageShell({ children }: { children: ReactNode }) {
 
       {children}
 
+      {/* Footer deliberately has no nav — the header already carries it, and on
+          short pages the two menus stacked and read as a duplicate. */}
       <div style={{ ...S.wrap, padding: "28px 0", borderTop: "1px solid var(--border)", marginTop: 32, textAlign: "center" }}>
-        <nav style={{ display: "flex", gap: 18, flexWrap: "wrap", justifyContent: "center", marginBottom: 14 }}>
-          {NAV.map((n) => (
-            <a key={n.label} href={n.href} style={{ fontSize: 13, color: "var(--muted)", textDecoration: "none" }}>
-              {n.label}
-            </a>
-          ))}
-        </nav>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 8 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo-icon.png" alt="" width={18} height={18} style={{ display: "block" }} />
