@@ -249,7 +249,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
 export async function sendQuizResultEmail(input: {
   to: string;
   name?: string;
-  top: { label: string; range: string; timeline: string; why: string; entryDoor: string; firstMove: string; caveat: string };
+  top: { label: string; roleOption?: string; range: string; timeline: string; why: string; entryDoor: string; firstMove: string; caveat: string };
   runnerUp?: { label: string; range: string; timeline: string } | null;
 }): Promise<void> {
   const { to, name, top, runnerUp } = input;
@@ -293,7 +293,7 @@ export async function sendQuizResultEmail(input: {
       This result came from eight questions. The <b>Pivot Report</b> reads your real resume and tells you which of these paths your specific experience already qualifies you for — your readiness profile, the stage you're actually in, your top three paths with entry doors, and a week-by-week 30-day plan. $9, once.
     </div>
     <div style="text-align:center;">
-      <a href="${APP_URL}" style="display:inline-block;padding:13px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:15px;font-weight:600;">Get my Pivot Report →</a>
+      <a href="${APP_URL}/?from=quiz&path=${encodeURIComponent(top.roleOption || top.label)}" style="display:inline-block;padding:13px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:15px;font-weight:600;">Get my Pivot Report →</a>
     </div>
   </div>
 

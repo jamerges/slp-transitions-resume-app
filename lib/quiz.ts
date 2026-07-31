@@ -5,6 +5,9 @@
 export interface QuizPath {
   slug: string;
   label: string;
+  /** Exact ROLE_OPTIONS chip this result carries into the app. Explicit, so a
+   *  wording change to either list can't silently break the hand-off. */
+  roleOption: string;
   range: string;
   timeline: string;
   why: string;
@@ -17,6 +20,7 @@ export const PATHS: Record<string, QuizPath> = {
   "customer-success": {
     slug: "customer-success",
     label: "Customer Success / Implementation",
+    roleOption: "Customer Success / Implementation",
     range: "$75,000–$120,000",
     timeline: "3–9 months",
     why: "You've spent years keeping people engaged in a long program they didn't always feel like showing up for. That is the job — companies just call it retention.",
@@ -27,6 +31,7 @@ export const PATHS: Record<string, QuizPath> = {
   "project-management": {
     slug: "project-management",
     label: "Project / Program Management",
+    roleOption: "Project / Program Management",
     range: "$85,000–$100,000+",
     timeline: "12–15 months",
     why: "A caseload is concurrent project management with worse tooling. You've been tracking timelines, stakeholders, and deliverables for years without the title.",
@@ -37,6 +42,7 @@ export const PATHS: Record<string, QuizPath> = {
   "data-analysis": {
     slug: "data-analysis",
     label: "Healthcare Data / Analytics",
+    roleOption: "Data Analysis",
     range: "$70,000–$105,000",
     timeline: "6–24 months",
     why: "You already collect data, look for patterns, and change course based on what it says. Most people entering analytics have to learn that instinct.",
@@ -47,6 +53,7 @@ export const PATHS: Record<string, QuizPath> = {
   "liaison-ur": {
     slug: "liaison-ur",
     label: "Clinical Liaison / Utilization Review",
+    roleOption: "Clinical Liaison / Utilization Review",
     range: "$80,000–$135,000",
     timeline: "Fast — often weeks, not months",
     why: "Your clinical license isn't a liability here, it's the entire qualification. No bootcamp, no portfolio, no certificate.",
@@ -57,6 +64,7 @@ export const PATHS: Record<string, QuizPath> = {
   informatics: {
     slug: "informatics",
     label: "Clinical Informatics / EHR",
+    roleOption: "Clinical Informatics / EHR",
     range: "$97,000–$154,000",
     timeline: "6–18 months",
     why: "If you've been the person who fixes the documentation system, you've been doing informatics unpaid. Clinical credibility plus workflow knowledge is exactly the hiring profile.",
@@ -67,6 +75,7 @@ export const PATHS: Record<string, QuizPath> = {
   "instructional-design": {
     slug: "instructional-design",
     label: "Instructional Design / Learning",
+    roleOption: "Instructional Design",
     range: "$70,000–$100,000",
     timeline: "6–12 months",
     why: "Therapy goals are learning objectives. Session sequencing is curriculum scaffolding. Progress monitoring is evaluation. You already think like an instructional designer.",
@@ -77,6 +86,7 @@ export const PATHS: Record<string, QuizPath> = {
   "content-marketing": {
     slug: "content-marketing",
     label: "Content / Marketing",
+    roleOption: "Content Strategy / Marketing",
     range: "$80,000–$141,000",
     timeline: "~12 months",
     why: "Explaining something complicated to a frightened parent, in words they can act on, is the exact skill content marketing pays for.",
@@ -87,6 +97,7 @@ export const PATHS: Record<string, QuizPath> = {
   "clinical-educator": {
     slug: "clinical-educator",
     label: "Clinical Educator / Trainer",
+    roleOption: "Clinical Educator / Trainer",
     range: "$75,000–$116,000",
     timeline: "Moderate",
     why: "You've trained teachers, families, and students for years. Device and AAC companies need exactly that — someone clinically credible who can teach.",

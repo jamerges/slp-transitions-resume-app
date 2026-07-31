@@ -159,6 +159,7 @@ export const ROLE_OPTIONS = [
   "Customer Success / Implementation", "Project / Program Management",
   "Data Analysis", "Content Strategy / Marketing", "Product Management",
   "Instructional Design", "Corporate Training / L&D",
+  "Clinical Informatics / EHR", "Clinical Educator / Trainer",
   "Sales / Business Development", "UX Research", "Operations",
   "Clinical Liaison / Utilization Review", "Clinical Research / Coordination",
 ];
@@ -231,7 +232,7 @@ export function getRelevantCompanies(opts: {
     "Engineering": ["engineering", "developer"],
     "Design": ["design", "ux", "instructional design"],
     "Coaching": ["coaching", "training", "l&d", "learning and development", "corporate training"],
-    "Clinical": ["clinical liaison", "utilization review", "clinical research", "liaison"],
+    "Clinical": ["clinical liaison", "utilization review", "clinical research", "liaison", "informatics", "ehr", "clinical educator"],
     "Recruiting/HR": ["recruiting", "talent", "hr", "people ops"],
   };
 

@@ -162,7 +162,7 @@ export default function CareerQuiz({ initialPath }: { initialPath?: string }) {
           </p>
           <button
             style={{ ...S.btn, padding: "14px 40px", fontSize: 16 }}
-            onClick={() => { window.location.href = `/?from=quiz&path=${encodeURIComponent(top.label)}`; }}
+            onClick={() => { window.location.href = `/?from=quiz&path=${encodeURIComponent(top.roleOption)}`; }}
           >
             Get my personalized report →
           </button>

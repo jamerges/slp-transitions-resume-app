@@ -43,6 +43,7 @@ export default function SLPCareerSuite() {
   const [fileError, setFileError] = useState("");
   const [parsing, setParsing] = useState(false);
   const [rehydrating, setRehydrating] = useState(false);
+  const [carriedFromQuiz, setCarriedFromQuiz] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [goals, setGoals] = useState<UserGoals>({
     targetRoles: [],
@@ -107,16 +108,22 @@ export default function SLPCareerSuite() {
     const quizPath = params.get("path");
 
     if (quizPath) {
-      // Quiz result labels don't always match the chip labels exactly, so match
-      // on the leading words ("Customer Success / Implementation" → the CS chip).
+      // The quiz sends its path's exact ROLE_OPTIONS chip, so this is a direct
+      // hit; the loose fallbacks only cover hand-written or legacy links.
       const norm = (s: string) => s.toLowerCase().replace(/[^a-z]/g, "");
       const target = norm(quizPath);
       const match =
         ROLE_OPTIONS.find((r) => norm(r) === target) ||
         ROLE_OPTIONS.find((r) => target.startsWith(norm(r.split("/")[0]))) ||
         ROLE_OPTIONS.find((r) => norm(r.split("/")[0]).startsWith(norm(quizPath.split("/")[0])));
-      if (match) setGoals((p) => ({ ...p, targetRoles: [match] }));
-      if (params.get("from") === "quiz") setStep(STEPS.RESUME);
+      if (match) {
+        setGoals((p) => ({ ...p, targetRoles: [match] }));
+        if (params.get("from") === "quiz") setCarriedFromQuiz(match);
+      }
+      if (params.get("from") === "quiz") {
+        setStep(STEPS.RESUME);
+        window.history.replaceState({}, "", window.location.pathname);
+      }
     }
 
     if (!continueId) return;
@@ -433,6 +440,16 @@ export default function SLPCareerSuite() {
   const renderResume = () => (
     <div style={S.wrap}>
       <ProgressBar step={1} total={4} />
+      {carriedFromQuiz && (
+        <Card highlight style={{ marginBottom: 20 }}>
+          <div style={{ fontSize: 14, fontWeight: 600, color: "var(--accent)" }}>
+            ✓ Carried over from your quiz: {carriedFromQuiz}
+          </div>
+          <div style={{ fontSize: 13, color: "var(--muted)", marginTop: 4, lineHeight: 1.6 }}>
+            We'll target that. Add your resume and we'll show you how your experience already maps to it — you can change the target on the next screen if you'd rather.
+          </div>
+        </Card>
+      )}
       <h2 style={S.h2}>Let's start with your resume.</h2>
       <p style={S.p}>Upload a file or paste your resume text.</p>
 
@@ -499,6 +516,17 @@ export default function SLPCareerSuite() {
       <p style={S.p}>This tailors the experience to your situation.</p>
 
       <ErrorBanner />
+
+      {carriedFromQuiz && (
+        <Card highlight style={{ marginBottom: 20 }}>
+          <div style={{ fontSize: 14, fontWeight: 600, color: "var(--accent)" }}>
+            ✓ Pre-selected from your quiz: {carriedFromQuiz}
+          </div>
+          <div style={{ fontSize: 13, color: "var(--muted)", marginTop: 4, lineHeight: 1.6 }}>
+            Nothing to re-answer — just hit Continue. Add or change anything below if your thinking has moved on.
+          </div>
+        </Card>
+      )}
 
       <div style={{ marginBottom: 24 }}>
         <label style={S.label}>What kind of work interests you? <span style={{ fontWeight: 400, color: "var(--light)" }}>(pick all that apply)</span></label>
