@@ -117,6 +117,48 @@ Return ONLY this JSON structure with no preamble:
 Provide all 6-8 requirementsCoverage items (most important first), 5-8 translatedBullets, 2-3 gapAnalysis items, 2-4 proofArtifacts matched to the target field's actual hiring bar (per your role knowledge — e.g., portfolio artifacts for design/research/ID roles, certs only where they genuinely signal), 3-4 talkingPoints, 4 ninetyDayPlan phases (Weeks 1-2, Weeks 3-4, Month 2, Month 3 — each with 3-4 concrete actions that reference the proof artifacts and gap actions above, plus networking/referral steps since referrals decide most transitions), and 3-4 knockoutAnswers. Valid JSON only.`;
 }
 
+// $9 Pivot Report — the deep, personal readout sold after the free explore.
+export function buildReportPrompt(input: ExploreInput): string {
+  const { resumeText, goals, workPreferenceLabels } = input;
+  return `An SLP purchased a personalized Pivot Report to plan their move out of clinical work. This is a paid product — it must feel personal, specific, and worth real money. Ground every claim in their actual resume and answers; never generic filler.
+
+Resume:
+---
+${resumeText}
+---
+
+Clinical settings: ${goals.settings.join(", ")}
+Years of experience: ${goals.years}${(goals.targetIndustries || []).length ? `\nIndustries they're drawn to: ${(goals.targetIndustries || []).join(", ")}` : ""}${goals.targetRoles.filter((r) => !r.startsWith("Not sure")).length ? `\nRoles they've considered: ${goals.targetRoles.join(", ")}` : ""}
+Work aspects they enjoy: ${workPreferenceLabels.join(", ")}
+Skills they want to highlight: ${goals.topSkills}
+Why they want to transition: ${goals.whyLeaving}
+
+TRANSITION READINESS PROFILES (assign exactly one, based on their inputs):
+- "The Depleted Expert": running on empty, needs recovery-paced plan; strength is deep competence they can't currently see
+- "The Quiet Researcher": has been reading/lurking for months, needs permission to act; strength is they already know more than they think
+- "The Restless Builder": energy and ideas but scattered focus, needs one target; strength is momentum
+- "The Ready Leaper": clear-eyed and prepared, needs tactics not therapy; strength is decisiveness
+
+PIVOT PHASES (diagnose where they are): "Ground" (still clarifying values/strengths/vision), "Explore" (researching roles and talking to people), "Test" (running small experiments/building proof), "Leap" (actively applying/interviewing).
+
+Return ONLY this JSON:
+{
+  "headline": "One warm, specific sentence naming what you see in their situation — their years, their setting, their direction",
+  "readinessProfile": {"profile": "one of the four names", "meaning": "2-3 sentences on what this profile means for THEM specifically", "watchOutFor": "the trap this profile falls into", "superpower": "the strength this profile underrates"},
+  "phase": {"name": "Ground|Explore|Test|Leap", "diagnosis": "2 sentences: why they're in this phase based on their answers", "focusNow": "the ONE thing to focus on in this phase", "notYet": "what to explicitly NOT worry about yet"},
+  "topRoles": [
+    {"role": "specific role title", "whyYou": "2-3 sentences tying THEIR resume specifics to this role", "salaryRange": "realistic range", "timeline": "realistic months range", "entryPath": "the realistic entry door (entry roles, certs that matter, certs that don't)", "firstMove": "one concrete action this week"}
+  ],
+  "thirtyDayPlan": [
+    {"week": "Week 1", "theme": "short theme", "actions": ["2-3 concrete actions, sized for someone working full-time"]}
+  ],
+  "honestTruths": ["2-3 things a paid report owes them that free content sugarcoats — timelines, referral math, specific tradeoffs for THEIR situation"],
+  "closing": "2-3 warm sentences. Permission-granting, not hype. Reference something specific from their story."
+}
+
+Provide exactly 3 topRoles (ordered by fit-times-realism, grounded in where SLPs actually land per your role knowledge — use real salary/timeline data), 4 thirtyDayPlan weeks. If their "why" mentions burnout or exhaustion, honor it in the diagnosis with compassion but keep all forward-looking language pull-framed. Valid JSON only.`;
+}
+
 export function buildExplorePrompt(input: ExploreInput): string {
   const { resumeText, goals, workPreferenceLabels } = input;
   return `An SLP wants to leave clinical work but isn't sure what direction to go. Help them explore.

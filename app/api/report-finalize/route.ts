@@ -1,0 +1,95 @@
+import { NextResponse } from "next/server";
+import Stripe from "stripe";
+import { callClaude } from "@/lib/anthropic";
+import { buildReportPrompt, type ExploreInput } from "@/lib/prompts";
+import { retrieveInputs, retrieveResult, stashResult } from "@/lib/stash";
+import { sendReportEmail } from "@/lib/email";
+
+export const runtime = "nodejs";
+export const maxDuration = 120;
+
+let stripe: Stripe | null = null;
+function getStripe(): Stripe {
+  if (!stripe) {
+    const key = process.env.STRIPE_SECRET_KEY;
+    if (!key) throw new Error("STRIPE_SECRET_KEY is not set");
+    stripe = new Stripe(key, { apiVersion: "2025-02-24.acacia" });
+  }
+  return stripe;
+}
+
+export async function POST(req: Request) {
+  try {
+    const { sessionId } = (await req.json()) as { sessionId?: string };
+    if (!sessionId) {
+      return NextResponse.json({ error: "Missing sessionId" }, { status: 400 });
+    }
+
+    const session = await getStripe().checkout.sessions.retrieve(sessionId);
+    if (session.payment_status !== "paid") {
+      return NextResponse.json(
+        { error: `Payment not complete (status: ${session.payment_status})` },
+        { status: 402 }
+      );
+    }
+
+    const cached = await retrieveResult(sessionId);
+    if (cached?.report) {
+      return NextResponse.json(cached);
+    }
+
+    const inputs = (await retrieveInputs(
+      session.metadata?.stash_key || sessionId,
+      session.metadata?.payload || null
+    )) as unknown as ExploreInput | null;
+    if (!inputs) {
+      return NextResponse.json(
+        {
+          error:
+            "Could not retrieve your answers — they may have expired. Email hello@slptransitions.com with your receipt and we'll generate your report manually.",
+        },
+        { status: 410 }
+      );
+    }
+
+    let report: any;
+    try {
+      report = await callClaude({
+        userPrompt: buildReportPrompt(inputs),
+        maxTokens: 6000,
+      });
+      if (!report.readinessProfile || !report.topRoles) {
+        throw new Error("Generated report missing required fields");
+      }
+    } catch (err: any) {
+      console.error("[/api/report-finalize] generation failed", err);
+      return NextResponse.json(
+        { error: err?.message || "Report generation failed — refresh to retry" },
+        { status: 502 }
+      );
+    }
+
+    const email = session.customer_details?.email || "";
+    let emailSent = false;
+    if (email) {
+      try {
+        await sendReportEmail({ to: email, report });
+        emailSent = true;
+      } catch (err: any) {
+        console.error("[/api/report-finalize] email failed", err);
+      }
+    }
+
+    const payload = { report, email, emailSent };
+    stashResult(sessionId, payload).catch((e) =>
+      console.error("[/api/report-finalize] result cache failed", e)
+    );
+    return NextResponse.json(payload);
+  } catch (err: any) {
+    console.error("[/api/report-finalize]", err);
+    return NextResponse.json(
+      { error: err?.message || "Finalize failed" },
+      { status: 500 }
+    );
+  }
+}

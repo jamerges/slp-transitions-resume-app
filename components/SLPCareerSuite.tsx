@@ -183,6 +183,30 @@ export default function SLPCareerSuite() {
     } finally { setLoading(false); }
   };
 
+  const handleReportClick = async () => {
+    setError(null);
+    setStep(STEPS.REDIRECTING);
+    try {
+      const workPreferenceLabels = goals.workPreferences
+        .map((id) => WORK_PREFERENCES.find((w) => w.id === id)?.label)
+        .filter(Boolean) as string[];
+      const resp = await fetch("/api/report-checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ resumeText, goals, workPreferenceLabels }),
+      });
+      const data = await resp.json();
+      if (!resp.ok || !data.url) {
+        throw new Error(data.error || `Checkout API ${resp.status}`);
+      }
+      window.location.href = data.url;
+    } catch (err: any) {
+      console.error(err);
+      setError(`Could not start checkout: ${err.message}. Please try again or email hello@slptransitions.com.`);
+      setStep(STEPS.EXPLORE_RESULTS);
+    }
+  };
+
   const handlePaywallClick = async () => {
     setError(null); setDebugInfo(null); setStep(STEPS.REDIRECTING);
     try {
@@ -610,9 +634,21 @@ export default function SLPCareerSuite() {
         </Card>
 
         <Card style={{ textAlign: "center", border: "1.5px solid var(--accent)", background: "linear-gradient(135deg, var(--accent-bg-subtle) 0%, #fff 100%)" }}>
-          <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>Found a role that interests you?</h3>
-          <p style={{ ...S.p, maxWidth: 440, margin: "0 auto 16px" }}>Once you've narrowed in, come back and run the Resume Translator on a real job posting to get a tailored resume, cover letter, and interview prep.</p>
-          <button style={S.btn} onClick={() => {
+          <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>Want the full picture?</h3>
+          <p style={{ ...S.p, maxWidth: 460, margin: "0 auto 6px" }}>
+            This was the overview. Your <strong>Pivot Report</strong> goes deeper: your transition-readiness profile, exactly which phase you're in (and what to ignore for now), your top 3 paths with realistic entry doors, and a week-by-week 30-day starter plan — personal to your resume and answers, emailed to keep.
+          </p>
+          <button style={{ ...S.btn, padding: "14px 40px", fontSize: 16, marginTop: 10 }} onClick={handleReportClick}
+            onMouseEnter={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent-light)")}
+            onMouseLeave={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent)")}>
+            Get My Pivot Report — $9
+          </button>
+          <p style={{ fontSize: 12, color: "var(--light)", marginTop: 8 }}>One-time payment. No subscription, ever. 30-day refund if it doesn't help.</p>
+        </Card>
+
+        <Card style={{ textAlign: "center" }}>
+          <p style={{ fontSize: 14, color: "var(--muted)", margin: "0 0 10px" }}>Already know which role you're going after? Skip the report and translate your resume for a real job posting instead.</p>
+          <button style={S.btnOut} onClick={() => {
             setGoals((p) => ({ ...p, targetRoles: [], targetIndustries: [], workPreferences: [] }));
             setExploreResults(null);
             setStep(STEPS.GOALS);

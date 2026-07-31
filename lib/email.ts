@@ -246,6 +246,87 @@ function renderResultsHTML(jobTitle: string, r: any): string {
 </body></html>`;
 }
 
+export async function sendReportEmail(input: { to: string; report: any }): Promise<void> {
+  const { to, report: r } = input;
+  const sec = (title: string, body: string) =>
+    `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;"><h2 style="font-size:16px;margin:0 0 10px;">${title}</h2>${body}</div>`;
+
+  const roles = (r.topRoles || [])
+    .map(
+      (t: any) => `
+      <div style="padding:14px 16px;background:#F0FAF3;border-radius:8px;margin-bottom:10px;">
+        <div style="font-size:15px;font-weight:600;">${esc(t.role)}</div>
+        <div style="font-size:13px;color:#1B1B1E;margin-top:4px;line-height:1.6;">${esc(t.whyYou)}</div>
+        <div style="font-size:12px;color:#6B7280;margin-top:6px;">💰 ${esc(t.salaryRange)} &nbsp;·&nbsp; ⏱ ${esc(t.timeline)}</div>
+        <div style="font-size:13px;color:#6B7280;margin-top:6px;"><b>Entry path:</b> ${esc(t.entryPath)}</div>
+        <div style="font-size:13px;color:#2D6A4F;margin-top:4px;"><b>First move:</b> ${esc(t.firstMove)}</div>
+      </div>`
+    )
+    .join("");
+
+  const weeks = (r.thirtyDayPlan || [])
+    .map(
+      (w: any) => `
+      <div style="margin-bottom:12px;">
+        <div style="font-size:12px;font-weight:700;color:#2D6A4F;text-transform:uppercase;">${esc(w.week)} — ${esc(w.theme)}</div>
+        ${(w.actions || []).map((a: string) => `<div style="font-size:13px;color:#6B7280;padding:2px 0 2px 14px;line-height:1.6;">→ ${esc(a)}</div>`).join("")}
+      </div>`
+    )
+    .join("");
+
+  const html = `<!doctype html>
+<html><body style="margin:0;padding:0;background:#FAFAF9;font-family:-apple-system,'DM Sans',sans-serif;color:#1B1B1E;">
+<div style="max-width:680px;margin:0 auto;padding:32px 20px;">
+  <div style="text-align:center;margin-bottom:28px;">
+    <div style="font-size:20px;font-weight:700;color:#2D6A4F;font-family:Georgia,serif;">SLP Transitions</div>
+    <div style="font-size:13px;color:#6B7280;">Your Pivot Report</div>
+  </div>
+  ${r.headline ? `<p style="font-size:16px;line-height:1.7;font-weight:500;">${esc(r.headline)}</p>` : ""}
+  ${
+    r.readinessProfile
+      ? sec(
+          `Your profile: ${esc(r.readinessProfile.profile)}`,
+          `<div style="font-size:14px;line-height:1.7;">${esc(r.readinessProfile.meaning)}</div>
+           <div style="font-size:13px;color:#92400E;background:#FEF3C7;border-radius:6px;padding:8px 12px;margin-top:10px;"><b>Watch out for:</b> ${esc(r.readinessProfile.watchOutFor)}</div>
+           <div style="font-size:13px;color:#065F46;background:#D1FAE5;border-radius:6px;padding:8px 12px;margin-top:8px;"><b>Your underrated strength:</b> ${esc(r.readinessProfile.superpower)}</div>`
+        )
+      : ""
+  }
+  ${
+    r.phase
+      ? sec(
+          `Where you are: the ${esc(r.phase.name)} phase`,
+          `<div style="font-size:14px;line-height:1.7;">${esc(r.phase.diagnosis)}</div>
+           <div style="font-size:13px;margin-top:8px;"><b>Focus now:</b> ${esc(r.phase.focusNow)}</div>
+           <div style="font-size:13px;color:#6B7280;margin-top:4px;"><b>Not yet:</b> ${esc(r.phase.notYet)}</div>`
+        )
+      : ""
+  }
+  ${roles ? sec("Your top 3 realistic paths", roles) : ""}
+  ${weeks ? sec("Your 30-day starter plan", weeks) : ""}
+  ${
+    (r.honestTruths || []).length
+      ? sec("The honest part", (r.honestTruths as string[]).map((h) => `<div style="font-size:14px;line-height:1.7;padding:6px 0;">• ${esc(h)}</div>`).join(""))
+      : ""
+  }
+  ${r.closing ? `<p style="font-size:14px;line-height:1.75;font-style:italic;">${nl2br(r.closing)}</p>` : ""}
+  <div style="text-align:center;padding:24px;background:#F0FAF3;border-radius:12px;margin-top:24px;">
+    <div style="font-size:15px;font-weight:600;margin-bottom:6px;">Found your target? Get the materials.</div>
+    <div style="font-size:13px;color:#6B7280;margin-bottom:12px;">The full Career Pivot Suite translates your resume for a real job posting — every bullet, cover letter, LinkedIn, interview prep. $24 once.</div>
+    <a href="${APP_URL}" style="display:inline-block;padding:12px 28px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:15px;font-weight:600;">Open SLP Transitions →</a>
+  </div>
+  <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:32px;">SLP Transitions • Your degree isn't a prison. Your skills compound.</p>
+</div>
+</body></html>`;
+
+  await getResend().emails.send({
+    from: FROM_ADDRESS,
+    to,
+    subject: "Your Pivot Report is ready",
+    html,
+  });
+}
+
 export async function sendFullResultsEmail(input: FullResultsEmailInput): Promise<void> {
   const { to, jobTitle, results } = input;
   const html = renderResultsHTML(jobTitle, results);
