@@ -166,7 +166,7 @@ export default function SLPCareerSuite() {
       } catch {
         // Inputs expired (6h cache) — fall back to a normal start.
         setError(
-          "We couldn't find your saved resume (saved results expire after a few hours). Please add it again — it only takes a moment."
+          "We couldn't find your saved resume — saved results expire after 7 days. Please add it again; it only takes a moment."
         );
         setStep(STEPS.RESUME);
       } finally {
@@ -456,7 +456,7 @@ export default function SLPCareerSuite() {
         </Card>
       )}
       <h2 style={S.h2}>Let's start with your resume.</h2>
-      <p style={S.p}>Upload a file or paste your resume text.</p>
+      <p style={S.p}>PDF, Word, or paste it in.</p>
 
       <div style={{ display: "flex", gap: 0, marginBottom: 20, borderBottom: "1px solid var(--border)" }}>
         {(["upload", "paste"] as const).map((mode) => (
@@ -518,7 +518,6 @@ export default function SLPCareerSuite() {
     <div style={S.wrap}>
       <ProgressBar step={2} total={isExploreMode ? 3 : 4} />
       <h2 style={S.h2}>Tell us about your transition.</h2>
-      <p style={S.p}>This tailors the experience to your situation.</p>
 
       <ErrorBanner />
 
@@ -742,7 +741,7 @@ export default function SLPCareerSuite() {
     <div style={S.wrap}>
       <ProgressBar step={4} total={4} />
       <h2 style={S.h2}>Where should we send your results?</h2>
-      <p style={S.p}>Email lets us send your results so you don't lose them. We'll also send our best transition resources (no spam).</p>
+      <p style={S.p}>We'll send your results here so you don't lose them.</p>
       <div style={{ marginBottom: 24 }}>
         <label style={S.label}>Email address</label>
         <input style={S.input} type="email" placeholder="you@email.com" value={email} onChange={(e) => setEmail(e.target.value)} onFocus={focusB} onBlur={blurB} />

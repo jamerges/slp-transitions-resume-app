@@ -1,6 +1,6 @@
 "use client";
 
-import { S, Card } from "./ui";
+import { S, Card, CopyButton } from "./ui";
 
 // Every transition moves through the same four stages. Showing all of them —
 // not just the one they're in — is what makes the diagnosis mean something.
@@ -161,6 +161,37 @@ export default function ReportResults({
               ))}
             </div>
           ))}
+        </Card>
+      )}
+
+      {r.outreach?.messages?.length > 0 && (
+        <Card>
+          <h3 style={{ ...S.h3, marginBottom: 6 }}>Your outreach scripts</h3>
+          {r.outreach.why && (
+            <p style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.65, marginBottom: 12 }}>{r.outreach.why}</p>
+          )}
+          {r.outreach.whoToMessage?.length > 0 && (
+            <div style={{ marginBottom: 14 }}>
+              <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Who to message</div>
+              {r.outreach.whoToMessage.map((w: string, i: number) => (
+                <div key={i} style={{ fontSize: 13, color: "var(--muted)", padding: "3px 0 3px 14px", lineHeight: 1.6 }}>→ {w}</div>
+              ))}
+            </div>
+          )}
+          {r.outreach.messages.map((m: any, i: number) => (
+            <div key={i} style={{ marginBottom: 14 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginBottom: 6 }}>
+                <div style={{ fontSize: 13, fontWeight: 600 }}>{m.scenario}</div>
+                <CopyButton text={m.template} />
+              </div>
+              <div style={{ fontSize: 14, lineHeight: 1.7, padding: "12px 14px", background: "#FEFEFE", border: "1px solid var(--border)", borderRadius: 8, whiteSpace: "pre-wrap" }}>{m.template}</div>
+            </div>
+          ))}
+          {r.outreach.followUp && (
+            <div style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.6, paddingTop: 4 }}>
+              <strong style={{ color: "var(--text)" }}>Following up:</strong> {r.outreach.followUp}
+            </div>
+          )}
         </Card>
       )}
 

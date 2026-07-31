@@ -26,8 +26,9 @@ function aboutLine(goals: UserGoals): string {
   return bits.join(". ");
 }
 
-const INFER_NOTE =
-  "Infer their years of experience and clinical setting(s) directly from the resume — they were not asked, so never write a placeholder for them.";
+const INFER_NOTE = `Infer their years of experience and clinical setting(s) directly from the resume — they were not asked, so never write a placeholder for them. Two rules when you do:
+- ORGANISATION NAMES ARE NAMES, NOT DESCRIPTIONS. "STEM Preparatory Schools" is an employer's name; it does NOT mean they worked at "a STEM school". "Sunrise Senior Living" does not make them a sunrise expert. Describe the setting only from what the resume states about the work itself (grades served, population, care setting). If the setting isn't stated, say "school-based" / "medical" / "outpatient" at that level of generality, or leave it out.
+- COUNT YEARS FROM THE ACTUAL DATES and round honestly (Aug 2018 → today is "nearly eight years", not "seven years"). If dates are missing or ambiguous, use a soft phrase like "several years" rather than inventing a number.`;
 
 export interface PreviewInput {
   resumeText: string;
@@ -250,11 +251,19 @@ Return ONLY this JSON:
   "thirtyDayPlan": [
     {"week": "Week 1", "theme": "short theme", "actions": ["2-3 concrete actions, sized for someone working full-time"]}
   ],
+  "outreach": {
+    "why": "1-2 sentences on why outreach beats applying cold, with the honest hit rate (roughly 1 in 4 strangers reply; that is normal, not rejection)",
+    "whoToMessage": ["2-3 specific kinds of people THIS person should message, given their background — e.g. 'SLPs who now have your target title (search LinkedIn for \\"CCC-SLP\\" + the title)'"],
+    "messages": [
+      {"scenario": "e.g. Cold message to a stranger who made this exact move", "template": "A short, sendable LinkedIn message under 90 words, written in first person AS THIS PERSON with their real specifics filled in (their setting, their years, their target role). No [brackets] except where a name genuinely varies, like [Name]. It must sound like a human wrote it at their kitchen table, not a recruiter."}
+    ],
+    "followUp": "One sentence on when and how to follow up once, without being annoying"
+  },
   "honestTruths": ["2-3 things a paid report owes them that free content sugarcoats — timelines, referral math, specific tradeoffs for THEIR situation"],
   "closing": "2-3 warm sentences. Permission-granting, not hype. Reference something specific from their story."
 }
 
-Provide exactly 3 topRoles (ordered by fit-times-realism, grounded in where SLPs actually land per your role knowledge — use real salary/timeline data), 4 thirtyDayPlan weeks. If their "why" mentions burnout or exhaustion, honor it in the diagnosis with compassion but keep all forward-looking language pull-framed. Valid JSON only.`;
+Provide exactly 3 topRoles (ordered by fit-times-realism, grounded in where SLPs actually land per your role knowledge — use real salary/timeline data), 4 thirtyDayPlan weeks, and exactly 3 outreach.messages covering: (1) a cold message to a stranger who made this move, (2) a message to a dormant contact/former colleague, and (3) a follow-up after a good conversation that asks for a referral without asking for a job. If their "why" mentions burnout or exhaustion, honor it in the diagnosis with compassion but keep all forward-looking language pull-framed. Valid JSON only.`;
 }
 
 export function buildExplorePrompt(input: ExploreInput): string {

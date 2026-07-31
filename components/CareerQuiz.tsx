@@ -7,9 +7,11 @@ import { QUESTIONS, PATHS, scoreQuiz, type QuizAnswers, type QuizPath } from "@/
 export default function CareerQuiz({
   initialPath,
   embedded,
+  showIntro,
 }: {
   initialPath?: string;
   embedded?: boolean;
+  showIntro?: boolean;
 }) {
   // Inside the WordPress iframe, links must break out to the top window.
   const go = (url: string) => {
@@ -227,6 +229,15 @@ export default function CareerQuiz({
 
   return (
     <div style={{ ...S.wrap, maxWidth: 620 }}>
+      {showIntro && idx === 0 && (
+        <div style={{ textAlign: "center", marginBottom: 24 }}>
+          <h1 style={{ ...S.h1, fontSize: 30 }}>Which direction actually fits you?</h1>
+          <p style={{ ...S.p, maxWidth: 520, margin: "0 auto" }}>
+            Eight questions, about two minutes. Built from documented SLP transitions — so you'll get real
+            salary ranges, real timelines, and the honest catch for whichever path comes up.
+          </p>
+        </div>
+      )}
       <ProgressBar step={idx + 1} total={QUESTIONS.length} />
       <div style={{ ...S.tag, marginTop: 6, marginBottom: 2 }}>{q.section}</div>
       <h2 style={{ ...S.h2, fontSize: 25, marginBottom: q.help ? 8 : 20, marginTop: 8 }}>{q.prompt}</h2>

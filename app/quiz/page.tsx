@@ -22,16 +22,9 @@ export default async function QuizPage({
 
   return (
     <PageShell>
-      {!initialPath && (
-        <div style={{ ...S.wrap, textAlign: "center", paddingBottom: 8 }}>
-          <h1 style={{ ...S.h1, fontSize: 30 }}>Which direction actually fits you?</h1>
-          <p style={{ ...S.p, maxWidth: 520, margin: "0 auto 24px" }}>
-            Eight questions, about two minutes. Built from documented SLP transitions — so you'll get real
-            salary ranges, real timelines, and the honest catch for whichever path comes up.
-          </p>
-        </div>
-      )}
-      <CareerQuiz initialPath={initialPath} />
+      {/* The intro lives inside CareerQuiz so it disappears once there's a
+          result — by then they've taken the quiz and just want the answer. */}
+      <CareerQuiz initialPath={initialPath} showIntro={!initialPath} />
     </PageShell>
   );
 }

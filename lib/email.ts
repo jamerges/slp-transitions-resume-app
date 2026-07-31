@@ -404,6 +404,25 @@ export async function sendReportEmail(input: {
   ${roles ? sec("Your top 3 realistic paths", roles) : ""}
   ${weeks ? sec("Your 30-day starter plan", weeks) : ""}
   ${
+    (r.outreach?.messages || []).length
+      ? sec(
+          "Your outreach scripts",
+          `${r.outreach.why ? `<div style="font-size:14px;color:#6B7280;line-height:1.7;margin-bottom:12px;">${esc(r.outreach.why)}</div>` : ""}
+           ${(r.outreach.whoToMessage || []).map((w: string) => `<div style="font-size:13px;color:#6B7280;padding:2px 0 2px 14px;line-height:1.6;">→ ${esc(w)}</div>`).join("")}
+           ${(r.outreach.messages || [])
+             .map(
+               (m: any) => `<div style="margin-top:14px;">
+                 <div style="font-size:13px;font-weight:600;margin-bottom:5px;">${esc(m.scenario)}</div>
+                 <div style="font-size:14px;line-height:1.7;padding:12px 14px;background:#FEFEFE;border:1px solid #E5E7EB;border-radius:8px;">${nl2br(m.template)}</div>
+               </div>`
+             )
+             .join("")}
+           ${r.outreach.followUp ? `<div style="font-size:13px;color:#6B7280;line-height:1.6;margin-top:12px;"><b>Following up:</b> ${esc(r.outreach.followUp)}</div>` : ""}`
+        )
+      : ""
+  }
+
+  ${
     (r.honestTruths || []).length
       ? sec("The honest part", (r.honestTruths as string[]).map((h) => `<div style="font-size:14px;line-height:1.7;padding:6px 0;">• ${esc(h)}</div>`).join(""))
       : ""
