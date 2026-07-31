@@ -1,0 +1,49 @@
+<!--
+  SLP TRANSITIONS — QUIZ EMBED
+  Replaces the Typeform embed on slptransitions.com/career-quiz/
+
+  HOW TO INSTALL (2 minutes):
+  1. Edit the /career-quiz/ page in WordPress.
+  2. DELETE the Typeform block (it'll be an embed or Custom HTML block
+     containing "typeform" in the code).
+  3. Add a block: search for "Custom HTML".
+  4. Paste everything below this comment into it.
+  5. Update the page. Done — no other changes needed.
+
+  The iframe auto-resizes as people move through the questions, so there's
+  no inner scrollbar. If a browser ever blocks the resize script, it falls
+  back to a sensible fixed height and still works.
+-->
+
+<div id="slp-quiz-wrap" style="max-width:720px;margin:0 auto;">
+  <iframe
+    id="slp-quiz"
+    src="https://app.slptransitions.com/quiz/embed"
+    title="SLP non-clinical career quiz"
+    loading="lazy"
+    style="width:100%;border:0;height:760px;display:block;overflow:hidden;"
+    scrolling="no"
+  ></iframe>
+
+  <noscript>
+    <p style="text-align:center;">
+      <a href="https://app.slptransitions.com/quiz" style="display:inline-block;padding:14px 28px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-weight:600;">
+        Take the career quiz →
+      </a>
+    </p>
+  </noscript>
+</div>
+
+<script>
+(function () {
+  var f = document.getElementById('slp-quiz');
+  if (!f) return;
+  window.addEventListener('message', function (e) {
+    if (e.origin !== 'https://app.slptransitions.com') return;
+    var h = e.data && e.data.slpQuizHeight;
+    if (typeof h === 'number' && h > 200 && h < 8000) {
+      f.style.height = h + 'px';
+    }
+  });
+})();
+</script>

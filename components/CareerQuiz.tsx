@@ -4,7 +4,21 @@ import { useState } from "react";
 import { S, Card, ProgressBar, focusB, blurB } from "./ui";
 import { QUESTIONS, PATHS, scoreQuiz, type QuizAnswers, type QuizPath } from "@/lib/quiz";
 
-export default function CareerQuiz({ initialPath }: { initialPath?: string }) {
+export default function CareerQuiz({
+  initialPath,
+  embedded,
+}: {
+  initialPath?: string;
+  embedded?: boolean;
+}) {
+  // Inside the WordPress iframe, links must break out to the top window.
+  const go = (url: string) => {
+    const abs = url.startsWith("http")
+      ? url
+      : `https://app.slptransitions.com${url}`;
+    if (embedded) window.open(abs, "_blank", "noopener");
+    else window.location.href = url;
+  };
   // Traffic from the old Typeform arrives with ?path=slug and skips straight to a result.
   const preset = initialPath ? PATHS[initialPath] : undefined;
   const [idx, setIdx] = useState(0);
@@ -162,7 +176,7 @@ export default function CareerQuiz({ initialPath }: { initialPath?: string }) {
           </p>
           <button
             style={{ ...S.btn, padding: "14px 40px", fontSize: 16 }}
-            onClick={() => { window.location.href = `/?from=quiz&path=${encodeURIComponent(top.roleOption)}`; }}
+            onClick={() => go(`/?from=quiz&path=${encodeURIComponent(top.roleOption)}`)}
           >
             Get my personalized report →
           </button>
