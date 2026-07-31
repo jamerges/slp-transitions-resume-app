@@ -104,10 +104,16 @@ export default function SLPCareerSuite() {
     const quizPath = params.get("path");
 
     if (quizPath) {
-      const match = ROLE_OPTIONS.find(
-        (r) => r.toLowerCase().replace(/[^a-z]/g, "") === quizPath.toLowerCase().replace(/[^a-z]/g, "")
-      );
+      // Quiz result labels don't always match the chip labels exactly, so match
+      // on the leading words ("Customer Success / Implementation" → the CS chip).
+      const norm = (s: string) => s.toLowerCase().replace(/[^a-z]/g, "");
+      const target = norm(quizPath);
+      const match =
+        ROLE_OPTIONS.find((r) => norm(r) === target) ||
+        ROLE_OPTIONS.find((r) => target.startsWith(norm(r.split("/")[0]))) ||
+        ROLE_OPTIONS.find((r) => norm(r.split("/")[0]).startsWith(norm(quizPath.split("/")[0])));
       if (match) setGoals((p) => ({ ...p, targetRoles: [match] }));
+      if (params.get("from") === "quiz") setStep(STEPS.RESUME);
     }
 
     if (!continueId) return;
