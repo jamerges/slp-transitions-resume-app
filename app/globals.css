@@ -1,3 +1,23 @@
+/* Design tokens live here rather than only in an inline style object: React's
+   server renderer drops custom properties from inline styles, which silently
+   killed every border and button colour on server-rendered pages. */
+:root {
+  --accent: #2D6A4F;
+  --accent-light: #40916C;
+  --accent-bg: #D8F3DC;
+  --accent-bg-subtle: #F0FAF3;
+  --text: #1B1B1E;
+  --muted: #6B7280;
+  --light: #9CA3AF;
+  --bg: #FAFAF9;
+  --card: #FFFFFF;
+  --border: #E5E7EB;
+  --warn: #DC6803;
+  --warn-bg: #FEF3C7;
+  --err: #DC2626;
+  --err-bg: #FEE2E2;
+}
+
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {

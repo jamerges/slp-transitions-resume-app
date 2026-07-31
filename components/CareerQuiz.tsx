@@ -205,52 +205,104 @@ export default function CareerQuiz({
     );
   }
 
-  return (
-    <div style={S.wrap}>
-      <ProgressBar step={idx + 1} total={QUESTIONS.length} />
-      <h2 style={{ ...S.h2, marginBottom: q.help ? 6 : 18 }}>{q.prompt}</h2>
-      {q.help && <p style={{ ...S.p, marginBottom: 18 }}>{q.help}</p>}
+  const isLast = idx === QUESTIONS.length - 1;
 
-      <div style={{ marginBottom: 20 }}>
+  return (
+    <div style={{ ...S.wrap, maxWidth: 620 }}>
+      <ProgressBar step={idx + 1} total={QUESTIONS.length} />
+      <h2 style={{ ...S.h2, fontSize: 25, marginBottom: q.help ? 8 : 20, marginTop: 4 }}>{q.prompt}</h2>
+      {q.help && <p style={{ ...S.p, marginBottom: 20, fontSize: 14 }}>{q.help}</p>}
+
+      <div style={{ marginBottom: 18 }}>
         {q.options.map((o) => {
           const sel = selected.includes(o.label);
           return (
-            <div
+            <button
               key={o.label}
+              type="button"
               onClick={() => choose(o.label)}
               style={{
-                padding: "14px 16px",
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+                width: "100%",
+                textAlign: "left",
+                padding: "13px 15px",
                 border: `1.5px solid ${sel ? "var(--accent)" : "var(--border)"}`,
                 background: sel ? "var(--accent-bg-subtle)" : "var(--card)",
                 borderRadius: 10,
                 cursor: "pointer",
-                marginBottom: 10,
+                marginBottom: 8,
                 fontSize: 15,
-                lineHeight: 1.55,
+                lineHeight: 1.45,
                 color: sel ? "var(--accent)" : "var(--text)",
                 fontWeight: sel ? 600 : 400,
-                transition: "all 0.15s",
+                boxShadow: sel ? "0 1px 3px rgba(45,106,79,0.12)" : "0 1px 2px rgba(0,0,0,0.03)",
+                transition: "border-color 0.15s, background 0.15s",
               }}
+              onMouseEnter={(e) => { if (!sel) e.currentTarget.style.borderColor = "var(--accent-light)"; }}
+              onMouseLeave={(e) => { if (!sel) e.currentTarget.style.borderColor = "var(--border)"; }}
             >
-              {q.multi && <span style={{ marginRight: 8 }}>{sel ? "☑" : "☐"}</span>}
-              {o.label}
-            </div>
+              <span
+                aria-hidden
+                style={{
+                  flexShrink: 0,
+                  width: 20,
+                  height: 20,
+                  borderRadius: q.multi ? 5 : "50%",
+                  border: `1.5px solid ${sel ? "var(--accent)" : "#CBD5E1"}`,
+                  background: sel ? "var(--accent)" : "#fff",
+                  color: "#fff",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  lineHeight: 1,
+                }}
+              >
+                {sel ? "✓" : ""}
+              </span>
+              <span style={{ flex: 1 }}>{o.label}</span>
+            </button>
           );
         })}
       </div>
 
-      <div style={{ display: "flex", gap: 12 }}>
-        {idx > 0 && (
-          <button style={S.btnOut} onClick={() => setIdx(idx - 1)}>← Back</button>
-        )}
-        {q.multi && (
-          <button style={S.btn} onClick={advance}>
-            {selected.length ? "Continue →" : "None of these yet →"}
+      {/* Multi-select needs an explicit way forward; single-select advances on tap. */}
+      {q.multi ? (
+        <>
+          <button
+            style={{ ...S.btn, width: "100%", padding: "15px", fontSize: 16 }}
+            onClick={advance}
+            onMouseEnter={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent-light)")}
+            onMouseLeave={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent)")}
+          >
+            {selected.length
+              ? `Continue with ${selected.length} selected →`
+              : isLast
+              ? "See my result →"
+              : "None of these yet — continue →"}
           </button>
-        )}
-      </div>
-      {!q.multi && (
-        <p style={{ fontSize: 13, color: "var(--light)", marginTop: 4 }}>Pick the closest one — there's no wrong answer.</p>
+          <p style={{ fontSize: 13, color: "var(--light)", textAlign: "center", marginTop: 10 }}>
+            Select as many as apply, then continue.
+          </p>
+        </>
+      ) : (
+        <p style={{ fontSize: 13, color: "var(--light)", textAlign: "center", marginTop: 2 }}>
+          {isLast ? "Pick one to see your result." : "Pick the closest one — there's no wrong answer."}
+        </p>
+      )}
+
+      {idx > 0 && (
+        <div style={{ textAlign: "center", marginTop: 14 }}>
+          <button
+            style={{ background: "none", border: "none", color: "var(--muted)", fontSize: 14, cursor: "pointer", fontFamily: "'DM Sans', sans-serif", textDecoration: "underline" }}
+            onClick={() => setIdx(idx - 1)}
+          >
+            ← Back
+          </button>
+        </div>
       )}
     </div>
   );
