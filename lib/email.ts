@@ -170,7 +170,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
   ${
     skills
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
-          <h2 style="font-size:16px;margin:0 0 12px;">ATS-Optimized Skills</h2>
+          <h2 style="font-size:16px;margin:0 0 6px;">Skills — paste into your resume</h2><p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">Use this exact wording in your resume's Skills section — screening software and recruiters match on these terms.</p>
           ${skills}
         </div>`
       : ""

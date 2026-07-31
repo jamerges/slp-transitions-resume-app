@@ -696,10 +696,10 @@ export default function SLPCareerSuite() {
           fontFamily: "'DM Sans', sans-serif",
         }}>
           <div style={{ fontSize: 14, fontWeight: 600, color: "var(--accent)" }}>
-            {showWritingSample ? "▾" : "▸"} Make my cover letter sound like ME (optional)
+            {showWritingSample ? "▾" : "▸"} Recommended: add a writing sample so it sounds like you, not AI
           </div>
           <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 4 }}>
-            Upload an old cover letter or paste a writing sample — we'll match your tone and voice.
+            Hiring managers increasingly reject applications that read as AI-written. Paste any old cover letter, email, or article and we'll match your actual voice — it makes a real difference.
           </div>
         </button>
 

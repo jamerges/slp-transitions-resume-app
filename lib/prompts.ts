@@ -209,7 +209,9 @@ Return ONLY this JSON structure with no preamble:
   ]
 }
 
-Provide 2-3 gapAnalysis items, 2-4 proofArtifacts matched to the target field's actual hiring bar (per your role knowledge — e.g., portfolio artifacts for design/research/ID roles, certs only where they genuinely signal), 3-4 talkingPoints, 4 ninetyDayPlan phases (Weeks 1-2, Weeks 3-4, Month 2, Month 3 — each with 3-4 concrete actions that reference the proof artifacts and gap actions above, plus networking/referral steps since referrals decide most transitions), and 3-4 knockoutAnswers. Valid JSON only.`;
+Provide 2-3 gapAnalysis items, 2-4 proofArtifacts matched to the target field's actual hiring bar (per your role knowledge — e.g., portfolio artifacts for design/research/ID roles, certs only where they genuinely signal), 3-4 talkingPoints, 4 ninetyDayPlan phases (Weeks 1-2, Weeks 3-4, Month 2, Month 3 — each with 3-4 concrete actions), and 3-4 knockoutAnswers. Valid JSON only.
+
+The ninetyDayPlan is an APPLICATION CAMPAIGN, not career exploration — this buyer has already chosen the target and has a live posting in hand. No "decide your direction" or "research whether this fits" steps. Cover: application volume and cadence for this role type (first-48-hours applications), weekly outreach targets at companies like this one, the proof artifacts and gap actions above scheduled into specific weeks, interview reps, and salary/negotiation prep in the final phase.`;
 
   return { materials, guidance };
 }

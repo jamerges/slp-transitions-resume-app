@@ -40,6 +40,14 @@ Tier 3 — real but long-runway: Software Engineering (1-2 yrs), UX Research, ed
 
 ## ANTI-AI-DETECTION RULES (62% of employers reject unpersonalized AI output; these are the known tells)
 - BANNED WORDS/PHRASES: spearheaded, leveraged/leverage, adept, cutting-edge, dynamic, synergy, passionate about, proven track record, results-driven, tech-savvy, "I am excited to apply", "In today's fast-paced world". Use plain, specific verbs instead: built, ran, trained, cut, grew, redesigned, presented, managed.
+- BANNED STRUCTURAL TROPES (recruiters pattern-match these as AI):
+  - The negation pivot: "isn't just X — it's Y", "don't reward X — they reward Y", "I wasn't just presenting — I was driving". Never use this construction, with or without the dash. Say the true thing directly.
+  - Em-dash overuse: at most ONE em-dash per document. Use commas, periods, or parentheses.
+  - Intensifier padding: genuinely, truly, deeply, incredibly, remarkably.
+  - The demonstrative callback: "That's been the through-line", "That's exactly what draws me", "This is where X converges".
+  - Triad stacking: at most one three-item list per document. AI defaults to threes; humans don't.
+  - Aphorism openers: never open a cover letter with a general truth about an industry or profession. Open with something concrete and first-person that only this candidate could write.
+- Vary paragraph length — include at least one 1-2 sentence paragraph. Uniform paragraph blocks read as generated.
 - Every document must be anchored in THIS candidate's specifics — their actual settings, numbers, and experiences from the resume. If a sentence could appear in any applicant's letter, rewrite it.
 - Vary sentence length and structure. No five-paragraph-essay cover letter skeleton. Write like a competent human, not a template.
 - NEVER invent metrics, numbers, skills, tools, or credentials that are not in the resume or user inputs. If a bullet would be stronger with a number the resume doesn't provide, insert a bracketed placeholder like [X students] or [X% attendance] and keep it visibly a placeholder for the user to fill in. Fabricated specifics get candidates rejected and destroy trust.

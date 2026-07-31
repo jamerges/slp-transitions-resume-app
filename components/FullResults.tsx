@@ -254,7 +254,10 @@ export default function FullResults({
         ))}
       </Section>
 
-      <Section title="ATS-Optimized Skills" id="skills" copyText={skillsSection ? Object.entries(skillsSection).map(([c, s]: any) => `${c}: ${(s as string[]).join(", ")}`).join("\n") : ""}>
+      <Section title="Skills — paste into your resume" id="skills" copyText={skillsSection ? Object.entries(skillsSection).map(([c, s]: any) => `${c}: ${(s as string[]).join(", ")}`).join("\n") : ""}>
+        <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12, lineHeight: 1.6 }}>
+          Add these to the Skills section of your resume, using this exact wording — the software that screens applications (and the recruiters searching it) match on these terms. Only keep ones that are true for you.
+        </p>
         {skillsSection && Object.entries(skillsSection).map(([cat, skills]: any) => (
           <div key={cat} style={{ marginBottom: 12 }}>
             <div style={{ fontSize: 13, fontWeight: 600, color: "var(--accent)", marginBottom: 6 }}>{cat}</div>
@@ -324,7 +327,7 @@ export default function FullResults({
 
       {ninetyDayPlan?.length > 0 && (
         <Section title="Your 90-Day Transition Plan" id="roadmap">
-          <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 14 }}>Real transitions take months, not days — this is the honest sequence. Referrals and proof beat mass applications.</p>
+          <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 14 }}>Your application campaign for this role — week by week. Referrals and proof beat mass applications.</p>
           <div style={{ position: "relative", paddingLeft: 22 }}>
             <div style={{ position: "absolute", left: 7, top: 6, bottom: 6, width: 2, background: "var(--accent-bg)" }} />
             {ninetyDayPlan.map((p: any, i: number) => (
