@@ -161,6 +161,7 @@ export default function SuccessFlow({ sessionId }: { sessionId?: string }) {
       jobTitle={inputs.jobTitle}
       goals={inputs.goals}
       writingSample={inputs.writingSample}
+      sessionId={sessionId}
       onTranslateAnother={() => {
         window.location.href = "/";
       }}

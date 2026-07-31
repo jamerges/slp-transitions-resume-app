@@ -50,7 +50,7 @@ SCORING METHOD (do this first, internally):
 3. matchScore = round(100 * (covered + 0.5*partial) / total requirements). matchLevel: 75+ = "Strong Match", 55-74 = "Good Match", below 55 = "Stretch — But Doable".
 
 Return this exact JSON only:
-{"matchScore":NUMBER,"matchLevel":"Strong Match|Good Match|Stretch — But Doable","snapshot":"2 sentences","requirementsCoverage":[{"requirement":"short requirement from the JD","status":"covered|partial|missing","evidence":"one short phrase: where the resume shows it, or what's absent"}],"translatedBullets":[{"original":"...","translated":"..."},{"original":"...","translated":"..."},{"original":"...","translated":"..."}],"quickWins":["action 1","action 2"],"fullVersionIncludes":["Every resume bullet rewritten","Tailored cover letter in your voice","Requirements gap plan with real action steps","Interview bridge statements","LinkedIn headline + About section","Companies that hire former SLPs"]}
+{"matchScore":NUMBER,"matchLevel":"Strong Match|Good Match|Stretch — But Doable","snapshot":"2 sentences","requirementsCoverage":[{"requirement":"short requirement from the JD","status":"covered|partial|missing","evidence":"one short phrase: where the resume shows it, or what's absent"}],"translatedBullets":[{"original":"...","translated":"..."},{"original":"...","translated":"..."},{"original":"...","translated":"..."}],"quickWins":["action 1","action 2"],"fullVersionIncludes":["Every resume bullet rewritten","Tailored cover letter in your voice","Requirements gap plan with real action steps","Application screening-question answers","Interview bridge statements","LinkedIn headline + About section","Your 90-day transition plan","Editable Word doc downloads","Refine any section until it sounds like you"]}
 
 Include all 6-8 requirements in requirementsCoverage, ordered most important first.`;
 }
@@ -105,10 +105,16 @@ Return ONLY this JSON structure with no preamble:
   ],
   "linkedinHeadline": "Optimized headline",
   "linkedinAbout": "LinkedIn About section, 3 short paragraphs, first person, written to be found by recruiters searching for this target role. \\n line breaks between paragraphs.",
-  "elevatorPitch": "30-second pitch, pull-framed, no burnout language"
+  "elevatorPitch": "30-second pitch, pull-framed, no burnout language",
+  "ninetyDayPlan": [
+    {"phase": "Weeks 1-2", "focus": "one-line theme", "actions": ["specific action with any real names/links relevant to THIS role and industry"]}
+  ],
+  "knockoutAnswers": [
+    {"question": "an application-form screening question this specific job will likely ask (salary expectations, years of experience, required credential/degree, work authorization, willingness to X)", "strategy": "exactly how this candidate should answer it, given their real background — including what number/phrasing to use and why"}
+  ]
 }
 
-Provide all 6-8 requirementsCoverage items (most important first), 5-8 translatedBullets, 2-3 gapAnalysis items, 2-4 proofArtifacts matched to the target field's actual hiring bar (per your role knowledge — e.g., portfolio artifacts for design/research/ID roles, certs only where they genuinely signal), 3-4 talkingPoints. Valid JSON only.`;
+Provide all 6-8 requirementsCoverage items (most important first), 5-8 translatedBullets, 2-3 gapAnalysis items, 2-4 proofArtifacts matched to the target field's actual hiring bar (per your role knowledge — e.g., portfolio artifacts for design/research/ID roles, certs only where they genuinely signal), 3-4 talkingPoints, 4 ninetyDayPlan phases (Weeks 1-2, Weeks 3-4, Month 2, Month 3 — each with 3-4 concrete actions that reference the proof artifacts and gap actions above, plus networking/referral steps since referrals decide most transitions), and 3-4 knockoutAnswers. Valid JSON only.`;
 }
 
 export function buildExplorePrompt(input: ExploreInput): string {

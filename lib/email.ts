@@ -79,6 +79,27 @@ function renderResultsHTML(jobTitle: string, r: any): string {
     )
     .join("");
 
+  const knockouts = (r.knockoutAnswers || [])
+    .map(
+      (k: any) => `
+      <div style="margin-bottom:12px;">
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px;">&ldquo;${esc(k.question)}&rdquo;</div>
+        <div style="font-size:13px;color:#1B1B1E;padding:10px 14px;background:#F0F9FF;border-left:3px solid #0369A1;border-radius:6px;line-height:1.6;">${esc(k.strategy)}</div>
+      </div>`
+    )
+    .join("");
+
+  const roadmap = (r.ninetyDayPlan || [])
+    .map(
+      (p: any) => `
+      <div style="margin-bottom:14px;">
+        <div style="font-size:12px;font-weight:700;color:#2D6A4F;letter-spacing:0.04em;text-transform:uppercase;">${esc(p.phase)}</div>
+        <div style="font-size:14px;font-weight:600;margin:2px 0 4px;">${esc(p.focus)}</div>
+        ${(p.actions || []).map((a: string) => `<div style="font-size:13px;color:#6B7280;padding:2px 0 2px 14px;line-height:1.6;">→ ${esc(a)}</div>`).join("")}
+      </div>`
+    )
+    .join("");
+
   const interviews = (r.talkingPoints || [])
     .map(
       (t: any) => `
@@ -189,6 +210,26 @@ function renderResultsHTML(jobTitle: string, r: any): string {
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
           <h2 style="font-size:16px;margin:0 0 12px;">Interview Bridge Statements</h2>
           ${interviews}
+        </div>`
+      : ""
+  }
+
+  ${
+    knockouts
+      ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
+          <h2 style="font-size:16px;margin:0 0 6px;">Application Screening Questions</h2>
+          <p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">The form questions that silently filter career changers out — and how to answer them.</p>
+          ${knockouts}
+        </div>`
+      : ""
+  }
+
+  ${
+    roadmap
+      ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
+          <h2 style="font-size:16px;margin:0 0 6px;">Your 90-Day Transition Plan</h2>
+          <p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">Real transitions take months, not days — this is the honest sequence.</p>
+          ${roadmap}
         </div>`
       : ""
   }

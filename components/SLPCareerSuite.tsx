@@ -237,11 +237,13 @@ export default function SLPCareerSuite() {
           {([
             ["✓", "Match score + requirements breakdown", true],
             ["✓", "3 sample bullet translations", true],
-            ["⟡", "Full resume rewrite", false],
-            ["⟡", "Tailored cover letter", false],
+            ["⟡", "Full resume rewrite (editable Word doc)", false],
+            ["⟡", "Tailored cover letter in your voice", false],
             ["⟡", "Gap analysis + proof-artifact plan", false],
-            ["⟡", "Interview talking points", false],
+            ["⟡", "Screening questions + interview prep", false],
             ["⟡", "LinkedIn headline + About section", false],
+            ["⟡", "Your 90-day transition plan", false],
+            ["⟡", "Refine any section until it's right", false],
             ["⟡", "Companies that hire former SLPs", false],
           ] as const).map(([icon, text, free], i) => (
             <div key={i} style={{ fontSize: 14, display: "flex", gap: 8, padding: "3px 0", color: free ? "var(--text)" : "var(--muted)" }}>
