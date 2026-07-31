@@ -249,7 +249,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
 export async function sendQuizResultEmail(input: {
   to: string;
   name?: string;
-  top: { label: string; roleOption?: string; range: string; timeline: string; why: string; entryDoor: string; firstMove: string; caveat: string };
+  top: { label: string; roleOption?: string; icon?: string; range: string; timeline: string; why: string; entryDoor: string; firstMove: string; caveat: string };
   runnerUp?: { label: string; range: string; timeline: string } | null;
 }): Promise<void> {
   const { to, name, top, runnerUp } = input;
@@ -264,6 +264,7 @@ export async function sendQuizResultEmail(input: {
   <p style="font-size:15px;line-height:1.7;">Here's your quiz result, saved so you don't lose it.</p>
 
   <div style="background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;padding:22px;margin:20px 0;">
+    ${top.icon ? `<div style="font-size:44px;line-height:1;text-align:center;margin-bottom:10px;">${top.icon}</div>` : ""}
     <div style="font-size:11px;font-weight:600;color:#2D6A4F;letter-spacing:0.05em;">YOUR DIRECTION</div>
     <div style="font-size:24px;font-weight:700;font-family:Georgia,serif;margin:6px 0 4px;">${esc(top.label)}</div>
     <div style="font-size:14px;color:#2D6A4F;font-weight:600;margin-bottom:12px;">${esc(top.range)} · typically ${esc(top.timeline)}</div>

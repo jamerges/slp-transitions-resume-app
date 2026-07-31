@@ -137,7 +137,25 @@ export default function CareerQuiz({
       <div style={S.wrap}>
         <div style={{ textAlign: "center", marginBottom: 20 }}>
           <span style={S.tag}>Your result</span>
-          <h1 style={{ ...S.h1, fontSize: 30, marginTop: 14 }}>{top.label}</h1>
+          <div
+            aria-hidden
+            style={{
+              width: 92,
+              height: 92,
+              borderRadius: "50%",
+              background: "linear-gradient(135deg, var(--accent-bg) 0%, var(--accent-bg-subtle) 100%)",
+              border: "2px solid var(--accent)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 44,
+              margin: "18px auto 6px",
+              boxShadow: "0 4px 14px rgba(45,106,79,0.18)",
+            }}
+          >
+            {top.icon}
+          </div>
+          <h1 style={{ ...S.h1, fontSize: 30, marginTop: 10 }}>{top.label}</h1>
           <div style={{ fontSize: 15, color: "var(--accent)", fontWeight: 600 }}>
             {top.range} · typically {top.timeline}
           </div>
@@ -172,17 +190,30 @@ export default function CareerQuiz({
           <p style={{ ...S.p, maxWidth: 460, margin: "0 auto 16px" }}>
             Your <strong>Pivot Report</strong> reads your actual resume and tells you which of these paths your
             specific experience already qualifies you for — with your readiness profile, the stage you're in,
-            and a week-by-week 30-day plan. $9, once.
+            and a week-by-week 30-day plan. $9, once. Just add your resume.
           </p>
           <button
             style={{ ...S.btn, padding: "14px 40px", fontSize: 16 }}
-            onClick={() => go(`/?from=quiz&path=${encodeURIComponent(top.roleOption)}`)}
+            onClick={() => go(`/?from=quiz&path=${encodeURIComponent(top.roleOption)}&goal=report`)}
           >
-            Get my personalized report →
+            Get my Pivot Report — $9 →
           </button>
           <p style={{ fontSize: 12, color: "var(--light)", marginTop: 8 }}>
-            Starts with a free preview. No subscription, ever.
+            One-time payment. No subscription, ever. 30-day refund if it doesn't help.
           </p>
+        </Card>
+
+        <Card style={{ textAlign: "center" }}>
+          <p style={{ fontSize: 14, color: "var(--muted)", margin: "0 0 10px", lineHeight: 1.6 }}>
+            Already have a specific job posting in mind? Skip the report — the resume translator shows you
+            free how your experience matches it.
+          </p>
+          <button
+            style={S.btnOut}
+            onClick={() => go(`/?from=quiz&path=${encodeURIComponent(top.roleOption)}`)}
+          >
+            Translate my resume for a real job →
+          </button>
         </Card>
 
         {emailed && (
@@ -210,7 +241,8 @@ export default function CareerQuiz({
   return (
     <div style={{ ...S.wrap, maxWidth: 620 }}>
       <ProgressBar step={idx + 1} total={QUESTIONS.length} />
-      <h2 style={{ ...S.h2, fontSize: 25, marginBottom: q.help ? 8 : 20, marginTop: 4 }}>{q.prompt}</h2>
+      <div style={{ ...S.tag, marginTop: 6, marginBottom: 2 }}>{q.section}</div>
+      <h2 style={{ ...S.h2, fontSize: 25, marginBottom: q.help ? 8 : 20, marginTop: 8 }}>{q.prompt}</h2>
       {q.help && <p style={{ ...S.p, marginBottom: 20, fontSize: 14 }}>{q.help}</p>}
 
       <div style={{ marginBottom: 18 }}>

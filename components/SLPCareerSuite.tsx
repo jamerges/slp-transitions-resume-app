@@ -13,6 +13,7 @@ import type { UserGoals } from "@/lib/prompts";
 const STEPS = {
   WELCOME: 0, RESUME: 1, GOALS: 2, JOB: 3, EMAIL: 4,
   PROCESSING: 5, PREVIEW: 6, EXPLORE_RESULTS: 7, REDIRECTING: 8,
+  REPORT_INTAKE: 9,
 } as const;
 type Step = (typeof STEPS)[keyof typeof STEPS];
 
@@ -44,6 +45,8 @@ export default function SLPCareerSuite() {
   const [parsing, setParsing] = useState(false);
   const [rehydrating, setRehydrating] = useState(false);
   const [carriedFromQuiz, setCarriedFromQuiz] = useState<string | null>(null);
+  // Quiz buyers heading for the $9 report: resume → one stage question → checkout.
+  const [reportIntent, setReportIntent] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [goals, setGoals] = useState<UserGoals>({
     targetRoles: [],
@@ -121,6 +124,7 @@ export default function SLPCareerSuite() {
         if (params.get("from") === "quiz") setCarriedFromQuiz(match);
       }
       if (params.get("from") === "quiz") {
+        if (params.get("goal") === "report") setReportIntent(true);
         setStep(STEPS.RESUME);
         window.history.replaceState({}, "", window.location.pathname);
       }
@@ -320,7 +324,8 @@ export default function SLPCareerSuite() {
     } catch (err: any) {
       console.error(err);
       setError(`Could not start checkout: ${err.message}. Please try again or email hello@slptransitions.com.`);
-      setStep(STEPS.EXPLORE_RESULTS);
+      // Quiz-path buyers have no explore results to return to.
+      setStep(reportIntent ? STEPS.REPORT_INTAKE : STEPS.EXPLORE_RESULTS);
     }
   };
 
@@ -504,7 +509,7 @@ export default function SLPCareerSuite() {
 
       <div style={{ display: "flex", gap: 12 }}>
         <button style={S.btnOut} onClick={() => setStep(STEPS.WELCOME)}>← Back</button>
-        <button style={{ ...S.btn, opacity: resumeText.length < 50 || parsing ? 0.4 : 1 }} disabled={resumeText.length < 50 || parsing} onClick={() => setStep(STEPS.GOALS)}>Continue →</button>
+        <button style={{ ...S.btn, opacity: resumeText.length < 50 || parsing ? 0.4 : 1 }} disabled={resumeText.length < 50 || parsing} onClick={() => setStep(reportIntent ? STEPS.REPORT_INTAKE : STEPS.GOALS)}>Continue →</button>
       </div>
     </div>
   );
@@ -759,6 +764,53 @@ export default function SLPCareerSuite() {
     </div>
   );
 
+  const renderReportIntake = () => (
+    <div style={S.wrap}>
+      <ProgressBar step={2} total={2} />
+      <h2 style={S.h2}>Last step before your report.</h2>
+      <p style={S.p}>
+        Two quick things so the report meets you where you actually are — then straight to checkout.
+      </p>
+
+      <ErrorBanner />
+
+      <div style={{ marginBottom: 22 }}>
+        <label style={{ ...S.label, fontSize: 15 }}>Where are you in this so far?</label>
+        {STAGE_OPTIONS.map((s) => {
+          const sel = goals.transitionStage === s.label;
+          return (
+            <div key={s.id} onClick={() => setGoals((prev) => ({ ...prev, transitionStage: s.label }))} style={{
+              padding: "12px 14px", border: `1.5px solid ${sel ? "var(--accent)" : "var(--border)"}`,
+              background: sel ? "var(--accent-bg-subtle)" : "var(--card)", borderRadius: 8, cursor: "pointer",
+              marginBottom: 8, fontSize: 14, lineHeight: 1.5,
+              color: sel ? "var(--accent)" : "var(--text)", fontWeight: sel ? 600 : 400,
+            }}>
+              {sel && "✓ "}{s.label}
+            </div>
+          );
+        })}
+      </div>
+
+      <div style={{ marginBottom: 24 }}>
+        <label style={S.label}>Why are you transitioning? <span style={{ fontWeight: 400, color: "var(--light)" }}>(optional)</span></label>
+        <textarea style={{ ...S.textarea, minHeight: 60 }} placeholder="Be honest — this never appears anywhere, it just shapes the advice." value={goals.whyLeaving} onChange={(e) => setGoals((p) => ({ ...p, whyLeaving: e.target.value }))} onFocus={focusB} onBlur={blurB} />
+      </div>
+
+      <button
+        style={{ ...S.btn, width: "100%", padding: "15px", fontSize: 16, opacity: goals.transitionStage ? 1 : 0.5 }}
+        disabled={!goals.transitionStage}
+        onClick={handleReportClick}
+        onMouseEnter={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent-light)")}
+        onMouseLeave={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent)")}
+      >
+        Get my Pivot Report — $9 →
+      </button>
+      <p style={{ fontSize: 12, color: "var(--light)", textAlign: "center", marginTop: 8 }}>
+        One-time payment via Stripe. Emailed to you + shown right here. 30-day refund if it doesn't help.
+      </p>
+    </div>
+  );
+
   const renderRedirecting = () => (
     <div style={{ ...S.wrap, textAlign: "center", padding: "80px 0" }}>
       <div style={{ width: 48, height: 48, border: "3px solid var(--border)", borderTopColor: "var(--accent)", borderRadius: "50%", margin: "0 auto 24px", animation: "spin 0.8s linear infinite" }} />
@@ -979,6 +1031,7 @@ export default function SLPCareerSuite() {
       {step === STEPS.PREVIEW && renderPreview()}
       {step === STEPS.EXPLORE_RESULTS && renderExploreResults()}
       {step === STEPS.REDIRECTING && renderRedirecting()}
+      {step === STEPS.REPORT_INTAKE && renderReportIntake()}
     </>
   );
 }

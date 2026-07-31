@@ -8,6 +8,8 @@ export interface QuizPath {
   /** Exact ROLE_OPTIONS chip this result carries into the app. Explicit, so a
    *  wording change to either list can't silently break the hand-off. */
   roleOption: string;
+  /** Large visual for the result card and email. */
+  icon: string;
   range: string;
   timeline: string;
   why: string;
@@ -19,6 +21,7 @@ export interface QuizPath {
 export const PATHS: Record<string, QuizPath> = {
   "customer-success": {
     slug: "customer-success",
+    icon: "🤝",
     label: "Customer Success / Implementation",
     roleOption: "Customer Success / Implementation",
     range: "$75,000–$120,000",
@@ -30,6 +33,7 @@ export const PATHS: Record<string, QuizPath> = {
   },
   "project-management": {
     slug: "project-management",
+    icon: "🗺️",
     label: "Project / Program Management",
     roleOption: "Project / Program Management",
     range: "$85,000–$100,000+",
@@ -41,6 +45,7 @@ export const PATHS: Record<string, QuizPath> = {
   },
   "data-analysis": {
     slug: "data-analysis",
+    icon: "📊",
     label: "Healthcare Data / Analytics",
     roleOption: "Data Analysis",
     range: "$70,000–$105,000",
@@ -52,6 +57,7 @@ export const PATHS: Record<string, QuizPath> = {
   },
   "liaison-ur": {
     slug: "liaison-ur",
+    icon: "🏥",
     label: "Clinical Liaison / Utilization Review",
     roleOption: "Clinical Liaison / Utilization Review",
     range: "$80,000–$135,000",
@@ -63,6 +69,7 @@ export const PATHS: Record<string, QuizPath> = {
   },
   informatics: {
     slug: "informatics",
+    icon: "🖥️",
     label: "Clinical Informatics / EHR",
     roleOption: "Clinical Informatics / EHR",
     range: "$97,000–$154,000",
@@ -74,6 +81,7 @@ export const PATHS: Record<string, QuizPath> = {
   },
   "instructional-design": {
     slug: "instructional-design",
+    icon: "🎓",
     label: "Instructional Design / Learning",
     roleOption: "Instructional Design",
     range: "$70,000–$100,000",
@@ -85,6 +93,7 @@ export const PATHS: Record<string, QuizPath> = {
   },
   "content-marketing": {
     slug: "content-marketing",
+    icon: "✍️",
     label: "Content / Marketing",
     roleOption: "Content Strategy / Marketing",
     range: "$80,000–$141,000",
@@ -96,6 +105,7 @@ export const PATHS: Record<string, QuizPath> = {
   },
   "clinical-educator": {
     slug: "clinical-educator",
+    icon: "🧑‍🏫",
     label: "Clinical Educator / Trainer",
     roleOption: "Clinical Educator / Trainer",
     range: "$75,000–$116,000",
@@ -113,6 +123,10 @@ export interface QuizOption {
 }
 export interface QuizQuestion {
   id: string;
+  /** Short group label shown above the question, so the quiz reads as
+   *  deliberate sections (experience → energy → constraints → style)
+   *  rather than a random list. */
+  section: string;
   prompt: string;
   help?: string;
   multi?: boolean;
@@ -122,6 +136,7 @@ export interface QuizQuestion {
 export const QUESTIONS: QuizQuestion[] = [
   {
     id: "done",
+    section: "Your experience",
     prompt: "Which of these have you actually done?",
     help: "Pick everything that applies — this matters more than what you enjoy, because it's what opens doors.",
     multi: true,
@@ -138,6 +153,7 @@ export const QUESTIONS: QuizQuestion[] = [
   },
   {
     id: "flow",
+    section: "What energizes you",
     prompt: "When work feels genuinely good, what are you doing?",
     options: [
       { label: "Creating order from chaos — designing systems, moving projects forward", scores: { "project-management": 3, informatics: 1 } },
@@ -148,7 +164,21 @@ export const QUESTIONS: QuizQuestion[] = [
     ],
   },
   {
+    id: "regret",
+    section: "What energizes you",
+    prompt: "If a door opened tomorrow, what would you regret not trying?",
+    help: "Ignore feasibility for a second — that's what the rest of the quiz is for.",
+    options: [
+      { label: "Running projects and programs at scale", scores: { "project-management": 3 } },
+      { label: "Working with the data behind the decisions", scores: { "data-analysis": 3, informatics: 1 } },
+      { label: "Teaching, training, or designing how people learn", scores: { "instructional-design": 3, "clinical-educator": 2 } },
+      { label: "Being the trusted expert clients rely on", scores: { "customer-success": 3, "liaison-ur": 2 } },
+      { label: "Telling the story — writing, content, marketing", scores: { "content-marketing": 3 } },
+    ],
+  },
+  {
     id: "income",
+    section: "Your reality",
     prompt: "What's your honest income requirement for the next role?",
     help: "No judgment — this genuinely changes which paths are realistic right now.",
     options: [
@@ -160,6 +190,7 @@ export const QUESTIONS: QuizQuestion[] = [
   },
   {
     id: "time",
+    section: "Your reality",
     prompt: "Realistically, how much time can you put in outside of work?",
     options: [
       { label: "Almost none — I'm running on empty", scores: { "liaison-ur": 3, "customer-success": 2, "clinical-educator": 1, "data-analysis": -2, "instructional-design": -1 } },
@@ -170,7 +201,9 @@ export const QUESTIONS: QuizQuestion[] = [
   },
   {
     id: "people",
-    prompt: "How do you feel about people-facing work now?",
+    section: "How you like to work",
+    prompt: "Day to day, how much live people-time do you want?",
+    help: "This is about your calendar — how many hours of live human interaction feel right. The next question is about the field itself; they're different dials.",
     options: [
       { label: "I still love 1:1 — I want better conditions and pay, not less contact", scores: { "clinical-educator": 3, "customer-success": 2, "liaison-ur": 1 } },
       { label: "I want people contact, but as accounts and colleagues — not a caseload", scores: { "customer-success": 3, "liaison-ur": 2, "project-management": 1 } },
@@ -180,7 +213,9 @@ export const QUESTIONS: QuizQuestion[] = [
   },
   {
     id: "proximity",
-    prompt: "Which is closest to true for you?",
+    section: "How you like to work",
+    prompt: "And how close do you want to stay to the clinical world?",
+    help: "Subject matter, not people-time. Plenty of roles are deep in the clinical world with almost no live sessions — and vice versa.",
     options: [
       { label: "I want to stay close to clinical — that knowledge is my edge", scores: { "liaison-ur": 3, informatics: 2, "clinical-educator": 3 } },
       { label: "Clinical-adjacent, but out of direct care", scores: { "customer-success": 2, informatics: 2, "instructional-design": 1 } },
@@ -190,23 +225,13 @@ export const QUESTIONS: QuizQuestion[] = [
   },
   {
     id: "tech",
+    section: "How you like to work",
     prompt: "What's your relationship with new tools and software?",
     options: [
       { label: "I'm the one colleagues come to for help", scores: { informatics: 3, "data-analysis": 1, "clinical-educator": 1 } },
       { label: "I actively enjoy learning new platforms", scores: { informatics: 2, "instructional-design": 2, "data-analysis": 2 } },
       { label: "I learn what I need, when I need it", scores: { "customer-success": 1, "project-management": 1 } },
       { label: "I'd rather work with people than systems", scores: { "clinical-educator": 2, "customer-success": 2, "liaison-ur": 1 } },
-    ],
-  },
-  {
-    id: "regret",
-    prompt: "If a door opened tomorrow, what would you regret not trying?",
-    options: [
-      { label: "Running projects and programs at scale", scores: { "project-management": 3 } },
-      { label: "Working with the data behind the decisions", scores: { "data-analysis": 3, informatics: 1 } },
-      { label: "Teaching, training, or designing how people learn", scores: { "instructional-design": 3, "clinical-educator": 2 } },
-      { label: "Being the trusted expert clients rely on", scores: { "customer-success": 3, "liaison-ur": 2 } },
-      { label: "Telling the story — writing, content, marketing", scores: { "content-marketing": 3 } },
     ],
   },
 ];
