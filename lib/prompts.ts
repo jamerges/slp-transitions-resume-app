@@ -134,6 +134,85 @@ Return ONLY this JSON structure with no preamble:
 Provide all 6-8 requirementsCoverage items (most important first), 5-8 translatedBullets, 2-3 gapAnalysis items, 2-4 proofArtifacts matched to the target field's actual hiring bar (per your role knowledge — e.g., portfolio artifacts for design/research/ID roles, certs only where they genuinely signal), 3-4 talkingPoints, 4 ninetyDayPlan phases (Weeks 1-2, Weeks 3-4, Month 2, Month 3 — each with 3-4 concrete actions that reference the proof artifacts and gap actions above, plus networking/referral steps since referrals decide most transitions), and 3-4 knockoutAnswers. Valid JSON only.`;
 }
 
+// The full package as two prompts run in PARALLEL — one generation of the whole
+// thing takes ~140s of wall time; two halves run concurrently in ~half that.
+// Their keys are disjoint, so the results merge with a spread.
+export function buildFullPromptParts(input: FullInput): { materials: string; guidance: string } {
+  const { resumeText, jobTitle, jobDesc, goals, writingSample } = input;
+  const voiceInstruction = writingSample
+    ? `\n\nIMPORTANT: Match the tone and voice of this writing sample from the candidate. Notice their sentence length, word choice, level of formality, any phrases or rhythms they tend to use. Written documents should feel like THEM, not generic AI text:\n---WRITING SAMPLE---\n${writingSample.slice(0, 3000)}\n---END SAMPLE---\n`
+    : "";
+
+  const context = `Resume:
+---
+${resumeText}
+---
+
+Target role: ${jobTitle}
+
+Job Description:
+---
+${jobDesc}
+---
+
+About: ${aboutLine(goals)}
+${INFER_NOTE}${voiceInstruction}`;
+
+  const materials = `${context}
+
+SCORING METHOD for requirementsCoverage (do this first, internally):
+1. Extract the 6-8 most important requirements from the job description.
+2. For each, judge from the resume: "covered" (clear evidence), "partial" (adjacent/transferable evidence), or "missing" (no evidence).
+3. For partial/missing items, give one concrete way to close or reframe the gap.
+
+Return ONLY this JSON structure with no preamble:
+
+{
+  "requirementsCoverage": [
+    {"requirement": "short requirement from the JD", "status": "covered|partial|missing", "evidence": "where the resume shows it, or what's absent", "action": "for partial/missing: one concrete step to close or reframe it; empty string if covered"}
+  ],
+  "professionalSummary": "3-4 sentences, no clinical jargon, anchored in their actual numbers",
+  "translatedBullets": [
+    {"original": "their bullet", "translated": "rewritten in the job description's own vocabulary", "section": "Job Title or section"}
+  ],
+  "skillsSection": {
+    "Category Name": ["skill1", "skill2"]
+  },
+  "coverLetter": "Full cover letter as single string with \\n line breaks. 3-4 paragraphs but vary the structure — no template skeleton. Must reference at least one specific from this JD and one real accomplishment with its number from the resume."
+}
+
+Provide all 6-8 requirementsCoverage items (most important first) and 5-8 translatedBullets. Valid JSON only.`;
+
+  const guidance = `${context}
+
+Return ONLY this JSON structure with no preamble:
+
+{
+  "gapAnalysis": [
+    {"gap": "...", "actionSteps": ["..."], "timeframe": "2-4 weeks", "priority": "high|medium|low"}
+  ],
+  "proofArtifacts": [
+    {"artifact": "specific thing to build/obtain for THIS target field (e.g., a case study, portfolio piece, cert)", "why": "what it proves to this hiring manager", "timeEstimate": "e.g., 2 weekends", "cost": "e.g., free, $175"}
+  ],
+  "talkingPoints": [
+    {"question": "Likely interview Q for a career changer in this role", "bridgeStatement": "How to answer: positive clinical framing, growth ceiling, specific pull toward this role, one concrete accomplishment as proof"}
+  ],
+  "linkedinHeadline": "Optimized headline",
+  "linkedinAbout": "LinkedIn About section, 3 short paragraphs, first person, written to be found by recruiters searching for this target role. \\n line breaks between paragraphs.",
+  "elevatorPitch": "30-second pitch, pull-framed, no burnout language",
+  "ninetyDayPlan": [
+    {"phase": "Weeks 1-2", "focus": "one-line theme", "actions": ["specific action with any real names/links relevant to THIS role and industry"]}
+  ],
+  "knockoutAnswers": [
+    {"question": "an application-form screening question this specific job will likely ask (salary expectations, years of experience, required credential/degree, work authorization, willingness to X)", "strategy": "exactly how this candidate should answer it, given their real background — including what number/phrasing to use and why"}
+  ]
+}
+
+Provide 2-3 gapAnalysis items, 2-4 proofArtifacts matched to the target field's actual hiring bar (per your role knowledge — e.g., portfolio artifacts for design/research/ID roles, certs only where they genuinely signal), 3-4 talkingPoints, 4 ninetyDayPlan phases (Weeks 1-2, Weeks 3-4, Month 2, Month 3 — each with 3-4 concrete actions that reference the proof artifacts and gap actions above, plus networking/referral steps since referrals decide most transitions), and 3-4 knockoutAnswers. Valid JSON only.`;
+
+  return { materials, guidance };
+}
+
 // $9 Pivot Report — the deep, personal readout sold after the free explore.
 export function buildReportPrompt(input: ExploreInput): string {
   const { resumeText, goals, workPreferenceLabels } = input;

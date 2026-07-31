@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { callClaude } from "@/lib/anthropic";
-import { buildFullPrompt } from "@/lib/prompts";
+import { buildFullPromptParts } from "@/lib/prompts";
 import { retrieveInputs, retrieveResult, stashResult } from "@/lib/stash";
 import { sendFullResultsEmail } from "@/lib/email";
 
@@ -58,16 +58,20 @@ export async function POST(req: Request) {
     let results: any;
     let generationError: string | null = null;
     try {
-      results = await callClaude({
-        userPrompt: buildFullPrompt({
-          resumeText: inputs.resumeText,
-          jobTitle: inputs.jobTitle,
-          jobDesc: inputs.jobDesc,
-          goals: inputs.goals,
-          writingSample: inputs.writingSample,
-        }),
-        maxTokens: 12000,
+      // Two parallel generations (~half the wall time of one big call).
+      // Keys are disjoint, so a spread merges them.
+      const { materials, guidance } = buildFullPromptParts({
+        resumeText: inputs.resumeText,
+        jobTitle: inputs.jobTitle,
+        jobDesc: inputs.jobDesc,
+        goals: inputs.goals,
+        writingSample: inputs.writingSample,
       });
+      const [materialsResult, guidanceResult] = await Promise.all([
+        callClaude({ userPrompt: materials, maxTokens: 6000 }),
+        callClaude({ userPrompt: guidance, maxTokens: 7000 }),
+      ]);
+      results = { ...materialsResult, ...guidanceResult };
       if (!results.professionalSummary || !results.translatedBullets) {
         throw new Error("Generated response missing required fields");
       }
