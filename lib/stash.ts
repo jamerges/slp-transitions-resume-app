@@ -47,10 +47,20 @@ export async function stashInputs(
   return { inMetadata: false, payload: null };
 }
 
+// Redis is checked FIRST and metadata is only the fallback. Quiz buyers check
+// out with a tiny payload (no resume) that fits in Stripe metadata, then add
+// their resume afterwards via updateInputs — which can only write to Redis,
+// since a session's metadata is frozen once created. Reading metadata first
+// would hand back the pre-resume copy forever.
 export async function retrieveInputs(
   sessionId: string,
   metadataPayload?: string | null
 ): Promise<StashedInputs | null> {
+  const r = getRedis();
+  if (r) {
+    const raw = await r.get<string>(`inputs:${sessionId}`);
+    if (raw) return typeof raw === "string" ? JSON.parse(raw) : (raw as unknown as StashedInputs);
+  }
   if (metadataPayload) {
     try {
       return JSON.parse(metadataPayload) as StashedInputs;
@@ -58,12 +68,35 @@ export async function retrieveInputs(
       // fall through
     }
   }
+  return null;
+}
+
+/** Overwrite a stashed payload after checkout (used to attach the resume that
+ *  quiz buyers supply on /report). Always Redis — metadata is immutable. */
+export async function updateInputs(
+  sessionKey: string,
+  inputs: StashedInputs
+): Promise<void> {
   const r = getRedis();
-  if (!r) return null;
-  const raw = await r.get<string>(`inputs:${sessionId}`);
-  if (!raw) return null;
-  if (typeof raw === "string") return JSON.parse(raw);
-  return raw as unknown as StashedInputs;
+  if (!r) {
+    throw new Error(
+      "Upstash Redis is not configured, so we can't save your resume against this purchase. Email hello@slptransitions.com with your receipt and we'll generate your report manually."
+    );
+  }
+  await r.set(`inputs:${sessionKey}`, JSON.stringify(inputs), { ex: TTL_SECONDS });
+}
+
+/**
+ * Returns true only for the first caller with this key — a one-shot latch for
+ * side effects that must not repeat on page refresh (e.g. the "add your resume"
+ * email). Returns false when Redis is unavailable, so a missing cache degrades
+ * to not-sending rather than sending on every reload.
+ */
+export async function claimOnce(key: string): Promise<boolean> {
+  const r = getRedis();
+  if (!r) return false;
+  const res = await r.set(`once:${key}`, "1", { nx: true, ex: TTL_SECONDS });
+  return res === "OK";
 }
 
 export async function stashResult(sessionId: string, result: any): Promise<void> {

@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { callClaude } from "@/lib/anthropic";
 import { buildReportPrompt, type ExploreInput } from "@/lib/prompts";
-import { retrieveInputs, retrieveResult, stashResult } from "@/lib/stash";
-import { sendReportEmail } from "@/lib/email";
+import { claimOnce, retrieveInputs, retrieveResult, stashResult } from "@/lib/stash";
+import { sendReportEmail, sendResumeLinkEmail } from "@/lib/email";
 
 export const runtime = "nodejs";
 // Full generation measured at ~140s with all sections; 300 is the Fluid-compute ceiling on Hobby.
@@ -51,6 +51,25 @@ export async function POST(req: Request) {
         },
         { status: 410 }
       );
+    }
+
+    // Quiz buyers pay first and add their resume here, after checkout. Missing
+    // resume is a normal state on this path, not an error — tell the client to
+    // show the intake form rather than burning a generation on nothing.
+    if (!inputs.resumeText || inputs.resumeText.trim().length < 50) {
+      const buyerEmail = session.customer_details?.email || "";
+      // Their way back if they bought on a phone. Latched so a page refresh
+      // doesn't re-send it.
+      if (buyerEmail && (await claimOnce(`resume_link:${sessionId}`))) {
+        sendResumeLinkEmail({ to: buyerEmail, sessionId }).catch((e) =>
+          console.error("[/api/report-finalize] resume-link email failed", e)
+        );
+      }
+      return NextResponse.json({
+        needsIntake: true,
+        email: buyerEmail,
+        targetRole: inputs.goals?.targetRoles?.[0] || "",
+      });
     }
 
     let report: any;

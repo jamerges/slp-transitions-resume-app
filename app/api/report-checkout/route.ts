@@ -25,13 +25,19 @@ const REPORT_PRICE_ID =
 export async function POST(req: Request) {
   try {
     const inputs = (await req.json()) as ExploreInput;
-    if (!inputs.resumeText || !inputs.goals) {
+    if (!inputs.goals) {
       return NextResponse.json({ error: "Missing required inputs" }, { status: 400 });
     }
-    try {
-      assertReadableResume(inputs.resumeText);
-    } catch (e: any) {
-      return NextResponse.json({ error: e.message }, { status: 422 });
+    // Quiz buyers check out before uploading anything — asking for a resume at
+    // peak motivation (and often on a phone) was the biggest drop in the funnel.
+    // The resume is collected on /report after payment instead. Only validate it
+    // when it is actually present, i.e. the in-app wizard path.
+    if (inputs.resumeText) {
+      try {
+        assertReadableResume(inputs.resumeText);
+      } catch (e: any) {
+        return NextResponse.json({ error: e.message }, { status: 422 });
+      }
     }
 
     const origin =

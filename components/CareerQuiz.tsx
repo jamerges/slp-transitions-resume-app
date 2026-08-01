@@ -33,6 +33,46 @@ export default function CareerQuiz({
   const [pending, setPending] = useState<{ top: QuizPath; runnerUp: QuizPath | null } | null>(null);
   const [sending, setSending] = useState(false);
   const [emailed, setEmailed] = useState(false);
+  const [buying, setBuying] = useState(false);
+  const [buyError, setBuyError] = useState("");
+
+  // Straight from the result to Stripe. Asking for a resume first was the
+  // biggest drop in the funnel — people take this quiz on a phone, at peak
+  // motivation, without their resume anywhere near them. The resume is
+  // collected on /report after payment instead.
+  const buyReport = async (top: QuizPath) => {
+    if (buying) return;
+    setBuying(true);
+    setBuyError("");
+    try {
+      // Relative: the quiz is always served from app.slptransitions.com, even
+      // inside the WordPress iframe, so this stays same-origin.
+      const resp = await fetch("/api/report-checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          resumeText: "",
+          jobTitle: "",
+          jobDesc: "",
+          email,
+          goals: {
+            targetRoles: [top.roleOption],
+            targetIndustries: [],
+            workPreferences: [],
+            topSkills: "",
+            whyLeaving: "",
+            transitionStage: "",
+          },
+        }),
+      });
+      const data = await resp.json();
+      if (!resp.ok || !data.url) throw new Error(data.error || "Checkout failed");
+      go(data.url);
+    } catch (e: any) {
+      setBuyError(e?.message || "Couldn't open checkout. Please try again.");
+      setBuying(false);
+    }
+  };
 
   const q = QUESTIONS[idx];
   const selected = answers[q?.id] || [];
@@ -187,22 +227,52 @@ export default function CareerQuiz({
           </Card>
         )}
 
-        <Card style={{ textAlign: "center", border: "1.5px solid var(--accent)", background: "linear-gradient(135deg, var(--accent-bg-subtle) 0%, #fff 100%)" }}>
-          <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>This is the general version.</h3>
-          <p style={{ ...S.p, maxWidth: 460, margin: "0 auto 16px" }}>
-            Your <strong>Pivot Report</strong> reads your actual resume and tells you which of these paths your
-            specific experience already qualifies you for — with your readiness profile, the stage you're in,
-            and a week-by-week 30-day plan. $9, once. Just add your resume.
-          </p>
-          <button
-            style={{ ...S.btn, padding: "14px 40px", fontSize: 16 }}
-            onClick={() => go(`/?from=quiz&path=${encodeURIComponent(top.roleOption)}&goal=report`)}
-          >
-            Get my Pivot Report — $9 →
-          </button>
-          <p style={{ fontSize: 12, color: "var(--light)", marginTop: 8 }}>
-            One-time payment. No subscription, ever. 30-day refund if it doesn't help.
-          </p>
+        <Card style={{ border: "1.5px solid var(--accent)", background: "linear-gradient(135deg, var(--accent-bg-subtle) 0%, #fff 100%)" }}>
+          <div style={{ textAlign: "center" }}>
+            <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>This is the general version.</h3>
+            <p style={{ ...S.p, maxWidth: 470, margin: "0 auto 18px" }}>
+              Everything above is what we'd tell any SLP who scored like you. Your{" "}
+              <strong>Pivot Report</strong> is built from your actual resume — what
+              you specifically already qualify for, and what to do about it.
+            </p>
+          </div>
+
+          <div style={{ maxWidth: 470, margin: "0 auto 20px", textAlign: "left" }}>
+            {[
+              "Your 3 best-fit roles, chosen from your real experience — not a quiz score",
+              "Which of your clinical work already reads as qualified, in their words",
+              "Your readiness profile and the stage you're actually in",
+              "A week-by-week 30-day plan sized for someone working full-time",
+              "3 LinkedIn outreach scripts written in your voice, ready to send",
+              "The honest caveats — timelines and tradeoffs for your situation",
+            ].map((line) => (
+              <div key={line} style={{ display: "flex", gap: 9, alignItems: "flex-start", marginBottom: 9, fontSize: 14, lineHeight: 1.6 }}>
+                <span style={{ color: "var(--accent)", fontWeight: 700, flexShrink: 0 }}>✓</span>
+                <span>{line}</span>
+              </div>
+            ))}
+          </div>
+
+          {buyError && (
+            <div style={{ fontSize: 13, color: "var(--warn)", textAlign: "center", marginBottom: 10 }}>
+              {buyError}
+            </div>
+          )}
+
+          <div style={{ textAlign: "center" }}>
+            <button
+              style={{ ...S.btn, padding: "15px 44px", fontSize: 17, opacity: buying ? 0.6 : 1 }}
+              disabled={buying}
+              onClick={() => buyReport(top)}
+            >
+              {buying ? "Opening checkout…" : "Get my Pivot Report — $9 →"}
+            </button>
+            <p style={{ fontSize: 12, color: "var(--light)", marginTop: 10, lineHeight: 1.6 }}>
+              One-time payment, no subscription ever. 30-day refund if it doesn't help.
+              <br />
+              You'll add your resume right after checkout — no need to find it now.
+            </p>
+          </div>
         </Card>
 
         {emailed && (

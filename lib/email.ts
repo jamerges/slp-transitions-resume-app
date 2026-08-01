@@ -249,7 +249,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
 export async function sendQuizResultEmail(input: {
   to: string;
   name?: string;
-  top: { label: string; roleOption?: string; icon?: string; range: string; timeline: string; why: string; entryDoor: string; firstMove: string; caveat: string };
+  top: { label: string; slug?: string; roleOption?: string; icon?: string; range: string; timeline: string; why: string; entryDoor: string; firstMove: string; caveat: string };
   runnerUp?: { label: string; range: string; timeline: string } | null;
 }): Promise<void> {
   const { to, name, top, runnerUp } = input;
@@ -294,7 +294,7 @@ export async function sendQuizResultEmail(input: {
       This result came from eight questions. The <b>Pivot Report</b> reads your real resume and tells you which of these paths your specific experience already qualifies you for — your readiness profile, the stage you're actually in, your top three paths with entry doors, and a week-by-week 30-day plan. $9, once.
     </div>
     <div style="text-align:center;">
-      <a href="${APP_URL}/?from=quiz&path=${encodeURIComponent(top.roleOption || top.label)}" style="display:inline-block;padding:13px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:15px;font-weight:600;">Get my Pivot Report →</a>
+      <a href="${APP_URL}/quiz?path=${encodeURIComponent(top.slug || "")}" style="display:inline-block;padding:13px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:15px;font-weight:600;">Get my Pivot Report →</a>
     </div>
   </div>
 
@@ -312,6 +312,48 @@ export async function sendQuizResultEmail(input: {
     from: FROM_ADDRESS,
     to,
     subject: `Your result: ${top.label}`,
+    html,
+  });
+}
+
+/**
+ * Quiz buyers pay before uploading a resume — usually on a phone, nowhere near
+ * the file. This is their way back: without it, "come back from your computer"
+ * is a promise with no link attached.
+ */
+export async function sendResumeLinkEmail(input: {
+  to: string;
+  sessionId: string;
+}): Promise<void> {
+  const { to, sessionId } = input;
+  const link = `${APP_URL}/report?session_id=${encodeURIComponent(sessionId)}`;
+  const html = `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#F7F7F5;">
+<div style="max-width:600px;margin:0 auto;padding:32px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#1F2937;background:#fff;">
+  <p style="font-size:13px;color:#2D6A4F;font-weight:600;letter-spacing:0.04em;margin:0 0 6px;">✓ PAYMENT CONFIRMED</p>
+  <h1 style="font-size:24px;line-height:1.3;margin:0 0 14px;">Your Pivot Report is ready to build</h1>
+  <p style="font-size:15px;line-height:1.7;">
+    Thanks for picking this up. One thing left: add your resume, and we'll build the report around your actual experience.
+  </p>
+  <p style="font-size:15px;line-height:1.7;">
+    It takes about a minute, and it's much easier from a computer — so if you bought this on your phone, just open this link when you're back at your desk.
+  </p>
+  <p style="text-align:center;margin:26px 0;">
+    <a href="${link}" style="display:inline-block;padding:14px 32px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Add my resume →</a>
+  </p>
+  <p style="font-size:13px;line-height:1.7;color:#6B7280;">
+    This link is good for 7 days. If it expires or anything goes sideways, reply to this email with your receipt and I'll build it for you by hand.
+  </p>
+  <p style="font-size:14px;line-height:1.7;">— James</p>
+  <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:28px;">
+    SLP Transitions • Your degree isn't a prison. Your skills compound.
+  </p>
+</div>
+</body></html>`;
+
+  await getResend().emails.send({
+    from: FROM_ADDRESS,
+    to,
+    subject: "Your Pivot Report — one step left",
     html,
   });
 }
