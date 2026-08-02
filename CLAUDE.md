@@ -73,8 +73,11 @@ Owner: James Berges (jamoberges@gmail.com) — SLP → growth marketer; hosts th
 - Section heading is "Guides", not "Start here": an imperative there competes with the hero CTA for the reader's next action. Type scale 58→34 (1.71) is fine; the problem was semantic, not visual.
 - Homepage structure: hero → Guides grid (cat 99, slug `guides`) → Real Transitions grid (cat 100) → Browse-all → 4 value props → closing quiz CTA. Grids are category-driven; publishing new posts can't evict the guides.
 
-## Companies-list lead magnet (audited 2026-08-02)
-- Delivery chain is intact: WP page `/ed-health-tech-jobs/` → MailerLite embedded form `105146994009311053` (groot id 9454261, 788 conversions) → group **Ed and Health Tech List** `105147013209786016` → automation "Simple welcome email" `105149559028582086` (enabled) → email containing the Airtable link.
-- **The list is this Airtable view:** https://airtable.com/appywCZNDxFveMSks/shrmMnQY1c5vEBjv4 — it lives only in MailerLite's welcome email and in the form's success block. It is NOT in the repo or in `lib/companies.ts` (that's the separate 123-company DB used by the app).
-- The success block now shows the Airtable link as a button immediately, so the page's "instant access" promise is true and delivery no longer depends on inbox/spam. **That button is a hand edit inside the MailerLite embed markup — re-pasting the form code from MailerLite will wipe it.** There's an HTML comment in the page saying so.
-- MailerLite's API does not expose a redirect-on-success setting for embedded forms (`settings` only carries double_optin/groot_id), so on-page markup is the only programmatic lever.
+## Companies list — ONE source of truth (2026-08-02)
+- **`lib/companies.ts` is canonical.** 134 companies. The old Airtable share link held the same rows in the same order and has been retired — do not re-introduce it. Archive it in Airtable so nobody edits a dead copy.
+- Rendered at **app.slptransitions.com/companies** (`app/companies/page.tsx` + `components/CompaniesDirectory.tsx`). Search + 5 category facets. `noindex` with canonical to the WP lead-magnet page so the two don't compete.
+- **No role filter, deliberately.** The `roles` field is observed-at-some-point, not live openings. Filtering or badging on it implied a job board we don't run. If live postings ever get ingested (see the weekly-digest idea in the Notion action plan), it can come back.
+- Delivery chain: WP `/ed-health-tech-jobs/` → MailerLite form `105146994009311053` (groot 9454261) → group **Ed and Health Tech List** `105147013209786016` → automation `105149559028582086` → email. The form's success block now links straight to /companies.
+- **⚠️ The MailerLite welcome email still links to the retired Airtable URL** — it must be edited by hand in MailerLite (automation email content isn't writable via their API).
+- WP gotcha: the success-block button is a hand edit inside the pasted MailerLite embed. Re-pasting the form code from MailerLite wipes it; there's an HTML comment in the page saying so.
+- Dead domain found 2026-08-02: **freshslp.com now redirects to a spam site** and was linked from the Mattie Murrey-Tegels post. Link removed, correction note added. Re-check other outbound links periodically.
