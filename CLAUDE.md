@@ -72,3 +72,9 @@ Owner: James Berges (jamoberges@gmail.com) — SLP → growth marketer; hosts th
 - WP gotcha: re-uploading media under the SAME filename does NOT regenerate the -300x158/-600x315 crops — grids keep serving stale thumbnails. Always upload under a versioned filename.
 - Section heading is "Guides", not "Start here": an imperative there competes with the hero CTA for the reader's next action. Type scale 58→34 (1.71) is fine; the problem was semantic, not visual.
 - Homepage structure: hero → Guides grid (cat 99, slug `guides`) → Real Transitions grid (cat 100) → Browse-all → 4 value props → closing quiz CTA. Grids are category-driven; publishing new posts can't evict the guides.
+
+## Companies-list lead magnet (audited 2026-08-02)
+- Delivery chain is intact: WP page `/ed-health-tech-jobs/` → MailerLite embedded form `105146994009311053` (groot id 9454261, 788 conversions) → group **Ed and Health Tech List** `105147013209786016` → automation "Simple welcome email" `105149559028582086` (enabled) → email containing the Airtable link.
+- **The list is this Airtable view:** https://airtable.com/appywCZNDxFveMSks/shrmMnQY1c5vEBjv4 — it lives only in MailerLite's welcome email and in the form's success block. It is NOT in the repo or in `lib/companies.ts` (that's the separate 123-company DB used by the app).
+- The success block now shows the Airtable link as a button immediately, so the page's "instant access" promise is true and delivery no longer depends on inbox/spam. **That button is a hand edit inside the MailerLite embed markup — re-pasting the form code from MailerLite will wipe it.** There's an HTML comment in the page saying so.
+- MailerLite's API does not expose a redirect-on-success setting for embedded forms (`settings` only carries double_optin/groot_id), so on-page markup is the only programmatic lever.
