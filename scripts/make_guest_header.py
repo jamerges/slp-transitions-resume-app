@@ -185,6 +185,14 @@ if __name__ == "__main__":
         dict(photo="taimi-shepis.jpeg", kicker="Real transition",
              name="Taimi Shepis", role="Yoga and anxiety coach — former SLP",
              out="00-yoga-and-anxiety-coach.png"),
+        # Bethany's photo is her own published Medium profile avatar; Caitlin's
+        # was already on the site, supplied for her interview.
+        dict(photo="bethany-riebock.jpeg", kicker="Real transition",
+             name="Bethany Riebock", role="UX Researcher — former medical SLP and rehab director",
+             out="00-slp-to-ux.png"),
+        dict(photo="caitlin-mueller.jpeg", kicker="Real transition",
+             name="Caitlin Mueller", role="Clinical consultant & marketing in AAC — former SLP",
+             out="00-clinical-consultant-and-marketing.png"),
     ]
 
     only = sys.argv[1] if len(sys.argv) > 1 else None
