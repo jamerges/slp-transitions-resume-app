@@ -167,11 +167,14 @@ const NAV = [
   { label: "Contact", href: `${SITE}/contact-us/` },
 ];
 
-export function PageShell({ children }: { children: ReactNode }) {
+// `wide` widens the content column for grid-heavy pages (the companies
+// directory); the 680px default is tuned for reading, not for cards.
+export function PageShell({ children, wide = false }: { children: ReactNode; wide?: boolean }) {
+  const wrap = wide ? { ...S.wrap, maxWidth: 1100 } : S.wrap;
   return (
     <div style={S.root}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
-      <div style={{ ...S.wrap, padding: "32px 0 20px", borderBottom: "1px solid var(--border)", marginBottom: 28 }}>
+      <div style={{ ...wrap, padding: "32px 0 20px", borderBottom: "1px solid var(--border)", marginBottom: 28 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
           <a href={SITE} style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center", gap: 10 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -195,11 +198,11 @@ export function PageShell({ children }: { children: ReactNode }) {
         </div>
       </div>
 
-      {children}
+      <div style={wrap}>{children}</div>
 
       {/* Footer deliberately has no nav — the header already carries it, and on
           short pages the two menus stacked and read as a duplicate. */}
-      <div style={{ ...S.wrap, padding: "28px 0", borderTop: "1px solid var(--border)", marginTop: 32, textAlign: "center" }}>
+      <div style={{ ...wrap, padding: "28px 0", borderTop: "1px solid var(--border)", marginTop: 32, textAlign: "center" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 8 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo-icon.png" alt="" width={18} height={18} style={{ display: "block" }} />

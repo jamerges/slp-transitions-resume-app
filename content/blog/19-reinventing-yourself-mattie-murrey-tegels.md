@@ -14,7 +14,7 @@ source: "Xceptional Leaders podcast"
 
 # Reinventing Yourself Mid-Career: Mattie Murrey-Tegels on the 300 Sticky Notes That Redirected Her
 
-**The short answer:** Mattie Murrey-Tegels spent decades as a medical speech-language pathologist before deciding she wanted something different from the second half of her career. She hired a life coach, wrote 300 sticky notes of things she wanted from her life, and sorted them onto a timeline. She is now an assistant professor, an author, the host of *The Missing Link for SLPs*, and the founder of [Fresh SLP](https://freshslp.com) and Badass SLP, where she coaches clinicians through the same questions. Her definition of a badass SLP has nothing to do with the motorcycle: **"doing what you wanna do, throttling up your career or your life where you want to go, not owing an explanation or rationalization to anybody."**
+**The short answer:** Mattie Murrey-Tegels spent decades as a medical speech-language pathologist before deciding she wanted something different from the second half of her career. She hired a life coach, wrote 300 sticky notes of things she wanted from her life, and sorted them onto a timeline. She is now an assistant professor, an author, the host of *The Missing Link for SLPs*, and the founder of Fresh SLP and Badass SLP, where she coaches clinicians through the same questions. Her definition of a badass SLP has nothing to do with the motorcycle: **"doing what you wanna do, throttling up your career or your life where you want to go, not owing an explanation or rationalization to anybody."**
 
 **Takeaways:**
 
@@ -89,5 +89,7 @@ She also did it in her fifties, after a decade of raising five children alone. I
 Start with the vacation test. If you come back dreading it, you have your answer, and 300 sticky notes is a cheap next step.
 
 ---
+
+*Note: this article previously linked to freshslp.com. That domain no longer belongs to Fresh SLP &mdash; it now redirects elsewhere &mdash; so the link has been removed. Reach Mattie through [The Missing Link for SLPs](https://the-missing-link-for-slps.castos.com/) podcast instead.*
 
 *This article summarizes a conversation from the Xceptional Leaders podcast, co-hosted by James Berges and Mai Ling Chan, for readers considering non-clinical work. The episode includes a brief mention of the guest's husband's death by suicide, which she raises herself and does not dwell on; this article follows her lead. If you're struggling, the 988 Suicide & Crisis Lifeline is available 24/7 by call or text in the US. Roles and details reflect the guest's own account at the time of recording plus subsequent public information, and may have changed further since.*
