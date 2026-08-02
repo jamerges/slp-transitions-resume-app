@@ -70,4 +70,5 @@ Owner: James Berges (jamoberges@gmail.com) — SLP → growth marketer; hosts th
 - Site tagline (Settings → General) was "Learn How SLPs find fulfilling second careers" and leaked into Yoast JSON-LD; now "Non-clinical careers for SLPs — real salary ranges, honest timelines, real stories."
 - Site favicon was a cropped Unsplash photo since 2021; now the split-road-sign logo (media 3495).
 - WP gotcha: re-uploading media under the SAME filename does NOT regenerate the -300x158/-600x315 crops — grids keep serving stale thumbnails. Always upload under a versioned filename.
-- Homepage structure: hero → Start Here grid (cat 99) → Real Transitions grid (cat 100) → Browse-all → 4 value props → closing quiz CTA. Grids are category-driven; publishing new posts can't evict the guides.
+- Section heading is "Guides", not "Start here": an imperative there competes with the hero CTA for the reader's next action. Type scale 58→34 (1.71) is fine; the problem was semantic, not visual.
+- Homepage structure: hero → Guides grid (cat 99, slug `guides`) → Real Transitions grid (cat 100) → Browse-all → 4 value props → closing quiz CTA. Grids are category-driven; publishing new posts can't evict the guides.

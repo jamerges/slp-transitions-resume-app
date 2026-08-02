@@ -100,7 +100,7 @@ GUIDES = [
     # Older posts brought into the same visual system. The two below are
     # interviews with no headshot on file, so they use the stat layout rather
     # than the guest-photo one.
-    ("00-alternative-careers-flagship", "Start here", "13 non-clinical paths",
+    ("00-alternative-careers-flagship", "Overview", "13 non-clinical paths",
      "The salary range, the timeline, and what each one actually asks of you."),
     ("00-slp-software-engineer", "Real transition", "$96K, self-taught",
      "An SLP working part-time SNF gigs taught herself to code. Now she engineers in Austin."),
