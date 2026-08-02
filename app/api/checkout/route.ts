@@ -17,7 +17,12 @@ function getStripe(): Stripe {
   return stripe;
 }
 
-const PRICE_ID = process.env.STRIPE_PRICE_ID || "price_1TRlBQKyPrmclvwmo8coeL30";
+// LIVE $24 price. The fallback used to be the *test* price, so any deploy
+// where STRIPE_PRICE_ID went missing silently checked out against test mode
+// while the key was live — which is exactly how this broke. Price IDs are
+// not secrets, so defaulting to the real one is safe and fails closed.
+// Set STRIPE_PRICE_ID to a test price to run this flow in test mode.
+const PRICE_ID = process.env.STRIPE_PRICE_ID || "price_1TzOQ0KyPrmclvwmStUeaCoj";
 
 export async function POST(req: Request) {
   try {
