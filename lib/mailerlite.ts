@@ -9,15 +9,17 @@
 
 const API = "https://connect.mailerlite.com/api";
 
-/** Per-quiz-path groups, so a sequence can target one path's takers. */
+/** Per-quiz-path groups, so a sequence can target one path's takers.
+ *  KEYED BY `roleOption` from lib/quiz.ts — not the display label. Those two
+ *  differ for several paths, and a mismatch fails silently (no group added). */
 export const QUIZ_PATH_GROUPS: Record<string, string> = {
   "Customer Success / Implementation": "194651287211476747",
   "Project / Program Management": "194651287961207874",
-  "Healthcare Data / Analytics": "194651288674239817",
+  "Data Analysis": "194651288674239817",
   "Clinical Liaison / Utilization Review": "194651289392514526",
   "Clinical Informatics / EHR": "194651290097157641",
-  "Instructional Design / Learning": "194651290808092182",
-  "Content / Marketing": "194651291552581188",
+  "Instructional Design": "194651290808092182",
+  "Content Strategy / Marketing": "194651291552581188",
   "Clinical Educator / Trainer": "194651292277147519",
 };
 
