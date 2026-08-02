@@ -4,6 +4,7 @@ import { callClaude } from "@/lib/anthropic";
 import { buildReportPrompt, type ExploreInput } from "@/lib/prompts";
 import { claimOnce, retrieveInputs, retrieveResult, stashResult } from "@/lib/stash";
 import { sendReportEmail, sendResumeLinkEmail } from "@/lib/email";
+import { upsertSubscriber, CUSTOMER_GROUPS, QUIZ_PATH_GROUPS } from "@/lib/mailerlite";
 
 export const runtime = "nodejs";
 // Full generation measured at ~140s with all sections; 300 is the Fluid-compute ceiling on Hobby.
@@ -98,6 +99,19 @@ export async function POST(req: Request) {
       } catch (err: any) {
         console.error("[/api/report-finalize] email failed", err);
       }
+    }
+
+    // Buyers land in a Customers group so they can be excluded from acquisition
+    // sends and targeted for the $24 upsell. Never block the report on this.
+    if (email) {
+      upsertSubscriber({
+        email,
+        groups: [CUSTOMER_GROUPS.report, QUIZ_PATH_GROUPS[inputs.goals?.targetRoles?.[0] || ""] || ""],
+        fields: {
+          customer_product: "$9 Pivot Report",
+          transition_stage: inputs.goals?.transitionStage || "",
+        },
+      }).catch((e) => console.error("[report-finalize] mailerlite", e));
     }
 
     const payload = { report, email, emailSent };

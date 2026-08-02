@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { PATHS } from "@/lib/quiz";
 import { sendQuizResultEmail } from "@/lib/email";
+import { upsertSubscriber, QUIZ_PATH_GROUPS } from "@/lib/mailerlite";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
@@ -21,34 +22,14 @@ export async function POST(req: Request) {
     const runnerUp = runnerUpSlug ? PATHS[runnerUpSlug] : null;
 
     // Subscribe first — the list is the point. Never let an email failure block it.
-    const apiKey = process.env.MAILERLITE_API_KEY;
-    const groupId = process.env.MAILERLITE_GROUP_ID;
-    if (apiKey && groupId) {
-      try {
-        const resp = await fetch("https://connect.mailerlite.com/api/subscribers", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: `Bearer ${apiKey}`,
-          },
-          body: JSON.stringify({
-            email,
-            groups: [groupId],
-            fields: {
-              name: name || "",
-              // Segmentable: lets you email "everyone whose quiz said informatics".
-              quiz_result: top.label,
-            },
-          }),
-        });
-        if (!resp.ok) {
-          console.error("[/api/quiz-result] MailerLite", resp.status, (await resp.text()).slice(0, 240));
-        }
-      } catch (e) {
-        console.error("[/api/quiz-result] MailerLite failed", e);
-      }
-    }
+    // Two groups: the master quiz group and the one for this specific path, so a
+    // sequence can target "everyone whose quiz said informatics" directly.
+    await upsertSubscriber({
+      email,
+      name,
+      groups: [process.env.MAILERLITE_GROUP_ID || "", QUIZ_PATH_GROUPS[top.roleOption] || ""],
+      fields: { quiz_result: top.label },
+    });
 
     let emailed = false;
     try {

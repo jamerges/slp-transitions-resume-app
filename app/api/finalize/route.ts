@@ -4,6 +4,7 @@ import { callClaude } from "@/lib/anthropic";
 import { buildFullPromptParts } from "@/lib/prompts";
 import { retrieveInputs, retrieveResult, stashResult } from "@/lib/stash";
 import { sendFullResultsEmail } from "@/lib/email";
+import { upsertSubscriber, CUSTOMER_GROUPS } from "@/lib/mailerlite";
 
 export const runtime = "nodejs";
 // Full generation measured at ~140s with all sections; 300 is the Fluid-compute ceiling on Hobby.
@@ -78,6 +79,15 @@ export async function POST(req: Request) {
     } catch (err: any) {
       console.error("[/api/finalize] generation failed", err);
       generationError = err?.message || "Generation failed";
+    }
+
+    // $24 buyers -> Customers group, so acquisition sends can exclude them.
+    if (inputs.email) {
+      upsertSubscriber({
+        email: inputs.email,
+        groups: [CUSTOMER_GROUPS.suite],
+        fields: { customer_product: "$24 Career Pivot Suite" },
+      }).catch((e) => console.error("[finalize] mailerlite", e));
     }
 
     let emailSent = false;
