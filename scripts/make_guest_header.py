@@ -174,6 +174,9 @@ if __name__ == "__main__":
         dict(photo="chris-wenger.jpg", kicker="Entrepreneurs",
              name="Chris Wenger", role='SLP, "Speech Dude" — neurodivergent-affirming practice',
              out="chris-wenger-photo.png"),
+        dict(photo="mattie-murrey-tegels.jpg", kicker="Entrepreneurs",
+             name="Mattie Murrey-Tegels", role="Founder, Fresh SLP & Badass SLP — medical SLP, 25+ years",
+             out="mattie-murrey-tegels-photo.png"),
     ]
 
     only = sys.argv[1] if len(sys.argv) > 1 else None
