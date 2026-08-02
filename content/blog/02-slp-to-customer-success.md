@@ -15,7 +15,7 @@ There were days when I felt like a customer service representative. A customer s
 
 I used to say that as a complaint. The insurance calls. The emails from a parent at 4:45 on a Friday. The forty-five minutes I spent convincing a skeptical family that yes, this treatment plan was worth their time.
 
-Then I started interviewing SLPs who'd left clinical work, and a funny thing happened. One path kept showing up — the professional version of everything I was complaining about. Except it pays $75-120k, it's often remote, and it has the best effort-to-odds ratio of any transition I've researched.
+Then I started interviewing SLPs who'd left clinical work, and a funny thing happened. One path kept showing up. The professional version of everything I was complaining about. Except it pays $75-120k, it's often remote, and it has the best effort-to-odds ratio of any transition I've researched.
 
 It's called customer success. And almost nobody in our field talks about it, mostly because almost nobody in our field knows it exists.
 
@@ -23,17 +23,17 @@ Let's fix that.
 
 ## What does a customer success manager actually do all day?
 
-Strip away the job-posting language and here's the actual job: a customer success manager (CSM) at a software or health-tech company owns a portfolio of customer accounts and makes sure those customers get real value from the product — so they stick around.
+Strip away the job-posting language and here's the actual job: a customer success manager (CSM) at a software or health-tech company owns a portfolio of customer accounts and makes sure those customers get real value from the product. So they stick around.
 
-Not sales. You're not cold-calling anyone. Not tech support either — you're not resetting passwords all day.
+Not sales. You're not cold-calling anyone. Not tech support either. You're not resetting passwords all day.
 
 A typical week looks like this:
 
 - **Check-in calls** with your accounts. How's it going, what's blocked, what do you need.
 - **Onboarding and training** new customers so they actually use the thing they bought.
-- **Monitoring account health** — usage data, satisfaction, warning signs that someone's about to quietly disappear.
+- **Monitoring account health**, usage data, satisfaction, warning signs that someone's about to quietly disappear.
 - **Coordinating internally** — flagging problems to the product team, chasing down answers, documenting everything.
-- **Renewal conversations** — the gentle, long-game version of "let's keep going."
+- **Renewal conversations**. The gentle, long-game version of "let's keep going."
 
 If you squint, it's discharge planning in reverse. Instead of working toward a graceful exit, you're working toward the customer choosing to stay. Same relationship skills. Same "let me translate this complicated thing into something you can actually use" muscle.
 
@@ -41,14 +41,14 @@ If you squint, it's discharge planning in reverse. Instead of working toward a g
 
 Because you've been doing the job for years under a different name.
 
-There's an interview line from a real SLP transitioner that lands almost every time: **"I've been doing customer success my whole career — I just called it patient and family care."** Then you follow it with a metric, because companies want numbers, not vibes.
+There's an interview line from a real SLP transitioner that lands almost every time: **"I've been doing customer success my whole career. I just called it patient and family care."** Then you follow it with a metric, because companies want numbers, not vibes.
 
 Here's how the translation actually works, using phrasing that has gotten SLPs hired:
 
-- **Your caseload is a portfolio.** Don't say "I had a caseload of 55." Say "I managed a portfolio of 55 concurrent clients" — and keep the number. That number is the whole point. CSMs are judged on how many accounts they can handle without dropping any.
+- **Your caseload is a portfolio.** Don't say "I had a caseload of 55." Say "I managed a portfolio of 55 concurrent clients". And keep the number. That number is the whole point. CSMs are judged on how many accounts they can handle without dropping any.
 - **Families are customers.** Long-term relationship management. Retention. Keeping someone engaged through a hard, slow process when quitting would be easier.
 - **Selling a treatment plan to a skeptical family** is persuasion, objection handling, and closing. You've done it a hundred times without ever calling it that.
-- **Translating jargon for parents** is plain-language communication — the exact skill CSMs use when they explain a technical product to a frustrated customer.
+- **Translating jargon for parents** is plain-language communication. The exact skill CSMs use when they explain a technical product to a frustrated customer.
 
 And here's the unfair advantage nobody mentions: **health-tech CSM roles routinely list HIPAA fluency as a requirement.** Recruiters screen for it. You've lived inside HIPAA your entire career. The thing that felt like compliance homework in the clinic is a checkbox most career changers can't check.
 
@@ -84,15 +84,15 @@ Here's what's actually happening on the other side of the table. When a hiring m
 
 Your entire interview strategy is answering those four doubts before they're asked.
 
-Which means one rule above all: **never lead with burnout.** I know. The burnout is real — mine was — and it's probably why you're reading this. But "I need to get out" answers none of their doubts and feeds the biggest one. Frame pull, not push.
+Which means one rule above all: **never lead with burnout.** I know. The burnout is real — mine was. And it's probably why you're reading this. But "I need to get out" answers none of their doubts and feeds the biggest one. Frame pull, not push.
 
 The structure that works for SLPs who've landed these roles goes like this:
 
 1. **What drew you here** — framed as moving toward customer success, not fleeing the clinic. ("I realized the part of my job I protected on my worst weeks was the relationship side — keeping families engaged through a long process.")
-2. **Evidence of preparation** — the free bootcamp you started, the informational interviews you did, the CS podcasts and vocabulary you've absorbed. Proof of investment kills the whim-doubt on contact.
-3. **Two or three accomplishments mapped onto the role's first-90-days problems.** Not "I'm a great communicator" — that's a label. "I managed a portfolio of 55 concurrent clients and kept families engaged across a school year" — that's evidence.
+2. **Evidence of preparation**. The free bootcamp you started, the informational interviews you did, the CS podcasts and vocabulary you've absorbed. Proof of investment kills the whim-doubt on contact.
+3. **Two or three accomplishments mapped onto the role's first-90-days problems.** Not "I'm a great communicator". That's a label. "I managed a portfolio of 55 concurrent clients and kept families engaged across a school year". That's evidence.
 
-And yes, that's the moment for the line: *I've been doing customer success my whole career — I just called it patient and family care.* Followed immediately by your number.
+And yes, that's the moment for the line: *I've been doing customer success my whole career. I just called it patient and family care.* Followed immediately by your number.
 
 One resume note while we're here: recruiters spend about 7.4 seconds on a first pass, and for career changers a combination format — summary and skills up top, work history below — is what works. Skip the objective statement entirely; value-focused summaries get roughly 28% more callbacks than "seeking a position where I can grow." And mirror the job description's exact vocabulary. If they say "onboarding," you say "onboarding" — not "orientation."
 
@@ -104,10 +104,8 @@ Not "someday." This month. Three moves:
 
 **2. Build a list of ten target companies.** Start with the five speech-tech names above, add five health-tech or edtech companies, and set job alerts for "implementation specialist" and "onboarding" — not just "customer success manager." When something posts, apply within 48 hours.
 
-**3. Ask two people for informational interviews.** Search LinkedIn for "SLP" plus "customer success" — they exist, and most of them remember exactly how it felt to be where you are. Expect some silence (20-25% of these asks go unanswered — that's normal, not a rejection of you). The ones who reply become your referral network.
+**3. Ask two people for informational interviews.** Search LinkedIn for "SLP" plus "customer success". They exist, and most of them remember exactly how it felt to be where you are. Expect some silence (20-25% of these asks go unanswered. That's normal, not a rejection of you). The ones who reply become your referral network.
 
-If the translation part is where you get stuck — staring at "provided skilled intervention across a diverse caseload" with no idea how to make it sound like a business skill — that's exactly what I built the [SLP Career Pivot Suite](https://app.slptransitions.com) for. Paste in a real job description and the free preview shows your match score and three sample bullet translations. The full package ($24, one-time, no subscription ever) rewrites every bullet, drafts the cover letter, and maps your gaps with actions to close them.
+If the translation part is where you get stuck — staring at "provided skilled intervention across a diverse caseload" with no idea how to make it sound like a business skill. That is what I built the [SLP Career Pivot Suite](https://app.slptransitions.com) for. Paste in a real job description and the free preview shows your match score and three sample bullet translations. The full package ($24, one-time, no subscription ever) rewrites every bullet, drafts the cover letter, and maps your gaps with actions to close them.
 
-You're more than just a clinician. You've been running customer success for years — the only thing missing was the job title.
-
-Thanks for reading! If this was useful, you'll love the SLP Transitions newsletter — weekly tips and lessons from SLPs who actually made the leap. And if you're mid-transition and want to talk it through, reach out anytime at james@slptransitions.com. I read everything.
+You're more than just a clinician. You've been running customer success for years. The only thing missing was the job title.And if you're mid-transition and want to talk it through, reach out anytime at james@slptransitions.com. I read everything.

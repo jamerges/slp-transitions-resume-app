@@ -21,7 +21,7 @@ That's like a chef listing "food."
 
 Here's the problem, and it's not you: **nobody really understands what SLPs do or the transferable skills that come with the job.** Not recruiters, not hiring managers, not the applicant tracking system reading your resume at 2 a.m. And most generic career advice doesn't help, because the people writing it don't understand speech either.
 
-So this post is the translation layer. Not "you have great soft skills!" — the actual words, taken from SLPs who got hired, that turn ten years of caseload chaos into language a hiring manager can map to their open role.
+So this post is the translation layer. Not "you have great soft skills!". The actual words, taken from SLPs who got hired, that turn ten years of caseload chaos into language a hiring manager can map to their open role.
 
 ## Why does the usual "transferable skills" advice fail?
 
@@ -29,11 +29,11 @@ You've seen the standard advice. It shows up in every Forbes-style listicle abou
 
 Then you dutifully write "strong interpersonal skills, detail-oriented, works well under pressure," and hear nothing back.
 
-Here's the trap: **the advice tells you to highlight your accomplishments, but you describe them in the language of your old industry.** You write "managed a caseload of 60 students with IEPs across three schools" — which is genuinely impressive — and the recruiter reading it has 7.4 seconds (that's the real average for a first pass) to figure out what a caseload is, what an IEP is, and why any of it matters for their customer success opening.
+Here's the trap: **the advice tells you to highlight your accomplishments, but you describe them in the language of your old industry.** You write "managed a caseload of 60 students with IEPs across three schools", which is genuinely impressive. And the recruiter reading it has 7.4 seconds (that's the real average for a first pass) to figure out what a caseload is, what an IEP is, and why any of it matters for their customer success opening.
 
 They can't. So they move on.
 
-And no, the software isn't secretly rejecting you either. The "75% of resumes get auto-rejected by ATS" stat traces back to a 2012 sales pitch. Around 92% of recruiters do *not* auto-reject on a match score — modern systems match semantically, rank candidates, and then **humans reject**. Which is almost worse news, honestly. It means a human saw your clinical jargon, couldn't map it, and passed.
+And no, the software isn't secretly rejecting you either. The "75% of resumes get auto-rejected by ATS" stat traces back to a 2012 sales pitch. Around 92% of recruiters do *not* auto-reject on a match score, modern systems match semantically, rank candidates, and then **humans reject**. Which is almost worse news, honestly. It means a human saw your clinical jargon, couldn't map it, and passed.
 
 That's rejection reason number two on the hiring-side list, by the way: *skills described in clinical jargon the interviewer can't map.* It sits right next to "retention doubt" (will they bail back to clinical?) and "no proof of investment in the new field."
 
@@ -41,7 +41,7 @@ The fix isn't more skills. It's translation.
 
 ## What are the actual SLP transferable skills — translated?
 
-This is the centerpiece. These translations come from SLPs who actually got hired into non-clinical roles — not from a thesaurus.
+This is the centerpiece. These translations come from SLPs who actually got hired into non-clinical roles, not from a thesaurus.
 
 | What you did as an SLP | What it's called outside the clinic |
 |---|---|
@@ -56,7 +56,7 @@ This is the centerpiece. These translations come from SLPs who actually got hire
 | Progress monitoring and data collection | **Outcome analytics** |
 | Families you kept engaged for years | **Customers** — long-term relationship management and retention |
 
-Read that left column again. That's a project manager, a trainer, a QA analyst, a salesperson, and a data person — all wearing one very tired cardigan.
+Read that left column again. That's a project manager, a trainer, a QA analyst, a salesperson, and a data person, all wearing one very tired cardigan.
 
 A few notes on using this table well:
 
@@ -68,11 +68,11 @@ A few notes on using this table well:
 
 ## Why do numbers beat skills labels every time?
 
-Here's the line from the hiring side that should be taped to your laptop: **"Companies want numbers — by how much did your project improve variable y?"**
+Here's the line from the hiring side that should be taped to your laptop: **"Companies want numbers, by how much did your project improve variable y?"**
 
 Not "did you do the thing." *By how much.*
 
-This is where SLPs quietly have an advantage, because you've been running a measurement operation your whole career. You wrote measurable goals. You took data — sometimes while a client threw the data sheet. You graphed progress and presented it to rooms of people who didn't always want to hear it.
+This is where SLPs quietly have an advantage, because you've been running a measurement operation your whole career. You wrote measurable goals. You took data, sometimes while a client threw the data sheet. You graphed progress and presented it to rooms of people who didn't always want to hear it.
 
 You just never called it anything.
 
@@ -81,15 +81,15 @@ Compare these two bullets:
 - "Strong communication skills"
 - "Presented outcome data to interdisciplinary teams and translated it into treatment decisions"
 
-The second one is the one that gets interviews. **Specificity beats labels.** A label says "trust me." A specific sentence says "here's the evidence." And in a market averaging 242 applications per opening — up 111% since 2022 — "trust me" doesn't survive the first pass.
+The second one is the one that gets interviews. **Specificity beats labels.** A label says "trust me." A specific sentence says "here's the evidence." And in a market averaging 242 applications per opening, up 111% since 2022 — "trust me" doesn't survive the first pass.
 
-One more reason to write specific, human sentences: the AI backlash is real. 62% of employers reject AI-generated resumes that lack personalization, and a third of hiring managers say they can spot one in under 20 seconds. The tell-words are things like "adept," "spearheaded," and "results-driven" — the exact vocabulary a generic tool will happily paste into your bullets. Your weirdly specific caseload numbers are your proof of humanity. Use them.
+One more reason to write specific, human sentences: the AI backlash is real. 62% of employers reject AI-generated resumes that lack personalization, and a third of hiring managers say they can spot one in under 20 seconds. The tell-words are things like "adept," "spearheaded," and "results-driven". The exact vocabulary a generic tool will happily paste into your bullets. Your weirdly specific caseload numbers are your proof of humanity. Use them.
 
 ## Which SLP skills map to which non-clinical role?
 
 Not every skill matters equally for every path. Here's the quick mapping, based on where SLPs actually land:
 
-**Customer Success / Implementation (health-tech, SaaS, edtech):** Lead with family relationships → customer retention, selling treatment plans → objection handling, and jargon translation → onboarding communication. There's an interview line from a transitioned SLP that works because it's true: "I've been doing customer success my whole career — I just called it patient/family care." Follow it with a metric. And at speech-tech companies — Expressable, Presence, Tobii Dynavox, Lingraphica — your CCC-SLP itself is the credential.
+**Customer Success / Implementation (health-tech, SaaS, edtech):** Lead with family relationships → customer retention, selling treatment plans → objection handling, and jargon translation → onboarding communication. There's an interview line from a transitioned SLP that works because it's true: "I've been doing customer success my whole career. I just called it patient/family care." Follow it with a metric. And at speech-tech companies — Expressable, Presence, Tobii Dynavox, Lingraphica — your CCC-SLP itself is the credential.
 
 **Project / Program Management:** Lead with caseload → portfolio of concurrent projects, IEP meetings → cross-functional stakeholder alignment, and treatment plans → goals, timelines, deliverables. Worth knowing: your clinical coordination hours can legitimately count toward the PMP's experience requirement. Also worth knowing: certs alone don't do it — one real transitioner put it bluntly: "no one took me seriously with a CAPM." Certs open doors only *combined with translated experience.*
 
@@ -121,8 +121,4 @@ You weren't "just doing therapy" for the last however-many years. You were manag
 
 The skills were always there. They were just filed under the wrong names.
 
-Now you have the right ones.
-
----
-
-Thanks for reading! If you found value in this article, you'll love the SLP Transitions newsletter — one email a week with tips and lessons from SLPs who've made the leap. And if you want the full list of 100+ ed-tech and health-tech companies that hire people like us, that's free too. Questions? Email me at james@slptransitions.com — I read everything.
+Now you have the right ones.And if you want the full list of 100+ ed-tech and health-tech companies that hire people like us, that's free too. Questions? Email me at james@slptransitions.com. I read everything.

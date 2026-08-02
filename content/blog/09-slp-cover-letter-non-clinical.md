@@ -18,9 +18,9 @@ Let me guess the cover letter you're about to write.
 
 Stop. Please. I say this with love, as someone who wrote that exact letter more than once.
 
-That letter has two problems. First, it says nothing — "strong communication skills" is what every applicant claims, including the ones who reply-all by accident. Second, in 2026 it has a new problem: it reads like AI wrote it. Because for about a third of your competition, AI *did* write it, from the same template, sometimes word for word.
+That letter has two problems. First, it says nothing, "strong communication skills" is what every applicant claims, including the ones who reply-all by accident. Second, in 2026 it has a new problem: it reads like AI wrote it. Because for about a third of your competition, AI *did* write it, from the same template, sometimes word for word.
 
-For most applicants that's embarrassing. For a career changer, it's fatal — because you're the one candidate who actually *needed* the cover letter to work.
+For most applicants that's embarrassing. For a career changer, it's fatal, because you're the one candidate who actually *needed* the cover letter to work.
 
 Let's fix it.
 
@@ -42,7 +42,7 @@ The numbers from the hiring side are brutal. One hiring manager reported that 35
 
 Twenty seconds. About how long it takes to read your first paragraph. If that paragraph is "I am writing to express my interest," you're already in the mental slush pile.
 
-And the five-paragraph skeleton itself has become a tell: intro declaring interest, paragraph of adjectives about yourself, paragraph of flattery about the company, paragraph restating your resume, "I look forward to discussing." Hiring managers have read that skeleton so many times they could hum it. When your letter follows it beat for beat, the content stops mattering — the *shape* has already said "template."
+And the five-paragraph skeleton itself has become a tell: intro declaring interest, paragraph of adjectives about yourself, paragraph of flattery about the company, paragraph restating your resume, "I look forward to discussing." Hiring managers have read that skeleton so many times they could hum it. When your letter follows it beat for beat, the content stops mattering. The *shape* has already said "template."
 
 Here's the psychology underneath, and it's worth internalizing: a cover letter isn't really evaluated on its prose. It's evaluated as a *costly signal* — proof you spent effort on this company specifically. AI slop fails not because the sentences are bad (they're often fine, in a beige way) but because it signals zero cost. It says: I sent this to 80 companies before lunch.
 
@@ -56,7 +56,7 @@ Four jobs. Do these four things and you can ignore every template on the interne
 
 Do not bury the fact that you're a career changer, and do not apologize for it. The recruiter will notice the SLP background in about four seconds anyway; hiding it just looks shifty. Instead, own it and immediately attach it to their world:
 
-*"I'm a speech-language pathologist moving into customer success, and I'd argue I've been doing customer success my whole career — I just called it patient and family care."*
+*"I'm a speech-language pathologist moving into customer success, and I'd argue I've been doing customer success my whole career. I just called it patient and family care."*
 
 That framing — from an SLP who actually landed the role — works because it does three things at once: names the pivot, kills the "do they understand this job?" doubt, and reframes ten years of clinical work as ten years of relevant experience. Follow it with a metric and you've earned the second paragraph.
 
@@ -74,9 +74,9 @@ Keep your numbers, too. "Managed a portfolio of 55 concurrent clients" does more
 
 Here is the paragraph I most need you to hear, so I'll be blunt.
 
-**Never lead with burnout.** Not in the letter, not in the interview. I know it's the true origin story — the red tape, the never-ending paperwork, the uncontrollable caseloads were exactly what started my own search. Your reasons are valid. But the letter is not the venue.
+**Never lead with burnout.** Not in the letter, not in the interview. I know it's the true origin story. The red tape, the never-ending paperwork, the uncontrollable caseloads were exactly what started my own search. Your reasons are valid. But the letter is not the venue.
 
-Remember retention doubt? A letter that says "I'm exhausted by clinical work" reads, to a hiring manager, as "I'm running *from* something" — and people running from something run again. A letter that says "I discovered I'm at my best building systems that help many people at once, and this role is that job" reads as "I'm running *toward* something." Same person. Same history. Completely different hiring risk.
+Remember retention doubt? A letter that says "I'm exhausted by clinical work" reads, to a hiring manager, as "I'm running *from* something". And people running from something run again. A letter that says "I discovered I'm at my best building systems that help many people at once, and this role is that job" reads as "I'm running *toward* something." Same person. Same history. Completely different hiring risk.
 
 Pull, not push. Every sentence about why you're leaving should be rewritten as a sentence about where you're going.
 
@@ -84,13 +84,13 @@ Pull, not push. Every sentence about why you're leaving should be rewritten as a
 
 One is the minimum. A product you've actually used or explored. A real thing about who they serve. A specific line from the job description you're responding to. Something that could not be pasted into any other letter without editing.
 
-This is your costly signal — the ten minutes of research that 35% of your competition provably did not spend. It doesn't need to be poetry. It needs to be *theirs*.
+This is your costly signal. The ten minutes of research that 35% of your competition provably did not spend. It doesn't need to be poetry. It needs to be *theirs*.
 
 ## How should you structure it? (A walkthrough, not a template)
 
 Deliberately not giving you copy-paste text here — copy-paste text is how we got the identical-letters problem. But the shape, and the *why* behind each beat:
 
-**Opening (2–3 sentences):** Name the role, name the pivot, plant your bridge line — the "I've been doing this work under a different job title" claim, with a number nearby. No "I am writing to express my interest." They know. It's a cover letter.
+**Opening (2–3 sentences):** Name the role, name the pivot, plant your bridge line. The "I've been doing this work under a different job title" claim, with a number nearby. No "I am writing to express my interest." They know. It's a cover letter.
 
 **Middle (1–2 short paragraphs):** Your 2–3 mapped accomplishments, tied to their first-90-days problems, with your company-specific detail woven in where it naturally lands. This is the argument section. Numbers over adjectives.
 
@@ -104,13 +104,13 @@ Total: under a page. Well under. If you've ever compressed a semester of progres
 
 Fair question, given that I just spent five paragraphs dunking on AI slop.
 
-The distinction that matters: generic AI *invents* a plausible-sounding candidate. The problem was never automation — it's fabrication and sameness. A tool that starts from your actual history and a specific job description is doing the opposite: making your real experience legible faster.
+The distinction that matters: generic AI *invents* a plausible-sounding candidate. The problem was never automation. It's fabrication and sameness. A tool that starts from your actual history and a specific job description is doing the opposite: making your real experience legible faster.
 
-That's the line I built the [SLP Career Pivot Suite](https://app.slptransitions.com) around. It writes your cover letter from your real resume against the real job description — your actual accomplishments mapped to that role's requirements, pull-framed, with the bridge structure baked in. And you can optionally give it a sample of your writing so the letter sounds like *you*, not like the beige template voice hiring managers have learned to skim past. The preview is free; the full package is $24, one-time, no subscription. Then you read every line and make it true — that part stays your job, and it's the part that makes the 62% rejection stat somebody else's problem.
+That's the line I built the [SLP Career Pivot Suite](https://app.slptransitions.com) around. It writes your cover letter from your real resume against the real job description — your actual accomplishments mapped to that role's requirements, pull-framed, with the bridge structure baked in. And you can optionally give it a sample of your writing so the letter sounds like *you*, not like the beige template voice hiring managers have learned to skim past. The preview is free; the full package is $24, one-time, no subscription. Then you read every line and make it true. That part stays your job, and it's the part that makes the 62% rejection stat somebody else's problem.
 
 ## What's the takeaway?
 
-Your cover letter is the one document in your application that can look the recruiter's actual doubts in the eye — *why this pivot, will they stay, do they get it* — and answer them.
+Your cover letter is the one document in your application that can look the recruiter's actual doubts in the eye — *why this pivot, will they stay, do they get it*. And answer them.
 
 So spend your effort where the doubts live:
 
@@ -122,6 +122,6 @@ So spend your effort where the doubts live:
 
 The five-paragraph template is dead, and honestly, it had a good run.
 
-You're more than just a clinician — the letter's whole job is to make that claim credible in under a page.
+You're more than just a clinician. The letter's whole job is to make that claim credible in under a page.
 
-Thanks for reading! If you found value in this article, you'll love the SLP Transitions newsletter — weekly tips and lessons from SLPs who've successfully made the leap. Stuck on your opening line? Email me at james@slptransitions.com. I read everything.
+Thanks for reading! Stuck on your opening line? Email me at james@slptransitions.com. I read everything.

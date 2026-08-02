@@ -20,7 +20,7 @@ Seven point four seconds. That's less time than it takes to say "individualized 
 
 Which is exactly the problem.
 
-Your clinical resume — the one full of caseloads, IEPs, dysphagia protocols, and SOAP notes — is written in a language the person doing the 7.4-second scan does not speak. They're not rejecting *you*. They're rejecting a document they can't map to their job.
+Your clinical resume. The one full of caseloads, IEPs, dysphagia protocols, and SOAP notes, is written in a language the person doing the 7.4-second scan does not speak. They're not rejecting *you*. They're rejecting a document they can't map to their job.
 
 The good news: this is fixable. Not with a $220 resume writer or a $480 career coach (one SLP I learned about burned through both, plus a teacher-transition program, before finding something that worked). It's fixable with translation. Let me show you how.
 
@@ -28,14 +28,14 @@ The good news: this is fixable. Not with a $220 resume writer or a $480 career c
 
 Because nobody outside our field understands what SLPs actually do.
 
-This comes up constantly in SLP career-change communities: "Nobody really understands what SLPs do or the transferable skills." Even generic career coaches admit they don't get it. You hand a recruiter a resume that says "managed a caseload of 55 students across 3 schools" and they see... a therapist. A very tired therapist. Not a project manager, not a client success professional, not a training specialist — even though you've been doing all three jobs at once, before lunch.
+This comes up constantly in SLP career-change communities: "Nobody really understands what SLPs do or the transferable skills." Even generic career coaches admit they don't get it. You hand a recruiter a resume that says "managed a caseload of 55 students across 3 schools" and they see... a therapist. A very tired therapist. Not a project manager, not a client success professional, not a training specialist, even though you've been doing all three jobs at once, before lunch.
 
-There were days when I felt like a customer service representative — a customer service representative with three degrees. But my old resume didn't say "customer service" anywhere on it. It said "articulation," "fluency," and "AAC." A hiring manager can't map that. And in 7.4 seconds, they won't try.
+There were days when I felt like a customer service representative, a customer service representative with three degrees. But my old resume didn't say "customer service" anywhere on it. It said "articulation," "fluency," and "AAC." A hiring manager can't map that. And in 7.4 seconds, they won't try.
 
 The hidden rejection reasons for career changers go deeper than jargon, though. Hiring-side research keeps surfacing the same four:
 
 1. **Skills described in clinical language the interviewer can't map** (the jargon problem)
-2. **Retention doubt** — "will they bail and go back to clinical work?"
+2. **Retention doubt**, "will they bail and go back to clinical work?"
 3. **No visible proof of investment in the new field**
 4. **Salary mismatch fears**
 
@@ -47,18 +47,18 @@ Probably not. And I want to spend a minute here because ATS panic sells a lot of
 
 You've seen the claim: "75% of resumes are auto-rejected by ATS before a human ever sees them." That number traces back to a 2012 sales pitch. It's marketing, not research. In reality, roughly 92% of recruiters do *not* auto-reject candidates based on a match score. The ATS ranks. Humans reject.
 
-That distinction matters more than it sounds. If a robot were rejecting you, the game would be keyword-stuffing. Since a *human* is rejecting you — after the software sorts the pile — the game is being understandable and relevant at a glance.
+That distinction matters more than it sounds. If a robot were rejecting you, the game would be keyword-stuffing. Since a *human* is rejecting you, after the software sorts the pile. The game is being understandable and relevant at a glance.
 
 Two more things worth knowing:
 
 **Modern systems match semantically.** Newer ATS platforms understand that "stakeholder communication" and "cross-functional collaboration" are related concepts. You don't need to paste the job description in white text at the bottom of the page. (Please don't do that. It's the resume equivalent of hiding vegetables in a smoothie and telling everyone about it.)
 
-**The real filters are knockout questions.** The application form asking "Do you have 2+ years of SaaS experience?" — *that's* what screens people out automatically, not some resume-reading robot with a grudge.
+**The real filters are knockout questions.** The application form asking "Do you have 2+ years of SaaS experience?", *that's* what screens people out automatically, not some resume-reading robot with a grudge.
 
 So where does formatting actually matter? Parsing. If the software can't read your resume, you can't get ranked. The rules are boring and simple:
 
 - **Single column.** Those pretty two-column Canva templates can scramble in parsing.
-- **Standard headers.** "Experience," "Skills," "Education" — not "My Journey."
+- **Standard headers.** "Experience," "Skills," "Education", not "My Journey."
 - **No tables, no graphics, no text boxes.** Save the visual creativity for your therapy materials.
 
 That's it. That's the whole ATS strategy. Everything else is about the human.
@@ -67,7 +67,7 @@ That's it. That's the whole ATS strategy. Everything else is about the human.
 
 The combination format: a professional summary and a skills section at the top, work history below.
 
-Here's why. A chronological resume leads with your job titles — and your job titles all say "Speech-Language Pathologist," which is precisely the thing you're trying to reframe. A combination format lets you lead with the *translation* instead: who you are for this role, and the skills that prove it. By the time the recruiter reaches your clinical job titles, they already have the right frame.
+Here's why. A chronological resume leads with your job titles. And your job titles all say "Speech-Language Pathologist," which is precisely the thing you're trying to reframe. A combination format lets you lead with the *translation* instead: who you are for this role, and the skills that prove it. By the time the recruiter reaches your clinical job titles, they already have the right frame.
 
 Two specifics:
 
@@ -79,7 +79,7 @@ Two specifics:
 
 This is the centerpiece. Everything above is setup; this is the part that changes outcomes.
 
-These translations aren't things I brainstormed on a whiteboard. They come from SLPs who actually got hired into non-clinical roles — the phrasing that worked on real resumes, in real screens:
+These translations aren't things I brainstormed on a whiteboard. They come from SLPs who actually got hired into non-clinical roles. The phrasing that worked on real resumes, in real screens:
 
 | What you did (clinical) | What it becomes (translated) |
 |---|---|
@@ -106,7 +106,7 @@ The numbers are rough: 62% of employers say they reject AI-generated resumes tha
 
 There's even a known tell-word list. If your resume says you're "adept" at "leveraging" skills, that you "spearheaded" initiatives with a "results-driven" mindset — a recruiter's eyes glaze before the second bullet. Not because those words are evil. Because they've read them 200 times this week, in the same order, with no numbers attached.
 
-The AI didn't sit in your IEP meetings. It doesn't know your caseload was 55, or that you trained 12 paraprofessionals, or that you were the only clinician the front office trusted with the EMR template. Generic AI output erases exactly the specifics that make you hireable — and the whole point of your resume is that no one else can claim your numbers.
+The AI didn't sit in your IEP meetings. It doesn't know your caseload was 55, or that you trained 12 paraprofessionals, or that you were the only clinician the front office trusted with the EMR template. Generic AI output erases exactly the specifics that make you hireable. And the whole point of your resume is that no one else can claim your numbers.
 
 Use tools, sure. I built one, and I'm about to mention it. But the rule is non-negotiable: **your real experience, your real numbers, translated — never fabricated, never generic.**
 
@@ -128,7 +128,7 @@ Let's make this concrete. Same experiences, before and after translation:
 
 Notice the pattern: the "before" bullets describe duties in our dialect. The "after" bullets describe outcomes in theirs — verbs first, numbers kept, jargon gone.
 
-Now, honest moment: doing this for your *entire* resume, against a specific job description, is real work. It took me embarrassingly long the first time — I kept sliding back into clinical phrasing like a comfortable pair of Crocs. That's actually why I built the [SLP Career Pivot Suite](https://app.slptransitions.com). You paste your actual resume and a real job description, and it does this translation for you — your real bullets, your real numbers, rewritten in the target role's language, with a match score based on the job's actual requirements. The preview is free (you get the match score and 3 sample bullet translations), and the full version is $24 one-time. No subscription, ever — I have subscription resentment too.
+Now, honest moment: doing this for your *entire* resume, against a specific job description, is real work. It took me embarrassingly long the first time. I kept sliding back into clinical phrasing like a comfortable pair of Crocs. That's actually why I built the [SLP Career Pivot Suite](https://app.slptransitions.com). You paste your actual resume and a real job description, and it does this translation for you — your real bullets, your real numbers, rewritten in the target role's language, with a match score based on the job's actual requirements. The preview is free (you get the match score and 3 sample bullet translations), and the full version is $24 one-time. No subscription, ever. I have subscription resentment too.
 
 Whether you use the tool or a blank document and stubbornness, the method is the same one on this page. The translation table alone will put you ahead of most of those 242 applicants.
 
@@ -144,4 +144,4 @@ Your degree isn't a prison. Your skills compound. The resume's job is simply to 
 
 You've explained harder things to tougher rooms.
 
-Thanks for reading! If you found value in this article, you'll love the SLP Transitions newsletter — weekly tips and lessons from SLPs who've successfully made the leap. And if you're stuck on a specific bullet, email me at james@slptransitions.com. I read everything.
+Thanks for reading! And if you're stuck on a specific bullet, email me at james@slptransitions.com. I read everything.

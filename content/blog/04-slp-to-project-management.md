@@ -17,23 +17,23 @@ Ask "who actually got out, and where did they land?" and one answer shows up mor
 
 Project management.
 
-Of every non-clinical path I've researched, project management has the most documented SLP success stories. Real people, real job titles, real salaries — one SLP became an IT project manager at six figures after 15 months of work; another landed an associate PM role after a year.
+Of every non-clinical path I've researched, project management has the most documented SLP success stories. Real people, real job titles, real salaries, one SLP became an IT project manager at six figures after 15 months of work; another landed an associate PM role after a year.
 
-So this isn't a "here's a fun idea" post. This is a "here's the most-traveled road out, and here's the honest map" post — including the part where a cert alone won't save you. (One transitioner put it bluntly, and I'll get to it.)
+So this isn't a "here's a fun idea" post. This is a "here's the most-traveled road out, and here's the honest map" post, including the part where a cert alone won't save you. (One transitioner put it bluntly, and I'll get to it.)
 
 ## What does a project manager actually do all day?
 
-A project manager gets a group of people — who usually don't report to them — to finish a specific thing by a specific date without the whole effort quietly falling apart.
+A project manager gets a group of people, who usually don't report to them, to finish a specific thing by a specific date without the whole effort quietly falling apart.
 
 That's the job. Everything else is detail.
 
 The day-to-day looks like:
 
 - **Running meetings with people who have competing priorities** and leaving with actual decisions.
-- **Tracking timelines, budgets, and scope** — noticing three weeks early that something's going to slip, instead of three days after it did.
-- **Managing risk** — asking "what could go wrong here?" and having a plan before it does.
+- **Tracking timelines, budgets, and scope**, noticing three weeks early that something's going to slip, instead of three days after it did.
+- **Managing risk**, asking "what could go wrong here?" and having a plan before it does.
 - **Documenting and communicating status** so the people above and around the project always know where things stand.
-- **Removing blockers** — chasing the approval, the answer, the missing piece someone's waiting on.
+- **Removing blockers**, chasing the approval, the answer, the missing piece someone's waiting on.
 
 Read that list again slowly.
 
@@ -41,7 +41,7 @@ You've run an IEP meeting with a teacher, an administrator, a parent in tears, a
 
 ## Why do so many SLPs end up in project management?
 
-Because clinical work *is* project work — we just never got to use the vocabulary.
+Because clinical work *is* project work. We just never got to use the vocabulary.
 
 Here's the translation, in phrasing that has actually gotten SLPs hired:
 
@@ -58,7 +58,7 @@ There's a ladder, and it's cheaper than you'd think:
 
 1. **Google Project Management Certificate** — free to low cost. Teaches the vocabulary and workflow. This is your on-ramp.
 2. **CAPM** — $175. PMI's entry credential, no experience requirement.
-3. **PMP** — around $400 for the exam plus $139 for PMI membership. The credential hiring managers actually recognize — and the one your clinical coordination hours can help qualify you for.
+3. **PMP** — around $400 for the exam plus $139 for PMI membership. The credential hiring managers actually recognize. And the one your clinical coordination hours can help qualify you for.
 
 Now the caveat, straight from an SLP who made this exact transition: **"no one took me seriously with a CAPM."**
 
@@ -80,7 +80,7 @@ I'm not sharing that to scare you. I'm sharing it because the vague version of c
 
 Almost never at a tech company on day one. The entry doors are closer to home:
 
-- **Healthcare organizations.** Hospitals and health systems run enormous numbers of projects — new programs, quality initiatives, system rollouts — and they'd rather hire a project coordinator who already speaks clinician than teach a business grad what a care team is. Your background is an asset here, not a liability.
+- **Healthcare organizations.** Hospitals and health systems run enormous numbers of projects — new programs, quality initiatives, system rollouts. And they'd rather hire a project coordinator who already speaks clinician than teach a business grad what a care team is. Your background is an asset here, not a liability.
 - **Operations roles.** Project coordinator, program coordinator, operations coordinator. Less glamorous titles, much lower gates, and 12-18 months later you're applying to PM roles as someone with the title already on their resume.
 
 Two things decide who gets through those doors. **Referrals** — most successful transitions run through a human connection, and generic online applications without one is the documented failure mode. And **framing** — hiring managers quietly worry career changers will bail back to clinical work when it gets hard. So never lead with burnout. Lead with pull: what you're moving *toward*, evidence you've invested in getting there, and 2-3 accomplishments mapped onto the problems this role faces in its first 90 days.
@@ -91,22 +91,20 @@ Before you send a single application, two myths to clear out — because they sh
 
 **Myth one: "75% of resumes get auto-rejected by the ATS."** That stat traces back to a 2012 sales pitch, not research. Roughly 92% of recruiters do *not* auto-reject on a match score. The software ranks; humans reject. What actually kills applications are the knockout questions on the form itself ("Do you have 3+ years of project management experience?") — which is exactly why the coordinator-first entry path matters. Formatting only matters because broken parsing does kill you: single column, standard section headers, no tables, no graphics. Boring layout, interesting content.
 
-**Myth two: "A robot has to love it, so stuff it with buzzwords."** The opposite problem is now the bigger one. 62% of employers say they reject AI-generated resumes that lack personalization, and a third of hiring managers claim they can spot one in under 20 seconds — the same recycled power-verbs, the same hollow phrasing, no numbers anywhere. Your defense is specificity that no template can fake: your caseload number, your IEP counts, your actual outcomes. The average opening now gets 242 applications. Generic doesn't just underperform; it disappears.
+**Myth two: "A robot has to love it, so stuff it with buzzwords."** The opposite problem is now the bigger one. 62% of employers say they reject AI-generated resumes that lack personalization, and a third of hiring managers claim they can spot one in under 20 seconds. The same recycled power-verbs, the same hollow phrasing, no numbers anywhere. Your defense is specificity that no template can fake: your caseload number, your IEP counts, your actual outcomes. The average opening now gets 242 applications. Generic doesn't just underperform; it disappears.
 
-Structure-wise, career changers do best with a **combination format**: a value-focused summary and a skills section at the top, work history below. Skip the objective statement — they get about 28% fewer callbacks than summaries that lead with what you bring. You've got roughly 7.4 seconds of first-pass attention; spend them on "clinical professional who managed 50 concurrent projects to documented outcomes," not "seeking to pivot into project management."
+Structure-wise, career changers do best with a **combination format**: a value-focused summary and a skills section at the top, work history below. Skip the objective statement. They get about 28% fewer callbacks than summaries that lead with what you bring. You've got roughly 7.4 seconds of first-pass attention; spend them on "clinical professional who managed 50 concurrent projects to documented outcomes," not "seeking to pivot into project management."
 
 And mirror the job description's exact vocabulary. If the posting says "cross-functional stakeholders," your IEP meetings become cross-functional stakeholder alignment. Same truth, their dialect.
 
 ## What should you do this month?
 
-**1. Start the Google PM certificate.** It's free-to-cheap and it starts your vocabulary transplant immediately — you'll begin seeing your clinical work through PM eyes within a week.
+**1. Start the Google PM certificate.** It's free-to-cheap and it starts your vocabulary transplant immediately. You'll begin seeing your clinical work through PM eyes within a week.
 
 **2. Translate your three biggest clinical accomplishments into project language.** Goals, timelines, stakeholders, deliverables, and a number for each — by how much did the thing you ran improve the thing it was supposed to improve?
 
 **3. Find two people who've done it.** LinkedIn search: "SLP" or "speech" plus "project manager." This path has the most alumni of any — which means the most people who remember being you and are willing to say how they did it. Ask for 20 minutes.
 
-If step two is where your brain fogs over — and burnt-out brains genuinely struggle with exactly this kind of executive-function-heavy work, it's not a character flaw — the [SLP Career Pivot Suite](https://app.slptransitions.com) does the translation with you. Paste a real PM job posting; the free preview shows your match score against its actual requirements plus three sample bullet rewrites. The full version is $24 one-time (no subscription, ever) and covers every bullet, the cover letter, gap-closing actions, and interview bridge statements.
+If step two is where your brain fogs over. And burnt-out brains genuinely struggle with exactly this kind of executive-function-heavy work, it's not a character flaw. The [SLP Career Pivot Suite](https://app.slptransitions.com) does the translation with you. Paste a real PM job posting; the free preview shows your match score against its actual requirements plus three sample bullet rewrites. The full version is $24 one-time (no subscription, ever) and covers every bullet, the cover letter, gap-closing actions, and interview bridge statements.
 
-The most-traveled road is traveled for a reason. It's not the shortest. It's the one where the footprints prove it goes somewhere.
-
-Thanks for reading! If this helped, the SLP Transitions newsletter sends weekly tips and lessons from clinicians who made the leap — and if you're partway down this road and want a second opinion, email me at james@slptransitions.com.
+The most-traveled road is traveled for a reason. It's not the shortest. It's the one where the footprints prove it goes somewhere.And if you're partway down this road and want a second opinion, email me at james@slptransitions.com.
