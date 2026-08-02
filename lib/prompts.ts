@@ -50,7 +50,8 @@ export interface FullInput extends PreviewInput {
 export interface ExploreInput {
   resumeText: string;
   goals: UserGoals;
-  workPreferenceLabels: string[];
+  /** Absent for quiz buyers, who never see the preference step. */
+  workPreferenceLabels?: string[];
 }
 
 export function buildPreviewPrompt(input: PreviewInput): string {
@@ -224,7 +225,12 @@ The ninetyDayPlan is an APPLICATION CAMPAIGN, not career exploration — this bu
 
 // $9 Pivot Report — the deep, personal readout sold after the free explore.
 export function buildReportPrompt(input: ExploreInput): string {
-  const { resumeText, goals, workPreferenceLabels } = input;
+  const { resumeText, goals } = input;
+  // Quiz buyers check out before answering any preference questions, so these
+  // can legitimately be absent. Never let a missing optional field throw —
+  // this runs *after* the customer has already paid.
+  const prefs = input.workPreferenceLabels || [];
+  const roles = goals.targetRoles || [];
   return `An SLP purchased a personalized Pivot Report to plan their move out of clinical work. This is a paid product — it must feel personal, specific, and worth real money. Ground every claim in their actual resume and answers; never generic filler.
 
 Resume:
@@ -232,10 +238,7 @@ Resume:
 ${resumeText}
 ---
 
-${INFER_NOTE}${(goals.targetIndustries || []).length ? `\nIndustries they're drawn to: ${(goals.targetIndustries || []).join(", ")}` : ""}${goals.targetRoles.filter((r) => !r.startsWith("Not sure")).length ? `\nRoles they've considered: ${goals.targetRoles.join(", ")}` : ""}
-Work aspects they enjoy: ${workPreferenceLabels.join(", ")}
-Skills they want to highlight: ${goals.topSkills}
-Why they want to transition: ${goals.whyLeaving}
+${INFER_NOTE}${(goals.targetIndustries || []).length ? `\nIndustries they're drawn to: ${(goals.targetIndustries || []).join(", ")}` : ""}${roles.filter((r) => !r.startsWith("Not sure")).length ? `\nRoles they've considered: ${roles.join(", ")}` : ""}${prefs.length ? `\nWork aspects they enjoy: ${prefs.join(", ")}` : ""}${goals.topSkills ? `\nSkills they want to highlight: ${goals.topSkills}` : ""}${goals.whyLeaving ? `\nWhy they want to transition: ${goals.whyLeaving}` : ""}
 
 TRANSITION READINESS PROFILES (assign exactly one, based on their inputs):
 - "The Depleted Expert": running on empty, needs recovery-paced plan; strength is deep competence they can't currently see
@@ -275,7 +278,8 @@ Provide exactly 3 topRoles (ordered by fit-times-realism, grounded in where SLPs
 }
 
 export function buildExplorePrompt(input: ExploreInput): string {
-  const { resumeText, goals, workPreferenceLabels } = input;
+  const { resumeText, goals } = input;
+  const prefs = input.workPreferenceLabels || [];
   return `An SLP wants to leave clinical work but isn't sure what direction to go. Help them explore.
 
 Resume:
@@ -284,7 +288,7 @@ ${resumeText}
 ---
 
 ${INFER_NOTE}${(goals.targetIndustries || []).length ? `\nIndustries they're drawn to: ${(goals.targetIndustries || []).join(", ")}` : ""}
-Work aspects they enjoy: ${workPreferenceLabels.join(", ")}
+Work aspects they enjoy: ${prefs.join(", ")}
 Skills they want to highlight: ${goals.topSkills}
 Why they want to transition: ${goals.whyLeaving}
 

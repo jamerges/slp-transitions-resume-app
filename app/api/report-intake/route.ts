@@ -59,6 +59,10 @@ export async function POST(req: Request) {
     )) as StashedInputs | null;
 
     const merged: StashedInputs = {
+      // Carry through anything the original checkout stashed (e.g. the wizard
+      // path's workPreferenceLabels) so this merge never drops a field the
+      // prompt builders read.
+      ...(existing || {}),
       resumeText,
       jobTitle: existing?.jobTitle || "",
       jobDesc: existing?.jobDesc || "",
