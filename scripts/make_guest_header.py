@@ -19,12 +19,22 @@ G = "/System/Library/Fonts/Supplemental/Georgia.ttf"
 HELV = "/System/Library/Fonts/Helvetica.ttc"
 HELV_B = "/System/Library/Fonts/Helvetica.ttc"
 
-PHOTO_D = 340
-RING = 7
-PHOTO_CX = 90 + PHOTO_D // 2
-PHOTO_CY = H // 2
+# Kadence crops the single-post hero with object-fit:cover into a ~1.5:1 box
+# (measured live: 664x442 rendered from a 1200x630 source), which keeps full
+# height but crops ~10.6% off each side (visible width ~78.7%). Use a tighter
+# safe zone than that measured value so the crop has margin to spare.
+SAFE_W, SAFE_H = int(W * 0.66), int(H * 0.58)
+SAFE_LEFT = (W - SAFE_W) // 2
+SAFE_TOP = (H - SAFE_H) // 2
 
-TEXT_X = 90 + PHOTO_D + 70  # left edge of the text column
+PHOTO_D = 260
+RING = 6
+GAP = 50
+TEXT_MAX_W = SAFE_W - PHOTO_D - GAP
+
+PHOTO_CX = SAFE_LEFT + PHOTO_D // 2
+PHOTO_CY = H // 2
+TEXT_X = SAFE_LEFT + PHOTO_D + GAP
 
 
 def circular_photo(path, diameter):
@@ -71,45 +81,50 @@ def make_header(photo_path, kicker, name, role, out_path):
         photo, (PHOTO_CX - PHOTO_D // 2, PHOTO_CY - PHOTO_D // 2), photo
     )
 
-    max_w = W - TEXT_X - 80
+    max_w = TEXT_MAX_W
 
-    # kicker
-    kf = ImageFont.truetype(HELV, 21)
+    kf = ImageFont.truetype(HELV, 20)
     kicker_u = kicker.upper()
-    d.text((TEXT_X, PHOTO_CY - 148), kicker_u, font=kf, fill=GREEN)
 
-    # name (auto-fit)
-    for size in range(58, 30, -2):
+    # name (auto-fit, capped at 2 lines)
+    for size in range(52, 28, -2):
         nf = ImageFont.truetype(GB, size)
         name_lines = wrap(d, name, nf, max_w)
         if len(name_lines) <= 2:
             break
-    y = PHOTO_CY - 108
+    name_line_h = int(size * 1.18)
+
+    rf = ImageFont.truetype(G, 23)
+    role_lines = wrap(d, role, rf, max_w)[:2]
+    role_line_h = 31
+
+    # Stack kicker + name + rule + role, then center the whole block on the
+    # photo's vertical center so the group reads as one unit.
+    kicker_h = 26
+    rule_gap = 22
+    block_h = (
+        kicker_h
+        + 12
+        + len(name_lines) * name_line_h
+        + rule_gap
+        + len(role_lines) * role_line_h
+    )
+    y = PHOTO_CY - block_h // 2
+
+    d.text((TEXT_X, y), kicker_u, font=kf, fill=GREEN)
+    y += kicker_h + 12
+
     for ln in name_lines:
         d.text((TEXT_X, y), ln, font=nf, fill=DARK)
-        y += int(size * 1.18)
+        y += name_line_h
 
-    # green rule
     y += 6
-    d.rectangle((TEXT_X, y, TEXT_X + 70, y + 4), fill=GREEN)
-    y += 24
+    d.rectangle((TEXT_X, y, TEXT_X + 64, y + 4), fill=GREEN)
+    y += rule_gap
 
-    # role / description line
-    rf = ImageFont.truetype(G, 24)
-    role_lines = wrap(d, role, rf, max_w)[:3]
     for ln in role_lines:
         d.text((TEXT_X, y), ln, font=rf, fill=MUTED)
-        y += 33
-
-    # footer
-    ff = ImageFont.truetype(HELV, 20)
-    d.text((90, H - 64), "slptransitions.com", font=ff, fill=MUTED)
-    d.text(
-        (W - 90 - d.textlength("Xceptional Leaders podcast", font=ff), H - 64),
-        "Xceptional Leaders podcast",
-        font=ff,
-        fill=MUTED,
-    )
+        y += role_line_h
 
     img.save(out_path, optimize=True)
     print(f"wrote {out_path}")
@@ -150,6 +165,15 @@ if __name__ == "__main__":
         dict(photo="jhillika-kumar.jpeg", kicker="Entrepreneurs",
              name="Jhillika Kumar", role="Co-Founder & CEO, Mentra",
              out="jhillika-kumar-photo.png"),
+        dict(photo="conner-reinhardt.png", kicker="Entrepreneurs",
+             name="Conner Reinhardt", role="Co-Founder & COO, Mentra",
+             out="conner-reinhardt-photo.png"),
+        dict(photo="maya-chupkov.png", kicker="Entrepreneurs",
+             name="Maya Chupkov", role="Founder, Proud Stutter",
+             out="maya-chupkov-photo.png"),
+        dict(photo="chris-wenger.jpg", kicker="Entrepreneurs",
+             name="Chris Wenger", role='SLP, "Speech Dude" — neurodivergent-affirming practice',
+             out="chris-wenger-photo.png"),
     ]
 
     only = sys.argv[1] if len(sys.argv) > 1 else None
