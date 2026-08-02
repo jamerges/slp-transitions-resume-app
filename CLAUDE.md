@@ -64,3 +64,10 @@ Owner: James Berges (jamoberges@gmail.com) — SLP → growth marketer; hosts th
 - **Reader mail dries up after 2024**, matching the MailerLite outage. The list isn't just distribution — it's the voice-of-customer input.
 - Dead links in old plans: rehabrebels.org now redirects elsewhere; slpburnoutcoach.com has an expired cert (both are named affiliate/pitch targets).
 - The Notion to-do that said "real card, real $24, then refund yourself" has been corrected — it contradicted the live-mode rule above.
+
+## Homepage design system (2026-08-02)
+- Hero rebuilt: cream/white, kicker + 58px H1 ("You're more than just a clinician." — the brand reframe from the style guide), subhead, quiz CTA, proof line ("Free · 2 minutes · built on 123 companies"). Font sizes use clamp() — fixed px broke mobile. The old hero was a 600px-wide band with an off-brand #2f44f5 gradient over 2021 Unsplash stock.
+- Site tagline (Settings → General) was "Learn How SLPs find fulfilling second careers" and leaked into Yoast JSON-LD; now "Non-clinical careers for SLPs — real salary ranges, honest timelines, real stories."
+- Site favicon was a cropped Unsplash photo since 2021; now the split-road-sign logo (media 3495).
+- WP gotcha: re-uploading media under the SAME filename does NOT regenerate the -300x158/-600x315 crops — grids keep serving stale thumbnails. Always upload under a versioned filename.
+- Homepage structure: hero → Start Here grid (cat 99) → Real Transitions grid (cat 100) → Browse-all → 4 value props → closing quiz CTA. Grids are category-driven; publishing new posts can't evict the guides.
