@@ -56,3 +56,11 @@ Owner: James Berges (jamoberges@gmail.com) — SLP → growth marketer; hosts th
 - Root cause of the outage: Vercel's `MAILERLITE_API_KEY` (added Apr 29) predated the working token (created Apr 30), so production 401'd and skipped. A stray `Mailerlite_API_Key_quiz` var held a Stripe `sk_live_` key and was deleted.
 - List shape: ~2,481 active, but only ~851 in "Ed and Health Tech List" and **~1,628 in no group at all**. Reactivation must be two-track — see content/list-reactivation.md.
 - Buyers auto-join Customers groups from both finalize routes with `customer_product` set.
+
+## Aug 2026 sweep — findings (Notion: "Action Plans — Aug 2026")
+- **Secrets leaked in Notion.** The "Resume reviewer web app" sub-page holds plaintext Anthropic, MailerLite, Resend + Stripe test keys. Rotate before scrubbing; scrubbing alone doesn't un-leak.
+- **Five finished interviews sit unpublished in Drive** (Katie Seaver ~90%, Jeannie Baranowski, Lucinda Bowman, Porcupine Coffee, Jon). Katie Seaver is also Rachel Levy's Babel Group co-founder and emailed Aug 2025 — still unread — offering a cross-post on their blog.
+- **Biggest unwritten content gap is PSLF / student loans** — readers name it as the specific blocker, and there's zero coverage. Then part-time/fractional roles, remote-for-health, and "should I keep paying for ASHA."
+- **Reader mail dries up after 2024**, matching the MailerLite outage. The list isn't just distribution — it's the voice-of-customer input.
+- Dead links in old plans: rehabrebels.org now redirects elsewhere; slpburnoutcoach.com has an expired cert (both are named affiliate/pitch targets).
+- The Notion to-do that said "real card, real $24, then refund yourself" has been corrected — it contradicted the live-mode rule above.
