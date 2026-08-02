@@ -43,3 +43,9 @@ Owner: James Berges (jamoberges@gmail.com) — SLP → growth marketer; hosts th
 - **Validate the pay-first $9 flow against live Stripe with a 100%-off promo code** — deployed 2026-08-01, never run end-to-end (Upstash isn't configured locally, so the post-payment resume step can only be exercised in prod). If `report-intake` fails, buyers pay and get nothing.
 - James: swap Typeform embed on slptransitions.com/career-quiz/ for `content/wordpress-quiz-embed.html`; publish blog posts; MailerLite sequences; add buyers to a "Customers" group in finalize (code TODO)
 - 30-day refund promised on paywalls — honor it
+
+## WordPress publishing (added 2026-08-01)
+- REST API works; auth = `WP_APP_USER` + `WP_APP_PASSWORD` (Application Password, in `.env.local`, **unspaced** — WP ignores the spaces and unspaced avoids shell-quoting issues). Note `.env.local` has a pre-existing multi-line value that breaks `source`; parse the WP vars directly instead.
+- `scripts/wp_publish.py` = helpers (markdown→Gutenberg blocks, FAQ + FAQPage JSON-LD, quiz CTA group, media upload). `scripts/publish-day1.py` = the per-post config (category, CTA line, authored FAQs, internal links) + runner. Pass a slug as argv[1] to publish just one.
+- Live cluster (2026-08-01): slp-transferable-skills 3389, slp-resume-non-clinical 3391, slp-cover-letter-non-clinical 3393, slp-linkedin-career-change 3395, should-you-quit-slp 3397. Remaining 7 posts in `content/blog/` are unpublished.
+- Verify after publishing by curling the live URL: check FAQPage JSON-LD parses, featured image, quiz CTA, internal links, and that no raw markdown (`**`) leaked.
