@@ -90,6 +90,81 @@ add(
 )
 
 
+add(
+    "slp-to-software-founder-michelle-boisvert",
+    "16-slp-to-software-founder-michelle-boisvert.md",
+    "16-slp-to-software-founder-michelle-boisvert",
+    "Wondering which non-clinical path fits you?",
+    [
+        ("Who is Michelle Boisvert?",
+         "Michelle Boisvert, PhD, CCC-SLP, is a school-based speech-language pathologist and co-founder of easyReportPRO. She earned her PhD in Communication Disorders from UMass Amherst in 2012, researching telepractice for students with autism, and formerly edited ASHA's <em>Perspectives on Telepractice</em>. She also founded the telepractice service NetSLP, a division of WorldTide, Inc."),
+        ("What is easyReportPRO and what does it cost?",
+         "easyReportPRO is a report-writing platform that lets clinicians automate their own customisable templates rather than using a vendor's pre-written ones. It serves speech-language pathologists, psychologists, occupational therapists, and special educators. Pricing runs $20 for one month, $50 for three months, or $169 per year per provider with unlimited reports, plus a free trial."),
+        ("Does easyReportPRO use AI?",
+         "At the time of the 2024 podcast, the platform used generative AI in a narrow role: improving the flow and cohesion of checklist-generated paragraphs without changing clinical content, with AI-generated text highlighted in red for clinician review. As of 2026 the company's public positioning is \"Automation - Not AI,\" emphasising SMART templates for predictable output, and the current FAQ makes no mention of AI."),
+        ("Can an SLP start a software company without coding skills or funding?",
+         "Boisvert did both. She says plainly that she is not a marketer or a developer, and easyReportPRO took no outside funding, with development she describes as grassroots. What made it possible was a co-founder with the missing technical skill, her husband Stuart Brisson, who had spent two decades building special education software, plus her own willingness to learn HTML, marketing, and social media along the way."),
+    ],
+    links=[(r"\bburnout\b", f"{SITE_}/should-you-quit-slp/")],
+)
+
+
+add(
+    "what-health-tech-founders-need-from-slps",
+    "23-what-health-tech-founders-need-from-slps.md",
+    "23-what-health-tech-founders-need-from-slps",
+    "Curious whether health tech is your path?",
+    [
+        ("Do you need to be a speech-language pathologist to work in speech therapy technology?",
+         "No. Gareth Walkom, the founder of withVR, is a person who stutters with degrees in digital media technology and medical product design, and has never practised as an SLP. What these companies buy from SLPs is clinical judgment: scenario design, protocol input, research collaboration, and implementation inside real services. The company says the product was built alongside more than 100 clinicians and researchers across 30 countries."),
+        ("What is virtual reality exposure therapy for stuttering?",
+         "Exposure therapy gradually introduces someone to a feared situation, and VR moves that situation into a scene a clinician can build and adjust. In withVR, a therapist runs a dashboard on a laptop, sees what the client sees in the headset, and changes the number of people, their reactions, and the background noise in real time. Walkom's description of why it works: it isn't real, but it feels real, and you can stop it."),
+        ("Does VR therapy for stuttering actually work?",
+         "The evidence is early and should be described that way. A 2023 pilot randomised trial at Imperial College London with 25 adults did not show VR exposure therapy outperforming a waitlist immediately after treatment, though improvements appeared at one-month follow-up. A 2025 <em>Journal of Voice</em> pilot using withVR for gender-affirming voice training had eleven participants, and its authors called for larger, longer studies. No published work currently supports strong efficacy claims."),
+        ("How do SLPs get their first paid work with a health-tech company?",
+         "Usually by asking rather than applying. The common entry points are unpaid or low-paid design feedback that becomes a paid advisory retainer, academic research collaboration that produces authorship and a relationship, and implementation work when your own service adopts a tool. Walkom's standing invitation on the podcast was to get in touch and test the software, and he noted you can start without a VR headset at all."),
+    ],
+    links=[(r"\bnon-clinical\b", f"{SITE_}/alternative-careers-speech-pathologists-slps/")],
+)
+
+
+add(
+    "slp-gender-affirming-voice-ruchi-kapila",
+    "21-slp-gender-affirming-voice-ruchi-kapila.md",
+    "21-slp-gender-affirming-voice-ruchi-kapila",
+    "Not sure whether to specialise or step outside the clinic?",
+    [
+        ("What is gender-affirming voice care?",
+         "Gender-affirming voice care is elective, consensual, client-led work on how a person's voice and communication present. It goes beyond pitch to include intonation, resonance, prosody, and articulation, and can extend to gesture and other communicative habits. Many clients want access to more than one voice configuration so they can shift between settings such as work and community spaces. Not every transgender person seeks it, and cisgender clients pursue it too."),
+        ("What is a vocologist, and is that different from a speech-language pathologist?",
+         "A vocologist studies voice science and voice habilitation, often including the singing voice. The title is not limited to SLPs: voice teachers, voice coaches, voice scientists, laryngologists, and ENTs can all be vocologists, typically working as an interdisciplinary team. Routes into it include the Pan American Vocology Association's PAVA-Recognized Vocologist designation and graduate coursework such as the National Center for Voice and Speech's Summer Vocology Institute."),
+        ("Do more transgender people pursue voice therapy or voice surgery?",
+         "Voice therapy is far more common. In the 2015 U.S. Transgender Survey of 27,715 respondents, 14% of transgender women reported having had non-surgical voice therapy, compared with 1% who reported having had voice surgery. Surgery is more expensive and more invasive, which is part of why behavioural voice work carries most of the demand."),
+        ("Does gender-affirming voice training actually work?",
+         "The outcome research is encouraging. In a 2023 study of 74 trans women published in the <em>Journal of Speech, Language, and Hearing Research</em>, Oates and colleagues found that two-thirds increased satisfaction with their voice to a clinically relevant degree after training, and a third of those who had reported restricted social participation beforehand saw that restriction meaningfully reduce. Listeners also rated voices as more female-sounding after training, though not uniformly to a clinically meaningful threshold."),
+    ],
+    links=[(r"\bprivate practice\b", f"{SITE_}/alternative-careers-speech-pathologists-slps/")],
+)
+
+add(
+    "neurodivergent-hiring-mentra",
+    "22-neurodivergent-hiring-mentra.md",
+    "22-neurodivergent-hiring-mentra",
+    "Wondering why your applications keep stalling?",
+    [
+        ("What is Mentra?",
+         "Mentra is a hiring platform that matches neurodivergent job seekers with employers, founded in 2021 in Charlotte, North Carolina by Jhillika Kumar, Conner Reinhardt, and Shea Belsky. Instead of ranking resumes by keyword, it builds a profile covering cognitive strengths, environmental needs, communication preferences, and work samples, then matches against roles. It is free for job seekers, and employers pay for access."),
+        ("What accommodations do neurodivergent employees request most often?",
+         "Per data Kumar cited from roughly 27,000 people on the platform, the most requested were job coaching and mentoring, noise-cancelling headphones, extra time during interviews, flexible scheduling, uninterrupted work time, allowance of fidget devices, closed captioning and recorded materials, written concise instructions, an interviewer experienced with neurodiversity, and email or calendar organisation support. Most carry no additional cost, since they are changes to manager behaviour rather than purchases."),
+        ("Is it risky to tell an employer how you work best?",
+         "Reinhardt argues the opposite for working-style information, setting medical diagnosis aside as a separate question. Without knowing how someone communicates or what they need, interviewers make judgments off factors irrelevant to the job, which is its own bias. Mentra's design tries to surface that information before the interview so it is not a candidate's job to explain it under pressure."),
+        ("Why does neurodivergent hiring matter to an SLP applying to non-clinical jobs?",
+         "Mentra's founders describe recruiter incentives directly: recruiters are trying to close roles with candidates a hiring manager will accept quickly. A rejection is more often a throughput decision than a judgment on capability, which means the fix for a career changer is legibility rather than more credentials. The other transferable lesson is that resumes have no field for how you work or what you have built, so career changers need portfolios and work samples the format cannot hide."),
+    ],
+    links=[(r"\bresume\b", f"{SITE_}/slp-resume-non-clinical/")],
+)
+
+
 def publish(slug, update_id=None):
     cfg = POSTS[slug]
     fm, body = parse(os.path.join(ROOT, "content/blog", cfg["file"]))
