@@ -144,23 +144,18 @@ export const COMPANIES_DB: Company[] = [
   {"name": "AmWell", "url": "business.amwell.com", "note": "Amwell (previously known as American Well) is a leading telehealth platform in the United States and globally, connecting and enabling providers, insurers, patients, and innovators to deliver greater...", "roles": ["Content", "Design", "Engineering", "Marketing", "Recruiting/HR", "Sales"], "categories": ["HealthTech"]},
   {"name": "Elemy", "url": "elemy.com", "note": "Give your child the best support: collaborative, personalized care to help them learn, grow, and reach new milestones (ADHD, ASD, depression, and anxiety platform)", "roles": ["Customer Success", "Engineering", "Operations", "Telehealth"], "categories": ["HealthTech", "SLP-Adjacent"]},
 
-  // Added 2026-08-02. Companies founded or staffed by former/current SLPs,
-  // surfaced while researching the Xceptional Leaders interview posts. Every
-  // URL below returned 200 at time of adding. This block is the reason the
-  // SLP-Adjacent tag went from 6 entries to 17 — it was the list's weakest
-  // category despite being the most relevant one for this audience.
-  {"name": "Flexspeak", "url": "flexspeak.com", "note": "AI-powered multilingual AAC app and visual-support builder, 70+ languages. Founded by Alan Vu, a bilingual SLP and person who stutters. Techstars-backed.", "roles": ["Clinical", "Content", "Customer Success", "Product"], "categories": ["HealthTech", "EdTech", "SLP-Adjacent"]},
+  // Added 2026-08-02 from the Xceptional Leaders research, then filtered.
+  // Bar for inclusion is a verifiable careers page or active job listings —
+  // several SLP-founded companies from those interviews are genuinely great
+  // stories but are one- or two-person shops with nowhere to apply, so they
+  // were removed rather than padding a list titled "companies that hire."
+  // Kept: Tobii (careers.tobii.com, ~700 staff), Lingraphica (/careers),
+  // Voiceitt (listed on Wellfound and Built In NYC), The Informed SLP
+  // (50+ staff; publicly advertised a Sales Rep opening).
   {"name": "Voiceitt", "url": "voiceitt.com", "note": "Speech recognition built for atypical and non-standard speech. Hires SLPs into customer success, partnerships, and research — Rachel Levy's route out of the clinic.", "roles": ["Customer Success", "Marketing", "Research", "Sales"], "categories": ["HealthTech", "SLP-Adjacent"]},
-  {"name": "The Babel Group", "url": "thebabelgroup.com", "note": "Consultancy connecting allied-health clinicians to the tech companies building products for them. Co-founded by two SLPs; actively recruits clinical consultants.", "roles": ["Clinical", "Consulting", "Sales"], "categories": ["HealthTech", "SLP-Adjacent"]},
-  {"name": "The Informed SLP", "url": "theinformedslp.com", "note": "Research-translation subscription for SLPs. Grew from an unpaid hobby to a 50+ person bootstrapped team of SLPs and PhDs — one of the largest SLP-run employers on this list.", "roles": ["Content", "Research", "Marketing", "Operations"], "categories": ["EdTech", "SLP-Adjacent"]},
-  {"name": "easyReportPRO", "url": "easyreportpro.com", "note": "Report-writing automation for SLPs, psychologists, OTs, and special educators. Founded by SLP Michelle Boisvert, PhD.", "roles": ["Clinical", "Content", "Customer Success", "Product"], "categories": ["EdTech", "SLP-Adjacent"]},
-  {"name": "withVR", "url": "withvr.app", "note": "Clinician-controlled VR exposure environments for speech therapy, used in NHS and university research settings. Founded by a person who stutters; built with 100+ clinicians.", "roles": ["Clinical", "Product", "Research"], "categories": ["HealthTech", "SLP-Adjacent"]},
+  {"name": "The Informed SLP", "url": "theinformedslp.com", "note": "Research-translation subscription with a 50+ person team of SLPs and PhDs — one of the largest SLP-run employers here. Also runs Informed Jobs, an SLP-vetted job board worth checking on its own.", "roles": ["Content", "Research", "Marketing", "Operations"], "categories": ["EdTech", "SLP-Adjacent"]},
   {"name": "Lingraphica", "url": "lingraphica.com", "note": "AAC devices and apps for adults with aphasia. Long-standing employer of SLPs in clinical consulting, marketing, and device support.", "roles": ["Clinical", "Customer Success", "Marketing", "Sales"], "categories": ["HealthTech", "SLP-Adjacent"]},
   {"name": "Tobii", "url": "tobii.com", "note": "Eye-tracking and eye-gaze access technology, widely used for AAC. Hires clinicians into product, training, and customer roles.", "roles": ["Clinical", "Customer Success", "Product", "Sales"], "categories": ["HealthTech", "Tech", "SLP-Adjacent"]},
-  {"name": "Mentra", "url": "mentra.com", "note": "Hiring platform matching neurodivergent candidates to employers on strengths and environment rather than resume keywords. Useful as a job source as well as an employer.", "roles": ["Operations", "Product", "Recruiting/HR"], "categories": ["Tech", "Recruiting"]},
-  {"name": "Bearly Articulating", "url": "bearlyarticulating.com", "note": "Disability-inclusion consultancy run by an SLP turned software engineer. Corporate training on neurodiversity and accessible tech.", "roles": ["Consulting", "Content", "Teaching"], "categories": ["EdTech", "SLP-Adjacent"]},
-  {"name": "the PTSD SLP", "url": "ptsdslp.com", "note": "Trauma-informed care training for SLPs, schools, and hospitals. Solo consultancy built by a school-based SLP — a template for clinicians going independent.", "roles": ["Consulting", "Teaching", "Content"], "categories": ["EdTech", "SLP-Adjacent"]},
-  {"name": "Proud Stutter", "url": "proudstutter.org", "note": "Award-winning podcast and nonprofit media project changing how stuttering is understood. Sponsored project of Independent Arts & Media.", "roles": ["Content", "Marketing", "Community"], "categories": ["Nonprofit", "digital media"]},
 ];
 
 export const TRANSITION_STORIES: TransitionStory[] = [
