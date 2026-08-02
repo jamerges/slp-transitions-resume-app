@@ -22,13 +22,13 @@ export default function CompaniesPage() {
       <h1 style={S.h1}>Companies that hire former SLPs</h1>
       <p style={{ ...S.p, marginBottom: 8 }}>
         {total} ed-tech, health-tech, and speech companies, {speech} of them founded or
-        staffed by speech-language pathologists. Filter by the kind of work you want to
-        do, or search for a condition, product, or setting.
+        staffed by speech-language pathologists. Filter by the kind of company, or
+        search for a condition, product, or setting.
       </p>
       <p style={{ ...S.p, fontSize: 13.5, marginBottom: 28 }}>
-        Every card links to the company. Roles listed are the functions each company
-        has hired for &mdash; not live openings, so check their careers page for what&rsquo;s
-        currently posted.
+        Every card links straight to the company. This is a starting list, not a job
+        board &mdash; we don&rsquo;t track live openings, so go to each company&rsquo;s careers page
+        for what&rsquo;s actually posted today.
       </p>
 
       <CompaniesDirectory companies={COMPANIES_DB} />
