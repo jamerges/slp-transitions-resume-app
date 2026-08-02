@@ -165,6 +165,25 @@ add(
 )
 
 
+add(
+    "grow-a-podcast-while-working-full-time-maya-chupkov",
+    "24-grow-a-podcast-while-working-full-time-maya-chupkov.md",
+    "24-grow-a-podcast-while-working-full-time-maya-chupkov",
+    "Building something on the side? See where it could lead.",
+    [
+        ("Can you really build an audience for a podcast while working a full-time job?",
+         "Maya Chupkov did, publishing Proud Stutter every other Friday for roughly two and a half years with a single break, while working full time in local news and media policy. The show earned an Ambie Award nomination and coverage in NPR, The Guardian, ABC7, and USA Today. Her one concession to the schedule: a short bonus episode counts as keeping the slot, so a bad week does not break the streak."),
+        ("How do you get press coverage with no budget or media contacts?",
+         "Chupkov starts with a reason a reporter should cover this story rather than the one they already ran. She finds reporters by typing keywords into Google's news tab, filtering to roughly the last six months, clicking through to bylines, and keeping a list of people who cover the topic repeatedly. She recommends a press list of 10 to 15 outlets and a calendar of hooks such as awareness weeks. Landing KQED took her over a year of follow-ups with different angles."),
+        ("Is Proud Stutter a nonprofit?",
+         "Proud Stutter operates as a sponsored project of Independent Arts &amp; Media, a nonprofit arts service organisation, so donations are tax-deductible to the extent permitted by law. Chupkov also formed a small board of three people plus herself. Funding has come through a mix of donations, an annual gala, and a $35,000 California Documentary Project grant from California Humanities awarded in April 2023."),
+        ("What did Maya Chupkov's speech therapy experience teach her?",
+         "Her mother found an SLP through the Stuttering Foundation's website, and the therapy was fluency shaping with, in Chupkov's words, no talk of acceptance or goal setting. The clinician told her mother that earlier intervention could have stopped the stuttering, which left her mother with lasting guilt. Chupkov also barely stuttered during sessions, which confused the clinician, so the clinical room became one more place to hide."),
+    ],
+    links=[],
+)
+
+
 def publish(slug, update_id=None):
     cfg = POSTS[slug]
     fm, body = parse(os.path.join(ROOT, "content/blog", cfg["file"]))
