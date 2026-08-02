@@ -54,5 +54,10 @@ James speaks in first person — a peer who is one step ahead, "the big sibling 
 ## 8. Absent (keep absent)
 No ASHA/CCC criticism. No urgency countdowns or income-scream marketing. No therapy/clinical content. No "stay and cope" self-care framing — always exit/expansion. No political/insurance commentary. No AI-content sheen — keep human texture.
 
+## 8a. No table-setting sentences (added 2026-08-01, James's correction)
+Cut sentences whose only job is to announce the significance of the sentence next to it — "That ordering matters." / "This is the line worth writing down." / "Here's the part that matters." / "Notice what she did." These are a tell: they tell the reader how to feel about a fact instead of trusting the fact to land on its own. Let the substance do the talking — state the fact, quote, or turn, and move on without narrating it.
+
+Also vary sentence rhythm more aggressively than a stock "short punchy sentence after a long one" pattern — that itself becomes a tic if every section does it. Pull actual technique from prose craft: reorder a sentence so the most vivid word lands last ("The small boys came early to the hanging," not "...to the hanging early"); cut adverbs and reach for the stronger verb instead; let some sentences run long and specific, not just short and declarative. Read a paragraph aloud before it ships — if every sentence has the same shape, rewrite one.
+
 ## 9. Tagline note
 "Your degree isn't a prison. Your skills compound." (app tagline) does NOT appear on the site but is philosophically consistent. Use as thesis where useful; body copy should sound like the quotes above — warmer, more conversational than the tagline.
