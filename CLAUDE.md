@@ -49,3 +49,10 @@ Owner: James Berges (jamoberges@gmail.com) — SLP → growth marketer; hosts th
 - `scripts/wp_publish.py` = helpers (markdown→Gutenberg blocks, FAQ + FAQPage JSON-LD, quiz CTA group, media upload). `scripts/publish-day1.py` = the per-post config (category, CTA line, authored FAQs, internal links) + runner. Pass a slug as argv[1] to publish just one.
 - Live cluster (2026-08-01): slp-transferable-skills 3389, slp-resume-non-clinical 3391, slp-cover-letter-non-clinical 3393, slp-linkedin-career-change 3395, should-you-quit-slp 3397. Remaining 7 posts in `content/blog/` are unpublished.
 - Verify after publishing by curling the live URL: check FAQPage JSON-LD parses, featured image, quiz CTA, internal links, and that no raw markdown (`**`) leaked.
+
+## MailerLite (fixed 2026-08-01)
+- `lib/mailerlite.ts` is the single source of group ids + field names. **MailerLite silently ignores unknown `fields` keys** — that's how `quiz_result` was dropped for every quiz taker since launch (the field didn't exist on the account). Adding a new field here means creating it in MailerLite first.
+- `QUIZ_PATH_GROUPS` is keyed by **`roleOption`** (from lib/quiz.ts), NOT the display label — they differ for Data Analysis, Instructional Design, and Content Strategy / Marketing. A key miss fails silently, adding no group.
+- Root cause of the outage: Vercel's `MAILERLITE_API_KEY` (added Apr 29) predated the working token (created Apr 30), so production 401'd and skipped. A stray `Mailerlite_API_Key_quiz` var held a Stripe `sk_live_` key and was deleted.
+- List shape: ~2,481 active, but only ~851 in "Ed and Health Tech List" and **~1,628 in no group at all**. Reactivation must be two-track — see content/list-reactivation.md.
+- Buyers auto-join Customers groups from both finalize routes with `customer_product` set.
