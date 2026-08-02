@@ -177,6 +177,14 @@ if __name__ == "__main__":
         dict(photo="mattie-murrey-tegels.jpg", kicker="Entrepreneurs",
              name="Mattie Murrey-Tegels", role="Founder, Fresh SLP & Badass SLP — medical SLP, 25+ years",
              out="mattie-murrey-tegels-photo.png"),
+        # Older interviews, re-cut into the same template (headshots were
+        # already on the site; they just weren't being used as headers).
+        dict(photo="lindsey-ison.jpeg", kicker="Real transition",
+             name="Lindsey Ison", role="Enablement Consultant at a tech firm — former SLP",
+             out="00-enablement-consultant.png"),
+        dict(photo="taimi-shepis.jpeg", kicker="Real transition",
+             name="Taimi Shepis", role="Yoga and anxiety coach — former SLP",
+             out="00-yoga-and-anxiety-coach.png"),
     ]
 
     only = sys.argv[1] if len(sys.argv) > 1 else None

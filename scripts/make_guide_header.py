@@ -96,6 +96,16 @@ GUIDES = [
      "33.5% of employers say that's all it takes to tell AI wrote it."),
     ("10-slp-linkedin-career-change", "LinkedIn", "They check before they call",
      "If your profile still reads clinical, it contradicts the resume you just fixed."),
+
+    # Older posts brought into the same visual system. The two below are
+    # interviews with no headshot on file, so they use the stat layout rather
+    # than the guest-photo one.
+    ("00-alternative-careers-flagship", "Start here", "13 non-clinical paths",
+     "The salary range, the timeline, and what each one actually asks of you."),
+    ("00-slp-software-engineer", "Real transition", "$96K, self-taught",
+     "An SLP working part-time SNF gigs taught herself to code. Now she engineers in Austin."),
+    ("00-slp-to-ux", "Real transition", "Rehab director to UX researcher",
+     "Burnt out by clunky EMRs, Bethany went to a bootcamp and now researches the software clinicians use."),
 ]
 
 if __name__ == "__main__":
