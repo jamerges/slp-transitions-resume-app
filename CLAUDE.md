@@ -77,6 +77,11 @@ Owner: James Berges (jamoberges@gmail.com) — SLP → growth marketer; hosts th
 - WP gotcha: re-uploading media under the SAME filename does NOT regenerate the -300x158/-600x315 crops — always upload under a versioned filename.
 - Off-brand MailerLite popup ("Ready for a Change?", bright blue, stock sunset) still fires site-wide — restyle or disable in MailerLite (not writable via API).
 
+## Blog index (/blog) — generated page (2026-08-02)
+- **`scripts/build_blog.py` renders /blog** (page 3459): featured latest post + "New" list of 5 + full-image grid, Osmind-inspired. The posts-page designation was removed (`page_for_posts=0`) because WP ignores content on a posts page. Kadence title band hidden via `_kad_post_title: hide` meta (REST-writable on pages).
+- **⚠️ /blog does NOT auto-update. Re-run `python3 scripts/build_blog.py` after publishing any post.** It warns about posts missing featured images.
+- Category chips link to /category/{guides,real-transitions,entrepreneurs,mindset}/ — those archives still use the stock Kadence template.
+
 ## Companies list — ONE source of truth (2026-08-02)
 - **`lib/companies.ts` is canonical.** 134 companies. The old Airtable share link held the same rows in the same order and has been retired — do not re-introduce it. Archive it in Airtable so nobody edits a dead copy.
 - Rendered at **app.slptransitions.com/companies** (`app/companies/page.tsx` + `components/CompaniesDirectory.tsx`). Search + 5 category facets. `noindex` with canonical to the WP lead-magnet page so the two don't compete.
