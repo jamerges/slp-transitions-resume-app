@@ -87,9 +87,9 @@ CSS = """
 <style id="slp-home-2026">
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600;700&display=swap');
 
-.slp-home{--cream:#F7F3E8;--paper:#FCFAF4;--forest:#0C4A3B;--forest-dark:#07382E;
-  --mint:#E3F1E8;--sage:#87B29D;--coral:#DC6B4E;--amber:#E6A83A;--line:#CDD9D2;
-  --slate:#4F6259;
+.slp-home{--cream:#F6F8F4;--paper:#FFFFFF;--forest:#0B6B54;--forest-dark:#0A3D31;
+  --brand:#0BA183;--mint:#DDF3EA;--sage:#8FC6B2;--amber:#E6A83A;--line:#DCE5DE;
+  --slate:#53655C;
   font-family:'DM Sans',system-ui,sans-serif;color:var(--forest-dark);
   background:var(--cream);margin:0 calc(50% - 50vw);width:100vw;overflow-x:hidden}
 .slp-home *,.slp-home *::before,.slp-home *::after{box-sizing:border-box}
@@ -99,7 +99,7 @@ CSS = """
 .slp-home p{margin:0}
 .slp-home a{text-decoration:none;color:inherit}
 .slp-kicker{font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--coral);margin:0 0 1rem}
+  color:var(--brand);margin:0 0 1rem}
 
 /* hero */
 .slp-hero{padding:clamp(56px,7vw,96px) 0 clamp(40px,5vw,64px)}
@@ -112,9 +112,11 @@ CSS = """
 .slp-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
   min-height:56px;padding:.85rem 1.6rem;border-radius:10px;font-weight:700;font-size:1rem;
   transition:transform .18s ease,background .18s ease}
-.slp-btn-primary{background:var(--forest);color:#fff}
-.slp-btn-primary:hover{background:var(--forest-dark);transform:translateY(-2px);color:#fff}
-.slp-btn-ghost{border:1.5px solid var(--forest);color:var(--forest)}
+/* !important because Kadence's .entry-content a color otherwise wins and
+   renders near-black text on the forest button */
+.slp-home a.slp-btn-primary{background:var(--forest);color:#fff!important}
+.slp-home a.slp-btn-primary:hover{background:var(--forest-dark);transform:translateY(-2px)}
+.slp-home a.slp-btn-ghost{border:1.5px solid var(--forest);color:var(--forest)!important}
 .slp-btn-ghost:hover{background:var(--mint);transform:translateY(-2px)}
 .slp-trust{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-top:1.4rem;
   font-size:.9rem;color:var(--slate)}
@@ -126,7 +128,7 @@ CSS = """
   padding:1.15rem 1.3rem;display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;
   box-shadow:0 8px 22px rgba(7,56,46,.05)}
 .slp-path-num{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;
-  border-radius:50%;border:1px solid var(--coral);color:var(--coral);font-size:.75rem;font-weight:700}
+  border-radius:50%;border:1px solid var(--brand);color:var(--brand);font-size:.75rem;font-weight:700}
 .slp-path-card h3{font-size:1.12rem;line-height:1.25;margin-bottom:.3rem}
 .slp-path-card p{font-size:.88rem;line-height:1.5;color:var(--slate)}
 .slp-here{display:flex;align-items:center;gap:.6rem;font-size:.72rem;letter-spacing:.12em;
@@ -156,7 +158,7 @@ CSS = """
 .slp-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:1.5rem;
   display:flex;flex-direction:column}
 .slp-card-label{font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--coral);margin-bottom:.55rem}
+  color:var(--brand);margin-bottom:.55rem}
 .slp-card h3{font-size:1.42rem;line-height:1.15}
 .slp-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.15rem 0;
   padding:.9rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -190,12 +192,17 @@ CSS = """
 .slp-res a{display:grid;grid-template-columns:.6fr 1.1fr 1.3fr auto;gap:2rem;align-items:center;
   padding:1.5rem .25rem;border-bottom:1px solid var(--line);transition:background .18s ease,padding .18s ease}
 .slp-res a:hover{background:rgba(227,241,232,.6);padding-left:1rem;padding-right:1rem}
-.slp-res .step{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--coral)}
+.slp-res .step{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
 .slp-res b{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:1.3rem;color:var(--forest-dark)}
 .slp-res p{font-size:.9rem;line-height:1.55;color:var(--slate)}
 .slp-res .arrow{font-size:1.5rem;color:var(--forest)}
 
 /* final cta */
+.slp-band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.2rem;
+  background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  padding:1.6rem 1.9rem;margin-top:clamp(28px,4vw,44px)}
+.slp-band h3{font-size:1.3rem}
+.slp-band p{font-size:.9rem;color:var(--slate);margin-top:.35rem}
 .slp-final{background:var(--mint);border:1px solid var(--sage);border-radius:18px;
   padding:clamp(32px,5vw,64px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);
   gap:clamp(24px,4vw,56px);align-items:center;margin-bottom:clamp(48px,7vw,88px)}
@@ -246,7 +253,6 @@ def build():
 
     # ---- hero
     a('<section class="slp-hero"><div class="slp-wrap"><div class="slp-hero-grid"><div>')
-    a('<p class="slp-kicker">For SLPs planning a different kind of work</p>')
     a('<h1>Your SLP skills can take you somewhere new.</h1>')
     a('<p class="slp-lede">Find a non-clinical path that fits your strengths, your timeline and '
       'what you need to earn, with verified salary ranges and stories from SLPs who have already done it.</p>')
@@ -258,7 +264,6 @@ def build():
 
     # pathway
     a('<div class="slp-path">')
-    a('<p class="slp-here"><i></i> You are here · Clinical SLP</p>')
     for n, (t, d) in enumerate([
         ("Explore your options", "Identify roles that fit your strengths, values and the life you want."),
         ("Build your bridge", "Translate your experience, close one gap, and test it while still employed."),
@@ -270,8 +275,7 @@ def build():
 
     # ---- affirmations
     a('<section class="slp-sec"><div class="slp-wrap">')
-    a('<div class="slp-sec-intro"><div><p class="slp-kicker">What carries forward</p>'
-      '<h2>Your clinical experience has value beyond the clinic.</h2></div>'
+    a('<div class="slp-sec-intro"><div><h2>Your clinical experience has value beyond the clinic.</h2></div>'
       '<p>Years of clinical work build judgment, communication and problem-solving that hold up '
       'across industries. The task now is recognising them and putting them into words a hiring '
       'manager already understands.</p></div>')
@@ -304,7 +308,7 @@ def build():
 
     # ---- stories
     a('<section class="slp-sec slp-stories" id="real-stories"><div class="slp-wrap">')
-    a('<div class="slp-sec-intro"><div><p class="slp-kicker" style="color:#E6A83A">Real transitions</p>'
+    a('<div class="slp-sec-intro"><div><p class="slp-kicker" style="color:#7FD6BC">Real transitions</p>'
       '<h2>See what other SLPs built from their clinical experience.</h2></div>'
       '<p>Each of these started while they were still working clinically.</p></div>')
     a('<div class="slp-story-grid">')
@@ -329,16 +333,18 @@ def build():
           f'<span class="arrow">↗</span></a>')
     a('</div>')
     a(f'<p style="margin-top:1.8rem"><a class="slp-quiet" href="{SITE}/blog/">Browse every article →</a></p>')
+    # companies list gets its own CTA here rather than crowding the final one
+    a(f'<div class="slp-band"><div><h3>Know where to look first.</h3>'
+      f'<p>126 ed-tech, health-tech and speech companies that hire former SLPs, searchable and free.</p></div>'
+      f'<a class="slp-btn slp-btn-ghost" href="{SITE}/ed-health-tech-jobs/">Browse the companies list →</a></div>')
     a('</div></section>')
 
     # ---- final cta
     a('<div class="slp-wrap"><section class="slp-final">')
-    a('<div><p class="slp-kicker">Your next step can be small</p>'
-      '<h2>Two minutes can make the next six months clearer.</h2>'
+    a('<div><h2>Two minutes can make the next six months clearer.</h2>'
       '<p>Answer eight questions. You get your best-fit path, a realistic salary range, '
       'an honest timeline, and one thing to do this week.</p></div>')
-    a(f'<div class="slp-final-actions"><a class="slp-btn slp-btn-primary" href="{QUIZ}">Find my career path →</a>'
-      f'<a class="slp-quiet" href="{SITE}/ed-health-tech-jobs/">Browse 126 companies hiring former SLPs</a></div>')
+    a(f'<div class="slp-final-actions"><a class="slp-btn slp-btn-primary" href="{QUIZ}">Find my career path →</a></div>')
     a('</section></div>')
 
     a('</div>')  # .slp-home
