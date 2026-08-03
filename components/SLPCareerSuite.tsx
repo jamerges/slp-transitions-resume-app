@@ -36,6 +36,83 @@ async function parseFile(file: File): Promise<{ text: string; error?: string }> 
 }
 
 
+/** CSS-only "product shot" for the $24 package: the three headline
+ *  deliverables as a fanned stack of paper. No images — skeleton lines on
+ *  white sheets, one green-highlighted bullet on the resume to suggest the
+ *  translation itself. Decorative only (aria-hidden). */
+function DeliverablesGraphic() {
+  const line = (w: string, h = 5, bg = "var(--border)"): React.CSSProperties => ({
+    width: w, height: h, background: bg, borderRadius: 3,
+  });
+  const sheet: React.CSSProperties = {
+    width: 138, height: 178, background: "#fff", borderRadius: 8,
+    border: "1px solid var(--border)", padding: "12px 12px 10px",
+    display: "flex", flexDirection: "column", gap: 7,
+    boxShadow: "0 12px 26px rgba(27,27,30,0.10)", position: "relative",
+  };
+  const label: React.CSSProperties = {
+    fontSize: 7.5, fontWeight: 700, letterSpacing: "0.12em",
+    color: "var(--light)", marginBottom: 2,
+  };
+  const chip: React.CSSProperties = {
+    position: "absolute", bottom: 8, left: 12, fontSize: 8, fontWeight: 700,
+    letterSpacing: "0.06em", color: "var(--accent)", background: "var(--accent-bg)",
+    borderRadius: 4, padding: "2px 6px",
+  };
+  return (
+    <div aria-hidden="true" style={{
+      display: "flex", justifyContent: "center", alignItems: "flex-end",
+      padding: "18px 0 10px", overflow: "hidden",
+    }}>
+      {/* cover letter */}
+      <div style={{ ...sheet, transform: "rotate(-7deg) translate(26px, 8px)", zIndex: 1 }}>
+        <div style={label}>COVER LETTER</div>
+        <div style={line("52%")} />
+        <div style={{ height: 2 }} />
+        <div style={line("100%")} /><div style={line("94%")} /><div style={line("97%")} />
+        <div style={line("88%")} /><div style={line("96%")} /><div style={line("60%")} />
+        <div style={{ height: 2 }} /><div style={line("34%")} />
+        <span style={chip}>DOCX</span>
+      </div>
+      {/* resume — front and center */}
+      <div style={{ ...sheet, height: 196, width: 148, zIndex: 3 }}>
+        <div style={label}>RESUME</div>
+        <div style={line("58%", 8, "var(--accent)")} />
+        <div style={line("42%", 4)} />
+        <div style={{ height: 3 }} />
+        <div style={line("100%")} /><div style={line("92%")} />
+        {/* the translated bullet */}
+        <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+          <span style={{ width: 4, height: 4, borderRadius: "50%", background: "var(--accent)", flexShrink: 0 }} />
+          <div style={{ ...line("100%", 6, "var(--accent-bg)"), flexGrow: 1 }} />
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+          <span style={{ width: 4, height: 4, borderRadius: "50%", background: "var(--accent)", flexShrink: 0 }} />
+          <div style={{ ...line("86%", 6, "var(--accent-bg)"), flexGrow: 0 }} />
+        </div>
+        <div style={line("95%")} /><div style={line("89%")} />
+        <span style={{ ...chip, background: "var(--accent)", color: "#fff" }}>ATS-READY</span>
+      </div>
+      {/* 90-day plan */}
+      <div style={{ ...sheet, transform: "rotate(6deg) translate(-26px, 8px)", zIndex: 2 }}>
+        <div style={{ ...label, textAlign: "right" }}>90-DAY PLAN</div>
+        <div style={line("46%")} />
+        <div style={{ height: 2 }} />
+        {["78%", "70%", "82%", "64%"].map((w, i) => (
+          <div key={i} style={{ display: "flex", alignItems: "center", gap: 5 }}>
+            <span style={{
+              width: 7, height: 7, borderRadius: 2, flexShrink: 0,
+              border: "1.5px solid var(--accent)",
+              background: i < 2 ? "var(--accent)" : "transparent",
+            }} />
+            <div style={line(w)} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function SLPCareerSuite() {
   const [step, setStep] = useState<Step>(STEPS.WELCOME);
   const [inputMode, setInputMode] = useState<"upload" | "paste">("upload");
@@ -402,6 +479,10 @@ export default function SLPCareerSuite() {
         </div>
         <div style={{ fontSize: 12, color: "var(--muted)", marginBottom: 10 }}>
           Everything above, plus:
+        </div>
+        <DeliverablesGraphic />
+        <div style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", margin: "10px 0 16px" }}>
+          What lands in your inbox: rewritten resume content, a cover letter, and a 90-day plan — the resume and letter as Word docs you keep.
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px 20px" }}>
           {[
