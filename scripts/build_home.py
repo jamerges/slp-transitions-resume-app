@@ -87,59 +87,23 @@ SCRIPT = """
 <script>
 (function(){
   var home=document.querySelector('.slp-home');if(!home)return;
-  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduce)return;               /* no-JS and reduced-motion both get the static page */
-  home.classList.add('js-anim');
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  home.classList.add('js-anim');   /* no-JS + reduced-motion keep the static page */
 
-  /* staggered reveals */
   document.querySelectorAll('[data-stagger]').forEach(function(g){
     var i=0;g.querySelectorAll(':scope > .slp-rv, :scope > * > .slp-rv').forEach(function(el){
       el.style.setProperty('--i', i++);});});
-  /* reveal sweep: anything at or above the fold line reveals. Runs in the
-     scroll loop, so instant jumps (milestone clicks, anchor links) cannot
-     strand sections invisible the way a pure IntersectionObserver did. */
+
+  /* Reveal sweep runs in the scroll loop rather than via IntersectionObserver:
+     instant jumps (anchor links) skip intersections and strand elements hidden. */
   var rvs=[].slice.call(document.querySelectorAll('.slp-rv'));
   function sweep(){
     rvs=rvs.filter(function(el){
       if(el.getBoundingClientRect().top<innerHeight*0.92){el.classList.add('is-in');return false;}
       return true;});}
-
-  /* hero route draws itself on first view */
-  var route=document.querySelector('.slp-route path');
-  if(route){route.style.strokeDasharray='100';route.style.strokeDashoffset='100';
-    new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){
-      route.style.transition='stroke-dashoffset 1.7s cubic-bezier(.45,0,.2,1) .25s';
-      route.style.strokeDashoffset='0';o.disconnect();}});},{threshold:.3})
-      .observe(route.closest('svg'));}
-
-  /* journey rail */
-  var rail=document.querySelector('.slp-rail');
-  if(rail){  /* CSS hides the rail <1200px; build it regardless so resizes work */
-    var fill=rail.querySelector('.slp-rail-fill'),marker=rail.querySelector('.slp-marker');
-    var secs=[].slice.call(document.querySelectorAll('[data-mile]')),miles=[];
-    secs.forEach(function(sec){
-      var d=document.createElement('div');d.className='slp-mile';
-      d.innerHTML='<b>'+sec.getAttribute('data-mile')+'</b>';
-      d.addEventListener('click',function(){sec.scrollIntoView({behavior:'smooth'});});
-      rail.appendChild(d);miles.push({el:d,sec:sec});});
-    function layout(){
-      var vh=innerHeight,max=document.documentElement.scrollHeight-vh;
-      miles.forEach(function(m){
-        var r=m.sec.getBoundingClientRect(),mid=r.top+scrollY+Math.min(r.height,vh)*.5-vh*.5;
-        m.pos=Math.min(1,Math.max(0,mid/max));
-        m.el.style.top=(m.pos*100)+'%';});
-      return max;}
-    var max=layout(),done=false;
-    function tick(){
-      var pr=Math.min(1,Math.max(0,scrollY/max));
-      fill.style.height=(pr*100)+'%';marker.style.top=(pr*100)+'%';
-      miles.forEach(function(m){m.el.classList.toggle('is-passed',pr>=m.pos-0.002);});
-      if(pr>0.985&&!done){done=true;marker.classList.add('is-done');}
-      if(pr<0.9)done=false,marker.classList.remove('is-done');}
-    addEventListener('scroll',function(){requestAnimationFrame(function(){tick();sweep();});},{passive:true});
-    addEventListener('resize',function(){max=layout();tick();});
-    tick();sweep();}
-  else{addEventListener('scroll',function(){requestAnimationFrame(sweep);},{passive:true});sweep();}
+  addEventListener('scroll',function(){requestAnimationFrame(sweep);},{passive:true});
+  addEventListener('resize',sweep);
+  sweep();
 })();
 </script>
 """
@@ -301,39 +265,9 @@ CSS = """
   transition-delay:calc(var(--i,0)*80ms)}
 .slp-home.js-anim .slp-rv.is-in{opacity:1;transform:none}
 
-/* hero route: draws itself through the three pathway cards */
-.slp-path{position:relative}
-.slp-route{position:absolute;left:-30px;top:10px;height:calc(100% - 20px);width:34px;
-  overflow:visible;pointer-events:none}
-.slp-route path{fill:none;stroke:var(--brand);stroke-width:2.5;stroke-linecap:round;
-  vector-effect:non-scaling-stroke}
-.slp-route circle{fill:var(--paper);stroke:var(--brand);stroke-width:2;vector-effect:non-scaling-stroke}
-@media (max-width:1000px){.slp-route{display:none}}
-
-/* journey rail: fixed at the left edge, marker travels with scroll */
-.slp-rail{display:none;position:fixed;left:30px;top:8vh;bottom:8vh;width:2px;
-  background:var(--line);z-index:60;border-radius:2px}
-@media (min-width:1200px){.slp-home.js-anim ~ * .slp-rail,.slp-home.js-anim .slp-rail{display:block}}
-.slp-rail-fill{position:absolute;top:0;left:0;width:100%;height:0;background:var(--brand);border-radius:2px}
-.slp-marker{position:absolute;left:1px;top:0;width:26px;height:26px;
-  transform:translate(-50%,-50%) rotate(45deg);background:#fff;border:2px solid var(--forest);
-  border-radius:7px;box-shadow:0 4px 12px rgba(10,61,49,.18);display:flex;align-items:center;justify-content:center}
-.slp-marker svg{width:13px;height:13px;transform:rotate(-45deg)}
-.slp-marker.is-done{animation:slp-pop .5s ease}
-@keyframes slp-pop{50%{transform:translate(-50%,-50%) rotate(45deg) scale(1.35)}}
-.slp-mile{position:absolute;left:1px;transform:translate(-50%,-50%);width:9px;height:9px;
-  border-radius:50%;background:var(--paper);border:2px solid var(--line);cursor:pointer;
-  transition:background .3s,border-color .3s}
-.slp-mile.is-passed{background:var(--brand);border-color:var(--brand)}
-.slp-mile b{position:absolute;left:18px;top:50%;transform:translateY(-50%);
-  font-family:'DM Sans',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--slate);white-space:nowrap;opacity:0;transition:opacity .3s}
-.slp-mile.is-passed b,.slp-mile:hover b{opacity:1}
-
 @media (prefers-reduced-motion:reduce){
   .slp-home *{animation:none!important;transition:none!important}
   .slp-home.js-anim .slp-rv{opacity:1;transform:none}
-  .slp-rail{display:none!important}
 }
 </style>
 """
@@ -362,9 +296,6 @@ def build():
 
     # pathway
     a('<div class="slp-path" data-stagger>')
-    a('<svg class="slp-route" viewBox="0 0 32 100" preserveAspectRatio="none" aria-hidden="true">'
-      '<path d="M16 3 C 2 18, 30 32, 16 50 C 2 68, 30 82, 16 97" pathLength="100" />'
-      '<circle cx="16" cy="3" r="3.2"/><circle cx="16" cy="50" r="3.2"/><circle cx="16" cy="97" r="3.2"/></svg>')
     for n, (t, d) in enumerate([
         ("Explore your options", "Identify roles that fit your strengths, values and the life you want."),
         ("Build your bridge", "Translate your experience, close one gap, and test it while still employed."),
@@ -375,7 +306,7 @@ def build():
     a('</div></div></div></section>')
 
     # ---- affirmations
-    a('<section class="slp-sec" data-mile="Carries over"><div class="slp-wrap">')
+    a('<section class="slp-sec"><div class="slp-wrap">')
     a('<div class="slp-sec-intro"><div><h2>Your clinical experience has value beyond the clinic.</h2></div>'
       '<p>Years of clinical work build judgment, communication and problem-solving that hold up '
       'across industries. The task now is recognising them and putting them into words a hiring '
@@ -386,7 +317,7 @@ def build():
     a('</div></div></section>')
 
     # ---- career paths
-    a('<section class="slp-sec" id="career-paths" data-mile="Compare paths" style="padding-top:0"><div class="slp-wrap">')
+    a('<section class="slp-sec" id="career-paths" style="padding-top:0"><div class="slp-wrap">')
     a('<div class="slp-sec-intro"><div><p class="slp-kicker">Career paths at a glance</p>'
       '<h2>Compare the paths before you commit.</h2></div>'
       f'<p style="justify-self:start"><a class="slp-quiet" href="{SITE}/alternative-careers-speech-pathologists-slps/">'
@@ -408,7 +339,7 @@ def build():
     a('</div></section>')
 
     # ---- stories
-    a('<section class="slp-sec slp-stories" id="real-stories" data-mile="Real stories"><div class="slp-wrap">')
+    a('<section class="slp-sec slp-stories" id="real-stories"><div class="slp-wrap">')
     a('<div class="slp-sec-intro"><div><p class="slp-kicker" style="color:#7FD6BC">Real transitions</p>'
       '<h2>See what other SLPs built from their clinical experience.</h2></div>'
       '<p>Each of these started while they were still working clinically.</p></div>')
@@ -423,7 +354,7 @@ def build():
     a('</div></div></section>')
 
     # ---- resources
-    a('<section class="slp-sec" id="resources" data-mile="Guides"><div class="slp-wrap">')
+    a('<section class="slp-sec" id="resources"><div class="slp-wrap">')
     a('<div class="slp-sec-intro"><div><p class="slp-kicker">Guides</p>'
       '<h2>Use the resource that fits your current step.</h2></div>'
       '<p>Each guide answers one decision that comes up during a transition.</p></div>')
@@ -441,18 +372,12 @@ def build():
     a('</div></section>')
 
     # ---- final cta
-    a('<div class="slp-wrap"><section class="slp-final" data-mile="Take the quiz">')
+    a('<div class="slp-wrap"><section class="slp-final">')
     a('<div><h2>Two minutes can make the next six months clearer.</h2>'
       '<p>Answer eight questions. You get your best-fit path, a realistic salary range, '
       'an honest timeline, and one thing to do this week.</p></div>')
     a(f'<div class="slp-final-actions"><a class="slp-btn slp-btn-primary" href="{QUIZ}">Find my career path →</a></div>')
     a('</section></div>')
-
-    # journey rail (populated + driven by the script below; desktop only)
-    a('<div class="slp-rail" aria-hidden="true"><div class="slp-rail-fill"></div>'
-      '<div class="slp-marker"><svg viewBox="0 0 24 24" fill="none" stroke="#0B6B54" '
-      'stroke-width="2.6" stroke-linecap="round"><path d="M12 21 V12 M12 12 L6.5 5 M12 12 L17.5 5"/></svg>'
-      '</div></div>')
 
     a(SCRIPT)
     a('</div>')  # .slp-home
