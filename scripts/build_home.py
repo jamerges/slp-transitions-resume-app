@@ -72,6 +72,8 @@ RESOURCES = [
          href=f"{SITE}/slp-resume-non-clinical/"),
 ]
 
+# Retired from the homepage 2026-08-03 (it explained a mechanism before the
+# reader had reason to care). Canonical home is content/blog/03-slp-transferable-skills.md.
 TRANSLATIONS = [
     ("Caseload of 60", "Portfolio of 60 concurrent clients"),
     ("IEP meetings", "Cross-functional stakeholder alignment"),
@@ -178,27 +180,8 @@ CSS = """
   gap:clamp(20px,4vw,56px);align-items:end;margin-bottom:clamp(28px,4vw,52px)}
 .slp-sec-intro p{color:var(--slate);font-size:1rem;line-height:1.65}
 
-/* translation strip: shows the product rather than describing it */
-.slp-trans{border-top:1px solid var(--line);margin-top:clamp(16px,2.5vw,26px)}
-.slp-trow{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.25fr);
-  gap:clamp(14px,3vw,40px);align-items:center;padding:clamp(14px,2vw,20px) .2rem;
-  border-bottom:1px solid var(--line)}
-.slp-tfrom{font-size:clamp(.92rem,1.5vw,1.05rem);color:var(--slate);
-  text-decoration:line-through;text-decoration-color:var(--sage)}
-.slp-tarrow{color:var(--brand);font-size:1.15rem;line-height:1}
-.slp-tto{font-family:'Fraunces',Georgia,serif;font-weight:500;
-  font-size:clamp(1.05rem,2vw,1.42rem);line-height:1.2;color:var(--forest-dark)}
-.slp-thead{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.25fr);
-  gap:clamp(14px,3vw,40px);padding:0 .2rem .7rem;font-size:.68rem;font-weight:700;
-  letter-spacing:.13em;text-transform:uppercase;color:var(--light)}
-@media (max-width:620px){
-  .slp-trow{grid-template-columns:1fr;gap:.25rem;padding:1rem .2rem}
-  .slp-tarrow{transform:rotate(90deg);width:1rem}
-  .slp-thead{display:none}
-}
-
 /* career cards */
-.slp-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.slp-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:14px}
 .slp-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:1.5rem;
   display:flex;flex-direction:column}
 .slp-card-label{font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
@@ -206,10 +189,12 @@ CSS = """
 .slp-card h3{font-size:1.42rem;line-height:1.15}
 .slp-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.15rem 0;
   padding:.9rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.slp-stats span{display:flex;flex-direction:column;gap:.25rem}
+.slp-stats span{display:flex;flex-direction:column;gap:.25rem;min-width:0}
 .slp-stats span + span{border-left:1px solid var(--line);padding-left:1rem}
-.slp-stats small{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--slate)}
+.slp-stats small{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--slate);white-space:nowrap}
 .slp-stats b{font-size:.95rem;color:var(--forest);font-weight:600}
+@container(max-width:300px){.slp-stats{grid-template-columns:1fr}}
 .slp-card > p{font-size:.88rem;line-height:1.55;color:var(--slate)}
 .slp-card > p:not(.slp-caveat){flex-grow:1}
 .slp-card .slp-caveat{margin-top:auto;padding-top:.1rem}
@@ -262,7 +247,7 @@ CSS = """
 @media (max-width:1000px){
   .slp-hero-grid{grid-template-columns:1fr}
   .slp-sec-intro{grid-template-columns:1fr;align-items:start;gap:1.1rem}
-  .slp-cards,.slp-story-grid{grid-template-columns:1fr 1fr}
+  .slp-story-grid{grid-template-columns:1fr 1fr}
   .slp-story-grid > a:last-child{grid-column:1/-1}
   .slp-res a{grid-template-columns:1fr auto;gap:.55rem 1.5rem}
   .slp-res .step,.slp-res b,.slp-res p{grid-column:1}
@@ -321,29 +306,8 @@ def build():
           f'<div><h3>{t}</h3><p>{d}</p></div></article>')
     a('</div></div></div></section>')
 
-    # ---- affirmations
-    a('<section class="slp-sec"><div class="slp-wrap">')
-    # Headline removed at James's request — it restated the hero. The lede is
-    # promoted out of the two-column intro grid so it doesn't sit beside an
-    # empty half, and the strip's column headers carry the explanation.
-    a('<p style="font-size:clamp(1.05rem,1.8vw,1.3rem);line-height:1.5;color:var(--slate);'
-      'margin-bottom:clamp(22px,3vw,34px);max-width:36em">'
-      'The words change. The skill does not.</p>')
-
-    a('<div class="slp-thead"><span>On your resume now</span><span></span>'
-      '<span>What hiring managers call it</span></div>')
-    a('<div class="slp-trans" data-stagger>')
-    for frm, to in TRANSLATIONS:
-        a(f'<div class="slp-trow slp-rv"><span class="slp-tfrom">{esc(frm)}</span>'
-          f'<span class="slp-tarrow">&rarr;</span>'
-          f'<span class="slp-tto">{esc(to)}</span></div>')
-    a('</div>')
-    a(f'<p style="margin-top:1.4rem"><a class="slp-quiet" '
-      f'href="{SITE}/slp-transferable-skills/">See the full translation table &rarr;</a></p>')
-    a('</div></section>')
-
     # ---- career paths
-    a('<section class="slp-sec" id="career-paths" style="padding-top:0"><div class="slp-wrap">')
+    a('<section class="slp-sec" id="career-paths"><div class="slp-wrap">')
     a('<div class="slp-sec-intro"><div><p class="slp-kicker">Career paths at a glance</p>'
       '<h2>Compare the paths before you commit.</h2></div>'
       f'<p style="justify-self:start"><a class="slp-quiet" href="{SITE}/alternative-careers-speech-pathologists-slps/">'
@@ -353,7 +317,7 @@ def build():
         a('<article class="slp-card slp-rv">')
         a(f'<p class="slp-card-label">{esc(c["label"])}</p><h3>{esc(c["title"])}</h3>')
         a(f'<div class="slp-stats"><span><small>Salary</small><b>{esc(c["salary"])}</b></span>'
-          f'<span><small>Typical timeline</small><b>{esc(c["timeline"])}</b></span></div>')
+          f'<span><small>Timeline</small><b>{esc(c["timeline"])}</b></span></div>')
         a(f'<p>{esc(c["fit"])}</p>')
         if c.get("caveat"):
             a(f'<p class="slp-caveat"><b>Worth knowing:</b> {esc(c["caveat"])}</p>')
