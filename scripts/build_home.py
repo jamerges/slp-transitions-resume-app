@@ -323,9 +323,12 @@ def build():
 
     # ---- affirmations
     a('<section class="slp-sec"><div class="slp-wrap">')
-    a('<div class="slp-sec-intro"><div>'
-      '<h2>Your clinical experience has value beyond the clinic.</h2></div>'
-      '<p>The words change. The skill does not.</p></div>')
+    # Headline removed at James's request — it restated the hero. The lede is
+    # promoted out of the two-column intro grid so it doesn't sit beside an
+    # empty half, and the strip's column headers carry the explanation.
+    a('<p style="font-size:clamp(1.05rem,1.8vw,1.3rem);line-height:1.5;color:var(--slate);'
+      'margin-bottom:clamp(22px,3vw,34px);max-width:36em">'
+      'The words change. The skill does not.</p>')
 
     a('<div class="slp-thead"><span>On your resume now</span><span></span>'
       '<span>What hiring managers call it</span></div>')
