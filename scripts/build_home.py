@@ -24,7 +24,7 @@ SITE = "https://slptransitions.com"
 # salary / timeline: research-facts.md. `caveat` renders as an honest flag.
 PATHS = [
     dict(label="Fastest pivot", title="Clinical liaison",
-         salary="$84k–135k", timeline="1–3 months",
+         salary="$84–135k", timeline="1–3 months",
          fit="Your clinical licence is the qualification. Encompass Health, Select Medical and Lifepoint hire for this constantly."),
     dict(label="Remote-friendly", title="Utilization review",
          salary="$80–88k", timeline="1–3 months",
@@ -33,14 +33,14 @@ PATHS = [
          salary="$75–120k", timeline="3–6 months",
          fit="The best effort-to-odds ratio of any path here. At speech-tech companies the CCC-SLP itself is the credential."),
     dict(label="Writing path", title="Content marketing",
-         salary="See note", timeline="~12 months",
-         fit="Documented outcome: corporate marketing after about a year of applying. Ranges vary too widely to quote one number honestly."),
+         salary="$80–141k", timeline="~12 months",
+         fit="Documented outcome: corporate marketing after about a year of applying, and freelance healthcare copywriting that grew into an agency."),
     dict(label="Systems path", title="Clinical informatics",
-         salary="$97.8k–154k", timeline="6–12 months",
+         salary="$97.8–154k", timeline="6–12 months",
          fit="Highest ceiling on this list.",
          caveat="Epic certification cannot be self-obtained. Employer sponsorship only, so target sponsor-track analyst roles."),
     dict(label="Research + design", title="UX research",
-         salary="$67k–154k", timeline="6–18 months",
+         salary="$67–154k", timeline="6–18 months",
          fit="One documented SLP story: rehab director to UXR via bootcamp. Health-tech is the realistic niche.",
          caveat="Heavily oversaturated: 35% more grads in five years against flat openings. The hardest path here."),
 ]
@@ -192,9 +192,11 @@ CSS = """
 .slp-stats small{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--slate)}
 .slp-stats b{font-size:.95rem;color:var(--forest);font-weight:600}
 .slp-card > p{font-size:.88rem;line-height:1.55;color:var(--slate)}
-.slp-caveat{margin-top:.85rem;padding:.7rem .85rem;border-radius:9px;background:#FDF3E7;
-  border:1px solid #F0D7B4;font-size:.8rem;line-height:1.5;color:#8A5A22}
-.slp-caveat b{color:#7A4E1B}
+.slp-card > p:not(.slp-caveat){flex-grow:1}
+.slp-card .slp-caveat{margin-top:auto;padding-top:.1rem}
+.slp-caveat{margin-top:.9rem;padding-left:.8rem;border-left:2px solid var(--amber);
+  font-size:.82rem;line-height:1.55;color:var(--slate)}
+.slp-caveat b{color:#8A5A22;font-weight:700}
 
 /* stories */
 .slp-stories{background:var(--forest-dark);color:var(--paper)}
