@@ -37,3 +37,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# rendered video: regenerate with scripts/make_sizzle.py
+content/video/*.mp4
