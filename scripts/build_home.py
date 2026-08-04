@@ -72,6 +72,16 @@ RESOURCES = [
          href=f"{SITE}/slp-resume-non-clinical/"),
 ]
 
+TRANSLATIONS = [
+    ("Caseload of 60", "Portfolio of 60 concurrent clients"),
+    ("IEP meetings", "Cross-functional stakeholder alignment"),
+    ("Progress monitoring", "Outcome analytics"),
+    ("Treatment plans", "Goals, timelines, deliverables"),
+    ("Documentation review", "Detail-oriented QA"),
+]
+
+# Retained for reference; the homepage now shows the translation strip instead,
+# which makes the same point with a fraction of the prose.
 AFFIRMATIONS = [
     ("Your degree still counts.",
      "Clinical reasoning, communication, education, documentation and stakeholder management all carry outside the clinic."),
@@ -168,15 +178,24 @@ CSS = """
   gap:clamp(20px,4vw,56px);align-items:end;margin-bottom:clamp(28px,4vw,52px)}
 .slp-sec-intro p{color:var(--slate);font-size:1rem;line-height:1.65}
 
-/* affirmations */
-.slp-aff{display:grid;grid-template-columns:repeat(4,1fr);
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.slp-aff > div{padding:1.9rem 1.5rem 2rem}
-.slp-aff > div + div{border-left:1px solid var(--line)}
-.slp-aff h3{font-size:1.22rem;line-height:1.2;margin:1.1rem 0 .7rem}
-.slp-aff p{font-size:.88rem;line-height:1.6;color:var(--slate)}
-.slp-tick{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
-  border-radius:50%;background:var(--mint);color:var(--forest);font-weight:700;font-size:.8rem}
+/* translation strip: shows the product rather than describing it */
+.slp-trans{border-top:1px solid var(--line);margin-top:clamp(16px,2.5vw,26px)}
+.slp-trow{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.25fr);
+  gap:clamp(14px,3vw,40px);align-items:center;padding:clamp(14px,2vw,20px) .2rem;
+  border-bottom:1px solid var(--line)}
+.slp-tfrom{font-size:clamp(.92rem,1.5vw,1.05rem);color:var(--slate);
+  text-decoration:line-through;text-decoration-color:var(--sage)}
+.slp-tarrow{color:var(--brand);font-size:1.15rem;line-height:1}
+.slp-tto{font-family:'Fraunces',Georgia,serif;font-weight:500;
+  font-size:clamp(1.05rem,2vw,1.42rem);line-height:1.2;color:var(--forest-dark)}
+.slp-thead{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.25fr);
+  gap:clamp(14px,3vw,40px);padding:0 .2rem .7rem;font-size:.68rem;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--light)}
+@media (max-width:620px){
+  .slp-trow{grid-template-columns:1fr;gap:.25rem;padding:1rem .2rem}
+  .slp-tarrow{transform:rotate(90deg);width:1rem}
+  .slp-thead{display:none}
+}
 
 /* career cards */
 .slp-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -243,9 +262,6 @@ CSS = """
 @media (max-width:1000px){
   .slp-hero-grid{grid-template-columns:1fr}
   .slp-sec-intro{grid-template-columns:1fr;align-items:start;gap:1.1rem}
-  .slp-aff{grid-template-columns:1fr 1fr}
-  .slp-aff > div:nth-child(3){border-left:0}
-  .slp-aff > div:nth-child(n+3){border-top:1px solid var(--line)}
   .slp-cards,.slp-story-grid{grid-template-columns:1fr 1fr}
   .slp-story-grid > a:last-child{grid-column:1/-1}
   .slp-res a{grid-template-columns:1fr auto;gap:.55rem 1.5rem}
@@ -255,8 +271,6 @@ CSS = """
   .slp-final-actions{max-width:420px}
 }
 @media (max-width:620px){
-  .slp-aff,.slp-cards,.slp-story-grid{grid-template-columns:1fr}
-  .slp-aff > div + div{border-left:0;border-top:1px solid var(--line)}
   .slp-story-grid > a:last-child{grid-column:auto}
   .slp-actions{flex-direction:column;align-items:stretch}
   .slp-btn{width:100%}
@@ -299,9 +313,9 @@ def build():
     # pathway
     a('<div class="slp-path" data-stagger>')
     for n, (t, d) in enumerate([
-        ("Explore your options", "Identify roles that fit your strengths, values and the life you want."),
-        ("Build your bridge", "Translate your experience, close one gap, and test it while still employed."),
-        ("Land with confidence", "Target real openings, tailor your story, and apply."),
+        ("Explore your options", "Roles that fit your strengths and the life you want."),
+        ("Build your bridge", "Close one gap while you are still employed."),
+        ("Land with confidence", "Target real openings and apply."),
     ], 1):
         a(f'<article class="slp-path-card slp-rv"><span class="slp-path-num">0{n}</span>'
           f'<div><h3>{t}</h3><p>{d}</p></div></article>')
@@ -309,14 +323,21 @@ def build():
 
     # ---- affirmations
     a('<section class="slp-sec"><div class="slp-wrap">')
-    a('<div class="slp-sec-intro"><div><h2>Your clinical experience has value beyond the clinic.</h2></div>'
-      '<p>Years of clinical work build judgment, communication and problem-solving that hold up '
-      'across industries. The task now is recognising them and putting them into words a hiring '
-      'manager already understands.</p></div>')
-    a('<div class="slp-aff" data-stagger>')
-    for i, (t, c) in enumerate(AFFIRMATIONS, 1):
-        a(f'<div class="slp-rv"><span class="slp-tick">✓</span><h3>{esc(t)}</h3><p>{esc(c)}</p></div>')
-    a('</div></div></section>')
+    a('<div class="slp-sec-intro"><div>'
+      '<h2>Your clinical experience has value beyond the clinic.</h2></div>'
+      '<p>The words change. The skill does not.</p></div>')
+
+    a('<div class="slp-thead"><span>On your resume now</span><span></span>'
+      '<span>What hiring managers call it</span></div>')
+    a('<div class="slp-trans" data-stagger>')
+    for frm, to in TRANSLATIONS:
+        a(f'<div class="slp-trow slp-rv"><span class="slp-tfrom">{esc(frm)}</span>'
+          f'<span class="slp-tarrow">&rarr;</span>'
+          f'<span class="slp-tto">{esc(to)}</span></div>')
+    a('</div>')
+    a(f'<p style="margin-top:1.4rem"><a class="slp-quiet" '
+      f'href="{SITE}/slp-transferable-skills/">See the full translation table &rarr;</a></p>')
+    a('</div></section>')
 
     # ---- career paths
     a('<section class="slp-sec" id="career-paths" style="padding-top:0"><div class="slp-wrap">')
