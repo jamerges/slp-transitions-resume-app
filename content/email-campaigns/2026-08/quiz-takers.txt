@@ -1,0 +1,36 @@
+SUBJECT: Your quiz result — and the part the quiz couldn't check
+(drag-and-drop rebuild spec: paragraphs below; one button, green #0B6B54)
+
+Hi there,
+
+James here — I run SLP Transitions. Former SLP, now a copywriter and content
+strategist at a mental-health-tech company, which is to say: I made the move
+you're weighing, and I remember how foggy it looked from the inside.
+
+You took the career quiz, and your match was {$quiz_result}. That result is a
+real starting point — it's built on documented SLP transitions, not vibes.
+
+Here's its honest limit: the quiz ranked the paths, but it never saw your
+resume. It can't tell whether YOU'RE six weeks or six months from a real
+application, or what to do first.
+
+That's what the $9 Pivot Report adds. It reads your actual resume and gives
+you a readiness profile, which stage of the transition you're in, your top
+three paths with the entry doors for each, and a 30-day plan. It picks up
+where your quiz result left off:
+
+[BUTTON: Get your Pivot Report — $9]
+https://app.slptransitions.com/?from=quiz&goal=report&path={$quiz_result}
+
+Already holding a specific job posting? The $24 Career Pivot Suite goes
+further: every resume bullet rewritten for that posting, a cover letter in
+your voice, a LinkedIn rewrite, and interview prep.
+
+The free things stay free — the companies list is now searchable at
+app.slptransitions.com/companies (126 companies that hire former SLPs).
+
+— James
+
+(footer) You're getting this because you took the career quiz at
+slptransitions.com. If it's not useful anymore, unsubscribe here and I
+genuinely won't take it personally.
