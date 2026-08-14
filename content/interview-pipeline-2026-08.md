@@ -292,3 +292,123 @@ Then pitch, in order: **Samantha Fitzsimmons** (verified contact, candid,
 fills a quiz path), **Lauren Hermann** (guest *and* partner, mirrors James's
 path), **Kristen Lynch** (the salary arc, from the Facebook sweep), **Tricia
 Moomaw** (validates the Epic guardrail), **Kellie McGee** (the flat-pay line).
+
+---
+
+# Second web lane — corrections and new names
+
+A second, independently-run sweep. It **contradicts the first one on two
+points**, and where two sources disagree, both are recorded here rather than
+resolved by preference.
+
+## ⚠️ Correction: Tricia Moomaw is NOT front-of-list
+
+The first sweep presented her Epic Application Analyst story confidently. The
+second found that it rests on **a single source** — one Non-Clinical PT
+interview from **2021** — with **no LinkedIn, no email, and no confirmation she
+still holds the role five years later**. She fails our "publicly reachable"
+criterion as things stand. The *substance* still matters enormously (she moved
+in 2014 via an internal Epic job fair when Denver Health contracted with Epic;
+Epic itself "recommends hiring a mix of analysts as well as clinicians"; the
+job carries 24/7 on-call every 7–8 weeks) — but treat it as **background that
+supports our Epic guardrail, not as a bookable interview**, until someone
+locates her.
+
+## ⚠️ Unresolved conflict: Rinki Varindani Desai
+
+Sweep 1: left full-time clinical April 2023, "solely non-clinical now" →
+interview subject. Sweep 2: **still a practicing medical SLP** → partner, not
+subject. Sweep 2 also surfaces much more of her business: **SLPathways**
+(newsletter + podcast on SLP career design), the **Medical SLP Forum**, and she
+**teaches "Non-Clinical Career Pathways for SLPs"** on SpeechPathology.com and
+inside MGH Institute's Future-Ready SLP series (May–Aug 2026). Resolve by
+asking her directly; either way she owns audience and curriculum aimed at our
+exact ICP.
+
+## New verified names
+
+**Maria Karamihaylova — Conversational AI Designer, Microsoft.** CCC-SLP
+(clinical listing in Queens, NY). Broke in on **free and low-cost training
+only** — self-study plus Dialogflow and Cognigy's Conversation Design course.
+*"My previous role as an SLP prepared me immensely for the less technical
+aspects of my new career."* Highest-status logo in either sweep and the
+cheapest, most nameable training path found.
+linkedin.com/in/mkaramihaylova · source: UX Magazine, "13 Conversation Design
+Pivoters"
+
+**Courtney Rams — Conversation Designer, STELLA Automotive AI.** SLP and
+Assistive Technology Specialist who bridged via **an internship at Voiceitt**
+(speech recognition for atypical speech): *"My fascination with technology and
+communication led me to an internship with Voiceitt."* A concrete on-ramp into
+speech tech we've never covered. Caveat: a ZoomInfo listing suggests she's now
+at Eltropy — unconfirmed; treat the STELLA role as verified history.
+
+**Shelley Shiling — Manager, Client Experience, Prompt Health.** GWU BA+MA,
+prior roles at Better Speech and Easy Speech Therapy; Team Lead → CX Manager →
+Manager. Her value is that she narrates **the unglamorous middle**: taking a
+part-time role at a small startup, wearing every hat, building real projects
+that made later interviews easy. That middle phase is the part no SLP can
+picture. Already comfortable on mic (The Clinician Transition, Ep. 8).
+linkedin.com/in/shelley-shiling-0136226b
+
+**Casey Francis, CCC-SLP — education lead, Prompt Health.** ~A decade in adult
+inpatient, outpatient and home-health rehab; certified Brain Injury Specialist.
+Now builds videos, articles and webinars. She is a **guest host of The
+Clinician Transition podcast** — the only SLP voice on a show otherwise run by
+two PTs. **Email and LinkedIn both published** at
+otpotential.com/directory/casey-francis, making her the most reachable person
+in either sweep, and likely a yes plus a cross-promo.
+
+**Crystal Bray, CCC-SLP — health content writer/copywriter.** Ten years
+clinical, Asheville NC. Wrote Non-Clinical PT's own SLP careers guide. In her
+words: *"I was an SLP feeling desperate to leave my clinical role. After ten
+years, lots of experiences, and one global pandemic, I was 1054% sure it was
+time for a change. At first, I was terrified to leave behind the 'devil I
+knew.'"* Same lane as James — peer as much as subject.
+
+## New "in the middle of it" candidate
+
+**Kelly Hart, CCC-SLP** — 20+ year SLP, completed the **Aspireship** customer
+success course, headline reads "SLP → Health Tech." But her company field still
+shows EmpowerMe Wellness and her own wording ("Over the last year, I've been
+moving from…") reads as **mid-transition, possibly not yet landed**. Verify
+before framing her as a completed exit — though an *"I'm in the middle of it
+right now"* interview may be more useful to readers than another clean win.
+linkedin.com/in/kelly-hart-slp
+
+## Contact upgrades for people already listed
+
+- Kellie McGee: **linkedin.com/in/kelliemcgeeslp**. New detail — she took
+  **18 months off** to reassess before landing at Laronix.
+- Matthew Tisdale: **linkedin.com/in/matthew-r-tisdale**
+- Blake Nowicki: has since progressed to a **Client Success** title.
+- Ashley Mangold, PhD CCC-SLP — AAC Specialist at Numotion alongside Whipple;
+  unclear whether the role still involves clinical evaluation. She also posted
+  that **Numotion is now the first official Hiring Partner** for the Go
+  Non-Clinical community.
+
+## Partner map additions
+
+- **The Clinician Transition podcast** (tct.buzzsprout.com) — hosts Emma Brady
+  PT DPT and Emily Kelly PT DPT, with Casey Francis (SLP) guest hosting. Ten
+  episodes, Season 1 wrapped June 2026, **almost no SLP-specific coverage**.
+  This revises the earlier "park it" call: as an *affiliate* it's still weak
+  (multi-discipline), but as a **guest swap it's strong precisely because
+  they're thin where we're deep**, and Casey Francis is the warm door in.
+- **r/SLPcareertransitions** — a subreddit dedicated to exactly this ICP.
+  Identify the mods.
+- **OT Potential directory** — lists SLP "industry professionals" with contact
+  details. A standing sourcing channel, not a one-off.
+- **Aspireship** — SaaS sales/CS reskilling, named independently by Kelly Hart,
+  Blake Nowicki and Breanna Murray. Affiliate candidate for the CS/sales path.
+- **Hillary Black** — curated the UX Magazine conversation-design piece
+  (hillaryblack.substack.com). Warm intro route to both Karamihaylova and Rams.
+
+## Sourcing caveats carried forward
+
+LinkedIn 403s throughout both sweeps, so every "current title" rests on search
+snippets and company posts rather than a profile actually read. Six of nine
+names in this lane trace back to Non-Clinical PT interviews — one publisher,
+first-person but promotional. **Reddit was a dead end for sourcing**: r/slp
+threads on leaving are substantive but anonymous. Good voice-of-customer
+material, no reachable names.
