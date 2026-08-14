@@ -552,3 +552,69 @@ Cognixion beyond Mai Ling Chan, plus SimplePractice, Net Health, WebPT, Oracle
 Health and Nuance. Given that `lib/companies.ts` already lists 134 companies,
 this is the most obviously mineable vein left and it maps directly onto our own
 directory.
+
+## Late additions (final lane)
+
+**Emily Barton Maher — Maher Copywriting.** Pediatric SLP → copywriter, and her
+homepage headline *is* the pivot: *"I'm Emily, a former speech pathologist
+turned copywriter. I use my communication expertise to craft messaging…"* She
+has productized the SLP-to-copywriter identity as her positioning — the
+cleanest example of "your clinical skill is the sales pitch."
+mahercopy.com/contact. (Emily **Maher**, not the already-published Emily
+Harford.)
+
+**Dara Levan — author and podcaster, "Every Soul Has a Story."** English and
+journalism degrees plus reporting at the Dayton Daily News *before* the SLP
+master's; pediatric SLP in South Florida; started the blog in **2017**, added a
+podcast, then Substack, then published a debut novel in **2024** — and edited
+nonfiction books on the side while still practicing. A genuine seven-year arc
+with an artifact at the end, which is the honesty our timelines need.
+daralevan.substack.com
+
+**Kseniya Kenkeremath — SLP → UX → QA leadership.** Two years nine months
+clinical (stroke and aphasia). She has **the sharpest articulation of the push
+factor found anywhere today**: she left citing *"unrealistic productivity
+standards and the ethical issues involved in for-profit healthcare."* General
+Assembly's 10-week UX immersive, first day March 12 2019. Current title
+unconfirmed — search suggests she's since moved from UX into QA/engineering
+leadership, which would make this a **two-pivot story**, more honest than
+"bootcamp then happily ever after." kkseniya.com
+
+**Jessi Andricks — the counter-narrative, currently unreachable.** Wrote "I
+Don't Want to be an SLP Anymore" (2019) containing the line nobody else in this
+entire pipeline says: *"So I did. I left for a new field and had the WORST job
+experience of my life."* Her site is in maintenance mode and the post 404s.
+**Worth a retry** — a story about an exit that went badly would be the most
+credibility-building piece on the site, and we have nothing like it.
+
+**Kayla Rivoli/Hill — LinkedIn is /in/kaylahillslp**, but ⚠️ her headline still
+reads "Licensed Speech-Language Pathologist, M.S., CCC-SLP." Confirm she hasn't
+returned to clinical work before pitching.
+
+## Dead ends worth recording so nobody re-runs them
+
+- **ASHA Leader's "Beat of a Different Leader"** feature was read in full: of
+  twelve profiles, eleven fail our criteria (still in clinical leadership,
+  academia, private practice, audiology, or retired). Only Dawn Ellis (OSEP,
+  U.S. Dept. of Education) loosely fits, and that profile is **eleven years
+  old**. Drop this source.
+- **Ashley Chiasson** — the one named instructional-design figure who surfaces
+  repeatedly **never practiced as an SLP**; she intended to and went straight
+  into ID. Does not qualify. Logged so nobody re-finds her.
+- **Reddit** is a dead end for sourcing across every lane: substantive threads,
+  uniformly anonymous. Voice-of-customer material only.
+- **Substack's search API returns empty** for every query, so newsletter
+  coverage is only as good as Brave's index.
+
+## ⚠️ Two of our eight quiz paths have no public named story
+
+**Instructional Design and Data Analysis produced almost nothing** on the open
+web — every result was anonymous Reddit, with Samantha Fitzsimmons the single
+exception (Data Analysis). Both paths are in the quiz, both are recommended to
+real people, and neither has a documented SLP behind it that we can point to.
+
+That's a content gap and a credibility gap at once. Filling it needs a
+different method than web search: a LinkedIn people-search on a logged-in
+session, or simply asking — the Facebook group had multiple people *asking*
+about instructional design and getting no answers, which means the person who
+did it is either not in the group or not speaking up.
