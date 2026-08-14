@@ -412,3 +412,143 @@ names in this lane trace back to Non-Clinical PT interviews — one publisher,
 first-person but promotional. **Reddit was a dead end for sourcing**: r/slp
 threads on leaving are substantive but anonymous. Good voice-of-customer
 material, no reachable names.
+
+---
+
+# Final consolidation (all lanes reported)
+
+## 🛑 Outreach rule — read before contacting anyone
+
+**The Non-Clinical PT's spotlight pages explicitly ask: "Please refrain from
+contacting our spotlight participants on social media."** Most of the
+candidates in the two web sweeps above came from those pages. Cold-DMing them
+off the back of those interviews violates a stated request from a site we also
+want as a partner.
+
+So: reach those people only through **independently-found routes** (their own
+company page, their own site, a published work email), or **ask Meredith
+Castin for a warm introduction** — and that request is itself the natural
+opening for the partnership conversation.
+
+## Contactable right now, no lookup needed
+
+- **Crystal Bray** — crystal@chrysaliscopywriting.com (her own business, no
+  employer comms approval needed). Ten years medical SLP → freelance healthcare
+  copywriting; unusual arc, she was a journalist for five years *before* the
+  CSD master's, so she frames it as a return rather than a flight.
+- **Amanda Whipple** — Amanda.Whipple@numotion.com
+- **Lisa Kathman & Sarah Bevier** — hello@slptoolkit.com. Co-founders of **SLP
+  Toolkit**, built **nights and weekends from 2015 while working full-time in
+  schools**, went full-time 2018. Lisa was lead SLP for Arizona's largest
+  district supporting 100+ clinicians. Best "built it on the side" story for
+  school SLPs.
+- **Rinki Varindani Desai** — calendly.com/rinkislp
+- **Lauren Hermann** — booking form at thecopyclinicians.com
+- **Kayla Rivoli** — via her Substack, kaylarivoli.substack.com
+- **Swati Nikumb** — swatinikumb.com/contact
+- **Casey Francis** — email + LinkedIn at otpotential.com/directory/casey-francis
+
+## Best additions from the final lanes
+
+**Emily O'Shea, CCC-SLP, CBIS — Director of Clinical Informatics, Intermountain
+Health.** SLP → Assistant Supervisor of the SLP department → Clinical
+Informatics Specialist → Health Informaticist → **Director**. The full ladder
+is visible, inside one health system. This answers the question none of our
+content does: *does this path actually go anywhere?* Yes — to director level,
+without leaving the hospital.
+linkedin.com/in/emily-o-shea-ma-ccc-slp-cbis-399b0334
+
+**Swati Nikumb — Senior UX Researcher, Wisely by ADP.** Retrained and landed a
+UXR internship **within one year, while on maternity leave**, on a **$50/month
+Coursera specialization**. Her turning point is dated and scene-level: *"one
+night, while sitting in a restaurant with my husband, after 2 years of
+practicing as a therapist, 3 months into my first pregnancy… I made the
+decision to change careers."* Pre-answers the two biggest objections — cost and
+life stage — with a number and a baby.
+
+**Kate Paolini — UX Researcher, Meta.** Six years in **schools** (most of our
+quiz takers are school SLPs; nearly every published UX story is a medical SLP).
+Got in via **Meta's Research Associate Program**, a six-month mentorship built
+for career-changers that almost nobody knows exists. *"Being in therapy
+sessions all day was really draining. I'm a huge introvert, and feeling like I
+always had to be 'on' took a toll."*
+
+**Kayla Rivoli (writes as Kayla Hill) — SEO analyst.** Left at 28 after four
+years, took an **explicitly entry-level** role and a **pay cut**, self-served a
+HubSpot certification. Frames leaving as **"completion," not quitting**, and
+confronts sunk cost head-on: *"a previous version of myself DID want to be an
+SLP… She was the president of NSSLHA."* The most emotionally honest and most
+recent account found; voice is very close to ours. (Confirm the Hill/Rivoli
+name difference before publishing.)
+
+**Kelsey Stauffer — Product Manager, Expressable.** Joined in the early days as
+a clinician and **moved internally into product**; now owns clinical product
+including AI documentation tooling. The cheapest, most repeatable pivot there
+is: change roles at the company that already employs you. Live AI angle.
+(Melissa Palao, Content & Marketing PM at Expressable, is a second SLP there —
+one outreach could land both.)
+
+**Drew Niermann — Head of GTM & Solutions Architecture, CapStorm.** SLP → the
+Salesforce ecosystem in Jan 2018 → Fortune 100 accounts. Tech sales is the
+highest-paying path SLPs never consider, and as a man in a ~95%-female field he
+offers a different reader entry point.
+
+## 📣 Distribution finding that outranks most of the above
+
+**ASHA is now formally programming this topic**: a **Career Transitions
+Mentorship Program** plus a monthly **Career Pivot Speaker Series** running
+through 2026. **Katie Seaver speaks in October 2026.** Jessica Hooke speaks in
+July 2026; Dr. Kelli Uitenham in September.
+
+Three consequences: the speaker roster is a **renewable candidate pipeline**;
+pitching James as a speaker is a credibility play with the field's own governing
+body; and it is one more reason the **Seaver thread should be answered now** —
+her ASHA slot is a natural reason to reconnect that has nothing to do with
+asking her for anything.
+
+## Conflicts resolved / claims retired
+
+- **Rinki Desai** — three of four lanes agree she went **solely non-clinical in
+  April 2023**; the dissenting lane was less detailed. Treat as a leaver. But
+  note the sharper finding: she runs **SLPathways** (career coaching, workshops,
+  podcast, newsletter, all aimed at non-clinical SLP careers) plus the **Medical
+  SLP Forum, 48,000+ members**. That is **the most direct overlap with
+  slptransitions.com found anywhere** — decide deliberately whether she's a
+  guest, a partner, or a competitor before reaching out.
+- **Alex Shiling** — confirmed **not an SLP**; a surname collision with Shelley
+  Shiling. Dropped.
+- **Tricia Moomaw** — a later lane independently re-verified the story (18 years
+  clinical at Denver Health, internal Epic job fair, 2014) but still found **no
+  published contact**. The earlier demotion stands: excellent evidence for the
+  Epic guardrail, not currently a bookable interview.
+- **Bethany Riebock** — already published at /slp-to-ux/, but her story is now
+  ~8 years old and sources disagree on whether she's at Google or Capital One.
+  **A follow-up piece is the opportunity**, not a new interview.
+- Also excluded: Emily Harford and Caitlin Mueller (already published), Mai Ling
+  Chan (Xceptional Leaders), the anonymous CNBC "Sarah" (unreachable), and
+  Shenae Simmons (not an SLP — logged so nobody re-finds her).
+
+## A whole pillar post is now sitting here
+
+The clinical-informatics cluster is deep enough to stand alone: **Emily O'Shea**
+(Intermountain, Director), **Tayler Duran** (Craig Hospital, dated in-house
+pivot), **Amie Gustavson** (Children's Specialized — pediatric informatics is
+rare), **Jodie Lambert** (holds the **CPHIMS** cert — a concrete credential to
+name), **Emily Mooney** (SLP → PMP → Senior IS PM at Providence), **Leah
+Schneider** (SLP + MPH → analyst at UPMC), **Liana Toyer** (20 years clinical →
+MBA → implementation across Epic/Cerner/NetHealth/PointClickCare) and **Jennifer
+LaRoche** (Qualifacts). Most need ~10 minutes each on a logged-in LinkedIn
+session to convert from probable to confirmed.
+
+The recurring mechanism across all of them: **they became the EMR super-user or
+joined the implementation team at the hospital that already employed them.**
+That is the real door, and it's the same one the Epic guardrail points at.
+
+## Still unexplored
+
+The **speech-tech / ed-tech company team-page lane never completed** — Tobii
+Dynavox, Presence, Parallel Learning, Amplio, Texthelp, Better Speech,
+Cognixion beyond Mai Ling Chan, plus SimplePractice, Net Health, WebPT, Oracle
+Health and Nuance. Given that `lib/companies.ts` already lists 134 companies,
+this is the most obviously mineable vein left and it maps directly onto our own
+directory.
