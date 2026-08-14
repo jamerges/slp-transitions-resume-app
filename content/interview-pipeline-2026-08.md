@@ -153,3 +153,142 @@ before investing in a pillar post.
 
 Keep it individual, reference their specific post, offer draft approval, and
 never mention the paid products in the first message.
+
+---
+
+# Public-web sweep (same day, separate source)
+
+Ran alongside the Facebook sweep. Richest vein by far: **TheNonClinicalPT.com's
+written "Non-Clinical Spotlights" Q&A series** (not a podcast — no SLP episode
+archive found there). Also produced hits on The Copywriter Club, Speechie Side
+Hustle, and Data Career Academy. Nurse Keith's Show, Career Change Makers, MSL
+Talk and Doctors Unbound were checked and have **no** SLP guests — dead ends,
+not gaps.
+
+**Standing caution:** 15 of the 16 below are self-reported Q&As on a site that
+sells a career-change course, and several subjects are that course's graduates.
+The people and jobs are real and named, but the framing is promotional.
+**Confirm every claim in your own interview before anything reaches
+research-facts.md.**
+
+**Contact reality:** those spotlight pages publish no emails or LinkedIn URLs —
+they direct readers to comment on the post. Only Fitzsimmons and Hermann had
+verifiable profile links. For everyone else the route is a LinkedIn search on
+name + named employer, or an introduction from NonClinicalPT. No URLs were
+guessed or constructed.
+
+Already covered — do not re-pitch: **Bethany Riebock** (SLP → UX Researcher at
+Google) has a spotlight there, but her story is already published at
+slptransitions.com/slp-to-ux/.
+
+## Top of the list
+
+**Tricia Moomaw — Epic Application Analyst, Denver Health.** 24 years at Denver
+Health, 18 clinical (inpatient/outpatient dysphagia, cognitive-communication),
+moved to informatics in 2014 when the system contracted with Epic — found it at
+an *internal* job fair after working a legacy-EHR project. Pay "comparable —
+maybe a bit more." **She is living proof of our Epic guardrail**: she got
+certified because her employer sponsored her during an implementation, which is
+exactly the door research-facts.md says is the real one. Best possible
+interview to pair with the "you can't just get Epic certified" post.
+
+**Samantha Fitzsimmons — SLP (14 years) → data analytics consultant** (Tableau,
+SQL, Alteryx; LinkedIn shows OdysseyRe). Openly discusses being **laid off**
+early in her analytics career, and describes a concrete method: *one highly
+tailored application a day* rather than mass applying. The only story in either
+sweep that includes the gap and the setback. Fills the Data Analysis quiz path.
+Easiest to reach: linkedin.com/in/samafitz.
+Source: Data Career Academy, 2 Sep 2025.
+
+**Lauren Hermann, CCC-SLP — founder, The Copy Clinicians.** Medical SLP from
+2012 (ER, ICU, cardiac ICU, stroke, cancer, rehab, private practice) who wrote
+*But My Speech Is Fine* — **the book is what introduced her to copywriting**
+and became the pivot. Now runs a healthcare copywriting agency **staffed
+entirely by CCC-SLPs**, plus a Copy 101 course. First clients came from Upwork
+and a single Facebook post. Mirrors James's own path more closely than anyone
+else found; already a proven podcast guest twice over.
+thecopyclinicians.com/about · linkedin.com/in/lauren-hermann-25412349
+
+**Kellie McGee — clinical engagement/sales, Laronix.** 15+ years, mostly acute.
+Contains the single most quotable line surfaced anywhere today:
+**"I made the same hourly pay in my hospital role for the last 10 years with no
+increases."** Left May 2023 after her employer forced inflexible scheduling;
+negotiated remote proactively.
+
+**Rinki Varindani Desai, BCS-S — COO/co-founder, STEP; founder, Theratactix.**
+Four years LTACH then rehab/SNF/academic medical centers. Co-founded STEP in
+2018 **while still clinical**, left full-time clinical in April 2023 — the
+clearest "built it on the side for five years, then jumped" timeline found, and
+the exact question quiz-takers ask. STEP reports 40,000+ enrollments and 150+
+university partnerships. Reports significantly better hours *and* pay.
+
+**Chad Friedman — Utilization Review Manager, BridgePoint Healthcare.** Built
+the first SLP program at a rural medical center, then the full adult continuum;
+left clinical in 2023 via a formal UR training program, 100% remote, increased
+compensation. His framing is already our house voice: *"Make sure you're
+transitioning toward something you're excited about, and not just simply trying
+to escape patient care."*
+
+## Also verified, worth pursuing
+
+- **Matthew Tisdale, PMP** — 6 years acute/LTACH → Lingraphica 2016, now
+  Consumer Sales Manager. Found the job via a **cold ZipRecruiter application**.
+- **Sara Brownstein** — ~5 years SNF/home health/schools → **entry-level BDR**
+  at Rocket Software (Jan 2023), promoted twice, fully remote. Went from 50+
+  hours across three jobs to 40 hours for significantly more. Pure tech sales,
+  no healthcare adjacency — the "you don't have to stay in healthcare" case.
+- **Blake Nowicki** — decided to leave **six months into her career**; applied
+  to **100+ positions** before landing software training at eClinicalWorks.
+  Took an initial pay cut. The honest counterweight to the fast-exit stories.
+- **Amanda Whipple** — AAC specialist → Executive Director, Numotion Speech
+  Solutions. Applied while on maternity leave despite having no sales
+  experience; the hiring manager told her *"You are more of a sales person than
+  you think."*
+- **Breanna Murray** — began exploring in 2022 while pregnant, used Non-Clinical
+  101 plus an Aspireship customer-success certification, landed at Cala Health
+  May 2025 via LinkedIn networking and an internal referral. Took a small pay
+  cut and says so plainly.
+- **Kareema Spells, PMP** — left clinical 2017, now supervises seven licensing
+  specialists at Included Health. Names **introversion** as the driver: being
+  "on" all day was emotionally draining. (Caveat: still does PRN SLP work.)
+- **Elvan Baker, CBIS** — the longest ladder found, including a stint as a
+  **Forensic Audio Analyst**, now VP of Client Experience at Rubato-Life.
+- **Julia Satoh** — bilingual; hospital SLP → corporate talent acquisition →
+  client success at Vibra Travels. **Explicitly offers informational
+  interviews**, so the warmest door in the set.
+- **Caitlin Jones** — drifted out through administration to National Sales
+  Director at Infinity Rehab; hasn't treated in ~4 years. The most ambivalent
+  voice: *"I do miss treating at times."* Valuable precisely because it isn't
+  triumphant.
+- **Jessica Alves, CBIS** *(borderline — judge the bar)* — Clinical Liaison at
+  NYU Langone, non-treating but hospital-embedded, still adjunct-teaches. Her
+  pivot began by becoming an **EMR "super user"** during an implementation —
+  the same sponsored-access mechanism as Moomaw.
+
+## Partner flags from this sweep
+
+- **The Non-Clinical PT (Meredith Castin)** — runs Non-Clinical 101 and its
+  alumni group; at least five people above credit it, which makes them the
+  **gatekeeper to most of this list**. PT/OT-first with an underserved SLP
+  segment, so a guest post or referral swap is complementary, not competitive.
+  This is a stronger, warmer partner target than anything currently in Notion.
+- **Lauren Hermann / The Copy Clinicians** — same ICP, adjacent product
+  (copywriting services and a course, not career tools), proven guest, existing
+  SLP audience. Best affiliate/cross-promo candidate found.
+- **Rinki Desai / STEP + Bitelabs** — 40k enrollments; Bitelabs is a concrete
+  *destination* to point entrepreneurial SLPs toward.
+- **Speechie Side Hustle** (~20 episodes on SLPs building businesses) — this is
+  **a guest slot for James**, not a research source. Directly on-ICP and
+  exactly the "tell the full story once in conversation form" channel the
+  founder-archetype playbook calls for.
+- **Alternative Healthcare Careers / theratalent.com** — UR course, remote CS
+  cert, job board, private FB groups, serves SLPs among others. Possible
+  affiliate. **Founder could not be identified — vet before approaching.**
+
+## Combined recommendation
+
+Publish Jeannie Baranowski first (already written, demand already measured).
+Then pitch, in order: **Samantha Fitzsimmons** (verified contact, candid,
+fills a quiz path), **Lauren Hermann** (guest *and* partner, mirrors James's
+path), **Kristen Lynch** (the salary arc, from the Facebook sweep), **Tricia
+Moomaw** (validates the Epic guardrail), **Kellie McGee** (the flat-pay line).
