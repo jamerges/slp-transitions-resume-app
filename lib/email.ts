@@ -512,3 +512,23 @@ export async function sendFullResultsEmail(input: FullResultsEmailInput): Promis
     html,
   });
 }
+
+/**
+ * Operational alert to the owner. Fired from the Stripe webhook on every
+ * completed checkout, so a purchase that fails to fulfil is noticed within
+ * seconds instead of whenever someone next opens the Stripe dashboard.
+ * Deliberately plain text — this is a pager, not a newsletter.
+ */
+export async function sendOpsAlert(input: {
+  subject: string;
+  lines: string[];
+}): Promise<void> {
+  const to = process.env.OPS_ALERT_EMAIL || "jamoberges@gmail.com";
+  const body = input.lines.map((l) => esc(l)).join("<br/>");
+  await getResend().emails.send({
+    from: FROM_ADDRESS,
+    to,
+    subject: input.subject,
+    html: `<div style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;line-height:1.7;color:#1F2937">${body}</div>`,
+  });
+}
