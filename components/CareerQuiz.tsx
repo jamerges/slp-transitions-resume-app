@@ -241,17 +241,24 @@ export default function CareerQuiz({
             <p style={{ ...S.p, maxWidth: 470, margin: "0 auto 18px" }}>
               Everything above is what we'd tell any SLP who scored like you. Your{" "}
               <strong>Pivot Report</strong> is built from your actual resume — what
-              you specifically already qualify for, and what to do about it.
+              to do first, and what you specifically already qualify for.
             </p>
           </div>
 
           <div style={{ maxWidth: 470, margin: "0 auto 20px", textAlign: "left" }}>
+            {/* Ordered act-then-know, deliberately. Readers reaching this screen
+                are overwhelmingly stuck rather than short of options — the most
+                answered post in the largest SLP-transition group is someone
+                writing "I'm just stuck. I'm frozen." Leading with "your 3
+                best-fit roles" hands more options to someone already drowning in
+                them; leading with stage and a dated plan answers the question
+                they actually have, which is what to do on Monday. */}
             {[
-              "Your 3 best-fit roles, chosen from your real experience — not a quiz score",
-              "Which of your clinical work already reads as qualified, in their words",
               "Your readiness profile and the stage you're actually in",
               "A week-by-week 30-day plan sized for someone working full-time",
               "3 LinkedIn outreach scripts written in your voice, ready to send",
+              "Your 3 best-fit roles, chosen from your real experience — not a quiz score",
+              "Which of your clinical work already reads as qualified, in their words",
               "The honest caveats — timelines and tradeoffs for your situation",
             ].map((line) => (
               <div key={line} style={{ display: "flex", gap: 9, alignItems: "flex-start", marginBottom: 9, fontSize: 14, lineHeight: 1.6 }}>
