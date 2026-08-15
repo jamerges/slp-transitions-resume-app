@@ -104,6 +104,9 @@ GUIDES = [
      "The salary range, the timeline, and what each one actually asks of you."),
     ("00-slp-software-engineer", "Real transition", "$96K, self-taught",
      "An SLP working part-time SNF gigs taught herself to code. Now she engineers in Austin."),
+
+    ("25-asha-career-resources", "Guide", "Free with your dues",
+     "ASHA now runs a four-part career pivot series. Most members have never heard of it."),
 ]
 
 if __name__ == "__main__":

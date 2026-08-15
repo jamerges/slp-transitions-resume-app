@@ -1,8 +1,17 @@
-# The career-change help you're already paying for
-
-Category: Guides
-
 ---
+title: "The Career-Change Help You're Already Paying For"
+slug: asha-career-transition-resources
+metaDescription: "ASHA now runs a free Career Pivot Speaker Series plus a mentorship program, Leadership Academy and career fairs. What's in it, what it costs, and the one question it doesn't answer."
+targetKeyword: asha career transition resources
+secondaryKeywords:
+  - asha career pivot speaker series
+  - asha career transitions mentorship program
+  - slp career change resources
+  - asha career portal
+suggestedPublishOrder: 25
+---
+
+# The career-change help you're already paying for
 
 ASHA started running a career pivot speaker series this summer. Four sessions,
 one a month, free to members, all recorded. If you have been paying dues while
@@ -114,29 +123,3 @@ and every number traces to a source rather than an estimate.
 
 Use both. ASHA's series is the better resource if you want to stay and grow.
 Come here for the version where you leave.
-
----
-
-**FAQ**
-
-**Is the ASHA Career Pivot Speaker Series free?**
-Yes, for ASHA members. Sessions are recorded and replays are posted on the
-series page.
-
-**Can I still watch the sessions I missed?**
-Yes. Replays for completed sessions are available to members on the series
-page.
-
-**Do I need a nonprofit to apply for community grants?**
-No. In the July session, Jessica Hooke noted that most community grants accept
-applications from individuals, employees applying through their organization,
-and LLCs.
-
-**Can I get Epic certified on my own to move into clinical informatics?**
-No. Epic certification requires employer sponsorship and cannot be
-self-purchased. Realistic routes in are sponsor-track analyst roles, go-live
-support work, EMR super-user experience where you already work, the CAHIMS
-credential through HIMSS, and open projects such as PACIO.
-
-**Who do I contact at ASHA about career transitions?**
-careertransition@asha.org reaches the Career Management Services team.
