@@ -207,12 +207,20 @@ export default function CareerQuiz({
           <p style={{ fontSize: 15, lineHeight: 1.75, margin: 0 }}>{top.why}</p>
         </Card>
 
+        {/* The action comes before the explanation. Readers arriving here are
+            overwhelmingly stuck rather than uninformed — they know options
+            exist and can't tell what to do first — so the one concrete step
+            gets its own card instead of sitting below the entry-door prose. */}
+        <Card>
+          <h3 style={{ ...S.h3, marginBottom: 8 }}>Start here this week</h3>
+          <div style={{ fontSize: 15, padding: "12px 14px", background: "var(--accent-bg-subtle)", borderLeft: "3px solid var(--accent)", borderRadius: 6, lineHeight: 1.65 }}>
+            {top.firstMove}
+          </div>
+        </Card>
+
         <Card>
           <h3 style={{ ...S.h3, marginBottom: 8 }}>How people actually get in</h3>
           <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--muted)", marginBottom: 14 }}>{top.entryDoor}</p>
-          <div style={{ fontSize: 14, padding: "12px 14px", background: "var(--accent-bg-subtle)", borderLeft: "3px solid var(--accent)", borderRadius: 6, marginBottom: 12, lineHeight: 1.6 }}>
-            <strong>Your first move this week:</strong> {top.firstMove}
-          </div>
           <div style={{ fontSize: 14, padding: "12px 14px", background: "var(--warn-bg)", borderRadius: 6, lineHeight: 1.6 }}>
             <strong>The honest caveat:</strong> {top.caveat}
           </div>
