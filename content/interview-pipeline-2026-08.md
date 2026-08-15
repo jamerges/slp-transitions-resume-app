@@ -618,3 +618,106 @@ different method than web search: a LinkedIn people-search on a logged-in
 session, or simply asking — the Facebook group had multiple people *asking*
 about instructional design and getting no answers, which means the person who
 did it is either not in the group or not speaking up.
+
+---
+
+# ASHA Career Pivot Speaker Series — notes from sessions 1 & 2 (transcripts, Aug 2026)
+
+## The contact that matters most
+
+**Jamila Harley, M.Ed., CCC-SLP, CAE — Director of Career Management Services,
+ASHA.** She runs the series, hosts every session, is herself an SLP who has
+made transitions, and repeatedly invites direct contact:
+**careertransition@asha.org** (she says this is the reliable one) and
+careerportal@asha.org. LinkedIn: Jamila Perry Harley. She personally offers to
+make introductions and to send the slide decks.
+
+She is the single warmest, highest-leverage contact found in this entire
+research effort — she is *staffed to do exactly what we do*, at the field's
+governing body, and she is actively looking for speakers and resources.
+
+Also of note: she said on-air that she herself **wasn't aware of a field called
+informatics** until working on a CMS project. If ASHA's own career director
+didn't know, our informatics content is aimed at a real gap.
+
+## The gap in their own series — this is the speaker pitch
+
+Both sessions so far are about **expanding influence without leaving**:
+- **Jessica Hooke** (Jul 8) — 18 years, *still frontline*, built a parallel
+  track: volunteering → committees → community grants → awards → national
+  advisory board → MPH → a consulting business. A portfolio career, not an exit.
+- **Ashleigh Pristas** (Aug 12) — 22 years, *16 at the same company*, many roles
+  within it. She opens by admitting the brief didn't fit: it "didn't exactly
+  scream career pivot." Her talk is Covey's circles of control/influence/concern
+  plus six leadership styles.
+
+Neither covers actually leaving the profession, non-clinical salary bands, or
+what the market outside healthcare pays. **That is precisely our territory**,
+and it makes the speaker pitch complementary rather than competitive: they have
+stay-and-grow covered; nobody has covered the exit.
+
+## Genuinely useful, and unwritten anywhere on our site
+
+- **PACIO Project** — CMS-sponsored post-acute care interoperability (health
+  data exchange across post-acute settings). Pristas is on it and said plainly
+  it is **public, open, and actively seeking volunteers**, with SLPs, PTs, OTs,
+  nurses and dietitians already involved. This is a **free, real, open door into
+  health informatics** for a working clinician — no certification, no employer
+  sponsorship, no job change required. It belongs in the informatics path and
+  the Epic-guardrail post as the answer to "so what CAN I do from here?"
+  Route in: ask Jamila for an introduction.
+- **Grant funding as the buy-in argument.** Hooke's answer to "management won't
+  let me do community work because it isn't billable": grants **bring money in
+  rather than taking it out of the department**, and community work generates
+  measurable referrals back into the organization. Reframe it as return on
+  investment, count people reached, count referrals. Also: **you do not need a
+  nonprofit** — community grants are open to individuals, employees, and LLCs.
+- **Leadership programs often come with nothing attached.** Pristas on the
+  development program that led to her current role: it "did not come with a pay
+  raise. At all. It didn't come with a guarantee of a different job." Honest in
+  a way our content should copy.
+- **Rejection is normal and usually invisible.** Hooke noted she has been
+  accepted to a few leadership programs and does not talk about "the many that
+  I have not been accepted to."
+- **School → medical, from someone who hires:** get CEUs in the content first,
+  take a PRN or part-time role to get in the door, and *ask the recruiter
+  directly what supervision and training they'll provide*. Pristas: what matters
+  is not whether you know the content but whether you're trainable.
+- **Free professional development:** library apps (Hoopla, Libby) for leadership
+  audiobooks. Worth naming in a post about transitioning on no budget.
+- ASHA runs a **Career Transitions Mentorship Program**, a Leadership Academy,
+  a job board, a **virtual career fair in October**, and an in-person career
+  fair returning to ASHA Convention for the first time since 2019.
+
+## One statistic, with a caveat attached
+
+In session 1's live poll, **~87% of attendees said they had considered
+transitioning to a new setting or population in the past 12 months**; the
+biggest group worked in schools, then private practice, then hospital/acute.
+**This is a self-selected sample** — people who registered for a career-pivot
+webinar — so it is evidence of intensity among the already-interested, not a
+population estimate. Usable only if framed that way. Do not let it become
+"87% of SLPs want to leave."
+
+## Two archetypes our site currently ignores
+
+Everything we publish is an exit story. These two sessions are both people who
+**stayed and changed the shape of the job** — Hooke by building a parallel
+track alongside frontline work, Pristas by moving through roles inside one
+employer for 16 years. A meaningful share of our readers don't want to leave;
+they want the job to stop hurting. We have nothing for them, and the quiz
+doesn't score for it either.
+
+## New candidates from the series
+
+- **Jessica Hooke** — already in the pipeline; the transcript adds a lot
+  (Neuro-Friendly Restaurant Initiative, ~2,000 people reached across three
+  restaurants; medical alert book for survivors; 2023 American Heart Association
+  Heart of Orlando award; national advisory committee for the American Stroke
+  Association; BU MPH last year; starting her own consulting business). She
+  invites LinkedIn contact by full name. Still frontline, so frame as a
+  portfolio career, not an exit.
+- **Ashleigh Pristas** — Regional Director of Clinical Services, Restore
+  Therapy; ~30 facilities across AR/AL/FL. Advion Emerging Leader; advocates on
+  Capitol Hill annually. Reluctantly applied to her current role after a mentor
+  pushed her; 11 years in it.
