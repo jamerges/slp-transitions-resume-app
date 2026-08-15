@@ -281,6 +281,37 @@ export default function CareerQuiz({
               You'll add your resume right after checkout — no need to find it now.
             </p>
           </div>
+
+          {/* The $24 suite rewrites an application against ONE posting, so it only
+              helps someone who already has that posting in hand — which most quiz
+              takers don't. Offering it as an equal button would dead-end them at
+              the job-posting step. Kept as a labelled second door instead: it
+              routes the minority who are further along, and the larger number
+              sitting next to $9 does the anchoring either way. */}
+          <div
+            style={{
+              borderTop: "1px solid var(--line, #E5E7EB)",
+              marginTop: 22,
+              paddingTop: 16,
+              textAlign: "center",
+            }}
+          >
+            <p style={{ fontSize: 13, lineHeight: 1.65, color: "var(--muted)", margin: "0 0 10px" }}>
+              <strong style={{ color: "var(--fg, inherit)" }}>
+                Already staring at a specific job posting?
+              </strong>
+              <br />
+              The <strong>$24 Career Pivot Suite</strong> rewrites the whole
+              application around it — every resume bullet, a cover letter in your
+              voice, your LinkedIn, and the interview answers.
+            </p>
+            <a
+              href={`/?from=quiz&path=${encodeURIComponent(top.roleOption)}`}
+              style={{ ...S.btnOut, fontSize: 14, display: "inline-block", textDecoration: "none" }}
+            >
+              See the $24 Suite →
+            </a>
+          </div>
         </Card>
 
         {emailed && (
