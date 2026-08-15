@@ -478,3 +478,82 @@ pitching so the note can reference what she actually said.
 
 Rationale: land two or three interviews before opening partner conversations —
 "I publish these every other week" is a stronger position than "I'd like to."
+
+---
+
+## F. Added after the ASHA transcripts (2026-08-15)
+
+### 24. Jamila Harley, ASHA ✉️ careertransition@asha.org 🔴 SEND AFTER THE BLOG POST IS LIVE
+*Director of Career Management Services; SLP who has transitioned; hosts every
+session of the Career Pivot Speaker Series and repeatedly invites contact.*
+
+**Sequence matters here.** Publish the ASHA-resources post first, then send
+this. It turns the note from "please let me speak" into "I already did the
+complementary work, here it is."
+
+> **Subject:** Wrote up your Career Pivot series — and a speaker inquiry
+>
+> Hi Jamila,
+>
+> I'm James Berges, a former SLP. I run slptransitions.com, where I publish
+> interviews with SLPs who've moved into non-clinical roles and maintain sourced
+> salary ranges and timelines for nine specific paths.
+>
+> I watched the first two sessions of the Career Pivot Speaker Series and wrote
+> a piece pointing my readers to it — most of them are ASHA members and had no
+> idea the series, the mentorship program, or the Leadership Academy existed:
+> [link]
+>
+> Two things prompted this note.
+>
+> First, a scope observation you've probably already made. Both sessions so far
+> are about staying in the profession and changing the shape of the work —
+> Jessica's parallel track alongside frontline hours, Ashleigh's ladder inside
+> one employer. Neither covers leaving, or what the outside market pays. That
+> gap is the only thing I've worked on for two years: documented salary bands
+> per path, honest timelines from decision to offer, and the factual guardrails
+> that matter — for instance that Epic certification is employer-sponsored and
+> can't be bought, which is the single most common piece of bad advice in this
+> space. If a future session on that would be useful, I'd like to be considered.
+>
+> Second, two smaller asks. Ashleigh mentioned the PACIO Project is public and
+> looking for volunteers — I'd like an introduction, because it's the best
+> answer I've found to "what can I actually do from where I'm sitting" for
+> people interested in informatics. And I'd like to interview Jessica Hooke if
+> she's open to it.
+>
+> Thank you for programming this at all. The 87% who raised their hands in your
+> July poll aren't a surprise to me, but seeing ASHA name it out loud is new.
+>
+> — James Berges, M.S., CCC-SLP
+> slptransitions.com
+
+### 25. Jeannie Baranowski — re-interview 📘 Facebook DM
+*Her interview doc is dated 26 May 2022 and says "I **will be** starting as a
+Customer Success Specialist in mid-June" — it captures the job hunt and stops
+before the outcome. Four years later, the follow-up IS the story.*
+
+> Hi Jeannie — James here from SLP Transitions. You did an interview with me
+> back in May 2022, and I owe you an apology: I never published it. That's on
+> me, not on you.
+>
+> Here's why I'm writing now instead of quietly letting it go. I reread it this
+> week and realised it ends right before the interesting part — you wrote that
+> you'd be *starting* the customer success role in mid-June. So the whole thing
+> is your job search, and none of it is what actually happened next.
+>
+> Four years on, that's the piece I'd really like to publish. Did the role turn
+> out to be what you hoped? What did the money actually do over four years? Are
+> you still in customer success, or did it lead somewhere else? And knowing what
+> you know now, what would you tell the version of yourself who'd just sent 80
+> applications and gotten zero callbacks?
+>
+> Almost every transition story out there stops at the offer letter. Yours could
+> be the one that keeps going.
+>
+> Would you be up for 30–40 minutes? You'd see the full draft before anything
+> is published, and anything you'd rather keep off the record stays off. If
+> you'd rather I just delete the old draft, say the word and it's gone.
+>
+> Either way — your resume post in the SLP alternatives group has helped a
+> genuinely large number of people. I hope someone's told you that.
