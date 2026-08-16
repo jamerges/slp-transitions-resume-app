@@ -4,6 +4,102 @@ import { useState } from "react";
 import { S, Card, ProgressBar, focusB, blurB } from "./ui";
 import { QUESTIONS, PATHS, scoreQuiz, type QuizAnswers, type QuizPath } from "@/lib/quiz";
 
+/** CSS-only "product shot" for the $9 Pivot Report, so the thing being sold
+ *  looks like an object rather than a paragraph.
+ *
+ *  Deliberately ONE report with pages behind it, not the fanned stack of three
+ *  separate documents used for the $24 Suite (DeliverablesGraphic in
+ *  SLPCareerSuite.tsx). The Suite really is three deliverables; the Report is
+ *  one, and drawing three sheets here would promise something we don't ship.
+ *
+ *  What's drawn maps to the actual contents, in the order the bullets list
+ *  them: a readiness meter, the stage you're in, then a dated checklist.
+ *  Decorative only — aria-hidden, no text for a screen reader to announce.
+ */
+function ReportGraphic() {
+  const line = (w: string, h = 5, bg = "var(--border)"): React.CSSProperties => ({
+    width: w, height: h, background: bg, borderRadius: 3,
+  });
+  const sheet: React.CSSProperties = {
+    width: 150, height: 190, background: "#fff", borderRadius: 8,
+    border: "1px solid var(--border)", padding: "13px 13px 10px",
+    display: "flex", flexDirection: "column", gap: 6,
+    boxShadow: "0 12px 26px rgba(27,27,30,0.10)", position: "relative",
+  };
+  const label: React.CSSProperties = {
+    fontSize: 7.5, fontWeight: 700, letterSpacing: "0.12em",
+    color: "var(--light)", marginBottom: 2,
+  };
+  // Pages behind the cover. Rotation lives here, not on the animated wrapper.
+  const behind = (rot: string, x: number): React.CSSProperties => ({
+    ...sheet,
+    position: "absolute", inset: 0, transform: `rotate(${rot}) translateX(${x}px)`,
+    boxShadow: "0 8px 18px rgba(27,27,30,0.07)",
+  });
+
+  return (
+    <div
+      aria-hidden="true"
+      style={{ display: "flex", justifyContent: "center", padding: "4px 0 22px" }}
+    >
+      <div className="slp-sheet-in" style={{ position: "relative", width: 150, height: 190 }}>
+        {/* two pages peeking, so it reads as a multi-page report */}
+        <div style={{ ...behind("5deg", 10), animationDelay: "0ms" }} />
+        <div style={{ ...behind("2.5deg", 5), animationDelay: "0ms" }} />
+
+        {/* the cover */}
+        <div style={{ ...sheet, position: "relative", zIndex: 3 }}>
+          <div style={label}>PIVOT REPORT</div>
+          <div style={line("62%", 8, "var(--accent)")} />
+
+          {/* readiness meter — bullet one */}
+          <div style={{ height: 3 }} />
+          <div style={{ ...line("100%", 6, "var(--accent-bg)"), position: "relative" }}>
+            <div style={{ ...line("64%", 6, "var(--accent)"), position: "absolute", inset: 0 }} />
+          </div>
+
+          {/* the stage you're in — three steps, second one current */}
+          <div style={{ display: "flex", alignItems: "center", gap: 4, marginTop: 4 }}>
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                style={{
+                  height: 4, flex: 1, borderRadius: 2,
+                  background: i <= 1 ? "var(--accent)" : "var(--border)",
+                }}
+              />
+            ))}
+          </div>
+
+          {/* 30-day plan — first two done */}
+          <div style={{ height: 4 }} />
+          {["82%", "74%", "88%", "68%"].map((w, i) => (
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: 5 }}>
+              <span
+                style={{
+                  width: 7, height: 7, borderRadius: 2, flexShrink: 0,
+                  border: "1.5px solid var(--accent)",
+                  background: i < 2 ? "var(--accent)" : "transparent",
+                }}
+              />
+              <div style={line(w)} />
+            </div>
+          ))}
+          <span
+            style={{
+              position: "absolute", bottom: 8, left: 13, fontSize: 8, fontWeight: 700,
+              letterSpacing: "0.06em", color: "#fff", background: "var(--accent)",
+              borderRadius: 4, padding: "2px 6px",
+            }}
+          >
+            30-DAY PLAN
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function CareerQuiz({
   initialPath,
   embedded,
@@ -236,6 +332,7 @@ export default function CareerQuiz({
         )}
 
         <Card style={{ border: "1.5px solid var(--accent)", background: "linear-gradient(135deg, var(--accent-bg-subtle) 0%, #fff 100%)" }}>
+          <ReportGraphic />
           <div style={{ textAlign: "center" }}>
             <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>This is the general version.</h3>
             <p style={{ ...S.p, maxWidth: 470, margin: "0 auto 18px" }}>

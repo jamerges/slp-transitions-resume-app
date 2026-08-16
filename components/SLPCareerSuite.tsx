@@ -60,7 +60,10 @@ function DeliverablesGraphic() {
     borderRadius: 4, padding: "2px 6px",
   };
   return (
-    <div aria-hidden="true" style={{
+    // The reveal goes on this container rather than each sheet: the sheets
+    // carry rotate/translate transforms that position the fan, and the
+    // animation resolves to `transform: none`, which would flatten them.
+    <div aria-hidden="true" className="slp-sheet-in" style={{
       display: "flex", justifyContent: "center", alignItems: "flex-end",
       padding: "18px 0 10px", overflow: "hidden",
     }}>
