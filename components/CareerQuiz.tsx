@@ -177,10 +177,15 @@ export default function CareerQuiz({
   useEffect(() => {
     if (!result) return;
     track("view_item", {
-      item_id: result.top.slug,
-      item_name: result.top.label,
-      value: 9,
       currency: "USD",
+      value: 9,
+      items: [{
+        item_id: "pivot_report",
+        item_name: "$9 Pivot Report",
+        item_category: result.top.slug,
+        price: 9,
+        quantity: 1,
+      }],
     });
   }, [result?.top.slug]);
 
@@ -391,7 +396,15 @@ export default function CareerQuiz({
               disabled={buying}
               onClick={() => {
                 track("begin_checkout", {
-                  item_id: top.slug, item_name: top.label, value: 9, currency: "USD",
+                  currency: "USD",
+                  value: 9,
+                  items: [{
+                    item_id: "pivot_report",
+                    item_name: "$9 Pivot Report",
+                    item_category: top.slug,
+                    price: 9,
+                    quantity: 1,
+                  }],
                 });
                 buyReport(top);
               }}
@@ -432,8 +445,15 @@ export default function CareerQuiz({
               href={`/?from=quiz&path=${encodeURIComponent(top.roleOption)}`}
               onClick={() =>
                 track("select_item", {
-                  item_id: "career_pivot_suite", item_name: "Career Pivot Suite",
-                  value: 24, currency: "USD", from_path: top.slug,
+                  item_list_id: "quiz_result",
+                  item_list_name: "Quiz result upsell",
+                  items: [{
+                    item_id: "career_pivot_suite",
+                    item_name: "$24 Career Pivot Suite",
+                    item_category: top.slug,
+                    price: 24,
+                    quantity: 1,
+                  }],
                 })
               }
               style={{ ...S.btnOut, fontSize: 14, display: "inline-block", textDecoration: "none" }}

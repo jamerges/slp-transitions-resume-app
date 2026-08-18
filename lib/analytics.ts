@@ -22,7 +22,7 @@ export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-PNHZM7J56D";
 
 /** Fire-and-forget. Silent when GA is blocked, absent, or server-side, because
  *  an analytics failure must never break a checkout. */
-export function track(event: string, params: Record<string, string | number> = {}): void {
+export function track(event: string, params: Record<string, unknown> = {}): void {
   try {
     if (typeof window === "undefined" || typeof window.gtag !== "function") return;
     window.gtag("event", event, params);
