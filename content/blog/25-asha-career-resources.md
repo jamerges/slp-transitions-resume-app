@@ -14,13 +14,9 @@ suggestedPublishOrder: 25
 # The career-change help you're already paying for
 
 ASHA started running a career pivot speaker series this summer. Four sessions,
-one a month, free to members, all recorded. If you have been paying dues while
-quietly reading job listings at 10pm, that is a resource sitting inside a
+one a month, free to members, all recorded. If you've been paying dues while
+quietly reading job listings at 10pm, that's a resource sitting inside a
 membership you already have.
-
-Here is what is in it, what the rest of the career portal offers, and — because
-this site exists to be honest rather than comprehensive — the part of the
-question the series does not answer.
 
 ## The Career Pivot Speaker Series
 
@@ -36,9 +32,8 @@ Career Management Services, who is an SLP and has made transitions herself.
 - **October 14 — Katie Seaver, MS, CCC-SLP,** co-founder of The Babel Group.
   "Innovation & Industry: Exploring Technology and Non-Traditional Roles."
 
-Sessions are recorded and replays are posted for members on the series page,
-so the two that have already run are watchable now. Registration for the live
-ones is free.
+Sessions are recorded and replays go up on the series page, so the two that
+have already run are watchable now. Registration for the live ones is free.
 
 **[Career Pivot Speaker Series →](https://www.asha.org/slp/career-transitions-mentorship-program/career-pivot-speaker-series/)**
 
@@ -46,46 +41,48 @@ ones is free.
 
 Both are about expanding what you do without leaving.
 
-Jessica Hooke has been an SLP for over 18 years and is still working frontline
-in inpatient rehab. Alongside that she built a second track: volunteering, then
+Jessica Hooke has been an SLP for over 18 years and still works frontline in
+inpatient rehab. Alongside that she built a second track: volunteering, then
 committees, then two community grants, then a national advisory role with the
 American Stroke Association, then a public health master's, and now a
 consulting business. Her Neuro-Friendly Restaurant Initiative works with
 restaurants to add adaptive utensils, quiet hours, and picture menus for people
 recovering from brain injury.
 
-The most practically useful thing in her session is an answer to a question
-every clinician has asked a manager: how do you get approval for work that
-isn't billable? Her answer is that grant funding brings money *in* rather than
-taking it out of the department, and community work generates measurable
-referrals back to the organization. Count the people reached. Count who comes
-back through the door. She also noted that you do not need a nonprofit to apply
-for most community grants — individuals, employees, and LLCs are eligible.
+She also answered the question that kills most of this work before it starts:
+how do you get a manager to approve something that isn't billable?
+
+> "Grant funding doesn't take money out of the department. You're bringing
+> money in."
+
+Community work generates referrals you can count, she argued, so track the
+people reached and who comes back through the door. And you don't need a
+nonprofit to apply for most community grants. Individuals, employees applying
+through their organization, and LLCs are all eligible.
 
 Ashleigh Pristas has been an SLP for 22 years, 16 of them at the same company,
 moving from acute care to skilled nursing to rehab director to Regional
 Director of Clinical Services across about 30 facilities. She opens by
-admitting the topic didn't obviously fit her: staying somewhere 16 years
-"didn't exactly scream career pivot." Then she reframes it, which is the point
-of her talk — the pivot happened inside the job.
+admitting the topic didn't obviously fit her. Staying somewhere 16 years
+"didn't exactly scream career pivot." The pivot happened inside the job.
 
-She is candid about the cost. The leadership development program that
-eventually led to her current role came with no pay raise and no guarantee of a
-different job. She applied to that role reluctantly and only because a mentor
-pushed her.
+On the leadership development program that eventually led to her current role:
+
+> "It did not come with a pay raise. At all."
+
+No guaranteed job either. What it came with was training and access to the
+people running the company. She applied for the director role reluctantly, and
+only because a mentor pushed her.
 
 Her session also surfaced something worth chasing if clinical informatics
 interests you: the **PACIO Project**, a CMS-sponsored effort to make post-acute
 care systems exchange patient data. SLPs, PTs, OTs, nurses and dietitians are
 already on it, and Pristas said the group is public and actively looking for
-volunteers. That matters because informatics has a genuine chicken-and-egg
-problem — Epic certification cannot be bought, only employer-sponsored — and
-this is real, documented, unpaid-but-open experience you can get without
-changing jobs first.
+volunteers. Informatics has a chicken-and-egg problem, since Epic certification
+can't be bought and only comes through an employer. PACIO is real, documented
+experience you can get without changing jobs first.
 
 ## The rest of what membership already includes
-
-Most of this goes unused.
 
 - **Career Transitions Mentorship Program** — matches mentors and mentees.
 - **Leadership Academy** — free leadership development for members.
@@ -93,29 +90,27 @@ Most of this goes unused.
   toolkit with self-assessment exercises.
 - **A virtual career fair in October**, and an in-person career fair returning
   to ASHA Convention for the first time since 2019.
-- **The ASHA Community.** Worth a second look: the Special Interest Group
-  program was sunset by a bylaws amendment effective January 1, 2026, and
-  replaced by topic-focused communities. The practical effect is that
-  conversations that used to sit behind a separate affiliation fee are now open
-  to members. If you want to ask people in dysphagia, or AAC, or informatics
-  how they got where they are, that door is no longer paywalled.
+- **The ASHA Community.** The Special Interest Group program was sunset by a
+  bylaws amendment effective January 1, 2026, and replaced by topic-focused
+  communities. Conversations that used to sit behind a separate affiliation fee
+  are now open to members. If you want to ask people in dysphagia, or AAC, or
+  informatics how they got where they are, that door is no longer paywalled.
 - **careertransition@asha.org** reaches Jamila directly. She offered, on both
   calls, to send slide decks and make introductions.
 
 ## What the series does not cover
 
-This is not a criticism. It is a scope note, and you should know it before you
-watch four hours of video hoping for something that isn't there.
+Worth knowing before you commit four hours.
 
 Both sessions so far are about staying in the profession and changing the shape
-of the work — a parallel track alongside frontline hours, or a ladder inside
-one employer. Neither addresses leaving.
+of the work: a parallel track alongside frontline hours, or a ladder inside one
+employer. Neither addresses leaving.
 
-So the series does not tell you what a customer success role at a health-tech
+So the series won't tell you what a customer success role at a health-tech
 company pays, or how long a move into clinical informatics actually takes, or
-whether you will have to take a pay cut and for how long. It doesn't cover how
-to rewrite a clinical résumé for a recruiter who has never read one, or which
-paths are saturated, or which credentials are worth buying.
+whether you'll take a pay cut and for how long. It doesn't cover rewriting a
+clinical résumé for a recruiter who has never read one, which paths are
+saturated, or which credentials are worth buying.
 
 Those are the questions this site exists for. Our [career quiz](/quiz) matches
 you against nine documented paths with real salary bands and honest timelines,
