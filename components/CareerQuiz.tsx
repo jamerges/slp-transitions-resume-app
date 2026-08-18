@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { S, Card, ProgressBar, focusB, blurB } from "./ui";
+import { track } from "@/lib/analytics";
 import { QUESTIONS, PATHS, scoreQuiz, type QuizAnswers, type QuizPath } from "@/lib/quiz";
 
 /** CSS-only "product shot" for the $9 Pivot Report, so the thing being sold
@@ -169,6 +170,19 @@ export default function CareerQuiz({
       setBuying(false);
     }
   };
+
+  // Denominator for "of everyone who SEES the offer, how many start checkout?".
+  // In an effect rather than in render, so it is a side effect in the right
+  // place and does not double-fire on re-render.
+  useEffect(() => {
+    if (!result) return;
+    track("view_item", {
+      item_id: result.top.slug,
+      item_name: result.top.label,
+      value: 9,
+      currency: "USD",
+    });
+  }, [result?.top.slug]);
 
   const q = QUESTIONS[idx];
   const selected = answers[q?.id] || [];
@@ -375,7 +389,12 @@ export default function CareerQuiz({
             <button
               style={{ ...S.btn, padding: "15px 44px", fontSize: 17, opacity: buying ? 0.6 : 1 }}
               disabled={buying}
-              onClick={() => buyReport(top)}
+              onClick={() => {
+                track("begin_checkout", {
+                  item_id: top.slug, item_name: top.label, value: 9, currency: "USD",
+                });
+                buyReport(top);
+              }}
             >
               {buying ? "Opening checkout…" : "Get my Pivot Report — $9 →"}
             </button>
@@ -411,6 +430,12 @@ export default function CareerQuiz({
             </p>
             <a
               href={`/?from=quiz&path=${encodeURIComponent(top.roleOption)}`}
+              onClick={() =>
+                track("select_item", {
+                  item_id: "career_pivot_suite", item_name: "Career Pivot Suite",
+                  value: 24, currency: "USD", from_path: top.slug,
+                })
+              }
               style={{ ...S.btnOut, fontSize: 14, display: "inline-block", textDecoration: "none" }}
             >
               See the $24 Suite →
