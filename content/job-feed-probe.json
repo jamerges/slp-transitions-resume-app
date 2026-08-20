@@ -1,0 +1,1136 @@
+[
+ {
+  "name": "Talkiatry",
+  "url": "https://talkiatry.com",
+  "ats": "ashby",
+  "slug": "talkiatry",
+  "api": "https://api.ashbyhq.com/posting-api/job-board/talkiatry",
+  "open_jobs": 185,
+  "note": ""
+ },
+ {
+  "name": "Expressable",
+  "url": "https://expressable.io",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "site unreachable"
+ },
+ {
+  "name": "Incredible Health",
+  "url": "https://incrediblehealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Hinge Health",
+  "url": "https://hingehealth.com",
+  "ats": "ashby",
+  "slug": "hinge-health",
+  "api": "https://api.ashbyhq.com/posting-api/job-board/hinge-health",
+  "open_jobs": 71,
+  "note": ""
+ },
+ {
+  "name": "BetterUp",
+  "url": "https://betterup.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Teladoc",
+  "url": "https://teladochealth.com",
+  "ats": "workday",
+  "slug": "teladoc",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ },
+ {
+  "name": "Pearl Heatlh",
+  "url": "https://pearlhealth.com",
+  "ats": "ashby",
+  "slug": "pearlhealth",
+  "api": "https://api.ashbyhq.com/posting-api/job-board/pearlhealth",
+  "open_jobs": 5,
+  "note": ""
+ },
+ {
+  "name": "Parsley Health",
+  "url": "https://parsleyhealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Kind Body",
+  "url": "https://kindbody.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Maven Clinic",
+  "url": "https://mavenclinic.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "ginger",
+  "url": "https://ginger.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Calm",
+  "url": "https://Calm.com",
+  "ats": "greenhouse",
+  "slug": "calm",
+  "api": "https://boards-api.greenhouse.io/v1/boards/calm/jobs",
+  "open_jobs": 0,
+  "note": ""
+ },
+ {
+  "name": "Noom",
+  "url": "https://Noom.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Health Union",
+  "url": "https://health-union.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Legacy Health",
+  "url": "https://legacyhealth.org",
+  "ats": "icims",
+  "slug": "careers-lhs",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ },
+ {
+  "name": "Mine'd",
+  "url": "https://doyoumined.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Modern Age",
+  "url": "https://modern-age.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "study",
+  "url": "https://study.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "site unreachable"
+ },
+ {
+  "name": "Jumo Health",
+  "url": "https://jumohealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Big Health",
+  "url": "https://bighealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "supercharged",
+  "url": "https://iamsupercharged.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Aidoc Medical",
+  "url": "https://aidoc.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Tomorrow Health",
+  "url": "https://home.tomorrowhealth.com",
+  "ats": "greenhouse",
+  "slug": "tomorrowhealth",
+  "api": "https://boards-api.greenhouse.io/v1/boards/tomorrowhealth/jobs",
+  "open_jobs": 0,
+  "note": ""
+ },
+ {
+  "name": "Wildflower Health",
+  "url": "https://wildflowerhealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Mango Health",
+  "url": "https://mangohealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "site unreachable"
+ },
+ {
+  "name": "Folx Health",
+  "url": "https://folxhealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Plume Health",
+  "url": "https://getplume.co",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Buoy Health",
+  "url": "https://buoyhealth.com",
+  "ats": "bamboohr",
+  "slug": "buoyhealth",
+  "api": "https://buoyhealth.bamboohr.com/careers/list",
+  "open_jobs": 0,
+  "note": ""
+ },
+ {
+  "name": "Kaia Health",
+  "url": "https://kaiahealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Able To",
+  "url": "https://ableto.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Lyra Health",
+  "url": "https://lyrahealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Baysein Health",
+  "url": "https://bayesianhealth.com",
+  "ats": "ashby",
+  "slug": "bayesianhealth",
+  "api": "https://api.ashbyhq.com/posting-api/job-board/bayesianhealth",
+  "open_jobs": 11,
+  "note": ""
+ },
+ {
+  "name": "Taro Heatlh",
+  "url": "https://tarohealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Medcase",
+  "url": "https://medcase.health",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Mindbloom",
+  "url": "https://mindbloom.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Redesign Health",
+  "url": "https://redesignhealth.com",
+  "ats": "ashby",
+  "slug": "Redesign",
+  "api": "https://api.ashbyhq.com/posting-api/job-board/Redesign",
+  "open_jobs": null,
+  "note": "feed returned 404"
+ },
+ {
+  "name": "Centaur Labs",
+  "url": "https://centaurlabs.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Canvas Medical",
+  "url": "https://canvasmedical.com",
+  "ats": "ashby",
+  "slug": "canvas-medical",
+  "api": "https://api.ashbyhq.com/posting-api/job-board/canvas-medical",
+  "open_jobs": 5,
+  "note": ""
+ },
+ {
+  "name": "Geode Health",
+  "url": "https://geodehealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Light Matter",
+  "url": "https://lightmatter.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Songbird Therapy",
+  "url": "https://songbirdcare.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "site unreachable"
+ },
+ {
+  "name": "Recora Health",
+  "url": "https://recorahealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Memora Health",
+  "url": "https://memorahealth.com",
+  "ats": "greenhouse",
+  "slug": "memorahealth",
+  "api": "https://boards-api.greenhouse.io/v1/boards/memorahealth/jobs",
+  "open_jobs": null,
+  "note": "feed returned 404"
+ },
+ {
+  "name": "United Healthcare",
+  "url": "https://uhc.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Juli",
+  "url": "https://juli.co",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Origin",
+  "url": "https://theoriginway.com",
+  "ats": "rippling",
+  "slug": "en-GB",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ },
+ {
+  "name": "Carta Healthcare",
+  "url": "https://carta.healthcare",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Zus Health",
+  "url": "https://zushealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "BehaVR",
+  "url": "https://behavr.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Decent",
+  "url": "https://decent.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Turquoise",
+  "url": "https://turquoise.health",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Speakeasy Inc.",
+  "url": "https://speakeasyinc.com",
+  "ats": "bamboohr",
+  "slug": "speakeasyinc",
+  "api": "https://speakeasyinc.bamboohr.com/careers/list",
+  "open_jobs": 0,
+  "note": ""
+ },
+ {
+  "name": "Great Minds",
+  "url": "https://greatminds.org",
+  "ats": "recruitee",
+  "slug": "greatminds",
+  "api": "https://greatminds.recruitee.com/api/offers/",
+  "open_jobs": 31,
+  "note": ""
+ },
+ {
+  "name": "Nagwa",
+  "url": "https://nagwa.com/en",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "site unreachable"
+ },
+ {
+  "name": "Duarte",
+  "url": "https://duarte.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Wiley",
+  "url": "https://wiley.com/en-us",
+  "ats": "workday",
+  "slug": "wiley",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ },
+ {
+  "name": "Outschool",
+  "url": "https://outschool.com",
+  "ats": "greenhouse",
+  "slug": "outschool",
+  "api": "https://boards-api.greenhouse.io/v1/boards/outschool/jobs",
+  "open_jobs": 6,
+  "note": ""
+ },
+ {
+  "name": "AIDS Healthcare Founcation",
+  "url": "https://aidshealth.org",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "International Education Corporation",
+  "url": "https://ieccolleges.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Go Guardian",
+  "url": "https://goguardian.com",
+  "ats": "greenhouse",
+  "slug": "goguardian",
+  "api": "https://boards-api.greenhouse.io/v1/boards/goguardian/jobs",
+  "open_jobs": 10,
+  "note": ""
+ },
+ {
+  "name": "Duo Health",
+  "url": "https://duohealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Brain FX",
+  "url": "https://brainfx.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "NeuroCatch",
+  "url": "https://neurocatch.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Cognixion",
+  "url": "https://cognixion.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "ABI Wellness",
+  "url": "https://abiwellness.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Blueprint Health",
+  "url": "https://blueprint-health.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "A Cloud Guru",
+  "url": "https://acloudguru.com/careers",
+  "ats": "workday",
+  "slug": "pluralsight",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ },
+ {
+  "name": "Everspring",
+  "url": "https://everspringpartners.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Bright Health",
+  "url": "https://builtin.com/company/bright-health/jobs",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Rightway",
+  "url": "https://rightwayhealthcare.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Assurance",
+  "url": "https://assurance.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Patient Pop",
+  "url": "https://patientpop.com/careers",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Covera Health",
+  "url": "https://coverahealth.com",
+  "ats": "greenhouse",
+  "slug": "coverahealth",
+  "api": "https://boards-api.greenhouse.io/v1/boards/coverahealth/jobs",
+  "open_jobs": 11,
+  "note": ""
+ },
+ {
+  "name": "Amplify",
+  "url": "https://amplify.com",
+  "ats": "ashby",
+  "slug": "amplify",
+  "api": "https://api.ashbyhq.com/posting-api/job-board/amplify",
+  "open_jobs": 37,
+  "note": ""
+ },
+ {
+  "name": "Panorama Education",
+  "url": "https://panoramaed.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Headway",
+  "url": "https://headway.co",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "site unreachable"
+ },
+ {
+  "name": "Well Health",
+  "url": "https://wellapp.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Screencastify",
+  "url": "https://screencastify.com",
+  "ats": "workable",
+  "slug": "screencastify",
+  "api": "https://apply.workable.com/api/v1/widget/accounts/screencastify",
+  "open_jobs": 4,
+  "note": ""
+ },
+ {
+  "name": "Oak Street Health",
+  "url": "https://oakstreethealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Thirty Madison",
+  "url": "https://thirtymadison.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Teachable",
+  "url": "https://teachable.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Teacher Pay Teachers",
+  "url": "https://teacherspayteachers.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Handshake",
+  "url": "https://joinhandshake.com",
+  "ats": "ashby",
+  "slug": "handshake",
+  "api": "https://api.ashbyhq.com/posting-api/job-board/handshake",
+  "open_jobs": 70,
+  "note": ""
+ },
+ {
+  "name": "Scale Media",
+  "url": "https://scalemedia.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Skillshare",
+  "url": "https://skillshare.com",
+  "ats": "workable",
+  "slug": "skillshare",
+  "api": "https://apply.workable.com/api/v1/widget/accounts/skillshare",
+  "open_jobs": 2,
+  "note": ""
+ },
+ {
+  "name": "Silvertree",
+  "url": "https://silvertree.io",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "site unreachable"
+ },
+ {
+  "name": "Classkick",
+  "url": "https://classkick.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Talkspace",
+  "url": "https://talkspace.com",
+  "ats": "greenhouse",
+  "slug": "talkspacetherapist",
+  "api": "https://boards-api.greenhouse.io/v1/boards/talkspacetherapist/jobs",
+  "open_jobs": 48,
+  "note": ""
+ },
+ {
+  "name": "Quartet Health",
+  "url": "https://quartethealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Iterative Scopes",
+  "url": "https://iterativescopes.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Path Mental Health",
+  "url": "https://pathmentalhealth.com",
+  "ats": "ashby",
+  "slug": "rula",
+  "api": "https://api.ashbyhq.com/posting-api/job-board/rula",
+  "open_jobs": 44,
+  "note": ""
+ },
+ {
+  "name": "Seesaw",
+  "url": "https://web.seesaw.me",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "BenchPrep",
+  "url": "https://benchprep.com",
+  "ats": "greenhouse",
+  "slug": "benchprep",
+  "api": "https://boards-api.greenhouse.io/v1/boards/benchprep/jobs",
+  "open_jobs": 1,
+  "note": ""
+ },
+ {
+  "name": "Lively",
+  "url": "https://listenlively.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "site unreachable"
+ },
+ {
+  "name": "WHOOP",
+  "url": "https://whoop.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "site unreachable"
+ },
+ {
+  "name": "Simple Practice",
+  "url": "https://simplepractice.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Curriculum Associates",
+  "url": "https://jobs.jobvite.com/curriculumassociates",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "FindHelp",
+  "url": "https://company.findhelp.com",
+  "ats": "rippling",
+  "slug": "findhelp",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ },
+ {
+  "name": "Propeller",
+  "url": "https://propellercommunicates.com",
+  "ats": "greenhouse",
+  "slug": "omnicomhealth",
+  "api": "https://boards-api.greenhouse.io/v1/boards/omnicomhealth/jobs",
+  "open_jobs": 16,
+  "note": ""
+ },
+ {
+  "name": "Therapy Brands",
+  "url": "https://therapybrands.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Dreambox Learning",
+  "url": "https://dreambox.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "McGraw Hill",
+  "url": "https://mheducation.com",
+  "ats": "icims",
+  "slug": "mheducation",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ },
+ {
+  "name": "Avive",
+  "url": "https://avive.life",
+  "ats": "lever",
+  "slug": "AviveSolutions",
+  "api": "https://api.lever.co/v0/postings/AviveSolutions?mode=json",
+  "open_jobs": 24,
+  "note": ""
+ },
+ {
+  "name": "Nurx",
+  "url": "https://nurx.com",
+  "ats": "greenhouse",
+  "slug": "thirtymadison",
+  "api": "https://boards-api.greenhouse.io/v1/boards/thirtymadison/jobs",
+  "open_jobs": null,
+  "note": "feed returned 404"
+ },
+ {
+  "name": "Reframe",
+  "url": "https://joinreframeapp.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Better Therepeutics",
+  "url": "https://bettertx.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "site unreachable"
+ },
+ {
+  "name": "Osmind",
+  "url": "https://osmind.org",
+  "ats": "lever",
+  "slug": "Osmind",
+  "api": "https://api.lever.co/v0/postings/Osmind?mode=json",
+  "open_jobs": 9,
+  "note": ""
+ },
+ {
+  "name": "Vida Health",
+  "url": "https://vida.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Omada Health",
+  "url": "https://omadahealth.com",
+  "ats": "greenhouse",
+  "slug": "omadahealth",
+  "api": "https://boards-api.greenhouse.io/v1/boards/omadahealth/jobs",
+  "open_jobs": 27,
+  "note": ""
+ },
+ {
+  "name": "Mindbody",
+  "url": "https://mindbodyonline.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Ro",
+  "url": "https://ro.co",
+  "ats": "lever",
+  "slug": "ro",
+  "api": "https://api.lever.co/v0/postings/ro?mode=json",
+  "open_jobs": 54,
+  "note": ""
+ },
+ {
+  "name": "HealthCare Recruiters International",
+  "url": "https://hcrnetwork.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Premise Health",
+  "url": "https://premisehealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Athelas",
+  "url": "https://athelas.com/rpm",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "site unreachable"
+ },
+ {
+  "name": "Vinehealth",
+  "url": "https://We're on a mission to use thoughtful technology to help patients through cancer.",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "site unreachable"
+ },
+ {
+  "name": "January AI",
+  "url": "https://january.ai",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Virta Health",
+  "url": "https://virtahealth.com",
+  "ats": "ashby",
+  "slug": "virtahealth",
+  "api": "https://api.ashbyhq.com/posting-api/job-board/virtahealth",
+  "open_jobs": 19,
+  "note": ""
+ },
+ {
+  "name": "Docgo",
+  "url": "https://docgo.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Restore Hyper Wellness",
+  "url": "https://restore.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "League",
+  "url": "https://league.com/us",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "site unreachable"
+ },
+ {
+  "name": "AmWell",
+  "url": "https://business.amwell.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Elemy",
+  "url": "https://elemy.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "site unreachable"
+ },
+ {
+  "name": "Voiceitt",
+  "url": "https://voiceitt.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "The Informed SLP",
+  "url": "https://theinformedslp.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Lingraphica",
+  "url": "https://lingraphica.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Tobii",
+  "url": "https://tobii.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ }
+]
