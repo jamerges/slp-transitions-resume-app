@@ -97,7 +97,7 @@ further: every resume bullet rewritten for that posting, a cover letter in your
 voice, LinkedIn rewrite, and interview prep.</p>
 <p>And the free things stay free — the companies list is now searchable at
 <a href="{APP}/companies" style="color:#0B6B54">app.slptransitions.com/companies</a>
-(126 companies that hire former SLPs).</p>
+(120 companies that hire former SLPs).</p>
 <p>— James</p>
 {FOOT}</div>"""
     return subject, html
@@ -116,7 +116,7 @@ deciding whether to leave — real salary ranges, honest timelines, and intervie
 with SLPs who actually moved.</p>
 <p>Two useful things since you signed up:</p>
 <p><strong>1. The companies list got rebuilt.</strong> The old spreadsheet link
-you may have saved is retired. It's now a searchable directory — 126 companies,
+you may have saved is retired. It's now a searchable directory — 120 companies,
 filterable by type, each one linking straight to the company:</p>
 <p style="margin:20px 0"><a href="{APP}/companies"
 style="background:#0B6B54;color:#ffffff;text-decoration:none;padding:12px 24px;

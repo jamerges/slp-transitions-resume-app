@@ -84,7 +84,7 @@ Owner: James Berges (jamoberges@gmail.com) — SLP → growth marketer; hosts th
 - Category chips link to /category/{guides,real-transitions,entrepreneurs,mindset}/ — those archives still use the stock Kadence template.
 
 ## Companies list — ONE source of truth (2026-08-02)
-- **`lib/companies.ts` is canonical.** 134 companies. The old Airtable share link held the same rows in the same order and has been retired — do not re-introduce it. Archive it in Airtable so nobody edits a dead copy.
+- **`lib/companies.ts` is canonical.** 120 companies (was 126; 6 removed 2026-08-16 after a link audit found them unreachable, and Expressable/Athelas URLs corrected). Re-audit with `scripts/probe_job_feeds.py`, which reports unreachable entries as a side effect. The old Airtable share link held the same rows in the same order and has been retired — do not re-introduce it. Archive it in Airtable so nobody edits a dead copy.
 - Rendered at **app.slptransitions.com/companies** (`app/companies/page.tsx` + `components/CompaniesDirectory.tsx`). Search + 5 category facets. `noindex` with canonical to the WP lead-magnet page so the two don't compete.
 - **No role filter, deliberately.** The `roles` field is observed-at-some-point, not live openings. Filtering or badging on it implied a job board we don't run. If live postings ever get ingested (see the weekly-digest idea in the Notion action plan), it can come back.
 - Delivery chain: WP `/ed-health-tech-jobs/` → MailerLite form `105146994009311053` (groot 9454261) → group **Ed and Health Tech List** `105147013209786016` → automation `105149559028582086` → email. The form's success block now links straight to /companies.

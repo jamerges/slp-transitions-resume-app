@@ -549,7 +549,7 @@ That is the real door, and it's the same one the Epic guardrail points at.
 The **speech-tech / ed-tech company team-page lane never completed** — Tobii
 Dynavox, Presence, Parallel Learning, Amplio, Texthelp, Better Speech,
 Cognixion beyond Mai Ling Chan, plus SimplePractice, Net Health, WebPT, Oracle
-Health and Nuance. Given that `lib/companies.ts` already lists 134 companies,
+Health and Nuance. Given that `lib/companies.ts` already lists 120 companies,
 this is the most obviously mineable vein left and it maps directly onto our own
 directory.
 

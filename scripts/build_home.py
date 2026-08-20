@@ -292,7 +292,7 @@ def build():
     a(f'<div class="slp-actions"><a class="slp-btn slp-btn-primary" href="{QUIZ}">Find my career path →</a>'
       f'<a class="slp-btn slp-btn-ghost" href="{APP}">Translate my resume</a></div>')
     a('<p class="slp-trust"><b>Free</b> · <b>2 minutes</b> · built from '
-      f'<a href="{SITE}/ed-health-tech-jobs/" style="border-bottom:1px solid currentColor">126 companies</a> that hire former SLPs</p>')
+      f'<a href="{SITE}/ed-health-tech-jobs/" style="border-bottom:1px solid currentColor">120 companies</a> that hire former SLPs</p>')
     a('</div>')
 
     # pathway
