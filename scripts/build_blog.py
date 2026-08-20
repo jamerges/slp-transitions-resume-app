@@ -83,6 +83,60 @@ CSS = """
 """
 
 
+
+# Posts carry several categories, so "first in the array" is an arbitrary label
+# and was showing e.g. "Coding and IT" on a story tagged Real Transitions.
+# Rank instead: the reader is best served by knowing it is somebody's story.
+CAT_REAL, CAT_ENTREPRENEURS, CAT_GUIDES = 100, 98, 99
+LABEL_PRIORITY = [CAT_ENTREPRENEURS, CAT_REAL, CAT_GUIDES]
+
+
+def label_for(ids, cats):
+    for cid in LABEL_PRIORITY:
+        if cid in ids:
+            return cats[cid]
+    return cats[ids[0]] if ids else "Articles"
+
+
+def order_posts(posts):
+    """Transitions first, then a genuine mix.
+
+    Straight date-descending buried every job-transition story, because the
+    twelve Xceptional Leaders interviews were all published on one day and
+    occupied the entire top of the page. Readers arrive wanting to know that
+    people like them got out, so the stories lead — but blocks of one category
+    read like an archive, so the rest interleaves.
+    """
+    def bucket(p):
+        # "Transitioned" here means took a job elsewhere. Several Xceptional
+        # Leaders guests carry both tags, but they founded companies — a very
+        # different story from the reader who wants to know somebody got hired,
+        # so Entrepreneurs wins the tie and gets its own lane.
+        if CAT_REAL in p["cat_ids"] and CAT_ENTREPRENEURS not in p["cat_ids"]:
+            return "real"
+        if CAT_ENTREPRENEURS in p["cat_ids"]:
+            return "entrepreneurs"
+        if CAT_GUIDES in p["cat_ids"]:
+            return "guides"
+        return "other"
+
+    lanes = {"real": [], "entrepreneurs": [], "guides": [], "other": []}
+    for p in posts:                       # posts arrive newest-first
+        lanes[bucket(p)].append(p)
+
+    # Two transition stories per cycle, then one of each other lane.
+    pattern = ["real", "real", "entrepreneurs", "guides", "other"]
+    ordered, i = [], 0
+    while any(lanes.values()):
+        lane = pattern[i % len(pattern)]
+        if lanes[lane]:
+            ordered.append(lanes[lane].pop(0))
+        elif not any(lanes[k] for k in pattern):
+            break
+        i += 1
+    return ordered
+
+
 def esc(s):
     return h.escape(s, quote=True)
 
@@ -108,19 +162,23 @@ def fetch_posts():
             media[m["id"]] = m["source_url"]
     out = []
     for p in posts:
+        ids = [c for c in p["categories"] if c in cats]
         out.append(dict(
             title=h.unescape(p["title"]["rendered"]),
             url=p["link"],
             img=media.get(p["featured_media"], ""),
-            cat=next((cats[c] for c in p["categories"] if c in cats), "Articles"),
+            cat=label_for(ids, cats),
+            cat_ids=ids,
             excerpt=clean_excerpt(p["excerpt"]["rendered"]),
         ))
     return out
 
 
-def build(posts):
+def build(posts, newest=None):
     a = []
-    feat, new5, rest = posts[0], posts[1:6], posts[6:]
+    feat = posts[0]
+    new5 = [p for p in (newest or posts) if p is not feat][:5]
+    rest = [p for p in posts[1:] if p not in new5]
 
     a.append('<div class="slp-blog"><div class="slp-bwrap">')
 
@@ -156,10 +214,12 @@ def build(posts):
 
 if __name__ == "__main__":
     posts = fetch_posts()
+    newest = list(posts)          # "New" must mean new, so keep true date order
+    posts = order_posts(posts)
     missing = [p["title"] for p in posts if not p["img"]]
     if missing:
         print("WARNING - posts without featured image (will render blank):", missing)
-    content = build(posts)
+    content = build(posts, newest)
 
     # /blog must be a normal page for its content to render
     s = api("/wp/v2/settings", "GET")
