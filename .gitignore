@@ -40,3 +40,7 @@ next-env.d.ts
 
 # rendered video: regenerate with scripts/make_sizzle.py
 content/video/*.mp4
+
+# Python bytecode from the scripts/ helpers
+__pycache__/
+*.pyc
