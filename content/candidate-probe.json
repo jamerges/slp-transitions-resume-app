@@ -1,0 +1,614 @@
+[
+ {
+  "name": "Prompt Health",
+  "url": "https://promptemr.com",
+  "ats": "ashby",
+  "slug": "Prompt",
+  "api": "https://api.ashbyhq.com/posting-api/job-board/Prompt",
+  "open_jobs": 44,
+  "note": ""
+ },
+ {
+  "name": "Laronix",
+  "url": "https://laronix.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Numotion",
+  "url": "https://numotion.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Cala Health",
+  "url": "https://calahealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "eClinicalWorks",
+  "url": "https://eclinicalworks.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Included Health",
+  "url": "https://includedhealth.com",
+  "ats": "lever",
+  "slug": "includedhealth",
+  "api": "https://api.lever.co/v0/postings/includedhealth?mode=json",
+  "open_jobs": 149,
+  "note": ""
+ },
+ {
+  "name": "Infinity Rehab",
+  "url": "https://infinityrehab.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Restore Therapy",
+  "url": "https://restoretherapy.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "BridgePoint Healthcare",
+  "url": "https://bridgepointhealthcare.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Craig Hospital",
+  "url": "https://craighospital.org",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "site unreachable"
+ },
+ {
+  "name": "Intermountain Health",
+  "url": "https://intermountainhealthcare.org",
+  "ats": "workday",
+  "slug": "imh",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ },
+ {
+  "name": "Children's Specialized Hospital",
+  "url": "https://rwjbh.org",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Qualifacts",
+  "url": "https://qualifacts.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Encompass Health",
+  "url": "https://encompasshealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Select Medical",
+  "url": "https://selectmedical.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "site unreachable"
+ },
+ {
+  "name": "Lifepoint Health",
+  "url": "https://lifepointhealth.net",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "ScionHealth",
+  "url": "https://scionhealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Brooks Rehabilitation",
+  "url": "https://brooksrehab.org",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Shirley Ryan AbilityLab",
+  "url": "https://sralab.org",
+  "ats": "workday",
+  "slug": "sralab",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ },
+ {
+  "name": "Optum",
+  "url": "https://optum.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Elevance Health",
+  "url": "https://elevancehealth.com",
+  "ats": "workday",
+  "slug": "elevancehealth",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ },
+ {
+  "name": "Humana",
+  "url": "https://humana.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Centene",
+  "url": "https://centene.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Evernorth",
+  "url": "https://evernorth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Molina Healthcare",
+  "url": "https://molinahealthcare.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Netsmart",
+  "url": "https://ntst.com",
+  "ats": "workday",
+  "slug": "ntst",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ },
+ {
+  "name": "WellSky",
+  "url": "https://wellsky.com",
+  "ats": "workday",
+  "slug": "wellsky",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ },
+ {
+  "name": "PointClickCare",
+  "url": "https://pointclickcare.com",
+  "ats": "lever",
+  "slug": "pointclickcare",
+  "api": "https://api.lever.co/v0/postings/pointclickcare?mode=json",
+  "open_jobs": 91,
+  "note": ""
+ },
+ {
+  "name": "MEDITECH",
+  "url": "https://ehr.meditech.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Oracle Health",
+  "url": "https://oracle.com/health",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Nordic Consulting",
+  "url": "https://nordicglobal.com",
+  "ats": "workday",
+  "slug": "nordic",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ },
+ {
+  "name": "Tegria",
+  "url": "https://tegria.com",
+  "ats": "workday",
+  "slug": "tegria",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ },
+ {
+  "name": "Health Catalyst",
+  "url": "https://healthcatalyst.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Innovaccer",
+  "url": "https://innovaccer.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Net Health",
+  "url": "https://nethealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "WebPT",
+  "url": "https://webpt.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Raintree Systems",
+  "url": "https://raintreeinc.com",
+  "ats": "ashby",
+  "slug": "raintree-systems",
+  "api": "https://api.ashbyhq.com/posting-api/job-board/raintree-systems",
+  "open_jobs": 5,
+  "note": ""
+ },
+ {
+  "name": "Fusion Web Clinic",
+  "url": "https://fusionwebclinic.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "PRC-Saltillo",
+  "url": "https://prc-saltillo.com",
+  "ats": "bamboohr",
+  "slug": "prentkeromich",
+  "api": "https://prentkeromich.bamboohr.com/careers/list",
+  "open_jobs": 0,
+  "note": ""
+ },
+ {
+  "name": "Passy-Muir",
+  "url": "https://passymuir.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Ambiki",
+  "url": "https://ambiki.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Better Speech",
+  "url": "https://betterspeech.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Presence",
+  "url": "https://presence.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Parallel Learning",
+  "url": "https://parallellearning.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Amplio Learning",
+  "url": "https://campus.amplio-learning.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "site unreachable"
+ },
+ {
+  "name": "Constant Therapy Health",
+  "url": "https://constanttherapyhealth.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "MedRhythms",
+  "url": "https://medrhythms.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Whispp",
+  "url": "https://whispp.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Forbrain",
+  "url": "https://forbrain.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Articulate",
+  "url": "https://articulate.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Docebo",
+  "url": "https://docebo.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Coursera",
+  "url": "https://coursera.org",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Instructure",
+  "url": "https://instructure.com",
+  "ats": "ashby",
+  "slug": "instructure",
+  "api": "https://api.ashbyhq.com/posting-api/job-board/instructure",
+  "open_jobs": 43,
+  "note": ""
+ },
+ {
+  "name": "D2L",
+  "url": "https://d2l.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Pluralsight",
+  "url": "https://pluralsight.com",
+  "ats": "workday",
+  "slug": "pluralsight",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ },
+ {
+  "name": "Skillsoft",
+  "url": "https://skillsoft.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "LearnUpon",
+  "url": "https://learnupon.com",
+  "ats": "greenhouse",
+  "slug": "learnupon",
+  "api": "https://boards-api.greenhouse.io/v1/boards/learnupon/jobs",
+  "open_jobs": 15,
+  "note": ""
+ },
+ {
+  "name": "Newsela",
+  "url": "https://newsela.com",
+  "ats": "greenhouse",
+  "slug": "newsela",
+  "api": "https://boards-api.greenhouse.io/v1/boards/newsela/jobs",
+  "open_jobs": 19,
+  "note": ""
+ },
+ {
+  "name": "Nearpod",
+  "url": "https://nearpod.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "IQVIA",
+  "url": "https://iqvia.com",
+  "ats": "workday",
+  "slug": "iqvia",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ },
+ {
+  "name": "Parexel",
+  "url": "https://parexel.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "ICON plc",
+  "url": "https://iconplc.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Medpace",
+  "url": "https://medpace.com",
+  "ats": "icims",
+  "slug": "uscareers-medpace",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ },
+ {
+  "name": "Advarra",
+  "url": "https://advarra.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Thermo Fisher Scientific",
+  "url": "https://thermofisher.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "no known ATS signature"
+ },
+ {
+  "name": "Rocket Software",
+  "url": "https://rocketsoftware.com",
+  "ats": "workday",
+  "slug": "rocket",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ },
+ {
+  "name": "Wisely by ADP",
+  "url": "https://adp.com",
+  "ats": null,
+  "slug": null,
+  "api": null,
+  "open_jobs": null,
+  "note": "site unreachable"
+ },
+ {
+  "name": "Vibra Healthcare",
+  "url": "https://vibrahealthcare.com",
+  "ats": "icims",
+  "slug": "careers-vibralife",
+  "api": null,
+  "open_jobs": null,
+  "note": "ATS found, no public JSON feed"
+ }
+]

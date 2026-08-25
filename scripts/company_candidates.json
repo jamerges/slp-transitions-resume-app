@@ -1,0 +1,862 @@
+[
+ {
+  "name": "Prompt Health",
+  "url": "promptemr.com",
+  "note": "Rehab-therapy EMR; SLPs on its CX and education teams",
+  "roles": [
+   "Customer Success",
+   "Content",
+   "Operations"
+  ],
+  "categories": [
+   "HealthTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Laronix",
+  "url": "laronix.com",
+  "note": "Non-invasive voice restoration device",
+  "roles": [
+   "Clinical",
+   "Sales",
+   "Customer Success"
+  ],
+  "categories": [
+   "SLP-Adjacent",
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Numotion",
+  "url": "numotion.com",
+  "note": "Complex rehab tech and AAC; SLP-led speech solutions arm",
+  "roles": [
+   "Clinical",
+   "Sales",
+   "Operations"
+  ],
+  "categories": [
+   "SLP-Adjacent",
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Cala Health",
+  "url": "calahealth.com",
+  "note": "Wearable neuromodulation; SLPs in customer success",
+  "roles": [
+   "Customer Success",
+   "Clinical"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "eClinicalWorks",
+  "url": "eclinicalworks.com",
+  "note": "EHR vendor; hires clinicians as software trainers",
+  "roles": [
+   "Customer Success",
+   "Operations"
+  ],
+  "categories": [
+   "HealthTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Included Health",
+  "url": "includedhealth.com",
+  "note": "Care navigation; clinical licensing and compliance roles",
+  "roles": [
+   "Operations",
+   "Clinical"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Infinity Rehab",
+  "url": "infinityrehab.com",
+  "note": "Rehab provider; therapy leadership and sales tracks",
+  "roles": [
+   "Sales",
+   "Operations",
+   "Clinical"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Restore Therapy",
+  "url": "restoretherapy.com",
+  "note": "Contract therapy; clinical services leadership",
+  "roles": [
+   "Operations",
+   "Clinical"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "BridgePoint Healthcare",
+  "url": "bridgepointhealthcare.com",
+  "note": "Post-acute; utilization review roles",
+  "roles": [
+   "Clinical",
+   "Operations"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Craig Hospital",
+  "url": "craighospital.org",
+  "note": "Neuro rehab; clinical informatics coordinator roles",
+  "roles": [
+   "Clinical",
+   "Data"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Intermountain Health",
+  "url": "intermountainhealthcare.org",
+  "note": "Health system; SLP-to-informatics-director path documented",
+  "roles": [
+   "Clinical",
+   "Data",
+   "Operations"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Children's Specialized Hospital",
+  "url": "rwjbh.org",
+  "note": "Pediatric rehab; clinical informatics specialists",
+  "roles": [
+   "Clinical",
+   "Data"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Qualifacts",
+  "url": "qualifacts.com",
+  "note": "Behavioral-health EHR; implementation consultants",
+  "roles": [
+   "Customer Success",
+   "Operations"
+  ],
+  "categories": [
+   "HealthTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Encompass Health",
+  "url": "encompasshealth.com",
+  "note": "Inpatient rehab; clinical liaison is the classic SLP exit",
+  "roles": [
+   "Clinical",
+   "Sales"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Select Medical",
+  "url": "selectmedical.com",
+  "note": "LTACH and rehab; clinical liaison roles",
+  "roles": [
+   "Clinical",
+   "Sales"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Lifepoint Health",
+  "url": "lifepointhealth.net",
+  "note": "Rehab and acute; liaison and program roles",
+  "roles": [
+   "Clinical",
+   "Sales"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "ScionHealth",
+  "url": "scionhealth.com",
+  "note": "LTACH network; liaison and case management",
+  "roles": [
+   "Clinical",
+   "Operations"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Brooks Rehabilitation",
+  "url": "brooksrehab.org",
+  "note": "Rehab system; clinical education and program roles",
+  "roles": [
+   "Clinical",
+   "Teaching"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Shirley Ryan AbilityLab",
+  "url": "sralab.org",
+  "note": "Rehab research hospital; research and education roles",
+  "roles": [
+   "Research",
+   "Clinical"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Optum",
+  "url": "optum.com",
+  "note": "Payer services; utilization review and clinical ops at scale",
+  "roles": [
+   "Clinical",
+   "Operations"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Elevance Health",
+  "url": "elevancehealth.com",
+  "note": "Payer; UR and clinical review roles, heavily remote",
+  "roles": [
+   "Clinical",
+   "Operations"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Humana",
+  "url": "humana.com",
+  "note": "Payer; utilization management and clinical programs",
+  "roles": [
+   "Clinical",
+   "Operations"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Centene",
+  "url": "centene.com",
+  "note": "Payer; UR, care management, quality roles",
+  "roles": [
+   "Clinical",
+   "Operations"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Evernorth",
+  "url": "evernorth.com",
+  "note": "Cigna health services; clinical operations",
+  "roles": [
+   "Clinical",
+   "Operations"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Molina Healthcare",
+  "url": "molinahealthcare.com",
+  "note": "Payer; utilization management, remote-heavy",
+  "roles": [
+   "Clinical",
+   "Operations"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Netsmart",
+  "url": "ntst.com",
+  "note": "Post-acute and behavioral EHR; clinical informatics",
+  "roles": [
+   "Customer Success",
+   "Product"
+  ],
+  "categories": [
+   "HealthTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "WellSky",
+  "url": "wellsky.com",
+  "note": "Post-acute software; clinical product and implementation",
+  "roles": [
+   "Product",
+   "Customer Success"
+  ],
+  "categories": [
+   "HealthTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "PointClickCare",
+  "url": "pointclickcare.com",
+  "note": "Long-term care EHR; implementation and clinical roles",
+  "roles": [
+   "Customer Success",
+   "Product"
+  ],
+  "categories": [
+   "HealthTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "MEDITECH",
+  "url": "ehr.meditech.com",
+  "note": "EHR vendor; clinical informatics and implementation",
+  "roles": [
+   "Customer Success",
+   "Product"
+  ],
+  "categories": [
+   "HealthTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Oracle Health",
+  "url": "oracle.com/health",
+  "note": "Cerner successor; clinical informatics at scale",
+  "roles": [
+   "Product",
+   "Customer Success"
+  ],
+  "categories": [
+   "HealthTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Nordic Consulting",
+  "url": "nordicglobal.com",
+  "note": "Epic consulting; go-live and analyst roles that take clinicians",
+  "roles": [
+   "Operations",
+   "Customer Success"
+  ],
+  "categories": [
+   "HealthTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Tegria",
+  "url": "tegria.com",
+  "note": "Health IT consulting; EHR activation and analyst work",
+  "roles": [
+   "Operations",
+   "Customer Success"
+  ],
+  "categories": [
+   "HealthTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Health Catalyst",
+  "url": "healthcatalyst.com",
+  "note": "Healthcare data platform; clinical analytics roles",
+  "roles": [
+   "Data",
+   "Customer Success"
+  ],
+  "categories": [
+   "HealthTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Innovaccer",
+  "url": "innovaccer.com",
+  "note": "Healthcare data platform; clinical informatics",
+  "roles": [
+   "Data",
+   "Customer Success"
+  ],
+  "categories": [
+   "HealthTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Net Health",
+  "url": "nethealth.com",
+  "note": "Rehab therapy EHR; clinical product and CS",
+  "roles": [
+   "Customer Success",
+   "Product"
+  ],
+  "categories": [
+   "HealthTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "WebPT",
+  "url": "webpt.com",
+  "note": "Rehab therapy software; clinical education and CS",
+  "roles": [
+   "Customer Success",
+   "Content"
+  ],
+  "categories": [
+   "HealthTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Raintree Systems",
+  "url": "raintreeinc.com",
+  "note": "Therapy practice management software",
+  "roles": [
+   "Customer Success",
+   "Product"
+  ],
+  "categories": [
+   "HealthTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Fusion Web Clinic",
+  "url": "fusionwebclinic.com",
+  "note": "Pediatric therapy EMR",
+  "roles": [
+   "Customer Success",
+   "Content"
+  ],
+  "categories": [
+   "HealthTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "PRC-Saltillo",
+  "url": "prc-saltillo.com",
+  "note": "AAC devices; clinical educators and trainers",
+  "roles": [
+   "Clinical",
+   "Teaching",
+   "Sales"
+  ],
+  "categories": [
+   "SLP-Adjacent",
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Passy-Muir",
+  "url": "passymuir.com",
+  "note": "Speaking valves; clinical education roles",
+  "roles": [
+   "Clinical",
+   "Teaching"
+  ],
+  "categories": [
+   "SLP-Adjacent",
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Ambiki",
+  "url": "ambiki.com",
+  "note": "Practice management built for SLP/OT/PT practices",
+  "roles": [
+   "Product",
+   "Customer Success"
+  ],
+  "categories": [
+   "SLP-Adjacent",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Better Speech",
+  "url": "betterspeech.com",
+  "note": "Online speech therapy platform",
+  "roles": [
+   "Operations",
+   "Clinical"
+  ],
+  "categories": [
+   "SLP-Adjacent",
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Presence",
+  "url": "presence.com",
+  "note": "Teletherapy for schools; large SLP employer",
+  "roles": [
+   "Operations",
+   "Clinical",
+   "Customer Success"
+  ],
+  "categories": [
+   "SLP-Adjacent",
+   "EdTech"
+  ]
+ },
+ {
+  "name": "Parallel Learning",
+  "url": "parallellearning.com",
+  "note": "School-based teletherapy and assessment",
+  "roles": [
+   "Operations",
+   "Clinical"
+  ],
+  "categories": [
+   "SLP-Adjacent",
+   "EdTech"
+  ]
+ },
+ {
+  "name": "Amplio Learning",
+  "url": "amplio-learning.com",
+  "note": "Speech and literacy intervention tech",
+  "roles": [
+   "Product",
+   "Clinical"
+  ],
+  "categories": [
+   "SLP-Adjacent",
+   "EdTech"
+  ]
+ },
+ {
+  "name": "Constant Therapy Health",
+  "url": "constanttherapyhealth.com",
+  "note": "Cognitive-speech therapy app; SLP-founded science team",
+  "roles": [
+   "Clinical",
+   "Product",
+   "Research"
+  ],
+  "categories": [
+   "SLP-Adjacent",
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "MedRhythms",
+  "url": "medrhythms.com",
+  "note": "Neurologic music therapy; clinician-built digital therapeutic",
+  "roles": [
+   "Clinical",
+   "Product"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Whispp",
+  "url": "whispp.com",
+  "note": "Assistive voice technology for atypical speech",
+  "roles": [
+   "Product",
+   "Clinical"
+  ],
+  "categories": [
+   "SLP-Adjacent",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Forbrain",
+  "url": "forbrain.com",
+  "note": "Auditory feedback device used in speech therapy",
+  "roles": [
+   "Marketing",
+   "Clinical"
+  ],
+  "categories": [
+   "SLP-Adjacent"
+  ]
+ },
+ {
+  "name": "Articulate",
+  "url": "articulate.com",
+  "note": "Storyline/Rise \u2014 the instructional-design toolchain itself",
+  "roles": [
+   "Content",
+   "Customer Success",
+   "Product"
+  ],
+  "categories": [
+   "EdTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Docebo",
+  "url": "docebo.com",
+  "note": "Corporate LMS; instructional design and CS roles",
+  "roles": [
+   "Content",
+   "Customer Success"
+  ],
+  "categories": [
+   "EdTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Coursera",
+  "url": "coursera.org",
+  "note": "Online learning; learning experience designers",
+  "roles": [
+   "Content",
+   "Product"
+  ],
+  "categories": [
+   "EdTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Instructure",
+  "url": "instructure.com",
+  "note": "Canvas LMS; learning design and CS",
+  "roles": [
+   "Content",
+   "Customer Success"
+  ],
+  "categories": [
+   "EdTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "D2L",
+  "url": "d2l.com",
+  "note": "Brightspace LMS; learning services roles",
+  "roles": [
+   "Content",
+   "Customer Success"
+  ],
+  "categories": [
+   "EdTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Pluralsight",
+  "url": "pluralsight.com",
+  "note": "Skills platform; curriculum and content roles",
+  "roles": [
+   "Content",
+   "Product"
+  ],
+  "categories": [
+   "EdTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Skillsoft",
+  "url": "skillsoft.com",
+  "note": "Corporate learning; instructional design at scale",
+  "roles": [
+   "Content",
+   "Operations"
+  ],
+  "categories": [
+   "EdTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "LearnUpon",
+  "url": "learnupon.com",
+  "note": "LMS; customer success and learning roles",
+  "roles": [
+   "Customer Success",
+   "Content"
+  ],
+  "categories": [
+   "EdTech",
+   "Tech"
+  ]
+ },
+ {
+  "name": "Newsela",
+  "url": "newsela.com",
+  "note": "Instructional content platform",
+  "roles": [
+   "Content",
+   "Customer Success"
+  ],
+  "categories": [
+   "EdTech"
+  ]
+ },
+ {
+  "name": "Nearpod",
+  "url": "nearpod.com",
+  "note": "Classroom engagement platform; clinicians and teachers hired",
+  "roles": [
+   "Content",
+   "Customer Success"
+  ],
+  "categories": [
+   "EdTech"
+  ]
+ },
+ {
+  "name": "IQVIA",
+  "url": "iqvia.com",
+  "note": "CRO; study coordinator and clinical research roles",
+  "roles": [
+   "Research",
+   "Operations"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Parexel",
+  "url": "parexel.com",
+  "note": "CRO; clinical research coordination, remote-heavy",
+  "roles": [
+   "Research",
+   "Operations"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "ICON plc",
+  "url": "iconplc.com",
+  "note": "CRO; clinical trial roles open to varied backgrounds",
+  "roles": [
+   "Research",
+   "Operations"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Medpace",
+  "url": "medpace.com",
+  "note": "CRO; clinical research associate roles",
+  "roles": [
+   "Research",
+   "Operations"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Advarra",
+  "url": "advarra.com",
+  "note": "Clinical research compliance and site services",
+  "roles": [
+   "Research",
+   "Operations"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Thermo Fisher Scientific",
+  "url": "thermofisher.com",
+  "note": "PPD clinical research arm; pharmacovigilance and coordination",
+  "roles": [
+   "Research",
+   "Operations"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ },
+ {
+  "name": "Rocket Software",
+  "url": "rocketsoftware.com",
+  "note": "Enterprise software; documented SLP-to-account-executive path",
+  "roles": [
+   "Sales",
+   "Customer Success"
+  ],
+  "categories": [
+   "Tech"
+  ]
+ },
+ {
+  "name": "Wisely by ADP",
+  "url": "adp.com",
+  "note": "Documented SLP-to-UX-research path",
+  "roles": [
+   "Design",
+   "Research"
+  ],
+  "categories": [
+   "Tech"
+  ]
+ },
+ {
+  "name": "Vibra Healthcare",
+  "url": "vibrahealthcare.com",
+  "note": "Post-acute network; client success and liaison roles",
+  "roles": [
+   "Clinical",
+   "Customer Success"
+  ],
+  "categories": [
+   "HealthTech"
+  ]
+ }
+]

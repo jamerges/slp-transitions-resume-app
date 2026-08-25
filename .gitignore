@@ -44,3 +44,7 @@ content/video/*.mp4
 # Python bytecode from the scripts/ helpers
 __pycache__/
 *.pyc
+
+# Generated weekly job digests — regenerate rather than diff them
+content/job-digest-*.md
+content/job-digest-*.html
