@@ -45,19 +45,29 @@ PATHS = [
          caveat="Heavily oversaturated: 35% more grads in five years against flat openings. The hardest path here."),
 ]
 
+# People who took a JOB, not people who founded a company. The homepage
+# reader is deciding whether they can be hired somewhere else, and a founder
+# answers a different question — one most of them are not asking. Xceptional
+# Leaders guests are deliberately excluded here for the same reason; those
+# interviews still live on the blog under Entrepreneurs.
+#
+# No avatars: real headshots only is a standing rule, and we don't have
+# photographs of these three. Their before/after roles carry the card instead,
+# which is the part a reader is scanning for anyway. If James supplies
+# headshots, add img= back and restore the <img> in the card markup.
 STORIES = [
-    dict(img="meredith-harold-avatar.jpg", name="Meredith Harold",
-         role="Founder, The Informed SLP",
-         quote="A research-reading hobby reached a 10,000-person email list in a year, while she still wasn't charging for it.",
-         href=f"{SITE}/slp-to-founder-meredith-harold-informed-slp/"),
-    dict(img="jeannette-roberes-avatar.jpg", name="Jeannette Roberes",
-         role="SLP, then software engineer",
-         quote="She finished a coding program in three months. What had kept her out for years was believing tech meant maths.",
-         href=f"{SITE}/slp-to-software-engineer-jeannette-roberes/"),
-    dict(img="rachel-levy-avatar.jpg", name="Dr. Rachel Levy",
-         role="Co-founder, The Babel Group",
-         quote="Sixteen years clinical, then customer success at a voice-tech startup. She answers the money question honestly.",
-         href=f"{SITE}/slp-to-startup-cofounder-rachel-levy/"),
+    dict(name="Caitlin Mueller",
+         was="School-based SLP", now="Marketing Manager at an AAC device maker",
+         line="She went sideways first — clinical consultant at the company — then into marketing, where knowing the clinical side is the qualification.",
+         href=f"{SITE}/clinical-consultant-and-marketing/"),
+    dict(name="Lindsey Ison",
+         was="SLP", now="Enablement Consultant at a tech firm",
+         line="Still coaching people through something difficult, now it's software instead of therapy. Comparable pay, and the flexibility she left for.",
+         href=f"{SITE}/enablement-consultant/"),
+    dict(name="Emily Harford",
+         was="Pediatric SLP", now="Pediatric neuroscience research lab",
+         line="The pandemic made the school system's constraints impossible to keep absorbing. She kept the population and left the caseload.",
+         href=f"{SITE}/navigating-change-how-one-slp-found-renewed-purpose-in-a-pediatric-neuroscience-lab/"),
 ]
 
 RESOURCES = [
@@ -211,11 +221,16 @@ CSS = """
   transition:transform .18s ease}
 .slp-story:hover{transform:translateY(-4px)}
 .slp-story-top{display:flex;align-items:center;gap:.85rem}
-.slp-story-top img{width:54px;height:54px;border-radius:50%;object-fit:cover;
-  border:2px solid var(--sage);display:block}
 .slp-story-top b{display:block;color:var(--forest-dark);font-size:.98rem}
 .slp-story-top small{color:var(--slate);font-size:.78rem}
-.slp-story blockquote{font-size:1.15rem;line-height:1.35;color:var(--forest-dark);margin:1.5rem 0}
+/* The before/after pair does the work the headshot used to: it is the thing a
+   reader scans for, and it does not need a photograph we do not have. */
+.slp-move{margin:.7rem 0 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem;
+  font-size:.86rem;line-height:1.3}
+.slp-was{color:var(--slate)}
+.slp-arrow{color:var(--forest);font-weight:700}
+.slp-now{color:var(--forest-dark);font-weight:700}
+.slp-story .slp-story-line{font-size:1.05rem;line-height:1.4;color:var(--forest-dark);margin:1.1rem 0 1.4rem}
 .slp-story-link{margin-top:auto;color:var(--forest);font-weight:700;font-size:.88rem}
 
 /* resources */
@@ -331,15 +346,17 @@ def build():
     # ---- stories
     a('<section class="slp-sec slp-stories" id="real-stories"><div class="slp-wrap">')
     a('<div class="slp-sec-intro"><div><p class="slp-kicker" style="color:#7FD6BC">Real transitions</p>'
-      '<h2>See what other SLPs built from their clinical experience.</h2></div>'
-      '<p>Each of these started while they were still working clinically.</p></div>')
+      '<h2>See where other SLPs actually landed.</h2></div>'
+      '<p>Not founders. People who applied for a job and got it.</p></div>')
     a('<div class="slp-story-grid" data-stagger>')
     for s in STORIES:
         a(f'<a class="slp-story slp-rv" href="{s["href"]}">'
-          f'<div class="slp-story-top">'
-          f'<img src="{SITE}/wp-content/uploads/2026/08/{s["img"]}" alt="{esc(s["name"])}" width="54" height="54" loading="lazy" />'
-          f'<span><b>{esc(s["name"])}</b><small>{esc(s["role"])}</small></span></div>'
-          f'<blockquote>{esc(s["quote"])}</blockquote>'
+          f'<div class="slp-story-top"><b>{esc(s["name"])}</b></div>'
+          f'<div class="slp-move">'
+          f'<span class="slp-was">{esc(s["was"])}</span>'
+          f'<span class="slp-arrow" aria-hidden="true">→</span>'
+          f'<span class="slp-now">{esc(s["now"])}</span></div>'
+          f'<p class="slp-story-line">{esc(s["line"])}</p>'
           f'<span class="slp-story-link">Read the full transition →</span></a>')
     a('</div></div></section>')
 
@@ -376,11 +393,37 @@ def build():
     return "<!-- wp:html -->\n" + CSS + "\n" + body + "\n<!-- /wp:html -->"
 
 
+MAILERLITE_MARK = "MailerLite Universal"
+
+
+def carry_over_mailerlite(new_content, page_id):
+    """Keep the MailerLite tracking block across a regen.
+
+    build() does not generate it — it was appended by hand when the homepage
+    was swapped — so a plain overwrite silently drops site-wide tracking. Lift
+    it off the page we are about to replace and re-append it.
+    """
+    old = api(f"/wp/v2/pages/{page_id}?context=edit").get("content", {}).get("raw", "")
+    i = old.find(MAILERLITE_MARK)
+    if i < 0:
+        print("  ! no MailerLite block found on the existing page — nothing carried over")
+        return new_content
+    start = old.rfind("<!-- wp:html -->", 0, i)
+    end = old.find("<!-- /wp:html -->", i)
+    if start < 0 or end < 0:
+        print("  ! MailerLite block found but not inside a wp:html block — carrying nothing")
+        return new_content
+    block = old[start:end + len("<!-- /wp:html -->")]
+    print(f"  carried over the MailerLite block ({len(block)} chars)")
+    return new_content + "\n\n" + block
+
+
 if __name__ == "__main__":
     content = build()
     slug = sys.argv[1] if len(sys.argv) > 1 else "zz-preview-redesign"
     existing = api(f"/wp/v2/pages?slug={slug}&status=publish,draft&_fields=id", "GET")
     if isinstance(existing, list) and existing:
+        content = carry_over_mailerlite(content, existing[0]["id"])
         r = api(f"/wp/v2/pages/{existing[0]['id']}", "POST", {"content": content})
         print("updated preview:", r.get("id"), r.get("link"))
     else:

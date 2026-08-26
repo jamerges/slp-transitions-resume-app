@@ -3,10 +3,9 @@ const nextConfig = {
   reactStrictMode: true,
   async headers() {
     return [
-      // Two routes are embedded as iframes on the WordPress site: the quiz on
-      // /career-quiz/ (replacing the old Typeform) and the story form on
-      // /about/. Everything else stays unframeable.
-      ...["/quiz/embed", "/share-your-story/embed"].map((source) => ({
+      // The quiz is embedded as an iframe on slptransitions.com/career-quiz/,
+      // replacing the old Typeform embed. Everything else stays unframeable.
+      ...["/quiz/embed"].map((source) => ({
         source,
         headers: [
           {
