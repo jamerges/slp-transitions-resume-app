@@ -99,6 +99,28 @@ export async function claimOnce(key: string): Promise<boolean> {
   return res === "OK";
 }
 
+/**
+ * Fixed-window rate limit. Allows the request when Redis is unavailable —
+ * local dev has no Upstash, and a public form that refuses everything because
+ * a cache is missing is worse than one that occasionally lets a bot through.
+ * The honeypot and timing checks are the real defence; this caps the blast.
+ */
+export async function rateLimit(
+  key: string,
+  max: number,
+  windowSeconds: number
+): Promise<boolean> {
+  const r = getRedis();
+  if (!r) return true;
+  try {
+    const n = await r.incr(`rl:${key}`);
+    if (n === 1) await r.expire(`rl:${key}`, windowSeconds);
+    return n <= max;
+  } catch {
+    return true;
+  }
+}
+
 export async function stashResult(sessionId: string, result: any): Promise<void> {
   const r = getRedis();
   if (!r) return;

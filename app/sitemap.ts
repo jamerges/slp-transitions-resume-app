@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    { url: `${SITE}/share-your-story`, changeFrequency: "yearly", priority: 0.4 },
     ...PATH_LIST.map((p) => ({
       url: `${SITE}/jobs/${p.slug}`,
       lastModified: GENERATED_AT,
