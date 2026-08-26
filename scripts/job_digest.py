@@ -153,6 +153,78 @@ def collapse(rows, per_company=3):
     return kept, extra
 
 
+
+
+# --- Workday -------------------------------------------------------------
+# Workday runs the big employers (IQVIA alone posts ~1,900 roles) and has no
+# derivable board URL, which is why the probe could only detect it and stop.
+# The endpoint IS public; only the per-tenant "site" segment varies, and those
+# are recorded once in content/workday-feeds.json.
+#
+# These boards are far too large to pull whole, so we ask Workday to filter:
+# one search per career path, server-side. That turns a 1,900-role download
+# into a handful of small, already-relevant responses.
+WORKDAY_QUERIES = ["customer success", "implementation", "clinical education",
+                   "instructional design", "utilization review", "clinical research",
+                   "clinical informatics", "program manager", "learning"]
+
+
+def post_json(url, payload):
+    req = urllib.request.Request(
+        url, data=json.dumps(payload).encode(),
+        headers={"User-Agent": UA, "Content-Type": "application/json",
+                 "Accept": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=15, context=CTX) as r:
+            return json.loads(r.read().decode("utf-8", "ignore"))
+    except Exception:
+        return None
+
+
+def workday_jobs():
+    path = os.path.join(ROOT, "content/workday-feeds.json")
+    if not os.path.exists(path):
+        return []
+    out = []
+    for f in json.load(open(path)):
+        base = f"https://{f['tenant']}.{f['wd']}.myworkdayjobs.com"
+        api = f"{base}/wday/cxs/{f['tenant']}/{f['site']}/jobs"
+        for q in WORKDAY_QUERIES:
+            d = post_json(api, {"appliedFacets": {}, "limit": 20, "offset": 0, "searchText": q})
+            if not d:
+                continue
+            for j in d.get("jobPostings", []):
+                ext = j.get("externalPath", "")
+                out.append({
+                    "company": f["company"],
+                    "title": (j.get("title") or "").strip(),
+                    "location": (j.get("locationsText") or "").strip(),
+                    "url": f"{base}/en-US/{f['site']}{ext}" if ext else base,
+                    "remote": bool(re.search(r"remote|anywhere", f"{j.get('locationsText','')} {j.get('title','')}", re.I)),
+                    "ats": "workday",
+                })
+    return out
+
+
+
+# Readers are US-based. Workday's global boards surface Madrid and Bangalore
+# roles that match on title alone; a listing someone can't take is noise.
+NON_US = ["spain","india","germany","france","japan","china","brazil","poland",
+          "romania","bulgaria","serbia","mexico","canada","united kingdom","uk -",
+          "ireland","netherlands","sweden","italy","philippines","singapore",
+          "australia","argentina","colombia","costa rica","hungary","slovakia",
+          "czech","turkey","egypt","kenya","south africa","malaysia","thailand",
+          "vietnam","korea","taiwan","israel","portugal","greece","finland",
+          "norway","denmark","belgium","austria","switzerland","new zealand"]
+
+
+def us_based(j):
+    loc = (j.get("location") or "").lower()
+    if not loc:
+        return True                      # unknown location: let the human judge
+    return not any(c in loc for c in NON_US)
+
+
 def classify(title):
     t = title.lower()
     if any(x in t for x in EXCLUDE):
@@ -181,10 +253,15 @@ def collect():
     with ThreadPoolExecutor(max_workers=10) as ex:
         allj = [j for batch in ex.map(pull, sources.items()) for j in batch]
 
+    wd = workday_jobs()
+    if wd:
+        print(f"  + {len(wd)} from {len(json.load(open(os.path.join(ROOT, 'content/workday-feeds.json'))))} Workday boards")
+        allj += wd
+
     hits = []
     for j in allj:
         slug = classify(j["title"])
-        if slug and j["title"]:
+        if slug and j["title"] and us_based(j):
             j["path"] = slug
             hits.append(j)
     return allj, hits
