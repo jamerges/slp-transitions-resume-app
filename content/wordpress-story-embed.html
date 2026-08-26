@@ -1,0 +1,50 @@
+<!--
+  SLP TRANSITIONS — STORY FORM EMBED
+  Lives on slptransitions.com/about/ under "How do I get my Story featured".
+
+  This is already installed (page 2626, added by Claude 2026-08-26). This file
+  is the source of truth — if the block gets wiped in the editor, paste this
+  back into a Custom HTML block in the same spot.
+
+  Submissions POST to app.slptransitions.com/api/share-story and are emailed
+  through Resend to OPS_ALERT_EMAIL (jamoberges@gmail.com), with reply-to set
+  to whoever filled it in.
+
+  The iframe auto-resizes as the form grows and shrinks, so there's no inner
+  scrollbar. If a browser blocks the resize script it falls back to a fixed
+  height and still works. The listener key must stay slpStoryHeight — it is
+  set in components/EmbedAutoHeight.tsx via app/share-your-story/embed.
+-->
+
+<div id="slp-story-wrap" style="max-width:680px;margin:0;">
+  <iframe
+    id="slp-story"
+    src="https://app.slptransitions.com/share-your-story/embed"
+    title="Share your SLP transition story"
+    loading="lazy"
+    style="width:100%;border:0;height:1180px;display:block;overflow:hidden;"
+    scrolling="no"
+  ></iframe>
+
+  <noscript>
+    <p>
+      <a href="https://app.slptransitions.com/share-your-story" style="display:inline-block;padding:14px 28px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-weight:600;">
+        Share your story &rarr;
+      </a>
+    </p>
+  </noscript>
+</div>
+
+<script>
+(function () {
+  var f = document.getElementById('slp-story');
+  if (!f) return;
+  window.addEventListener('message', function (e) {
+    if (e.origin !== 'https://app.slptransitions.com') return;
+    var h = e.data && e.data.slpStoryHeight;
+    if (typeof h === 'number' && h > 200 && h < 8000) {
+      f.style.height = h + 'px';
+    }
+  });
+})();
+</script>

@@ -3,10 +3,11 @@ const nextConfig = {
   reactStrictMode: true,
   async headers() {
     return [
-      {
-        // The quiz is embedded as an iframe on slptransitions.com/career-quiz/,
-        // replacing the old Typeform embed. Everything else stays unframeable.
-        source: "/quiz/embed",
+      // Two routes are embedded as iframes on the WordPress site: the quiz on
+      // /career-quiz/ (replacing the old Typeform) and the story form on
+      // /about/. Everything else stays unframeable.
+      ...["/quiz/embed", "/share-your-story/embed"].map((source) => ({
+        source,
         headers: [
           {
             key: "Content-Security-Policy",
@@ -14,7 +15,7 @@ const nextConfig = {
               "frame-ancestors 'self' https://slptransitions.com https://www.slptransitions.com;",
           },
         ],
-      },
+      })),
     ];
   },
 };

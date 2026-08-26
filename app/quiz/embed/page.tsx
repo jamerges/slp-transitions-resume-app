@@ -1,6 +1,6 @@
 import { S } from "@/components/ui";
 import CareerQuiz from "@/components/CareerQuiz";
-import EmbedAutoHeight from "./EmbedAutoHeight";
+import EmbedAutoHeight from "@/components/EmbedAutoHeight";
 
 // Chrome-free version of the quiz for embedding on slptransitions.com.
 // No site header/footer — the parent page already has them.
@@ -21,7 +21,7 @@ export default async function QuizEmbed({
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
         rel="stylesheet"
       />
-      <EmbedAutoHeight />
+      <EmbedAutoHeight messageKey="slpQuizHeight" />
       <div style={{ paddingTop: 8, paddingBottom: 24 }}>
         <CareerQuiz initialPath={path?.toLowerCase() || undefined} embedded />
       </div>
