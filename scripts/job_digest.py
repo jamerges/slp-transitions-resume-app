@@ -291,6 +291,19 @@ def collect():
         allj += wd
 
     senior_dropped = 0
+    seen_urls = set()
+    unique = []
+    for j in allj:
+        u = j.get("url")
+        if u and u in seen_urls:
+            continue
+        if u:
+            seen_urls.add(u)
+        unique.append(j)
+    if len(unique) != len(allj):
+        print(f"  ({len(allj) - len(unique)} duplicate postings collapsed)")
+    allj = unique
+
     hits = []
     for j in allj:
         if j["title"] and too_senior(j["title"]):
@@ -372,13 +385,30 @@ if __name__ == "__main__":
     seen = {} if fresh else (json.load(open(SEEN_PATH)) if os.path.exists(SEEN_PATH) else {})
 
     allj, hits = collect()
+
+    # Snapshot for the public /jobs page: everything currently open, NOT
+    # filtered by the seen-store. The page answers "what's open right now";
+    # the email answers "what's new since last week". Different questions.
+    snapshot = {
+        "generated": datetime.date.today().isoformat(),
+        "scanned": len(allj),
+        "paths": [{"slug": k, "label": v[0]} for k, v in PATHS.items()],
+        "roles": [
+            {k: j[k] for k in ("company", "title", "location", "url", "remote", "path")}
+            for j in sorted(hits, key=lambda x: (x["path"], x["company"], x["title"]))
+        ],
+    }
+    json.dump(snapshot, open(os.path.join(ROOT, "lib/open-roles.json"), "w"), indent=1)
+    print(f"  wrote lib/open-roles.json ({len(hits)} open roles for the site)")
+
     before = len(hits)
     hits = [j for j in hits if j["url"] and j["url"] not in seen]
     print(f"  scanned {len(allj)} live roles → {before} SLP-relevant "
           f"→ {len(hits)} not sent before")
 
     if not hits:
-        print("\nnothing new this week."); sys.exit(0)
+        print("\nnothing NEW for the email this week (the site snapshot still updated).")
+        sys.exit(0)
 
     md, picks = render(hits, len(allj))
     today = datetime.date.today().isoformat()

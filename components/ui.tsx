@@ -162,6 +162,7 @@ const SITE = "https://slptransitions.com";
 const NAV = [
   { label: "Articles", href: `${SITE}/` },
   { label: "Career Quiz", href: "/quiz" },
+  { label: "Open Roles", href: "/jobs" },
   { label: "Companies List", href: `${SITE}/ed-health-tech-jobs/` },
   { label: "About", href: `${SITE}/about/` },
   { label: "Contact", href: `${SITE}/contact-us/` },
