@@ -80,7 +80,13 @@ EXCLUDE = ["software engineer", "engineer", "developer", "devops", "architect",
            # stops: a listing an SLP cannot legally take is worse than no listing.
            "nurse", "rn ", " rn", "physician", "pharmacist", "dietitian",
            "social worker", "physical therapist", "occupational therapist",
-           "respiratory therapist", "psychologist", "counselor", "lcsw", "np "]
+           "respiratory therapist", "psychologist", "counselor", "lcsw", "np ",
+           # Caught by a loose keyword rather than a bad path: "Athletic Trainer"
+           # matched "trainer" and needs an ATC; "Pharmacy Operations Trainer"
+           # matched the same way. Both reached the weekly picks before this.
+           "athletic trainer", "pharmacy", "phlebotom", "radiolog", "sonograph",
+           "surgical tech", "medical assistant", "dental", "hygienist",
+           "paramedic", "veterinar"]
 
 
 def get(url):
@@ -225,9 +231,35 @@ def us_based(j):
     return not any(c in loc for c in NON_US)
 
 
+
+# Seniority in these titles means experience IN THAT FUNCTION, not career
+# length. A twenty-year SLP is still entry-level in customer success, so a
+# "Senior CSM" posting screens them out. Readers here are new to the function.
+#
+# "Manager" is deliberately NOT a seniority marker: Customer Success Manager,
+# Implementation Manager and Program Manager are the standard individual-
+# contributor titles in those functions. Excluding them would empty the list.
+SENIOR = ["senior ", "sr. ", "sr ", "staff ", "director", "vice president",
+          "vp ", "vp,", "head of", "chief ", "executive ", "principal ",
+          "lead ", " iii", " iv", "distinguished "]
+# Epic calls a standard training role "Principal Trainer" — a job name, not a
+# grade. Protect it before the seniority test, or the guardrail's own example
+# role gets filtered out.
+SENIOR_EXEMPT = ["principal trainer", "lead generation", "team lead nurse"]
+
+
+def too_senior(title):
+    t = title.lower()
+    for phrase in SENIOR_EXEMPT:
+        t = t.replace(phrase, "")
+    return any(m in t for m in SENIOR)
+
+
 def classify(title):
     t = title.lower()
     if any(x in t for x in EXCLUDE):
+        return None
+    if too_senior(title):
         return None
     for slug, (_, keys) in PATHS.items():
         if any(k in t for k in keys):
@@ -258,12 +290,16 @@ def collect():
         print(f"  + {len(wd)} from {len(json.load(open(os.path.join(ROOT, 'content/workday-feeds.json'))))} Workday boards")
         allj += wd
 
+    senior_dropped = 0
     hits = []
     for j in allj:
+        if j["title"] and too_senior(j["title"]):
+            senior_dropped += 1
         slug = classify(j["title"])
         if slug and j["title"] and us_based(j):
             j["path"] = slug
             hits.append(j)
+    print(f"  ({senior_dropped} senior/lead titles filtered out)")
     return allj, hits
 
 
