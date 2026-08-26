@@ -416,7 +416,27 @@ if __name__ == "__main__":
             for j in sorted(hits, key=lambda x: (x["path"], x["company"], x["title"]))
         ],
     }
-    json.dump(snapshot, open(os.path.join(ROOT, "lib/open-roles.json"), "w"), indent=1)
+
+    # A collapsed run means the feeds broke, not that hiring stopped. Publishing
+    # an empty or gutted /jobs is worse than publishing last week's — Google
+    # devalues job pages that thin out, and readers who find nothing don't
+    # return. Keep the old snapshot and shout instead.
+    snap_path = os.path.join(ROOT, "lib/open-roles.json")
+    prev = json.load(open(snap_path)) if os.path.exists(snap_path) else None
+    if prev:
+        age = (datetime.date.today()
+               - datetime.date.fromisoformat(prev["generated"])).days
+        print(f"  previous snapshot: {len(prev['roles'])} roles, {age} days old")
+        floor = int(len(prev["roles"]) * 0.4)
+        if len(hits) < floor and "--force" not in sys.argv:
+            print(f"\n!! ABORTED: only {len(hits)} roles this run vs {len(prev['roles'])} "
+                  f"last time (floor {floor}). That is a feed failure, not a hiring "
+                  f"freeze.\n   lib/open-roles.json left untouched — /jobs keeps "
+                  f"serving the {age}-day-old list.\n   Investigate, then re-run with "
+                  f"--force if the drop is real.")
+            sys.exit(1)
+
+    json.dump(snapshot, open(snap_path, "w"), indent=1)
     print(f"  wrote lib/open-roles.json ({len(hits)} open roles for the site)")
 
     before = len(hits)

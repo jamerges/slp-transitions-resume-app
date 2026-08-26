@@ -3,14 +3,8 @@
 import { useMemo, useState } from "react";
 import { S } from "./ui";
 
-export interface Role {
-  company: string;
-  title: string;
-  location: string;
-  url: string;
-  remote: boolean;
-  path: string;
-}
+import type { Role } from "@/lib/open-roles";
+export type { Role };
 
 /**
  * US states both ways, because the feeds are inconsistent: Workday writes
@@ -250,11 +244,23 @@ export default function OpenRoles({
         .filter((p) => grouped[p.slug]?.length)
         .map((p) => (
           <section key={p.slug} style={{ marginBottom: 30 }}>
+            {/* The heading is the link to the path page — it carries the
+                salary band and timeline, and it is how a crawler reaching
+                this page finds the other nine. */}
             <h2 style={{ ...S.h3, marginBottom: 10 }}>
-              {p.label}{" "}
-              <span style={{ color: "var(--light)", fontWeight: 400 }}>
-                ({grouped[p.slug].length})
-              </span>
+              <a
+                href={`/jobs/${p.slug}`}
+                style={{ color: "inherit", textDecoration: "none" }}
+              >
+                {p.label}{" "}
+                <span style={{ color: "var(--light)", fontWeight: 400 }}>
+                  ({grouped[p.slug].length})
+                </span>
+                <span style={{ color: "var(--accent)", fontWeight: 500, fontSize: 13 }}>
+                  {" "}
+                  &rarr; pay &amp; timeline
+                </span>
+              </a>
             </h2>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {grouped[p.slug].map((r) => (
