@@ -12,11 +12,10 @@ export const metadata = {
 // genuinely new content worth ranking on its own, so it stays indexable.
 
 export default function JobsPage() {
-  const { roles, paths, generated, scanned } = snapshot as {
+  const { roles, paths, generated } = snapshot as {
     roles: Role[];
     paths: { slug: string; label: string }[];
     generated: string;
-    scanned: number;
   };
   const remote = roles.filter((r) => r.remote).length;
   const updated = new Date(generated + "T12:00:00Z").toLocaleDateString("en-US", {
@@ -33,12 +32,6 @@ export default function JobsPage() {
         {roles.length} openings pulled this week from the job boards of companies that
         hire former SLPs, {remote} of them remote. Grouped by the same career paths
         the quiz uses.
-      </p>
-      <p style={{ ...S.p, fontSize: 13.5, marginBottom: 8 }}>
-        Filtered from {scanned.toLocaleString()} live postings. Roles requiring a
-        licence you don&rsquo;t hold are removed, and so are senior titles &mdash; seniority
-        here means experience in <em>that</em> function, so a first move out of the
-        clinic starts below it.
       </p>
       <p style={{ ...S.p, fontSize: 13, color: "var(--muted)", marginBottom: 26 }}>
         Updated {updated}. Postings close without warning, so if a link is dead the
