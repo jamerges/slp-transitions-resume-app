@@ -347,22 +347,36 @@ def render(hits, scanned_count):
         md.append(f"- **{j['company']}** · [{j['title']}]({j['url']}){loc} {dot}".rstrip())
     md += ["", "---", ""]
 
-    # --- full list, grouped by the quiz's own path names
-    md += ["## The full list, by path", ""]
+    # --- a readable slice, grouped by the quiz's own path names.
+    # Three per path keeps the whole email around twenty roles; the rest are a
+    # click away rather than a scroll away.
+    PER_PATH = 2
+    total_available = len(hits)
+    md += ["## A few from each path", ""]
     for slug, (label, _) in PATHS.items():
         rows = by_path.get(slug, [])
         if not rows:
             continue
         rows, extra = collapse(rows)
-        md.append(f"### {label} ({len(rows)})")
+        # remote first, so the shortlist leads with what most readers want
+        rows = sorted(rows, key=lambda x: (not x["remote"], x["company"]))
+        hidden = max(0, len(rows) - PER_PATH)
+        rows = rows[:PER_PATH]
+        extra = {}
+        if hidden:
+            extra = {"__more": hidden}
+        md.append(f"### {label}")
         md.append("")
         for j in sorted(rows, key=lambda x: x["company"]):
             dot = "● " if j["remote"] else ""
             loc = f" — {j['location']}" if j["location"] else ""
             md.append(f"- **{j['company']}** · [{j['title']}]({j['url']}){loc} {dot}".rstrip())
-        for c, n in sorted(extra.items()):
-            md.append(f"- _{c}: {n} more similar role{'s' if n > 1 else ''} on their board_")
+        if extra.get("__more"):
+            md.append(f"- _+{extra['__more']} more in this path_")
         md.append("")
+    md += ["---", "",
+           f"**All {total_available} open roles, updated weekly:** "
+           f"https://app.slptransitions.com/jobs", ""]
     return "\n".join(md), picks
 
 
@@ -376,7 +390,11 @@ def render_html(picks):
         out.append(f'<li><strong>{html.escape(j["company"])}</strong> · '
                    f'<a href="{html.escape(j["url"])}" style="color:#0B6B54">'
                    f'{html.escape(j["title"])}</a>{loc}{dot}</li>')
-    out += ["</ul>", '<p style="font-size:12px;color:#8a938e">● = remote</p>', "</div>"]
+    out += ["</ul>",
+            '<p style="font-size:13px;margin:10px 0 0">'
+            '<a href="https://app.slptransitions.com/jobs" style="color:#0B6B54">'
+            'See every open role &rarr;</a></p>',
+            '<p style="font-size:12px;color:#8a938e">● = remote</p>', "</div>"]
     return "\n".join(out)
 
 
