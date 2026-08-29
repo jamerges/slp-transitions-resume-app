@@ -12,9 +12,13 @@ content/research-facts.md. The reference mock understated all six ranges
 (clinical informatics by ~$57k) and dropped the oversaturation caveat on
 UX research, which is a named factual guardrail in CLAUDE.md.
 """
-import sys, os
+import re, sys, os
 sys.path.insert(0, "/Users/jamesberges/Desktop/SLP Career Suite : Resume Tool/scripts")
 from wp_publish import api
+
+# --tight builds the trimmed variant: less prose, more visual. Kept behind a
+# flag so the live homepage builder is untouched until the variant is chosen.
+TIGHT = "--tight" in sys.argv
 
 QUIZ = "https://app.slptransitions.com/quiz"
 APP = "https://app.slptransitions.com/"
@@ -185,6 +189,15 @@ CSS = """
   border-radius:50%;border:1px solid var(--brand);color:var(--brand);font-size:.75rem;font-weight:700}
 .slp-path-card h3{font-size:1.12rem;line-height:1.25;margin-bottom:.3rem}
 .slp-path-card p{font-size:.88rem;line-height:1.5;color:var(--slate)}
+.slp-proof{display:grid;gap:12px}
+.slp-proof-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  padding:1.15rem 1.35rem;display:flex;flex-direction:column;gap:.15rem}
+.slp-proof-n{font-family:'Fraunces',Georgia,serif;font-size:2.15rem;line-height:1;color:var(--forest)}
+.slp-proof-l{font-size:.86rem;line-height:1.4;color:var(--slate)}
+.slp-bar{position:relative;height:8px;border-radius:99px;background:#E4EDE7;margin:.7rem 0 .25rem}
+.slp-bar i{position:absolute;top:0;bottom:0;border-radius:99px;background:var(--forest)}
+.slp-bar-scale{display:flex;justify-content:space-between;font-size:.68rem;color:var(--slate);
+  margin-bottom:.5rem}
 .slp-here{display:flex;align-items:center;gap:.6rem;font-size:.72rem;letter-spacing:.12em;
   text-transform:uppercase;color:var(--slate);margin-bottom:2px}
 .slp-here i{width:11px;height:11px;border-radius:50%;background:var(--amber);
@@ -302,6 +315,19 @@ def esc(s):
     return s.replace("&", "&amp;").replace("<", "&lt;")
 
 
+# All six ranges drawn on one scale, so the cards can be compared at a glance
+# instead of read one at a time. Bounds are the floor and ceiling of the six.
+BAR_LO, BAR_HI = 60.0, 160.0
+
+def salary_bar(salary):
+    lo, hi = (float(x) for x in re.findall(r"[\d.]+", salary)[:2])
+    left = max(0.0, (lo - BAR_LO) / (BAR_HI - BAR_LO) * 100)
+    width = min(100.0 - left, (hi - lo) / (BAR_HI - BAR_LO) * 100)
+    return (f'<div class="slp-bar" role="img" aria-label="Salary range {salary}">'
+            f'<i style="left:{left:.1f}%;width:{width:.1f}%"></i></div>'
+            f'<div class="slp-bar-scale"><span>$60k</span><span>$160k</span></div>')
+
+
 def build():
     p = []
     a = p.append
@@ -310,31 +336,53 @@ def build():
 
     # ---- hero
     a('<section class="slp-hero"><div class="slp-wrap"><div class="slp-hero-grid"><div>')
-    a('<h1>Your SLP skills can take you somewhere new.</h1>')
-    a('<p class="slp-lede">Find a non-clinical path that fits your strengths, your timeline and '
+    # Validate the push before selling the pull (voice-of-customer §5.1). The
+    # previous headline spoke stage-4 practicality to a stage-2 reader. "Want
+    # out" is the reader's own phrase, not a paraphrase, and permission is the
+    # strongest theme in the corpus.
+    a('<h1>You&rsquo;re allowed to want out.</h1>' if TIGHT
+      else '<h1>Your SLP skills can take you somewhere new.</h1>')
+    a('<p class="slp-lede">It&rsquo;s not the clients. It&rsquo;s the caseload, the paperwork, '
+      'and a productivity number that never let up. Here&rsquo;s what else your training '
+      'qualifies you for &mdash; with real salary ranges and honest timelines.</p>' if TIGHT else
+      '<p class="slp-lede">Find a non-clinical path that fits your strengths, your timeline and '
       'what you need to earn, with verified salary ranges and stories from SLPs who have already done it.</p>')
     a(f'<div class="slp-actions"><a class="slp-btn slp-btn-primary" href="{QUIZ}">Find my career path →</a>'
       f'<a class="slp-btn slp-btn-ghost" href="{APP}">Translate my resume</a></div>')
     a('<p class="slp-trust"><b>Free</b> · <b>2 minutes</b> · built from '
-      f'<a href="{SITE}/ed-health-tech-jobs/" style="border-bottom:1px solid currentColor">120 companies</a> that hire former SLPs</p>')
+      f'<a href="{SITE}/ed-health-tech-jobs/" style="border-bottom:1px solid currentColor">188 companies</a> that hire former SLPs</p>')
     a('</div>')
 
-    # pathway
-    a('<div class="slp-path" data-stagger>')
-    for n, (t, d) in enumerate([
-        ("Explore your options", "Roles that fit your strengths and the life you want."),
-        ("Build your bridge", "Close one gap while you are still employed."),
-        ("Land with confidence", "Target real openings and apply."),
-    ], 1):
-        a(f'<article class="slp-path-card slp-rv"><span class="slp-path-num">0{n}</span>'
-          f'<div><h3>{t}</h3><p>{d}</p></div></article>')
-    a('</div></div></div></section>')
+    # Right column. The three process cards said the same thing as the Guides
+    # section's 01/02/03 steps ("Build your bridge" appeared verbatim in both),
+    # and explained a mechanism before the reader had reason to care — the same
+    # objection that retired the translation strip. Proof numbers instead.
+    if TIGHT:
+        a('<div class="slp-proof" data-stagger>')
+        for n, l in [("188", "companies that hire former SLPs"),
+                     ("13", "non-clinical paths documented"),
+                     ("$154k", "top of the documented salary ranges")]:
+            a(f'<article class="slp-proof-card slp-rv"><span class="slp-proof-n">{n}</span>'
+              f'<span class="slp-proof-l">{l}</span></article>')
+        a('</div></div></div></section>')
+    else:
+        a('<div class="slp-path" data-stagger>')
+        for n, (t, d) in enumerate([
+            ("Explore your options", "Roles that fit your strengths and the life you want."),
+            ("Build your bridge", "Close one gap while you are still employed."),
+            ("Land with confidence", "Target real openings and apply."),
+        ], 1):
+            a(f'<article class="slp-path-card slp-rv"><span class="slp-path-num">0{n}</span>'
+              f'<div><h3>{t}</h3><p>{d}</p></div></article>')
+        a('</div></div></div></section>')
 
     # ---- career paths
     a('<section class="slp-sec" id="career-paths"><div class="slp-wrap">')
-    a('<div class="slp-sec-intro"><div><p class="slp-kicker">Career paths at a glance</p>'
-      '<h2>Compare the paths before you commit.</h2></div>'
-      f'<p style="justify-self:start"><a class="slp-quiet" href="{SITE}/alternative-careers-speech-pathologists-slps/">'
+    a('<div class="slp-sec-intro"><div>'
+      + ('' if TIGHT else '<p class="slp-kicker">Career paths at a glance</p>')
+      + ('<h2>Six paths, what they pay, how long they take.</h2></div>' if TIGHT
+         else '<h2>Compare the paths before you commit.</h2></div>')
+      + f'<p style="justify-self:start"><a class="slp-quiet" href="{SITE}/alternative-careers-speech-pathologists-slps/">'
       'See all 13 paths →</a></p></div>')
     a('<div class="slp-cards" data-stagger>')
     for c in PATHS:
@@ -342,6 +390,8 @@ def build():
         a(f'<p class="slp-card-label">{esc(c["label"])}</p><h3>{esc(c["title"])}</h3>')
         a(f'<div class="slp-stats"><span><small>Salary</small><b>{esc(c["salary"])}</b></span>'
           f'<span><small>Timeline</small><b>{esc(c["timeline"])}</b></span></div>')
+        if TIGHT:
+            a(salary_bar(c["salary"]))
         a(f'<p>{esc(c["fit"])}</p>')
         if c.get("caveat"):
             a(f'<p class="slp-caveat"><b>Worth knowing:</b> {esc(c["caveat"])}</p>')
@@ -375,7 +425,7 @@ def build():
     a('<section class="slp-sec" id="resources"><div class="slp-wrap">')
     a('<div class="slp-sec-intro"><div><p class="slp-kicker">Guides</p>'
       '<h2>Use the resource that fits your current step.</h2></div>'
-      '<p>Each guide answers one decision that comes up during a transition.</p></div>')
+      + ('</div>' if TIGHT else '<p>Each guide answers one decision that comes up during a transition.</p></div>'))
     a('<div class="slp-res">')
     for r in RESOURCES:
         a(f'<a class="slp-rv" href="{r["href"]}"><span class="step">{esc(r["step"])}</span>'
