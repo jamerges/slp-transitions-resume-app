@@ -336,15 +336,14 @@ def build():
 
     # ---- hero
     a('<section class="slp-hero"><div class="slp-wrap"><div class="slp-hero-grid"><div>')
-    # Validate the push before selling the pull (voice-of-customer §5.1). The
-    # previous headline spoke stage-4 practicality to a stage-2 reader. "Want
-    # out" is the reader's own phrase, not a paraphrase, and permission is the
-    # strongest theme in the corpus.
-    a('<h1>You&rsquo;re allowed to want out.</h1>' if TIGHT
-      else '<h1>Your SLP skills can take you somewhere new.</h1>')
-    a('<p class="slp-lede">It&rsquo;s not the clients. It&rsquo;s the caseload, the paperwork, '
-      'and a productivity number that never let up. Here&rsquo;s what else your training '
-      'qualifies you for &mdash; with real salary ranges and honest timelines.</p>' if TIGHT else
+    a('<h1>Your SLP skills can take you somewhere new.</h1>')
+    # The subhead carries the validation the headline doesn't: permission first
+    # (voice-of-customer §5.1, validate the push before selling the pull), then
+    # the practical promise. "Want out" is the reader's own phrase, and naming
+    # no reason avoids telling anyone whose reason is different that this page
+    # isn't for them.
+    a('<p class="slp-lede">You&rsquo;re allowed to want out. See the paths, what they pay, '
+      'and how long each move takes.</p>' if TIGHT else
       '<p class="slp-lede">Find a non-clinical path that fits your strengths, your timeline and '
       'what you need to earn, with verified salary ranges and stories from SLPs who have already done it.</p>')
     a(f'<div class="slp-actions"><a class="slp-btn slp-btn-primary" href="{QUIZ}">Find my career path →</a>'
@@ -451,7 +450,14 @@ def build():
     a('</div>')  # .slp-home
 
     body = "\n".join(p)
-    return "<!-- wp:html -->\n" + CSS + "\n" + body + "\n<!-- /wp:html -->"
+    page = "<!-- wp:html -->\n" + CSS + "\n" + body + "\n<!-- /wp:html -->"
+    if TIGHT:
+        # Em-dashes read as an AI tell to this audience, and James asked for
+        # plain dashes. Applied to the assembled body only.
+        # &#45; not "-": wptexturize rewrites a spaced hyphen into an en dash,
+        # so a literal hyphen has to be smuggled past it as an entity.
+        page = page.replace("&mdash;", "&#45;").replace("\u2014", "&#45;")
+    return page
 
 
 MAILERLITE_MARK = "MailerLite Universal"
