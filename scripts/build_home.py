@@ -70,6 +70,13 @@ STORIES = [
          href=f"{SITE}/slp-to-ux/"),
 ]
 
+# A featured story without a headshot is not shippable — the faces are what
+# make this band land visually, and a text-only card reads as a placeholder.
+# If you have no photograph of someone, they do not go here, however good the
+# story is. Never substitute an AI-generated face.
+for _s in STORIES:
+    assert _s.get("img"), f"STORIES entry {_s['name']!r} has no headshot — see the note above"
+
 RESOURCES = [
     dict(step="01 · Find direction", title="Should you quit being an SLP?",
          copy="Tell a bad workplace apart from a bad fit and a bad season before you decide anything.",
