@@ -16,38 +16,11 @@ import re, sys, os
 sys.path.insert(0, "/Users/jamesberges/Desktop/SLP Career Suite : Resume Tool/scripts")
 from wp_publish import api
 
-# --tight builds the trimmed variant: less prose, more visual. Kept behind a
-# flag so the live homepage builder is untouched until the variant is chosen.
-TIGHT = "--tight" in sys.argv
-
 QUIZ = "https://app.slptransitions.com/quiz"
 APP = "https://app.slptransitions.com/"
 SITE = "https://slptransitions.com"
 
 # ---------------------------------------------------------------- data
-# salary / timeline: research-facts.md. `caveat` renders as an honest flag.
-PATHS = [
-    dict(label="Fastest pivot", title="Clinical liaison",
-         salary="$84–135k", timeline="1–3 months",
-         fit="Your clinical licence is the qualification. Encompass Health, Select Medical and Lifepoint hire for this constantly."),
-    dict(label="Remote-friendly", title="Utilization review",
-         salary="$80–88k", timeline="1–3 months",
-         fit="Documentation and medical-necessity work is the job. Heavily remote, and one of the two fastest doors out."),
-    dict(label="Best odds", title="Customer success",
-         salary="$75–120k", timeline="3–6 months",
-         fit="The best effort-to-odds ratio of any path here. At speech-tech companies your SLP license is the credential."),
-    dict(label="Writing path", title="Content marketing",
-         salary="$80–141k", timeline="~12 months",
-         fit="Documented outcome: corporate marketing after about a year of applying, and freelance healthcare copywriting that grew into an agency."),
-    dict(label="Systems path", title="Clinical informatics",
-         salary="$97.8–154k", timeline="6–12 months",
-         fit="Highest ceiling on this list.",
-         caveat="Epic certification cannot be self-obtained. Employer sponsorship only, so target sponsor-track analyst roles."),
-    dict(label="Research + design", title="UX research",
-         salary="$67–154k", timeline="6–18 months",
-         fit="One documented SLP story: rehab director to UXR via bootcamp. Health-tech is the realistic niche.",
-         caveat="Heavily oversaturated: 35% more grads in five years against flat openings. The hardest path here."),
-]
 
 # People who took a JOB, not people who founded a company. The homepage
 # reader is deciding whether they can be hired somewhere else, and a founder
@@ -181,14 +154,6 @@ CSS = """
 .slp-trust b{color:var(--forest);font-weight:600}
 
 /* pathway */
-.slp-path{display:grid;gap:12px}
-.slp-path-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;
-  padding:1.15rem 1.3rem;display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;
-  box-shadow:0 8px 22px rgba(7,56,46,.05)}
-.slp-path-num{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;
-  border-radius:50%;border:1px solid var(--brand);color:var(--brand);font-size:.75rem;font-weight:700}
-.slp-path-card h3{font-size:1.12rem;line-height:1.25;margin-bottom:.3rem}
-.slp-path-card p{font-size:.88rem;line-height:1.5;color:var(--slate)}
 .slp-proof{display:grid;gap:12px}
 .slp-proof-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;
   padding:1.15rem 1.35rem;display:flex;flex-direction:column;gap:.15rem}
@@ -218,26 +183,6 @@ CSS = """
 .slp-sec-intro p{color:var(--slate);font-size:1rem;line-height:1.65}
 
 /* career cards */
-.slp-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:14px}
-.slp-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:1.5rem;
-  display:flex;flex-direction:column}
-.slp-card-label{font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--brand);margin-bottom:.55rem}
-.slp-card h3{font-size:1.42rem;line-height:1.15}
-.slp-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.15rem 0;
-  padding:.9rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.slp-stats span{display:flex;flex-direction:column;gap:.25rem;min-width:0}
-.slp-stats span + span{border-left:1px solid var(--line);padding-left:1rem}
-.slp-stats small{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--slate);white-space:nowrap}
-.slp-stats b{font-size:.95rem;color:var(--forest);font-weight:600}
-@container(max-width:300px){.slp-stats{grid-template-columns:1fr}}
-.slp-card > p{font-size:.88rem;line-height:1.55;color:var(--slate)}
-.slp-card > p:not(.slp-caveat){flex-grow:1}
-.slp-card .slp-caveat{margin-top:auto;padding-top:.1rem}
-.slp-caveat{margin-top:.9rem;padding-left:.8rem;border-left:2px solid var(--amber);
-  font-size:.82rem;line-height:1.55;color:var(--slate)}
-.slp-caveat b{color:#8A5A22;font-weight:700}
 
 /* stories */
 .slp-stories{background:var(--forest-dark);color:var(--paper)}
@@ -338,9 +283,7 @@ def build():
     # no reason avoids telling anyone whose reason is different that this page
     # isn't for them.
     a('<p class="slp-lede">You&rsquo;re allowed to want out. See the paths, what they pay, '
-      'and how long each move takes.</p>' if TIGHT else
-      '<p class="slp-lede">Find a non-clinical path that fits your strengths, your timeline and '
-      'what you need to earn, with verified salary ranges and stories from SLPs who have already done it.</p>')
+      'and how long each move takes.</p>')
     a(f'<div class="slp-actions"><a class="slp-btn slp-btn-primary" href="{QUIZ}">Find my career path →</a>'
       f'<a class="slp-btn slp-btn-ghost" href="{APP}">Translate my resume</a></div>')
     a('<p class="slp-trust"><b>Free</b> · <b>2 minutes</b> · built from '
@@ -351,67 +294,32 @@ def build():
     # section's 01/02/03 steps ("Build your bridge" appeared verbatim in both),
     # and explained a mechanism before the reader had reason to care — the same
     # objection that retired the translation strip. Proof numbers instead.
-    if TIGHT:
-        a('<div class="slp-proof" data-stagger>')
-        # The + on two of the three is doing real work: 13 is what we have
-        # documented, not a ceiling, and the salary top is the top of the
-        # *employed* ranges — working for yourself has no equivalent number.
-        # 188 stays exact because it is an exact count of the companies list.
-        for n, l in [("188", "companies that hire former SLPs"),
-                     ("13+", "non-clinical paths documented"),
-                     ("$154k+", "top of the documented salary ranges")]:
-            a(f'<article class="slp-proof-card slp-rv"><span class="slp-proof-n">{n}</span>'
-              f'<span class="slp-proof-l">{l}</span></article>')
-        a('</div></div></div></section>')
-    else:
-        a('<div class="slp-path" data-stagger>')
-        for n, (t, d) in enumerate([
-            ("Explore your options", "Roles that fit your strengths and the life you want."),
-            ("Build your bridge", "Close one gap while you are still employed."),
-            ("Land with confidence", "Target real openings and apply."),
-        ], 1):
-            a(f'<article class="slp-path-card slp-rv"><span class="slp-path-num">0{n}</span>'
-              f'<div><h3>{t}</h3><p>{d}</p></div></article>')
-        a('</div></div></div></section>')
+    a('<div class="slp-proof" data-stagger>')
+    # The + on two of the three is doing real work: 13 is what we have
+    # documented, not a ceiling, and the salary top is the top of the
+    # *employed* ranges - working for yourself has no equivalent number.
+    # 188 stays exact because it is an exact count of the companies list.
+    for n, l in [("188", "companies that hire former SLPs"),
+                 ("13+", "non-clinical paths documented"),
+                 ("$154k+", "top of the documented salary ranges")]:
+        a(f'<article class="slp-proof-card slp-rv"><span class="slp-proof-n">{n}</span>'
+          f'<span class="slp-proof-l">{l}</span></article>')
+    a('</div></div></div></section>')
 
     # ---- career paths
-    # TIGHT ships one box pointing at the pillar article instead of six cards.
-    # The homepage stops being a comparison table; the article already is one.
-    if TIGHT:
-        a('<section class="slp-sec" id="career-paths"><div class="slp-wrap">')
-        a('<a class="slp-pillar slp-rv" href="'
-          f'{SITE}/alternative-careers-speech-pathologists-slps/">'
-          '<div class="slp-pillar-body">'
-          '<h2>Compare 13 paths in one place.</h2>'
-          '<p>Non-clinical roles SLPs actually move into, each with documented salary '
-          'ranges, timelines, and how to translate your skills.</p>'
-          '</div>'
-          '<span class="slp-pillar-cta">Read the full breakdown &rarr;</span>'
-          '</a>')
-        a('</div></section>')
-    else:
-        a('<section class="slp-sec" id="career-paths"><div class="slp-wrap">')
-        a('<div class="slp-sec-intro"><div>'
-          + ('' if TIGHT else '<p class="slp-kicker">Career paths at a glance</p>')
-          + ('<h2>Six paths, what they pay, how long they take.</h2></div>' if TIGHT
-             else '<h2>Compare the paths before you commit.</h2></div>')
-          + f'<p style="justify-self:start"><a class="slp-quiet" href="{SITE}/alternative-careers-speech-pathologists-slps/">'
-          'See all 13 paths →</a></p></div>')
-        a('<div class="slp-cards" data-stagger>')
-        for c in PATHS:
-            a('<article class="slp-card slp-rv">')
-            a(f'<p class="slp-card-label">{esc(c["label"])}</p><h3>{esc(c["title"])}</h3>')
-            a(f'<div class="slp-stats"><span><small>Salary</small><b>{esc(c["salary"])}</b></span>'
-              f'<span><small>Timeline</small><b>{esc(c["timeline"])}</b></span></div>')
-            a(f'<p>{esc(c["fit"])}</p>')
-            if c.get("caveat"):
-                a(f'<p class="slp-caveat"><b>Worth knowing:</b> {esc(c["caveat"])}</p>')
-            a('</article>')
-        a('</div>')
-        a('<p style="margin-top:1.5rem;font-size:.82rem;color:var(--slate);max-width:60em">'
-          'Ranges come from documented outcomes and posted roles, not averages. Timelines assume you are '
-          'working while you transition.</p>')
-        a('</div></section>')
+    # One box pointing at the pillar article, not six cards. The homepage
+    # stopped being a comparison table when the article already is one.
+    a('<section class="slp-sec" id="career-paths"><div class="slp-wrap">')
+    a('<a class="slp-pillar slp-rv" href="'
+      f'{SITE}/alternative-careers-speech-pathologists-slps/">'
+      '<div class="slp-pillar-body">'
+      '<h2>Compare 13 paths in one place.</h2>'
+      '<p>Non-clinical roles SLPs actually move into, each with documented salary '
+      'ranges, timelines, and how to translate your skills.</p>'
+      '</div>'
+      '<span class="slp-pillar-cta">Read the full breakdown &rarr;</span>'
+      '</a>')
+    a('</div></section>')
 
     # ---- stories
     a('<section class="slp-sec slp-stories" id="real-stories"><div class="slp-wrap">')
@@ -435,9 +343,8 @@ def build():
     # ---- resources
     a('<section class="slp-sec" id="resources"><div class="slp-wrap">')
     a('<div class="slp-sec-intro"><div><p class="slp-kicker">Guides</p>'
-      + ('<h2>Find resources whether you&rsquo;re exploring or already applying.</h2></div>' if TIGHT
-         else '<h2>Use the resource that fits your current step.</h2></div>')
-      + ('</div>' if TIGHT else '<p>Each guide answers one decision that comes up during a transition.</p></div>'))
+      + '<h2>Find resources whether you&rsquo;re exploring or already applying.</h2></div>'
+      + '</div>')
     a('<div class="slp-res">')
     for r in RESOURCES:
         a(f'<a class="slp-rv" href="{r["href"]}"><span class="step">{esc(r["step"])}</span>'
@@ -464,13 +371,10 @@ def build():
 
     body = "\n".join(p)
     page = "<!-- wp:html -->\n" + CSS + "\n" + body + "\n<!-- /wp:html -->"
-    if TIGHT:
-        # Em-dashes read as an AI tell to this audience, and James asked for
-        # plain dashes. Applied to the assembled body only.
-        # &#45; not "-": wptexturize rewrites a spaced hyphen into an en dash,
-        # so a literal hyphen has to be smuggled past it as an entity.
-        page = page.replace("&mdash;", "&#45;").replace("\u2014", "&#45;")
-    return page
+    # Em-dashes read as an AI tell to this audience. &#45; not "-" because
+    # wptexturize rewrites a spaced hyphen into an en dash, so a literal
+    # hyphen has to be smuggled past it as an entity.
+    return page.replace("&mdash;", "&#45;").replace("\u2014", "&#45;")
 
 
 MAILERLITE_MARK = "MailerLite Universal"
