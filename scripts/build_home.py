@@ -435,7 +435,7 @@ def build():
     # ---- resources
     a('<section class="slp-sec" id="resources"><div class="slp-wrap">')
     a('<div class="slp-sec-intro"><div><p class="slp-kicker">Guides</p>'
-      + ('<h2>Find resources for every step of your journey.</h2></div>' if TIGHT
+      + ('<h2>Find resources whether you&rsquo;re exploring or already applying.</h2></div>' if TIGHT
          else '<h2>Use the resource that fits your current step.</h2></div>')
       + ('</div>' if TIGHT else '<p>Each guide answers one decision that comes up during a transition.</p></div>'))
     a('<div class="slp-res">')
