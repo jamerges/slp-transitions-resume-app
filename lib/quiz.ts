@@ -27,7 +27,7 @@ export const PATHS: Record<string, QuizPath> = {
     range: "$75,000–$120,000",
     timeline: "3–9 months",
     why: "You've spent years keeping people engaged in a long program they didn't always feel like showing up for. That is the job — companies just call it retention.",
-    entryDoor: "Implementation Specialist or Onboarding Manager first, then CSM. At speech-tech and AAC companies (Expressable, Tobii Dynavox, Lingraphica, PRC-Saltillo), your CCC is itself the qualifying credential.",
+    entryDoor: "Implementation Specialist or Onboarding Manager first, then CSM. At speech-tech and AAC companies (Expressable, Tobii Dynavox, Lingraphica, PRC-Saltillo), your SLP licence is the credential.",
     firstMove: "Search LinkedIn for \"Customer Success\" + \"CCC-SLP\" and find three people who've already made this exact move.",
     caveat: "The best odds-to-effort path on this list — but you'll need to learn the vocabulary of churn, onboarding, and health scores.",
   },

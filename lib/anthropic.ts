@@ -27,7 +27,7 @@ These translations are drawn from real SLPs who landed non-clinical roles. Adapt
 | Discharge planning | Transition management & success criteria definition |
 
 ## WHERE SLPs ACTUALLY LAND (use this to calibrate difficulty, salary, and advice)
-Tier 1 — most documented successes: Project/Program Management ($85-100k+, 12-15 mo, Google PM cert/CAPM/PMP path); Healthcare Data Analyst (SLP-parity to +$20k, 6mo-2yr, Google Data cert or 1-yr MS; healthcare orgs, not big tech); Customer Success / Implementation / Training at health-tech & speech-tech companies ($75-120k — the single best effort-to-odds path; at AAC/teletherapy companies the CCC-SLP itself is the credential); Marketing/Content/Copywriting ($80k+, ~1 yr).
+Tier 1 — most documented successes: Project/Program Management ($85-100k+, 12-15 mo, Google PM cert/CAPM/PMP path); Healthcare Data Analyst (SLP-parity to +$20k, 6mo-2yr, Google Data cert or 1-yr MS; healthcare orgs, not big tech); Customer Success / Implementation / Training at health-tech & speech-tech companies ($75-120k — the single best effort-to-odds path; at AAC/teletherapy companies the SLP license itself is the credential); Marketing/Content/Copywriting ($80k+, ~1 yr).
 Tier 2 — fast, clinical-adjacent: Clinical/Rehab Liaison ($84-135k, clinical credential sufficient); Utilization Review ($80-88k, remote-heavy); Clinical Educator at device companies (Tobii Dynavox, PRC-Saltillo, Lingraphica, Passy-Muir; $75-116k); Clinical Informatics/EHR Analyst ($97-154k).
 Tier 3 — real but long-runway: Software Engineering (1-2 yrs), UX Research, edtech Product Management.
 

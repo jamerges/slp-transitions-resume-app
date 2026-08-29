@@ -31,7 +31,7 @@ PATHS = [
          fit="Documentation and medical-necessity work is the job. Heavily remote, and one of the two fastest doors out."),
     dict(label="Best odds", title="Customer success",
          salary="$75–120k", timeline="3–6 months",
-         fit="The best effort-to-odds ratio of any path here. At speech-tech companies the CCC-SLP itself is the credential."),
+         fit="The best effort-to-odds ratio of any path here. At speech-tech companies your SLP license is the credential."),
     dict(label="Writing path", title="Content marketing",
          salary="$80–141k", timeline="~12 months",
          fit="Documented outcome: corporate marketing after about a year of applying, and freelance healthcare copywriting that grew into an agency."),
@@ -51,23 +51,23 @@ PATHS = [
 # Leaders guests are deliberately excluded here for the same reason; those
 # interviews still live on the blog under Entrepreneurs.
 #
-# No avatars: real headshots only is a standing rule, and we don't have
-# photographs of these three. Their before/after roles carry the card instead,
-# which is the part a reader is scanning for anyway. If James supplies
-# headshots, add img= back and restore the <img> in the card markup.
+# Avatars are cropped from the circular headshot inside each post's own
+# -hdr-v2 header graphic — real photographs the subjects supplied. Emily
+# Harford is NOT here despite being a good story: her post image is
+# AI-generated and no photograph of her exists. Real headshots only.
 STORIES = [
-    dict(name="Caitlin Mueller",
+    dict(img="caitlin-mueller-avatar-v1.jpg", name="Caitlin Mueller",
          was="School-based SLP", now="Marketing Manager at an AAC device maker",
-         line="She went sideways first — clinical consultant at the company — then into marketing, where knowing the clinical side is the qualification.",
+         line="She went sideways first \u2014 clinical consultant at the company \u2014 then into marketing, where knowing the clinical side is the qualification.",
          href=f"{SITE}/clinical-consultant-and-marketing/"),
-    dict(name="Lindsey Ison",
+    dict(img="lindsey-ison-avatar-v1.jpg", name="Lindsey Ison",
          was="SLP", now="Enablement Consultant at a tech firm",
          line="Still coaching people through something difficult, now it's software instead of therapy. Comparable pay, and the flexibility she left for.",
          href=f"{SITE}/enablement-consultant/"),
-    dict(name="Emily Harford",
-         was="Pediatric SLP", now="Pediatric neuroscience research lab",
-         line="The pandemic made the school system's constraints impossible to keep absorbing. She kept the population and left the caseload.",
-         href=f"{SITE}/navigating-change-how-one-slp-found-renewed-purpose-in-a-pediatric-neuroscience-lab/"),
+    dict(img="bethany-riebock-avatar-v1.jpg", name="Bethany Riebock",
+         was="Medical SLP and rehab director", now="UX Researcher",
+         line="Burnt out running a rehab department, she went through a UX bootcamp and into research in Silicon Valley.",
+         href=f"{SITE}/slp-to-ux/"),
 ]
 
 RESOURCES = [
@@ -221,6 +221,8 @@ CSS = """
   transition:transform .18s ease}
 .slp-story:hover{transform:translateY(-4px)}
 .slp-story-top{display:flex;align-items:center;gap:.85rem}
+.slp-story-top img{width:54px;height:54px;border-radius:50%;object-fit:cover;
+  border:2px solid var(--sage);display:block;flex:0 0 auto}
 .slp-story-top b{display:block;color:var(--forest-dark);font-size:.98rem}
 .slp-story-top small{color:var(--slate);font-size:.78rem}
 /* The before/after pair does the work the headshot used to: it is the thing a
@@ -351,7 +353,9 @@ def build():
     a('<div class="slp-story-grid" data-stagger>')
     for s in STORIES:
         a(f'<a class="slp-story slp-rv" href="{s["href"]}">'
-          f'<div class="slp-story-top"><b>{esc(s["name"])}</b></div>'
+          f'<div class="slp-story-top">'
+          f'<img src="{SITE}/wp-content/uploads/2026/08/{s["img"]}" alt="{esc(s["name"])}" width="54" height="54" loading="lazy" />'
+          f'<b>{esc(s["name"])}</b></div>'
           f'<div class="slp-move">'
           f'<span class="slp-was">{esc(s["was"])}</span>'
           f'<span class="slp-arrow" aria-hidden="true">→</span>'
