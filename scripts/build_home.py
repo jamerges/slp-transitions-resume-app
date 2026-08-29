@@ -382,15 +382,12 @@ def build():
         a('<a class="slp-pillar slp-rv" href="'
           f'{SITE}/alternative-careers-speech-pathologists-slps/">'
           '<div class="slp-pillar-body">'
-          '<h2>Compare every path in one place.</h2>'
-          '<p>Thirteen non-clinical roles SLPs actually move into, each with a documented '
-          'salary range, an honest timeline, and what disqualifies the people who skip it.</p>'
+          '<h2>Compare 13 paths in one place.</h2>'
+          '<p>Non-clinical roles SLPs actually move into, each with documented salary '
+          'ranges, timelines, and how to translate your skills.</p>'
           '</div>'
           '<span class="slp-pillar-cta">Read the full breakdown &rarr;</span>'
           '</a>')
-        a('<p style="margin-top:1.1rem;font-size:.82rem;color:var(--slate);max-width:60em">'
-          'Ranges come from documented outcomes and posted roles, not averages. Timelines '
-          'assume you are working while you transition.</p>')
         a('</div></section>')
     else:
         a('<section class="slp-sec" id="career-paths"><div class="slp-wrap">')
@@ -438,7 +435,8 @@ def build():
     # ---- resources
     a('<section class="slp-sec" id="resources"><div class="slp-wrap">')
     a('<div class="slp-sec-intro"><div><p class="slp-kicker">Guides</p>'
-      '<h2>Use the resource that fits your current step.</h2></div>'
+      + ('<h2>Find resources for every step of your journey.</h2></div>' if TIGHT
+         else '<h2>Use the resource that fits your current step.</h2></div>')
       + ('</div>' if TIGHT else '<p>Each guide answers one decision that comes up during a transition.</p></div>'))
     a('<div class="slp-res">')
     for r in RESOURCES:
