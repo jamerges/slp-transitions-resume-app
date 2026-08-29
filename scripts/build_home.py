@@ -353,9 +353,13 @@ def build():
     # objection that retired the translation strip. Proof numbers instead.
     if TIGHT:
         a('<div class="slp-proof" data-stagger>')
+        # The + on two of the three is doing real work: 13 is what we have
+        # documented, not a ceiling, and the salary top is the top of the
+        # *employed* ranges — working for yourself has no equivalent number.
+        # 188 stays exact because it is an exact count of the companies list.
         for n, l in [("188", "companies that hire former SLPs"),
-                     ("13", "non-clinical paths documented"),
-                     ("$154k", "top of the documented salary ranges")]:
+                     ("13+", "non-clinical paths documented"),
+                     ("$154k+", "top of the documented salary ranges")]:
             a(f'<article class="slp-proof-card slp-rv"><span class="slp-proof-n">{n}</span>'
               f'<span class="slp-proof-l">{l}</span></article>')
         a('</div></div></div></section>')
