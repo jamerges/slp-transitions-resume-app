@@ -194,10 +194,17 @@ CSS = """
   padding:1.15rem 1.35rem;display:flex;flex-direction:column;gap:.15rem}
 .slp-proof-n{font-family:'Fraunces',Georgia,serif;font-size:2.15rem;line-height:1;color:var(--forest)}
 .slp-proof-l{font-size:.86rem;line-height:1.4;color:var(--slate)}
-.slp-bar{position:relative;height:8px;border-radius:99px;background:#E4EDE7;margin:.7rem 0 .25rem}
-.slp-bar i{position:absolute;top:0;bottom:0;border-radius:99px;background:var(--forest)}
-.slp-bar-scale{display:flex;justify-content:space-between;font-size:.68rem;color:var(--slate);
-  margin-bottom:.5rem}
+.slp-pillar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:clamp(16px,3vw,40px);background:var(--paper);border:1px solid var(--line);
+  border-radius:20px;padding:clamp(24px,3.4vw,44px);text-decoration:none;color:inherit;
+  transition:transform .18s ease,box-shadow .18s ease}
+.slp-pillar:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(10,61,49,.09)}
+.slp-pillar-body{flex:1 1 22em;min-width:0}
+.slp-pillar-body h2{font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.12;margin:0 0 .55rem;
+  color:var(--forest-dark)}
+.slp-pillar-body p{font-size:.98rem;line-height:1.55;color:var(--slate);margin:0;max-width:46em}
+.slp-pillar-cta{flex:0 0 auto;color:#fff;background:var(--forest);font-weight:700;font-size:.92rem;
+  padding:13px 24px;border-radius:10px;white-space:nowrap}
 .slp-here{display:flex;align-items:center;gap:.6rem;font-size:.72rem;letter-spacing:.12em;
   text-transform:uppercase;color:var(--slate);margin-bottom:2px}
 .slp-here i{width:11px;height:11px;border-radius:50%;background:var(--amber);
@@ -315,18 +322,6 @@ def esc(s):
     return s.replace("&", "&amp;").replace("<", "&lt;")
 
 
-# All six ranges drawn on one scale, so the cards can be compared at a glance
-# instead of read one at a time. Bounds are the floor and ceiling of the six.
-BAR_LO, BAR_HI = 60.0, 160.0
-
-def salary_bar(salary):
-    lo, hi = (float(x) for x in re.findall(r"[\d.]+", salary)[:2])
-    left = max(0.0, (lo - BAR_LO) / (BAR_HI - BAR_LO) * 100)
-    width = min(100.0 - left, (hi - lo) / (BAR_HI - BAR_LO) * 100)
-    return (f'<div class="slp-bar" role="img" aria-label="Salary range {salary}">'
-            f'<i style="left:{left:.1f}%;width:{width:.1f}%"></i></div>'
-            f'<div class="slp-bar-scale"><span>$60k</span><span>$160k</span></div>')
-
 
 def build():
     p = []
@@ -376,30 +371,46 @@ def build():
         a('</div></div></div></section>')
 
     # ---- career paths
-    a('<section class="slp-sec" id="career-paths"><div class="slp-wrap">')
-    a('<div class="slp-sec-intro"><div>'
-      + ('' if TIGHT else '<p class="slp-kicker">Career paths at a glance</p>')
-      + ('<h2>Six paths, what they pay, how long they take.</h2></div>' if TIGHT
-         else '<h2>Compare the paths before you commit.</h2></div>')
-      + f'<p style="justify-self:start"><a class="slp-quiet" href="{SITE}/alternative-careers-speech-pathologists-slps/">'
-      'See all 13 paths →</a></p></div>')
-    a('<div class="slp-cards" data-stagger>')
-    for c in PATHS:
-        a('<article class="slp-card slp-rv">')
-        a(f'<p class="slp-card-label">{esc(c["label"])}</p><h3>{esc(c["title"])}</h3>')
-        a(f'<div class="slp-stats"><span><small>Salary</small><b>{esc(c["salary"])}</b></span>'
-          f'<span><small>Timeline</small><b>{esc(c["timeline"])}</b></span></div>')
-        if TIGHT:
-            a(salary_bar(c["salary"]))
-        a(f'<p>{esc(c["fit"])}</p>')
-        if c.get("caveat"):
-            a(f'<p class="slp-caveat"><b>Worth knowing:</b> {esc(c["caveat"])}</p>')
-        a('</article>')
-    a('</div>')
-    a('<p style="margin-top:1.5rem;font-size:.82rem;color:var(--slate);max-width:60em">'
-      'Ranges come from documented outcomes and posted roles, not averages. Timelines assume you are '
-      'working while you transition.</p>')
-    a('</div></section>')
+    # TIGHT ships one box pointing at the pillar article instead of six cards.
+    # The homepage stops being a comparison table; the article already is one.
+    if TIGHT:
+        a('<section class="slp-sec" id="career-paths"><div class="slp-wrap">')
+        a('<a class="slp-pillar slp-rv" href="'
+          f'{SITE}/alternative-careers-speech-pathologists-slps/">'
+          '<div class="slp-pillar-body">'
+          '<h2>Compare every path in one place.</h2>'
+          '<p>Thirteen non-clinical roles SLPs actually move into, each with a documented '
+          'salary range, an honest timeline, and what disqualifies the people who skip it.</p>'
+          '</div>'
+          '<span class="slp-pillar-cta">Read the full breakdown &rarr;</span>'
+          '</a>')
+        a('<p style="margin-top:1.1rem;font-size:.82rem;color:var(--slate);max-width:60em">'
+          'Ranges come from documented outcomes and posted roles, not averages. Timelines '
+          'assume you are working while you transition.</p>')
+        a('</div></section>')
+    else:
+        a('<section class="slp-sec" id="career-paths"><div class="slp-wrap">')
+        a('<div class="slp-sec-intro"><div>'
+          + ('' if TIGHT else '<p class="slp-kicker">Career paths at a glance</p>')
+          + ('<h2>Six paths, what they pay, how long they take.</h2></div>' if TIGHT
+             else '<h2>Compare the paths before you commit.</h2></div>')
+          + f'<p style="justify-self:start"><a class="slp-quiet" href="{SITE}/alternative-careers-speech-pathologists-slps/">'
+          'See all 13 paths →</a></p></div>')
+        a('<div class="slp-cards" data-stagger>')
+        for c in PATHS:
+            a('<article class="slp-card slp-rv">')
+            a(f'<p class="slp-card-label">{esc(c["label"])}</p><h3>{esc(c["title"])}</h3>')
+            a(f'<div class="slp-stats"><span><small>Salary</small><b>{esc(c["salary"])}</b></span>'
+              f'<span><small>Timeline</small><b>{esc(c["timeline"])}</b></span></div>')
+            a(f'<p>{esc(c["fit"])}</p>')
+            if c.get("caveat"):
+                a(f'<p class="slp-caveat"><b>Worth knowing:</b> {esc(c["caveat"])}</p>')
+            a('</article>')
+        a('</div>')
+        a('<p style="margin-top:1.5rem;font-size:.82rem;color:var(--slate);max-width:60em">'
+          'Ranges come from documented outcomes and posted roles, not averages. Timelines assume you are '
+          'working while you transition.</p>')
+        a('</div></section>')
 
     # ---- stories
     a('<section class="slp-sec slp-stories" id="real-stories"><div class="slp-wrap">')
