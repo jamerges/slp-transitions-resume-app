@@ -1,6 +1,6 @@
 {
   "generated": "2026-08-31",
-  "scanned": 1788,
+  "scanned": 1800,
   "paths": [
     {
       "slug": "customer-success",
@@ -41,28 +41,12 @@
   ],
   "roles": [
     {
-      "company": "Handshake",
-      "title": "AI Model Policy Trainer, Mental Health",
-      "location": "Seattle, WA",
-      "url": "https://jobs.ashbyhq.com/handshake/1e3a9711-d13c-4b79-8599-34dfb3133621",
-      "remote": false,
-      "path": "clinical-educator"
-    },
-    {
-      "company": "WellSky",
-      "title": "Clinical Consultant II - BH, LTACH, IRF, SNF, IDD",
-      "location": "Overland Park, KS",
-      "url": "https://wellsky.wd1.myworkdayjobs.com/en-US/WellSkyCareers/job/Overland-Park-KS/Clinical-Consultant-II---BH--LTACH--IRF--SNF--IDD_JR5018",
-      "remote": false,
-      "path": "clinical-educator"
-    },
-    {
-      "company": "PointClickCare",
-      "title": "Content Strategist, Contract (US)",
-      "location": "Remote, USA",
-      "url": "https://jobs.lever.co/pointclickcare/a88bdd3a-c09b-4984-a877-319326d0ef5f",
+      "company": "Amplify",
+      "title": "Customer Success Manager",
+      "location": "Remote - United States",
+      "url": "https://jobs.ashbyhq.com/amplify/6090204f-8540-4d88-bbb7-c710b9ce46fd",
       "remote": true,
-      "path": "content-marketing"
+      "path": "customer-success"
     },
     {
       "company": "Amplify",
@@ -77,6 +61,14 @@
       "title": "Account Manager (Alabama/Mississippi)",
       "location": "Alabama",
       "url": "https://jobs.lever.co/AviveSolutions/3ebc5dbf-9b13-42bb-9dbc-598322016a39",
+      "remote": false,
+      "path": "customer-success"
+    },
+    {
+      "company": "Avive",
+      "title": "Account Manager (Indiana)",
+      "location": "Indiana",
+      "url": "https://jobs.lever.co/AviveSolutions/fc77c729-7fed-445b-9362-15b4a3f445f0",
       "remote": false,
       "path": "customer-success"
     },
@@ -289,41 +281,33 @@
       "path": "customer-success"
     },
     {
-      "company": "Wiley",
-      "title": "Account Manager - Corporate Subscriptions, Applied Research Intelligence",
-      "location": "5 Locations",
-      "url": "https://wiley.wd1.myworkdayjobs.com/en-US/Wiley_Careers/job/Oxford-GBR/Account-Manager---Corporate-Subscriptions--Applied-Research-Intelligence_R2600819",
+      "company": "Elevance Health",
+      "title": "Managed Care Coordinator (VA Foster Care Program)",
+      "location": "VA-ROANOKE, 602 S JEFFERSON ST; Virginia - Lynchburg; Virginia - Waynesboro +6 more",
+      "url": "https://elevancehealth.wd1.myworkdayjobs.com/en-US/ANT/job/VA-ROANOKE-602-S-JEFFERSON-ST/Managed-Care-Coordinator--VA-Foster-Care-Program-_JR201246",
       "remote": false,
-      "path": "customer-success"
+      "path": "liaison-ur"
     },
     {
-      "company": "Shirley Ryan AbilityLab",
-      "title": "Data Analyst II",
-      "location": "Chicago, IL",
-      "url": "https://sralab.wd1.myworkdayjobs.com/en-US/SRAlabCareers/job/Chicago-IL/Data-Analyst-II_JR-1065035-1",
+      "company": "Elevance Health",
+      "title": "Utilization Management Rep II/Clinical Liaison",
+      "location": "CT-ROCKY HILL, 500 ENTERPRISE DR, 3RD FL",
+      "url": "https://elevancehealth.wd1.myworkdayjobs.com/en-US/ANT/job/CT-ROCKY-HILL-500-ENTERPRISE-DR-3RD-FL/Utilization-Management-Rep-II-Clinical-Liaison_JR205046",
       "remote": false,
-      "path": "data-analysis"
+      "path": "liaison-ur"
     },
     {
-      "company": "Virta Health",
-      "title": "Data Analyst \u2014 Product Analytics",
-      "location": "Remote",
-      "url": "https://jobs.ashbyhq.com/virtahealth/0195b18e-628b-4695-ba85-3abdaaa637a8",
-      "remote": true,
-      "path": "data-analysis"
-    },
-    {
-      "company": "WellSky",
-      "title": "Data Analyst",
-      "location": "2 Locations",
-      "url": "https://wellsky.wd1.myworkdayjobs.com/en-US/WellSkyCareers/job/Overland-Park-KS/Data-Analyst_JR4857",
+      "company": "Elevance Health",
+      "title": "Utilization Management Representative I \u2013 Backoffice Support",
+      "location": "NC-WINSTON-SALEM, 5650 UNIVERSITY PKWY; VA-NORFOLK, 5800 NORTHAMPTON BLVD",
+      "url": "https://elevancehealth.wd1.myworkdayjobs.com/en-US/ANT/job/NC-WINSTON-SALEM-5650-UNIVERSITY-PKWY/Utilization-Management-Representative-I---Backoffice-Support_JR204374",
       "remote": false,
-      "path": "data-analysis"
+      "path": "liaison-ur"
     },
     {
       "company": "IQVIA",
       "title": "Health Information Technology Specialist Central",
-      "location": "6 Locations",
+      "location": "Dallas, TX; Cincinnati, OH; Oklahoma City, OK +3 more",
       "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Dallas-TX/Health-Information-Technology-Specialist-Central_R1555538",
       "remote": false,
       "path": "informatics"
@@ -331,7 +315,7 @@
     {
       "company": "IQVIA",
       "title": "Health Information Technology Specialist East",
-      "location": "7 Locations",
+      "location": "Philadelphia, PA; Washington, DC; Atlanta, GA +4 more",
       "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Philadelphia-PA/Health-Information-Technology-Specialist-East_R1555531",
       "remote": false,
       "path": "informatics"
@@ -339,7 +323,7 @@
     {
       "company": "IQVIA",
       "title": "Health Information Technology Specialist West",
-      "location": "7 Locations",
+      "location": "Los Angeles, CA; Seattle , WA; San Francisco , CA +4 more",
       "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Los-Angeles-CA/Health-Information-Technology-Specialist-West_R1555541",
       "remote": false,
       "path": "informatics"
@@ -377,20 +361,52 @@
       "path": "instructional-design"
     },
     {
-      "company": "Elevance Health",
-      "title": "Managed Care Coordinator (VA Foster Care Program)",
-      "location": "9 Locations",
-      "url": "https://elevancehealth.wd1.myworkdayjobs.com/en-US/ANT/job/VA-ROANOKE-602-S-JEFFERSON-ST/Managed-Care-Coordinator--VA-Foster-Care-Program-_JR201246",
-      "remote": false,
-      "path": "liaison-ur"
+      "company": "PointClickCare",
+      "title": "Content Strategist, Contract (US)",
+      "location": "Remote, USA",
+      "url": "https://jobs.lever.co/pointclickcare/a88bdd3a-c09b-4984-a877-319326d0ef5f",
+      "remote": true,
+      "path": "content-marketing"
     },
     {
-      "company": "Elevance Health",
-      "title": "Utilization Management Rep II/Clinical Liaison",
-      "location": "CT-ROCKY HILL, 500 ENTERPRISE DR, 3RD FL",
-      "url": "https://elevancehealth.wd1.myworkdayjobs.com/en-US/ANT/job/CT-ROCKY-HILL-500-ENTERPRISE-DR-3RD-FL/Utilization-Management-Rep-II-Clinical-Liaison_JR205046",
+      "company": "Shirley Ryan AbilityLab",
+      "title": "Data Analyst II",
+      "location": "Chicago, IL",
+      "url": "https://sralab.wd1.myworkdayjobs.com/en-US/SRAlabCareers/job/Chicago-IL/Data-Analyst-II_JR-1065035-1",
       "remote": false,
-      "path": "liaison-ur"
+      "path": "data-analysis"
+    },
+    {
+      "company": "Virta Health",
+      "title": "Data Analyst \u2014 Product Analytics",
+      "location": "Remote",
+      "url": "https://jobs.ashbyhq.com/virtahealth/0195b18e-628b-4695-ba85-3abdaaa637a8",
+      "remote": true,
+      "path": "data-analysis"
+    },
+    {
+      "company": "WellSky",
+      "title": "Data Analyst",
+      "location": "Overland Park, KS; Remote",
+      "url": "https://wellsky.wd1.myworkdayjobs.com/en-US/WellSkyCareers/job/Overland-Park-KS/Data-Analyst_JR4857",
+      "remote": false,
+      "path": "data-analysis"
+    },
+    {
+      "company": "Handshake",
+      "title": "AI Model Policy Trainer, Mental Health",
+      "location": "Seattle, WA",
+      "url": "https://jobs.ashbyhq.com/handshake/1e3a9711-d13c-4b79-8599-34dfb3133621",
+      "remote": false,
+      "path": "clinical-educator"
+    },
+    {
+      "company": "WellSky",
+      "title": "Clinical Consultant II - BH, LTACH, IRF, SNF, IDD",
+      "location": "Overland Park, KS",
+      "url": "https://wellsky.wd1.myworkdayjobs.com/en-US/WellSkyCareers/job/Overland-Park-KS/Clinical-Consultant-II---BH--LTACH--IRF--SNF--IDD_JR5018",
+      "remote": false,
+      "path": "clinical-educator"
     },
     {
       "company": "Amplify",
@@ -451,7 +467,7 @@
     {
       "company": "IQVIA",
       "title": "Clinical Research Associate, Full Service",
-      "location": "4 Locations",
+      "location": "Durham, North Carolina, United States of America; Overland Park, KS, United States of America; Parsippany, New Jersey, United States of America +1 more",
       "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Durham-North-Carolina-United-States-of-America/Clinical-Research-Associate--Full-Service_R1563164",
       "remote": false,
       "path": "research-coordinator"

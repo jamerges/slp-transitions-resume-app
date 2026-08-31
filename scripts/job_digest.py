@@ -89,8 +89,8 @@ EXCLUDE = ["software engineer", "engineer", "developer", "devops", "architect",
            "paramedic", "veterinar"]
 
 
-def get(url):
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*"})
+def get(url, accept="*/*"):
+    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": accept})
     try:
         with urllib.request.urlopen(req, timeout=15, context=CTX) as r:
             return json.loads(r.read().decode("utf-8", "ignore"))
@@ -215,20 +215,134 @@ def workday_jobs():
 
 # Readers are US-based. Workday's global boards surface Madrid and Bangalore
 # roles that match on title alone; a listing someone can't take is noise.
+#
+# Three things have to be checked, because feeds write location three ways.
+# Spelling out the country ("Karachi, Pakistan") is only the easy case:
+#   - Greenhouse/Lever abbreviate it   -> "Barcelona, ES", "Tokyo, JPN"
+#   - Some postings name only the city -> "Dublin", "Mississauga"
+# and Workday hides multi-site postings behind "6 Locations" entirely, which is
+# why a UK-only CRA req reached the digest in Aug 2026. Those are resolved
+# against the detail endpoint in resolve_multi_locations() before this runs.
 NON_US = ["spain","india","germany","france","japan","china","brazil","poland",
           "romania","bulgaria","serbia","mexico","canada","united kingdom","uk -",
           "ireland","netherlands","sweden","italy","philippines","singapore",
           "australia","argentina","colombia","costa rica","hungary","slovakia",
           "czech","turkey","egypt","kenya","south africa","malaysia","thailand",
           "vietnam","korea","taiwan","israel","portugal","greece","finland",
-          "norway","denmark","belgium","austria","switzerland","new zealand"]
+          "norway","denmark","belgium","austria","switzerland","new zealand",
+          "pakistan","indonesia","bangladesh","sri lanka","nepal","hong kong",
+          "russia","ukraine","croatia","slovenia","lithuania","latvia","estonia",
+          "luxembourg","iceland","chile","peru","ecuador","uruguay","panama",
+          "guatemala","dominican republic","nigeria","ghana","morocco","tunisia",
+          "saudi","united arab emirates","emirates","qatar","jordan","lebanon",
+          "scotland","wales","england","northern ireland"]
+
+# Trailing country codes, matched only against the last comma-separated segment
+# so "IN" in "Indianapolis, IN" (Indiana) can never read as India.
+NON_US_CODES = {
+    "es","esp","jp","jpn","au","aus","nz","nzl","ca","can","gb","gbr","uk","ie","irl",
+    "de","deu","ger","fr","fra","it","ita","pt","prt","nl","nld","be","bel","ch","che",
+    "at","aut","se","swe","no","nor","dk","dnk","fi","fin","pl","pol","cz","cze",
+    "ro","rou","bg","bgr","hu","hun","gr","grc","tr","tur","ru","rus","ua","ukr",
+    "in","ind","cn","chn","hk","hkg","sg","sgp","my","mys","id","idn","ph","phl",
+    "th","tha","vn","vnm","kr","kor","tw","twn","pk","pak","bd","bgd","lk","lka",
+    "il","isr","ae","are","sa","sau","qa","qat","eg","egy","za","zaf","ke","ken",
+    "ng","nga","ma","mar","br","bra","mx","mex","ar","arg","cl","chl","co","col",
+    "pe","per","uy","ury","cr","cri","pa","pan",
+}
+
+# Cities that show up in these feeds with no country attached at all.
+NON_US_CITIES = ["dublin","mississauga","toronto","vancouver","montreal","ottawa",
+                 "calgary","halifax","quebec","winnipeg","barcelona","madrid",
+                 "london","manchester","birmingham, uk","edinburgh","glasgow",
+                 "belfast","cork","paris","berlin","munich","hamburg","amsterdam",
+                 "rotterdam","brussels","zurich","geneva","vienna","stockholm",
+                 "copenhagen","oslo","helsinki","lisbon","milan","rome","warsaw",
+                 "krakow","prague","budapest","bucharest","sofia","athens",
+                 "istanbul","dubai","tel aviv","bangalore","bengaluru","mumbai",
+                 "delhi","hyderabad","chennai","pune","karachi","lahore","dhaka",
+                 "jakarta","manila","kuala lumpur","petaling jaya","singapore",
+                 "bangkok","ho chi minh","hanoi","tokyo","osaka","seoul","taipei",
+                 "shanghai","beijing","shenzhen","hong kong","sydney","melbourne",
+                 "brisbane","perth","auckland","wellington","sao paulo","mexico city",
+                 "buenos aires","bogota","santiago","lima","san jose, cr","cairo",
+                 "nairobi","lagos","johannesburg","cape town","casablanca"]
+
+US_STATES = {
+    "alabama","alaska","arizona","arkansas","california","colorado","connecticut",
+    "delaware","florida","georgia","hawaii","idaho","illinois","indiana","iowa",
+    "kansas","kentucky","louisiana","maine","maryland","massachusetts","michigan",
+    "minnesota","mississippi","missouri","montana","nebraska","nevada",
+    "new hampshire","new jersey","new mexico","new york","north carolina",
+    "north dakota","ohio","oklahoma","oregon","pennsylvania","rhode island",
+    "south carolina","south dakota","tennessee","texas","utah","vermont",
+    "virginia","washington","west virginia","wisconsin","wyoming",
+    "district of columbia","puerto rico",
+}
+US_ABBR = {"al","ak","az","ar","ca","co","ct","de","fl","ga","hi","id","il","in",
+           "ia","ks","ky","la","me","md","ma","mi","mn","ms","mo","mt","ne","nv",
+           "nh","nj","nm","ny","nc","nd","oh","ok","or","pa","ri","sc","sd","tn",
+           "tx","ut","vt","va","wa","wv","wi","wy","dc","pr"}
+
+
+WD_JOB_URL = re.compile(
+    r"^https://([^.]+)\.(wd\d+)\.myworkdayjobs\.com/en-US/([^/]+)/job/(.+)$")
+
+
+def resolve_multi_locations(rows):
+    """Replace Workday's "6 Locations" with the actual cities.
+
+    Workday's search API collapses a multi-site posting to a bare count, which
+    tells us nothing about country — a UK-only req and a nationwide US one look
+    identical. The detail endpoint lists them, so ask it, but only for the
+    handful of candidates that survived title filtering.
+    """
+    todo = [j for j in rows
+            if re.fullmatch(r"\d+\s+locations?", (j.get("location") or "").strip(), re.I)
+            and WD_JOB_URL.match(j.get("url") or "")]
+    if not todo:
+        return
+
+    def fetch(j):
+        tenant, wd, site, rest = WD_JOB_URL.match(j["url"]).groups()
+        d = get(f"https://{tenant}.{wd}.myworkdayjobs.com"
+                f"/wday/cxs/{tenant}/{site}/job/{rest}", accept="application/json")
+        info = (d or {}).get("jobPostingInfo") or {}
+        locs = [info.get("location")] + list(info.get("additionalLocations") or [])
+        locs = [l.strip() for l in locs if l and l.strip()]
+        if not locs:
+            return
+        # Every location decides US-or-not; only the first few are worth showing.
+        j["all_locations"] = "; ".join(locs)
+        j["location"] = "; ".join(locs[:3]) + (f" +{len(locs) - 3} more" if len(locs) > 3 else "")
+
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        list(ex.map(fetch, todo))
+    print(f"  (resolved real locations for {len(todo)} multi-site postings)")
 
 
 def us_based(j):
-    loc = (j.get("location") or "").lower()
+    """True when a posting is US-based, or gives nothing to judge on."""
+    loc = (j.get("all_locations") or j.get("location") or "").strip().lower()
     if not loc:
         return True                      # unknown location: let the human judge
-    return not any(c in loc for c in NON_US)
+
+    segs = [s.strip() for s in re.split(r"[,;/|]| - ", loc) if s.strip()]
+
+    # An explicit US signal wins outright: it beats a stray city match in
+    # postings like "Remote - US" or "Ontario, California".
+    if re.search(r"\bu\.?s\.?a?\b|united states|remote[ ,-]*us\b|us[ -]national", loc):
+        return True
+    if any(s in US_STATES or s in US_ABBR for s in segs):
+        return True
+
+    if any(c in loc for c in NON_US):
+        return False
+    if any(s in NON_US_CODES for s in segs):
+        return False
+    if any(c in loc for c in NON_US_CITIES):
+        return False
+    return True                          # nothing recognisable: let it through
 
 
 
@@ -304,15 +418,21 @@ def collect():
         print(f"  ({len(allj) - len(unique)} duplicate postings collapsed)")
     allj = unique
 
-    hits = []
+    candidates = []
     for j in allj:
         if j["title"] and too_senior(j["title"]):
             senior_dropped += 1
         slug = classify(j["title"])
-        if slug and j["title"] and us_based(j):
+        if slug and j["title"]:
             j["path"] = slug
-            hits.append(j)
+            candidates.append(j)
     print(f"  ({senior_dropped} senior/lead titles filtered out)")
+
+    resolve_multi_locations(candidates)
+
+    hits = [j for j in candidates if us_based(j)]
+    if len(hits) != len(candidates):
+        print(f"  ({len(candidates) - len(hits)} non-US roles filtered out)")
     return allj, hits
 
 
