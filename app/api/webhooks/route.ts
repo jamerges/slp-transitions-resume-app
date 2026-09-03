@@ -117,14 +117,21 @@ export async function POST(req: Request) {
   const secret = process.env.STRIPE_WEBHOOK_SECRET;
   const raw = await req.text();
 
+  // Fail closed. An unsigned request must never reach fulfil(): it sends
+  // customer email and spends generation, so a forged body is a free product
+  // plus a mailbox. The old "accept unverified in dev" branch is exactly how
+  // the 2026-08-15 synthetic test passed against a route Stripe never called.
+  if (!secret) {
+    console.error("[stripe-webhook] STRIPE_WEBHOOK_SECRET is not set");
+    return NextResponse.json({ error: "Webhook not configured" }, { status: 500 });
+  }
+  if (!sig) {
+    return NextResponse.json({ error: "Missing signature" }, { status: 400 });
+  }
+
   let event: Stripe.Event;
   try {
-    if (!sig || !secret) {
-      // Webhook secret not configured — accept and log without verification (dev only)
-      event = JSON.parse(raw) as Stripe.Event;
-    } else {
-      event = getStripe().webhooks.constructEvent(raw, sig, secret);
-    }
+    event = getStripe().webhooks.constructEvent(raw, sig, secret);
   } catch (err: any) {
     console.error("[stripe-webhook] signature verification failed", err?.message);
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
