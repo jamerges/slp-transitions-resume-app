@@ -1,5 +1,7 @@
 # August 2026 sends — 15-minute MailerLite session
 
+> **Batch 1 SENT 2026-09-03 via API** (details in CLAUDE.md, MailerLite section). Quiz-takers campaign still unsent. The "content is Premium-gated" note below is wrong: create accepts content, update ignores it.
+
 The API on this plan can't submit email *content* (Premium-gated), so the copy
 below gets pasted in the MailerLite UI. Everything else is already done:
 
