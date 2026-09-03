@@ -358,6 +358,48 @@ export async function sendResumeLinkEmail(input: {
   });
 }
 
+/**
+ * Second nudge for a $9 buyer who paid but never uploaded a resume. Four of
+ * the first six buyers stalled exactly here (2026-09-03 replay), and a single
+ * link on purchase day was all they ever got. Sent once, 48h+ after payment,
+ * by the stalled-reports cron.
+ */
+export async function sendReportReminderEmail(input: {
+  to: string;
+  sessionId: string;
+}): Promise<void> {
+  const { to, sessionId } = input;
+  const link = `${APP_URL}/report?session_id=${encodeURIComponent(sessionId)}`;
+  const html = `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#F7F7F5;">
+<div style="max-width:600px;margin:0 auto;padding:32px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#1F2937;background:#fff;">
+  <h1 style="font-size:22px;line-height:1.3;margin:0 0 14px;">Your Pivot Report is still waiting</h1>
+  <p style="font-size:15px;line-height:1.7;">
+    You picked up the $9 Pivot Report a couple of days ago and it never got built &mdash; it needs your resume first, and that step is easy to lose on a phone.
+  </p>
+  <p style="font-size:15px;line-height:1.7;">
+    Nothing has expired. Open this from a computer, add your resume, and it takes about a minute:
+  </p>
+  <p style="text-align:center;margin:26px 0;">
+    <a href="${link}" style="display:inline-block;padding:14px 32px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Finish my report &rarr;</a>
+  </p>
+  <p style="font-size:13px;line-height:1.7;color:#6B7280;">
+    If anything goes sideways, reply to this email and I&rsquo;ll build it for you by hand. And if you&rsquo;ve changed your mind, reply and say so &mdash; the 30-day refund is real.
+  </p>
+  <p style="font-size:14px;line-height:1.7;">&mdash; James</p>
+  <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:28px;">
+    SLP Transitions &bull; Your degree isn&rsquo;t a prison. Your skills compound.
+  </p>
+</div>
+</body></html>`;
+
+  await getResend().emails.send({
+    from: FROM_ADDRESS,
+    to,
+    subject: "Your Pivot Report is still waiting",
+    html,
+  });
+}
+
 export async function sendReportEmail(input: {
   to: string;
   report: any;

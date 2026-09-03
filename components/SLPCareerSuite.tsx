@@ -9,6 +9,7 @@ import {
   getRelevantStories,
 } from "@/lib/companies";
 import type { UserGoals } from "@/lib/prompts";
+import { track } from "@/lib/analytics";
 
 const STEPS = {
   WELCOME: 0, RESUME: 1, GOALS: 2, JOB: 3, EMAIL: 4,
@@ -410,6 +411,13 @@ export default function SLPCareerSuite() {
   };
 
   const handlePaywallClick = async () => {
+    // The $24 flow had no begin_checkout at all, so its funnel was invisible
+    // in GA. No PII: the payload is product identity only.
+    track("begin_checkout", {
+      currency: "USD",
+      value: 24,
+      items: [{ item_id: "career_pivot_suite", item_name: "$24 Career Pivot Suite" }],
+    });
     setError(null); setDebugInfo(null); setStep(STEPS.REDIRECTING);
     try {
       const resp = await fetch("/api/checkout", {

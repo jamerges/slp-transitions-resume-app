@@ -316,6 +316,35 @@ export default function CareerQuiz({
           <div style={{ fontSize: 15, color: "var(--accent)", fontWeight: 600 }}>
             {top.range} · typically {top.timeline}
           </div>
+          {/* Compact offer up top. Cold readers reaching this page (organic
+              search, not a warm share) were consuming six blocks of free
+              content and leaving before the full offer below: result→Buy fell
+              from 7% to 2% while quiz volume held. The full pitch stays below
+              for readers who want the reasoning first. */}
+          <button
+            onClick={() => {
+              track("begin_checkout", {
+                currency: "USD",
+                value: 9,
+                items: [{ item_id: "pivot_report", item_name: "$9 Pivot Report" }],
+                placement: "result_top",
+              });
+              buyReport(top);
+            }}
+            disabled={buying}
+            style={{
+              ...S.btn,
+              marginTop: 16,
+              padding: "11px 22px",
+              fontSize: 14.5,
+              opacity: buying ? 0.7 : 1,
+            }}
+          >
+            {buying ? "Opening checkout…" : "Get my Pivot Report — $9 →"}
+          </button>
+          <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>
+            Built from your actual resume. 30-day refund, no questions.
+          </div>
         </div>
 
         <Card highlight>
