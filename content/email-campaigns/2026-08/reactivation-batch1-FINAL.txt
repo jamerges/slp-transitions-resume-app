@@ -1,0 +1,25 @@
+SUBJECT: What's new at SLP Transitions
+SENT: 2026-09-03 to "Reactivation 2026-08 — batch 1" (200 newest active non-quiz subscribers)
+Approved verbatim by James. Greeting uses MailerLite's name tag with a fallback
+because ~1,600 list members have no name on file.
+
+Hi {$name|there},
+
+James here. You signed up a while back, probably for the list of companies that hire SLPs. A lot has changed since then, so here's the quick version.
+
+The companies list is now a searchable directory – 188 companies, filterable by type, each one linking straight to the company's page. app.slptransitions.com/companies
+
+There's a career quiz. Eight questions, takes two minutes, scored against real documented SLP transitions. You get a best-fit path with actual salary ranges and an honest timeline – not a vague "here are your options" but a direct answer. app.slptransitions.com/quiz
+
+There's an open-roles page that refreshes every Monday. Current openings, grouped by path, with licence-gated and senior-only titles filtered out so you're not wading through things that don't apply to you. app.slptransitions.com/jobs
+
+And I'm publishing a lot more: interviews with SLPs who made the move, and guides on the resume, LinkedIn, and whether to leave at all. If you read one thing, make it the 13 non-clinical paths piece. slptransitions.com/alternative-careers-speech-pathologists-slps/
+
+Quick reintro since it's been a while: I was a school and private-practice SLP. I now do content strategy and marketing at a mental-health-tech company. This site is everything I wish I'd had when I was trying to decide whether (and how) to leave.
+
+If you're still doing clinical work and some days feel like too much, you're not broken and you're definitely not alone. Wanting something different isn't a failure of commitment. It's just information. You're allowed to act on it, at whatever pace makes sense.
+
+I'll write roughly weekly from here (but I'm human too so be patient with me as I curate the best resources for you). One useful thing at a time.
+
+Warm regards,
+James
