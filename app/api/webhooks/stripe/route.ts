@@ -7,7 +7,13 @@
  * buyer's browser tab surviving. Seven real sales, zero ops alerts.
  *
  * Rather than edit the Stripe endpoint (an account-settings change that also
- * risks the signing secret), this path now IS the fulfilment handler. Both
- * paths serve the same code; Stripe can stay pointed here forever.
+ * risks the signing secret), this path now IS the fulfilment handler.
+ *
+ * Segment config must be a literal export in this file — Next.js refuses to
+ * resolve it through a re-export, which is what broke the first deploy.
+ * Keep these in step with ../route.ts.
  */
-export { POST, runtime, maxDuration } from "../route";
+export const runtime = "nodejs";
+export const maxDuration = 300;
+
+export { POST } from "../route";
