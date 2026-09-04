@@ -1,500 +1,812 @@
 {
-  "generated": "2026-08-31",
-  "scanned": 1800,
-  "paths": [
-    {
-      "slug": "customer-success",
-      "label": "Customer Success / Implementation"
-    },
-    {
-      "slug": "liaison-ur",
-      "label": "Clinical Liaison / Utilization Review"
-    },
-    {
-      "slug": "informatics",
-      "label": "Clinical Informatics / EHR"
-    },
-    {
-      "slug": "instructional-design",
-      "label": "Instructional Design / Learning"
-    },
-    {
-      "slug": "content-marketing",
-      "label": "Content / Marketing"
-    },
-    {
-      "slug": "data-analysis",
-      "label": "Healthcare Data / Analytics"
-    },
-    {
-      "slug": "clinical-educator",
-      "label": "Clinical Educator / Trainer"
-    },
-    {
-      "slug": "project-management",
-      "label": "Project / Program Management"
-    },
-    {
-      "slug": "research-coordinator",
-      "label": "Clinical Research / Study Coordinator"
-    }
-  ],
-  "roles": [
-    {
-      "company": "Amplify",
-      "title": "Customer Success Manager",
-      "location": "Remote - United States",
-      "url": "https://jobs.ashbyhq.com/amplify/6090204f-8540-4d88-bbb7-c710b9ce46fd",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "Amplify",
-      "title": "Project Manager, Customer Experience (Fixed-Term)",
-      "location": "Remote - United States",
-      "url": "https://jobs.ashbyhq.com/amplify/ffd79d66-f39e-4cfc-b2db-4cbfc71624fc",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "Avive",
-      "title": "Account Manager (Alabama/Mississippi)",
-      "location": "Alabama",
-      "url": "https://jobs.lever.co/AviveSolutions/3ebc5dbf-9b13-42bb-9dbc-598322016a39",
-      "remote": false,
-      "path": "customer-success"
-    },
-    {
-      "company": "Avive",
-      "title": "Account Manager (Indiana)",
-      "location": "Indiana",
-      "url": "https://jobs.lever.co/AviveSolutions/fc77c729-7fed-445b-9362-15b4a3f445f0",
-      "remote": false,
-      "path": "customer-success"
-    },
-    {
-      "company": "Avive",
-      "title": "Account Manager (MN/ND)",
-      "location": "Minnesota",
-      "url": "https://jobs.lever.co/AviveSolutions/7e9555f3-d38d-4e69-948c-216e884acd6c",
-      "remote": false,
-      "path": "customer-success"
-    },
-    {
-      "company": "Avive",
-      "title": "Account Manager (New Jersey)",
-      "location": "Remote",
-      "url": "https://jobs.lever.co/AviveSolutions/62149d24-1bac-4b11-a08c-b0c07c823d99",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "Avive",
-      "title": "Account Manager (South Carolina)",
-      "location": "South Carolina",
-      "url": "https://jobs.lever.co/AviveSolutions/b84f634f-5232-4207-af87-bbf83b0f82c1",
-      "remote": false,
-      "path": "customer-success"
-    },
-    {
-      "company": "Avive",
-      "title": "Account Manager (Wisconsin)",
-      "location": "Wisconsin",
-      "url": "https://jobs.lever.co/AviveSolutions/36743e62-0296-4933-9ec8-43ad6b42ebdc",
-      "remote": false,
-      "path": "customer-success"
-    },
-    {
-      "company": "Canvas Medical",
-      "title": "Implementation Manager",
-      "location": "Fully Remote",
-      "url": "https://jobs.ashbyhq.com/canvas-medical/9fbfc7a5-0e72-44b2-ae3e-b1447d42dca4",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "Canvas Medical",
-      "title": "Solutions Consultant",
-      "location": "Fully Remote",
-      "url": "https://jobs.ashbyhq.com/canvas-medical/a511d7b6-1dd6-45c3-90d8-faa2e45e40c3",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "Handshake",
-      "title": "Enterprise Customer Success Manager",
-      "location": "San Francisco, CA",
-      "url": "https://jobs.ashbyhq.com/handshake/a4d765fd-567b-4d27-b614-a2735af19f0a",
-      "remote": false,
-      "path": "customer-success"
-    },
-    {
-      "company": "Handshake",
-      "title": "Mid-Market Account Manager",
-      "location": "San Francisco, CA",
-      "url": "https://jobs.ashbyhq.com/handshake/99956455-d4f7-4044-9ebd-d7f0d469d165",
-      "remote": false,
-      "path": "customer-success"
-    },
-    {
-      "company": "Handshake",
-      "title": "Strategic Customer Success Manager, Federal",
-      "location": "New York, NY",
-      "url": "https://jobs.ashbyhq.com/handshake/45b712a7-9b9b-4c4d-bc63-99cfb12d65ba",
-      "remote": false,
-      "path": "customer-success"
-    },
-    {
-      "company": "Hinge Health",
-      "title": "Client Success Manager- Emerging Accounts",
-      "location": "Remote US",
-      "url": "https://jobs.ashbyhq.com/hinge-health/6c5c5c01-5825-4c10-8046-2887d8443803",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "IQVIA",
-      "title": "eCOA Implementation Project Manager",
-      "location": "Durham, North Carolina, United States of America",
-      "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Durham-North-Carolina-United-States-of-America/eCOA-Implementation-Project-Manager_R1557148-1",
-      "remote": false,
-      "path": "customer-success"
-    },
-    {
-      "company": "Instructure",
-      "title": "Customer Success Manager, K-12",
-      "location": "US-REMOTE-Utah",
-      "url": "https://jobs.ashbyhq.com/instructure/b6afa2ac-988c-45ab-98a4-616b217a9de8",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "LearnUpon",
-      "title": "Customer Success Manager, Enterprise",
-      "location": "Philadelphia",
-      "url": "https://job-boards.greenhouse.io/learnupon/jobs/8643785002",
-      "remote": false,
-      "path": "customer-success"
-    },
-    {
-      "company": "LearnUpon",
-      "title": "Customer Success Manager, Mid-Market",
-      "location": "Salt Lake City",
-      "url": "https://job-boards.greenhouse.io/learnupon/jobs/8096434002",
-      "remote": false,
-      "path": "customer-success"
-    },
-    {
-      "company": "PointClickCare",
-      "title": "(US) Software Implementation Consultant - Clinical",
-      "location": "Remote, USA",
-      "url": "https://jobs.lever.co/pointclickcare/e6fd28a0-e062-499d-8004-ea3280e62f4e",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "PointClickCare",
-      "title": "Software Implementation Consultant - (Financial)",
-      "location": "Remote, USA",
-      "url": "https://jobs.lever.co/pointclickcare/bb844dc3-ea25-454d-8df4-7c607963a566",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "PointClickCare",
-      "title": "US- Software Implementations Consultant II (EHR For Practice Groups)",
-      "location": "Remote, USA",
-      "url": "https://jobs.lever.co/pointclickcare/ba17f721-5bf9-431b-afb5-f72ded897e51",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "Prompt Health",
-      "title": "Account Manager (SMB and Mid-Market, SaaS)",
-      "location": "Remote",
-      "url": "https://jobs.ashbyhq.com/Prompt/43dd8a30-5244-446f-ae32-de724dd8287a",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "Prompt Health",
-      "title": "Associate Client Success Manager (B2B SaaS)",
-      "location": "Remote",
-      "url": "https://jobs.ashbyhq.com/Prompt/f4f32175-475c-4065-93df-4e8c86b59a4d",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "Prompt Health",
-      "title": "Associate Client Success Manager- SKI",
-      "location": "Remote",
-      "url": "https://jobs.ashbyhq.com/Prompt/bd3f4053-f618-4765-9ef5-b9db6ae03b77",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "Prompt Health",
-      "title": "Client Experience Manager - Full-Time (Evenings/Overnight Shift, Flexible Schedule) (B2B SaaS)",
-      "location": "Remote",
-      "url": "https://jobs.ashbyhq.com/Prompt/83b72215-ca29-4cc1-bc56-f07cbdc3c652",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "Prompt Health",
-      "title": "Enterprise Client Success Manager (B2B SaaS)",
-      "location": "Remote",
-      "url": "https://jobs.ashbyhq.com/Prompt/4dcec854-1c54-4f08-b883-6ceea53c9dcc",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "Prompt Health",
-      "title": "RCM Client Success Manager (B2B SaaS)",
-      "location": "Remote",
-      "url": "https://jobs.ashbyhq.com/Prompt/cc81ddb2-5080-4f63-a4aa-3d43befc0fc6",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "Virta Health",
-      "title": "Client Success Manager, Labor & Multi Employer Funds",
-      "location": "Remote",
-      "url": "https://jobs.ashbyhq.com/virtahealth/c634ae20-8a13-464a-9e57-2b4e63bb4379",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "WellSky",
-      "title": "Coding Client Success Specialist",
-      "location": "Remote - US",
-      "url": "https://wellsky.wd1.myworkdayjobs.com/en-US/WellSkyCareers/job/Remote---US/Coding-Client-Success-Specialist_JR5002",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "Wiley",
-      "title": "Account Manager",
-      "location": "Remote, NC, USA",
-      "url": "https://wiley.wd1.myworkdayjobs.com/en-US/Wiley_Careers/job/Remote-NC-USA/Account-Manager_R2600760",
-      "remote": true,
-      "path": "customer-success"
-    },
-    {
-      "company": "Elevance Health",
-      "title": "Managed Care Coordinator (VA Foster Care Program)",
-      "location": "VA-ROANOKE, 602 S JEFFERSON ST; Virginia - Lynchburg; Virginia - Waynesboro +6 more",
-      "url": "https://elevancehealth.wd1.myworkdayjobs.com/en-US/ANT/job/VA-ROANOKE-602-S-JEFFERSON-ST/Managed-Care-Coordinator--VA-Foster-Care-Program-_JR201246",
-      "remote": false,
-      "path": "liaison-ur"
-    },
-    {
-      "company": "Elevance Health",
-      "title": "Utilization Management Rep II/Clinical Liaison",
-      "location": "CT-ROCKY HILL, 500 ENTERPRISE DR, 3RD FL",
-      "url": "https://elevancehealth.wd1.myworkdayjobs.com/en-US/ANT/job/CT-ROCKY-HILL-500-ENTERPRISE-DR-3RD-FL/Utilization-Management-Rep-II-Clinical-Liaison_JR205046",
-      "remote": false,
-      "path": "liaison-ur"
-    },
-    {
-      "company": "Elevance Health",
-      "title": "Utilization Management Representative I \u2013 Backoffice Support",
-      "location": "NC-WINSTON-SALEM, 5650 UNIVERSITY PKWY; VA-NORFOLK, 5800 NORTHAMPTON BLVD",
-      "url": "https://elevancehealth.wd1.myworkdayjobs.com/en-US/ANT/job/NC-WINSTON-SALEM-5650-UNIVERSITY-PKWY/Utilization-Management-Representative-I---Backoffice-Support_JR204374",
-      "remote": false,
-      "path": "liaison-ur"
-    },
-    {
-      "company": "IQVIA",
-      "title": "Health Information Technology Specialist Central",
-      "location": "Dallas, TX; Cincinnati, OH; Oklahoma City, OK +3 more",
-      "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Dallas-TX/Health-Information-Technology-Specialist-Central_R1555538",
-      "remote": false,
-      "path": "informatics"
-    },
-    {
-      "company": "IQVIA",
-      "title": "Health Information Technology Specialist East",
-      "location": "Philadelphia, PA; Washington, DC; Atlanta, GA +4 more",
-      "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Philadelphia-PA/Health-Information-Technology-Specialist-East_R1555531",
-      "remote": false,
-      "path": "informatics"
-    },
-    {
-      "company": "IQVIA",
-      "title": "Health Information Technology Specialist West",
-      "location": "Los Angeles, CA; Seattle , WA; San Francisco , CA +4 more",
-      "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Los-Angeles-CA/Health-Information-Technology-Specialist-West_R1555541",
-      "remote": false,
-      "path": "informatics"
-    },
-    {
-      "company": "Intermountain Health",
-      "title": "Application Analyst- Patient Access",
-      "location": "Lake Park Building",
-      "url": "https://imh.wd108.myworkdayjobs.com/en-US/IntermountainCareers/job/Lake-Park-Building/Application-Analyst--Patient-Access_R169433",
-      "remote": false,
-      "path": "informatics"
-    },
-    {
-      "company": "Newsela",
-      "title": "Learning Experience Designer, Core (Remote, US)",
-      "location": "Remote - US",
-      "url": "https://job-boards.greenhouse.io/newsela/jobs/8077963",
-      "remote": true,
-      "path": "instructional-design"
-    },
-    {
-      "company": "Newsela",
-      "title": "Learning Experience Designer, ELA Multilingual Learning (Remote, US)",
-      "location": "Remote - US",
-      "url": "https://job-boards.greenhouse.io/newsela/jobs/8077953",
-      "remote": true,
-      "path": "instructional-design"
-    },
-    {
-      "company": "Nordic Consulting",
-      "title": "Site Learning Specialist - Ambulatory (Charleston, SC)",
-      "location": "Charleston, SC",
-      "url": "https://nordic.wd1.myworkdayjobs.com/en-US/Nordic/job/Charleston-SC/Site-Learning-Specialist---Ambulatory--Charleston--SC-_R5824-1",
-      "remote": false,
-      "path": "instructional-design"
-    },
-    {
-      "company": "PointClickCare",
-      "title": "Content Strategist, Contract (US)",
-      "location": "Remote, USA",
-      "url": "https://jobs.lever.co/pointclickcare/a88bdd3a-c09b-4984-a877-319326d0ef5f",
-      "remote": true,
-      "path": "content-marketing"
-    },
-    {
-      "company": "Shirley Ryan AbilityLab",
-      "title": "Data Analyst II",
-      "location": "Chicago, IL",
-      "url": "https://sralab.wd1.myworkdayjobs.com/en-US/SRAlabCareers/job/Chicago-IL/Data-Analyst-II_JR-1065035-1",
-      "remote": false,
-      "path": "data-analysis"
-    },
-    {
-      "company": "Virta Health",
-      "title": "Data Analyst \u2014 Product Analytics",
-      "location": "Remote",
-      "url": "https://jobs.ashbyhq.com/virtahealth/0195b18e-628b-4695-ba85-3abdaaa637a8",
-      "remote": true,
-      "path": "data-analysis"
-    },
-    {
-      "company": "WellSky",
-      "title": "Data Analyst",
-      "location": "Overland Park, KS; Remote",
-      "url": "https://wellsky.wd1.myworkdayjobs.com/en-US/WellSkyCareers/job/Overland-Park-KS/Data-Analyst_JR4857",
-      "remote": false,
-      "path": "data-analysis"
-    },
-    {
-      "company": "Handshake",
-      "title": "AI Model Policy Trainer, Mental Health",
-      "location": "Seattle, WA",
-      "url": "https://jobs.ashbyhq.com/handshake/1e3a9711-d13c-4b79-8599-34dfb3133621",
-      "remote": false,
-      "path": "clinical-educator"
-    },
-    {
-      "company": "WellSky",
-      "title": "Clinical Consultant II - BH, LTACH, IRF, SNF, IDD",
-      "location": "Overland Park, KS",
-      "url": "https://wellsky.wd1.myworkdayjobs.com/en-US/WellSkyCareers/job/Overland-Park-KS/Clinical-Consultant-II---BH--LTACH--IRF--SNF--IDD_JR5018",
-      "remote": false,
-      "path": "clinical-educator"
-    },
-    {
-      "company": "Amplify",
-      "title": "Project Manager, Training & Development, CX",
-      "location": "Remote - United States",
-      "url": "https://jobs.ashbyhq.com/amplify/a944708d-1654-460b-be46-2133172927c4",
-      "remote": true,
-      "path": "project-management"
-    },
-    {
-      "company": "Handshake",
-      "title": "Program Manager",
-      "location": "San Francisco, CA",
-      "url": "https://jobs.ashbyhq.com/handshake/ea453433-f11f-4f5e-b3b0-8f97c10fc1c0",
-      "remote": false,
-      "path": "project-management"
-    },
-    {
-      "company": "Hinge Health",
-      "title": "Project Manager, Growth Operations",
-      "location": "San Francisco-HQ",
-      "url": "https://jobs.ashbyhq.com/hinge-health/a2583315-2f5d-4f69-a96a-87c362d54c1d",
-      "remote": true,
-      "path": "project-management"
-    },
-    {
-      "company": "Included Health",
-      "title": "Marketing & Communications Program Manager",
-      "location": "Remote",
-      "url": "https://jobs.lever.co/includedhealth/3bc2c0e7-a47d-4013-929d-778646c91e57",
-      "remote": true,
-      "path": "project-management"
-    },
-    {
-      "company": "Raintree Systems",
-      "title": "Project Manager - Regulatory & MIPS Consultant",
-      "location": "United States - Remote",
-      "url": "https://jobs.ashbyhq.com/raintree-systems/257ed268-68e5-4422-922c-215f337b201b",
-      "remote": true,
-      "path": "project-management"
-    },
-    {
-      "company": "Ro",
-      "title": "Packaging Program Manager",
-      "location": "New York, NY or Remote",
-      "url": "https://jobs.lever.co/ro/1f481677-dda0-43b5-9245-a513ab90cfeb",
-      "remote": true,
-      "path": "project-management"
-    },
-    {
-      "company": "WellSky",
-      "title": "Technical Program Manager",
-      "location": "Overland Park, KS",
-      "url": "https://wellsky.wd1.myworkdayjobs.com/en-US/WellSkyCareers/job/Overland-Park-KS/Technical-Program-Manager_JR5031",
-      "remote": false,
-      "path": "project-management"
-    },
-    {
-      "company": "IQVIA",
-      "title": "Clinical Research Associate, Full Service",
-      "location": "Durham, North Carolina, United States of America; Overland Park, KS, United States of America; Parsippany, New Jersey, United States of America +1 more",
-      "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Durham-North-Carolina-United-States-of-America/Clinical-Research-Associate--Full-Service_R1563164",
-      "remote": false,
-      "path": "research-coordinator"
-    },
-    {
-      "company": "IQVIA",
-      "title": "Clinical Research Coordinator",
-      "location": "Gilbert, AZ, United States of America",
-      "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Gilbert-AZ-United-States-of-America/Clinical-Research-Coordinator_R1558539",
-      "remote": false,
-      "path": "research-coordinator"
-    },
-    {
-      "company": "IQVIA",
-      "title": "Clinical Research Coordinator I",
-      "location": "Elkhorn, NE, United States of America",
-      "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Elkhorn-NE-United-States-of-America/Clinical-Research-Coordinator-I_R1555951",
-      "remote": false,
-      "path": "research-coordinator"
-    },
-    {
-      "company": "Shirley Ryan AbilityLab",
-      "title": "Research Assistant - Pediatrics Lab - Part-Time",
-      "location": "Chicago, IL",
-      "url": "https://sralab.wd1.myworkdayjobs.com/en-US/SRAlabCareers/job/Chicago-IL/Research-Assistant---Pediatrics-Lab---Part-Time_JR-1065242-1",
-      "remote": false,
-      "path": "research-coordinator"
-    }
-  ]
+ "generated": "2026-09-03",
+ "scanned": 1778,
+ "paths": [
+  {
+   "slug": "customer-success",
+   "label": "Customer Success / Implementation"
+  },
+  {
+   "slug": "liaison-ur",
+   "label": "Clinical Liaison / Utilization Review"
+  },
+  {
+   "slug": "informatics",
+   "label": "Clinical Informatics / EHR"
+  },
+  {
+   "slug": "instructional-design",
+   "label": "Instructional Design / Learning"
+  },
+  {
+   "slug": "content-marketing",
+   "label": "Content / Marketing"
+  },
+  {
+   "slug": "data-analysis",
+   "label": "Healthcare Data / Analytics"
+  },
+  {
+   "slug": "clinical-educator",
+   "label": "Clinical Educator / Trainer"
+  },
+  {
+   "slug": "sales-bd",
+   "label": "Medical / Device Sales & BD"
+  },
+  {
+   "slug": "leadership",
+   "label": "Rehab Management / Leadership"
+  },
+  {
+   "slug": "project-management",
+   "label": "Project / Program Management"
+  },
+  {
+   "slug": "research-coordinator",
+   "label": "Clinical Research / Study Coordinator"
+  }
+ ],
+ "roles": [
+  {
+   "company": "Handshake",
+   "title": "AI Model Policy Trainer, Generalist (Seattle)",
+   "location": "Seattle, WA",
+   "url": "https://jobs.ashbyhq.com/handshake/0b652757-a760-48c5-bd54-26464b3fd1d4",
+   "remote": false,
+   "path": "clinical-educator"
+  },
+  {
+   "company": "Handshake",
+   "title": "AI Model Policy Trainer, Image Evaluation - Remote US",
+   "location": "Seattle, WA",
+   "url": "https://jobs.ashbyhq.com/handshake/2c10a785-ad18-4fd7-8148-995ad76f3e7d",
+   "remote": true,
+   "path": "clinical-educator"
+  },
+  {
+   "company": "Handshake",
+   "title": "AI Model Policy Trainer, Image Evaluation - Seattle Onsite",
+   "location": "Seattle, WA",
+   "url": "https://jobs.ashbyhq.com/handshake/4dcdfc01-076f-43f3-9bed-1acafd2c1cfa",
+   "remote": false,
+   "path": "clinical-educator"
+  },
+  {
+   "company": "Handshake",
+   "title": "AI Model Policy Trainer, Mental Health",
+   "location": "Seattle, WA",
+   "url": "https://jobs.ashbyhq.com/handshake/1e3a9711-d13c-4b79-8599-34dfb3133621",
+   "remote": false,
+   "path": "clinical-educator"
+  },
+  {
+   "company": "IQVIA",
+   "title": "Women's Health Procedural Specialist / Clinical Educator",
+   "location": "Carlsbad, CA, United States of America",
+   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Carlsbad-CA-United-States-of-America/Women-s-Health-Procedural-Specialist---Clinical-Educator_R1561965",
+   "remote": false,
+   "path": "clinical-educator"
+  },
+  {
+   "company": "WellSky",
+   "title": "Clinical Consultant II - BH, LTACH, IRF, SNF, IDD",
+   "location": "Overland Park, KS",
+   "url": "https://wellsky.wd1.myworkdayjobs.com/en-US/WellSkyCareers/job/Overland-Park-KS/Clinical-Consultant-II---BH--LTACH--IRF--SNF--IDD_JR5018",
+   "remote": false,
+   "path": "clinical-educator"
+  },
+  {
+   "company": "PointClickCare",
+   "title": "Content Strategist, Contract (US)",
+   "location": "Remote, USA",
+   "url": "https://jobs.lever.co/pointclickcare/a88bdd3a-c09b-4984-a877-319326d0ef5f",
+   "remote": true,
+   "path": "content-marketing"
+  },
+  {
+   "company": "Avive",
+   "title": "Account Manager (Alabama/Mississippi)",
+   "location": "Alabama",
+   "url": "https://jobs.lever.co/AviveSolutions/3ebc5dbf-9b13-42bb-9dbc-598322016a39",
+   "remote": false,
+   "path": "customer-success"
+  },
+  {
+   "company": "Avive",
+   "title": "Account Manager (Indiana)",
+   "location": "Indiana",
+   "url": "https://jobs.lever.co/AviveSolutions/fc77c729-7fed-445b-9362-15b4a3f445f0",
+   "remote": false,
+   "path": "customer-success"
+  },
+  {
+   "company": "Avive",
+   "title": "Account Manager (MN/ND)",
+   "location": "Minnesota",
+   "url": "https://jobs.lever.co/AviveSolutions/7e9555f3-d38d-4e69-948c-216e884acd6c",
+   "remote": false,
+   "path": "customer-success"
+  },
+  {
+   "company": "Avive",
+   "title": "Account Manager (Missouri/Kansas)",
+   "location": "Kansas City",
+   "url": "https://jobs.lever.co/AviveSolutions/b7e8fc00-2187-4362-b056-22dfae7e4990",
+   "remote": false,
+   "path": "customer-success"
+  },
+  {
+   "company": "Avive",
+   "title": "Account Manager (New Jersey)",
+   "location": "Remote",
+   "url": "https://jobs.lever.co/AviveSolutions/62149d24-1bac-4b11-a08c-b0c07c823d99",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "Avive",
+   "title": "Account Manager (South Carolina)",
+   "location": "South Carolina",
+   "url": "https://jobs.lever.co/AviveSolutions/b84f634f-5232-4207-af87-bbf83b0f82c1",
+   "remote": false,
+   "path": "customer-success"
+  },
+  {
+   "company": "Avive",
+   "title": "Account Manager (Wisconsin)",
+   "location": "Wisconsin",
+   "url": "https://jobs.lever.co/AviveSolutions/36743e62-0296-4933-9ec8-43ad6b42ebdc",
+   "remote": false,
+   "path": "customer-success"
+  },
+  {
+   "company": "Baysein Health",
+   "title": "Client Success Account Executive, Clinical",
+   "location": "Remote - US Only",
+   "url": "https://jobs.ashbyhq.com/bayesianhealth/2dc696e4-07f7-48e5-9003-41fe18aa6635",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "Canvas Medical",
+   "title": "Implementation Manager",
+   "location": "Fully Remote",
+   "url": "https://jobs.ashbyhq.com/canvas-medical/9fbfc7a5-0e72-44b2-ae3e-b1447d42dca4",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "Canvas Medical",
+   "title": "Solutions Consultant",
+   "location": "Fully Remote",
+   "url": "https://jobs.ashbyhq.com/canvas-medical/a511d7b6-1dd6-45c3-90d8-faa2e45e40c3",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "Handshake",
+   "title": "Enterprise Customer Success Manager",
+   "location": "San Francisco, CA",
+   "url": "https://jobs.ashbyhq.com/handshake/a4d765fd-567b-4d27-b614-a2735af19f0a",
+   "remote": false,
+   "path": "customer-success"
+  },
+  {
+   "company": "Handshake",
+   "title": "Manager, Scaled Customer Success",
+   "location": "New York, NY",
+   "url": "https://jobs.ashbyhq.com/handshake/66024b3f-179a-4c5d-8bac-a723859eddff",
+   "remote": false,
+   "path": "customer-success"
+  },
+  {
+   "company": "Handshake",
+   "title": "Mid-Market Account Manager",
+   "location": "San Francisco, CA",
+   "url": "https://jobs.ashbyhq.com/handshake/99956455-d4f7-4044-9ebd-d7f0d469d165",
+   "remote": false,
+   "path": "customer-success"
+  },
+  {
+   "company": "Handshake",
+   "title": "Strategic Customer Success Manager, Federal",
+   "location": "New York, NY",
+   "url": "https://jobs.ashbyhq.com/handshake/45b712a7-9b9b-4c4d-bc63-99cfb12d65ba",
+   "remote": false,
+   "path": "customer-success"
+  },
+  {
+   "company": "Hinge Health",
+   "title": "Client Success Manager- Emerging Accounts",
+   "location": "Remote US",
+   "url": "https://jobs.ashbyhq.com/hinge-health/6c5c5c01-5825-4c10-8046-2887d8443803",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "IQVIA",
+   "title": "eCOA Implementation Project Manager",
+   "location": "Durham, North Carolina, United States of America",
+   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Durham-North-Carolina-United-States-of-America/eCOA-Implementation-Project-Manager_R1557148-1",
+   "remote": false,
+   "path": "customer-success"
+  },
+  {
+   "company": "Included Health",
+   "title": "Client Success Portfolio Manager",
+   "location": "Remote",
+   "url": "https://jobs.lever.co/includedhealth/6a5a34b7-9297-4d3d-97e7-a8025356fa47",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "Instructure",
+   "title": "Customer Success Manager, K-12",
+   "location": "US-REMOTE-Utah",
+   "url": "https://jobs.ashbyhq.com/instructure/b6afa2ac-988c-45ab-98a4-616b217a9de8",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "LearnUpon",
+   "title": "Customer Success Manager, Enterprise",
+   "location": "Philadelphia",
+   "url": "https://job-boards.greenhouse.io/learnupon/jobs/8643785002",
+   "remote": false,
+   "path": "customer-success"
+  },
+  {
+   "company": "LearnUpon",
+   "title": "Customer Success Manager, Mid-Market",
+   "location": "Salt Lake City",
+   "url": "https://job-boards.greenhouse.io/learnupon/jobs/8096434002",
+   "remote": false,
+   "path": "customer-success"
+  },
+  {
+   "company": "PointClickCare",
+   "title": "(US) Software Implementation Consultant - Clinical",
+   "location": "Remote, USA",
+   "url": "https://jobs.lever.co/pointclickcare/e6fd28a0-e062-499d-8004-ea3280e62f4e",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "PointClickCare",
+   "title": "Software Implementation Consultant - (Financial)",
+   "location": "Remote, USA",
+   "url": "https://jobs.lever.co/pointclickcare/bb844dc3-ea25-454d-8df4-7c607963a566",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "Prompt Health",
+   "title": "Account Manager (SMB and Mid-Market, SaaS)",
+   "location": "Remote",
+   "url": "https://jobs.ashbyhq.com/Prompt/43dd8a30-5244-446f-ae32-de724dd8287a",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "Prompt Health",
+   "title": "Associate Client Success Manager (B2B SaaS)",
+   "location": "Remote",
+   "url": "https://jobs.ashbyhq.com/Prompt/f4f32175-475c-4065-93df-4e8c86b59a4d",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "Prompt Health",
+   "title": "Associate Client Success Manager- SKI",
+   "location": "Remote",
+   "url": "https://jobs.ashbyhq.com/Prompt/bd3f4053-f618-4765-9ef5-b9db6ae03b77",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "Prompt Health",
+   "title": "Client Experience Manager",
+   "location": "Remote",
+   "url": "https://jobs.ashbyhq.com/Prompt/4f78a165-8df9-4db5-8604-62c5d61b0c69",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "Prompt Health",
+   "title": "Client Experience Manager - Full-Time (Evenings/Overnight Shift, Flexible Schedule) (B2B SaaS)",
+   "location": "Remote",
+   "url": "https://jobs.ashbyhq.com/Prompt/83b72215-ca29-4cc1-bc56-f07cbdc3c652",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "Prompt Health",
+   "title": "Enterprise Client Success Manager (B2B SaaS)",
+   "location": "Remote",
+   "url": "https://jobs.ashbyhq.com/Prompt/4dcec854-1c54-4f08-b883-6ceea53c9dcc",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "Prompt Health",
+   "title": "RCM Client Success Manager (B2B SaaS)",
+   "location": "Remote",
+   "url": "https://jobs.ashbyhq.com/Prompt/cc81ddb2-5080-4f63-a4aa-3d43befc0fc6",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "Raintree Systems",
+   "title": "MIPS - Clinical Implementation Consultant",
+   "location": "United States - Remote",
+   "url": "https://jobs.ashbyhq.com/raintree-systems/257ed268-68e5-4422-922c-215f337b201b",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "Virta Health",
+   "title": "Client Success Manager, Labor & Multi Employer Funds",
+   "location": "Remote",
+   "url": "https://jobs.ashbyhq.com/virtahealth/c634ae20-8a13-464a-9e57-2b4e63bb4379",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "WellSky",
+   "title": "Client Success Executive",
+   "location": "Overland Park, KS",
+   "url": "https://wellsky.wd1.myworkdayjobs.com/en-US/WellSkyCareers/job/Overland-Park-KS/Sr-Client-Success-Executive_JR5102-1",
+   "remote": false,
+   "path": "customer-success"
+  },
+  {
+   "company": "WellSky",
+   "title": "Coding Client Success Specialist",
+   "location": "Remote - US",
+   "url": "https://wellsky.wd1.myworkdayjobs.com/en-US/WellSkyCareers/job/Remote---US/Coding-Client-Success-Specialist_JR5002",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "Wiley",
+   "title": "Account Manager",
+   "location": "Remote, NC, USA",
+   "url": "https://wiley.wd1.myworkdayjobs.com/en-US/Wiley_Careers/job/Remote-NC-USA/Account-Manager_R2600760",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
+   "company": "Covera Health",
+   "title": "Manager, Performance Analytics",
+   "location": "Remote",
+   "url": "https://job-boards.greenhouse.io/coverahealth/jobs/7809625003",
+   "remote": true,
+   "path": "data-analysis"
+  },
+  {
+   "company": "Included Health",
+   "title": "Workforce Analytics Model Standardization Consultant (Contractor)",
+   "location": "Remote",
+   "url": "https://jobs.lever.co/includedhealth/33800dc5-4220-4e46-86dc-15284e94cceb",
+   "remote": true,
+   "path": "data-analysis"
+  },
+  {
+   "company": "PointClickCare",
+   "title": "Strategic Finance Analytics Manager (USA)",
+   "location": "Remote, USA",
+   "url": "https://jobs.lever.co/pointclickcare/b72d088d-155e-44ca-9e56-e7582659fc0e",
+   "remote": true,
+   "path": "data-analysis"
+  },
+  {
+   "company": "Ro",
+   "title": "Manager, People Technology & Analytics",
+   "location": "New York, NY or Remote",
+   "url": "https://jobs.lever.co/ro/50ede7fe-7d40-42ec-ac07-a07fd8d3940c",
+   "remote": true,
+   "path": "data-analysis"
+  },
+  {
+   "company": "Shirley Ryan AbilityLab",
+   "title": "Data Analyst II",
+   "location": "Chicago, IL",
+   "url": "https://sralab.wd1.myworkdayjobs.com/en-US/SRAlabCareers/job/Chicago-IL/Data-Analyst-II_JR-1065035-1",
+   "remote": false,
+   "path": "data-analysis"
+  },
+  {
+   "company": "Shirley Ryan AbilityLab",
+   "title": "Manager, Data Analytics",
+   "location": "Chicago, IL",
+   "url": "https://sralab.wd1.myworkdayjobs.com/en-US/SRAlabCareers/job/Chicago-IL/Manager--Data-Analytics_JR-1065061-1",
+   "remote": false,
+   "path": "data-analysis"
+  },
+  {
+   "company": "Shirley Ryan AbilityLab",
+   "title": "Manager, Payor Analytics & Reimbursement",
+   "location": "Chicago, IL",
+   "url": "https://sralab.wd1.myworkdayjobs.com/en-US/SRAlabCareers/job/Chicago-IL/Manager--Reimbursement---Payor-Analytics_JR-1064092-1",
+   "remote": false,
+   "path": "data-analysis"
+  },
+  {
+   "company": "Virta Health",
+   "title": "Data Analyst \u2014 Product Analytics",
+   "location": "Remote",
+   "url": "https://jobs.ashbyhq.com/virtahealth/0195b18e-628b-4695-ba85-3abdaaa637a8",
+   "remote": true,
+   "path": "data-analysis"
+  },
+  {
+   "company": "WellSky",
+   "title": "Data Analyst",
+   "location": "Overland Park, KS; Remote",
+   "url": "https://wellsky.wd1.myworkdayjobs.com/en-US/WellSkyCareers/job/Overland-Park-KS/Data-Analyst_JR4857",
+   "remote": false,
+   "path": "data-analysis"
+  },
+  {
+   "company": "IQVIA",
+   "title": "Health Information Technology Specialist Central",
+   "location": "Dallas, TX; Cincinnati, OH; Oklahoma City, OK +3 more",
+   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Dallas-TX/Health-Information-Technology-Specialist-Central_R1555538",
+   "remote": false,
+   "path": "informatics"
+  },
+  {
+   "company": "IQVIA",
+   "title": "Health Information Technology Specialist East",
+   "location": "Philadelphia, PA; Washington, DC; Atlanta, GA +4 more",
+   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Philadelphia-PA/Health-Information-Technology-Specialist-East_R1555531",
+   "remote": false,
+   "path": "informatics"
+  },
+  {
+   "company": "IQVIA",
+   "title": "Health Information Technology Specialist Player Coach Nationwide",
+   "location": "Chicago, IL",
+   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Chicago-IL/Health-Information-Technology-Specialist-Player-Coach-Nationwide_R1555542-1",
+   "remote": false,
+   "path": "informatics"
+  },
+  {
+   "company": "IQVIA",
+   "title": "Health Information Technology Specialist West",
+   "location": "Los Angeles, CA; Seattle , WA; San Francisco , CA +4 more",
+   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Los-Angeles-CA/Health-Information-Technology-Specialist-West_R1555541",
+   "remote": false,
+   "path": "informatics"
+  },
+  {
+   "company": "IQVIA",
+   "title": "Scientist II, Bioinformatics",
+   "location": "Santa Fe, NM, United States of America",
+   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Santa-Fe-NM-United-States-of-America/Informatics-Associate--Antibody-Discovery-_R1545386",
+   "remote": false,
+   "path": "informatics"
+  },
+  {
+   "company": "Nordic Consulting",
+   "title": "Application Analyst I - Epic Hospital Billing & Claims",
+   "location": "US - National",
+   "url": "https://nordic.wd1.myworkdayjobs.com/en-US/Nordic/job/US---National/Application-Analyst-I---Epic-Hospital-Billing---Claims_R5997",
+   "remote": false,
+   "path": "informatics"
+  },
+  {
+   "company": "Nordic Consulting",
+   "title": "Application Analyst II - Epic Willow Ambulatory",
+   "location": "US - National",
+   "url": "https://nordic.wd1.myworkdayjobs.com/en-US/Nordic/job/US---National/Application-Analyst-II---Epic-Willow-Ambulatory_R5638",
+   "remote": false,
+   "path": "informatics"
+  },
+  {
+   "company": "Nordic Consulting",
+   "title": "Application Analyst II - Patient Experience",
+   "location": "US - National",
+   "url": "https://nordic.wd1.myworkdayjobs.com/en-US/Nordic/job/US---National/Application-Analyst-II---Patient-Experience_R5943",
+   "remote": false,
+   "path": "informatics"
+  },
+  {
+   "company": "Nordic Consulting",
+   "title": "Application Analyst II - Patient Experience",
+   "location": "US - National",
+   "url": "https://nordic.wd1.myworkdayjobs.com/en-US/Nordic/job/US---National/Application-Analyst-II---Patient-Experience_R5941",
+   "remote": false,
+   "path": "informatics"
+  },
+  {
+   "company": "Nordic Consulting",
+   "title": "Application Analyst II- Inpatient Orders",
+   "location": "US - National",
+   "url": "https://nordic.wd1.myworkdayjobs.com/en-US/Nordic/job/US---National/Application-Analyst-II--Inpatient-Orders_R5775-1",
+   "remote": false,
+   "path": "informatics"
+  },
+  {
+   "company": "Nordic Consulting",
+   "title": "Epic Application Analyst II - Population Health",
+   "location": "US - National",
+   "url": "https://nordic.wd1.myworkdayjobs.com/en-US/Nordic/job/US---National/Epic-Application-Analyst-II---Population-Health_R5940",
+   "remote": false,
+   "path": "informatics"
+  },
+  {
+   "company": "Newsela",
+   "title": "Learning Experience Designer, ELA Multilingual Learning (Remote, US)",
+   "location": "Remote - US",
+   "url": "https://job-boards.greenhouse.io/newsela/jobs/8077953",
+   "remote": true,
+   "path": "instructional-design"
+  },
+  {
+   "company": "Nordic Consulting",
+   "title": "Site Learning Specialist - Ambulatory (Charleston, SC)",
+   "location": "Charleston, SC",
+   "url": "https://nordic.wd1.myworkdayjobs.com/en-US/Nordic/job/Charleston-SC/Site-Learning-Specialist---Ambulatory--Charleston--SC-_R5824-1",
+   "remote": false,
+   "path": "instructional-design"
+  },
+  {
+   "company": "IQVIA",
+   "title": "Clinical Manager, Clinical Science, Cronos",
+   "location": "Durham, North Carolina, United States of America",
+   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Durham-North-Carolina-United-States-of-America/Clinical-Manager--Clinical-Science--Cronos_R1534036",
+   "remote": false,
+   "path": "leadership"
+  },
+  {
+   "company": "IQVIA",
+   "title": "Clinical Program Manager",
+   "location": "Durham, North Carolina, United States of America; Parsippany, New Jersey, United States of America",
+   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Durham-North-Carolina-United-States-of-America/Clinical-Program-Manager_R1505780",
+   "remote": false,
+   "path": "leadership"
+  },
+  {
+   "company": "Elevance Health",
+   "title": "Behavioral Health Care Manager I",
+   "location": "PA-SEVEN FIELDS, 300 SEVEN FIELDS BLVD, STE 100; PA-HERMITAGE, 295 N KERRWOOD DR, STE 107",
+   "url": "https://elevancehealth.wd1.myworkdayjobs.com/en-US/ANT/job/PA-SEVEN-FIELDS-300-SEVEN-FIELDS-BLVD-STE-100/Behavioral-Health-Care-Manager-I_JR205115",
+   "remote": false,
+   "path": "liaison-ur"
+  },
+  {
+   "company": "Elevance Health",
+   "title": "Managed Care Coordinator (VA Foster Care Program)",
+   "location": "VA-ROANOKE, 602 S JEFFERSON ST; Virginia - Lynchburg; Virginia - Waynesboro +9 more",
+   "url": "https://elevancehealth.wd1.myworkdayjobs.com/en-US/ANT/job/VA-ROANOKE-602-S-JEFFERSON-ST/Managed-Care-Coordinator--VA-Foster-Care-Program-_JR201246",
+   "remote": false,
+   "path": "liaison-ur"
+  },
+  {
+   "company": "Elevance Health",
+   "title": "Utilization Management Representative I \u2013 Backoffice Support",
+   "location": "NC-WINSTON-SALEM, 5650 UNIVERSITY PKWY; VA-NORFOLK, 5800 NORTHAMPTON BLVD",
+   "url": "https://elevancehealth.wd1.myworkdayjobs.com/en-US/ANT/job/NC-WINSTON-SALEM-5650-UNIVERSITY-PKWY/Utilization-Management-Representative-I---Backoffice-Support_JR204374",
+   "remote": false,
+   "path": "liaison-ur"
+  },
+  {
+   "company": "Intermountain Health",
+   "title": "Social Work Care Manager - Palliative Care",
+   "location": "Saint Joseph Hospital",
+   "url": "https://imh.wd108.myworkdayjobs.com/en-US/IntermountainCareers/job/Saint-Joseph-Hospital/Social-Work-Care-Manager---Palliative-Care_R168946",
+   "remote": false,
+   "path": "liaison-ur"
+  },
+  {
+   "company": "WellSky",
+   "title": "Transitional Care Coordinator - Tampa, Florida",
+   "location": "Remote - Florida",
+   "url": "https://wellsky.wd1.myworkdayjobs.com/en-US/WellSkyCareers/job/Remote---Florida/Transitional-Care-Coordinator---Tampa--Florida_JR5117-1",
+   "remote": true,
+   "path": "liaison-ur"
+  },
+  {
+   "company": "Amplify",
+   "title": "Project Manager, Platform (Contractor)",
+   "location": "Remote - United States",
+   "url": "https://jobs.ashbyhq.com/amplify/c7b15b15-ca38-455b-a226-d82637fd28fa",
+   "remote": true,
+   "path": "project-management"
+  },
+  {
+   "company": "Elevance Health",
+   "title": "Program Manager",
+   "location": "MD-HANOVER, 7550 TEAGUE RD, STE 500",
+   "url": "https://elevancehealth.wd1.myworkdayjobs.com/en-US/ANT/job/MD-HANOVER-7550-TEAGUE-RD-STE-500/Program-Manager_JR205500",
+   "remote": false,
+   "path": "project-management"
+  },
+  {
+   "company": "Handshake",
+   "title": "Program Manager",
+   "location": "San Francisco, CA",
+   "url": "https://jobs.ashbyhq.com/handshake/ea453433-f11f-4f5e-b3b0-8f97c10fc1c0",
+   "remote": false,
+   "path": "project-management"
+  },
+  {
+   "company": "Hinge Health",
+   "title": "Project Manager, Growth Operations",
+   "location": "San Francisco-HQ",
+   "url": "https://jobs.ashbyhq.com/hinge-health/a2583315-2f5d-4f69-a96a-87c362d54c1d",
+   "remote": true,
+   "path": "project-management"
+  },
+  {
+   "company": "Included Health",
+   "title": "Marketing & Communications Program Manager",
+   "location": "Remote",
+   "url": "https://jobs.lever.co/includedhealth/3bc2c0e7-a47d-4013-929d-778646c91e57",
+   "remote": true,
+   "path": "project-management"
+  },
+  {
+   "company": "Netsmart",
+   "title": "Project Coordinator - Plexus Services Sales Enablement",
+   "location": "Overland Park, KS",
+   "url": "https://ntst.wd1.myworkdayjobs.com/en-US/Careers/job/Overland-Park-KS/Project-Coordinator---Plexus-Services-Sales-Enablement_R015815",
+   "remote": false,
+   "path": "project-management"
+  },
+  {
+   "company": "Ro",
+   "title": "Packaging Program Manager",
+   "location": "New York, NY or Remote",
+   "url": "https://jobs.lever.co/ro/1f481677-dda0-43b5-9245-a513ab90cfeb",
+   "remote": true,
+   "path": "project-management"
+  },
+  {
+   "company": "WellSky",
+   "title": "Technical Program Manager",
+   "location": "Overland Park, KS",
+   "url": "https://wellsky.wd1.myworkdayjobs.com/en-US/WellSkyCareers/job/Overland-Park-KS/Technical-Program-Manager_JR5031",
+   "remote": false,
+   "path": "project-management"
+  },
+  {
+   "company": "IQVIA",
+   "title": "Clinical Research Coordinator",
+   "location": "Gilbert, AZ, United States of America",
+   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Gilbert-AZ-United-States-of-America/Clinical-Research-Coordinator_R1558539",
+   "remote": false,
+   "path": "research-coordinator"
+  },
+  {
+   "company": "IQVIA",
+   "title": "Clinical Research Coordinator",
+   "location": "Scottsdale, AZ, United States of America",
+   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Scottsdale-AZ-United-States-of-America/Clinical-Research-Coordinator_R1563753",
+   "remote": false,
+   "path": "research-coordinator"
+  },
+  {
+   "company": "IQVIA",
+   "title": "Clinical Research Coordinator",
+   "location": "Covington, LA, United States of America; Kenner, LA, United States of America",
+   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Covington-LA-United-States-of-America/Clinical-Research-Coordinator_R1566072-1",
+   "remote": false,
+   "path": "research-coordinator"
+  },
+  {
+   "company": "IQVIA",
+   "title": "Clinical Research Coordinator I",
+   "location": "Elkhorn, NE, United States of America",
+   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Elkhorn-NE-United-States-of-America/Clinical-Research-Coordinator-I_R1555951",
+   "remote": false,
+   "path": "research-coordinator"
+  },
+  {
+   "company": "Intermountain Health",
+   "title": "Biorepository Research Coordinator",
+   "location": "Biorepository",
+   "url": "https://imh.wd108.myworkdayjobs.com/en-US/IntermountainCareers/job/Biorepository/Biorepository-Research-Coordinator_R182703",
+   "remote": false,
+   "path": "research-coordinator"
+  },
+  {
+   "company": "Shirley Ryan AbilityLab",
+   "title": "Research Assistant - Pediatrics Lab - Part-Time",
+   "location": "Chicago, IL",
+   "url": "https://sralab.wd1.myworkdayjobs.com/en-US/SRAlabCareers/job/Chicago-IL/Research-Assistant---Pediatrics-Lab---Part-Time_JR-1065242-1",
+   "remote": false,
+   "path": "research-coordinator"
+  },
+  {
+   "company": "Shirley Ryan AbilityLab",
+   "title": "Research Assistant - Think & Speak Lab - Affect & Emotional Rehabilitation (AER) Lab",
+   "location": "Chicago, IL",
+   "url": "https://sralab.wd1.myworkdayjobs.com/en-US/SRAlabCareers/job/Chicago-IL/Research-Assistant---Think---Speak-Lab---Affect---Emotional-Rehabilitation--AER--Lab_JR-1065399-1",
+   "remote": false,
+   "path": "research-coordinator"
+  },
+  {
+   "company": "Avive",
+   "title": "Regional Sales Manager (North East)",
+   "location": "Remote",
+   "url": "https://jobs.lever.co/AviveSolutions/90b79049-e446-42d2-804d-b19a1628095e",
+   "remote": true,
+   "path": "sales-bd"
+  },
+  {
+   "company": "Great Minds",
+   "title": "Sales Representative - Bay Area",
+   "location": "Remote job",
+   "url": "https://greatminds.recruitee.com/o/sales-representative-bay-area",
+   "remote": true,
+   "path": "sales-bd"
+  },
+  {
+   "company": "LearnUpon",
+   "title": "Business Development Representative",
+   "location": "Salt Lake City",
+   "url": "https://job-boards.greenhouse.io/learnupon/jobs/6256234002",
+   "remote": false,
+   "path": "sales-bd"
+  },
+  {
+   "company": "Newsela",
+   "title": "Expression of Interest: Sales Representative",
+   "location": "Remote",
+   "url": "https://job-boards.greenhouse.io/newsela/jobs/6356852",
+   "remote": true,
+   "path": "sales-bd"
+  },
+  {
+   "company": "Newsela",
+   "title": "Expression of Interest: School Sales Representative (Remote, US)",
+   "location": "Remote - US",
+   "url": "https://job-boards.greenhouse.io/newsela/jobs/8011854",
+   "remote": true,
+   "path": "sales-bd"
+  },
+  {
+   "company": "Newsela",
+   "title": "Sales Representative, SMB (Remote, US)",
+   "location": "Remote - US",
+   "url": "https://job-boards.greenhouse.io/newsela/jobs/8120805",
+   "remote": true,
+   "path": "sales-bd"
+  },
+  {
+   "company": "Newsela",
+   "title": "School Sales Representative (Remote, US)",
+   "location": "Remote - US",
+   "url": "https://job-boards.greenhouse.io/newsela/jobs/8078358",
+   "remote": true,
+   "path": "sales-bd"
+  },
+  {
+   "company": "Osmind",
+   "title": "Founding Business Development Representative",
+   "location": "United States",
+   "url": "https://jobs.lever.co/Osmind/934adf03-4f0e-4b9f-9e4d-40dee26faf40",
+   "remote": false,
+   "path": "sales-bd"
+  },
+  {
+   "company": "Prompt Health",
+   "title": "Business Development Representative (BDR) - PT/Chiropractic EMR Specialist (B2B SaaS)",
+   "location": "Remote",
+   "url": "https://jobs.ashbyhq.com/Prompt/0ec82915-0986-4f86-8646-4a70d648ab8a",
+   "remote": true,
+   "path": "sales-bd"
+  },
+  {
+   "company": "Prompt Health",
+   "title": "Business Development Representative- Hybrid (B2B SaaS)",
+   "location": "Hoboken,NJ",
+   "url": "https://jobs.ashbyhq.com/Prompt/9899c9d1-8195-4a79-b772-6e689430e48f",
+   "remote": true,
+   "path": "sales-bd"
+  }
+ ]
 }

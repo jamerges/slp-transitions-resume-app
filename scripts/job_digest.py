@@ -64,14 +64,22 @@ PATHS = {
         "clinical trainer", "field trainer", "clinical consultant",
         "clinical account", "clinical engagement", "trainer"]),
     "sales-bd": ("Medical / Device Sales & BD", [
+        # Clinician-facing sales only: device clinical specialists, school/edtech
+        # reps, health-tech BDRs. Plain "account executive" pulled in enterprise
+        # SaaS quota roles that no SLP is a fit for, so it stays out.
         "clinical specialist", "clinical application specialist", "clinical sales",
-        "territory manager", "account executive", "business development",
-        "sales representative", "sales specialist", "regional sales"]),
+        "clinical account", "territory manager", "school sales", "education sales",
+        "regional sales manager", "sales representative",
+        "business development representative"]),
     "leadership": ("Rehab Management / Leadership", [
+        # Clinical/rehab line management. Plain "program manager" matched
+        # packaging and technical PM roles, so every keyword carries a
+        # clinical or therapy word.
         "director of rehab", "rehab director", "rehabilitation director",
         "rehab manager", "rehabilitation manager", "therapy manager",
-        "director of therapy", "clinical manager", "program manager",
-        "clinical supervisor", "lead speech"]),
+        "director of therapy", "clinical manager", "clinical program manager",
+        "clinical operations manager", "clinical supervisor", "program director",
+        "lead speech"]),
     "project-management": ("Project / Program Management", [
         "project manager", "program manager", "project coordinator",
         "program coordinator", "implementation manager", "delivery manager"]),

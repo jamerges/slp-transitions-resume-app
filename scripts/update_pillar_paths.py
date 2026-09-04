@@ -113,6 +113,29 @@ if "Rehab Manager &rarr; Director" not in raw:
     raw = raw.replace("<p>Money matters, so here are real numbers. Many of these match or exceed clinical SLP salaries—often with better work-life balance.</p>",
                       "<p>Money matters, so here are real numbers. Most of these match or beat clinical SLP pay, often with better hours. One does not, and it is labelled.</p>")
 
+# ---- 6. FAQPage schema from the existing FAQ section ------------------------
+if "FAQPage" not in raw:
+    import html as _html
+    i = raw.index("Frequently Asked Questions")
+    j = raw.find("<!-- wp:heading -->\n<h2", i + 10)
+    sec = raw[i:j if j > 0 else None]
+    parts = re.split(r'<!-- wp:heading \{"level":3\} -->', sec)[1:]
+    faqs = []
+    for part in parts:
+        q = re.search(r"<h3[^>]*>(.*?)</h3>", part, re.S).group(1)
+        ans = " ".join(re.findall(r"<p>(.*?)</p>", part, re.S))
+        clean = lambda x: _html.unescape(re.sub(r"<[^>]+>", "", x)).strip()
+        if clean(q) and clean(ans): faqs.append((clean(q), clean(ans)))
+    ld = {"@context": "https://schema.org", "@type": "FAQPage",
+          "mainEntity": [{"@type": "Question", "name": q,
+                          "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faqs]}
+    block = ('<!-- wp:html -->\n<script type="application/ld+json">'
+             + json.dumps(ld, ensure_ascii=False) + "</script>\n<!-- /wp:html -->\n\n")
+    k = raw.index('<h2 class="wp-block-heading">Frequently Asked Questions')
+    k = raw.rfind("<!-- wp:heading -->", 0, k)
+    raw = raw[:k] + block + raw[k:]
+    print("FAQPage schema added for", len(faqs), "questions")
+
 # ---- 5. counts in copy -------------------------------------------------------
 raw = raw.replace("13 non-clinical", "20 non-clinical").replace("13 paths", "20 paths")
 
