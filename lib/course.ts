@@ -56,8 +56,8 @@ export type BadgeId =
 export const BADGES: BadgeDef[] = [
   { id: "starting-line", label: "Starting line", blurb: "You set a target date. Most people never do.", xp: 30, icon: "🏁", when: (p) => p.completed.includes("0.2") },
   { id: "verdict", label: "A verdict", blurb: "Bad workplace, bad fit, or bad season. You named it.", xp: 30, icon: "⚖️", when: (p) => p.completed.includes("1.2") },
-  { id: "said-it-out-loud", label: "Said it out loud", blurb: "One person knows. The secret stopped costing you energy.", xp: 60, icon: "🗣️", when: (p) => p.actions.includes("1.6") },
-  { id: "ground-complete", label: "Grounded", blurb: "Module 1 done. You know why, and you know which problem you have.", xp: 100, icon: "🌱", when: (p) => ["1.1","1.2","1.3","1.4","1.5","1.6","1.7"].every((id) => p.completed.includes(id)) },
+  { id: "said-it-out-loud", label: "Said it out loud", blurb: "One person knows. The secret stopped costing you energy.", xp: 60, icon: "🗣️", when: (p) => p.actions.includes("1.7") },
+  { id: "ground-complete", label: "Grounded", blurb: "Module 1 done. You know why, and you know which problem you have.", xp: 100, icon: "🌱", when: (p) => ["1.1","1.2","1.3","1.4","1.5","1.6","1.7","1.8"].every((id) => p.completed.includes(id)) },
   { id: "first-reach-out", label: "First reach-out", blurb: "One message sent to someone who made the move.", xp: 60, icon: "✉️", when: (p) => p.actions.includes("2.9") },
   { id: "first-translation", label: "First translation", blurb: "One clinical bullet, rewritten in the buyer's language.", xp: 60, icon: "🔁", when: (p) => p.actions.includes("3.5") },
   { id: "proof-artifact", label: "Proof artifact", blurb: "You made a thing. Certificates can't compete with it.", xp: 100, icon: "🧩", when: (p) => p.actions.includes("4.3") },
@@ -79,6 +79,7 @@ const R = {
   resumePost: { label: "The non-clinical SLP resume", href: "https://slptransitions.com/slp-resume-non-clinical/", kind: "link" as const },
   linkedinPost: { label: "Your LinkedIn profile is screening you out", href: "https://slptransitions.com/slp-linkedin-career-change/", kind: "link" as const },
   coverPost: { label: "The non-clinical cover letter", href: "https://slptransitions.com/slp-cover-letter-non-clinical/", kind: "link" as const },
+  tracker: { label: "Outreach and application tracker (Sheets or Notion)", href: "/course/transition-os-tracker-README.md", kind: "sheet" as const },
   storyForm: { label: "Share your story", href: "https://slptransitions.com/about/", kind: "link" as const },
 };
 
@@ -106,15 +107,17 @@ export const MODULES: Module[] = [
         summary: "Six questions to work out whether the problem is your workplace, the work itself, or this season of your life.", resources: [R.quit, R.workbook1], sources: ["facts", "voc", "forums"] },
       { id: "1.3", module: 1, title: "The sunk-cost audit", type: "interactive", minutes: 7, component: "SunkCost",
         summary: "Separate the money you've already spent from the money still on the table, so the tuition stops making the decision for you.", resources: [R.sunkSheet, R.fears], sources: ["bls", "ashaDebt", "arkes", "facts", "forums"] },
-      { id: "1.4", module: 1, title: "What you're protecting", type: "interactive", minutes: 8, component: "Dials",
+      { id: "1.4", module: 1, title: "What actually gave you energy", type: "interactive", minutes: 8, component: "EnergyAudit",
+        summary: "Go through your last month of work and mark what gave you energy and what took it. It is better evidence than any preference test.", resources: [R.workbook1], sources: ["voc", "forums"] },
+      { id: "1.5", module: 1, title: "What you're protecting", type: "interactive", minutes: 8, component: "Dials",
         summary: "Four dials for what you need to protect: pay, closeness to clinical work, people-time, and tools. The paths reorder as you move them.", resources: [R.paths], sources: ["facts"] },
-      { id: "1.5", module: 1, title: "The part you get to keep", type: "video", minutes: 5, component: "Identity",
+      { id: "1.6", module: 1, title: "The part you get to keep", type: "video", minutes: 5, component: "Identity",
         summary: "Three people who left and kept the part of the work they loved. Watch for what each of them took with them.", sources: ["voc", "forums"] },
-      { id: "1.6", module: 1, title: "Tell one person", type: "action", minutes: 3, component: "TellOne",
+      { id: "1.7", module: 1, title: "Tell one person", type: "action", minutes: 3, component: "TellOne",
         summary: "Say one sentence to one person. It's the cheapest way to stop this from feeling like a secret.",
         action: { label: "I told someone", prompt: "Pick one person who will not argue with you: a partner, a friend outside the field, a former colleague who left. Say one sentence: \"I'm looking at what else I could do with my SLP background.\" That's it. No plan required.", done: "Said out loud. The secret stopped costing you energy." },
         sources: ["voc", "forums"] },
-      { id: "1.7", module: 1, title: "Checkpoint: Ground", type: "checkpoint", minutes: 2, component: "Checkpoint1",
+      { id: "1.8", module: 1, title: "Checkpoint: Ground", type: "checkpoint", minutes: 2, component: "Checkpoint1",
         summary: "Gather what you worked out this week into one sentence about where you're going. That sentence opens Explore." },
     ],
   },
@@ -130,7 +133,7 @@ export const MODULES: Module[] = [
       { id: "2.6", module: 2, title: "Pick one: your Pivot Report", type: "interactive", minutes: 8, summary: "", resources: [R.suite] },
       { id: "2.7", module: 2, title: "Path deep-dive (your top two)", type: "interactive", minutes: 10, summary: "", resources: [R.jobs, R.companies] },
       { id: "2.8", module: 2, title: "Messages that get answered", type: "video", minutes: 9, summary: "", resources: [R.workbook1] },
-      { id: "2.9", module: 2, title: "Reach out to three people", type: "action", minutes: 20, summary: "", resources: [R.workbook1] },
+      { id: "2.9", module: 2, title: "Reach out to three people", type: "action", minutes: 20, summary: "", resources: [R.tracker, R.workbook1] },
     ],
   },
   {
@@ -144,7 +147,7 @@ export const MODULES: Module[] = [
       { id: "3.5", module: 3, title: "Build your résumé in the Suite", type: "interactive", minutes: 15, summary: "", resources: [R.suite, R.resumePost] },
       { id: "3.6", module: 3, title: "LinkedIn as the background check", type: "video", minutes: 8, summary: "", resources: [R.linkedinPost] },
       { id: "3.7", module: 3, title: "The cover letter, and why it only works if it cost you something", type: "video", minutes: 6, summary: "", resources: [R.coverPost] },
-      { id: "3.8", module: 3, title: "Send one application properly", type: "action", minutes: 30, summary: "", resources: [R.jobs] },
+      { id: "3.8", module: 3, title: "Send one application properly", type: "action", minutes: 30, summary: "", resources: [R.tracker, R.jobs] },
     ],
   },
   {
@@ -157,7 +160,7 @@ export const MODULES: Module[] = [
       { id: "4.4", module: 4, title: "Keeping the paycheck while you leave", type: "video", minutes: 7, summary: "", resources: [R.jobs] },
       { id: "4.5", module: 4, title: "The loan is a calendar: PSLF, the pay-cut budget, COBRA", type: "interactive", minutes: 9, summary: "", resources: [R.workbook1] },
       { id: "4.6", module: 4, title: "500 applications, or one person who'll vouch for you", type: "video", minutes: 7, summary: "", resources: [R.jobs, R.companies] },
-      { id: "4.7", module: 4, title: "Keep two conversations warm", type: "action", minutes: 15, summary: "", resources: [R.workbook1] },
+      { id: "4.7", module: 4, title: "Keep two conversations warm", type: "action", minutes: 15, summary: "", resources: [R.tracker, R.workbook1] },
     ],
   },
   {
@@ -169,7 +172,7 @@ export const MODULES: Module[] = [
       { id: "5.3", module: 5, title: "Screening questions that filter you out", type: "interactive", minutes: 8, summary: "", resources: [R.workbook1] },
       { id: "5.4", module: 5, title: "The mock interview", type: "interactive", minutes: 15, summary: "", resources: [R.suite] },
       { id: "5.5", module: 5, title: "Salary and the offer", type: "video", minutes: 8, summary: "", resources: [R.paths, R.workbook1] },
-      { id: "5.6", module: 5, title: "113 applications, 7 interviews, 1 offer", type: "video", minutes: 6, summary: "", resources: [R.jobs] },
+      { id: "5.6", module: 5, title: "113 applications, 7 interviews, 1 offer", type: "video", minutes: 6, summary: "", resources: [R.tracker, R.jobs] },
       { id: "5.7", module: 5, title: "The first 90 days", type: "video", minutes: 7, summary: "", resources: [R.workbook1] },
       { id: "5.8", module: 5, title: "Accept, or keep going", type: "action", minutes: 5, summary: "", resources: [R.workbook1] },
     ],
@@ -209,7 +212,7 @@ export function nextLesson(id: string): Lesson | undefined {
 }
 export const TYPE_LABEL: Record<LessonType, string> = { video: "Video", explainer: "Animated explainer", interactive: "Interactive", action: "Action", checkpoint: "Checkpoint" };
 
-// The five dials (lesson 1.4). Each path's profile mirrors the sign of its
+// The five dials (lesson 1.5). Each path's profile mirrors the sign of its
 // scores on the income, time, proximity, people and tech questions in
 // lib/quiz.ts: 1 = the path rewards a high setting, 0 = a low one, 0.5 = either.
 // (The "hours outside work" dial was dropped 2026-09-04: it read as two

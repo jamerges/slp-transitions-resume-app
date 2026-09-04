@@ -110,3 +110,43 @@ export const guardrailScenes: Scene[] = [
     ),
   })),
 ];
+
+/** The six modules as stops on a winding route. Sits in the dashboard hero;
+ *  the stage road stays inside lesson 1.1 where it belongs. */
+export function JourneyMap({ stops, current }: { stops: { n: number; title: string; pct: number }[]; current?: number }) {
+  const W = 860, H = 190;
+  const pad = 54;
+  const step = (W - pad * 2) / (stops.length - 1 || 1);
+  const pts = stops.map((_, i) => ({ x: pad + i * step, y: H / 2 + (i % 2 === 0 ? -26 : 26) }));
+  const path = pts.reduce((d, pt, i) => {
+    if (i === 0) return `M ${pt.x} ${pt.y}`;
+    const prev = pts[i - 1], mx = (prev.x + pt.x) / 2;
+    return `${d} C ${mx} ${prev.y}, ${mx} ${pt.y}, ${pt.x} ${pt.y}`;
+  }, "");
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block", maxWidth: 900 }} role="img" aria-label="Your route through the six modules">
+      <path d={path} fill="none" stroke="rgba(255,255,255,0.22)" strokeWidth={3} strokeLinecap="round" strokeDasharray="2 9" />
+      {stops.map((s, i) => {
+        const { x, y } = pts[i];
+        const complete = s.pct === 100;
+        const here = s.n === current;
+        const r = here ? 17 : 13;
+        return (
+          <g key={s.n}>
+            {here && <circle cx={x} cy={y} r={r + 8} fill="rgba(255,255,255,0.14)" className="tos-pulse" />}
+            <circle cx={x} cy={y} r={r} fill={complete ? "#fff" : here ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.18)"}
+              stroke="rgba(255,255,255,0.85)" strokeWidth={complete || here ? 0 : 2} />
+            <text x={x} y={y + 1} textAnchor="middle" dominantBaseline="middle" fontFamily={font.sans}
+              fontSize={here ? 14 : 12} fontWeight={700} fill={complete || here ? "#0A3D31" : "rgba(255,255,255,0.9)"}>
+              {complete ? "✓" : s.n}
+            </text>
+            <text x={x} y={y + (i % 2 === 0 ? -30 : 40)} textAnchor="middle" fontFamily={font.sans}
+              fontSize={12.5} fontWeight={here ? 700 : 500} fill={here ? "#fff" : "rgba(255,255,255,0.72)"}>
+              {s.title}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}

@@ -3,7 +3,7 @@ import { MODULES, BADGES, LESSONS, moduleOf, type Lesson } from "@/lib/course";
 import { PATHS } from "@/lib/quiz";
 import { useProgress } from "@/lib/course-progress";
 import { CourseShell, Btn, Panel, font, Ring } from "./ui";
-import { STAGE_META, StageRoad } from "./scenes";
+import { STAGE_META, StageRoad, JourneyMap } from "./scenes";
 
 const TYPE_ICON: Record<string, string> = { video: "▶", explainer: "✦", interactive: "⌘", action: "⚡", checkpoint: "◎" };
 
@@ -16,7 +16,7 @@ export default function Dashboard() {
   const stageKey = A["1.1"]?.stage || start.stage;
   const stage = STAGE_META.find((s) => s.key === stageKey);
   const path = start.path ? PATHS[start.path] : undefined;
-  const topDials: string[] = A["1.4"]?.top || [];
+  const topDials: string[] = A["1.5"]?.top || [];
   const verdict = A["1.2"]?.verdict;
   const next: Lesson | undefined = LESSONS.find((l) => moduleOf(l).built && !p.completed.includes(l.id));
   const days = daysUntil(start.date);
@@ -46,7 +46,13 @@ export default function Dashboard() {
             {!path && topDials.length > 0 && <Tag>Leaning · {PATHS[topDials[0]]?.icon} {PATHS[topDials[0]]?.label}</Tag>}
             {start.date && days !== null && <Tag>Target · {new Date(start.date + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })} ({days} days)</Tag>}
           </div>
-          {stage && <div style={{ marginTop: 18, background: "rgba(255,255,255,0.08)", borderRadius: 12, padding: "10px 12px" }}><StageRoad active={stage.n} compact /></div>}
+          <div style={{ marginTop: 18, background: "rgba(255,255,255,0.07)", borderRadius: 14, padding: "12px 8px 6px" }}>
+            <JourneyMap current={next?.module} stops={MODULES.map((m) => ({
+              n: m.n,
+              title: m.title,
+              pct: Math.round((m.lessons.filter((l) => p.completed.includes(l.id)).length / m.lessons.length) * 100),
+            }))} />
+          </div>
         </Panel>
 
         <Panel tone="soft" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
@@ -126,7 +132,7 @@ export default function Dashboard() {
           </Panel>
           <Panel style={{ marginBottom: 14 }}>
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>Included with the program</div>
-            {[["📄", "Companion workbook (Word)", "/course/transition-os-workbook.docx"], ["🃏", "20 path cards with sourced ranges", "https://slptransitions.com/alternative-careers-speech-pathologists-slps/"], ["🏢", "120 companies that hire former SLPs", "/companies"], ["📬", "This week's open roles by path", "/jobs"], ["🧰", "Career Pivot Suite ($24, included)", "/"], ["🧾", "Pivot Report ($9, included)", "/quiz"]].map(([i, t, h]) => (
+            {[["📄", "Companion workbook (Word)", "/course/transition-os-workbook.docx"], ["📇", "Outreach and application tracker", "/course/transition-os-tracker-README.md"], ["🃏", "20 path cards with sourced ranges", "https://slptransitions.com/alternative-careers-speech-pathologists-slps/"], ["🏢", "120 companies that hire former SLPs", "/companies"], ["📬", "This week's open roles by path", "/jobs"], ["🧰", "Career Pivot Suite ($24, included)", "/"], ["🧾", "Pivot Report ($9, included)", "/quiz"]].map(([i, t, h]) => (
               <a key={t} href={h} style={{ display: "flex", gap: 8, fontSize: 13, color: "var(--text)", textDecoration: "none", padding: "6px 0", lineHeight: 1.4 }}><span aria-hidden>{i}</span>{t}</a>
             ))}
           </Panel>

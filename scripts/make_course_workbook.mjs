@@ -89,7 +89,7 @@ children.push(
   ...fields([["Modules 0 and 1", "Ground: permission, the decision, the dials"], ["Module 2", "Explore: the paths, and three messages sent"], ["Module 3", "Translate: your words into theirs"], ["Module 4", "Test: proof, the bridge, the money"], ["Module 5", "Leap: interviews and the offer"], ["Module 6", "After: your story, and the next rung"]]),
   pageBreak(),
   kicker("Modules 0 and 1 in detail"),
-  ...fields([["0.1  Welcome", "What you want, in one line"], ["0.2  Your starting line", "Stage, income floor, date"], ["0.3  Three things I believed", "Which of the three you hold"], ["1.1  You're allowed to want out", "Your stage, your belief, your move"], ["1.2  Bad workplace, bad fit, bad season?", "Six questions and a verdict"], ["1.3  The sunk-cost audit", "Spent vs. still live"], ["1.4  What you're protecting", "Four dials, three paths"], ["1.5  The part you get to keep", "What goes with you"], ["1.6  Tell one person", "Who, when, what they said"], ["1.7  Checkpoint", "One sentence in pull language"]]),
+  ...fields([["0.1  Welcome", "What you want, in one line"], ["0.2  Your starting line", "Stage, income floor, date"], ["0.3  Three things I believed", "Which of the three you hold"], ["1.1  You're allowed to want out", "Your stage, your belief, your move"], ["1.2  Bad workplace, bad fit, bad season?", "Six questions and a verdict"], ["1.3  The sunk-cost audit", "Spent vs. still live"], ["1.4  What actually gave you energy", "Energisers and drainers"], ["1.5  What you're protecting", "Four dials, three paths"], ["1.6  The part you get to keep", "What goes with you"], ["1.7  Tell one person", "Who, when, what they said"], ["1.8  Checkpoint", "One sentence in pull language"]]),
   pageBreak(),
 );
 // ------------------------------------------------------------------- 0.1
@@ -168,10 +168,17 @@ children.push(
   ...callout("Sometimes a pay cut is worth sanity... and it may only be temporary anyway.", "r/SLPcareertransitions"),
   muted("Why the tuition feels refundable: Arkes and Blumer (1985) gave theatre-goers randomly discounted season tickets. The people who paid full price went to more plays, because of what they had already spent. The money was gone either way.", { before: 120 }),
   pageBreak(),
+  kicker("Module 1 · Lesson 4 · 8 min"), ...h1("What actually gave you energy", "Competence and energy are different things. This page is about the second one."),
+  muted("Work through your last month. For each task, mark whether it gave you energy or took it, and ignore whether you are good at it."),
+  ...fields([["Direct therapy sessions", "Gave  /  Took"], ["Evaluations and report writing", "Gave  /  Took"], ["IEP or care-plan meetings", "Gave  /  Took"], ["Progress notes and documentation", "Gave  /  Took"], ["Parent and family conversations", "Gave  /  Took"], ["Supervising CFs or students", "Gave  /  Took"], ["Training colleagues or staff", "Gave  /  Took"], ["Data collection and progress monitoring", "Gave  /  Took"], ["Choosing or trialling AAC and devices", "Gave  /  Took"], ["Learning a new system or platform", "Gave  /  Took"]]),
+  ...ask("Anything else that took up real time last month, and which column it belongs in.", 4),
+  ...ask("Now the harder question. Which of the draining ones are you actually good at? Those are the tasks a career quietly gets built on.", 4),
+  ...ask("Look at the two columns and name the pattern in your own words. Not \"working with people\", which is too vague. Working with whom, on what, under what conditions?", 5),
+  pageBreak(),
 );
 // ------------------------------------------------------------------- 1.4
 children.push(
-  kicker("Module 1 · Lesson 4 · 8 min"), ...h1("What you're protecting", "Four dials, five boxes each. Tick where you are this month, not where you'd like to be."),
+  kicker("Module 1 · Lesson 5 · 8 min"), ...h1("What you're protecting", "Four dials, five boxes each. Tick where you are this month, not where you'd like to be."),
   ...scale("Pay floor", ["I have runway", "A dip is fine for a while", "Roughly the same", "Must match now", "Must beat it"]),
   ...scale("Distance from clinical", ["Clean break", "Mostly out", "Adjacent", "Close to it", "Inside it"]),
   ...scale("Live people-time", ["As little as possible", "A few calls a day", "Half my day", "Most of my day", "Still love 1:1"]),
@@ -183,7 +190,7 @@ children.push(
 );
 // ------------------------------------------------------------------- 1.5
 children.push(
-  kicker("Module 1 · Lesson 5 · 5 min"), ...h1("The part you get to keep", "Caitlin, Lindsey and Bethany kept the thing they were good at. The title was the only casualty."),
+  kicker("Module 1 · Lesson 6 · 5 min"), ...h1("The part you get to keep", "Caitlin, Lindsey and Bethany kept the thing they were good at. The title was the only casualty."),
   ...ask("The part of the work you'd keep if you could keep only one thing. Explaining hard things simply? Holding a room to a plan? Reading the data? Building trust with skeptics? Be specific: a moment, a person, a session.", 5),
   ...ask("The part you wouldn't miss for a second.", 3),
   ...ask("Of the three stories, whose starting point looks most like yours, and what did they do in the first month?", 4, "Skip the last month. The last month is always the offer letter."),
@@ -193,7 +200,7 @@ children.push(
 );
 // ------------------------------------------------------------------- 1.6
 children.push(
-  kicker("Module 1 · Lesson 6 · 3 min"), ...h1("Tell one person", "The smallest possible disclosure. It costs less than the secret does."),
+  kicker("Module 1 · Lesson 7 · 3 min"), ...h1("Tell one person", "The smallest possible disclosure. It costs less than the secret does."),
   ...fields([["Who (someone who won't argue)", ""], ["When", ""], ["The sentence", "\"I'm looking at what else I could do with my SLP background.\""]]),
   ...ask("How it went. What they said, what your face did, what you felt an hour later.", 5),
   h2("If they push back"),
@@ -287,6 +294,16 @@ children.push(
 
 // ---------------------------------------------------------------- Module 6
 children.push(
+  pageBreak(),
+  kicker("Across Modules 2 to 5"), ...h1("The tracker", "Two conversations and a ratio. The spreadsheet does the arithmetic; this page is for the part it cannot hold."),
+  muted("Download the three-sheet tracker from the course dashboard and import it into Google Sheets or Notion. Use this page for the thinking behind the rows."),
+  h2("People"),
+  ...fields([["Who I am trying to reach, and why them", ""], ["Messages sent so far", ""], ["Replies", "About one in four gets no answer"], ["Conversations had", ""], ["Names I was given", "This column is where a network comes from"]]),
+  ...ask("The most useful thing anyone has told me so far, and what I did about it.", 4),
+  h2("Applications"),
+  ...fields([["Applications sent", ""], ["Screens", ""], ["Interviews", ""], ["Offers", ""], ["My ratio, so far", "113 to 7 to 1 is one documented transition"]]),
+  ...ask("Which stage is actually broken? Applications without screens is a résumé problem, screens without interviews is a bridge-statement problem, interviews without offers is usually a proof problem.", 5),
+  ...ask("What I am changing this week because of that.", 3),
   pageBreak(),
   kicker("Module 6 · After"), ...h1("Six months in", "Come back to this page when you are on the other side."),
   ...ask("What is different on a Tuesday now? Compare it with what you wrote on the very first page.", 5),

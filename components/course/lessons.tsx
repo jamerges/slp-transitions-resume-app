@@ -277,6 +277,148 @@ function Bars({ a, b, labelA, labelB }: { a: number; b: number; labelA: string; 
   return <div>{row(labelA, a, a >= b)}{row(labelB, b, b > a)}</div>;
 }
 
+
+/* ------------------------- 1.4a Energy audit ------------------------- */
+/* Adapted from the Jobs to Be Done work of Bob Moesta and Clayton Christensen,
+   and from Cliff Maxwell's energy-profile exercise. The SLP-specific task
+   prompts and the mapping onto our eleven paths are ours. */
+
+const SLP_TASKS = [
+  "Direct therapy sessions", "Evaluations and report writing", "IEP or care-plan meetings",
+  "Progress notes and documentation", "Parent and family conversations", "Supervising CFs or students",
+  "Training colleagues or staff", "Scheduling and caseload management", "Insurance, authorisations, appeals",
+  "Data collection and progress monitoring", "Choosing or trialling AAC and devices", "Materials and resource creation",
+  "Meetings with administrators", "Advocating for a client or a service", "Learning a new system or platform",
+];
+/* Which paths each task points at when it energises someone. Mirrors the
+   scoring weights in lib/quiz.ts rather than inventing a second system. */
+const TASK_PATHS: Record<string, string[]> = {
+  "Direct therapy sessions": ["clinical-educator", "customer-success"],
+  "Evaluations and report writing": ["research-coordinator", "liaison-ur", "data-analysis"],
+  "IEP or care-plan meetings": ["project-management", "leadership", "customer-success"],
+  "Progress notes and documentation": ["informatics", "liaison-ur"],
+  "Parent and family conversations": ["customer-success", "sales-bd", "clinical-educator"],
+  "Supervising CFs or students": ["clinical-educator", "instructional-design", "leadership"],
+  "Training colleagues or staff": ["clinical-educator", "instructional-design", "sales-bd"],
+  "Scheduling and caseload management": ["project-management", "leadership"],
+  "Insurance, authorisations, appeals": ["liaison-ur"],
+  "Data collection and progress monitoring": ["data-analysis", "research-coordinator", "informatics"],
+  "Choosing or trialling AAC and devices": ["sales-bd", "clinical-educator", "customer-success"],
+  "Materials and resource creation": ["instructional-design", "content-marketing"],
+  "Meetings with administrators": ["leadership", "project-management"],
+  "Advocating for a client or a service": ["sales-bd", "liaison-ur", "content-marketing"],
+  "Learning a new system or platform": ["informatics", "data-analysis", "instructional-design"],
+};
+
+type EnergyState = Record<string, "up" | "down" | undefined>;
+
+export function EnergyAudit({ answer, save, finish, done }: LessonProps) {
+  const [e, setE] = useState<EnergyState>(answer?.energy || {});
+  const [custom, setCustom] = useState<string[]>(answer?.custom || []);
+  const [draft, setDraft] = useState("");
+  const tasks = [...SLP_TASKS, ...custom];
+  const ups = tasks.filter((t) => e[t] === "up");
+  const downs = tasks.filter((t) => e[t] === "down");
+
+  const ranked = useMemo(() => {
+    const score: Record<string, number> = {};
+    for (const t of ups) for (const slug of TASK_PATHS[t] || []) score[slug] = (score[slug] || 0) + 1;
+    for (const t of downs) for (const slug of TASK_PATHS[t] || []) score[slug] = (score[slug] || 0) - 0.5;
+    return Object.entries(score).filter(([, n]) => n > 0).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([slug]) => slug);
+  }, [ups.join("|"), downs.join("|")]);
+
+  const set = (t: string, v: "up" | "down") => setE((prev) => ({ ...prev, [t]: prev[t] === v ? undefined : v }));
+
+  return (
+    <div>
+      <P>
+        You know your skills better than you know the conditions you need, because you have been too busy doing the
+        job to notice which parts of it you would happily do again on a Saturday. That is the thing worth knowing
+        before you choose a direction, and it is sitting in your last month of work.
+      </P>
+      <P>
+        Go through the list below and mark what gave you energy and what took it. Ignore whether you are good at it,
+        because competence and energy are different things, and plenty of careers get built on something a person does
+        well and quietly resents.
+      </P>
+      <Panel>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 8, marginBottom: 10 }}>
+          <H>Your last month of work</H>
+          <span style={{ fontSize: 13, color: "var(--muted)" }}>
+            <span style={{ color: "var(--accent)", fontWeight: 700 }}>{ups.length}</span> gave energy ·{" "}
+            <span style={{ color: "#92400E", fontWeight: 700 }}>{downs.length}</span> took it
+          </span>
+        </div>
+        {tasks.map((t) => {
+          const v = e[t];
+          return (
+            <div key={t} style={{ display: "flex", alignItems: "center", gap: 10, padding: "7px 0", borderTop: "1px solid var(--border)" }}>
+              <span style={{ flex: 1, fontSize: 14.5, color: v ? "var(--text)" : "var(--muted)" }}>{t}</span>
+              <button type="button" onClick={() => set(t, "up")} aria-label={`${t} gave me energy`}
+                style={{ padding: "5px 12px", borderRadius: 999, fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: font.sans,
+                  border: `1.5px solid ${v === "up" ? "var(--accent)" : "var(--border)"}`,
+                  background: v === "up" ? "var(--accent)" : "var(--card)", color: v === "up" ? "#fff" : "var(--muted)" }}>Gave energy</button>
+              <button type="button" onClick={() => set(t, "down")} aria-label={`${t} took energy`}
+                style={{ padding: "5px 12px", borderRadius: 999, fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: font.sans,
+                  border: `1.5px solid ${v === "down" ? "#DC6803" : "var(--border)"}`,
+                  background: v === "down" ? "var(--warn-bg)" : "var(--card)", color: v === "down" ? "#92400E" : "var(--muted)" }}>Took it</button>
+            </div>
+          );
+        })}
+        <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
+          <input value={draft} onChange={(ev) => setDraft(ev.target.value)} placeholder="Something else you spent time on"
+            style={{ flex: 1, padding: "9px 12px", fontSize: 14.5, border: "1px solid var(--border)", borderRadius: 8, fontFamily: font.sans }} />
+          <Btn outline onClick={() => { if (draft.trim()) { setCustom([...custom, draft.trim()]); setDraft(""); } }}>Add</Btn>
+        </div>
+      </Panel>
+
+      {(ups.length > 0 || downs.length > 0) && (
+        <div className="tos-rise" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginTop: 14 }}>
+          <Panel tone="soft">
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 8 }}>Gave you energy</div>
+            {ups.length ? ups.map((t) => <div key={t} style={{ fontSize: 14, lineHeight: 1.5, padding: "3px 0" }}>{t}</div>) : <Muted>Nothing marked yet.</Muted>}
+          </Panel>
+          <Panel tone="warm">
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "#92400E", marginBottom: 8 }}>Took it</div>
+            {downs.length ? downs.map((t) => <div key={t} style={{ fontSize: 14, lineHeight: 1.5, padding: "3px 0" }}>{t}</div>) : <Muted>Nothing marked yet.</Muted>}
+          </Panel>
+        </div>
+      )}
+
+      {ranked.length > 0 && (
+        <Panel className="tos-rise" style={{ marginTop: 14 }}>
+          <H>What that points at</H>
+          <Muted>
+            Paths whose day-to-day is built out of the work you marked as energising. This is a hint rather than an
+            answer, and the dials in the next section sharpen it.
+          </Muted>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            {ranked.map((slug) => { const pp = PATHS[slug]; return (
+              <span key={slug} style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "7px 12px", borderRadius: 999, background: "var(--accent-bg-subtle)", border: "1px solid var(--accent-bg)", fontSize: 13.5, fontWeight: 600 }}>
+                {pp.icon} {pp.label}
+              </span>); })}
+          </div>
+        </Panel>
+      )}
+
+      <Panel tone="soft" style={{ marginTop: 14 }}>
+        <H>One thing to notice</H>
+        <P style={{ margin: 0 }}>
+          If documentation drained you but the data itself did not, that is a different finding from disliking both,
+          and it points somewhere quite specific. The same goes for meetings: running one is a different job from
+          sitting in one, and the paths that reward each are not the same.
+        </P>
+      </Panel>
+
+      <div style={{ marginTop: 16, display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+        <Btn onClick={() => { save({ energy: e, custom, energyPaths: ranked }); if (!done) finish(); }} disabled={ups.length === 0}>Save my audit</Btn>
+        {done && <Saved />}
+        {ups.length === 0 && <span style={{ fontSize: 13, color: "var(--muted)" }}>Mark at least one thing that gave you energy.</span>}
+      </div>
+    </div>
+  );
+}
+
 /* -------------------------------- 1.4 Dials ------------------------------- */
 const DIALS: { key: keyof typeof DIAL_PROFILES[string]; label: string; left: string; right: string }[] = [
   { key: "pay", label: "Pay floor", left: "I have runway", right: "Must match SLP pay now" },
@@ -284,7 +426,8 @@ const DIALS: { key: keyof typeof DIAL_PROFILES[string]; label: string; left: str
   { key: "people", label: "Live people-time", left: "As little as possible", right: "Still love 1:1" },
   { key: "tech", label: "New tools and software", left: "Rather work with people", right: "Colleagues come to me" },
 ];
-export function Dials({ answer, save, finish, done }: LessonProps) {
+export function Dials({ answer, save, finish, done, all }: LessonProps & { all?: Record<string, any> }) {
+  const fromAudit: string[] = all?.["1.4"]?.energyPaths || [];
   const [v, setV] = useState<Record<string, number>>(answer?.dials || { pay: 70, clinical: 60, people: 60, tech: 50 });
   const ranked = useMemo(() => Object.entries(DIAL_PROFILES).map(([slug, prof]) => {
     const d = DIALS.reduce((s, x) => s + Math.abs(prof[x.key] - v[x.key] / 100), 0) / DIALS.length;
@@ -294,6 +437,15 @@ export function Dials({ answer, save, finish, done }: LessonProps) {
   return (
     <div>
       <P>Set these four where you actually are this month, not where you&rsquo;d like to be. The paths on the right reorder as you move them, and the three at the top are the ones worth reading first.</P>
+      {fromAudit.length > 0 && (
+        <Panel tone="soft" style={{ marginBottom: 14 }}>
+          <div style={{ fontSize: 13.5, lineHeight: 1.6 }}>
+            <b>Your energy audit pointed at {fromAudit.map((s2) => PATHS[s2]?.label).filter(Boolean).join(", ")}.</b> If the
+            dials disagree, that is worth sitting with, because the audit is built from what you actually did and the
+            dials are built from what you think you want.
+          </div>
+        </Panel>
+      )}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }} className="tos-two-col">
         <Panel>{DIALS.map((d) => <Slider key={d.key} label={d.label} left={d.left} right={d.right} value={v[d.key]} onChange={(n) => setV({ ...v, [d.key]: n })} />)}</Panel>
         <div>
@@ -386,7 +538,7 @@ const PULL = ["I want to work at the scale of a system instead of one room.", "I
 export function Checkpoint1({ answer, save, finish, done, all }: LessonProps & { all: Record<string, any> }) {
   const [why, setWhy] = useState<string>(answer?.why || "");
   const verdict = all["1.2"]?.verdict as Verdict | undefined;
-  const top: string[] = all["1.4"]?.top || [];
+  const top: string[] = all["1.5"]?.top || [];
   const stage = all["1.1"]?.stage || all["0.2"]?.stage;
   const push = /burn|exhaust|hate|can't|cannot|paperwork|productivity|toxic|miserable/i.test(why);
   return (
@@ -395,7 +547,7 @@ export function Checkpoint1({ answer, save, finish, done, all }: LessonProps & {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }} className="tos-two-col">
         <Stat label="Stage" value={stage ? STAGE_META.find((s) => s.key === stage)?.name || "Set" : "Not set"} ok={!!stage} href="/course/ground/1.1" />
         <Stat label="Verdict" value={verdict ? VERDICTS[verdict].title : "Not set"} ok={!!verdict} href="/course/ground/1.2" />
-        <Stat label="Top paths" value={top.length ? top.map((s) => PATHS[s]?.label).join(", ") : "Not set"} ok={top.length > 0} href="/course/ground/1.4" />
+        <Stat label="Top paths" value={top.length ? top.map((s) => PATHS[s]?.label).join(", ") : "Not set"} ok={top.length > 0} href="/course/ground/1.5" />
       </div>
       <Panel style={{ marginTop: 14 }}>
         <H>Why I&rsquo;m leaving, in pull language</H>

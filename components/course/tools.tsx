@@ -88,7 +88,7 @@ function PivotReport({ pathSlug }: ToolProps) {
 
 /* --------------------------- path deep-dive (2.7) --------------------------- */
 function PathDeepDive({ pathSlug, shared }: ToolProps) {
-  const candidates: string[] = pathSlug ? [pathSlug, ...(shared["1.4"]?.top || []).filter((s: string) => s !== pathSlug)].slice(0, 2) : (shared["1.4"]?.top || []).slice(0, 2);
+  const candidates: string[] = pathSlug ? [pathSlug, ...(shared["1.5"]?.top || []).filter((s: string) => s !== pathSlug)].slice(0, 2) : (shared["1.5"]?.top || []).slice(0, 2);
   const [slug, setSlug] = useState<string>(candidates[0] || "customer-success");
   const p = PATHS[slug];
   const roles = rolesFor(slug).slice(0, 8);
@@ -328,7 +328,7 @@ const ARTIFACTS: Record<string, { what: string; time: string; proves: string; wh
   "leadership": { what: "A staffing and coverage plan for your department for one difficult month, with the trade-offs named.", time: "2–3 hours", proves: "You already run the parts of the department nobody bills for.", where: "Share with your director as a conversation starter." },
 };
 function ArtifactMenu({ pathSlug, shared, setShared, finish, done }: ToolProps) {
-  const [slug, setSlug] = useState<string>(pathSlug || shared["1.4"]?.top?.[0] || "customer-success");
+  const [slug, setSlug] = useState<string>(pathSlug || shared["1.5"]?.top?.[0] || "customer-success");
   const a = ARTIFACTS[slug];
   const [link, setLink] = useState<string>(shared.artifact?.link || "");
   return (
@@ -384,7 +384,7 @@ function Runway({ shared, setShared }: ToolProps) {
 
 /* ---------------------------- bridge builder (5.2) ---------------------------- */
 function BridgeBuilder({ shared, setShared, pathSlug }: ToolProps) {
-  const pull = shared["1.7"]?.why || "";
+  const pull = shared["1.8"]?.why || "";
   const p = pathSlug ? PATHS[pathSlug] : undefined;
   const nums: Record<string, string> = shared.numbers || {};
   const [prep, setPrep] = useState<string>(shared.bridge?.prep || "");
@@ -395,7 +395,7 @@ function BridgeBuilder({ shared, setShared, pathSlug }: ToolProps) {
       <Panel style={{ marginBottom: 12 }}>
         <H>Three parts, sixty seconds</H>
         <Muted>Pull, preparation, proof. The pull comes from your checkpoint sentence. Fill the other two and the statement writes itself; then say it aloud until it stops sounding rehearsed.</Muted>
-        <div style={{ fontSize: 13.5, marginBottom: 8, padding: "8px 12px", background: "var(--bg)", borderRadius: 8 }}><b>Pull:</b> {pull || <span style={{ color: "var(--muted)" }}>set it in lesson 1.7</span>}</div>
+        <div style={{ fontSize: 13.5, marginBottom: 8, padding: "8px 12px", background: "var(--bg)", borderRadius: 8 }}><b>Pull:</b> {pull || <span style={{ color: "var(--muted)" }}>set it in lesson 1.8</span>}</div>
         <label style={{ fontSize: 13, fontWeight: 600 }}>Preparation (what you've done to get ready)</label>
         <input value={prep} onChange={(e) => setPrep(e.target.value)} placeholder="I rebuilt a training as a Rise module and talked to three people doing the job" style={{ ...input, marginBottom: 10 }} />
         <label style={{ fontSize: 13, fontWeight: 600 }}>Proof (one accomplishment with a number)</label>
@@ -433,7 +433,7 @@ function ScreeningQuestions() {
 /* ----------------------------- mock interview (5.4) ----------------------------- */
 interface Turn { role: "coach" | "you"; text: string }
 function MockInterview({ pathSlug, shared, finish, done }: ToolProps) {
-  const p = pathSlug ? PATHS[pathSlug] : PATHS[shared["1.4"]?.top?.[0] || "customer-success"];
+  const p = pathSlug ? PATHS[pathSlug] : PATHS[shared["1.5"]?.top?.[0] || "customer-success"];
   const [turns, setTurns] = useState<Turn[]>([]);
   const [draft, setDraft] = useState("");
   const [busy, setBusy] = useState(false);
@@ -443,7 +443,7 @@ function MockInterview({ pathSlug, shared, finish, done }: ToolProps) {
     const next = answer ? [...turns, { role: "you" as const, text: answer }] : turns;
     setTurns(next); setDraft("");
     try {
-      const r = await fetch("/api/course/coach", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: p.slug, pull: shared["1.7"]?.why || "", turns: next.slice(-8) }) });
+      const r = await fetch("/api/course/coach", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: p.slug, pull: shared["1.8"]?.why || "", turns: next.slice(-8) }) });
       const d = await r.json();
       if (!r.ok) throw new Error(d.error || "The coach is busy. Try again in a minute.");
       setTurns([...next, { role: "coach", text: d.text }]);

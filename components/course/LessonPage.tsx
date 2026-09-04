@@ -12,7 +12,7 @@ import * as L from "./lessons";
 // <Blocks>. Both paths get the same chrome, progress and navigation.
 const COMPONENTS: Record<string, any> = {
   Welcome: L.Welcome, StartingLine: L.StartingLine, ThreeLies: L.ThreeLies, FiveStages: L.FiveStages,
-  DecisionTree: L.DecisionTree, SunkCost: L.SunkCost, Dials: L.Dials, Identity: L.Identity, TellOne: L.TellOne, Checkpoint1: L.Checkpoint1,
+  DecisionTree: L.DecisionTree, EnergyAudit: L.EnergyAudit, SunkCost: L.SunkCost, Dials: L.Dials, Identity: L.Identity, TellOne: L.TellOne, Checkpoint1: L.Checkpoint1,
 };
 const TYPE_ICON: Record<Lesson["type"], string> = { video: "▶", explainer: "✦", interactive: "⌘", action: "⚡", checkpoint: "◎" };
 
@@ -41,7 +41,7 @@ export default function LessonPage({ id }: { id: string }) {
   const done = p.completed.includes(id);
   const idx = mod.lessons.findIndex((l) => l.id === id);
   const answers = p.answers as Record<string, any>;
-  const pathSlug: string | undefined = answers["0.2"]?.path || answers["1.4"]?.top?.[0];
+  const pathSlug: string | undefined = answers["0.2"]?.path || answers["1.5"]?.top?.[0];
 
   const finish = useCallback((opts?: { action?: boolean }) => {
     const u = complete(id, opts);
