@@ -26,11 +26,11 @@ export default function Dashboard() {
         <Panel style={{ background: "linear-gradient(160deg, #0A3D31 0%, #0B6B54 100%)", color: "#fff", border: "none", padding: "clamp(20px, 4vw, 32px)" }}>
           <div style={{ fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", opacity: 0.8 }}>Your 90-day map</div>
           <h1 style={{ fontFamily: font.serif, fontSize: "clamp(26px, 4vw, 38px)", fontWeight: 700, lineHeight: 1.12, margin: "6px 0 10px" }}>
-            {!ready ? "" : !p.startedAt ? "Welcome. Fifteen minutes sets the map." : days !== null ? `${days} days to your target date.` : "Your map is set."}
+            {!ready ? "" : !p.startedAt ? "Start here. It takes about as long as one progress note." : days !== null ? `${days} days to your target date.` : "Your map is set."}
           </h1>
           <div style={{ fontSize: 15, lineHeight: 1.6, opacity: 0.92, maxWidth: 560 }}>
             {stage ? <>{stage.n === 1 ? "You don't have to tell anyone yet. Looking is allowed." : stage.n === 2 ? "Wanting out doesn't undo the good you did, and it doesn't waste the degree." : stage.n === 3 ? "It is possible. The stories are in Module 1, lesson 5." : stage.n === 4 ? "Start with one path, not all twenty." : "Skip the reading. Your résumé is the bottleneck, and that's fixable this week."}</>
-                   : "Set your stage, your income floor and a target date. Everything after that is built around them."}
+                   : "Tell it where you are, what you can't afford to lose, and when you want to be out. Everything after that bends around those three."}
           </div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 16 }}>
             {stage && <Tag>Stage {stage.n}: {stage.name}</Tag>}
@@ -50,7 +50,7 @@ export default function Dashboard() {
                 <div style={{ fontSize: 13, color: "var(--muted)" }}>Module {next.module} · {next.minutes} min · {next.type}</div>
                 <p style={{ fontSize: 14, lineHeight: 1.55, margin: "10px 0 14px" }}>{next.summary}</p>
               </>
-            ) : <div style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 700, margin: "6px 0 14px" }}>Modules 0 and 1 complete.</div>}
+            ) : <div style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 700, margin: "6px 0 14px" }}>That&rsquo;s Modules 0 and 1. Explore is next, once James signs off on this sample.</div>}
           </div>
           {next && <Btn href={`/course/${moduleOf(next).slug}/${next.id}`} style={{ width: "100%", textAlign: "center" }}>{p.startedAt ? "Continue →" : "Start →"}</Btn>}
         </Panel>

@@ -108,3 +108,15 @@ Workbook (DOCX and PDF, one section per module) · 20 path cards with sourced ra
 4. Video: you on camera, your voice over animation, or a mix (my recommendation: on camera for 0.1, 1.1, 1.5, 5.7; voice over animation for the rest).
 5. The monthly live Q&A: in or out for launch.
 6. Anything in the modules you'd cut, add, or reorder.
+
+## Research changes (2026-09-04, from content/voc-2026-09-forums.md, 101 threads)
+- **Lead with permission.** The buyer's first question is "am I allowed to want out?", and the answer has to come from someone who has clearly been an SLP. Module 1 stays first; the sample now carries one verbatim forum quote per stage.
+- **Name the settings experiment.** "Have you tried a different setting" is the reply every exit thread gets. Lesson 1.2 now says so and treats a third setting change as data.
+- **Money in the syllabus.** Loans and PSLF timing, the pay-cut budget, COBRA, and when to drop the C's are the loudest unmet need in the corpus. Lesson 4.5 grows into two lessons: "The loan is a calendar" (PSLF count, qualifying employers, timing the exit) and "The bridge budget" (pay cut, COBRA, the first pivot role's pay). Research before writing.
+- **The artifact people beg for is a real before-and-after résumé.** A sample rewritten résumé draws more replies than any salary figure. Lesson 3.5 must show one, line by line, before the Suite builds theirs.
+- **Salary parity goes in the first line of the promise.** It is the number-one priority in the only large quantitative sample in the corpus (about 4,000 PT/OT/SLP quiz respondents at The Non-Clinical PT) and the loudest UK complaint.
+- **Three moves that need no new degree or certificate**, shown early: liaison, utilization review, clinical educator. "I can't retrain" kills the sale before price does.
+- **Pricing, honestly.** Stage-3/4 readers say they won't pay $400+ to be pointed somewhere; $9 to $129 is bought on trust plus a 30-day refund; $399 to $599 is bought with buy-now-pay-later after reading reviews; four-digit coaching only after "a hard conversation" with a spouse. So: the $9 report and $24 suite stay as the entry rungs, the course sells to stage 4/5, the checkout offers instalments, and the 30-day refund sits on the button. The $497 list holds; expect most sales at the $297 launch price and from people who already bought the $24 product.
+- **Give them a two-sentence reply** to "you're making the shortage worse" and "just change settings". Lesson 1.6 now has both.
+- **Distribution:** r/SLPcareertransitions and the teacher-transition Facebook groups hold the stage-4 readers; r/slp bans promotion; LinkedIn carries no SLP reader voice. Testimonials and DM-style Q&A will outperform ads.
+- **Use their numbers in the copy:** 85–95% productivity, caseloads of 75 to 186, 14 sessions a day, $200k loans, 500 applications, 15 months.

@@ -6,11 +6,16 @@ import { Big, Sub, Kicker, Strike, type Scene } from "./Explainer";
 import { font } from "./ui";
 
 export const STAGE_META = [
-  { key: "private", n: 1, name: "Private doubt", belief: "Looking means deciding.", truth: "Looking is research. Nobody charges you for it.", move: "Work out which problem you have: bad workplace, bad fit, or bad season." },
-  { key: "guilt", n: 2, name: "Guilt and identity", belief: "Leaving wastes the degree.", truth: "Every path on the map runs on the degree.", move: "Read the five fears so they stop running things from the back seat." },
-  { key: "permission", n: 3, name: "Permission-seeking", belief: "It works for other people, not me.", truth: "Jeannette, Rachel and Mattie had no shortcut you don't have.", move: "Pick one story with your starting point. Copy its first month." },
-  { key: "panic", n: 4, name: "Practical panic", belief: "I'd have to start over at the bottom.", truth: "Liaison $84k–$135k. Customer success $75k–$120k. Day one.", move: "Stop reading all twenty paths. Pick one." },
-  { key: "action", n: 5, name: "Action", belief: "If I were good enough, I'd get callbacks.", truth: "You're sorted by vocabulary in seven seconds, long before ability.", move: "Fix the résumé before the next application." },
+  { key: "private", n: 1, name: "Private doubt", belief: "Looking means deciding.", truth: "Looking is research. Nobody charges you for it.", move: "Work out which problem you have: bad workplace, bad fit, or bad season.",
+    voice: "Maybe it's just a problem with my brain and not the job.", from: "a school SLP, r/slp" },
+  { key: "guilt", n: 2, name: "Guilt and identity", belief: "Leaving wastes the degree.", truth: "The degree is a backup plan, not a sunk cost. Every path on the map runs on it.", move: "Read the five fears so they stop running things from the back seat.",
+    voice: "One thing I'm struggling with the most is the feeling that I'm \u2018throwing away\u2019 my degree.", from: "r/SLPcareertransitions" },
+  { key: "permission", n: 3, name: "Permission-seeking", belief: "It works for other people, not me.", truth: "Jeannette, Rachel and Mattie had no shortcut you don't have.", move: "Pick one story with your starting point. Copy its first month.",
+    voice: "Has anyone left the field and regretted it?", from: "r/slp, one of the most-replied threads of the year" },
+  { key: "panic", n: 4, name: "Practical panic", belief: "I'd have to start over at the bottom.", truth: "Liaison $84k\u2013$135k. Customer success $75k\u2013$120k. Day one.", move: "Stop reading all twenty paths. Pick one.",
+    voice: "I feel dumb when I look at other jobs. I have no idea how anything works outside of speech.", from: "r/SLPcareertransitions" },
+  { key: "action", n: 5, name: "Action", belief: "If I were good enough, I'd get callbacks.", truth: "You're sorted by vocabulary in seven seconds, long before ability.", move: "Fix the r\u00e9sum\u00e9 before the next application.",
+    voice: "I applied to more than 500 jobs. I built a portfolio, earned certifications, rewrote my resume and cover letters dozens of times.", from: "r/SLPcareertransitions" },
 ];
 
 /** The road with five stops. `active` lights one; the line draws in on first paint. */
@@ -41,7 +46,7 @@ export const fiveStagesScenes: Scene[] = [
     render: () => (<><Kicker>The road</Kicker><StageRoad active={0} /><Sub delay={900}>How long you sit in each one usually comes down to a single belief you never checked.</Sub></>) },
   ...STAGE_META.map((s, i): Scene => ({
     id: s.key, ms: 7600,
-    caption: `Stage ${s.n}: ${s.name}. The belief: "${s.belief}" The move: ${s.move}`,
+    caption: `Stage ${s.n}: ${s.name}. In their words: "${s.voice}" The belief underneath: "${s.belief}" The move: ${s.move}`,
     render: () => (
       <>
         <StageRoad active={s.n} compact />
@@ -57,11 +62,14 @@ export const fiveStagesScenes: Scene[] = [
             <div className="tos-rise" style={{ animationDelay: "4200ms", marginTop: 10, padding: "8px 12px", background: "var(--card)", border: "1px solid var(--accent-bg)", borderRadius: 10 }}><b>The move:</b> {s.move}</div>
           </div>
         </div>
+        <div className="tos-fade" style={{ animationDelay: "1400ms", marginTop: 10, fontSize: "clamp(12px, 1.6vw, 14px)", color: "var(--muted)", fontStyle: "italic", maxWidth: 640 }}>
+          &ldquo;{s.voice}&rdquo; <span style={{ fontStyle: "normal" }}>&middot; {s.from}</span>
+        </div>
       </>
     ),
   })),
-  { id: "close", ms: 6000, caption: "Nothing in the five stages asks you to become someone else. Your title changes. The competence doesn't.",
-    render: () => (<><Kicker>Still you</Kicker><Big>Your title changes. The competence doesn&rsquo;t.</Big><Sub>The person who explains a diagnosis to a frightened parent and tracks outcomes on sixty people at once is the person every one of these roles is hiring.</Sub></>) },
+  { id: "close", ms: 6000, caption: "Nothing in the five stages asks you to become someone else. The title changes. The competence goes with you.",
+    render: () => (<><Kicker>Still you</Kicker><Big>The title changes. The competence goes with you.</Big><Sub>The person who explains a diagnosis to a frightened parent and tracks outcomes on sixty people at once is the person every one of these roles is hiring.</Sub></>) },
 ];
 
 const LIES = [
@@ -76,8 +84,8 @@ const GUARDRAILS = [
 ];
 
 export const threeLiesScenes: Scene[] = [
-  { id: "open", ms: 4200, caption: "Three beliefs stall almost everyone. All three are wrong, and the internet keeps repeating three facts that are wrong too.",
-    render: () => (<><Kicker>Module 0 · Lesson 3</Kicker><Big>Three lies. Three guardrails.</Big><Sub>Sixty seconds each.</Sub></>) },
+  { id: "open", ms: 4200, caption: "Three things I believed when I wanted out. All three were wrong, and the advice threads repeat three facts that are wrong too.",
+    render: () => (<><Kicker>Module 0 · Lesson 3</Kicker><Big>Three things I believed. Three things the forums get wrong.</Big><Sub>About a minute each. I held all three of the first kind.</Sub></>) },
   ...LIES.map((l, i): Scene => ({
     id: `lie${i}`, ms: 6400, caption: `Lie ${i + 1}: "${l.lie}" ${l.truth}`,
     render: () => (<><Kicker>Lie {i + 1} of 3</Kicker><Big><Strike delay={1600}>{l.lie}</Strike></Big><Sub delay={2400}>{l.truth}</Sub></>),
@@ -96,5 +104,5 @@ export const threeLiesScenes: Scene[] = [
     ),
   })),
   { id: "close", ms: 4200, caption: "That's the whole rulebook. Everything else in the program is specific to you.",
-    render: () => (<><Kicker>Done</Kicker><Big>That&rsquo;s the rulebook.</Big><Sub>Everything from here is specific to you.</Sub></>) },
+    render: () => (<><Kicker>Done</Kicker><Big>That&rsquo;s the whole rulebook.</Big><Sub>Everything from here is about you, not SLPs in general.</Sub></>) },
 ];

@@ -92,8 +92,8 @@ James
 
 ---
 
-## E4 · day 7 · "Managed a caseload of 62" vs. "managed a portfolio of 62 accounts"
-**Subject:** Same job. Different words. Only one gets interviews.
+## E4 · day 7 · "Managed a caseload of 62" and the seven seconds a recruiter gives it
+**Subject:** "Managed a caseload of 62" and the seven seconds a recruiter gives it
 **Preview:** Your résumé is being read in the wrong dictionary.
 
 Hi {$name|default(there)},

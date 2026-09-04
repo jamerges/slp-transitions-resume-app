@@ -14,6 +14,11 @@ export interface LessonProps { answer: any; save: (v: any) => void; finish: (opt
 const H = ({ children }: { children: ReactNode }) => <h3 style={{ fontFamily: font.serif, fontSize: 21, fontWeight: 700, margin: "0 0 10px" }}>{children}</h3>;
 const P = ({ children, style = {} }: { children: ReactNode; style?: any }) => <p style={{ fontSize: 15, lineHeight: 1.65, color: "var(--text)", margin: "0 0 14px", ...style }}>{children}</p>;
 const Muted = ({ children }: { children: ReactNode }) => <p style={{ fontSize: 13, lineHeight: 1.6, color: "var(--muted)", margin: "0 0 12px" }}>{children}</p>;
+const Quote = ({ text, from }: { text: string; from: string }) => (
+  <blockquote style={{ margin: "0 0 14px", padding: "10px 14px", borderLeft: "3px solid var(--accent)", background: "var(--accent-bg-subtle)", borderRadius: "0 10px 10px 0", fontSize: 15, lineHeight: 1.55 }}>
+    <span style={{ fontStyle: "italic" }}>&ldquo;{text}&rdquo;</span> <span style={{ fontSize: 12, color: "var(--muted)" }}>&middot; {from}</span>
+  </blockquote>
+);
 const money = (n: number) => "$" + Math.round(n).toLocaleString("en-US");
 const rangeMid = (s: string) => { const m = s.replace(/,/g, "").match(/\d+/g)?.map(Number) || []; return m.length >= 2 ? (m[0] + m[1]) / 2 : m[0] || 0; };
 
@@ -135,7 +140,7 @@ const QS: { q: string; yes: Partial<Record<Verdict, number>>; no: Partial<Record
   { q: "Is the thing draining you a specific person, a specific building, or a specific productivity number?", yes: { workplace: 2 }, no: { fit: 1 } },
 ];
 const VERDICTS: Record<Verdict, { title: string; body: string; next: string }> = {
-  workplace: { title: "Bad workplace", body: "The profession might be fine and your setting is not. The thing draining you is a specific administrator, building or productivity requirement. That is a job problem, and the boring truth is that changing the conditions first is faster than changing careers, and it protects you from trading one burnout for a new-field version of the same burnout.", next: "Change the conditions first: setting, hours, employer. Keep this program as the plan behind the plan. If the feeling follows you to the new setting, come back to this lesson; the verdict will have changed." },
+  workplace: { title: "Bad workplace", body: "The profession might be fine and your setting is not. The thing draining you is a specific administrator, building or productivity requirement. That is a job problem, and the boring truth is that changing the conditions first is faster than changing careers, and it protects you from trading one burnout for a new-field version of the same burnout.", next: "Change the conditions first: setting, hours, employer. Keep this program as the plan behind the plan. One transitioner's version, from the forums: change settings as you leave the field, not instead of leaving it. If the feeling follows you to the new setting, come back to this lesson; the verdict will have changed." },
   fit: { title: "Bad fit", body: "The conditions could be perfect and you'd still feel it. The sessions drain you. You're more interested in the data, the training, the coordination and the technology around the therapy than in the therapy. You may have switched settings already and watched the feeling follow you. That's your interests talking, and they don't usually stop.", next: "Continue. Modules 2 to 5 are built for exactly this verdict. Your first move is the sunk-cost audit, next lesson, so the money question stops running the decision from the background." },
   season: { title: "Bad season", body: "Life outside work is taking everything you've got, and any job would feel impossible right now. This deserves real caution: burnt-out brains struggle with executive function, and planning a career change is one of the most executive-function-heavy things you can do.", next: "Survive the season first. Reduce hours if you can. Lower the bar. The program will hold your place; nothing expires. Make the big decision with a brain that can make it, and rerun this lesson then." },
 };
@@ -154,6 +159,8 @@ export function DecisionTree({ answer, save, finish, done }: LessonProps) {
   return (
     <div>
       <P>&ldquo;I want to quit&rdquo; is three different problems wearing the same trench coat. Six questions sort out which one you have. There are no wrong answers, and the verdict can change next month.</P>
+      <Quote text="I've worked in several settings so can't imagine a setting change is the answer. It's all the same story, different font." from="a school SLP, r/slp" />
+      <P>If that's you, question two is the one that matters. Changing settings is the advice every exit thread gets, usually from people who haven't run the experiment. Having run it three times is data.</P>
       {QS.map((q, i) => (
         <Panel key={i} style={{ marginBottom: 10, padding: 16 }}>
           <div style={{ display: "flex", gap: 12, alignItems: "flex-start", flexWrap: "wrap" }}>
@@ -219,7 +226,7 @@ export function SunkCost({ answer, save, finish, done }: LessonProps) {
           <label style={{ fontSize: 13, fontWeight: 600 }}>Years in the field</label>{num(years, setYears, 1)}
           <div style={{ height: 10 }} />
           <label style={{ fontSize: 13, fontWeight: 600 }}>Student debt remaining ($)</label>{num(debt, setDebt)}
-          <Muted>More than two-thirds of CSD master&rsquo;s students graduate with unpaid debt; the most common band is $10,000 to $50,000 (ASHA, 2024). The balance is the same on both sides of this page. If you&rsquo;re on PSLF or income-driven repayment, Module 4 covers what changes before you decide anything.</Muted>
+          <Muted>More than two-thirds of CSD master&rsquo;s students graduate with unpaid debt; the most common band is $10,000 to $50,000 (ASHA, 2024). The balance is the same on both sides of this page. If you&rsquo;re on PSLF or income-driven repayment, the loan is a calendar, not a leash: Module 4 covers the 120-payment count, what employers qualify, and how people time the exit. Nothing on the market covers this, and the forums ask for it more than anything except a sample r&eacute;sum&eacute;.</Muted>
         </Panel>
         <Panel>
           <H>Still live</H>
@@ -240,6 +247,12 @@ export function SunkCost({ answer, save, finish, done }: LessonProps) {
           {diff >= 0 ? <><b style={{ color: "var(--accent)" }}>{money(diff)} more</b> over ten years, using the middle of the documented range and a {months}-month move.</> : <><b style={{ color: "#92400E" }}>{money(-diff)} less</b> over ten years at the middle of that range. On this path the pay cut is the expected outcome; treat it as a first step, not a destination.</>}
         </div>
         <Muted>These are your inputs against documented ranges, not a forecast. The range for {p.label} is {p.range}; the typical move takes {p.timeline}. {p.caveat}</Muted>
+      </Panel>
+      <Panel style={{ marginTop: 14 }}>
+        <H>What the people who left say about the money</H>
+        <Quote text="Sometimes a pay cut is worth sanity... and it may only be temporary anyway." from="r/SLPcareertransitions" />
+        <Quote text="I make 10k more than I did as an SLP." from="r/slp, a former SLP now in tech" />
+        <P style={{ margin: 0 }}>Across the forum threads, the people who took a cut describe it as temporary, and the ones who earn more (an Epic analyst up $10k, a data analyst up $20k base) are the commenters everyone asks questions of. The reframe that gets the most nods is the one you can use tonight: the degree isn&rsquo;t a sunk cost, it&rsquo;s a backup plan. One poster called the C&rsquo;s a fishing licence.</P>
       </Panel>
       <Panel tone="warm" style={{ marginTop: 14 }}>
         <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "#92400E", marginBottom: 6 }}>Why the tuition feels refundable</div>
@@ -316,6 +329,8 @@ export function Identity({ finish, done }: LessonProps) {
         <H>Script</H>
         <P>Every SLP I&rsquo;ve interviewed who left kept something. Not the title. The part of the work that was actually them. Explaining hard things simply. Holding a room of people to a plan they didn&rsquo;t want. Reading a page of data and knowing what to do next. Those went with them, and in every case they turned out to be the thing they were hired for.</P>
         <P>Here are three, thirty seconds each. Watch for what each of them kept.</P>
+        <Quote text="I've taken a long time to grieve the loss of who I was in my previous role." from="a comment on a former SLP's essay about leaving" />
+        <P style={{ margin: 0 }}>Grief is the right word, and it&rsquo;s the word the people who left use most. One of them called leaving a completion rather than a failure. You chose this field at 22, before you knew yourself. Finishing it is allowed.</P>
       </Panel>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginTop: 14 }} className="tos-two-col">
         {STORIES.map((s, i) => (
@@ -349,6 +364,14 @@ export function TellOne({ answer, save, finish, done }: LessonProps) {
         <H>The sentence</H>
         <div style={{ fontFamily: font.serif, fontSize: 22, lineHeight: 1.35 }}>&ldquo;I&rsquo;m looking at what else I could do with my SLP background.&rdquo;</div>
         <Muted>No plan. No date. No defence. If they ask what, say &ldquo;I don&rsquo;t know yet, I&rsquo;m finding out.&rdquo; That answer is true and it ends the conversation on your terms.</Muted>
+      </Panel>
+      <Panel style={{ marginTop: 14 }}>
+        <H>If they push back</H>
+        <Muted>Two replies show up in every forum thread about leaving, and you&rsquo;ll hear both eventually. Have the answer ready so it doesn&rsquo;t cost you anything.</Muted>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }} className="tos-two-col">
+          <div style={{ padding: 12, borderRadius: 10, background: "var(--bg)", border: "1px solid var(--border)", fontSize: 14, lineHeight: 1.5 }}><b>&ldquo;Have you tried a different setting?&rdquo;</b><br />&ldquo;Twice. The feeling came with me. I&rsquo;m looking at the work itself now.&rdquo;</div>
+          <div style={{ padding: 12, borderRadius: 10, background: "var(--bg)", border: "1px solid var(--border)", fontSize: 14, lineHeight: 1.5 }}><b>&ldquo;There&rsquo;s a shortage. This makes it worse.&rdquo;</b><br />&ldquo;A burnt-out clinician isn&rsquo;t a gift to the kids. They deserve someone who wants to be in the room.&rdquo;</div>
+        </div>
       </Panel>
       {!done ? <Btn onClick={() => { save({ who }); finish({ action: true }); }} style={{ marginTop: 16 }} disabled={!who}>I told someone ✓</Btn>
              : <div style={{ marginTop: 16, color: "var(--accent)", fontWeight: 600 }}>Done. That was the hardest sentence in the program.</div>}
