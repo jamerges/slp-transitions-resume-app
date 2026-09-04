@@ -300,7 +300,7 @@ def build():
     # *employed* ranges - working for yourself has no equivalent number.
     # 188 stays exact because it is an exact count of the companies list.
     for n, l in [("188", "companies that hire former SLPs"),
-                 ("13+", "non-clinical paths documented"),
+                 ("20", "non-clinical paths documented"),
                  ("$154k+", "top of the documented salary ranges")]:
         a(f'<article class="slp-proof-card slp-rv"><span class="slp-proof-n">{n}</span>'
           f'<span class="slp-proof-l">{l}</span></article>')
@@ -313,7 +313,7 @@ def build():
     a('<a class="slp-pillar slp-rv" href="'
       f'{SITE}/alternative-careers-speech-pathologists-slps/">'
       '<div class="slp-pillar-body">'
-      '<h2>Compare 13 paths in one place.</h2>'
+      '<h2>Compare 20 paths in one place.</h2>'
       '<p>Non-clinical roles SLPs actually move into, each with documented salary '
       'ranges, timelines, and how to translate your skills.</p>'
       '</div>'

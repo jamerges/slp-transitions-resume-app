@@ -22,6 +22,8 @@ export const QUIZ_PATH_GROUPS: Record<string, string> = {
   "Content Strategy / Marketing": "194651291552581188",
   "Clinical Educator / Trainer": "194651292277147519",
   "Clinical Research / Coordination": "195898576395569072",
+  "Sales / Business Development": "197641341495150463",
+  "Operations": "197641341875783580",              // Rehab Management / Leadership
 };
 
 export const CUSTOMER_GROUPS = {

@@ -1,4 +1,4 @@
-// The weekly job snapshot, read by /jobs, the nine /jobs/<path> pages, and the
+// The weekly job snapshot, read by /jobs, the /jobs/<path> pages, and the
 // sitemap. scripts/job_digest.py writes open-roles.json; nothing here should
 // reach past that file for job data.
 

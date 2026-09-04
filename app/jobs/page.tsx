@@ -49,9 +49,9 @@ export default function JobsPage() {
         data={collectionLd({
           url: URL,
           name: "Open non-clinical roles for SLPs",
-          description: `${ROLES.length} openings at ${companyCount()} companies that hire speech-language pathologists into non-clinical work, grouped by nine career paths.`,
+          description: `${ROLES.length} openings at ${companyCount()} companies that hire speech-language pathologists into non-clinical work, grouped by ${PATH_LIST.length} career paths.`,
           modified: GENERATED_AT,
-          // The hub points at the nine path pages rather than the individual
+          // The hub points at the path pages rather than the individual
           // roles; each of those carries its own ItemList of openings.
           items: PATH_LIST.map((p) => ({
             name: `${p.label} jobs for former SLPs`,
@@ -129,7 +129,7 @@ export default function JobsPage() {
           <a href="/quiz" style={{ color: "var(--accent)" }}>
             two-minute quiz
           </a>{" "}
-          matches you against nine documented paths, with real salary ranges and
+          matches you against {PATH_LIST.length} documented paths, with real salary ranges and
           honest timelines.
         </p>
 

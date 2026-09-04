@@ -151,3 +151,10 @@ Slugs are in the table above. `/quiz` already has copy for `customer-success`, `
 
 1. **Add email capture before the result** if it isn't there already — quiz takers are the warmest possible list, and the current export has no email column.
 2. **The 27 people who dropped after Q1** are the only leak. If Q1 becomes the "what have you done" multi-select, it'll feel more substantial and may hold them.
+
+
+## 2026-09-03: two paths added (11 total)
+- `sales-bd` — Medical / Device Sales & BD → roleOption "Sales / Business Development", MailerLite group 197641341495150463. Scores on: AAC/device experience, "winning someone over", trusted-expert regret, pay-floor, people-as-accounts, clinical proximity. Negative on "as little people-time as possible".
+- `leadership` — Rehab Management / Leadership → roleOption "Operations", MailerLite group 197641341875783580. Scores on: supervised/trained, built a program, order-from-chaos, new regret option "Leading a team or running a department", pay-floor, stay-close-to-clinical. Negative on clean break and low people-time.
+- Ceilings after tuning: all paths 18–22 (computed from source, see the ceiling script in the 2026-09-03 session or recompute by parsing `scores` per option: multi questions sum positives, single questions take the max).
+- job_digest.py PATHS mirror gained matching keyword lists; /jobs/<slug> pages appear once open-roles.json is regenerated.

@@ -237,7 +237,7 @@ export default async function PathPage({
         }}
       >
         <p style={{ ...S.p, marginBottom: 10 }}>
-          Not sure this is the right one of the nine?{" "}
+          Not sure this is the right one of the {PATH_LIST.length}?{" "}
           <a href="/quiz" style={{ color: "var(--accent)" }}>
             The two-minute quiz
           </a>{" "}

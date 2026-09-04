@@ -12,7 +12,7 @@ Output is deliberately two shapes:
   * the full list grouped by career path, to paste into a standalone email
   * a short "Jobs of the week" block, to drop into any ongoing email
 
-Roles are only included if they classify into one of the nine quiz paths.
+Roles are only included if they classify into one of the eleven quiz paths.
 That include-by-keyword rule keeps the list short and honest: a false negative
 costs a reader nothing, a padded list costs them trust.
 
@@ -63,6 +63,15 @@ PATHS = {
         "clinical educator", "clinical education", "clinical specialist",
         "clinical trainer", "field trainer", "clinical consultant",
         "clinical account", "clinical engagement", "trainer"]),
+    "sales-bd": ("Medical / Device Sales & BD", [
+        "clinical specialist", "clinical application specialist", "clinical sales",
+        "territory manager", "account executive", "business development",
+        "sales representative", "sales specialist", "regional sales"]),
+    "leadership": ("Rehab Management / Leadership", [
+        "director of rehab", "rehab director", "rehabilitation director",
+        "rehab manager", "rehabilitation manager", "therapy manager",
+        "director of therapy", "clinical manager", "program manager",
+        "clinical supervisor", "lead speech"]),
     "project-management": ("Project / Program Management", [
         "project manager", "program manager", "project coordinator",
         "program coordinator", "implementation manager", "delivery manager"]),
