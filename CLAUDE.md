@@ -133,3 +133,9 @@ Owner: James Berges (jamoberges@gmail.com) — SLP → growth marketer; hosts th
 
 ## Writer kit (James, 2026-09-04)
 - `content/writer-kit/` holds James's own voice, style, audience, examples and anti-slop references (from his compound-writing workspace). **Every headline, lesson title, email subject and article in his voice follows it**, on top of style-guide.md 8a/8b. Short version: curious not authoritative ("I used to think…", "I noticed…"), self-implicating, SLP-native detail (caseloads, IEPs, productivity, CF year, grad debt), specifics over polish, humour by dry specificity, no coach-from-the-mountaintop, no "it's not X it's Y", and the portability test: if a teacher site could publish the sentence unchanged, make it more specific or cut it.
+
+## Transition OS review notes (2026-09-04)
+- The "hours outside work" dial/question was removed (it read as two questions: job-search time now vs. hours in the new job). Dials are pay floor, distance from clinical, people-time, tools. `DIAL_PROFILES` has no `hours` key.
+- Buttons keep one label forever; completion shows as a checkmark line. Every lesson ends with "← Quest log" and "Next lesson →".
+- Path is optional and only personalises; guardrails (Epic/MSL/UXR) live in Module 2, lesson 5, not in Module 0.
+- Copy rule for the course: lead with the point in a warm full sentence; no clipped contrast openers. Workbook: `scripts/make_course_workbook.mjs` → `public/course/module-1-workbook.docx`. No LibreOffice on this Mac and Pages refuses scripted export, so verify docx layout by opening it, not by rendering.
