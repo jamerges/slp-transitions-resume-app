@@ -277,6 +277,199 @@
   ]
  },
  {
+  "id": "4.5",
+  "tldr": "Loan forgiveness is a payment count, not a life sentence, and leaving pauses it rather than destroying it. Work out three numbers before you change anything: payments left, coverage cost, and months of runway.",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "This is the lesson nobody wrote, which is strange, because it is the question that comes up most. People do not stay in jobs that are hurting them because they lack ambition. They stay because of a loan balance, a payment count, and a health plan, and no career advice ever addresses any of the three."
+   },
+   {
+    "type": "p",
+    "text": "So here are the mechanics, as plainly as I can put them. Two warnings before we start. Federal loan rules changed several times in 2025 and 2026 and some of it is still being litigated, so treat this as a map rather than a ruling. And I am not a financial adviser. Every number below needs checking against your own account before you act on it."
+   },
+   {
+    "type": "h",
+    "text": "Forgiveness is a count, and the count survives you leaving"
+   },
+   {
+    "type": "p",
+    "text": "Public Service Loan Forgiveness requires 120 qualifying monthly payments made after October 2007. They do not have to be consecutive. That single fact undoes most of the panic in the forum threads, because it means a gap does not send you back to zero."
+   },
+   {
+    "type": "numbers",
+    "items": [
+     {
+      "value": "120",
+      "label": "qualifying payments, and they need not be consecutive"
+     },
+     {
+      "value": "30 hrs",
+      "label": "a week counts as full time, and you can add jobs together to reach it"
+     },
+     {
+      "value": "Paused",
+      "label": "what happens to the count if you move to a non-qualifying employer"
+     },
+     {
+      "value": "Never",
+      "label": "whether a for-profit employer can qualify, at any job title"
+     }
+    ]
+   },
+   {
+    "type": "p",
+    "text": "A qualifying employer is a government body, a 501(c)(3) nonprofit, a Tribal college, or a nonprofit delivering a defined public service. Your job title inside that employer is irrelevant. The employer is the thing that qualifies, not the work."
+   },
+   {
+    "type": "p",
+    "text": "Which leads to the part most people miss."
+   },
+   {
+    "type": "callout",
+    "tone": "soft",
+    "title": "You can leave clinical work without leaving forgiveness",
+    "text": "Nonprofit hospital systems, universities and state agencies employ people in exactly the roles this program covers. A clinical informatics analyst inside a nonprofit health system, a research coordinator or instructional designer at a university, a reviewer at a state Disability Determination Services office, a coordinator at a school district. Same count, no caseload."
+   },
+   {
+    "type": "p",
+    "text": "One documented transitioner did precisely this: she took a thirteen thousand dollar pay cut to move into a state disability determination role, in part to protect her forgiveness. She made that trade with the numbers in front of her, which is the only way to make it."
+   },
+   {
+    "type": "h",
+    "text": "If you are close, be careful with the last stretch"
+   },
+   {
+    "type": "p",
+    "text": "You have to be in qualifying full-time employment at the moment of your 120th payment and when you apply. That is the detail that catches people who resign at payment 118 and assume the credit banks itself."
+   },
+   {
+    "type": "quote",
+    "text": "you cannot rock the boat in any way in this final stretch",
+    "from": "an SLP counting down to forgiveness, r/slp"
+   },
+   {
+    "type": "p",
+    "text": "If you are within a year, the strategy is usually not to stay put and suffer. It is to move sideways into a non-clinical role at another qualifying employer, which keeps the count running while changing the job. That takes longer to find than a for-profit role, so start earlier."
+   },
+   {
+    "type": "callout",
+    "tone": "warm",
+    "title": "Check this yourself, twice",
+    "text": "Look up your own employer in the official PSLF employer search rather than assuming from the name, and file the employment certification form regularly rather than at the end. A new employer-disqualification rule took effect in July 2026 and is still being litigated, so nobody can promise you what qualifies in five years."
+   },
+   {
+    "type": "h",
+    "text": "If your income drops, your payment can too"
+   },
+   {
+    "type": "p",
+    "text": "On an income-driven plan the payment follows your income, and you do not have to wait for the annual recertification. Federal rules let you ask for a recalculation mid-year with documentation that your income has fallen since your last tax return. If you drop to four days a week, that is a form to file, not a fact to absorb."
+   },
+   {
+    "type": "p",
+    "text": "The plans themselves are mid-reshuffle right now, with new ones in regulation and older ones being wound down on published dates. Whatever you read anywhere, including here, check your own plan's status in your federal loan account before you count on it."
+   },
+   {
+    "type": "h",
+    "text": "Coverage: what a gap actually costs"
+   },
+   {
+    "type": "p",
+    "text": "Health insurance is the second thing that keeps people in place, and the number is usually smaller than the fear, though it is not small."
+   },
+   {
+    "type": "numbers",
+    "items": [
+     {
+      "value": "~$777",
+      "label": "a month, the average full 2025 single premium your employer was quietly paying"
+     },
+     {
+      "value": "~$2,250",
+      "label": "a month, the same figure for family coverage"
+     },
+     {
+      "value": "18 mo",
+      "label": "how long COBRA usually runs, at up to 102% of the full premium"
+     },
+     {
+      "value": "60 days",
+      "label": "the election window, with at least 45 more to make the first payment"
+     }
+    ]
+   },
+   {
+    "type": "p",
+    "text": "COBRA feels expensive because you finally see the whole bill. Your employer had been paying most of it, and the average worker contributed about $1,440 a year toward a single plan that actually cost $9,325."
+   },
+   {
+    "type": "p",
+    "text": "The other option is the marketplace. Losing job-based coverage because you quit still opens a special enrollment period, and marketplace subsidies are based on your estimated income for the year rather than on whether you are employed. If your income is genuinely lower for a stretch, the marketplace is often cheaper than COBRA for the same months."
+   },
+   {
+    "type": "p",
+    "text": "The election window is also a tool. You have sixty days to elect COBRA and at least forty-five more to pay, and many plans make coverage retroactive to the day you lost it. Some do not, so read your plan documents rather than trusting a rule of thumb. Used carefully, that window lets you go uninsured on paper while staying covered in practice if something happens."
+   },
+   {
+    "type": "h",
+    "text": "The C's, honestly"
+   },
+   {
+    "type": "p",
+    "text": "Whether to keep paying ASHA dues once you leave is a real decision with a real deadline attached, and the reinstatement rules are stricter than the forums suggest."
+   },
+   {
+    "type": "list",
+    "items": [
+     "Once certification has been expired more than twelve months, reinstatement needs a Praxis score less than five years old, plus professional development hours and a fee in the region of four hundred dollars.",
+     "In practice that means letting the C's lapse is close to a one-way door after five years, because you would be retaking the exam.",
+     "State licences are separate, and many states allow inactive status for a smaller fee. That is usually the cheaper backup plan.",
+     "Whether a specific non-clinical job requires an active licence depends on your state's practice act rather than the job title, so check the posting and the state board rather than guessing."
+    ]
+   },
+   {
+    "type": "p",
+    "text": "The framing that helps here came from the forums, not from me. People stop calling the C's a sunk cost and start calling them a fishing licence: a thing you keep because it lets you go back if you want to, not because you owe it anything."
+   },
+   {
+    "type": "h",
+    "text": "Now run your own numbers"
+   },
+   {
+    "type": "p",
+    "text": "Three inputs decide whether a bridge is possible: the income you would give up, the coverage you would pay for, and any change in the loan payment. Divide your savings by the sum of those and you have the number of months you can run."
+   },
+   {
+    "type": "tool",
+    "name": "runway-calculator"
+   },
+   {
+    "type": "callout",
+    "tone": "soft",
+    "title": "What to do with the answer",
+    "text": "If the runway is longer than the move, you have a choice about how fast to go. If it is shorter, you have three levers: a smaller pay dip, a shorter bridge, or one of the fast-exit paths from Module 2 that pays from day one. None of those levers is giving up."
+   }
+  ],
+  "action": {
+   "label": "Save my numbers",
+   "prompt": "Fill in the calculator above with real figures. Then do the two lookups this week: check your employer in the official PSLF employer search, and find your current plan and payment count in your federal loan account. Twenty minutes, and it replaces a year of vague dread with a date.",
+   "done": "Saved. You now know the three numbers that were making the decision for you."
+  },
+  "takeaways": [
+   "PSLF needs 120 qualifying payments and they do not have to be consecutive, so leaving pauses the count rather than erasing it.",
+   "The employer qualifies, not the job title: nonprofit health systems, universities and state agencies employ people in these non-clinical roles.",
+   "You must be in qualifying employment at your 120th payment and when you apply, so do not resign at 118.",
+   "COBRA runs about 18 months at up to 102% of the full premium, and the marketplace is often cheaper if your income actually drops.",
+   "Once certification lapses beyond twelve months, reinstatement needs a Praxis score under five years old, so treat the C's as a fishing licence you decide about on purpose."
+  ],
+  "sources": [
+   "money",
+   "facts",
+   "forums"
+  ]
+ },
+ {
   "id": "4.6",
   "tldr": "One documented search took over 500 applications without referrals. The people who moved faster had someone on the inside, and getting one is a twenty-minute task you have already practised.",
   "blocks": [
