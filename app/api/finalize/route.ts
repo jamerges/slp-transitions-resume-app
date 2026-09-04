@@ -5,6 +5,7 @@ import { buildFullPromptParts } from "@/lib/prompts";
 import { retrieveInputs, retrieveResult, stashResult } from "@/lib/stash";
 import { sendFullResultsEmail } from "@/lib/email";
 import { upsertSubscriber, CUSTOMER_GROUPS } from "@/lib/mailerlite";
+import { markCustomer } from "@/lib/quiz-log";
 
 export const runtime = "nodejs";
 // Full generation measured at ~140s with all sections; 300 is the Fluid-compute ceiling on Hobby.
@@ -83,6 +84,7 @@ export async function POST(req: Request) {
 
     // $24 buyers -> Customers group, so acquisition sends can exclude them.
     if (inputs.email) {
+      markCustomer(inputs.email).catch(() => {});
       upsertSubscriber({
         email: inputs.email,
         groups: [CUSTOMER_GROUPS.suite],

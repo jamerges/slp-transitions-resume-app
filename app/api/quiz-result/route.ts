@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { PATHS } from "@/lib/quiz";
 import { sendQuizResultEmail } from "@/lib/email";
 import { upsertSubscriber, QUIZ_PATH_GROUPS } from "@/lib/mailerlite";
+import { recordQuizCompletion } from "@/lib/quiz-log";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
@@ -30,6 +31,11 @@ export async function POST(req: Request) {
       groups: [process.env.MAILERLITE_GROUP_ID || "", QUIZ_PATH_GROUPS[top.roleOption] || ""],
       fields: { quiz_result: top.label },
     });
+
+    // Our own timestamp for the follow-up cron. Never blocks the result.
+    recordQuizCompletion(email, top.slug, name).catch((e) =>
+      console.error("[/api/quiz-result] completion log failed", e)
+    );
 
     let emailed = false;
     try {

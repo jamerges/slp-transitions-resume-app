@@ -400,6 +400,67 @@ export async function sendReportReminderEmail(input: {
   });
 }
 
+/**
+ * Personal follow-ups after a quiz result. Deliberately plain: no header art,
+ * short paragraphs, from James, reply-to James, and grounded in the reader's
+ * own result (path, range, first move) rather than a template. Sent by the
+ * quiz-followups cron: day 2 nudges toward the report, day 6 asks one
+ * question and pitches nothing. Every one carries a signed opt-out link.
+ */
+const REPLY_TO = "james@slptransitions.com";
+const plainWrap = (paras: string[], unsub: string) =>
+  `<div style="max-width:560px;margin:0 auto;padding:24px 20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#1F2937;">
+${paras.map((t) => `<p style="margin:0 0 16px;">${t}</p>`).join("\n")}
+<p style="margin:28px 0 0;font-size:12px;color:#9CA3AF;">You took the career quiz at slptransitions.com. <a href="${unsub}" style="color:#9CA3AF;">Stop these emails</a>.</p>
+</div>`;
+
+export async function sendQuizFollowupDay2(input: {
+  to: string;
+  name?: string;
+  top: { slug: string; label: string; roleOption: string; range: string; timeline: string; firstMove: string; caveat: string };
+  unsubUrl: string;
+}): Promise<void> {
+  const { to, name, top, unsubUrl } = input;
+  const first = (name || "").trim().split(/\s+/)[0] || "there";
+  const link = `${APP_URL}/?from=quiz&goal=report&path=${encodeURIComponent(top.roleOption)}`;
+  const html = plainWrap([
+    `Hi ${esc(first)},`,
+    `James here &mdash; I run SLP Transitions. Your quiz came back <strong>${esc(top.label)}</strong> a couple of days ago, and two days is usually when a result either gets bookmarked or forgotten. So, one nudge.`,
+    `If I were you, the first thing I&rsquo;d do this week: ${esc(top.firstMove)}`,
+    `For context, that path runs ${esc(top.range)}, and the typical move takes ${esc(top.timeline)}. ${esc(top.caveat)}`,
+    `The quiz ranked the paths, but it never saw your resume. If you want the version built from what you&rsquo;ve actually done &mdash; what you already qualify for, and what to do first &mdash; that&rsquo;s the $9 Pivot Report: <a href="${link}" style="color:#0B6B54;">${link}</a>`,
+    `Either way, reply and tell me where you are with it. I read every one of these.`,
+    `&mdash; James`,
+  ], unsubUrl);
+  await getResend().emails.send({
+    from: FROM_ADDRESS, to, replyTo: REPLY_TO,
+    subject: `Your ${top.label} result, and the part I'd start with`,
+    html,
+  });
+}
+
+export async function sendQuizFollowupDay6(input: {
+  to: string;
+  name?: string;
+  top: { label: string };
+  unsubUrl: string;
+}): Promise<void> {
+  const { to, name, top, unsubUrl } = input;
+  const first = (name || "").trim().split(/\s+/)[0] || "there";
+  const html = plainWrap([
+    `Hi ${esc(first)},`,
+    `Six days ago your quiz said <strong>${esc(top.label)}</strong>. No pitch in this one. A question.`,
+    `What&rsquo;s actually stopping you? Not &ldquo;I haven&rsquo;t had time.&rdquo; The real thing: the loans, the degree you&rsquo;d feel you were wasting, not knowing whether anyone would hire you, feeling like you&rsquo;d be quitting on the kids or the patients.`,
+    `Reply with one sentence. I&rsquo;m collecting these to figure out what to build next, and I answer each one myself.`,
+    `&mdash; James`,
+  ], unsubUrl);
+  await getResend().emails.send({
+    from: FROM_ADDRESS, to, replyTo: REPLY_TO,
+    subject: "Quick question",
+    html,
+  });
+}
+
 export async function sendReportEmail(input: {
   to: string;
   report: any;

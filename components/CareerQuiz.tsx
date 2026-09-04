@@ -131,6 +131,17 @@ export default function CareerQuiz({
   const [sending, setSending] = useState(false);
   const [emailed, setEmailed] = useState(false);
   const [buying, setBuying] = useState(false);
+  // Desktop readers can hand over the resume BEFORE paying, so the report is
+  // building the moment payment clears. Pay-first stays for phones, where the
+  // file usually isn't to hand — that was the whole reason for the redesign,
+  // and 4 of the first 6 buyers still stalled at the post-payment step.
+  const [resumeText, setResumeText] = useState("");
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    try {
+      setIsDesktop(window.matchMedia("(pointer: fine) and (min-width: 768px)").matches);
+    } catch { /* leave false */ }
+  }, []);
   const [buyError, setBuyError] = useState("");
 
   // Straight from the result to Stripe. Asking for a resume first was the
@@ -148,7 +159,7 @@ export default function CareerQuiz({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          resumeText: "",
+          resumeText,
           jobTitle: "",
           jobDesc: "",
           email,
@@ -420,6 +431,25 @@ export default function CareerQuiz({
           )}
 
           <div style={{ textAlign: "center" }}>
+            {isDesktop && (
+              <div style={{ textAlign: "left", margin: "0 auto 18px", maxWidth: 470 }}>
+                <label style={{ ...S.label, marginBottom: 4 }}>
+                  Paste your resume now <span style={{ color: "var(--muted)", fontWeight: 400 }}>(optional)</span>
+                </label>
+                <textarea
+                  value={resumeText}
+                  onChange={(e) => setResumeText(e.target.value)}
+                  placeholder="Paste the text of your resume here and the report starts building the moment you pay. Skip it and we'll ask after checkout."
+                  rows={5}
+                  style={{ ...S.textarea, minHeight: 110, fontSize: 14 }}
+                />
+                {resumeText.trim().length > 0 && resumeText.trim().length < 50 && (
+                  <div style={{ fontSize: 12.5, color: "var(--warn)", marginTop: 6 }}>
+                    That looks too short to be a resume — paste the whole thing, or leave it blank for now.
+                  </div>
+                )}
+              </div>
+            )}
             <button
               style={{ ...S.btn, padding: "15px 44px", fontSize: 17, opacity: buying ? 0.6 : 1 }}
               disabled={buying}

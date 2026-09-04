@@ -34,6 +34,8 @@ export async function upsertSubscriber(input: {
   name?: string;
   groups?: string[];
   fields?: Record<string, string>;
+  /** e.g. "unsubscribed" — forwarded verbatim; MailerLite accepts it on upsert. */
+  status?: string;
 }): Promise<boolean> {
   const apiKey = process.env.MAILERLITE_API_KEY;
   if (!apiKey || !input.email) return false;
@@ -53,7 +55,7 @@ export async function upsertSubscriber(input: {
         Accept: "application/json",
         Authorization: `Bearer ${apiKey}`,
       },
-      body: JSON.stringify({ email: input.email, groups, fields }),
+      body: JSON.stringify({ email: input.email, groups, fields, ...(input.status ? { status: input.status } : {}) }),
     });
     if (!resp.ok) {
       console.error("[mailerlite]", resp.status, (await resp.text()).slice(0, 240));
