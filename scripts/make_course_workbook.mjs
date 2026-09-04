@@ -65,10 +65,10 @@ const children = [];
 children.push(
   spacer(1800),
   kicker("Transition OS · companion workbook"),
-  new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "Ground.", font: SERIF, size: 72, bold: true, color: DARK })] }),
-  new Paragraph({ spacing: { after: 240 }, children: [new TextRun({ text: "Modules 0 and 1: where you are, whether you're allowed to want out, and which problem you actually have.", font: SERIF, size: 28, color: MUTED })] }),
+  new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "The workbook.", font: SERIF, size: 66, bold: true, color: DARK })] }),
+  new Paragraph({ spacing: { after: 240 }, children: [new TextRun({ text: "Ninety days of the thinking that does not fit in a text box. One page per lesson that is worth writing by hand.", font: SERIF, size: 28, color: MUTED })] }),
   rule(),
-  p("Ten lessons. About two hours of writing, spread over a week. Nobody reads this but you.", { color: MUTED, size: 22 }),
+  p("Six modules. About four hours of writing, spread over three months. Nobody reads this but you.", { color: MUTED, size: 22 }),
   spacer(1400),
   p("Name", { bold: true, size: 20, after: 40 }), p("________________________________________", { color: LINE }),
   p("Started on", { bold: true, size: 20, after: 40, before: 120 }), p("________________________________________", { color: LINE }),
@@ -86,6 +86,9 @@ children.push(
   p("And mine: I filled in a version of these pages in 2019 with a pen, in a car, before a shift. Most of what I wrote was wrong, and it still got me out. Wrong answers you've written down are worth more than right answers you're still thinking about.", { italics: true }),
   spacer(200),
   kicker("What's in here"),
+  ...fields([["Modules 0 and 1", "Ground: permission, the decision, the dials"], ["Module 2", "Explore: the paths, and three messages sent"], ["Module 3", "Translate: your words into theirs"], ["Module 4", "Test: proof, the bridge, the money"], ["Module 5", "Leap: interviews and the offer"], ["Module 6", "After: your story, and the next rung"]]),
+  pageBreak(),
+  kicker("Modules 0 and 1 in detail"),
   ...fields([["0.1  Welcome", "What you want, in one line"], ["0.2  Your starting line", "Stage, income floor, date"], ["0.3  Three things I believed", "Which of the three you hold"], ["1.1  You're allowed to want out", "Your stage, your belief, your move"], ["1.2  Bad workplace, bad fit, bad season?", "Six questions and a verdict"], ["1.3  The sunk-cost audit", "Spent vs. still live"], ["1.4  What you're protecting", "Four dials, three paths"], ["1.5  The part you get to keep", "What goes with you"], ["1.6  Tell one person", "Who, when, what they said"], ["1.7  Checkpoint", "One sentence in pull language"]]),
   pageBreak(),
 );
@@ -211,6 +214,91 @@ children.push(
   spacer(), muted("Date: ____ / ____ / ________"),
 );
 
+
+// ---------------------------------------------------------------- Module 2
+children.push(
+  pageBreak(),
+  kicker("Module 2 · Explore · Weeks 2 and 3"), ...h1("Twenty paths, one choice", "The screen ranks them. This page is where you argue with the ranking."),
+  ...ask("Which three paths did the map and the dials put in front of you, and what was your gut reaction to each?", 5, "Gut reactions are data here. A path you dismissed in half a second is worth a sentence about why."),
+  ...ask("Which one are you choosing to explore first, and what would have to be true for it to be wrong?", 4),
+  h2("What the day actually looks like"),
+  muted("From the deep-dive and from any postings you read. Write it in your own words, not theirs."),
+  ...ask("A Tuesday in this role, in four sentences.", 4),
+  ...ask("Which requirement on the postings do you already meet, and which one is a genuine gap?", 4),
+  pageBreak(),
+  kicker("Module 2 · Lesson 8 and 9"), ...h1("Three messages", "The reach-out is the first thing that involves another person. Plan it here."),
+  ...fields([["Person 1: who, and where you found them", ""], ["What made you pick them", ""], ["Sent on", ""], ["Reply", ""]]),
+  ...fields([["Person 2: who, and where you found them", ""], ["What made you pick them", ""], ["Sent on", ""], ["Reply", ""]]),
+  ...fields([["Person 3: who, and where you found them", ""], ["What made you pick them", ""], ["Sent on", ""], ["Reply", ""]]),
+  ...ask("If someone replies and gives you twenty minutes, what are the three things you most want to know?", 4, "Not what the job pays. Things only a person in the seat can tell you."),
+  muted("About one in four of these gets no answer. That is the rate, not a verdict."),
+);
+
+// ---------------------------------------------------------------- Module 3
+children.push(
+  pageBreak(),
+  kicker("Module 3 · Translate · Weeks 3 to 5"), ...h1("The same work, their words", "The tool does the bulk translation. This page holds the two or three that need your judgement."),
+  h2("Your numbers"),
+  muted("Pulled from the number-mining tool, or from memory. Estimates are fine; bracket anything you need to confirm."),
+  ...fields([["Largest caseload", ""], ["People trained or supervised", ""], ["Meetings led in a month", ""], ["Systems rolled out or changed", ""], ["Sites covered", ""], ["One outcome you moved, before and after", ""]]),
+  pageBreak(),
+  kicker("Module 3 · Lesson 2"), ...h1("Three bullets, rewritten by hand", "One line as it reads today. One line as it should read."),
+  ...ask("Bullet 1, today:", 2), ...ask("Bullet 1, translated:", 3),
+  ...ask("Bullet 2, today:", 2), ...ask("Bullet 2, translated:", 3),
+  ...ask("Bullet 3, today:", 2), ...ask("Bullet 3, translated:", 3),
+  pageBreak(),
+  kicker("Module 3 · Lesson 7"), ...h1("The paragraph only you could write", "Every cover letter has one. It is the reason the letter costs you something."),
+  ...ask("Write it. The specific thing about this company, this product or this problem that made you apply. If you could send the paragraph to any employer unchanged, it is not the one.", 6),
+  ...ask("Read it back. Which sentence would a teacher leaving the classroom also be able to send? Cross it out and replace it.", 4),
+);
+
+// ---------------------------------------------------------------- Module 4
+children.push(
+  pageBreak(),
+  kicker("Module 4 · Test · Weeks 5 to 8"), ...h1("The thing you make", "One artifact, two sessions, a process note. Plan it here so the week does not eat it."),
+  ...fields([["What I am making", ""], ["Session 1, ninety minutes: date", ""], ["Session 2, ninety minutes: date", ""], ["Where it will live", ""]]),
+  ...ask("The process note. What was the problem, what did you decide, and what would you do differently? Three or four sentences, written after it exists.", 5),
+  pageBreak(),
+  kicker("Module 4 · Lesson 5"), ...h1("The three numbers", "Loans, coverage, runway. Fill these in with real figures, not remembered ones."),
+  h2("Forgiveness, if it applies"),
+  ...fields([["Qualifying payments made so far", "Check your federal loan account, do not estimate"], ["Payments remaining", ""], ["Does my employer qualify?", "Look it up in the official employer search"], ["Last time I filed the certification form", ""]]),
+  h2("Coverage"),
+  ...fields([["Who covers me now, and until when", ""], ["COBRA cost per month, if offered", "Up to 102% of the full premium"], ["Marketplace estimate for my expected income", ""], ["Gap I would need to bridge, in weeks", ""]]),
+  h2("Runway"),
+  ...fields([["Savings I would use", ""], ["Monthly income I would give up", ""], ["Monthly gap, all in", ""], ["Months of runway", "Savings divided by the monthly gap"], ["Months I expect the move to take", "Documented: 6 to 15"]]),
+  ...ask("If the runway is shorter than the move, which lever are you pulling: a smaller dip, a shorter bridge, or a fast-exit path first?", 4),
+);
+
+// ---------------------------------------------------------------- Module 5
+children.push(
+  pageBreak(),
+  kicker("Module 5 · Leap · Weeks 8 to 12"), ...h1("Your bridge statement", "Three parts, said aloud until it stops sounding rehearsed."),
+  ...ask("Pull: where you are going. Copy it from the Module 1 checkpoint, or improve it now.", 3),
+  ...ask("Preparation: what you have done to get ready. The artifact, the conversations, the certificate.", 3),
+  ...ask("Proof: one accomplishment with a real number, mapped onto a problem this role has in its first ninety days.", 4),
+  muted("Tick each time you say the whole thing out loud:   ☐   ☐   ☐   ☐   ☐"),
+  pageBreak(),
+  kicker("Module 5 · Lessons 3 and 5"), ...h1("The questions and the number", "Two things to have decided before an interview, rather than during one."),
+  ...ask("Which screening question would you fumble today? Write your answer, then cut it in half.", 5),
+  h2("Your number"),
+  ...fields([["Documented range for my path", ""], ["The number I will say if asked first", ""], ["My walk-away number", "Below this, the runway maths fails"], ["What I would ask for if the base is fixed", "Sign-on, PTO, remote days, an early review"]]),
+  ...ask("Say the counter out loud once, to a person. Who did you say it to, and how did it sound?", 3),
+);
+
+// ---------------------------------------------------------------- Module 6
+children.push(
+  pageBreak(),
+  kicker("Module 6 · After"), ...h1("Six months in", "Come back to this page when you are on the other side."),
+  ...ask("What is different on a Tuesday now? Compare it with what you wrote on the very first page.", 5),
+  ...ask("What did you worry about that turned out not to matter?", 4),
+  ...ask("What would you tell the person who is where you were in week one?", 5),
+  muted("That last answer is your story. The form is at slptransitions.com/about."),
+  spacer(300),
+  rule(),
+  p("You did the whole thing.", { serif: true, size: 30, bold: true }),
+  muted("Whatever the title says now, you are still the person who can explain hard things simply, hold a room to a plan, and read a page of data and know what to do next. That was never the job. That was you."),
+);
+
 const doc = new Document({
   styles: { default: { document: { run: { font: F, size: 22, color: DARK } } } },
   numbering: { config: [{ reference: "dots", levels: [{ level: 0, format: LevelFormat.BULLET, text: "•", alignment: AlignmentType.LEFT, style: { paragraph: { indent: { left: 480, hanging: 240 } }, run: { color: GREEN } } }] }] },
@@ -223,5 +311,5 @@ const doc = new Document({
 });
 
 const buf = await Packer.toBuffer(doc);
-writeFileSync("public/course/module-1-workbook.docx", buf);
-console.log("wrote public/course/module-1-workbook.docx", buf.length, "bytes");
+writeFileSync("public/course/transition-os-workbook.docx", buf);
+console.log("wrote public/course/transition-os-workbook.docx", buf.length, "bytes");
