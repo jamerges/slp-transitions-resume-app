@@ -5,11 +5,11 @@
     "blocks": [
       {
         "type": "p",
-        "text": "The first résumé I sent to a non-clinical job had a whole argument buried in it. Years of why an SLP belonged in a marketing department, laid out in a summary I was quietly proud of. It landed in a pile of about 242, which is what the average corporate opening draws now, up 111 percent since 2022, and somebody gave it roughly 7.4 seconds. That is the documented average for a first pass. Less time than it takes to say individualized education program with measurable annual goals."
+        "text": "The first résumé I sent to a non-clinical job had a whole argument buried in it, years of why an SLP belonged in a marketing department, laid out in a summary I was quietly proud of. It landed in a pile of about 242, which is what the average corporate opening draws now, up 111 percent since 2022. Somebody gave it roughly 7.4 seconds. That is less time than it takes to say individualized education program with measurable annual goals."
       },
       {
         "type": "p",
-        "text": "Seven seconds buys the reader three things: the top third of page one, a guess at what you currently do for a living, and a sort into maybe or no. Everything below that top third is for the second read, and the second read only happens to the maybe pile. So when you rewrite this week, rewrite the summary, the skills line and the first three bullets under your most recent job before you touch anything else. As far as the first pass is concerned, those are the résumé."
+        "text": "Seven seconds buys the reader three things: the top third of page one, a guess at what you currently do for a living, and a sort into maybe or no. Everything below that top third is for the second read, and the second read only happens to the maybe pile. So rewrite the summary, the skills line and the first three bullets under your most recent job before you touch anything else."
       },
       {
         "type": "quote",
@@ -22,14 +22,14 @@
       },
       {
         "type": "p",
-        "text": "The answer that question got in the thread was one word, ChatGPT, which tells you how much of the ATS conversation is running on guesswork. The famous number, 75 percent of résumés auto-rejected before a human sees them, traces back to a 2012 sales pitch by a company selling screening software. In practice about 92 percent of recruiters do not auto-reject anyone on a match score. The systems rank. People reject. That is heavier news than the robot story, because it means a human being read your bullets, could not map them onto the job they were filling, and moved on to the next file."
+        "text": "The answer that question got in the thread was one word, ChatGPT, which tells you how much of the ATS conversation is running on guesswork. The famous number, 75 percent of résumés auto-rejected before a human sees them, traces back to a 2012 sales pitch by a company selling screening software. In practice about 92 percent of recruiters do not auto-reject anyone on a match score. The systems rank and people reject. That is heavier news than the robot story, because it means a human being read your bullets, could not map them onto the job they were filling, and moved on."
       },
       {
         "type": "list",
         "items": [
-          "Keyword stuffing is a tactic aimed at a robot that is not in the room. Modern systems match meaning, so pasting the job description in white text at the bottom of the page buys nothing and costs everything if a person notices.",
+          "Keyword stuffing is aimed at a robot that is not in the room. Modern systems match meaning, so pasting the job description in white text at the bottom of the page buys nothing and costs everything if a person notices.",
           "The genuine automatic filter is the knockout question on the application form: years of experience, licenses, work authorization, salary. Those screen you out before anyone opens the file.",
-          "Formatting matters for one reason, which is parsing. Single column, standard headers (Experience, Skills, Education), no tables, no text boxes, no graphics. A résumé the software cannot read is a résumé that never gets ranked, and the pretty two-column template is the usual culprit."
+          "Formatting matters for one reason, which is parsing: single column, standard headers (Experience, Skills, Education), no tables, no text boxes, no graphics. A résumé the software cannot read never gets ranked, and the pretty two-column template is the usual culprit."
         ]
       },
       {
@@ -47,7 +47,7 @@
       },
       {
         "type": "p",
-        "text": "Your résumé fixes the second doubt outright, which is what the rest of this module does, and it chips at the other three. The salary one is worth arriving with your own numbers for. Median SLP pay is $97,870, and the middle half of the profession sits between $77,730 and $114,570. When an application form makes salary a required box, that band and the documented range for your path are what you answer from, instead of a number you invent at eleven at night with the posting open in another tab."
+        "text": "Your résumé fixes the second doubt outright and chips at the other three. The salary one is worth arriving with your own numbers for: median SLP pay is $97,870, and the middle half of the profession sits between $77,730 and $114,570. When an application form makes salary a required box, that band and the documented range for your path are what you answer from. Otherwise you invent a number at eleven at night with the posting open in another tab."
       },
       {
         "type": "steps",
@@ -79,7 +79,7 @@
     "blocks": [
       {
         "type": "p",
-        "text": "I did the noun swap first, the way almost everybody does. Caseload became portfolio, parents became stakeholders, IEP meetings became cross-functional alignment, and the result read like a clinical résumé wearing a lanyard. The vocabulary was right. The sentences still listed duties in the order I performed them, with no outcome anywhere, so a reader learned what my job had been and nothing about what I had done to it. One SLP paid a résumé writer $220 for that same swap on the way to a six-figure project management job, and their verdict is the most useful sentence in the whole corpus."
+        "text": "I did the noun swap first, the way almost everybody does. Caseload became portfolio, parents became stakeholders, IEP meetings became cross-functional alignment, and the result read like a clinical résumé wearing a lanyard. The sentences still listed duties in the order I performed them, with no outcome anywhere. One SLP paid a résumé writer $220 for that same swap on the way to a six-figure project management job, and their verdict is the most useful sentence in the whole corpus."
       },
       {
         "type": "quote",
@@ -92,7 +92,7 @@
       },
       {
         "type": "p",
-        "text": "How big was it. What did you do. What changed. A bullet that answers all three survives the first pass; one that skips the third reads as a duty, and one that skips the first reads as an anecdote. The verb in the middle comes from the posting rather than from the clinic, and the number stays exactly where it already was. Clinical verbs describe care given: provided, delivered, implemented, facilitated, assisted with. The verbs a hiring manager reads as ownership describe a thing that moved: ran, rebuilt, led, cut, negotiated, trained, closed. You did all of the second kind. Nobody in a school or a hospital ever asked you to say so. Keep each bullet to one sentence, too: if it needs a comma splice and a semicolon to hold itself together, it is two bullets, and the second one is usually the better of the pair. Six good ones under your most recent role beat fourteen complete ones, and fourteen is what most of us hand over, because a caseload trains you to account for your time rather than for what your time moved."
+        "text": "How big was it, what did you do, and what changed. A bullet that answers all three survives the first pass; one that skips the third reads as a duty. The verb in the middle comes from the posting rather than from the clinic, and the number stays exactly where it already was. Clinical verbs describe care given: provided, delivered, implemented, facilitated, assisted with. The verbs a hiring manager reads as ownership describe a thing that moved: ran, rebuilt, led, cut, negotiated, trained, closed. You did all of the second kind, and nobody in a school or a hospital ever asked you to say so. Six good bullets under your most recent role beat fourteen complete ones, because a caseload trains you to account for your time rather than for what your time moved."
       },
       {
         "type": "example",
@@ -112,7 +112,7 @@
       },
       {
         "type": "p",
-        "text": "There is a test, and it is faster than agonizing. Could you talk for ten minutes about the day behind that bullet, to someone who already does the job you want, without inventing anything? If yes, it is translation, however corporate it sounds out loud. If your stomach moves, take the number down or take the claim out, because everything on the page comes back at you as an interview question. Notice what the test does not care about: whether the sentence sounds grander than the work felt. Work feels small from the inside when you have done it four hundred times, which is why so many SLPs read an accurate bullet about their own year and think it is bragging. Accuracy is the standard, in both directions. The same test settles the job-title question the forums keep circling. Your title stays Speech-Language Pathologist, since changing it is the one screening flag nobody recovers from, and the translation goes in a short function line underneath it: client portfolio, cross-functional program delivery, staff training. The title tells them what you were called. The line tells them what the job was."
+        "text": "The test is faster than agonizing. Could you talk for ten minutes about the day behind that bullet, to someone who already does the job you want, without inventing anything? If yes it is translation, however corporate it sounds out loud. If your stomach moves, take the number down or take the claim out, because everything on the page comes back at you as an interview question. Work feels small from the inside when you have done it four hundred times, which is why so many SLPs read an accurate bullet about their own year and think it is bragging. Your title stays Speech-Language Pathologist, since changing it is the one screening flag nobody recovers from. The translation goes in a short function line underneath: client portfolio, cross-functional program delivery, staff training."
       },
       {
         "type": "quote",
@@ -142,7 +142,7 @@
     "blocks": [
       {
         "type": "p",
-        "text": "Every SLP I have talked to about résumés says the same thing at the same moment, which is that they do not have numbers. Then they describe a normal week and the numbers fall out of it: 62 on the caseload in March, three buildings, 48 evaluations a year, 14 people trained through the EMR switch, nine IEP meetings in a heavy month, four hours of documentation on a Sunday nobody paid for. Clinical work is measured constantly. It is measured in the IEP tracker, the productivity report, the eval log and the sign-in sheet from the in-service you ran, and none of those places is your résumé. The complaint underneath it is real, though, and one transitioner put it exactly."
+        "text": "Every SLP I have talked to about résumés says the same thing at the same moment, which is that they do not have numbers. Then they describe a normal week and the numbers fall out of it: 62 on the caseload in March, three buildings, 48 evaluations a year, 14 people trained through the EMR switch, nine IEP meetings in a heavy month, four hours of documentation on a Sunday nobody paid for. Clinical work is measured constantly, in the IEP tracker, the productivity report and the sign-in sheet from the in-service you ran. None of those places is your résumé."
       },
       {
         "type": "quote",
@@ -155,7 +155,7 @@
       },
       {
         "type": "p",
-        "text": "He is right that companies want the size of a change, and half right that it is hard for us. Numbers on a résumé come in three kinds, and clinicians arrive holding two of them already. Size and rate are sitting in your calendar. Change is the one you have to go and construct, usually from something you fixed and never told anyone about, and it is the kind that ends up quoted back to you in the interview. The reason change feels out of reach is that clinical outcome data belongs to the client rather than to the operation. You cannot put a child's progress on your résumé, and you should not want to. What you can put there is what happened to the system around that child: how long families waited, how many evaluations cleared, how much of the department's Sunday went to documentation after you rebuilt the template."
+        "text": "He is right that companies want the size of a change, and half right that it is hard for us. Numbers come in three kinds, and clinicians arrive holding two of them already, since size and rate are sitting in your calendar. Change is the one you have to construct, usually from something you fixed and never told anyone about. It feels out of reach because clinical outcome data belongs to the client rather than to the operation. You cannot put a child's progress on your résumé, and you should not want to. What you can put there is what happened to the system around that child: how long families waited, how many evaluations cleared, how much of the department's Sunday went to documentation after you rebuilt the template."
       },
       {
         "type": "list",
@@ -215,11 +215,11 @@
     "blocks": [
       {
         "type": "p",
-        "text": "Somebody counted. A hiring manager reviewing a batch of applications found that 35 percent of candidates had submitted identical answers to the same question. Not similar in tone. Identical, word for word, from people who had never met and who each presumably felt they had written something. Picture the moment they noticed the second one, then the fifth, then the fortieth."
+        "text": "Somebody counted. A hiring manager reviewing a batch of applications found that 35 percent of candidates had submitted identical answers to the same question. Word for word, from people who had never met and who each presumably felt they had written something. Picture the moment they noticed the second one, then the fifth, then the fortieth."
       },
       {
         "type": "p",
-        "text": "The rest of the hiring-side numbers point the same way. 62 percent of employers say they reject AI-generated application materials that lack personalization, and 33.5 percent of hiring managers say they can spot AI writing in under 20 seconds. Twenty seconds is about how long your first paragraph lives. For most applicants a generic letter is a wasted opportunity. For a career changer it is fatal, because you are the one candidate whose application had actual explaining to do."
+        "text": "62 percent of employers say they reject AI-generated application materials that lack personalization, and 33.5 percent of hiring managers say they can spot AI writing in under 20 seconds. That is about how long your first paragraph lives. For a career changer a generic letter is fatal, because you are the one candidate whose application had actual explaining to do."
       },
       {
         "type": "h",
@@ -230,7 +230,7 @@
         "items": [
           "Adept, leverage, spearheaded, cutting-edge, results-driven. The words are harmless in themselves. A recruiter has read them two hundred times this week, in that order, with no number attached to any of them.",
           "Adjectives sitting where a number belongs. \"Significantly improved outcomes\" is what a sentence says when nobody checked the tracker.",
-          "Everything arriving in threes. Three adjectives, three-item lists, three parallel clauses in every paragraph. This one is my own read rather than a documented finding, but once you notice the rhythm you cannot unnotice it, and neither can the person reading forty letters.",
+          "Everything arriving in threes: three adjectives, three-item lists, three parallel clauses in every paragraph. This is my own read rather than a documented finding, but once you notice the rhythm you cannot unnotice it, and neither can the person reading forty letters.",
           "The five-paragraph skeleton: interest, adjectives about yourself, flattery about the company, restated résumé, look forward to discussing. Hiring managers could hum it."
         ]
       },
@@ -285,7 +285,7 @@
     "blocks": [
       {
         "type": "p",
-        "text": "The single most requested thing in every SLP exit thread is not a salary figure. It is the document. One project manager's post drew more than twenty separate comments asking some version of the same question, and the person almost never sends it, because their résumé has their employer, their city and their kids' school district on it."
+        "text": "The single most requested thing in every SLP exit thread is the document itself. One project manager's post drew more than twenty separate comments asking some version of the same question. The person almost never sends it, because their résumé has their employer, their city and their kids' school district on it."
       },
       {
         "type": "quote",
@@ -294,7 +294,7 @@
       },
       {
         "type": "p",
-        "text": "The Career Pivot Suite is the closest thing I could build to handing you that document, and your enrollment includes it. It reads your actual history against one actual posting and translates it, using the same rules you just learned in 3.2 and 3.3, which is why this lesson sits here and not in week one. Four minutes of pasting, then the work is yours again."
+        "text": "The Career Pivot Suite is the closest thing I could build to handing you that document, and your enrollment includes it. It reads your actual history against one actual posting and translates it, using the same rules you just learned in 3.2 and 3.3. That is why this lesson sits here and not in week one."
       },
       {
         "type": "h",
@@ -326,11 +326,11 @@
       },
       {
         "type": "p",
-        "text": "The section most people skim is the requirements coverage, and it is the one I would read first. Every requirement with no evidence behind it is either a bullet you forgot to write or a real gap, and telling those two apart takes about five minutes. The forgotten ones go back into the résumé this week. The real ones become your shopping list for Module 4, where you build one piece of proof instead of collecting another certificate."
+        "text": "The section most people skim is the requirements coverage, and it is the one I would read first. Every requirement with no evidence behind it is either a bullet you forgot to write or a real gap, and telling those two apart takes about five minutes. The forgotten ones go back into the résumé this week, and the real ones become your shopping list for Module 4."
       },
       {
         "type": "p",
-        "text": "Then refine. You get ten refinements across six sections, which is plenty if you spend them on specific complaints rather than vague ones. \"Make this stronger\" gets you adjectives. \"This bullet has no number in it\", \"this paragraph sounds like a brochure\", \"use the posting's word onboarding instead of orientation\" get you the sentence you wanted. Read every line before you send it anywhere, and fix anything you could not defend for ten minutes out loud, because that is the standard the interview will hold it to."
+        "text": "Then refine. You get ten refinements across six sections, which is plenty if you spend them on specific complaints. \"Make this stronger\" gets you adjectives, while \"this bullet has no number in it\" and \"use the posting's word onboarding instead of orientation\" get you the sentence you wanted. Read every line before you send it anywhere, and fix anything you could not defend for ten minutes out loud."
       },
       {
         "type": "tool",
@@ -360,7 +360,7 @@
     "blocks": [
       {
         "type": "p",
-        "text": "Picture the moment your application starts working. A recruiter reads the translated résumé, decides you are interesting, and does what they always do before reaching out to anybody, which is look you up. They find a headline from 2019 that says Speech-Language Pathologist, CCC-SLP, an About section about your passion for pediatric feeding, and a skills list topped by Dysphagia. Now you have a worse problem than being underqualified, because the two documents describe different people and the recruiter believes the free one. Meanwhile the same profile is failing at its other job, which is being found at all."
+        "text": "Picture the moment your application starts working. A recruiter reads the translated résumé, decides you are interesting, and does what they always do before reaching out to anybody, which is look you up. They find a headline from 2019 that says Speech-Language Pathologist, CCC-SLP, an About section about your passion for pediatric feeding, and a skills list topped by Dysphagia. Now the two documents describe different people, and the recruiter believes the free one."
       },
       {
         "type": "h",
@@ -368,7 +368,7 @@
       },
       {
         "type": "p",
-        "text": "LinkedIn is a search engine whose power users are recruiters, and the fields it weights hardest are the ones most SLPs leave in clinical language: headline, About, job titles, and the skills you have pinned to the top. Recruiters search the vocabulary of the role they are filling, so a profile written entirely in clinical terms never comes back in the results at all, which from the inside feels identical to being turned down. These are the terms worth having somewhere on your profile, by path."
+        "text": "LinkedIn is a search engine whose power users are recruiters. The fields it weights hardest are the ones most SLPs leave in clinical language: headline, About, job titles, and the skills you have pinned to the top. Recruiters search the vocabulary of the role they are filling, so a profile written entirely in clinical terms never comes back in the results, which from the inside feels identical to being turned down. These are the terms worth having somewhere on your profile, by path."
       },
       {
         "type": "list",
@@ -433,11 +433,11 @@
     "blocks": [
       {
         "type": "p",
-        "text": "A cover letter is judged on what it cost you before it is judged on its prose. That is the whole reason the AI-written ones fail even when the sentences are fine in a beige sort of way: they signal zero cost, and the reader can tell within a paragraph that the same letter went to eighty companies before lunch. The good news for a tired clinician is that visible effort is cheap. Ten minutes of research and one honest paragraph put you ahead of most of the pile, and you do not need to be a writer to do either."
+        "text": "A cover letter is judged on what it cost you before it is judged on its prose, which is why the AI-written ones fail even when the sentences are fine in a beige sort of way. They signal zero cost, and the reader can tell within a paragraph that the same letter went to eighty companies before lunch. Visible effort is cheap, though. Ten minutes of research and one honest paragraph put you ahead of most of the pile."
       },
       {
         "type": "p",
-        "text": "The other rule is about direction, and it is the one worth writing on a sticky note. Rewrite every sentence about what you are leaving as a sentence about where you are going. Not because your reasons are invalid, since the productivity targets and the caseload and the Sunday documentation are exactly what started my own search, but because retention doubt is one of the four reasons career changers get rejected, and a letter that says I am exhausted by clinical work reads to a hiring manager as a person running, and people who run once tend to run again. Same history, same facts, opposite hiring risk."
+        "text": "Rewrite every sentence about what you are leaving as a sentence about where you are going. Your reasons are valid, and the productivity targets and the Sunday documentation are exactly what started my own search. But retention doubt is one of the four reasons career changers get rejected. A letter that says I am exhausted by clinical work reads to a hiring manager as a person running, and people who run once tend to run again."
       },
       {
         "type": "h",
@@ -463,7 +463,7 @@
       },
       {
         "type": "p",
-        "text": "One paragraph in the middle has to be impossible to paste into another letter. A product you have actually used with a real client, a specific thing about who they serve, a line from the posting you are answering directly, a question their pricing page raised for you. SLPs applying to speech-tech and AAC companies have an unfair advantage here and almost never use it: you have put their device in a child's hands, or explained their platform to a family on a Tuesday afternoon, and no other applicant in that pile can write the sentence that starts with what happened next."
+        "text": "One paragraph in the middle has to be impossible to paste into another letter: a product you have actually used with a real client, a specific thing about who they serve, a question their pricing page raised for you. SLPs applying to speech-tech and AAC companies have an unfair advantage here and almost never use it. You have put their device in a child's hands, or explained their platform to a family on a Tuesday afternoon. No other applicant in that pile can write the sentence that starts with what happened next."
       },
       {
         "type": "example",
@@ -473,7 +473,7 @@
       },
       {
         "type": "p",
-        "text": "Write it once, this week, for the posting you are going to send in 3.8. Then do one pass with a delete key: any sentence that could survive a copy and paste into another company's letter is a sentence doing nothing for you. What is left will be shorter than you expected and better than anything you could have written by being impressive."
+        "text": "Write it once, this week, for the posting you are going to send in 3.8. Then do one pass with a delete key, because any sentence that could survive a copy and paste into another company's letter is a sentence doing nothing for you."
       }
     ],
     "takeaways": [
@@ -494,11 +494,11 @@
     "blocks": [
       {
         "type": "p",
-        "text": "Speed is the least discussed advantage in this whole module. Applications sent in the first day or two of a posting are the ones that get looked at, and by the end of week one the reader is triaging a pile rather than reading it. Which means one application sent inside 48 hours of the posting going up is worth more than five sent the following Sunday, and the Sunday batch is what most of us default to, because Sunday is when the dread arrives and the laptop is already open."
+        "text": "Applications sent in the first day or two of a posting are the ones that get looked at, and by the end of week one the reader is triaging a pile rather than reading it. One application sent inside 48 hours is worth more than five sent the following Sunday. The Sunday batch is what most of us default to, because Sunday is when the dread arrives and the laptop is already open."
       },
       {
         "type": "p",
-        "text": "The second thing that decides these transitions is whether anyone inside the building knows your name. Referrals are behind most of the documented successes, and generic applications through Indeed and LinkedIn with nobody attached to them are what the failed attempts have in common. So before you hit submit, spend ten minutes looking for one person: someone with your target title at that company, or better, an SLP already working there. Send them the Module 2 message. The application still goes in either way, and now it has a name near it."
+        "text": "The second thing that decides these transitions is whether anyone inside the building knows your name. Referrals are behind most of the documented successes, and generic applications with nobody attached to them are what the failed attempts have in common. So before you hit submit, spend ten minutes looking for one person with your target title at that company, or better, an SLP already working there, and send them the Module 2 message."
       },
       {
         "type": "h",
@@ -506,7 +506,7 @@
       },
       {
         "type": "p",
-        "text": "The form after the résumé upload is where the automatic rejections actually happen: years of experience, licenses, work authorization, and the salary box. Answer honestly, since a false answer is discoverable and unrecoverable, and answer the experience question against the function rather than the title where the form allows a sentence. For the salary box, come with two numbers already decided: the documented range for your path, and where you currently sit against a profession whose median is $97,870 and whose middle half runs $77,730 to $114,570. If a knockout is a genuine hard no, that posting is not the one you send this week."
+        "text": "The form after the résumé upload is where the automatic rejections actually happen: years of experience, licenses, work authorization, and the salary box. Answer honestly, since a false answer is discoverable and unrecoverable, and answer the experience question against the function rather than the title where the form allows a sentence. For the salary box, come with two numbers already decided: the documented range for your path, and where you currently sit. The profession's median is $97,870, and its middle half runs $77,730 to $114,570. If a knockout is a genuine hard no, that posting is not the one you send this week."
       },
       {
         "type": "h",
@@ -547,7 +547,7 @@
       },
       {
         "type": "p",
-        "text": "That ratio is the kindest thing in this lesson, once you stop reading it as a verdict on you. One documented transition took 113 tailored applications to produce 7 interviews and 1 offer. A data analyst sent more than 500 over six months and is now remote and paid above their SLP salary. At those rates, silence after the first ten applications is not information about your worth, it is the sample being too small to tell you anything. Track the number, aim at a weekly count you can actually hit while working full time, and let the ratio do what ratios do."
+        "text": "That ratio is the kindest thing in this lesson, once you stop reading it as a verdict on you. One documented transition took 113 tailored applications to produce 7 interviews and 1 offer, and a data analyst sent more than 500 over six months and is now remote and paid above their SLP salary. At those rates, silence after the first ten applications is the sample being too small to tell you anything. Track the number, aim at a weekly count you can hit while working full time, and let the ratio do what ratios do."
       },
       {
         "type": "tool",
