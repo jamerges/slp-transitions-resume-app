@@ -432,9 +432,9 @@ export async function sendQuizFollowupDay2(input: {
   const site = "https://slptransitions.com";
   const a = (href: string, text: string) => `<a href="${href}" style="color:#0B6B54;">${text}</a>`;
   const opening = `Hi ${esc(first)},`;
-  const intro = `James here &mdash; I run SLP Transitions. Your quiz came back <strong>${esc(top.label)}</strong> a couple of days ago, and two days is usually when a result either gets bookmarked or forgotten. So, one nudge.`;
+  const intro = `James here, from SLP Transitions. Your quiz came back <strong>${esc(top.label)}</strong> two days ago. Two days is when a result gets bookmarked or forgotten, so this is the nudge.`;
   const context = `For context, that path runs ${esc(top.range)}, and the typical move takes ${esc(top.timeline)}. ${esc(top.caveat)}`;
-  const report = `The quiz ranked the paths, but it never saw your resume. If you want the version built from what you&rsquo;ve actually done &mdash; what you already qualify for, and what to do first &mdash; that&rsquo;s the $9 Pivot Report: ${a(link, link)}`;
+  const report = `The quiz ranked the paths without ever seeing your resume. The $9 Pivot Report reads the resume and tells you what you already qualify for and what to do first: ${a(link, link)}`;
   const close = `Either way, reply and tell me where you are with it. I read every one of these.`;
   // The stage question decides what comes first. Stages 1-3 get no pitch:
   // a stage-2 reader greeted with a checkout link stops reading.
@@ -444,29 +444,29 @@ export async function sendQuizFollowupDay2(input: {
       body = [opening, intro,
         `You said you haven&rsquo;t told anyone yet. That&rsquo;s fine. Most people who leave spend a while looking quietly first, and looking commits you to nothing. The one thing I&rsquo;d read this week is ${a(`${site}/youre-allowed-to-want-out/`, "the five stages of leaving")}: it names the belief that keeps people stuck at each one and the single small move out of it, and stage one is exactly where you are.`,
         `When you&rsquo;re ready for the practical part, your result is ${esc(top.label)}: ${esc(top.range)}, typically ${esc(top.timeline)}. It&rsquo;ll keep.`,
-        close, `&mdash; James`];
+        close, `James`];
       break;
     case "guilt":
       body = [opening, intro,
-        `You said the guilt is the loud part right now. I&rsquo;m not going to argue you out of it in an email, but two things helped me: the degree doesn&rsquo;t go anywhere, every path on the site runs on it, and wanting out doesn&rsquo;t undo the good you did. If you want the longer version, ${a(`${site}/5-hidden-fears-stopping-slps-from-making-a-career-change-and-how-to-overcome-them/`, "this piece on the five fears")} names the sunk-cost trap directly.`,
+        `You said the guilt is the loud part right now. I won&rsquo;t argue you out of it in an email. Two things helped me: the degree goes with you (every path on the site runs on it), and wanting out doesn&rsquo;t undo the good you did. If you want the longer version, ${a(`${site}/5-hidden-fears-stopping-slps-from-making-a-career-change-and-how-to-overcome-them/`, "this piece on the five fears")} names the sunk-cost trap directly.`,
         `The practical part will still be here when you want it: ${esc(top.label)} runs ${esc(top.range)}, and the typical move takes ${esc(top.timeline)}.`,
-        close, `&mdash; James`];
+        close, `James`];
       break;
     case "permission":
       body = [opening, intro,
-        `You said you keep reading exit stories and wondering if it&rsquo;s really possible. It is, and not just for people with a coding side-hustle or a spouse with a big salary. ${a(`${site}/slp-to-software-engineer-jeannette-roberes/`, "Jeannette")} was a working SLP who taught herself. ${a(`${site}/slp-to-consultant-rachel-archambault/`, "Rachel")} built a consulting practice from one training she was already giving. ${a(`${site}/reinventing-yourself-mattie-murrey-tegels/`, "Mattie")} did it in her fifties.`,
+        `You said you keep reading exit stories and wondering if it&rsquo;s really possible. It is, including for people without a coding side-hustle or a spouse with a big salary. ${a(`${site}/slp-to-software-engineer-jeannette-roberes/`, "Jeannette")} was a working SLP who taught herself. ${a(`${site}/slp-to-consultant-rachel-archambault/`, "Rachel")} built a consulting practice from one training she was already giving. ${a(`${site}/reinventing-yourself-mattie-murrey-tegels/`, "Mattie")} did it in her fifties.`,
         `Your own result, when you want it: ${esc(top.label)}, ${esc(top.range)}, typically ${esc(top.timeline)}. The first move is small: ${esc(top.firstMove)}`,
-        close, `&mdash; James`];
+        close, `James`];
       break;
     case "action":
       body = [opening, intro,
-        `You said you&rsquo;re applying and not getting traction. Nine times out of ten that&rsquo;s the resume, not you: it still reads clinical, so it gets sorted into the wrong pile in about seven seconds. ${a(`${site}/slp-resume-non-clinical/`, "This is what actually gets interviews")}, and if you want yours translated line by line against a real posting, ${a(`${APP_URL}/`, "the Career Pivot Suite")} does that for $24, with a free preview first.`,
-        context, close, `&mdash; James`];
+        `You said you&rsquo;re applying and not getting traction. Nine times out of ten the resume is the problem. It still reads clinical, so a recruiter files it in the wrong pile in about seven seconds. ${a(`${site}/slp-resume-non-clinical/`, "This is what actually gets interviews")}, and if you want yours translated line by line against a real posting, ${a(`${APP_URL}/`, "the Career Pivot Suite")} does that for $24, with a free preview first.`,
+        context, close, `James`];
       break;
     default:
       body = [opening, intro,
         `If I were you, the first thing I&rsquo;d do this week: ${esc(top.firstMove)}`,
-        context, report, close, `&mdash; James`];
+        context, report, close, `James`];
   }
   const html = plainWrap(body, unsubUrl);
   await getResend().emails.send({

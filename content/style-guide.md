@@ -61,3 +61,13 @@ Also vary sentence rhythm more aggressively than a stock "short punchy sentence 
 
 ## 9. Tagline note
 "Your degree isn't a prison. Your skills compound." (app tagline) does NOT appear on the site but is philosophically consistent. Use as thesis where useful; body copy should sound like the quotes above — warmer, more conversational than the tagline.
+
+## 8b. The trope list (James, 2026-09-03). Applies to every email and every post.
+- No em-dash overuse. Default to none; a comma, a period, or a colon does the job.
+- No "it's not X. It's Y." constructions, including the quieter "X, not Y" used as a reveal.
+- No table-setting or stage-setting fluff: "that's a real starting point", "here's the thing", "this is the whole thing", "the part that matters".
+- Concrete clarity over vague, every time. Name the number, the role, the person.
+- Second person, active voice.
+- Examples and quotes when relevant. Funny metaphors sometimes.
+- Vary sentence length on purpose. Short. Medium. And now and then a long one that builds, the way Gary Provost's "This sentence has five words" passage builds, so the reader hears a rhythm instead of a drone. Don't just write words. Write music.
+Pre-ship check: grep for "—", for "not .* It's" and "not .*, it's", and for the stage-setting phrases above; then read one paragraph aloud.
