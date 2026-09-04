@@ -13,7 +13,7 @@ export interface LessonProps { answer: any; save: (v: any) => void; finish: (opt
 
 const H = ({ children }: { children: ReactNode }) => <h3 style={{ fontFamily: font.serif, fontSize: 21, fontWeight: 700, margin: "0 0 10px" }}>{children}</h3>;
 const P = ({ children, style = {} }: { children: ReactNode; style?: any }) => <p style={{ fontSize: 15, lineHeight: 1.65, color: "var(--text)", margin: "0 0 14px", ...style }}>{children}</p>;
-const Muted = ({ children }: { children: ReactNode }) => <p style={{ fontSize: 13, lineHeight: 1.6, color: "var(--muted)", margin: "0 0 12px" }}>{children}</p>;
+const Muted = ({ children, style = {} }: { children: ReactNode; style?: any }) => <p style={{ fontSize: 13, lineHeight: 1.6, color: "var(--muted)", margin: "0 0 12px", ...style }}>{children}</p>;
 const Quote = ({ text, from }: { text: string; from: string }) => (
   <blockquote style={{ margin: "0 0 14px", padding: "10px 14px", borderLeft: "3px solid var(--accent)", background: "var(--accent-bg-subtle)", borderRadius: "0 10px 10px 0", fontSize: 15, lineHeight: 1.55 }}>
     <span style={{ fontStyle: "italic" }}>&ldquo;{text}&rdquo;</span> <span style={{ fontSize: 12, color: "var(--muted)" }}>&middot; {from}</span>
@@ -535,33 +535,121 @@ export function TellOne({ answer, save, finish, done }: LessonProps) {
 
 /* ------------------------------ 1.7 Checkpoint ----------------------------- */
 const PULL = ["I want to work at the scale of a system instead of one room.", "I want to build the training instead of deliver it.", "I want to use what I know about clinicians to make a product they'll actually use."];
+/* Defined outside Checkpoint1: a component declared inside a render function is
+   a new type on every keystroke, which remounts the input and drops focus. */
+function PushPullList({ items, setItems, draft, setDraft, tone, placeholder }: {
+  items: string[]; setItems: (v: string[]) => void; draft: string; setDraft: (v: string) => void;
+  tone: "push" | "pull"; placeholder: string;
+}) {
+  const add = () => { const t = draft.trim(); if (!t) return; setItems([...items, t]); setDraft(""); };
+  return (
+    <div>
+      {items.map((t, i) => (
+        <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "9px 12px", marginBottom: 6, borderRadius: 10,
+          background: tone === "push" ? "#FEF2F2" : "#EFF6FF", border: `1px solid ${tone === "push" ? "#FECACA" : "#BFDBFE"}`,
+          color: tone === "push" ? "#991B1B" : "#1E40AF", fontSize: 14.5, lineHeight: 1.5 }}>
+          <span style={{ flex: 1 }}>{t}</span>
+          <button type="button" onClick={() => setItems(items.filter((_, k) => k !== i))} aria-label="Remove"
+            style={{ background: "none", border: "none", color: "inherit", opacity: 0.5, cursor: "pointer", fontSize: 16, lineHeight: 1, padding: 0 }}>×</button>
+        </div>
+      ))}
+      <div style={{ display: "flex", gap: 8, marginTop: 4 }}>
+        <input value={draft} onChange={(e) => setDraft(e.target.value)}
+          onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); add(); } }}
+          placeholder={placeholder}
+          style={{ flex: 1, padding: "9px 12px", fontSize: 14.5, border: "1px solid var(--border)", borderRadius: 8, fontFamily: font.sans }} />
+        <Btn outline onClick={add}>Add</Btn>
+      </div>
+    </div>
+  );
+}
+
 export function Checkpoint1({ answer, save, finish, done, all }: LessonProps & { all: Record<string, any> }) {
+  const [pushes, setPushes] = useState<string[]>(answer?.pushes || []);
+  const [pulls, setPulls] = useState<string[]>(answer?.pulls || []);
   const [why, setWhy] = useState<string>(answer?.why || "");
+  const [dp, setDp] = useState(""); const [dl, setDl] = useState("");
   const verdict = all["1.2"]?.verdict as Verdict | undefined;
   const top: string[] = all["1.5"]?.top || [];
   const stage = all["1.1"]?.stage || all["0.2"]?.stage;
   const push = /burn|exhaust|hate|can't|cannot|paperwork|productivity|toxic|miserable/i.test(why);
+
   return (
     <div>
-      <P>Before you move on, gather the three things you worked out this week and write one sentence about where you&rsquo;re going. That sentence opens Explore, and it will follow you into your cover letter and your interviews.</P>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }} className="tos-two-col">
+      <P>
+        Before you move on, put the whole week in one place. Two lists first, because the sentence at the bottom only
+        works if you have said the honest version to yourself first.
+      </P>
+
+      <Panel style={{ marginBottom: 14 }}>
+        <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 4 }}>
+          <span style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 700, color: "#B91C1C" }}>01</span>
+          <H>I want to leave or change my situation because…</H>
+        </div>
+        <Muted>The frictions pushing you. Be exhaustive and unpolished. &ldquo;My caseload went to 68 in October and nobody mentioned it&rdquo; is more use than &ldquo;workload issues&rdquo;.</Muted>
+        <PushPullList items={pushes} setItems={setPushes} draft={dp} setDraft={setDp} tone="push" placeholder="Add a push, then press Enter" />
+      </Panel>
+
+      <Panel style={{ marginBottom: 14 }}>
+        <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 4 }}>
+          <span style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 700, color: "var(--accent)" }}>02</span>
+          <H>I want my next chapter to give me…</H>
+        </div>
+        <Muted>The outcomes pulling you. Concrete again: &ldquo;control over when I do focused work&rdquo; beats &ldquo;flexibility&rdquo;.</Muted>
+        <PushPullList items={pulls} setItems={setPulls} draft={dl} setDraft={setDl} tone="pull" placeholder="Add a pull, then press Enter" />
+      </Panel>
+
+      {(pushes.length > 0 || pulls.length > 0) && (
+        <Panel tone="soft" className="tos-rise" style={{ marginBottom: 14 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 8 }}>What you are actually solving for</div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }} className="tos-two-col">
+            <div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "#B91C1C", marginBottom: 6 }}>Moving away from</div>
+              {pushes.slice(0, 3).map((t, i) => <div key={i} style={{ fontSize: 14, lineHeight: 1.5, marginBottom: 4 }}>{i + 1}. {t}</div>)}
+              {!pushes.length && <Muted>Nothing listed yet.</Muted>}
+            </div>
+            <div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "var(--accent)", marginBottom: 6 }}>Moving toward</div>
+              {pulls.slice(0, 3).map((t, i) => <div key={i} style={{ fontSize: 14, lineHeight: 1.5, marginBottom: 4 }}>{i + 1}. {t}</div>)}
+              {!pulls.length && <Muted>Nothing listed yet.</Muted>}
+            </div>
+          </div>
+          <Muted style={{ marginTop: 10, marginBottom: 0 }}>
+            Two people can write the same push and need opposite things, which is why the sentence below is yours
+            rather than a category. This pushes-and-pulls framing comes from the Jobs to Be Done work of Bob Moesta
+            and Clayton Christensen.
+          </Muted>
+        </Panel>
+      )}
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10, marginBottom: 14 }} className="tos-two-col">
         <Stat label="Stage" value={stage ? STAGE_META.find((s) => s.key === stage)?.name || "Set" : "Not set"} ok={!!stage} href="/course/ground/1.1" />
         <Stat label="Verdict" value={verdict ? VERDICTS[verdict].title : "Not set"} ok={!!verdict} href="/course/ground/1.2" />
         <Stat label="Top paths" value={top.length ? top.map((s) => PATHS[s]?.label).join(", ") : "Not set"} ok={top.length > 0} href="/course/ground/1.5" />
       </div>
-      <Panel style={{ marginTop: 14 }}>
-        <H>Why I&rsquo;m leaving, in pull language</H>
-        <Muted>One sentence about where you&rsquo;re going, not what you&rsquo;re escaping. It becomes the first line of your cover letter, your LinkedIn About, and your answer to &ldquo;why are you leaving clinical work?&rdquo;</Muted>
-        <textarea value={why} onChange={(e) => setWhy(e.target.value)} rows={3} placeholder="I want to…" style={{ width: "100%", padding: 12, fontSize: 15, border: `1px solid ${push ? "var(--warn)" : "var(--border)"}`, borderRadius: 8, fontFamily: font.sans, lineHeight: 1.5 }} />
-        {push && <div style={{ fontSize: 13, color: "#92400E", marginTop: 6 }}>That reads as push (what you&rsquo;re escaping). Hiring managers hear a retention risk. Try the shape below.</div>}
+
+      <Panel>
+        <H>In one sentence, the progress I&rsquo;m looking for is…</H>
+        <Muted>
+          Where you are going, not what you are escaping. It becomes the first line of your cover letter, your LinkedIn
+          About, and your answer when someone asks why you are leaving clinical work.
+        </Muted>
+        <textarea value={why} onChange={(e) => setWhy(e.target.value)} rows={3} placeholder="A role where I can…"
+          style={{ width: "100%", padding: 12, fontSize: 15, border: `1px solid ${push ? "var(--warn)" : "var(--border)"}`, borderRadius: 8, fontFamily: font.sans, lineHeight: 1.5 }} />
+        {push && <div style={{ fontSize: 13, color: "#92400E", marginTop: 6 }}>That reads as a push, which is what list 01 is for. Hiring managers hear a retention risk. Try the shape below.</div>}
         <div style={{ marginTop: 10, fontSize: 13, color: "var(--muted)" }}>Examples:</div>
         {PULL.map((x) => <button key={x} type="button" onClick={() => setWhy(x)} style={{ display: "block", textAlign: "left", background: "none", border: "none", color: "var(--accent)", fontSize: 14, cursor: "pointer", padding: "4px 0", fontFamily: font.sans }}>&ldquo;{x}&rdquo;</button>)}
       </Panel>
-      {!done ? <Btn onClick={() => { save({ why }); finish({ action: true }); }} disabled={why.trim().length < 12 || push} style={{ marginTop: 16 }}>Save and finish Module 1</Btn>
-             : <Panel tone="soft" style={{ marginTop: 16 }}><b>Module 1 complete.</b> Explore is written and unlocks after James approves this sample. Your map on the dashboard already carries everything you set here.</Panel>}
+
+      {!done ? (
+        <Btn onClick={() => { save({ pushes, pulls, why }); finish({ action: true }); }} disabled={why.trim().length < 12 || push} style={{ marginTop: 16 }}>Save and finish Module 1</Btn>
+      ) : (
+        <Panel tone="soft" style={{ marginTop: 16 }}><b>Module 1 complete.</b> Explore opens next, and your map on the dashboard now carries everything you set this week.</Panel>
+      )}
     </div>
   );
 }
+
 function Stat({ label, value, ok, href }: { label: string; value: string; ok: boolean; href: string }) {
   return (
     <a href={href} style={{ textDecoration: "none", color: "inherit", padding: 14, borderRadius: 12, border: `1.5px solid ${ok ? "var(--accent-bg)" : "var(--border)"}`, background: ok ? "var(--accent-bg-subtle)" : "var(--card)", display: "block" }}>

@@ -211,14 +211,26 @@ children.push(
 );
 // ------------------------------------------------------------------- 1.7
 children.push(
-  kicker("Module 1 · Checkpoint · 2 min"), ...h1("Checkpoint: Ground", "Three things leave this module with you. Write the sentence, and Explore opens."),
-  ...fields([["My stage", ""], ["My verdict", "Bad workplace / bad fit / bad season"], ["The three paths my dials pointed at", ""]]),
-  ...ask("Why I'm leaving, in pull language. One sentence about where you're going, not what you're escaping. No burnout words.", 4, "It becomes the first line of your cover letter, your LinkedIn About, and your answer to \"why are you leaving clinical work?\""),
-  ...callout("Examples of pull: \"I want to work at the scale of a system instead of one room.\" \"I want to build the training instead of deliver it.\" \"I want to use what I know about clinicians to make a product they'll actually use.\"", "", AMBER),
-  ...ask("Read it aloud. Would a hiring manager hear a retention risk, or a plan? Rewrite once if it's the first.", 4),
+  kicker("Module 1 · Checkpoint · 2 min"), ...h1("Checkpoint: Ground", "Two lists, then one sentence. The sentence only works if you have written the honest version first."),
+  h2("01  I want to leave or change my situation because…"),
+  muted("The frictions pushing you. Be exhaustive and unpolished. \"My caseload went to 68 in October and nobody mentioned it\" is more use than \"workload issues\"."),
+  ...ask("List them all. Six or eight is normal.", 7),
+  h2("02  I want my next chapter to give me…"),
+  muted("The outcomes pulling you. Concrete again: \"control over when I do focused work\" beats \"flexibility\"."),
+  ...ask("List them all.", 7),
+  pageBreak(),
+  kicker("Module 1 · Checkpoint"), ...h1("Your definition of progress", "Circle the two or three on each list that carry the most weight, then write them here."),
+  ...fields([["Moving away from, 1", ""], ["Moving away from, 2", ""], ["Moving away from, 3", ""], ["Moving toward, 1", ""], ["Moving toward, 2", ""], ["Moving toward, 3", ""]]),
+  muted("Two people can write the same push and need opposite things. That is why the sentence below is yours rather than a category. The pushes-and-pulls framing comes from the Jobs to Be Done work of Bob Moesta and Clayton Christensen."),
+  h2("Where I landed this week"),
+  ...fields([["My stage", ""], ["My verdict", "Bad workplace / bad fit / bad season"], ["What gave me energy, in a phrase", ""], ["The three paths my dials pointed at", ""]]),
+  ...ask("In one sentence, the progress I am looking for is… Where you are going, not what you are escaping. No burnout words.", 4, "It becomes the first line of your cover letter, your LinkedIn About, and your answer to \"why are you leaving clinical work?\""),
+  ...callout("Examples of pull: \"I want to work at the scale of a system instead of one room.\" \"I want to build the training instead of deliver it.\" \"I want to use what I know about clinicians to make a product they will actually use.\"", "", AMBER),
+  ...ask("Read it aloud. Would a hiring manager hear a retention risk, or a plan? Rewrite once if it is the first.", 4),
   h2("Notes to the person reading this in three months"),
   ...ask("What do you want them to remember about how this week felt?", 6),
   spacer(), muted("Date: ____ / ____ / ________"),
+
 );
 
 
