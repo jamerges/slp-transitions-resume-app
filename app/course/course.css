@@ -1,0 +1,34 @@
+/* Transition OS: motion vocabulary. Keyframes live here because inline styles
+   can't declare them. Everything is opt-out under prefers-reduced-motion. */
+.tos-rise { animation: tos-rise 560ms cubic-bezier(0.16, 0.84, 0.44, 1) both; }
+@keyframes tos-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.tos-pop { animation: tos-pop 480ms cubic-bezier(0.2, 0.9, 0.3, 1.3) both; }
+@keyframes tos-pop { from { opacity: 0; transform: scale(0.72); } to { opacity: 1; transform: none; } }
+.tos-fade { animation: tos-fade 400ms ease both; }
+@keyframes tos-fade { from { opacity: 0; } to { opacity: 1; } }
+.tos-draw { stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: tos-draw 1400ms ease-out forwards; }
+@keyframes tos-draw { to { stroke-dashoffset: 0; } }
+.tos-grow { transform-origin: left center; animation: tos-grow 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes tos-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.tos-grow-up { transform-origin: center bottom; animation: tos-grow-up 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes tos-grow-up { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+.tos-strike { position: relative; }
+.tos-strike::after { content: ""; position: absolute; left: 0; right: 0; top: 55%; height: 3px; background: var(--warn); transform-origin: left center; animation: tos-grow 500ms ease-out both; animation-delay: var(--d, 0ms); border-radius: 2px; }
+.tos-pulse { animation: tos-pulse 1600ms ease-in-out infinite; }
+@keyframes tos-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(45,106,79,0.35); } 50% { box-shadow: 0 0 0 10px rgba(45,106,79,0); } }
+.tos-shimmer { background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, var(--accent) 100%); background-size: 200% 100%; animation: tos-shimmer 2.4s linear infinite; }
+@keyframes tos-shimmer { to { background-position: -200% 0; } }
+.tos-confetti span { position: absolute; top: -10px; width: 8px; height: 14px; border-radius: 2px; animation: tos-confetti 1400ms ease-in both; }
+@keyframes tos-confetti { 0% { transform: translateY(0) rotate(0); opacity: 1; } 100% { transform: translateY(260px) rotate(540deg); opacity: 0; } }
+.tos-caption { animation: tos-rise 420ms ease both; }
+.tos-btn:hover { background: var(--accent-light) !important; }
+.tos-card-hover { transition: transform 160ms ease, box-shadow 160ms ease; }
+.tos-card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(10,61,49,0.10); }
+.tos-range { -webkit-appearance: none; width: 100%; height: 6px; border-radius: 3px; background: var(--border); outline: none; }
+.tos-range::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.25); cursor: pointer; }
+.tos-range::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); border: 3px solid #fff; cursor: pointer; }
+@media (prefers-reduced-motion: reduce) {
+  .tos-rise, .tos-pop, .tos-fade, .tos-draw, .tos-grow, .tos-grow-up, .tos-caption, .tos-pulse, .tos-shimmer, .tos-confetti span { animation: none !important; opacity: 1; transform: none; stroke-dashoffset: 0; }
+  .tos-strike::after { animation: none; transform: none; }
+}
+@media (max-width: 720px) { .tos-two-col { grid-template-columns: 1fr !important; } .tos-hide-sm { display: none !important; } }
