@@ -1,5 +1,5 @@
 "use client";
-import { MODULES, BADGES, LESSONS, moduleOf, type Lesson } from "@/lib/course";
+import { MODULES, BADGES, LESSONS, moduleOf, MODULE_ACCENT, type Lesson } from "@/lib/course";
 import { PATHS } from "@/lib/quiz";
 import { useProgress } from "@/lib/course-progress";
 import { CourseShell, Btn, Panel, font, Ring } from "./ui";
@@ -89,10 +89,10 @@ export default function Dashboard() {
                   <div className={current ? "tos-pulse" : undefined} style={{ width: 34, height: 34, borderRadius: "50%", background: mpct === 100 ? "var(--accent)" : current ? "var(--card)" : "var(--bg)", border: `2px solid ${mpct === 100 || current ? "var(--accent)" : "var(--border)"}`, color: mpct === 100 ? "#fff" : current ? "var(--accent)" : "var(--light)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 14, flexShrink: 0 }}>{mpct === 100 ? "✓" : m.n}</div>
                   {mi < MODULES.length - 1 && <div style={{ width: 2, flex: 1, background: mpct === 100 ? "var(--accent)" : "var(--border)", margin: "4px 0", minHeight: 24 }} />}
                 </div>
-                <Panel className="tos-rise tos-card-hover" style={{ padding: 16, marginBottom: 10, opacity: locked ? 0.72 : 1, borderColor: current ? "var(--accent)" : undefined, animationDelay: `${mi * 60}ms` }}>
+                <Panel className="tos-rise tos-card-hover" style={{ padding: 16, marginBottom: 10, opacity: locked ? 0.72 : 1, borderColor: current ? "var(--accent)" : undefined, animationDelay: `${mi * 60}ms`, borderLeft: `4px solid ${locked ? "var(--border)" : (MODULE_ACCENT[m.n]?.edge || "var(--accent-bg)")}` }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10, flexWrap: "wrap" }}>
                     <div style={{ minWidth: 0 }}>
-                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: locked ? "var(--light)" : "var(--accent)" }}>{m.phase} · {m.week}</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: locked ? "var(--light)" : (MODULE_ACCENT[m.n]?.ink || "var(--accent)") }}>{m.phase} · {m.week}</div>
                       <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 700, margin: "2px 0" }}>{m.title}</div>
                       <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.5, maxWidth: "56ch" }}>{m.tagline}</div>
                     </div>

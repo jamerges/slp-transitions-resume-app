@@ -199,6 +199,19 @@ for (const m of MODULES) {
   }
 }
 
+/** A hue per module so the chapters feel distinct without leaving the palette.
+ *  All of them sit in the emerald-to-teal range except Test, which borrows the
+ *  warning amber because that module is where the money and the risk live. */
+export const MODULE_ACCENT: Record<number, { tint: string; ink: string; edge: string }> = {
+  0: { tint: "#F0FAF3", ink: "#2D6A4F", edge: "#D8F3DC" },
+  1: { tint: "#F0FAF3", ink: "#2D6A4F", edge: "#D8F3DC" },
+  2: { tint: "#EFF6FF", ink: "#1E40AF", edge: "#BFDBFE" },
+  3: { tint: "#F5F3FF", ink: "#5B21B6", edge: "#DDD6FE" },
+  4: { tint: "#FEF6E7", ink: "#92400E", edge: "#FDE68A" },
+  5: { tint: "#ECFDF5", ink: "#065F46", edge: "#A7F3D0" },
+  6: { tint: "#FDF2F8", ink: "#9D174D", edge: "#FBCFE8" },
+};
+
 export const LESSONS: Lesson[] = MODULES.flatMap((m) => m.lessons);
 export const lessonById = (id: string) => LESSONS.find((l) => l.id === id);
 export const moduleOf = (l: Lesson) => MODULES.find((m) => m.n === l.module)!;

@@ -1,6 +1,6 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
-import { lessonById, moduleOf, nextLesson, prevLesson, SOURCES, TYPE_LABEL, type Lesson } from "@/lib/course";
+import { lessonById, moduleOf, nextLesson, prevLesson, SOURCES, TYPE_LABEL, MODULE_ACCENT, type Lesson } from "@/lib/course";
 import { contentFor } from "@/lib/course-content";
 import { useProgress } from "@/lib/course-progress";
 import { CourseShell, UnlockToast, Btn, Panel, font } from "./ui";
@@ -40,6 +40,7 @@ export default function LessonPage({ id }: { id: string }) {
   const [toast, setToast] = useState<{ xp: number; badges: any[] } | null>(null);
   const done = p.completed.includes(id);
   const idx = mod.lessons.findIndex((l) => l.id === id);
+  const accent = MODULE_ACCENT[mod.n] || MODULE_ACCENT[1];
   const answers = p.answers as Record<string, any>;
   const pathSlug: string | undefined = answers["0.2"]?.path || answers["1.5"]?.top?.[0];
 
@@ -64,11 +65,12 @@ export default function LessonPage({ id }: { id: string }) {
       {toast && <UnlockToast xp={toast.xp} badges={toast.badges} onDone={() => setToast(null)} />}
       <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) 280px", gap: 28 }} className="tos-two-col">
         <div>
+          <div style={{ height: 4, borderRadius: 2, background: accent.edge, marginBottom: 12, maxWidth: 90 }} aria-hidden />
           <div style={{ fontSize: 13, color: "var(--muted)", marginBottom: 8 }}>
-            <a href="/course" style={{ color: "var(--muted)" }}>Quest log</a> › Module {mod.n}: {mod.title} › Lesson {idx + 1} of {mod.lessons.length}
+            <a href="/course" style={{ color: "var(--muted)" }}>Quest log</a> › <span style={{ color: accent.ink, fontWeight: 600 }}>Module {mod.n}: {mod.title}</span> › Lesson {idx + 1} of {mod.lessons.length}
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 6, flexWrap: "wrap" }}>
-            <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)", background: "var(--accent-bg-subtle)", padding: "3px 10px", borderRadius: 4 }}>{TYPE_ICON[lesson.type]} {TYPE_LABEL[lesson.type]}</span>
+            <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: accent.ink, background: accent.tint, padding: "3px 10px", borderRadius: 4 }}>{TYPE_ICON[lesson.type]} {TYPE_LABEL[lesson.type]}</span>
             <span style={{ fontSize: 12, color: "var(--muted)" }}>{lesson.minutes} min</span>
             {done && <span style={{ fontSize: 12, color: "var(--accent)", fontWeight: 700 }}>✓ Completed</span>}
           </div>
