@@ -68,7 +68,7 @@ export function CourseShell({ children, xp, streak, pct, right }: { children: Re
         </div>
       </div>
       <div style={{ background: "var(--warn-bg)", color: "#92400E", fontSize: 12, textAlign: "center", padding: "6px 12px" }}>
-        Prototype build for review. Progress is saved in this browser only. Modules 2 to 6 are outlined and unlock after approval.
+        Prototype build for review. Your progress is saved in this browser only.
       </div>
       <div style={{ maxWidth: 1040, margin: "0 auto", padding: "24px 16px 60px" }}>{children}</div>
     </div>
@@ -108,10 +108,10 @@ export function Btn({ children, onClick, outline, disabled, style, href }: { chi
   return <button type="button" className={outline ? undefined : "tos-btn"} onClick={onClick} disabled={disabled} style={base}>{children}</button>;
 }
 
-export function Panel({ children, style, tone = "card" }: { children: ReactNode; style?: CSSProperties; tone?: "card" | "soft" | "warm" }) {
+export function Panel({ children, style, tone = "card", className }: { children: ReactNode; style?: CSSProperties; tone?: "card" | "soft" | "warm"; className?: string }) {
   const bg = tone === "soft" ? "var(--accent-bg-subtle)" : tone === "warm" ? "var(--warn-bg)" : "var(--card)";
   const border = tone === "soft" ? "var(--accent-bg)" : tone === "warm" ? "#FDE68A" : "var(--border)";
-  return <div style={{ background: bg, border: `1px solid ${border}`, borderRadius: 14, padding: 20, ...style }}>{children}</div>;
+  return <div className={className} style={{ background: bg, border: `1px solid ${border}`, borderRadius: 14, padding: 20, ...style }}>{children}</div>;
 }
 
 export function Slider({ label, left, right, value, onChange, format }: { label: string; left: string; right: string; value: number; onChange: (v: number) => void; format?: (v: number) => string }) {

@@ -1,0 +1,659 @@
+[
+ {
+  "id": "5.1",
+  "tldr": "Career changers get rejected for three specific reasons, and none of them is that you can't do the job. Once you know what the three are, most interview prep becomes obvious.",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "The first time I got a real interview for a non-clinical job, I prepared the wrong thing. I rehearsed my strengths. I had stories about my caseload ready. What I had not prepared for was the question underneath every question, which was whether I would still be there in a year or whether I would miss the kids and go back."
+   },
+   {
+    "type": "p",
+    "text": "Hiring managers rarely say that part out loud. They ask something softer and listen for it anyway. Once you know what they are listening for, you can answer it on purpose instead of stumbling into it."
+   },
+   {
+    "type": "h",
+    "text": "The three doubts"
+   },
+   {
+    "type": "p",
+    "text": "Across documented transitions, the same three reasons come up for why a strong clinician gets passed over. They are worth memorising, because each one has a fixable answer."
+   },
+   {
+    "type": "list",
+    "items": [
+     "**Retention doubt.** Will this person bail back to clinical work the moment it gets hard? Six years of training and a licence look, from the outside, like a strong pull backward.",
+     "**Jargon they cannot map.** Your experience is described in words that mean nothing to a hiring manager outside healthcare, so they cannot tell whether you have done the job or not.",
+     "**No proof of investment.** Nothing on the page shows you have spent any of your own time on this field. Anyone can say they are interested."
+    ]
+   },
+   {
+    "type": "p",
+    "text": "There is a fourth, quieter one: a worry that your salary expectations are anchored somewhere they cannot reach, or that you will resent a lateral move. That one gets handled in lesson 5.5."
+   },
+   {
+    "type": "h",
+    "text": "What each doubt actually wants"
+   },
+   {
+    "type": "p",
+    "text": "Retention doubt wants evidence that leaving was a decision, not a flinch. That is what your pull sentence from Module 1 does. You worked out whether the problem was your workplace, the work itself, or the season, and you can say which in one line without listing grievances."
+   },
+   {
+    "type": "p",
+    "text": "The jargon problem wants translation, which is Module 3's whole job. If you have done that work, your bullets already read in their language, and your spoken answers should match. Say portfolio, stakeholders, outcomes and adoption, because those are the words on their job posting."
+   },
+   {
+    "type": "p",
+    "text": "The proof problem wants an artifact. A Rise module, a rebuilt spreadsheet, a published piece, a one-page workflow write-up. Something you made on a weekend that nobody asked you for. Module 4 is where you build it, and in an interview it does more work than any certificate."
+   },
+   {
+    "type": "quote",
+    "text": "lots of prospective employees are skeptical about my actually wanting to transition into a different career field because of my background",
+    "from": "an SLP on r/slp"
+   },
+   {
+    "type": "h",
+    "text": "The shape of a good answer"
+   },
+   {
+    "type": "p",
+    "text": "Every answer to a career-change question has the same three parts, in this order. Where you are going, what you did to get ready, and one accomplishment with a number that maps onto a problem they have in the first ninety days."
+   },
+   {
+    "type": "p",
+    "text": "Notice what is missing. There is no explanation of what went wrong. Burnout, caseload sizes, productivity percentages and documentation hours are all true and all real, and none of them belong in the room. They confirm the doubt rather than answering it."
+   },
+   {
+    "type": "callout",
+    "tone": "soft",
+    "title": "The line that lands in customer success",
+    "text": "One transitioner opens with a version of this: I have been doing customer success my whole career, I just called it patient and family care. Then a metric. It works because it reframes the entire résumé in one sentence and then proves it."
+   },
+   {
+    "type": "p",
+    "text": "You are not being judged on whether you are impressive. You are being sorted against three doubts, and every one of them has an answer you can build this week."
+   }
+  ],
+  "takeaways": [
+   "Career changers get screened out for three reasons: retention doubt, jargon that cannot be mapped, and no proof of investment.",
+   "Your pull sentence answers retention doubt, your translated bullets answer the jargon problem, and one artifact answers the proof problem.",
+   "Every good answer has the same shape: where you are going, how you prepared, one accomplishment with a number.",
+   "Burnout is a true reason and a bad answer. It confirms the doubt they already have."
+  ],
+  "sources": [
+   "facts",
+   "forums"
+  ]
+ },
+ {
+  "id": "5.2",
+  "tldr": "Your bridge statement is the sixty seconds that answers why are you leaving clinical work. Three parts: pull, preparation, proof. Build it once, say it until it sounds like you, and use it everywhere.",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "You will answer this question in every interview, on every screening call, and probably at a wedding. Why are you leaving? Getting a version you believe, out loud, is worth more preparation than any other single thing in this module."
+   },
+   {
+    "type": "p",
+    "text": "The mistake most people make is treating it as a confession. The question sounds like it wants the story of what went wrong. It does not. It wants to know whether you have thought about this, and whether you are heading somewhere specific."
+   },
+   {
+    "type": "h",
+    "text": "Three parts, sixty seconds"
+   },
+   {
+    "type": "steps",
+    "items": [
+     "**Pull.** One sentence about where you are going. This is the sentence you wrote at the Module 1 checkpoint, and it is the only part that must be true to you rather than optimised.",
+     "**Preparation.** One sentence about what you have done to get ready. The artifact, the conversations, the course, the certificate if you took one.",
+     "**Proof.** One accomplishment from clinical work, with a real number, mapped onto a problem this role has in its first ninety days."
+    ]
+   },
+   {
+    "type": "p",
+    "text": "That is the whole structure. It takes about forty-five seconds at a normal speaking pace, which is roughly the right length. Longer, and you start explaining. Explaining sounds like justifying."
+   },
+   {
+    "type": "h",
+    "text": "Push and pull, in practice"
+   },
+   {
+    "type": "p",
+    "text": "Push is what you are escaping. Pull is what you are moving toward. The same fact can be either, depending on the sentence you put around it."
+   },
+   {
+    "type": "example",
+    "title": "The same career, two framings",
+    "before": "I'm burned out. The caseload was 62 kids across three buildings and I was doing notes at 9pm every night. I need out of the schools.",
+    "after": "I want to work on the systems that decide how those 62 kids get served, rather than absorbing the consequences of them one session at a time. That's why I'm looking at program management."
+   },
+   {
+    "type": "example",
+    "title": "Preparation, said badly and well",
+    "before": "I've been researching the field and I'm a fast learner.",
+    "after": "I rebuilt one of my own trainings as a Rise module, and I talked to three people doing this job about what their first month looked like."
+   },
+   {
+    "type": "p",
+    "text": "The second version of each is not more polished. It is more specific, and specificity is what makes it credible."
+   },
+   {
+    "type": "tool",
+    "name": "bridge-builder"
+   },
+   {
+    "type": "h",
+    "text": "Then say it out loud"
+   },
+   {
+    "type": "p",
+    "text": "Read it to a person, or to a recorder, five times. The first two will sound rehearsed. Around the fourth it starts sounding like something you actually think, which is the point. You are not memorising a script. You are getting comfortable enough with the shape that you can improvise inside it when the question arrives in a form you did not expect."
+   },
+   {
+    "type": "callout",
+    "tone": "warm",
+    "title": "One thing to check",
+    "text": "If any version of your statement contains the words burnout, paperwork, productivity, caseload size, or administration, rewrite that sentence. Those words are all true. They also hand the interviewer the retention doubt for free."
+   }
+  ],
+  "action": {
+   "label": "Save my statement",
+   "prompt": "Fill in the three parts above, then say the whole thing out loud five times: to a partner, a friend, or your phone's voice recorder. When it stops sounding rehearsed, it is ready.",
+   "done": "Saved. You will use that statement in every screening call from here."
+  },
+  "takeaways": [
+   "The bridge statement has three parts: where you are going, how you prepared, one accomplishment with a number.",
+   "Push is what you are escaping and pull is where you are going; the same fact can be framed either way.",
+   "Forty-five seconds is about right. Longer and you start justifying.",
+   "Say it aloud five times before you say it to a hiring manager."
+  ],
+  "sources": [
+   "facts",
+   "forums"
+  ]
+ },
+ {
+  "id": "5.3",
+  "tldr": "Six questions do most of the screening for career changers. Each one has a shape of answer that works and a common answer that quietly disqualifies you.",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "Interviews feel unpredictable, but the questions a career changer gets are not. Six of them do most of the work, and they show up in phone screens, on application forms, and in the first ten minutes with a hiring manager."
+   },
+   {
+    "type": "p",
+    "text": "Read them with your own answers in mind. Where you find yourself reaching for a soft skill, stop and find the number instead."
+   },
+   {
+    "type": "tool",
+    "name": "screening-questions"
+   },
+   {
+    "type": "h",
+    "text": "The pattern underneath"
+   },
+   {
+    "type": "p",
+    "text": "Every good answer above does the same two things. It uses the vocabulary of the role rather than the vocabulary of the clinic, and it contains at least one number that could be checked."
+   },
+   {
+    "type": "p",
+    "text": "Every weak answer does the same thing too. It reaches for a quality instead of an event. Communication skills, detail-oriented, works well under pressure, passionate about helping people. Those describe about ninety percent of applicants and prove nothing about any of them."
+   },
+   {
+    "type": "example",
+    "title": "A behavioural answer, twice",
+    "before": "I'm great with difficult parents. I always stay calm and find common ground.",
+    "after": "A parent refused an AAC trial for four months because she thought it would stop her son talking. I brought her the research, then a two-week trial with a defined stop point. She agreed to the trial and requested the device herself at week three."
+   },
+   {
+    "type": "p",
+    "text": "The second answer has an objection, an intervention, and an outcome. A customer success manager hears their own job description in it. That is the whole trick, and it works because you really did that, not because it was phrased cleverly."
+   },
+   {
+    "type": "h",
+    "text": "The written screen"
+   },
+   {
+    "type": "p",
+    "text": "Application forms are where a lot of career changers quietly lose. The knockout questions are the real filter, more than any résumé parsing. Years of experience in the field. Do you have X certification. Are you authorised to work without sponsorship. Answer them honestly and, where a form gives you a text box, use it to bridge rather than to apologise."
+   },
+   {
+    "type": "callout",
+    "tone": "warm",
+    "title": "On identical answers",
+    "text": "One hiring manager reported that 35 percent of applicants gave word-for-word identical answers to her screening questions, because they had all asked the same tool the same way. A screening box is the cheapest place in the whole process to sound like a person."
+   },
+   {
+    "type": "p",
+    "text": "Pick the two questions above you would fumble today. Write your answers longhand, then cut them by half. Short and specific beats complete every time."
+   }
+  ],
+  "takeaways": [
+   "Six questions do most of the screening for career changers, and each has a recognisable good shape.",
+   "Weak answers name a quality; strong answers describe an event with a number in it.",
+   "Behavioural answers need an objection, what you did, and the outcome.",
+   "Application knockout questions filter more people than résumé parsing does."
+  ],
+  "sources": [
+   "facts",
+   "forums"
+  ]
+ },
+ {
+  "id": "5.4",
+  "tldr": "Practise the five questions with a coach that knows your path and your own pull sentence. It tells you what landed, what read as escaping rather than moving toward, and where a number was missing.",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "Reading about interview answers and giving one are different skills. The gap between them closes with repetition, and repetition is hard to arrange when the only people who will practise with you are the people you have not told yet."
+   },
+   {
+    "type": "p",
+    "text": "So practise here first. The coach below runs five questions for your path, in the order a real screen tends to take them, and gives you feedback after each answer. It knows your pull sentence from Module 1 and the documented salary range for your path, so its feedback is about your situation rather than generic interview advice."
+   },
+   {
+    "type": "h",
+    "text": "How to get value from it"
+   },
+   {
+    "type": "steps",
+    "items": [
+     "Answer out loud first, as if the question came from a person, then type roughly what you said. Typing a polished version you would never say aloud defeats the exercise.",
+     "Let it be bad the first time. The first run is diagnostic, not a performance.",
+     "Watch specifically for push language creeping in, and for answers with no number in them.",
+     "Run it again two days later. The second run is where it starts to feel like yours."
+    ]
+   },
+   {
+    "type": "tool",
+    "name": "mock-interview"
+   },
+   {
+    "type": "h",
+    "text": "What to listen for in yourself"
+   },
+   {
+    "type": "p",
+    "text": "Three tells that a practice answer needs work. You used the word just, as in I just did therapy. You explained your job title before you described what you did. Or you finished a story without saying what changed as a result."
+   },
+   {
+    "type": "quote",
+    "text": "we're all master's-level smart; I promise a lot of folks can do what I do.",
+    "from": "a transitioned SLP, r/SLPcareertransitions"
+   },
+   {
+    "type": "p",
+    "text": "That line is from someone who made the move and now works alongside people whose degrees impressed her before she got there. Believe her about the second half. The interview is the last place to undersell six years of training."
+   }
+  ],
+  "action": {
+   "label": "Log five answers",
+   "prompt": "Run the mock interview above end to end. Answer all five questions out loud, then type what you said. Read the feedback, then run it a second time in a day or two.",
+   "done": "Five answered. Run it again whenever an interview is coming up; it never gets worse."
+  },
+  "takeaways": [
+   "Answer out loud, then type what you said. Writing a polished version you would not speak defeats the exercise.",
+   "The first run is diagnostic. Let it be bad.",
+   "Three tells that an answer needs work: the word just, explaining your title before your work, and no stated outcome.",
+   "Run it twice, a couple of days apart, before a real interview."
+  ],
+  "sources": [
+   "facts",
+   "forums"
+  ]
+ },
+ {
+  "id": "5.5",
+  "tldr": "About thirty percent of people negotiate, most who ask get something, and offers are almost never withdrawn for asking. Anchor on the documented range for your path rather than on your clinical salary.",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "This is the lesson where being an SLP works against you, because our field has almost no negotiation culture. Pay scales are published, steps are fixed, and the honest answer to what can I ask for is usually nothing. That habit follows people out, and it costs them."
+   },
+   {
+    "type": "h",
+    "text": "What the evidence says"
+   },
+   {
+    "type": "numbers",
+    "items": [
+     {
+      "value": "~30%",
+      "label": "of people negotiate their offer at all (Pew 2023; ZipRecruiter Q4 2025)"
+     },
+     {
+      "value": "66–91%",
+      "label": "of those who ask get something (Pew; Fidelity; ZipRecruiter)"
+     },
+     {
+      "value": "~$5,000",
+      "label": "more per year for negotiators in the best field study of new hires"
+     },
+     {
+      "value": "84%",
+      "label": "of employers say they expect a counter"
+     }
+    ]
+   },
+   {
+    "type": "p",
+    "text": "The fear that asking will cost you the offer is close to unfounded. In the employer data, withdrawals are rare enough to be a rounding error, and most hiring managers build a counter into their plan. The candidates in these studies consistently overestimate the risk, even when they are shown the numbers first."
+   },
+   {
+    "type": "callout",
+    "tone": "warm",
+    "title": "How solid this is",
+    "text": "The dollar figures come from two modest samples of new hires and graduates, and none of the surveys sampled SLPs. Treat them as evidence that asking is normal and usually pays, not as a promise of a specific number."
+   },
+   {
+    "type": "h",
+    "text": "Anchor on the range, not on your clinical salary"
+   },
+   {
+    "type": "p",
+    "text": "Your current salary is the wrong reference point in both directions. If it is low for the new field you will underask, and if it is high you will sound unrealistic without the documented range to back you. Use the band for the path you are entering."
+   },
+   {
+    "type": "paths",
+    "note": "Your path's documented band. The middle of it is a reasonable anchor for a first non-clinical role with strong translated experience."
+   },
+   {
+    "type": "p",
+    "text": "In at least twelve states and Washington D.C. the range has to be posted on the job ad, and in around twenty states an employer cannot ask what you currently earn. Both lists change several times a year, so check a current tracker rather than trusting a number in any course, including this one. If the range is posted, negotiate inside it. If you are asked for your expectation first, give the band and say it depends on the whole package."
+   },
+   {
+    "type": "script",
+    "title": "When they ask what you're expecting",
+    "text": "Based on what I've seen for this role, I've been looking at the [$X to $Y] range. I care about the whole package though, so if the base sits at the lower end I'd want to talk about [remote days / PTO / start date]. What range did you have budgeted?"
+   },
+   {
+    "type": "script",
+    "title": "Countering an offer",
+    "text": "Thank you, I'm glad we got here. I'd like to accept at [$Y]. That's inside the range you posted, and it reflects [the specific thing: the clinical background the role asks for, the systems experience, the licence]. If the base is fixed, could we look at [sign-on / an early review / extra PTO]?"
+   },
+   {
+    "type": "script",
+    "title": "Asking for time",
+    "text": "This is great news, thank you. Could I have until [day] to go through it properly? I want to say yes with my full attention rather than in the first ten minutes."
+   },
+   {
+    "type": "h",
+    "text": "The rest of the package"
+   },
+   {
+    "type": "p",
+    "text": "Base is not the whole number, and in two of these paths it is not even most of it. In customer success the split runs roughly eighty-three percent base to seventeen percent variable in the one survey with published numbers. In sales it moves toward half and half, which changes how a $110,000 offer should feel when your mortgage is fixed."
+   },
+   {
+    "type": "list",
+    "items": [
+     "**Variable pay.** Ask what the target is, how it is measured, and when it pays. A target nobody hit last year is not income.",
+     "**Equity, at startups.** Grants typically vest over four years with a one-year cliff, so leaving inside twelve months means it was worth nothing. Ask how many shares, out of how many total.",
+     "**Sign-on bonus.** A common tool, though only about fifteen percent of new hires got one in late 2025. It exists mostly for people who ask.",
+     "**PTO, remote days, start date.** All routinely negotiated, and often easier to move than base."
+    ]
+   },
+   {
+    "type": "h",
+    "text": "When the number is low"
+   },
+   {
+    "type": "p",
+    "text": "Sometimes the offer is genuinely below the range and they will not move. The decision rule is the runway you calculated in Module 4, the ladder inside the role, and whether the title gets you the next job. Non-clinical work has ladders. Clinical work mostly has lateral moves, which is why a lower first number can still be the better ten-year decision."
+   },
+   {
+    "type": "p",
+    "text": "The clearest documented case is the research coordinator path at $48,000 to $72,000, which sits below where most SLPs already are. Two people used it exactly as a springboard: one moved from a university coordinator role into pharma patient safety for ten thousand more, then another fifteen thousand eighteen months later. Taking that job as a destination is a mistake. Taking it as a bridge, with a date on it, is a strategy."
+   },
+   {
+    "type": "callout",
+    "tone": "soft",
+    "title": "Before you answer any offer",
+    "text": "Say the counter out loud once, to a person, before you say it to them. The sentence that feels outrageous in your head almost always sounds reasonable in the air."
+   }
+  ],
+  "takeaways": [
+   "About thirty percent of people negotiate; two thirds or more of those who ask get something.",
+   "Offers are almost never withdrawn for negotiating, and most employers expect a counter.",
+   "Anchor on the documented range for the path, not on your clinical salary.",
+   "In customer success most of the pay is base; in sales roughly half is variable, so ask how the target is measured.",
+   "A below-range first offer can still be right if the role has a ladder and you put a date on it."
+  ],
+  "sources": [
+   "facts",
+   "forums",
+   "bls"
+  ]
+ },
+ {
+  "id": "5.6",
+  "tldr": "One documented transition took 113 tailored applications, 7 interviews and 1 offer over eleven months. Tracking the numbers turns silence into a rate you can work with.",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "Somewhere around week six, the silence starts to feel personal. It is worth knowing in advance that it is not, and knowing roughly what the numbers look like for people who got where you are going."
+   },
+   {
+    "type": "numbers",
+    "items": [
+     {
+      "value": "113",
+      "label": "tailored applications, one documented transition"
+     },
+     {
+      "value": "7",
+      "label": "interviews from those applications"
+     },
+     {
+      "value": "1",
+      "label": "offer, taken, after eleven months"
+     },
+     {
+      "value": "6–15",
+      "label": "months, the typical documented transition"
+     }
+    ]
+   },
+   {
+    "type": "p",
+    "text": "Another SLP sent more than five hundred applications over six months before landing a fully remote analyst role above her clinical salary. A third describes a year of daily effort. None of them were doing it wrong. That is the shape of the thing."
+   },
+   {
+    "type": "quote",
+    "text": "I applied to more than 500 jobs. I built a portfolio, earned certifications, rewrote my resume and cover letters dozens of times",
+    "from": "a transitioned SLP, r/SLPcareertransitions"
+   },
+   {
+    "type": "h",
+    "text": "Why the volume is higher than it used to be"
+   },
+   {
+    "type": "p",
+    "text": "Postings now average around 242 applications each, roughly double what they drew in 2022. Some of that is a soft market and some is that applying got frictionless for everyone. The practical consequence is that a thoughtful application sent on day one beats a perfect one sent on day nine, and that referrals matter more than they did."
+   },
+   {
+    "type": "h",
+    "text": "Track four numbers, not your mood"
+   },
+   {
+    "type": "p",
+    "text": "Applications sent, screens, interviews, offers. That is the entire dashboard. Once you have twenty applications logged you have a ratio, and a ratio tells you which stage is actually broken."
+   },
+   {
+    "type": "list",
+    "items": [
+     "**Applications but no screens.** The résumé is still reading clinical, or you are applying outside your documented range. Back to Module 3.",
+     "**Screens but no interviews.** The bridge statement is doing the wrong work, usually push instead of pull. Lesson 5.2.",
+     "**Interviews but no offers.** Usually the proof problem. One artifact fixes more of this than another certificate will.",
+     "**Nothing at all for four weeks.** Volume, not quality. Fifteen tailored applications a month is a real pace; three is not."
+    ]
+   },
+   {
+    "type": "tool",
+    "name": "application-tracker"
+   },
+   {
+    "type": "callout",
+    "tone": "soft",
+    "title": "The reframe that helps",
+    "text": "Rejection at this stage is a volume statistic. Seven interviews out of 113 applications is a six percent rate, and that person is now employed. The maths only works if you keep feeding it, which is easier when you can see the numbers instead of feeling them."
+   },
+   {
+    "type": "p",
+    "text": "One more thing worth saying plainly. Job searching while burnt out is genuinely harder, because the executive function this takes is the exact thing burnout eats first. If your pace is slower than the numbers above, that is information about your capacity this month, not about your prospects."
+   }
+  ],
+  "takeaways": [
+   "One documented transition: 113 applications, 7 interviews, 1 offer, eleven months.",
+   "Postings now average around 242 applicants, so a day-one application beats a perfect day-nine one.",
+   "Track applications, screens, interviews and offers; the ratio tells you which stage is broken.",
+   "Rejection at this stage is a volume statistic, and the maths only works if you keep feeding it."
+  ],
+  "sources": [
+   "facts",
+   "forums"
+  ]
+ },
+ {
+  "id": "5.7",
+  "tldr": "Three clinical habits make you good in the first ninety days, and two will hold you back. Bank one visible win by day sixty and the rest takes care of itself.",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "You will get the offer, and then the strange part starts. Nobody tells you how to be new at something after being competent for years, and clinicians tend to arrive with a specific mix of unusual strengths and one or two habits that quietly cost them."
+   },
+   {
+    "type": "h",
+    "text": "What travels well"
+   },
+   {
+    "type": "list",
+    "items": [
+     "**Documentation.** You write things down as a reflex, in a way that most teams do not. Within a month you will be the person whose notes everyone asks for.",
+     "**Reading a room.** Years of IEP meetings taught you to spot the person who has not spoken and the one who has already decided. That skill is rare and highly paid.",
+     "**Working without supervision.** You have managed your own caseload, calendar and priorities for years. Most new hires need more direction than you will."
+    ]
+   },
+   {
+    "type": "quote",
+    "text": "It was a huge mentality shift for me because most roles don't completely throw you into the deep end, like I was as an SLP.",
+    "from": "a transitioned SLP, r/SLPcareertransitions"
+   },
+   {
+    "type": "h",
+    "text": "What to unlearn"
+   },
+   {
+    "type": "p",
+    "text": "Two habits, both of which come from being the expert in the room for a long time."
+   },
+   {
+    "type": "p",
+    "text": "The first is over-explaining. In therapy, thoroughness is care. In a business meeting, a three-minute answer to a one-minute question reads as uncertainty. Say the conclusion, then stop, then answer what they ask next."
+   },
+   {
+    "type": "p",
+    "text": "The second is waiting to be told. Clinical work runs on referrals, assignments and required timelines, so it trains you to wait for the thing to arrive. Most non-clinical roles expect you to notice the gap and go fill it. In your first month, the fastest way to look senior is to bring a problem nobody assigned you, with a proposal attached."
+   },
+   {
+    "type": "h",
+    "text": "The first ninety days, roughly"
+   },
+   {
+    "type": "steps",
+    "items": [
+     "**Weeks one to two: ask, do not perform.** Meet everyone your work touches and ask each of them what would make their month easier. Write it all down.",
+     "**Weeks three to six: find the small broken thing.** Every team has a process everyone complains about and nobody owns. Pick one, fix it, tell somebody.",
+     "**Weeks seven to twelve: bank the visible win.** Something with a before and after that your manager can repeat to their manager. This is what your first review is made of.",
+     "**Throughout: keep a file.** Every number, every thank-you, every problem you solved. In six months you will need it for a review, and in two years for the next job."
+    ]
+   },
+   {
+    "type": "callout",
+    "tone": "soft",
+    "title": "On imposter feelings",
+    "text": "They arrive around week three, when the novelty fades and you notice everyone else knows the acronyms. Two things are true at once: you are genuinely behind on the domain, and you were hired for judgement that takes years to build. The acronyms take about a month."
+   },
+   {
+    "type": "p",
+    "text": "You will also, at some point in the first year, miss a patient or a student. That is not a sign you made a mistake. It means you cared about the work, which is the same thing that made you good at it and is now making you good at this."
+   }
+  ],
+  "takeaways": [
+   "Documentation, reading a room and working unsupervised are three habits that make clinicians strong in a first non-clinical job.",
+   "Over-explaining and waiting to be assigned work are the two habits to drop.",
+   "Ask everyone what would make their month easier in the first two weeks, then fix one small broken thing.",
+   "Bank a visible win by day sixty and keep a file of numbers and thank-yous from day one."
+  ],
+  "sources": [
+   "facts",
+   "forums"
+  ]
+ },
+ {
+  "id": "5.8",
+  "tldr": "Run the offer through seven checks before you answer. If it does not hold up, the same seven tell you what to ask for or when to keep going.",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "An offer arrives with a deadline attached and a warm feeling that makes it hard to think. The checklist below exists so the decision gets made by the version of you who did Modules 1 and 4, rather than the version who is relieved."
+   },
+   {
+    "type": "tool",
+    "name": "offer-checklist"
+   },
+   {
+    "type": "h",
+    "text": "If several boxes stay empty"
+   },
+   {
+    "type": "p",
+    "text": "That is not a reason to decline. It is a list of what to ask on the follow-up call, and asking is normal. Most employers expect a counter and very few withdraw offers over one."
+   },
+   {
+    "type": "p",
+    "text": "There are three answers, and only one of them is a yes. Accept, counter and then accept, or decline and keep going. Declining is a real option when the number sits below your runway, the role has no ladder, or the interview showed you a manager you did not believe. It costs you a few weeks and saves a year."
+   },
+   {
+    "type": "h",
+    "text": "When you accept"
+   },
+   {
+    "type": "steps",
+    "items": [
+     "Get it in writing before you resign anything. Base, title, start date, remote arrangement, variable pay terms.",
+     "Check the health coverage start date against your last day, and bridge the gap deliberately if there is one.",
+     "Give notice the way you would want it given to you, and do not use the resignation to explain the profession to anyone.",
+     "Tell the people who helped you. The person who answered your message in Module 2 will want to know it worked."
+    ]
+   },
+   {
+    "type": "callout",
+    "tone": "soft",
+    "title": "If it is a no, for now",
+    "text": "A declined offer means the process works. You got to an offer, which means the résumé, the statement and the artifact are all doing their jobs. Log it in the tracker and keep the pace."
+   },
+   {
+    "type": "p",
+    "text": "When you do accept, come back and mark it here. Not for the badge, though there is one. Because it is the last box in ninety days of work that started with you not telling anyone."
+   }
+  ],
+  "action": {
+   "label": "I have an offer",
+   "prompt": "Run the offer through the seven checks above. Ask for anything that is missing, in one message. Then, whichever way you decide, mark it here.",
+   "done": "Marked. Whatever you decided, you got to a real offer from a standing start. Tell somebody."
+  },
+  "takeaways": [
+   "Run every offer through the seven checks before answering, with the version of you who did the runway maths.",
+   "Empty boxes are questions for a follow-up call, not reasons to decline.",
+   "Declining is a real answer when the number is below your runway or the role has no ladder.",
+   "Get everything in writing before resigning, and check the coverage start date against your last day."
+  ],
+  "sources": [
+   "facts",
+   "forums"
+  ]
+ }
+]

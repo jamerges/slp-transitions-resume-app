@@ -5,6 +5,8 @@ import { useProgress } from "@/lib/course-progress";
 import { CourseShell, Btn, Panel, font, Ring } from "./ui";
 import { STAGE_META, StageRoad } from "./scenes";
 
+const TYPE_ICON: Record<string, string> = { video: "▶", explainer: "✦", interactive: "⌘", action: "⚡", checkpoint: "◎" };
+
 const daysUntil = (iso?: string) => iso ? Math.max(0, Math.round((Date.parse(iso) - Date.now()) / 86_400_000)) : null;
 
 export default function Dashboard() {
@@ -70,34 +72,38 @@ export default function Dashboard() {
             <span style={{ fontSize: 13, color: "var(--muted)" }}>{p.completed.length} of {LESSONS.length} lessons · {LESSONS.reduce((s, l) => s + l.minutes, 0)} min total</span>
           </div>
           {MODULES.map((m, mi) => {
-            const done = m.lessons.filter((l) => p.completed.includes(l.id)).length;
-            const mpct = Math.round((done / m.lessons.length) * 100);
+            const doneN = m.lessons.filter((l) => p.completed.includes(l.id)).length;
+            const mpct = Math.round((doneN / m.lessons.length) * 100);
             const current = next && next.module === m.n;
             const locked = !m.built;
+            const minsLeft = m.lessons.filter((l) => !p.completed.includes(l.id)).reduce((n, l) => n + l.minutes, 0);
             return (
               <div key={m.n} style={{ display: "grid", gridTemplateColumns: "40px 1fr", gap: 12, marginBottom: 6 }}>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                   <div className={current ? "tos-pulse" : undefined} style={{ width: 34, height: 34, borderRadius: "50%", background: mpct === 100 ? "var(--accent)" : current ? "var(--card)" : "var(--bg)", border: `2px solid ${mpct === 100 || current ? "var(--accent)" : "var(--border)"}`, color: mpct === 100 ? "#fff" : current ? "var(--accent)" : "var(--light)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 14, flexShrink: 0 }}>{mpct === 100 ? "✓" : m.n}</div>
                   {mi < MODULES.length - 1 && <div style={{ width: 2, flex: 1, background: mpct === 100 ? "var(--accent)" : "var(--border)", margin: "4px 0", minHeight: 24 }} />}
                 </div>
-                <Panel style={{ padding: 16, marginBottom: 10, opacity: locked ? 0.72 : 1, borderColor: current ? "var(--accent)" : undefined }}>
+                <Panel className="tos-rise tos-card-hover" style={{ padding: 16, marginBottom: 10, opacity: locked ? 0.72 : 1, borderColor: current ? "var(--accent)" : undefined, animationDelay: `${mi * 60}ms` }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10, flexWrap: "wrap" }}>
-                    <div>
+                    <div style={{ minWidth: 0 }}>
                       <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: locked ? "var(--light)" : "var(--accent)" }}>{m.phase} · {m.week}</div>
                       <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 700, margin: "2px 0" }}>{m.title}</div>
-                      <div style={{ fontSize: 13, color: "var(--muted)" }}>{m.tagline}</div>
+                      <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.5, maxWidth: "56ch" }}>{m.tagline}</div>
                     </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                      {locked ? <span style={{ fontSize: 12, color: "var(--light)", background: "#F3F4F6", padding: "4px 10px", borderRadius: 999 }}>🔒 Unlocks after Checkpoint {m.n - 1}</span> : <Ring pct={mpct} size={44} />}
+                    <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+                      {locked ? <span style={{ fontSize: 12, color: "var(--light)", background: "#F3F4F6", padding: "4px 10px", borderRadius: 999 }}>Coming next</span> : <Ring pct={mpct} size={44} />}
                     </div>
                   </div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 12 }}>
                     {m.lessons.map((l) => { const d = p.completed.includes(l.id); const isNext = next?.id === l.id; return (
-                      <a key={l.id} href={locked ? undefined : `/course/${m.slug}/${l.id}`} title={l.title}
-                        style={{ fontSize: 12, padding: "5px 10px", borderRadius: 999, textDecoration: "none", border: `1px solid ${d ? "var(--accent)" : isNext ? "var(--accent)" : "var(--border)"}`, background: d ? "var(--accent)" : isNext ? "var(--accent-bg-subtle)" : "var(--card)", color: d ? "#fff" : isNext ? "var(--accent)" : locked ? "var(--light)" : "var(--text)", fontWeight: d || isNext ? 600 : 400, cursor: locked ? "default" : "pointer" }}>
-                        {d ? "✓ " : isNext ? "● " : ""}{l.id} {l.title.length > 30 ? l.title.slice(0, 28) + "…" : l.title}
+                      <a key={l.id} href={locked ? undefined : `/course/${m.slug}/${l.id}`} title={`${l.title} · ${l.minutes} min`}
+                        style={{ fontSize: 12, padding: "5px 10px", borderRadius: 999, textDecoration: "none", border: `1px solid ${d || isNext ? "var(--accent)" : "var(--border)"}`, background: d ? "var(--accent)" : isNext ? "var(--accent-bg-subtle)" : "var(--card)", color: d ? "#fff" : isNext ? "var(--accent)" : locked ? "var(--light)" : "var(--text)", fontWeight: d || isNext ? 600 : 400, cursor: locked ? "default" : "pointer", display: "inline-flex", alignItems: "center", gap: 5 }}>
+                        <span aria-hidden style={{ opacity: d ? 1 : 0.7 }}>{d ? "✓" : TYPE_ICON[l.type]}</span>
+                        {l.title.length > 30 ? l.title.slice(0, 28) + "…" : l.title}
                       </a>); })}
                   </div>
+                  {!locked && minsLeft > 0 && <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 10 }}>{doneN > 0 ? `${doneN} of ${m.lessons.length} done · ` : ""}about {minsLeft} min left</div>}
+                  {!locked && minsLeft === 0 && <div style={{ fontSize: 12.5, color: "var(--accent)", fontWeight: 600, marginTop: 10 }}>Module complete.</div>}
                 </Panel>
               </div>
             );

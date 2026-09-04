@@ -1,0 +1,427 @@
+[
+ {
+  "id": "4.1",
+  "tldr": "Certificates open a door only when they sit next to translated experience and something you made. One thing you built beats three things you paid for.",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "When I first started looking, my instinct was to go get qualified again. It is a comfortable instinct for people who are good at school, and our field trains it into us: another certification, another CEU, another set of letters. It felt like progress because it felt like studying."
+   },
+   {
+    "type": "p",
+    "text": "It is also the most expensive way to stall. The people who actually moved describe the same pattern, and it is not the one the course-sellers describe."
+   },
+   {
+    "type": "quote",
+    "text": "no one took me seriously with a CAPM",
+    "from": "a transitioned SLP, now a project manager"
+   },
+   {
+    "type": "p",
+    "text": "She got the certificate. It did not do the work on its own. What moved her was the certificate plus experience described in language a hiring manager could map, plus evidence she had done some of the work already."
+   },
+   {
+    "type": "h",
+    "text": "What hiring managers actually check"
+   },
+   {
+    "type": "quote",
+    "text": "I found a lot of jobs didn't care that I had a certificate in XYZ. They wanted a title and experience of PM.",
+    "from": "r/SLPcareertransitions"
+   },
+   {
+    "type": "p",
+    "text": "You cannot manufacture a title. You can manufacture evidence, which is the whole point of this module. A thing you made on your own time answers the third doubt from lesson 5.1 directly: it proves you have spent something of yours on this field."
+   },
+   {
+    "type": "h",
+    "text": "Where certificates do earn their place"
+   },
+   {
+    "type": "p",
+    "text": "Three exceptions worth knowing, because blanket advice in either direction is wrong."
+   },
+   {
+    "type": "list",
+    "items": [
+     "**Project management.** The Google Project Management certificate comes up repeatedly as affordable and digestible, and it teaches you the vocabulary you need to describe work you already did. CAPM runs about $175 and PMP about $400 plus membership.",
+     "**Healthcare data.** The Google Data Analytics certificate or DataCamp gives you the tools, and the tools are genuinely missing. You cannot fake SQL.",
+     "**Clinical informatics.** CAHIMS through HIMSS is the self-serve entry credential and has no experience prerequisite, which matters because Epic certification cannot be bought at all. It requires an employer to sponsor you."
+    ]
+   },
+   {
+    "type": "callout",
+    "tone": "warm",
+    "title": "Where they do not",
+    "text": "Instructional design is the clearest case. Hiring managers want the portfolio, and a $3,000 certificate buys you a portfolio identical to everyone else's from the same program. One transitioner describes bootcamp graduates arriving with generic portfolios that all look the same, which is worse than one honest piece."
+   },
+   {
+    "type": "p",
+    "text": "The UX version of the same rule is the sharpest sentence I found in the research: one honest case study including the wrong turns is worth more than six polished ones."
+   },
+   {
+    "type": "h",
+    "text": "So what do you build"
+   },
+   {
+    "type": "p",
+    "text": "Something small, real, and specific to the path you chose in Module 2. It should take a weekend, not a semester. It should come out of work you have already done, because that is the part nobody else applying can copy. And it needs to exist somewhere a stranger can look at it."
+   },
+   {
+    "type": "p",
+    "text": "The next lesson has a brief for every path. Pick yours, and give it one week."
+   }
+  ],
+  "takeaways": [
+   "A certificate works when it sits next to translated experience and evidence you have done some of the work.",
+   "Project management, healthcare data and clinical informatics are the three paths where a credential genuinely helps.",
+   "Epic certification cannot be bought; it needs employer sponsorship. CAHIMS is the self-serve alternative.",
+   "In instructional design and UX, a portfolio beats a certificate, and one honest piece beats six polished ones."
+  ],
+  "sources": [
+   "facts",
+   "forums"
+  ]
+ },
+ {
+  "id": "4.2",
+  "tldr": "Every path has one artifact that proves you can do the job, built from work you have already done. Pick yours and read the brief: what to make, how long it takes, what it proves, where it lives.",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "An artifact is not a portfolio. It is one thing, made in a few hours, that a hiring manager can look at and think: this person has already been doing a version of my job."
+   },
+   {
+    "type": "p",
+    "text": "The good ones share three properties. They come out of your real clinical work, so nobody else applying has the same one. They are readable in under two minutes. And they are the actual work product of the target role, rather than a description of your interest in it."
+   },
+   {
+    "type": "h",
+    "text": "Pick your path's brief"
+   },
+   {
+    "type": "tool",
+    "name": "artifact-menu"
+   },
+   {
+    "type": "h",
+    "text": "Two rules that make these work"
+   },
+   {
+    "type": "p",
+    "text": "First, use real detail, changed enough to be safe. No names, no identifying details, no protected health information, and check your employer's policy before anything goes public. A rebuilt spreadsheet with your own progress-monitoring numbers is fine. A screenshot of an actual chart is not."
+   },
+   {
+    "type": "p",
+    "text": "Second, write the short process note that goes with it. Three or four sentences: what the problem was, what you decided, what you would do differently. That note is where the judgement shows, and judgement is what they are hiring."
+   },
+   {
+    "type": "example",
+    "title": "An artifact described two ways",
+    "before": "I made a training module about dysphagia for my portfolio.",
+    "after": "I rebuilt the aspiration-precautions training I ran for nursing staff as a ten-minute Rise module, with a knowledge check at the end. The original took me three tries to get right because nurses did not need the physiology, they needed the four decision points. The module leads with those."
+   },
+   {
+    "type": "p",
+    "text": "The second version tells you the person can teach, can edit, and knows who the learner is. That is three signals from four sentences, and none of it required a certificate."
+   },
+   {
+    "type": "callout",
+    "tone": "soft",
+    "title": "If you have already made one",
+    "text": "Most SLPs have. The parent handout you redesigned because the district's version was unreadable. The tracking sheet the whole department borrowed. The training you gave twice. Those already exist; the work is finding one and writing the note that explains the thinking."
+   }
+  ],
+  "takeaways": [
+   "An artifact is one thing built from your real work that a stranger can read in two minutes.",
+   "It should be the target role's actual work product, not a description of your interest in the role.",
+   "Change or remove identifying details and check your employer's policy before publishing anything.",
+   "The three-sentence process note is where your judgement shows, and judgement is what gets hired."
+  ],
+  "sources": [
+   "facts",
+   "forums"
+  ]
+ },
+ {
+  "id": "4.3",
+  "tldr": "Give the artifact one week and two sessions. Draft it badly first, finish it second, then put it somewhere a stranger can find it.",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "This is the week where the program stops being reading. Everything before it was working out where you are going. This is the first thing you make."
+   },
+   {
+    "type": "h",
+    "text": "A schedule that works alongside a caseload"
+   },
+   {
+    "type": "steps",
+    "items": [
+     "**Session one, ninety minutes.** Get the ugly version out. No formatting, no polish. If it is a document, write it in the plainest tool you have. If it is a module, block out the screens on paper first.",
+     "**Let it sit two days.** You will see the obvious fix on the drive home, not at the desk.",
+     "**Session two, ninety minutes.** Cut a third of it, then make it look finished. Consistent headings, one font, no typos in the first line.",
+     "**Twenty minutes.** Write the process note: the problem, what you decided, what you would change.",
+     "**Ten minutes.** Put it where a stranger can reach it. A public link, a PDF you can attach, a LinkedIn post with the link in it."
+    ]
+   },
+   {
+    "type": "p",
+    "text": "Three and a half hours across a week. That is the entire ask, and it is less time than most people spend rewriting a résumé for the fourth time."
+   },
+   {
+    "type": "tool",
+    "name": "artifact-menu"
+   },
+   {
+    "type": "h",
+    "text": "When you get stuck"
+   },
+   {
+    "type": "p",
+    "text": "Two failure modes, both predictable. The first is scope: you start building the definitive resource rather than one small thing. If it is taking a third session, cut it in half rather than finishing it. The second is perfectionism, which in clinicians usually presents as thoroughness. Nobody is grading this. It has to be good enough that a stranger sees the thinking, and that bar is lower than the one in your head."
+   },
+   {
+    "type": "callout",
+    "tone": "soft",
+    "title": "What it unlocks",
+    "text": "Once this exists you have an answer to what have you done to prepare, a link on your LinkedIn, something concrete to send after an informational interview, and a story for the interview question about proof. One weekend, four uses."
+   }
+  ],
+  "action": {
+   "label": "I made it",
+   "prompt": "Pick your path's brief above and give it two sessions this week: ninety minutes to draft badly, ninety minutes to finish, twenty for the process note. Then paste the link.",
+   "done": "Made. That is the thing most applicants do not have, and it took you a weekend."
+  },
+  "takeaways": [
+   "Two ninety-minute sessions with two days between them, plus twenty minutes for the process note.",
+   "Draft it badly first. The obvious fix arrives away from the desk.",
+   "If it needs a third session, cut it in half rather than finishing it.",
+   "One artifact answers the preparation question, fills a LinkedIn link, follows up an informational interview, and becomes an interview story."
+  ],
+  "sources": [
+   "facts",
+   "forums"
+  ]
+ },
+ {
+  "id": "4.4",
+  "tldr": "You do not have to quit to start. Part-time, PRN, contract and telepractice each buy you hours at a different price, and telehealth is a bridge rather than an exit.",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "The version of leaving that lives in your head is probably a resignation letter. It is almost never how it happens. Most documented transitions run alongside a paycheck for six to fifteen months, which is the whole reason this program is designed to fit around a caseload."
+   },
+   {
+    "type": "p",
+    "text": "The real question is not whether to quit. It is how to buy back three to five hours a week without giving up the income that makes the search survivable."
+   },
+   {
+    "type": "h",
+    "text": "Four ways to buy hours"
+   },
+   {
+    "type": "list",
+    "items": [
+     "**Drop to four days.** The cleanest trade if your employer allows it. Twenty percent less income for a full day a week, and that day is worth more than five scattered evenings because the search needs continuous attention.",
+     "**PRN or per-diem.** More control over volume, usually a higher hourly rate, and no benefits. Works best when someone else in the household carries health coverage.",
+     "**Contract or travel work.** Higher rates and a defined end date, which some people find easier to plan around than an open-ended notice.",
+     "**Telepractice.** Cuts the commute and often the setup and cleanup time. Presence, eLuma, Global Teletherapy and VocoVision are the platforms that come up most in transition threads."
+    ]
+   },
+   {
+    "type": "callout",
+    "tone": "warm",
+    "title": "Telehealth is a bridge, not the exit",
+    "text": "It is still clinical work, and platform contracts often pay less per hour than in-person. Its value is the time and energy it frees up, and the fact that the platforms themselves hire former clinicians into implementation, training and customer success. Do not count it as having left."
+   },
+   {
+    "type": "quote",
+    "text": "Working 3 days a week tele is my goal.",
+    "from": "an SLP on r/slp"
+   },
+   {
+    "type": "h",
+    "text": "What each one costs"
+   },
+   {
+    "type": "p",
+    "text": "Every option above trades income, benefits or stability for time. Which trade is available to you depends on the numbers you are about to run in the next lesson, so hold the decision until then."
+   },
+   {
+    "type": "p",
+    "text": "Two things worth checking before you commit to any of them. Whether the change affects your health coverage, and whether it affects loan forgiveness if you are counting payments. Both are in the next lesson, and both have caught people out."
+   },
+   {
+    "type": "h",
+    "text": "The version nobody tells you about"
+   },
+   {
+    "type": "p",
+    "text": "You can also change nothing. Keep the job, keep the hours, and accept that the search takes longer because you are doing it in the margins. That is a legitimate choice, and for a single earner or someone chasing forgiveness it is often the right one. The cost is months, not the outcome."
+   },
+   {
+    "type": "p",
+    "text": "One SLP took a thirteen thousand dollar pay cut to move to a state disability determination role, specifically because it kept her qualifying for loan forgiveness and gave her a schedule she could plan around. The pay cut was real and she made it on purpose. That is the kind of trade this lesson exists to make visible."
+   }
+  ],
+  "takeaways": [
+   "Most documented transitions happen alongside a paycheck over six to fifteen months.",
+   "Dropping to four days buys a continuous day, which is worth more than five scattered evenings.",
+   "Telepractice frees time and its platforms hire former clinicians, but it is still clinical work and often pays less per hour.",
+   "Changing nothing is a legitimate choice; it costs months rather than the outcome."
+  ],
+  "sources": [
+   "facts",
+   "forums"
+  ]
+ },
+ {
+  "id": "4.6",
+  "tldr": "One documented search took over 500 applications without referrals. The people who moved faster had someone on the inside, and getting one is a twenty-minute task you have already practised.",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "There are two ways through a hiring process. You can be the best of two hundred and forty-two strangers, or you can be the person somebody already mentioned. The second is not fair, and it is how most of these moves actually happened."
+   },
+   {
+    "type": "numbers",
+    "items": [
+     {
+      "value": "500+",
+      "label": "applications over six months, one documented analyst transition"
+     },
+     {
+      "value": "~242",
+      "label": "applicants per opening on average, up 111% since 2022"
+     },
+     {
+      "value": "1 in 4",
+      "label": "roughly, how many of these messages get no answer at all"
+     },
+     {
+      "value": "48 hrs",
+      "label": "the window where an application still gets seen"
+     }
+    ]
+   },
+   {
+    "type": "p",
+    "text": "That 500 number belongs to somebody who got there, landed a fully remote role and now earns twenty thousand more than she did as an SLP. She would tell you the volume was the tax she paid for having no referrals, not the strategy."
+   },
+   {
+    "type": "h",
+    "text": "Three habits that do most of the work"
+   },
+   {
+    "type": "steps",
+    "items": [
+     "**Apply inside 48 hours.** Postings get most of their real attention in the first day or two. A tailored application on day one beats a perfect one on day nine.",
+     "**Message one person at the company, the same day.** Not the recruiter. Someone doing the job you applied for, ideally a former clinician. Say you applied, say the one specific thing that made you want the role, ask one question.",
+     "**Turn every conversation into a name.** At the end of any informational interview, ask who else they would talk to if they were you. That question is where a network comes from."
+    ]
+   },
+   {
+    "type": "p",
+    "text": "You already wrote the message in Module 2, and about one in four of them gets no answer. Most people do reply, and the ones who do not are having a busy month rather than judging you. Three sent is usually two conversations."
+   },
+   {
+    "type": "h",
+    "text": "What to ask for, and when"
+   },
+   {
+    "type": "p",
+    "text": "Do not ask for a referral in a first message. Ask for twenty minutes about their work. Referrals come at the end of a conversation that has already happened, and usually they are offered rather than requested."
+   },
+   {
+    "type": "script",
+    "title": "After a good conversation",
+    "text": "This was genuinely useful, thank you. Two things before I let you go. Is there anyone else you'd talk to if you were me? And if a [role] opens on your team, would you be open to me sending you the posting?"
+   },
+   {
+    "type": "p",
+    "text": "That second question is the referral ask, in the least awkward form I have found. It is a yes or no about a hypothetical, which is easy to say yes to, and it gives you permission to come back."
+   },
+   {
+    "type": "tool",
+    "name": "contact-tracker"
+   },
+   {
+    "type": "callout",
+    "tone": "soft",
+    "title": "Why this works better for us than for most",
+    "text": "Former SLPs are unusually willing to answer other SLPs, which is part of why the response rate is as high as it is. The exit threads are full of people offering to talk, and the ones who made it out tend to remember who answered them. You are not cold-messaging strangers. You are messaging people who were you two years ago."
+   }
+  ],
+  "takeaways": [
+   "Applications without referrals is the expensive route: one documented search took over 500.",
+   "Apply inside 48 hours and message someone doing the job the same day.",
+   "Never ask for a referral in a first message; ask for twenty minutes, then ask who else to talk to.",
+   "About one in four messages gets no answer, so three sent is usually two conversations."
+  ],
+  "sources": [
+   "facts",
+   "forums"
+  ]
+ },
+ {
+  "id": "4.7",
+  "tldr": "Two live conversations at any time is enough. Keep them warm with one short update a month, and they turn into referrals without you asking.",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "Most networking advice assumes you want a network. You probably do not. You want two or three people who know what you are looking for and would forward you a posting, and that is a much smaller job."
+   },
+   {
+    "type": "h",
+    "text": "The maintenance is smaller than you think"
+   },
+   {
+    "type": "p",
+    "text": "One message a month, per person. It has one job: to remind them you exist and show that you did something since last time. Nobody minds an update from someone who is clearly moving."
+   },
+   {
+    "type": "script",
+    "title": "The monthly update",
+    "text": "Hi [name], quick update since we talked. I [built the thing / finished the certificate / had a first interview at X]. Still aiming at [role type]. If anything crosses your desk I'd love to hear about it. Hope [specific thing they mentioned] went well."
+   },
+   {
+    "type": "p",
+    "text": "That is four sentences and it takes ninety seconds. The last one matters more than the rest, because remembering the thing they told you is what separates a relationship from a mailing list."
+   },
+   {
+    "type": "tool",
+    "name": "contact-tracker"
+   },
+   {
+    "type": "h",
+    "text": "When somebody goes quiet"
+   },
+   {
+    "type": "p",
+    "text": "They are busy, and it is not about you. Send one follow-up after two weeks, then let it rest. A person who never replied is not a closed door; they are a person who had a bad month. You can come back in six with something new to say."
+   },
+   {
+    "type": "callout",
+    "tone": "soft",
+    "title": "The thing that surprises people",
+    "text": "The conversation that produces the job is usually not the one you expected. In the documented transitions, the useful introduction tends to come third or fourth hand, from someone who was not obviously connected to the role at all. Which is an argument for keeping two warm rather than chasing the perfect one."
+   }
+  ],
+  "action": {
+   "label": "Two are warm",
+   "prompt": "Pick the two most promising people from your tracker and send each of them a monthly update this week. Four sentences, ninety seconds, ending with a question about something they told you.",
+   "done": "Two warm. That is the network. It does not need to be bigger than this."
+  },
+  "takeaways": [
+   "Two live conversations is enough; you need people who would forward a posting, not a network.",
+   "One four-sentence update a month keeps a conversation warm.",
+   "Silence means a busy month, not a closed door. One follow-up, then let it rest.",
+   "The introduction that works is usually third or fourth hand, which is why two warm beats one perfect."
+  ],
+  "sources": [
+   "facts",
+   "forums"
+  ]
+ }
+]

@@ -1,0 +1,234 @@
+[
+  {
+    "id": "6.1",
+    "tldr": "Fill in the six-question story form on the About page: the stage you started in, your setting and years, what the first month looked like, and one honest number. Fifteen minutes, and it becomes the proof the next SLP is searching for.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "The most upvoted post in the whole pile of SLP forum threads I read for this course was a plain description of a new job. Eight years in acute care and a SNF, then a clinical analyst role at the same hospital system, hybrid, ten thousand dollars a year more. Three hundred and forty-two points and seventy-four comments, and the comments were questions: what does the day look like, is there job security, what were you making at the hospital, why did you want to leave. A project manager's post drew more than twenty requests for their actual résumé."
+      },
+      {
+        "type": "p",
+        "text": "I can publish salary bands and timelines, and I do. I can't publish what a Tuesday feels like in a job I've never had. You can, and after the last five modules you're one of a small number of SLPs who can. The stories on this site started as conversations with people who said yes to a question like this one."
+      },
+      {
+        "type": "h",
+        "text": "What the next person is asking"
+      },
+      {
+        "type": "p",
+        "text": "The exit posts that got read share four things: a plain description of the new job, an honest number, a timeline with the grind left in, and an offer to talk. The second most common reply under any of them, after \"how?\", is a request for the writer's résumé. Readers at the permission-seeking stage are asking one thing underneath all of it, and it's whether this is real for someone like them. A story from someone who had their caseload two years ago answers that in a way my data can't."
+      },
+      {
+        "type": "quote",
+        "text": "I wish more people in our field would take a shot. If you're miserable, we do have permission to switch jobs out of speech.",
+        "from": "an SLP who left, r/SLPcareertransitions"
+      },
+      {
+        "type": "h",
+        "text": "What to include"
+      },
+      {
+        "type": "list",
+        "items": [
+          "The stage you started in. Module 1 gave you five: private doubt, guilt, permission-seeking, practical panic, action. Name yours, and the sentence you were telling yourself at the time. A reader in that stage recognises it before they read anything else.",
+          "Your setting and years in. \"Eight years, acute care and SNF\" does more work than \"medical SLP\". Add the caseload size if you have it.",
+          "What you do now, in words your mother would understand. \"What does a project manager actually do?\" sits under every exit post. Say what you did yesterday.",
+          "How long the move took, with the grind left in. Months, applications sent, interviews had. A post that skips the 500 applications reads as luck.",
+          "What the first month looked like. The thing you were scared of, and what happened to it.",
+          "One number. Salary difference in either direction, hours, sessions you no longer do, days at home. Honest does better than impressive."
+        ]
+      },
+      {
+        "type": "callout",
+        "tone": "warm",
+        "title": "If the number went down, say so",
+        "text": "Six years of school SLP work to an entry-level CAD drafter job, with pay the writer called \"WAYY worse\", still drew 119 points and a thread of \"do you ever miss it?\". A story that leaves out the cut sends the next SLP into a budget built on a fiction."
+      },
+      {
+        "type": "script",
+        "title": "Your story in six answers",
+        "text": "What did you do as an SLP?\n[Setting], [N] years, caseload of about [N]. I started thinking about leaving at the [stage] stage. The sentence in my head was \"[what you told yourself]\".\n\nWhat do you do now?\n[Title] at [kind of company]. Yesterday I [three things you did, no acronyms].\n\nHow long did the move take?\n[N] months. [N] applications, [N] interviews, [N] offers. The first month: [the thing you were scared of, and what happened].\n\nLinkedIn or website\n[A link, so a reader can find you]\n\nAnything else?\nThe number: [+ or - $N a year, or N hours a week, or N sessions a day I no longer do]. The thing I wish someone had told me: [one sentence]."
+      },
+      {
+        "type": "p",
+        "text": "The form goes straight to me. Nothing gets published without asking you first, and if you'd rather talk than type, say so in the last box and we'll record it as a conversation instead. Either way, the first draft is the one to send."
+      }
+    ],
+    "action": {
+      "label": "I sent my story",
+      "prompt": "Open https://slptransitions.com/about/ and scroll to the story form. Fill the six fields from the template above: the stage you started in, your setting and years, what you do now in plain words, how long it took with the grind left in, what the first month looked like, and one honest number. Fifteen minutes, first draft, send.",
+      "done": "Sent. Someone at the permission-seeking stage is going to read that and stop asking whether they're allowed."
+    },
+    "takeaways": [
+      "The exit posts that got read share a plain description of the job, an honest number, a timeline with the grind, and an offer to talk.",
+      "Name the stage you started in; a reader in that stage recognises it before anything else.",
+      "Say what you did yesterday without acronyms, because \"what does the job actually do\" is the top question under every exit post.",
+      "Give one number even if it went down; the pay-cut stories get read too.",
+      "Nothing goes on the site without your say-so, and a conversation counts if you'd rather not type."
+    ],
+    "sources": [
+      "forums",
+      "facts"
+    ]
+  },
+  {
+    "id": "6.2",
+    "tldr": "Clinical work runs flat for thirty years. The job you took to get out has a rung above it, and the second moves we can document paid +$10k and then +$15k. Here is what the ladder looks like from inside, and when to take the next step.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "In clinical work the tenth year looks like the first. Same caseload, same productivity target, an annual review that changes nothing, and a raise one transitioner measured in cents: \"in my 5 years in healthcare I was given a .35 cent raise.\" Someone on r/SLPcareertransitions put the contrast plainly. Non-clinical jobs have a ladder, and SLP has \"only lateral moves for the next 30 years.\" Around the one-year mark in your new role, the ladder starts to matter more than the job you took to get out."
+      },
+      {
+        "type": "quote",
+        "text": "not be too picky with your first non-clinical role. It doesn't have to be your forever job - just a pivot role",
+        "from": "an SLP who left, r/slp"
+      },
+      {
+        "type": "h",
+        "text": "The second moves I can actually source"
+      },
+      {
+        "type": "list",
+        "items": [
+          "One SLP went from a CF year to a university study coordinator role in about 18 months, then into pharma patient safety for +$10k base and a $5k bonus, then +$15k eighteen months after that. Study coordinator is the one path in this course where a pay cut is expected, and it worked exactly as a springboard.",
+          "A hospital data analyst who came in at the same salary as their last SLP job, $15k below their peak home-health year, with guaranteed annual raises and \"85k+\" after the entry level.",
+          "A marketer, about a year of applications in: \"I actually got a raise and bonus this year, whereas in my 5 years in healthcare I was given a .35 cent raise.\"",
+          "An associate project manager after one year; a different SLP in a six-figure IT project manager role after fifteen months.",
+          "In customer success the entry doors are implementation specialist and onboarding manager, and customer success manager is the rung above them."
+        ]
+      },
+      {
+        "type": "numbers",
+        "items": [
+          {
+            "value": "+$10k, then +$15k",
+            "label": "study coordinator to pharma patient safety, then the next move 18 months later"
+          },
+          {
+            "value": "$46k–$82.5k",
+            "label": "rehabilitation program manager, 25th to 75th percentile"
+          },
+          {
+            "value": "$98.7k–$139.4k",
+            "label": "director of rehabilitation, 25th to 75th percentile"
+          }
+        ]
+      },
+      {
+        "type": "h",
+        "text": "Management, from the inside"
+      },
+      {
+        "type": "p",
+        "text": "If you kept one foot in a clinical setting, or took a liaison or clinical educator role at a rehab company, the ladder under you is the rehab management one. It usually starts as an internal promotion: program or clinical manager first, director later. Rehabilitation program managers sit at $46k to $82.5k in the 25th-to-75th band, directors of rehabilitation at $98.7k to $139.4k. Encompass, Select Medical, Lifepoint, Sanford and Reliant all run this ladder. The cost is written into the job title: on-call accountability and census pressure, which is productivity pressure wearing a manager's badge. It's a real rung, and it pays, and you should know you'd be managing the thing you left."
+      },
+      {
+        "type": "h",
+        "text": "When to move again"
+      },
+      {
+        "type": "p",
+        "text": "My honest view is that the first role deserves a year unless it fails the bad-workplace test from Module 1. Retention doubt was the first thing interviewers screened you for in Module 5, and a second short stint hands that doubt to the next one. The second move we can document came eighteen months after the first. After that, these are the signals I'd trust."
+      },
+      {
+        "type": "list",
+        "items": [
+          "The job stopped teaching you. One transitioner \"liked being entry level because it gave me time to learn about the different roles\"; once you can describe the roles above you in detail, that phase is over.",
+          "The posting for the rung above reads like your current week. If you can point to evidence for most of its requirement lines, you're already doing the job at the lower title.",
+          "The documented band for the next rung sits clearly above your pay, and your employer's answer to a raise is the annual review.",
+          "Stay put if the only reason to move is that the new job feels quieter than a caseload. Quiet is what you paid for.",
+          "Stay put if the move is for a title. Titles change nothing on the pay stub and everything on the retention question."
+        ]
+      },
+      {
+        "type": "callout",
+        "tone": "soft",
+        "title": "The ladder was the point",
+        "text": "You left a field where the tenth year looks like the first for one where it doesn't. The second move is where that difference shows up on a pay stub, and for the person we can document it came eighteen months in."
+      },
+      {
+        "type": "steps",
+        "items": [
+          "Pull two postings for the rung above yours this week.",
+          "Mark every requirement line you have evidence for from the last month.",
+          "Write the unmarked lines into the agenda for your next one-on-one, as the things you want to be doing by this time next year."
+        ]
+      }
+    ],
+    "takeaways": [
+      "Clinical work offers lateral moves; the job you took to get out has a rung above it.",
+      "The second moves we can document paid +$10k and then +$15k, and the study-coordinator pay cut worked as a springboard.",
+      "Rehab management is a real ladder that starts as an internal promotion and costs on-call accountability and census pressure.",
+      "Give the first role a year unless it fails the bad-workplace test; the documented second move came at eighteen months.",
+      "Move when the posting for the next rung reads like your current week, and stay put if the reason is quiet or a title."
+    ],
+    "sources": [
+      "facts",
+      "forums"
+    ]
+  },
+  {
+    "id": "6.3",
+    "tldr": "When you sent three messages in Module 2, the number we gave you was that about one in four of those asks never gets an answer. Someone is sending that message now. Ten minutes from you answers the question I can't: whether this is real for someone like them.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "You remember which of your three messages went unanswered. In Module 2 we told you to expect it, about one in four asks getting nothing back, and the number never made the silence feel smaller. Somewhere in this program right now, someone at the Module 2 stage is drafting the same message to you, or has found your LinkedIn headline and is deciding whether you'd mind."
+      },
+      {
+        "type": "h",
+        "text": "Why your reply beats anything I can write"
+      },
+      {
+        "type": "p",
+        "text": "Every exit post that took off in the forums ended the same way, with an offer to DM. One project-management thread drew more than twenty requests for the writer's résumé. A bootcamp post got ten-plus replies asking \"which bootcamp?\" and \"can you DM me?\". The questions under those posts are small and specific: \"What does a project manager actually do?\", \"How much do you make?\", \"Do you ever miss it?\". A salary table answers none of them. A person who had a caseload of sixty two years ago answers all three in a paragraph."
+      },
+      {
+        "type": "p",
+        "text": "You also know something about the person writing to you that I don't, which is the stage they're in. Someone at practical panic writes \"I feel dumb when I look at other jobs.\" Someone at permission-seeking writes \"Has anyone left the field and regretted it?\" Whatever they typed, the question underneath is whether this is real for someone like them, and you are the evidence."
+      },
+      {
+        "type": "h",
+        "text": "The ten-minute answer"
+      },
+      {
+        "type": "steps",
+        "items": [
+          "Read the message twice and find the question underneath it.",
+          "Describe yesterday in three sentences, with no acronyms and no job title. \"Two meetings, a rollout plan, forty emails\" tells them more than the title does.",
+          "Give one number you're comfortable sharing. A range counts. \"About what I made in my best SLP year\" counts.",
+          "Say how long it took and how many: months, applications, interviews. Leave the grind in, because it's what makes the rest believable.",
+          "Offer one next thing: a posting, a name, twenty minutes on a call, or your résumé. The résumé is the thing they want most and the thing almost nobody sends.",
+          "Send it before it's polished. A reply today does more than a perfect one next month."
+        ]
+      },
+      {
+        "type": "script",
+        "title": "A reply that takes ten minutes",
+        "text": "Hi [name], thanks for writing, and yes, this is real.\n\nQuick version: I was a [setting] SLP for [N] years, and I'm now [plain-language job] at [kind of company]. Yesterday I [three things you did]. The move took [N] months and about [N] applications; the first month was [one honest sentence].\n\nPay-wise I'm [a range, or how it compares to your SLP pay].\n\nIf it helps, I can [send my résumé / point you to a posting / do twenty minutes on a call next week]. What's the one thing you're most stuck on?"
+      },
+      {
+        "type": "p",
+        "text": "You don't owe anyone a mentorship. One reply, one time, is the whole action, and if they write back with a second question you can decide then. What you're giving them is the thing you wanted a year ago and mostly didn't get: proof, from someone with your old job, that the door opens."
+      }
+    ],
+    "action": {
+      "label": "I answered one",
+      "prompt": "Find one message from an SLP earlier in this program, or one that has been sitting in your LinkedIn inbox, and answer it with the six steps above: yesterday in three sentences, one number, the timeline with the grind left in, and one next thing. Ten minutes, then send.",
+      "done": "Answered. One fewer message in the pile that never hears back."
+    },
+    "takeaways": [
+      "About one in four informational-interview asks never gets an answer; you remember which of yours it was.",
+      "The questions under every exit post are small: what the day is, what it pays, whether you miss it.",
+      "Answer in ten minutes with yesterday in three sentences, one number, the timeline, and one next thing.",
+      "The résumé is what they want most and what almost nobody sends.",
+      "One reply, one time, is the whole action."
+    ],
+    "sources": [
+      "facts",
+      "forums"
+    ]
+  }
+]

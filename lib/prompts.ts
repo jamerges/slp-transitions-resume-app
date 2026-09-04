@@ -263,7 +263,7 @@ Return ONLY this JSON:
     {"week": "Week 1", "theme": "short theme", "actions": ["2-3 concrete actions, sized for someone working full-time"]}
   ],
   "outreach": {
-    "why": "1-2 sentences on why outreach beats applying cold, with the honest hit rate (roughly 1 in 4 strangers reply; that is normal, not rejection)",
+    "why": "1-2 sentences on why outreach beats applying cold, with the honest hit rate (roughly 1 in 4 never reply; the majority do, and silence is normal rather than rejection)",
     "whoToMessage": ["2-3 specific kinds of people THIS person should message, given their background — e.g. 'SLPs who now have your target title (search LinkedIn for \\"CCC-SLP\\" + the title)'"],
     "messages": [
       {"scenario": "e.g. Cold message to a stranger who made this exact move", "template": "A short, sendable LinkedIn message under 90 words, written in first person AS THIS PERSON with their real specifics filled in (their setting, their years, their target role). No [brackets] except where a name genuinely varies, like [Name]. It must sound like a human wrote it at their kitchen table, not a recruiter."}

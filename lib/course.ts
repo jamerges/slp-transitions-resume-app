@@ -3,6 +3,7 @@
 // Later modules are listed so the quest log shows the whole road; their
 // lessons are written after James approves the sample.
 import type { Progress } from "./course-progress";
+import { contentIds, summaryFor } from "./course-content";
 
 export type LessonType = "video" | "explainer" | "interactive" | "action" | "checkpoint";
 
@@ -175,6 +176,17 @@ export const MODULES: Module[] = [
     ],
   },
 ];
+
+// A module is "built" when Modules 0/1 (hand-coded React) or when its lessons
+// have authored JSON in content/course/modules. Authoring a module's JSON is
+// therefore the only step needed to unlock it in the quest log.
+for (const m of MODULES) {
+  if (m.n <= 1) { m.built = true; continue; }
+  m.built = m.lessons.some((l) => contentIds.has(l.id));
+  for (const l of m.lessons) {
+    if (!l.summary) l.summary = summaryFor(l.id);
+  }
+}
 
 export const LESSONS: Lesson[] = MODULES.flatMap((m) => m.lessons);
 export const lessonById = (id: string) => LESSONS.find((l) => l.id === id);
