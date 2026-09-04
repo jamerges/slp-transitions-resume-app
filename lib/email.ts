@@ -171,7 +171,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
   ${
     skills
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
-          <h2 style="font-size:16px;margin:0 0 6px;">Skills — paste into your resume</h2><p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">Use this exact wording in your resume's Skills section — screening software and recruiters match on these terms.</p>
+          <h2 style="font-size:16px;margin:0 0 6px;">Skills: paste into your resume</h2><p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">Use this exact wording in your resume's Skills section. Screening software and recruiters match on these terms.</p>
           ${skills}
         </div>`
       : ""
@@ -200,7 +200,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
     artifacts
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
           <h2 style="font-size:16px;margin:0 0 6px;">Build Your Proof</h2>
-          <p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">Career changers get hired on evidence, not claims.</p>
+          <p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">Career changers get hired on what they can show. Each item below is something to build.</p>
           ${artifacts}
         </div>`
       : ""
@@ -219,7 +219,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
     knockouts
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
           <h2 style="font-size:16px;margin:0 0 6px;">Application Screening Questions</h2>
-          <p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">The form questions that silently filter career changers out — and how to answer them.</p>
+          <p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">The form questions that silently filter career changers out, and how to answer them.</p>
           ${knockouts}
         </div>`
       : ""
@@ -229,7 +229,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
     roadmap
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
           <h2 style="font-size:16px;margin:0 0 6px;">Your 90-Day Transition Plan</h2>
-          <p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">Real transitions take months, not days — this is the honest sequence.</p>
+          <p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">Real transitions take months. This is the sequence.</p>
           ${roadmap}
         </div>`
       : ""
@@ -280,7 +280,7 @@ export async function sendQuizResultEmail(input: {
     <h2 style="font-size:15px;margin:0 0 8px;">How people actually get in</h2>
     <div style="font-size:14px;color:#6B7280;line-height:1.7;">${esc(top.entryDoor)}</div>
     <div style="font-size:14px;line-height:1.65;background:#F0FAF3;border-left:3px solid #2D6A4F;border-radius:6px;padding:10px 14px;margin-top:12px;"><b>Your first move this week:</b> ${esc(top.firstMove)}</div>
-    <div style="font-size:14px;line-height:1.65;background:#FEF3C7;border-radius:6px;padding:10px 14px;margin-top:8px;"><b>The honest caveat:</b> ${esc(top.caveat)}</div>
+    <div style="font-size:14px;line-height:1.65;background:#FEF3C7;border-radius:6px;padding:10px 14px;margin-top:8px;"><b>The caveat:</b> ${esc(top.caveat)}</div>
   </div>
 
   ${
@@ -296,7 +296,7 @@ export async function sendQuizResultEmail(input: {
   <div style="padding:22px;background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;margin-top:20px;">
     <div style="font-size:17px;font-weight:700;margin-bottom:8px;">Want the version built on your actual resume?</div>
     <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">
-      This result came from eight questions. The <b>Pivot Report</b> reads your real resume and tells you which of these paths your specific experience already qualifies you for — your readiness profile, the stage you're actually in, your top three paths with entry doors, and a week-by-week 30-day plan. $9, once.
+      This result came from eight questions. The <b>Pivot Report</b> reads your real resume and tells you which of these paths your specific experience already qualifies you for: your readiness profile, the stage you're actually in, your top three paths with entry doors, and a week-by-week 30-day plan. $9, once.
     </div>
     <div style="text-align:center;">
       <a href="${APP_URL}/quiz?path=${encodeURIComponent(top.slug || "")}" style="display:inline-block;padding:13px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:15px;font-weight:600;">Get my Pivot Report →</a>
@@ -304,9 +304,9 @@ export async function sendQuizResultEmail(input: {
   </div>
 
   <p style="font-size:14px;line-height:1.7;margin-top:22px;">
-    I'll also send you the occasional note with real SLP transition stories and what actually worked. If that's not useful, unsubscribe any time — no hard feelings.
+    I'll also send you the occasional note with real SLP transition stories and what actually worked. If that's not useful, unsubscribe any time. No hard feelings.
   </p>
-  <p style="font-size:14px;line-height:1.7;">— James</p>
+  <p style="font-size:14px;line-height:1.7;">James</p>
   <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:28px;">
     SLP Transitions • Your degree isn't a prison. Your skills compound.
   </p>
@@ -340,7 +340,7 @@ export async function sendResumeLinkEmail(input: {
     Thanks for picking this up. One thing left: add your resume, and we'll build the report around your actual experience.
   </p>
   <p style="font-size:15px;line-height:1.7;">
-    It takes about a minute, and it's much easier from a computer — so if you bought this on your phone, just open this link when you're back at your desk.
+    It takes about a minute, and it's much easier from a computer. If you bought this on your phone, open this link when you're back at your desk.
   </p>
   <p style="text-align:center;margin:26px 0;">
     <a href="${link}" style="display:inline-block;padding:14px 32px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Add my resume →</a>
@@ -348,7 +348,7 @@ export async function sendResumeLinkEmail(input: {
   <p style="font-size:13px;line-height:1.7;color:#6B7280;">
     This link is good for 7 days. If it expires or anything goes sideways, reply to this email with your receipt and I'll build it for you by hand.
   </p>
-  <p style="font-size:14px;line-height:1.7;">— James</p>
+  <p style="font-size:14px;line-height:1.7;">James</p>
   <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:28px;">
     SLP Transitions • Your degree isn't a prison. Your skills compound.
   </p>
@@ -358,7 +358,7 @@ export async function sendResumeLinkEmail(input: {
   await getResend().emails.send({
     from: FROM_ADDRESS,
     to,
-    subject: "Your Pivot Report — one step left",
+    subject: "Your Pivot Report: one step left",
     html,
   });
 }
@@ -379,7 +379,7 @@ export async function sendReportReminderEmail(input: {
 <div style="max-width:600px;margin:0 auto;padding:32px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#1F2937;background:#fff;">
   <h1 style="font-size:22px;line-height:1.3;margin:0 0 14px;">Your Pivot Report is still waiting</h1>
   <p style="font-size:15px;line-height:1.7;">
-    You picked up the $9 Pivot Report a couple of days ago and it never got built &mdash; it needs your resume first, and that step is easy to lose on a phone.
+    You picked up the $9 Pivot Report a couple of days ago and it never got built. It needs your resume first, and that step is easy to lose on a phone.
   </p>
   <p style="font-size:15px;line-height:1.7;">
     Nothing has expired. Open this from a computer, add your resume, and it takes about a minute:
@@ -388,9 +388,9 @@ export async function sendReportReminderEmail(input: {
     <a href="${link}" style="display:inline-block;padding:14px 32px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Finish my report &rarr;</a>
   </p>
   <p style="font-size:13px;line-height:1.7;color:#6B7280;">
-    If anything goes sideways, reply to this email and I&rsquo;ll build it for you by hand. And if you&rsquo;ve changed your mind, reply and say so &mdash; the 30-day refund is real.
+    If anything goes sideways, reply to this email and I&rsquo;ll build it for you by hand. And if you&rsquo;ve changed your mind, reply and say so. The 30-day refund is real.
   </p>
-  <p style="font-size:14px;line-height:1.7;">&mdash; James</p>
+  <p style="font-size:14px;line-height:1.7;">James</p>
   <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:28px;">
     SLP Transitions &bull; Your degree isn&rsquo;t a prison. Your skills compound.
   </p>
@@ -486,10 +486,10 @@ export async function sendQuizFollowupDay6(input: {
   const first = (name || "").trim().split(/\s+/)[0] || "there";
   const html = plainWrap([
     `Hi ${esc(first)},`,
-    `Six days ago your quiz said <strong>${esc(top.label)}</strong>. No pitch in this one. A question.`,
-    `What&rsquo;s actually stopping you? Not &ldquo;I haven&rsquo;t had time.&rdquo; The real thing: the loans, the degree you&rsquo;d feel you were wasting, not knowing whether anyone would hire you, feeling like you&rsquo;d be quitting on the kids or the patients.`,
+    `Six days ago your quiz said <strong>${esc(top.label)}</strong>. No pitch in this one, just one question.`,
+    `What&rsquo;s actually stopping you? Skip &ldquo;I haven&rsquo;t had time&rdquo; and name the thing underneath: the loans, the degree you&rsquo;d feel you were wasting, not knowing whether anyone would hire you, feeling like you&rsquo;d be quitting on the kids or the patients.`,
     `Reply with one sentence. I&rsquo;m collecting these to figure out what to build next, and I answer each one myself.`,
-    `&mdash; James`,
+    `James`,
   ], unsubUrl);
   await getResend().emails.send({
     from: FROM_ADDRESS, to, replyTo: REPLY_TO,
@@ -529,7 +529,7 @@ export async function sendReportEmail(input: {
     .map(
       (w: any) => `
       <div style="margin-bottom:12px;">
-        <div style="font-size:12px;font-weight:700;color:#2D6A4F;text-transform:uppercase;">${esc(w.week)} — ${esc(w.theme)}</div>
+        <div style="font-size:12px;font-weight:700;color:#2D6A4F;text-transform:uppercase;">${esc(w.week)}: ${esc(w.theme)}</div>
         ${(w.actions || []).map((a: string) => `<div style="font-size:13px;color:#6B7280;padding:2px 0 2px 14px;line-height:1.6;">→ ${esc(a)}</div>`).join("")}
       </div>`
     )
@@ -573,7 +573,7 @@ export async function sendReportEmail(input: {
             })
             .join("");
           return sec(
-            `Where you are: Stage ${Math.max(1, idx + 1)} of 4 — ${esc(r.phase.name)}`,
+            `Where you are: Stage ${Math.max(1, idx + 1)} of 4, ${esc(r.phase.name)}`,
             `<div style="font-size:14px;line-height:1.7;">${esc(r.phase.diagnosis)}</div>
              <div style="font-size:13px;margin-top:8px;"><b>Focus now:</b> ${esc(r.phase.focusNow)}</div>
              <div style="font-size:13px;color:#6B7280;margin-top:4px;"><b>Not yet:</b> ${esc(r.phase.notYet)}</div>
@@ -606,7 +606,7 @@ export async function sendReportEmail(input: {
 
   ${
     (r.honestTruths || []).length
-      ? sec("The honest part", (r.honestTruths as string[]).map((h) => `<div style="font-size:14px;line-height:1.7;padding:6px 0;">• ${esc(h)}</div>`).join(""))
+      ? sec("Plain truths", (r.honestTruths as string[]).map((h) => `<div style="font-size:14px;line-height:1.7;padding:6px 0;">• ${esc(h)}</div>`).join(""))
       : ""
   }
   ${r.closing ? `<p style="font-size:14px;line-height:1.75;font-style:italic;">${nl2br(r.closing)}</p>` : ""}
@@ -617,16 +617,16 @@ export async function sendReportEmail(input: {
     </div>
     <div style="font-size:13px;color:#1B1B1E;line-height:1.9;margin-bottom:16px;">
       ✓ Every bullet translated into that employer's language<br/>
-      ✓ A cover letter in your voice — it can match a writing sample<br/>
+      ✓ A cover letter in your voice that can match a writing sample<br/>
       ✓ Which of the job's requirements you already meet, and how to close the rest<br/>
       ✓ The screening questions that filter out career changers, answered<br/>
       ✓ LinkedIn headline + About section, and a 90-day plan<br/>
       ✓ Editable Word docs, and you can refine any section until it sounds like you
     </div>
     <div style="text-align:center;">
-      <a href="${APP_URL}${continueParam}" style="display:inline-block;padding:14px 32px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Get the full package — $24 →</a>
+      <a href="${APP_URL}${continueParam}" style="display:inline-block;padding:14px 32px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Get the full package for $24 →</a>
       <div style="font-size:12px;color:#6B7280;margin-top:10px;">
-        ${continueParam ? "Your resume is already saved — just add the job posting. " : ""}Free preview first. One-time payment, no subscription, 30-day refund.
+        ${continueParam ? "Your resume is already saved. Just add the job posting. " : ""}Free preview first. One-time payment, no subscription, 30-day refund.
       </div>
     </div>
   </div>

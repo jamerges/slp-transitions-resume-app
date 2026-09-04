@@ -15,11 +15,11 @@ source: "Xceptional Leaders podcast"
 
 # What Health-Tech Founders Actually Need From SLPs: Gareth Walkom and withVR
 
-**The short answer:** Gareth Walkom has stuttered since he was six. He studied digital media technology, then medical product design, then built [withVR](https://withvr.app) — virtual reality speaking situations that a speech therapist controls in real time from a laptop while the client wears a headset. He has never been an SLP and doesn't claim to be. He founded the company on International Stuttering Awareness Day in 2020 with his own savings, and the product now runs in clinics, university labs, and at least one NHS trust. The clinical judgment inside it came from somewhere else: the hundred-plus clinicians and researchers he built it with.
+**The short answer:** Gareth Walkom has stuttered since he was six. He studied digital media technology, then medical product design, then built [withVR](https://withvr.app): virtual reality speaking situations that a speech therapist controls in real time from a laptop while the client wears a headset. He has never been an SLP and doesn't claim to be. He founded the company on International Stuttering Awareness Day in 2020 with his own savings, and the product now runs in clinics, university labs, and at least one NHS trust. The clinical judgment inside it came from somewhere else: the hundred-plus clinicians and researchers he built it with.
 
 **Takeaways:**
 
-- Why the person who built this speech therapy tool isn't a speech therapist, and why the distinction is useful rather than embarrassing.
+- Why the person who built this speech therapy tool isn't a speech therapist, and why the distinction works in your favor.
 - The design decision that determines whether clinicians adopt a tool or quietly stop using it after week three.
 - What the published research on VR for stuttering actually supports right now, stated carefully.
 - Five concrete ways SLPs plug into companies like this, from scenario design to service implementation.
@@ -55,9 +55,9 @@ That measure of cognitive load leads somewhere clinically interesting. He descri
 
 The clinician, and Walkom is emphatic about it. "We provide a toolbox which is controlled by a speech therapist," he said. The therapist works from a dashboard on a laptop, sees exactly what the client sees inside the headset, and changes the speaking situation while it runs. There's an autopilot mode for scenarios programmed in advance, and the client can drive their own progression through tasks.
 
-Ask him what's adjustable and the answer gets granular. Number of people in the scene, what they look like, whether they react warmly or coldly, and the noise: "the noise of the people, the noise of the music, the coffee machine making a really loud noise." A café queue holds a dozen variables, and the one that undoes a particular client might be the line forming behind them rather than the barista.
+Ask him what's adjustable and the answer gets granular. Number of people in the scene, what they look like, whether they react warmly or coldly, and the noise: "the noise of the people, the noise of the music, the coffee machine making a really loud noise." A café queue holds a dozen variables, and the one that undoes a particular client might be the line forming behind them while the barista never registers at all.
 
-Cueing works the same way. Whatever a therapist already does in the room — a hand signal, a verbal prompt, a light — gets mapped into the scene as a color shift or a dimming. Walkom then names the limit that keeps the tool honest: "In a real life speaking situation, the speech therapist won't always be there." The cues are scaffolding to remove.
+Cueing works the same way. A hand signal, a verbal prompt, a light: whatever a therapist already does in the room gets mapped into the scene as a color shift or a dimming. Walkom then names the limit that keeps the tool honest: "In a real life speaking situation, the speech therapist won't always be there." The cues are scaffolding to remove.
 
 The product, as of this writing, offers a dozen-plus environments including a café, classroom, bakery, supermarket, meeting room, and auditorium, with AI-generated voices in more than 50 languages. Public pricing starts at €49 per month for an individual license, with a €20 web-only tier for clinicians without a headset, and a Meta Quest running roughly €350 on top.
 
@@ -89,7 +89,7 @@ The roles that layer breaks into are real jobs:
 
 **Customer-facing roles.** Onboarding, training, and support for a product whose users are clinicians tends to go badly when staffed by people who have never run a session.
 
-The through line: the founder owns the technology and the lived experience, and buys clinical judgment from people who have it. If you're an SLP wondering what health tech would want from you, that's the answer, and it isn't a coding bootcamp.
+The through line: the founder owns the technology and the lived experience, and buys clinical judgment from people who have it. If you're an SLP wondering what health tech would want from you, that's the answer. Nobody is asking you to sit through a coding bootcamp.
 
 ## Where this leaves you
 

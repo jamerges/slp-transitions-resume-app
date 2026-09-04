@@ -23,13 +23,13 @@ membership you already have.
 Four sessions, 7:00pm Eastern, hosted by Jamila Harley, ASHA's Director of
 Career Management Services, who is an SLP and has made transitions herself.
 
-- **July 8 — Jessica Hooke, MA, CCC-SLP, CBIS, MPH.** "Making the Pivot:
+- **July 8: Jessica Hooke, MA, CCC-SLP, CBIS, MPH.** "Making the Pivot:
   Strategies for SLP Career Transitions."
-- **August 12 — Ashleigh Pristas, MS, CCC-SLP, PNAP.** "Leadership Pathways:
+- **August 12: Ashleigh Pristas, MS, CCC-SLP, PNAP.** "Leadership Pathways:
   Expanding Your Impact Beyond the Clinic."
-- **September 9 — Dr. Kelli A. Uitenham, CCC-SLP, CBIS.** "Entrepreneurship &
+- **September 9: Dr. Kelli A. Uitenham, CCC-SLP, CBIS.** "Entrepreneurship &
   Advanced Career Tracks."
-- **October 14 — Katie Seaver, MS, CCC-SLP,** co-founder of The Babel Group.
+- **October 14: Katie Seaver, MS, CCC-SLP,** co-founder of The Babel Group.
   "Innovation & Industry: Exploring Technology and Non-Traditional Roles."
 
 Sessions are recorded and replays go up on the series page, so the two that
@@ -74,9 +74,9 @@ No guaranteed job either. What it came with was training and access to the
 people running the company. She applied for the director role reluctantly, and
 only because a mentor pushed her.
 
-Her session also surfaced something worth chasing if clinical informatics
-interests you: the **PACIO Project**, a CMS-sponsored effort to make post-acute
-care systems exchange patient data. SLPs, PTs, OTs, nurses and dietitians are
+Her session also surfaced something to chase if clinical informatics interests
+you: the **PACIO Project**, a CMS-sponsored effort to make post-acute care
+systems exchange patient data. SLPs, PTs, OTs, nurses and dietitians are
 already on it, and Pristas said the group is public and actively looking for
 volunteers. Informatics has a chicken-and-egg problem, since Epic certification
 can't be bought and only comes through an employer. PACIO is real, documented
@@ -84,9 +84,9 @@ experience you can get without changing jobs first.
 
 ## The rest of what membership already includes
 
-- **Career Transitions Mentorship Program** — matches mentors and mentees.
-- **Leadership Academy** — free leadership development for members.
-- **ASHA Career Portal** (careers.asha.org) — job board plus a job seeker
+- **Career Transitions Mentorship Program** matches mentors and mentees.
+- **Leadership Academy** is free leadership development for members.
+- **ASHA Career Portal** (careers.asha.org) is the job board, plus a job seeker
   toolkit with self-assessment exercises.
 - **A virtual career fair in October**, and an in-person career fair returning
   to ASHA Convention for the first time since 2019.
@@ -100,11 +100,9 @@ experience you can get without changing jobs first.
 
 ## What the series does not cover
 
-Worth knowing before you commit four hours.
-
 Both sessions so far are about staying in the profession and changing the shape
 of the work: a parallel track alongside frontline hours, or a ladder inside one
-employer. Neither addresses leaving.
+employer. Neither addresses leaving. Know that before you commit four hours.
 
 So the series won't tell you what a customer success role at a health-tech
 company pays, or how long a move into clinical informatics actually takes, or
@@ -114,7 +112,7 @@ saturated, or which credentials are worth buying.
 
 Those are the questions this site exists for. Our [career quiz](/quiz) matches
 you against nine documented paths with real salary bands and honest timelines,
-and every number traces to a source rather than an estimate.
+and every number traces to a source.
 
 Use both. ASHA's series is the better resource if you want to stay and grow.
 Come here for the version where you leave.

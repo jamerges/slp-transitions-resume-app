@@ -15,7 +15,7 @@ source: "Xceptional Leaders podcast"
 
 # Going Deep Instead of Out: Ruchi Kapila on Building a Gender-Affirming Voice Practice
 
-**The short answer:** Ruchi Kapila (she/they) is a speech-language pathologist and NCVS-trained vocologist who opened [Kapila Voice and Speech Services](https://www.kapilavoice.com/) in 2020 and built it around gender-affirming voice care, delivered mostly by telehealth from the Bay Area. This is a specialization story rather than an exit story. She went narrow inside the profession, then layered a monthly clinic at the Oakland LGBTQ Center, two university teaching posts, conference talks, and co-founding [Trans Voice Initiative](https://www.transvoiceinitiative.com/) on top of the caseload. On how she decides what to add: **"I've been playing the yes and game with it."**
+**The short answer:** Ruchi Kapila (she/they) is a speech-language pathologist and NCVS-trained vocologist who opened [Kapila Voice and Speech Services](https://www.kapilavoice.com/) in 2020 and built it around gender-affirming voice care, delivered mostly by telehealth from the Bay Area. She specialized instead of leaving. She went narrow inside the profession, then layered a monthly clinic at the Oakland LGBTQ Center, two university teaching posts, conference talks, and co-founding [Trans Voice Initiative](https://www.transvoiceinitiative.com/) on top of the caseload. On how she decides what to add: **"I've been playing the yes and game with it."**
 
 **Takeaways:**
 
@@ -27,11 +27,11 @@ source: "Xceptional Leaders podcast"
 
 ---
 
-Kapila is a Punjabi-American, trans non-binary, neurodivergent SLP working out of Hayward, California, licensed in California and Texas, with more than two decades of singing training behind the voice work. She came up through acute care and acute rehab before the practice. The specialty she is known for now didn't arrive as a business plan. It came out of the community she is part of.
+Kapila is a Punjabi-American, trans non-binary, neurodivergent SLP working out of Hayward, California, licensed in California and Texas, with more than two decades of singing training behind the voice work. She came up through acute care and acute rehab before the practice. The specialty she is known for now came out of the community she is part of, long before any business plan.
 
 ## What is gender-affirming voice care, exactly?
 
-Kapila's working definition: care that is elective, consensual, and led by the client. The clinical targets go well past pitch, running through intonation, resonance, prosody, and articulation, and extending into gesture and other communicative habits when the client wants that. Clients often want range across contexts rather than a single new voice, since "oftentimes we'll even want to have access to more than one or more than two voice configurations" for the workplace versus community spaces. Safety shapes those choices.
+Kapila's working definition: care that is elective, consensual, and led by the client. The clinical targets go well past pitch, running through intonation, resonance, prosody, and articulation, and extending into gesture and other communicative habits when the client wants that. Clients often want range across contexts, since "oftentimes we'll even want to have access to more than one or more than two voice configurations" for the workplace versus community spaces. Safety shapes those choices.
 
 Two clarifications she makes early. "Not every transgender person is seeking voice services to modify their voice." And plenty of cisgender clients are, in her view, also seeking gender-affirming voice care, including people with puberphonia and cis women whose vocal folds thickened after testosterone exposure and who now sit at a lower habitual pitch. Anyone who wants to change their voice can come in and be assessed.
 
@@ -39,7 +39,7 @@ The scale of the need is easy to underestimate if you only read headlines about 
 
 ## What is a vocologist, and do you need to be one?
 
-"Vocologist is kind of a recognition that all SLPs are not necessarily voice specialists," Kapila says. A vocologist studies voice science and voice habilitation, often including the singing voice, and the title isn't restricted to our field. Voice teachers, voice coaches, voice scientists, laryngologists, and ENTs can all be vocologists, and she is careful to say they work as an interdisciplinary team rather than a hierarchy.
+"Vocologist is kind of a recognition that all SLPs are not necessarily voice specialists," Kapila says. A vocologist studies voice science and voice habilitation, often including the singing voice, and the title isn't restricted to our field. Voice teachers, voice coaches, voice scientists, laryngologists, and ENTs can all be vocologists, and she is careful to describe them as an interdisciplinary team with no hierarchy in it.
 
 The scope is broader than disorder. A vocologist works with voice disorders, and also with preventative and performance needs: singers, actors, podcasters, teachers, anyone whose work runs on their voice.
 
@@ -67,7 +67,7 @@ In 2021, Mai Ling Chan invited Kapila into an anthology of SLP leaders. She said
 
 Graduate programs and clinical fellowships tell you to fake it till you make it, and she says that advice failed her here: "I had to see myself become that thing before I could" hold the title. She describes leadership as something conferred by other people after you've demonstrated it through service, teaching, presenting, or writing, and the conferring has since happened. She co-founded TVI, sits as parliamentarian of ASHA's LGBTQIA+ Caucus and on the board of its Disability Caucus, advises Marymount University's SLP program, and teaches.
 
-The advice she credits to her spouse is two words wide: do the work. Not what people say about it, not how it gets rated.
+The advice she credits to her spouse is short: do the work. Ignore what people say about it and how it gets rated.
 
 Coming to terms with being autistic and ADHD in that same window changed the practice too, and it's now part of what she offers, alongside a trauma-informed frame.
 
@@ -75,7 +75,7 @@ Coming to terms with being autistic and ADHD in that same window changed the pra
 
 You don't need a trans-majority caseload for the argument Kapila makes here to apply. "When we are seeking to serve those communities we actually learn how to serve the rest of our communities better." She credits her clients directly: "I owe trans community so much for reframing how I think about speech language pathology practices as a whole." Almost every SLP will work with someone who is trans or gender nonconforming, and the skills that make a practice safe and accessible for them make it more client-centered for everybody.
 
-There's a second, more practical dividend, which showed up in the episode itself. When Mai Ling Chan's husband developed months of worsening voice fatigue and neck pain, she texted Kapila, who named the right people in Phoenix. The SLP they eventually worked with had seen a general inquiry post of Kapila's and connected the threads. He went through scoping, surgery, and voice rehab. "Voice changes can be really scary or unexpected," Kapila says, and the answer she offers is a team rather than a technique. A specialty is a referral network as much as a skill set.
+There's a second, more practical dividend, which showed up in the episode itself. When Mai Ling Chan's husband developed months of worsening voice fatigue and neck pain, she texted Kapila, who named the right people in Phoenix. The SLP they eventually worked with had seen a general inquiry post of Kapila's and connected the threads. He went through scoping, surgery, and voice rehab. "Voice changes can be really scary or unexpected," Kapila says, and the answer she offers is a team. A specialty is a referral network as much as a skill set.
 
 ## What to take from this if you want to go deep instead of out
 
@@ -83,7 +83,7 @@ Kapila stayed a clinician and made the clinical work worth staying in. Depth bou
 
 Four things in her path generalize. The specialty grew out of a community she belongs to, so the cultural knowledge was already hers and the voice science is what she went out and acquired. She added a credential the CCC doesn't include, from a real institute with real coursework. She built revenue from four directions at once so no single one has to carry the practice. And she gave it four years before accepting the label, which is a slower and more honest timeline than most career content will admit to.
 
-If you're looking at your caseload wondering whether the answer is a different profession, it's worth checking the other direction first. There may be a narrow thing inside this one that almost nobody is trained to do well.
+If you're looking at your caseload wondering whether the answer is a different profession, check the other direction first. There may be a narrow thing inside this one that almost nobody is trained to do well.
 
 ---
 

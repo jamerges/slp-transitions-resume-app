@@ -41,7 +41,7 @@ add(
     "Wondering which non-clinical path fits your experience?",
     [
         ("What is trauma-informed care for speech-language pathologists?",
-         "Trauma-informed care is a framework for avoiding additional harm, not a treatment for trauma itself. Rachel Archambault teaches six pillars: safety, choice, collaboration, trust, mutuality, and cultural and historical awareness. She is explicit that an SLP's role is never to investigate or treat a client's trauma, which belongs to psychologists and social workers, but to make the setting usable and refer appropriately."),
+         "Trauma-informed care is a framework for avoiding additional harm. It does not treat the trauma itself. Rachel Archambault teaches six pillars: safety, choice, collaboration, trust, mutuality, and cultural and historical awareness. She is explicit that an SLP's role is never to investigate or treat a client's trauma, which belongs to psychologists and social workers, but to make the setting usable and refer appropriately."),
         ("Can an SLP build a consulting or speaking business?",
          "Yes, and Archambault's route is a common one: she built an audience on a free platform around a specific expertise before there was any product to sell. She created an Instagram account, posted resources other clinicians could not easily find, and the consulting work followed roughly a year later. She now trains SLPs, doctors, PTs, OTs, schools, hospitals, and universities around the country."),
         ("What language should clinicians avoid to be trauma-informed?",

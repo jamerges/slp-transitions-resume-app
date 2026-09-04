@@ -47,23 +47,23 @@ From a question, asked repeatedly, in the gaps of caring for two babies: "What c
 
 Her answer came out of the whiplash of those school years. Reading research for a clinical caseload and reading research for a dissertation are, as she puts it, completely different animals, and she didn't know that until she was the one with the caseload. A journal article runs 15 or 20 pages, and most of it is irrelevant to the clinician holding it. Somebody has to extract the usable part.
 
-She was fast at reading research and knew exactly what school-based SLPs needed. So she committed to 60 journal articles a month, sometimes 80, and wrote up what clinicians needed to know. The whole thing ran on one sentence: "This is what I would have wanted somebody to do for me."
+She was fast at reading research and knew exactly what school-based SLPs needed. So she committed to 60 journal articles a month, sometimes 80, and wrote up what clinicians needed to know. The project ran on one sentence: "This is what I would have wanted somebody to do for me."
 
-She didn't survey a market or go hunting for whitespace. She found the one place where an unusual skill of hers overlapped a pain she had personally suffered, and then served the version of herself from three years earlier.
+Instead of surveying a market or hunting for whitespace, she found the one place where an unusual skill of hers overlapped a pain she had personally suffered, and then served the version of herself from three years earlier.
 
 ## Why give away 100 hours a month for free?
 
 Because she wasn't building a company. "I started doing it as a hobby. Honestly, like I wasn't intending to start a business." Her comparison is a blogger who blogs because blogging is fun.
 
-The free year did something a business plan couldn't. It proved demand at a scale nobody could argue with — an email list past 10,000 after twelve months, with open rates high enough that she knew people were reading rather than collecting. Then her husband, who works in business, made the obvious observation that she'd been donating about 100 hours a month and might consider charging.
+The free year did something a business plan couldn't. It proved demand at a scale nobody could argue with: an email list past 10,000 after twelve months, with open rates high enough that she knew people were reading rather than collecting. Then her husband, who works in business, made the obvious observation that she'd been donating about 100 hours a month and might consider charging.
 
 "And I was like, okay, yeah, that makes sense."
 
-Before anyone copies the move, the conditions deserve naming. Behind her reading speed sat a decade of lab work, and behind the hundred monthly hours sat nine months without a job. A free year is never actually free. Something is paying for it.
+Before you copy the move, look at the conditions. Behind her reading speed sat a decade of lab work, and behind the hundred monthly hours sat nine months without a job. A free year is never actually free. Something is paying for it.
 
 ## What actually turned it into a company?
 
-Revenue bought labor. "Once I started charging people for it, I had money that I could hire on other people," she said — researchers first, then writers. The business, in her word, bootstrapped from there, and the loop kept turning for a couple of years until the coverage went from school-age topics to the entire field, every niche in it.
+Revenue bought labor. "Once I started charging people for it, I had money that I could hire on other people," she said. Researchers first, then writers. The business, in her word, bootstrapped from there, and the loop kept turning for a couple of years until the coverage went from school-age topics to the entire field, every niche in it.
 
 At the time of this 2020 conversation, Harold put the staff at almost 60 people. Her framing of the problem they'd taken on: hundreds of journal articles publish in the field every single month, and expecting individual SLPs to dig through them alone is, in her words, appalling and hilarious and ridiculous.
 
@@ -83,7 +83,7 @@ The same sequence scales down to one person with a side project: stay in your la
 
 Asked whether she'd choose this path again, she said yes without hesitating. Asked how it feels, she was equally direct about the weight. Her response to that weight is structural: take as much off her own plate as she can, role release wherever the role can be released, and let a staff she describes as brilliant and thoughtful carry the decisions with her.
 
-The heaviest part of the job is the controversial calls. Getting a harmful or pseudo-scientific practice out of clinical use has a name in science — de-implementation — and Harold says her company does the bare minimum of it, on purpose. Part of that is labor. Part of it is that publicly telling other businesses their courses and products shouldn't be used opens her company to lawsuits, a reality she describes as one she doesn't always love. And part of it is a line she holds hard: her team doesn't pick a side prematurely on live debates like the one over ABA. They scout the journals, publish what's clinically relevant, lay out the pros and cons, and let clinicians decide.
+The heaviest part of the job is the controversial calls. Getting a harmful or pseudo-scientific practice out of clinical use has a name in science, de-implementation, and Harold says her company does the bare minimum of it, on purpose. Part of that is labor. Part of it is that publicly telling other businesses their courses and products shouldn't be used opens her company to lawsuits, a reality she describes as one she doesn't always love. And part of it is a line she holds hard: her team doesn't pick a side prematurely on live debates like the one over ABA. They scout the journals, publish what's clinically relevant, lay out the pros and cons, and let clinicians decide.
 
 "The best we can do is be transparent. Be careful not to gatekeep information."
 
@@ -91,7 +91,7 @@ People text her constantly wanting a yes list and a no list. Refusing to be the 
 
 ## Where is The Informed SLP now?
 
-Substantially past where this conversation left it. Public records list Harold as owner of The Informed SLP, LLC since 2015, and her CV shows an assistant professorship at Rockhurst University from 2016 to 2019 — meaning the company existed for years while she still held an academic job, and she left academia rather than launching from unemployment.
+Substantially past where this conversation left it. Public records list Harold as owner of The Informed SLP, LLC since 2015, and her CV shows an assistant professorship at Rockhurst University from 2016 to 2019. The company existed for years while she still held an academic job, and she left academia rather than launching from unemployment.
 
 Today the site credits a team of 50+ SLPs and PhDs, houses 4,000+ clinical research reviews, and states that 40,000 SLPs use it each month, with individual membership at $12 a month billed annually and unlimited ASHA CEUs included. Team plans serve 450+ organizations. In December 2024 she launched a second business, [Informed Jobs](https://www.informedjobs.com/), an SLP jobs board with actual standards: every post reviewed by an SLP before it goes live, no ghost listings, and screens that reject roles paying below the 10th percentile or demanding productivity above 85%.
 

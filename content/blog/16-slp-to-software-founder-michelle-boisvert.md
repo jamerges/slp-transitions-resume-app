@@ -15,12 +15,12 @@ source: "Xceptional Leaders podcast"
 
 # SLP to Software Founder: Michelle Boisvert Built the Tool That Fixed Her Own Burnout
 
-**The short answer:** Michelle Boisvert, PhD, CCC-SLP, is a school-based speech-language pathologist who spent years bringing evaluation reports home at night. Instead of leaving the field, she went looking for software that would automate the templates she'd already built, found nothing that let her use her own, and recruited her husband — a programmer — to build it. That became [easyReportPRO](https://www.easyreportpro.com), now used by SLPs, psychologists, OTs, and special educators. She raised no outside money. Her own summary of the founder skill set: **"I'm a clinician, I am not a marketer, I'm not a developer."**
+**The short answer:** Michelle Boisvert, PhD, CCC-SLP, is a school-based speech-language pathologist who spent years bringing evaluation reports home at night. Instead of leaving the field, she went looking for software that would automate the templates she'd already built, found nothing that let her use her own, and recruited her husband, a programmer, to build it. That became [easyReportPRO](https://www.easyreportpro.com), now used by SLPs, psychologists, OTs, and special educators. She raised no outside money. Her own summary of the founder skill set: **"I'm a clinician, I am not a marketer, I'm not a developer."**
 
 **Takeaways:**
 
 - The origin story is a middle-school humiliation about highlighted errors, and it explains the entire product.
-- Why she rejected the obvious business model — selling clinicians *her* templates — for a harder one.
+- Why she rejected the obvious business model, selling clinicians *her* templates, for a harder one.
 - How a spouse with the missing skill replaced a funding round.
 - The most popular feature in the platform came from a stranger's email.
 - How the product's public positioning on AI has shifted in the two years since the recording.
@@ -39,31 +39,31 @@ Boisvert had already done the technology thing once. Around 2008, while working 
 
 So when the report-writing problem got bad enough, she went shopping before she went building. Platforms existed. They all had the same catch: you used their templates.
 
-"I wanted my templates," she says — the ones she'd built over years, refined against her own anxiety, and considered finished. The district she worked in had its own guidelines. Hospitals have theirs. "One report template doesn't fit all," as she puts it, because we work across wildly different populations and settings.
+"I wanted my templates," she says. She meant the ones she'd built over years, refined against her own anxiety, and considered finished. The district she worked in had its own guidelines. Hospitals have theirs. "One report template doesn't fit all," as she puts it, because we work across wildly different populations and settings.
 
 Nothing on the market let a clinician automate their own material. So she recruited her husband, Stuart Brisson, a developer who had been building special education software for two decades, and the two of them started on what became easyReportPRO in 2019.
 
 ## Why is "use your own templates" the harder business to build?
 
-Because the easy version is to write excellent templates once and rent them out. Several companies do that well — you enter your scores for a given standardized assessment and the platform generates the write-up using its own language, or answers a set of questions and produces most of a report from its own library.
+Because the easy version is to write excellent templates once and rent them out. Several companies do that well: you enter your scores for a given standardized assessment and the platform generates the write-up using its own language, or answers a set of questions and produces most of a report from its own library.
 
 The catch is the last 20 percent. As Mai Ling Chan framed it on the episode, a pre-built report gets you most of the way, then you go back in and hand-edit every district-mandated phrase and required section back into it. Boisvert's bet was that clinicians should get automation applied to their own resources rather than someone else's, which means building a system flexible enough to absorb whatever a user brings to it and still produce something error-free. Harder to engineer. Much harder to demo.
 
-It also meant building it with clinicians rather than for them. "It's not a bunch of programmers developing it," she says. They needed the programmers, obviously, but the direction came from SLPs who were bringing work home every day and wanted a common-sense solution.
+It also meant building it with clinicians rather than for them. "It's not a bunch of programmers developing it," she says. The programmers were necessary, obviously, but the direction came from SLPs who were bringing work home every day and wanted a common-sense solution.
 
 ## How do you fund a software company on a clinician's salary?
 
-You don't, and she didn't. "We haven't received any outside funding," Boisvert says, describing the whole thing as grassroots.
+You don't, and she didn't. "We haven't received any outside funding," Boisvert says, describing the company as grassroots.
 
 What replaced the funding round was a co-founder with the missing skill and a willingness to learn everything else badly at first. She picked up some HTML. She learned social media, marketing, word-of-mouth networking. She's blunt that she doesn't handle the high-end database work, and equally blunt that she's still learning the rest.
 
-Her warning to anyone romanticizing the launch is about time, not money. New founders assume the idea arrives, everyone immediately sees what they see, and the thing takes off. "But it takes time." She describes the real education as learning patience and learning to be humble with the project, which is not the lesson anybody wants and is usually the one that shows up.
+Her warning to anyone romanticizing the launch is about time. New founders assume the idea arrives, everyone immediately sees what they see, and the thing takes off. "But it takes time." She describes the real education as learning patience and learning to be humble with the project, which is not the lesson anybody wants and is usually the one that shows up.
 
 Mai Ling Chan's version of the same idea, delivered on the episode: nobody sees the underwater part of the iceberg, only the upward trajectory.
 
 ## What did users teach her that she never planned?
 
-One of the platform's most popular features arrived as an email from a customer asking whether the software could do something it couldn't yet. Based on the scores a clinician enters, it plots them on a bell curve chart — printable, droppable into a report, and useful in exactly the moment when a parent or a team member who doesn't read standardized scores fluently needs to understand where a student sits relative to peers.
+One of the platform's most popular features arrived as an email from a customer asking whether the software could do something it couldn't yet. Based on the scores a clinician enters, it plots them on a bell curve chart: printable, droppable into a report, and useful in exactly the moment when a parent or a team member who doesn't read standardized scores fluently needs to understand where a student sits relative to peers.
 
 Boisvert's team read the email, worked out how to do it, and shipped it. "We just don't want to say it works," she says of the platform. They want it to actually work, which is why the feedback gets taken seriously enough to change the roadmap.
 
@@ -75,7 +75,7 @@ Sections like background information and educational history were checklist-driv
 
 Every sentence the AI touched came out highlighted in red when a clinician copied the report. Chan noted why red rather than a friendly blue: in healthcare, red reads as blood, as stop and look at this. The default is changeable, but the intent isn't subtle, and Boisvert designed it that way so nobody could accidentally ship a paragraph they hadn't personally vetted.
 
-"AI is a pretty powerful tool, but it has to be used strategically," she says. Asked about tools that listen in on a session and produce transcription or diagnostic suggestions, she called the technology remarkable and then drew the line — it "does not take away from the need of clinical expertise and clinical judgment." What she wants clinicians to do is learn to leverage the technology so they can concentrate their expertise on the parts of the job that actually require it.
+"AI is a pretty powerful tool, but it has to be used strategically," she says. Asked about tools that listen in on a session and produce transcription or diagnostic suggestions, she called the technology remarkable and then drew the line: it "does not take away from the need of clinical expertise and clinical judgment." What she wants clinicians to do is learn to leverage the technology so they can concentrate their expertise on the parts of the job that actually require it.
 
 ## What has changed since the recording?
 
@@ -85,7 +85,7 @@ That's a real repositioning from a platform that, two years earlier, was demoing
 
 The expansion she teased has happened too. In 2024 she said the platform was focused on SLPs and moving toward occupational therapy, psychology, and physical therapy. Today it markets to speech-language pathologists, psychologists, occupational therapists, and special educators, with free three-month district pilots advertised for the 2026-2027 school year. The company's own site counts more than 71,000 hours saved and roughly 28,500 reports generated. Pricing has moved from the $9 per month quoted in a 2022 press release to $20 monthly, $50 for three months, or $169 a year per provider, with a free trial.
 
-She has also kept publishing. With Dr. Nerissa Hall — who collaborated on communication matrix content inside the platform — she co-authored a Plural Publishing textbook on artificial intelligence, extended reality, and automation in speech-language pathology.
+She has also kept publishing. With Dr. Nerissa Hall, who collaborated on communication matrix content inside the platform, she co-authored a Plural Publishing textbook on artificial intelligence, extended reality, and automation in speech-language pathology.
 
 ## What this means if you're the one bringing reports home
 
@@ -93,7 +93,7 @@ Boisvert's path is unusual among the stories on this site because she never left
 
 Four things in it generalize.
 
-She built for a pain she personally felt every week, so she never had to guess at the requirements or commission user research — she was the user. She solved the version of the problem that the existing market had skipped, which is a much better place to start than a crowded feature you'd have to out-execute. She found the one collaborator who had the skill she lacked instead of trying to become a developer. And she treated clinical expertise as the product's differentiator rather than something to leave at the door, which is the same asset every SLP in a tech company eventually discovers is the reason they're in the room.
+She built for a pain she personally felt every week. She was the user, so she never had to guess at the requirements or commission research. She solved the version of the problem that the existing market had skipped, which is a much better place to start than a crowded feature you'd have to out-execute. She found the one collaborator who had the skill she lacked instead of trying to become a developer. And she treated clinical expertise as the product's differentiator. Every SLP in a tech company eventually discovers that same expertise is the reason they're in the room.
 
 If the thing burning you out is a repetitive, high-stakes, badly supported task that every clinician in your building complains about, you're looking at a market. Somebody is going to build the tool. It may as well be the person who knows what a good report looks like.
 
