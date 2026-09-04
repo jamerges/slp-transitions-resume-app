@@ -442,7 +442,7 @@ export async function sendQuizFollowupDay2(input: {
   switch (stage) {
     case "private":
       body = [opening, intro,
-        `You said you haven&rsquo;t told anyone yet. That&rsquo;s fine. Most people who leave spend a while looking quietly first, and looking commits you to nothing. The one thing I&rsquo;d read this week is ${a(`${site}/should-you-quit-slp/`, "the honest decision framework")}: bad workplace, bad fit, or bad season. They need different fixes, and only one of them means leaving.`,
+        `You said you haven&rsquo;t told anyone yet. That&rsquo;s fine. Most people who leave spend a while looking quietly first, and looking commits you to nothing. The one thing I&rsquo;d read this week is ${a(`${site}/youre-allowed-to-want-out/`, "the five stages of leaving")}: it names the belief that keeps people stuck at each one and the single small move out of it, and stage one is exactly where you are.`,
         `When you&rsquo;re ready for the practical part, your result is ${esc(top.label)}: ${esc(top.range)}, typically ${esc(top.timeline)}. It&rsquo;ll keep.`,
         close, `&mdash; James`];
       break;

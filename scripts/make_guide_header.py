@@ -105,6 +105,9 @@ GUIDES = [
     ("00-slp-software-engineer", "Real transition", "$96K, self-taught",
      "An SLP working part-time SNF gigs taught herself to code. Now she engineers in Austin."),
 
+    ("26-youre-allowed-to-want-out", "Mindset", "You're allowed to want out.",
+     "Five stages of leaving clinical work, the belief that stalls each one, and one move."),
+
     ("25-asha-career-resources", "Guide", "Free with your dues",
      "ASHA now runs a four-part career pivot series. Most members have never heard of it."),
 ]

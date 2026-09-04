@@ -27,7 +27,7 @@ def card(slug, label, rng, timeline):
     lh = int(size * 1.14)
     kf = ImageFont.truetype(HELV, 20)
     sf = ImageFont.truetype(G, 27)
-    sub = f"{rng}  ·  typically {timeline}"
+    sub = f"{rng}  ·  {timeline}"
     sub_lines = wrap(d, sub, sf, SAFE_W)[:2]
     block = 27 + 16 + len(lines) * lh + 26 + 4 + 30 + len(sub_lines) * 37
     y = (H - block) // 2

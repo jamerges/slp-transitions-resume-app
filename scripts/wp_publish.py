@@ -90,7 +90,7 @@ def cta_block(text):
         f'<p class="has-text-align-center" style="font-size:20px;font-weight:700">{text}</p>\n'
         '<!-- /wp:paragraph -->\n'
         '<!-- wp:paragraph {"align":"center"} -->\n'
-        '<p class="has-text-align-center">Answer 8 questions and get your best-fit non-clinical path — '
+        '<p class="has-text-align-center">Answer 9 questions and get your best-fit non-clinical path — '
         'with the realistic salary range, timeline, and the exact first move for your situation. Free.</p>\n'
         '<!-- /wp:paragraph -->\n'
         '<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->\n'
