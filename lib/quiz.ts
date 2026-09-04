@@ -161,7 +161,7 @@ export const PATHS: Record<string, QuizPath> = {
 export const STAGES = {
   private: {
     label: "I haven't told anyone I'm thinking about this.",
-    opener: "You don't have to tell anyone yet. Looking is allowed.",
+    opener: "You don't have to tell anyone yet. Looking around is allowed, and it commits you to nothing.",
   },
   guilt: {
     label: "I feel guilty even looking. The degree, the loans, the people I'd leave.",
@@ -173,11 +173,11 @@ export const STAGES = {
   },
   panic: {
     label: "I want out. I just don't know what else I could do.",
-    opener: "This page is the answer to \"what else\". Start with the one path below, not all twenty.",
+    opener: "You asked what else you could do. Start with the one path below; the other nineteen can wait.",
   },
   action: {
     label: "I know what I want. I'm applying and not getting traction.",
-    opener: "Skip the reading. Your resume is the bottleneck, and that's fixable this week.",
+    opener: "You're past the reading stage. The résumé is what's holding you back, and that is fixable this week.",
   },
 } as const;
 export type StageKey = keyof typeof STAGES;

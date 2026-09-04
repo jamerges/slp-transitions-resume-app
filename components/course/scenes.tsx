@@ -6,13 +6,13 @@ import { Big, Sub, Kicker, Strike, type Scene } from "./Explainer";
 import { font } from "./ui";
 
 export const STAGE_META = [
-  { key: "private", n: 1, name: "Private doubt", belief: "Looking means deciding.", truth: "Looking is research. Nobody charges you for it.", move: "Work out which problem you have: bad workplace, bad fit, or bad season.",
+  { key: "private", n: 1, name: "Private doubt", belief: "Looking means deciding.", truth: "Looking is research, and nobody charges you for it.", move: "Work out which problem you have: bad workplace, bad fit, or bad season.",
     voice: "Maybe it's just a problem with my brain and not the job.", from: "a school SLP, r/slp" },
-  { key: "guilt", n: 2, name: "Guilt and identity", belief: "Leaving wastes the degree.", truth: "The degree is a backup plan, not a sunk cost. Every path on the map runs on it.", move: "Read the five fears so they stop running things from the back seat.",
+  { key: "guilt", n: 2, name: "Guilt and identity", belief: "Leaving wastes the degree.", truth: "The degree goes with you. Every path on the map runs on it, and it's a backup plan if you ever want one.", move: "Read the five fears so they stop running things from the back seat.",
     voice: "One thing I'm struggling with the most is the feeling that I'm \u2018throwing away\u2019 my degree.", from: "r/SLPcareertransitions" },
   { key: "permission", n: 3, name: "Permission-seeking", belief: "It works for other people, not me.", truth: "Jeannette, Rachel and Mattie had no shortcut you don't have.", move: "Pick one story with your starting point. Copy its first month.",
     voice: "Has anyone left the field and regretted it?", from: "r/slp, one of the most-replied threads of the year" },
-  { key: "panic", n: 4, name: "Practical panic", belief: "I'd have to start over at the bottom.", truth: "Liaison $84k\u2013$135k. Customer success $75k\u2013$120k. Day one.", move: "Stop reading all twenty paths. Pick one.",
+  { key: "panic", n: 4, name: "Practical panic", belief: "I'd have to start over at the bottom.", truth: "Liaison roles pay $84k\u2013$135k and customer success $75k\u2013$120k, from day one.", move: "Pick one path and stop reading about the other nineteen.",
     voice: "I feel dumb when I look at other jobs. I have no idea how anything works outside of speech.", from: "r/SLPcareertransitions" },
   { key: "action", n: 5, name: "Action", belief: "If I were good enough, I'd get callbacks.", truth: "You're sorted by vocabulary in seven seconds, long before ability.", move: "Fix the r\u00e9sum\u00e9 before the next application.",
     voice: "I applied to more than 500 jobs. I built a portfolio, earned certifications, rewrote my resume and cover letters dozens of times.", from: "r/SLPcareertransitions" },

@@ -76,42 +76,42 @@ const R = {
 export const MODULES: Module[] = [
   {
     n: 0, slug: "start", title: "Start here", phase: "Setup", week: "Day 1", built: true,
-    tagline: "Fifteen minutes. Where you are, what you can't afford to lose, and a date.",
+    tagline: "Fifteen minutes to set up your map: where you're starting from, what you can't afford to lose, and a date to aim at.",
     lessons: [
       { id: "0.1", module: 0, title: "Welcome from James", type: "video", minutes: 3, component: "Welcome",
-        summary: "What this is, what it isn't, and the refund promise.", sources: ["facts"] },
+        summary: "Three minutes on how the program works, what to expect from it, and the refund promise.", sources: ["facts"] },
       { id: "0.2", module: 0, title: "Your starting line", type: "interactive", minutes: 5, component: "StartingLine",
-        summary: "Stage, income floor, hours, target date. A path if you have one; nothing needs it yet.",
+        summary: "Tell the program where you're starting from. It builds your map from these answers, and you can change them any time.",
         action: { label: "Set my target date", prompt: "Pick the date you want to be in a new role. Ninety days from now is the default and it is realistic for the fast paths; the long builds take 6–15 months and the map adjusts.", done: "Target date set." } },
       { id: "0.3", module: 0, title: "Three things I believed", type: "explainer", minutes: 3, component: "ThreeLies",
-        summary: "Start over. Get a certificate first. Wasting the degree. I held all three.", sources: ["facts"] },
+        summary: "The three beliefs that kept me in the building longer than I needed to be. Check which ones you're carrying.", sources: ["facts"] },
     ],
   },
   {
     n: 1, slug: "ground", title: "Ground", phase: "Ground", week: "Week 1", built: true,
-    tagline: "Whether you're allowed to want out, and which problem you actually have.",
+    tagline: "You're allowed to want out. This week is for working out what's actually wrong, so the fix matches the problem.",
     lessons: [
       { id: "1.1", module: 1, title: "You're allowed to want out", type: "explainer", minutes: 6, component: "FiveStages",
-        summary: "The five stages of leaving, where you are, and the one move at each.", resources: [R.stages, R.workbook1], sources: ["voc", "facts", "forums"] },
+        summary: "Most people leave in five stages. Find yours, and take the one small move that belongs to it.", resources: [R.stages, R.workbook1], sources: ["voc", "facts", "forums"] },
       { id: "1.2", module: 1, title: "Bad workplace, bad fit, or bad season?", type: "interactive", minutes: 8, component: "DecisionTree",
-        summary: "\"I want to quit\" is three problems wearing one trench coat. Sort yours.", resources: [R.quit, R.workbook1], sources: ["facts", "voc", "forums"] },
+        summary: "Six questions to work out whether the problem is your workplace, the work itself, or this season of your life.", resources: [R.quit, R.workbook1], sources: ["facts", "voc", "forums"] },
       { id: "1.3", module: 1, title: "The sunk-cost audit", type: "interactive", minutes: 7, component: "SunkCost",
-        summary: "The degree is spent either way. Run the only numbers that are still live.", resources: [R.sunkSheet, R.fears], sources: ["bls", "ashaDebt", "arkes", "facts", "forums"] },
+        summary: "Separate the money you've already spent from the money still on the table, so the tuition stops making the decision for you.", resources: [R.sunkSheet, R.fears], sources: ["bls", "ashaDebt", "arkes", "facts", "forums"] },
       { id: "1.4", module: 1, title: "What you're protecting", type: "interactive", minutes: 8, component: "Dials",
-        summary: "Five dials that decide which paths fit: pay floor, hours, distance from clinical, people-time, tech.", resources: [R.paths], sources: ["facts"] },
+        summary: "Four dials for what you need to protect: pay, closeness to clinical work, people-time, and tools. The paths reorder as you move them.", resources: [R.paths], sources: ["facts"] },
       { id: "1.5", module: 1, title: "The part you get to keep", type: "video", minutes: 5, component: "Identity",
-        summary: "Caitlin, Lindsey and Bethany kept the thing they were good at. The job title was the only casualty.", sources: ["voc", "forums"] },
+        summary: "Three people who left and kept the part of the work they loved. Watch for what each of them took with them.", sources: ["voc", "forums"] },
       { id: "1.6", module: 1, title: "Tell one person", type: "action", minutes: 3, component: "TellOne",
-        summary: "The smallest possible disclosure. It costs less than the secret does.",
+        summary: "Say one sentence to one person. It's the cheapest way to stop this from feeling like a secret.",
         action: { label: "I told someone", prompt: "Pick one person who will not argue with you: a partner, a friend outside the field, a former colleague who left. Say one sentence: \"I'm looking at what else I could do with my SLP background.\" That's it. No plan required.", done: "Said out loud. The secret stopped costing you energy." },
         sources: ["voc", "forums"] },
       { id: "1.7", module: 1, title: "Checkpoint: Ground", type: "checkpoint", minutes: 2, component: "Checkpoint1",
-        summary: "Your verdict, your dials, and one sentence in pull language. Unlocks Explore." },
+        summary: "Gather what you worked out this week into one sentence about where you're going. That sentence opens Explore." },
     ],
   },
   {
     n: 2, slug: "explore", title: "Explore", phase: "Explore", week: "Weeks 2–3", built: false,
-    tagline: "Twenty paths, what they pay, and the one worth your next three weeks.",
+    tagline: "Twenty real paths with what they pay and how long they take, so you can pick one and stop reading.",
     lessons: [
       { id: "2.1", module: 2, title: "The map: twenty paths by timeline", type: "explainer", minutes: 9, summary: "" },
       { id: "2.2", module: 2, title: "Out in weeks: four jobs your licence already qualifies you for", type: "video", minutes: 8, summary: "Liaison, utilization review, clinical educator, case management." },
@@ -126,7 +126,7 @@ export const MODULES: Module[] = [
   },
   {
     n: 3, slug: "translate", title: "Translate", phase: "Translate", week: "Weeks 3–5", built: false,
-    tagline: "The same Tuesday afternoon, in words a hiring manager can read.",
+    tagline: "Rewrite your résumé and LinkedIn so a hiring manager can see what you already do.",
     lessons: [
       { id: "3.1", module: 3, title: "Seven seconds. That's the whole first read.", type: "explainer", minutes: 5, summary: "" },
       { id: "3.2", module: 3, title: "Caseload, IEP, chart audit: the same words, translated", type: "video", minutes: 10, summary: "" },
@@ -140,7 +140,7 @@ export const MODULES: Module[] = [
   },
   {
     n: 4, slug: "test", title: "Test", phase: "Test", week: "Weeks 5–8", built: false,
-    tagline: "Make one thing, keep the paycheck, find the person who'll vouch for you.",
+    tagline: "Build one piece of proof, keep your paycheck while you do it, and find the person who'll vouch for you.",
     lessons: [
       { id: "4.1", module: 4, title: "\"No one took me seriously with a CAPM\"", type: "video", minutes: 6, summary: "" },
       { id: "4.2", module: 4, title: "The proof-artifact menu", type: "interactive", minutes: 8, summary: "" },
@@ -153,7 +153,7 @@ export const MODULES: Module[] = [
   },
   {
     n: 5, slug: "leap", title: "Leap", phase: "Leap", week: "Weeks 8–12", built: false,
-    tagline: "The three questions every career changer gets, and what an offer looks like.",
+    tagline: "Interviews, the three questions every career changer gets, and how to handle the offer.",
     lessons: [
       { id: "5.1", module: 5, title: "How career changers get screened", type: "video", minutes: 7, summary: "" },
       { id: "5.2", module: 5, title: "Bridge statements", type: "interactive", minutes: 9, summary: "" },
@@ -167,7 +167,7 @@ export const MODULES: Module[] = [
   },
   {
     n: 6, slug: "after", title: "After", phase: "After", week: "Alumni", built: false,
-    tagline: "Six months later: what changed, and who's behind you.",
+    tagline: "What to do once you're in, and how to help the next person out.",
     lessons: [
       { id: "6.1", module: 6, title: "Tell your story", type: "action", minutes: 15, summary: "" },
       { id: "6.2", module: 6, title: "A year in: what changes", type: "video", minutes: 4, summary: "" },
@@ -188,17 +188,19 @@ export const TYPE_LABEL: Record<LessonType, string> = { video: "Video", explaine
 // The five dials (lesson 1.4). Each path's profile mirrors the sign of its
 // scores on the income, time, proximity, people and tech questions in
 // lib/quiz.ts: 1 = the path rewards a high setting, 0 = a low one, 0.5 = either.
-export interface DialProfile { pay: number; hours: number; clinical: number; people: number; tech: number }
+// (The "hours outside work" dial was dropped 2026-09-04: it read as two
+// different questions, job-search time now vs. hours in the new job.)
+export interface DialProfile { pay: number; clinical: number; people: number; tech: number }
 export const DIAL_PROFILES: Record<string, DialProfile> = {
-  "liaison-ur":           { pay: 1,   hours: 0,   clinical: 1,   people: 0.6, tech: 0.3 },
-  "customer-success":     { pay: 0.8, hours: 0.3, clinical: 0.6, people: 0.9, tech: 0.5 },
-  "clinical-educator":    { pay: 0.7, hours: 0.2, clinical: 1,   people: 1,   tech: 0.5 },
-  "leadership":           { pay: 0.9, hours: 0.2, clinical: 1,   people: 0.9, tech: 0.4 },
-  "sales-bd":             { pay: 0.9, hours: 0.2, clinical: 0.7, people: 1,   tech: 0.4 },
-  "research-coordinator": { pay: 0,   hours: 0,   clinical: 0.7, people: 0.4, tech: 0.5 },
-  "informatics":          { pay: 1,   hours: 0.7, clinical: 0.8, people: 0.2, tech: 1 },
-  "project-management":   { pay: 0.6, hours: 0.7, clinical: 0.3, people: 0.6, tech: 0.5 },
-  "data-analysis":        { pay: 0.5, hours: 1,   clinical: 0.3, people: 0.1, tech: 0.9 },
-  "instructional-design": { pay: 0.3, hours: 0.7, clinical: 0.4, people: 0.3, tech: 0.7 },
-  "content-marketing":    { pay: 0.4, hours: 0.7, clinical: 0.2, people: 0.3, tech: 0.6 },
+  "liaison-ur":           { pay: 1,   clinical: 1,   people: 0.6, tech: 0.3 },
+  "customer-success":     { pay: 0.8, clinical: 0.6, people: 0.9, tech: 0.5 },
+  "clinical-educator":    { pay: 0.7, clinical: 1,   people: 1,   tech: 0.5 },
+  "leadership":           { pay: 0.9, clinical: 1,   people: 0.9, tech: 0.4 },
+  "sales-bd":             { pay: 0.9, clinical: 0.7, people: 1,   tech: 0.4 },
+  "research-coordinator": { pay: 0,   clinical: 0.7, people: 0.4, tech: 0.5 },
+  "informatics":          { pay: 1,   clinical: 0.8, people: 0.2, tech: 1 },
+  "project-management":   { pay: 0.6, clinical: 0.3, people: 0.6, tech: 0.5 },
+  "data-analysis":        { pay: 0.5, clinical: 0.3, people: 0.1, tech: 0.9 },
+  "instructional-design": { pay: 0.3, clinical: 0.4, people: 0.3, tech: 0.7 },
+  "content-marketing":    { pay: 0.4, clinical: 0.2, people: 0.3, tech: 0.6 },
 };

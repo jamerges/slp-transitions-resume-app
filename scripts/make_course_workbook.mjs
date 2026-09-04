@@ -75,7 +75,7 @@ children.push(
   p("And mine: I filled in a version of these pages in 2019 with a pen, in a car, before a shift. Most of what I wrote was wrong, and it still got me out. Wrong answers you've written down are worth more than right answers you're still thinking about.", { italics: true }),
   spacer(200),
   kicker("What's in here"),
-  fields([["0.1  Welcome", "What you want, in one line"], ["0.2  Your starting line", "Stage, income floor, hours, date"], ["0.3  Three things I believed", "Which of the three you hold"], ["1.1  You're allowed to want out", "Your stage, your belief, your move"], ["1.2  Bad workplace, bad fit, bad season?", "Six questions and a verdict"], ["1.3  The sunk-cost audit", "Spent vs. still live"], ["1.4  What you're protecting", "Five dials, three paths"], ["1.5  The part you get to keep", "What goes with you"], ["1.6  Tell one person", "Who, when, what they said"], ["1.7  Checkpoint", "One sentence in pull language"]]),
+  fields([["0.1  Welcome", "What you want, in one line"], ["0.2  Your starting line", "Stage, income floor, date"], ["0.3  Three things I believed", "Which of the three you hold"], ["1.1  You're allowed to want out", "Your stage, your belief, your move"], ["1.2  Bad workplace, bad fit, bad season?", "Six questions and a verdict"], ["1.3  The sunk-cost audit", "Spent vs. still live"], ["1.4  What you're protecting", "Four dials, three paths"], ["1.5  The part you get to keep", "What goes with you"], ["1.6  Tell one person", "Who, when, what they said"], ["1.7  Checkpoint", "One sentence in pull language"]]),
   pageBreak(),
 );
 // ------------------------------------------------------------------- 0.1
@@ -98,9 +98,7 @@ children.push(
   h2("3. Your income floor"),
   ...ticks(["Must match my SLP pay from day one", "I can take a small dip for better conditions", "I have runway for a bigger jump"]),
   ...ask("The number underneath the box you ticked. What's the monthly figure below which this stops being a choice?", 2),
-  h2("4. Hours you can put in, per week, outside work"),
-  ...scale("Realistically, this month", "Running on empty", "A defined sprint"),
-  h2("5. Target date"),
+  h2("4. Target date"),
   fields([["The date I want to be in a new role", "Ninety days out is the default. Fast paths fit inside it; long builds run 6–15 months."], ["What has to be true by then", ""]]),
   pageBreak(),
 );
@@ -159,9 +157,8 @@ children.push(
 );
 // ------------------------------------------------------------------- 1.4
 children.push(
-  kicker("Module 1 · Lesson 4 · 8 min"), ...h1("What you're protecting", "Five dials. Mark where you are this month, not where you'd like to be."),
+  kicker("Module 1 · Lesson 4 · 8 min"), ...h1("What you're protecting", "Four dials. Mark where you are this month, not where you'd like to be."),
   ...scale("Pay floor", "I have runway", "Must match SLP pay now"),
-  ...scale("Hours outside work", "Running on empty", "A defined sprint"),
   ...scale("Distance from clinical", "Clean break", "Stay close"),
   ...scale("Live people-time", "As little as possible", "Still love 1:1"),
   ...scale("New tools and software", "Rather work with people", "Colleagues come to me"),

@@ -34,7 +34,7 @@ export function Welcome({ finish, done }: LessonProps) {
         <H>Script (what the video says)</H>
         <P>Hi. I'm James. I was a school and clinic SLP, and now I do marketing at a health-tech company. I built this because the two pieces of advice I got when I wanted out were &ldquo;tough it out&rdquo; and &ldquo;start over,&rdquo; and both were wrong.</P>
         <P>This program is ninety days. Six modules, short lessons, one action each. You will not watch anything longer than twelve minutes, and you will never be asked to do something vague. Every number in here comes from documented SLP transitions and public salary data, and the source sits under every lesson.</P>
-        <P>It isn&rsquo;t a cheerleading course, and it isn&rsquo;t a promise of six figures by fall. It&rsquo;s a map with the mileage marked. Some people finish in six weeks. Most take the full ninety days alongside a full-time caseload, which is how it was designed.</P>
+        <P>You won&rsquo;t get cheerleading here, or a promise of six figures by fall. What you get is a map with the mileage marked, drawn by someone who has driven it. Some people finish in six weeks. Most take the full ninety days alongside a full-time caseload, which is how I designed it.</P>
         <P>If it doesn&rsquo;t help, write to me inside thirty days and you get your money back. No form, no call. Let&rsquo;s set your starting line.</P>
       </Panel>
       <div style={{ marginTop: 16 }}>{done ? <Saved text="Watched." /> : <Btn onClick={() => finish()}>Mark as watched</Btn>}</div>
@@ -62,10 +62,9 @@ export function StartingLine({ answer, save, finish, done }: LessonProps) {
   const [stage, setStage] = useState<string>(a.stage || "");
   const [path, setPath] = useState<string>(a.path || "");
   const [floor, setFloor] = useState<number>(a.floor ?? -1);
-  const [hours, setHours] = useState<number>(a.hours ?? 30);
   const [date, setDate] = useState<string>(a.date || plus90());
   const ok = stage && floor >= 0 && date;
-  const submit = () => { save({ stage, path, floor, hours, date }); finish({ action: true }); };
+  const submit = () => { save({ stage, path, floor, date }); finish({ action: true }); };
   return (
     <div>
       <Panel>
@@ -85,11 +84,7 @@ export function StartingLine({ answer, save, finish, done }: LessonProps) {
         {FLOORS.map((f, i) => <Choice key={f} on={floor === i} onClick={() => setFloor(i)}>{f}</Choice>)}
       </Panel>
       <Panel style={{ marginTop: 14 }}>
-        <H>4. Hours you can put in, per week, outside work</H>
-        <Slider label="Hours" left="Running on empty" right="A defined sprint" value={hours} onChange={setHours} format={(v) => `${Math.round(v / 10)} hrs/week`} />
-      </Panel>
-      <Panel style={{ marginTop: 14 }}>
-        <H>5. Target date</H>
+        <H>4. Target date</H>
         <Muted>Ninety days out is the default. Fast paths (liaison, UR, clinical educator) fit inside it. Long builds run 6–15 months and the map stretches to match.</Muted>
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} style={{ padding: "10px 12px", fontSize: 15, border: "1px solid var(--border)", borderRadius: 8, fontFamily: font.sans }} />
       </Panel>
@@ -161,9 +156,9 @@ export function DecisionTree({ answer, save, finish, done }: LessonProps) {
   const reveal = () => { save({ answers: ans, verdict }); setShow(true); if (!done) finish(); };
   return (
     <div>
-      <P>&ldquo;I want to quit&rdquo; is three different problems wearing the same trench coat. Six questions sort out which one you have. There are no wrong answers, and the verdict can change next month.</P>
+      <P>When I wanted to quit, it turned out to be three different problems at once: my building, the work itself, and a rough year at home. These six questions pull them apart so you can fix the right one. Answer honestly. Nothing here is graded, and the verdict can change next month.</P>
       <Quote text="I've worked in several settings so can't imagine a setting change is the answer. It's all the same story, different font." from="a school SLP, r/slp" />
-      <P>If that's you, question two is the one that matters. Changing settings is the advice every exit thread gets, usually from people who haven't run the experiment. Having run it three times is data.</P>
+      <P>If that&rsquo;s you, pay attention to question two. Everyone who says they want out gets told to try a different setting, usually by people who haven&rsquo;t tried it themselves. If you&rsquo;ve already changed settings and the feeling followed you, that counts as evidence.</P>
       {QS.map((q, i) => (
         <Panel key={i} style={{ marginBottom: 10, padding: 16 }}>
           <div style={{ display: "flex", gap: 12, alignItems: "flex-start", flexWrap: "wrap" }}>
@@ -221,7 +216,7 @@ export function SunkCost({ answer, save, finish, done }: LessonProps) {
   const submit = () => { save({ years, debt, salary, path, months, dip, stay10, move10 }); if (!done) finish(); };
   return (
     <div>
-      <P>Two kinds of number sit in this decision. The ones already spent, which are the same whether you stay or go, and the ones still live. The audit separates them.</P>
+      <P>There are two kinds of numbers in this decision: the ones you&rsquo;ve already spent, which stay the same whether you go or stay, and the ones still on the table. Putting them in separate columns is most of the work, and it&rsquo;s the part the guilt doesn&rsquo;t want you to do.</P>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }} className="tos-two-col">
         <Panel>
           <H>Already spent</H>
@@ -285,13 +280,12 @@ function Bars({ a, b, labelA, labelB }: { a: number; b: number; labelA: string; 
 /* -------------------------------- 1.4 Dials ------------------------------- */
 const DIALS: { key: keyof typeof DIAL_PROFILES[string]; label: string; left: string; right: string }[] = [
   { key: "pay", label: "Pay floor", left: "I have runway", right: "Must match SLP pay now" },
-  { key: "hours", label: "Hours outside work", left: "Running on empty", right: "A defined sprint" },
   { key: "clinical", label: "Distance from clinical", left: "Clean break", right: "Stay close" },
   { key: "people", label: "Live people-time", left: "As little as possible", right: "Still love 1:1" },
   { key: "tech", label: "New tools and software", left: "Rather work with people", right: "Colleagues come to me" },
 ];
 export function Dials({ answer, save, finish, done }: LessonProps) {
-  const [v, setV] = useState<Record<string, number>>(answer?.dials || { pay: 70, hours: 30, clinical: 60, people: 60, tech: 50 });
+  const [v, setV] = useState<Record<string, number>>(answer?.dials || { pay: 70, clinical: 60, people: 60, tech: 50 });
   const ranked = useMemo(() => Object.entries(DIAL_PROFILES).map(([slug, prof]) => {
     const d = DIALS.reduce((s, x) => s + Math.abs(prof[x.key] - v[x.key] / 100), 0) / DIALS.length;
     return { slug, fit: Math.round((1 - d) * 100) };
@@ -299,7 +293,7 @@ export function Dials({ answer, save, finish, done }: LessonProps) {
   const top = ranked.slice(0, 3);
   return (
     <div>
-      <P>The quiz asked what you&rsquo;re good at. These five dials ask what you&rsquo;re protecting. Set each one where you actually are this month, and watch the paths reorder.</P>
+      <P>Set these four where you actually are this month, not where you&rsquo;d like to be. The paths on the right reorder as you move them, and the three at the top are the ones worth reading first.</P>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }} className="tos-two-col">
         <Panel>{DIALS.map((d) => <Slider key={d.key} label={d.label} left={d.left} right={d.right} value={v[d.key]} onChange={(n) => setV({ ...v, [d.key]: n })} />)}</Panel>
         <div>
@@ -312,7 +306,7 @@ export function Dials({ answer, save, finish, done }: LessonProps) {
               <div style={{ fontSize: 13, color: "var(--accent)", fontWeight: 600, margin: "2px 0 6px" }}>{p.range} · typically {p.timeline}</div>
               <div style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.5 }}>{p.why}</div>
             </div>); })}
-          <Muted>Fit is the distance between your dials and each path&rsquo;s profile, which mirrors the scoring in the free quiz. It ranks; it doesn&rsquo;t decide. Module 2 does that with your résumé.</Muted>
+          <Muted>Fit is how close your dials sit to each path&rsquo;s profile, using the same weights as the free quiz. Treat it as a ranking to explore. Module 2 makes the actual choice with your r&eacute;sum&eacute; in hand.</Muted>
         </div>
       </div>
       <div style={{ marginTop: 12, display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
@@ -335,7 +329,7 @@ export function Identity({ finish, done }: LessonProps) {
       <VideoSlot title="Still you" minutes={5} poster="On camera." />
       <Panel style={{ marginTop: 16 }}>
         <H>Script</H>
-        <P>Every SLP I&rsquo;ve interviewed who left kept something. Not the title. The part of the work that was actually them. Explaining hard things simply. Holding a room of people to a plan they didn&rsquo;t want. Reading a page of data and knowing what to do next. Those went with them, and in every case they turned out to be the thing they were hired for.</P>
+        <P>Every SLP I&rsquo;ve interviewed who left took something with them, and it was never the title. It was the part of the work that was actually them: explaining hard things simply, holding a room of people to a plan they didn&rsquo;t want, reading a page of data and knowing what to do next. In every case, that part turned out to be the thing they were hired for.</P>
         <P>Here are three, thirty seconds each. Watch for what each of them kept.</P>
         <Quote text="I've taken a long time to grieve the loss of who I was in my previous role." from="a comment on a former SLP's essay about leaving" />
         <P style={{ margin: 0 }}>Grief is the right word, and it&rsquo;s the word the people who left use most. One of them called leaving a completion rather than a failure. You chose this field at 22, before you knew yourself. Finishing it is allowed.</P>
@@ -362,7 +356,7 @@ export function TellOne({ answer, save, finish, done }: LessonProps) {
   const [who, setWho] = useState<string>(answer?.who || "");
   return (
     <div>
-      <P>Stage one runs on secrecy, and secrecy is expensive. You spend energy every day keeping the search history clean and the face neutral. One sentence to one person ends that tax. It commits you to nothing.</P>
+      <P>Keeping this to yourself is more tiring than it looks. You clear the search history, keep your face neutral in the staff room, and carry the whole thing alone. Telling one person, in one sentence, takes most of that weight off, and it doesn&rsquo;t commit you to anything.</P>
       <Panel>
         <H>Who</H>
         <Muted>Someone who won&rsquo;t argue with you. Arguing comes later, if ever.</Muted>
@@ -397,7 +391,7 @@ export function Checkpoint1({ answer, save, finish, done, all }: LessonProps & {
   const push = /burn|exhaust|hate|can't|cannot|paperwork|productivity|toxic|miserable/i.test(why);
   return (
     <div>
-      <P>Three things leave this module with you. Check them, write the sentence, and Explore unlocks.</P>
+      <P>Before you move on, gather the three things you worked out this week and write one sentence about where you&rsquo;re going. That sentence opens Explore, and it will follow you into your cover letter and your interviews.</P>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }} className="tos-two-col">
         <Stat label="Stage" value={stage ? STAGE_META.find((s) => s.key === stage)?.name || "Set" : "Not set"} ok={!!stage} href="/course/ground/1.1" />
         <Stat label="Verdict" value={verdict ? VERDICTS[verdict].title : "Not set"} ok={!!verdict} href="/course/ground/1.2" />

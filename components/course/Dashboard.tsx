@@ -29,7 +29,7 @@ export default function Dashboard() {
             {!ready ? "" : !p.startedAt ? "Start here. It takes about as long as one progress note." : days !== null ? `${days} days to your target date.` : "Your map is set."}
           </h1>
           <div style={{ fontSize: 15, lineHeight: 1.6, opacity: 0.92, maxWidth: 560 }}>
-            {stage ? <>{stage.n === 1 ? "You don't have to tell anyone yet. Looking is allowed." : stage.n === 2 ? "Wanting out doesn't undo the good you did, and it doesn't waste the degree." : stage.n === 3 ? "It is possible. The stories are in Module 1, lesson 5." : stage.n === 4 ? "Start with one path, not all twenty." : "Skip the reading. Your résumé is the bottleneck, and that's fixable this week."}</>
+            {stage ? <>{stage.n === 1 ? "You don't have to tell anyone yet. Looking around is allowed, and it commits you to nothing." : stage.n === 2 ? "Wanting out doesn't undo the good you did, and it doesn't waste the degree." : stage.n === 3 ? "It is possible. The stories are in Module 1, lesson 5." : stage.n === 4 ? "Start with one path. The other nineteen can wait." : "You're past the reading stage. The résumé is what's holding you back, and that is fixable this week."}</>
                    : "Tell it where you are, what you can't afford to lose, and when you want to be out. Everything after that bends around those three."}
           </div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 16 }}>
