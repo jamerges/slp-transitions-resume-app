@@ -354,6 +354,12 @@
    },
    {
     "type": "callout",
+    "tone": "soft",
+    "title": "Months that did not count",
+    "text": "If some of your months sat in a deferment or forbearance that earned no credit, there is a buyback option written into the regulation: you pay what a qualifying plan would have charged for those months, or show you would have owed nothing on an income-driven plan. In practice it is offered once you already have 120 months of qualifying employment, so it is a tidy-up at the end rather than a shortcut."
+   },
+   {
+    "type": "callout",
     "tone": "warm",
     "title": "Check this yourself, twice",
     "text": "Look up your own employer in the official PSLF employer search rather than assuming from the name, and file the employment certification form regularly rather than at the end. A new employer-disqualification rule took effect in July 2026 and is still being litigated, so nobody can promise you what qualifies in five years."
@@ -410,6 +416,12 @@
    {
     "type": "p",
     "text": "The election window is also a tool. You have sixty days to elect COBRA and at least forty-five more to pay, and many plans make coverage retroactive to the day you lost it. Some do not, so read your plan documents rather than trusting a rule of thumb. Used carefully, that window lets you go uninsured on paper while staying covered in practice if something happens."
+   },
+   {
+    "type": "callout",
+    "tone": "warm",
+    "title": "The mistake people make here",
+    "text": "Quitting your job opens a marketplace special enrollment period. Voluntarily dropping COBRA part way through does not. If you think the marketplace will be cheaper, compare the two before you elect COBRA rather than after, because changing your mind in month four can leave you waiting for open enrollment."
    },
    {
     "type": "h",
