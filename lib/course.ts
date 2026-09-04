@@ -76,15 +76,15 @@ const R = {
 export const MODULES: Module[] = [
   {
     n: 0, slug: "start", title: "Start here", phase: "Setup", week: "Day 1", built: true,
-    tagline: "Fifteen minutes. Where you are, what you can't afford to lose, and three things the forums get wrong.",
+    tagline: "Fifteen minutes. Where you are, what you can't afford to lose, and a date.",
     lessons: [
       { id: "0.1", module: 0, title: "Welcome from James", type: "video", minutes: 3, component: "Welcome",
         summary: "What this is, what it isn't, and the refund promise.", sources: ["facts"] },
       { id: "0.2", module: 0, title: "Your starting line", type: "interactive", minutes: 5, component: "StartingLine",
-        summary: "Stage, path, income floor, hours, target date. It builds your 90-day map.",
+        summary: "Stage, income floor, hours, target date. A path if you have one; nothing needs it yet.",
         action: { label: "Set my target date", prompt: "Pick the date you want to be in a new role. Ninety days from now is the default and it is realistic for the fast paths; the long builds take 6–15 months and the map adjusts.", done: "Target date set." } },
-      { id: "0.3", module: 0, title: "Three things I believed, three things the forums get wrong", type: "explainer", minutes: 4, component: "ThreeLies",
-        summary: "Start over. Get a certificate first. Wasting the degree. Then Epic, MSL and UX research, because the advice threads have those wrong too.", sources: ["facts"] },
+      { id: "0.3", module: 0, title: "Three things I believed", type: "explainer", minutes: 3, component: "ThreeLies",
+        summary: "Start over. Get a certificate first. Wasting the degree. I held all three.", sources: ["facts"] },
     ],
   },
   {
@@ -117,7 +117,7 @@ export const MODULES: Module[] = [
       { id: "2.2", module: 2, title: "Out in weeks: four jobs your licence already qualifies you for", type: "video", minutes: 8, summary: "Liaison, utilization review, clinical educator, case management." },
       { id: "2.3", module: 2, title: "Where SLPs actually land", type: "video", minutes: 9, summary: "Customer success, project management, data, content." },
       { id: "2.4", module: 2, title: "The twelve-month builds, and what they pay for the wait", type: "video", minutes: 7, summary: "Informatics, instructional design, UX, software, conversation design." },
-      { id: "2.5", module: 2, title: "Epic, MSL and UX research: the full version", type: "explainer", minutes: 6, summary: "" },
+      { id: "2.5", module: 2, title: "Epic, MSL and UX research: the facts the forums get wrong", type: "explainer", minutes: 6, summary: "Path-specific guardrails, kept with the paths: sponsorship, the doctorate gate, the saturated field." },
       { id: "2.6", module: 2, title: "Pick one: your Pivot Report", type: "interactive", minutes: 8, summary: "" },
       { id: "2.7", module: 2, title: "Path deep-dive (your top two)", type: "interactive", minutes: 10, summary: "" },
       { id: "2.8", module: 2, title: "Messages that get answered", type: "video", minutes: 9, summary: "" },

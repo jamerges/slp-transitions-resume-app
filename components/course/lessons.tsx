@@ -19,6 +19,9 @@ const Quote = ({ text, from }: { text: string; from: string }) => (
     <span style={{ fontStyle: "italic" }}>&ldquo;{text}&rdquo;</span> <span style={{ fontSize: 12, color: "var(--muted)" }}>&middot; {from}</span>
   </blockquote>
 );
+const Saved = ({ text = "Saved. Your map is updated." }: { text?: string }) => (
+  <span className="tos-fade" style={{ color: "var(--accent)", fontWeight: 600, fontSize: 14 }}>&#10003; {text}</span>
+);
 const money = (n: number) => "$" + Math.round(n).toLocaleString("en-US");
 const rangeMid = (s: string) => { const m = s.replace(/,/g, "").match(/\d+/g)?.map(Number) || []; return m.length >= 2 ? (m[0] + m[1]) / 2 : m[0] || 0; };
 
@@ -34,7 +37,7 @@ export function Welcome({ finish, done }: LessonProps) {
         <P>It isn&rsquo;t a cheerleading course, and it isn&rsquo;t a promise of six figures by fall. It&rsquo;s a map with the mileage marked. Some people finish in six weeks. Most take the full ninety days alongside a full-time caseload, which is how it was designed.</P>
         <P>If it doesn&rsquo;t help, write to me inside thirty days and you get your money back. No form, no call. Let&rsquo;s set your starting line.</P>
       </Panel>
-      {!done && <Btn onClick={() => finish()} style={{ marginTop: 16 }}>I watched it, continue →</Btn>}
+      <div style={{ marginTop: 16 }}>{done ? <Saved text="Watched." /> : <Btn onClick={() => finish()}>Mark as watched</Btn>}</div>
     </div>
   );
 }
@@ -71,7 +74,7 @@ export function StartingLine({ answer, save, finish, done }: LessonProps) {
       </Panel>
       <Panel style={{ marginTop: 14 }}>
         <H>2. A path, if you have one</H>
-        <Muted>Imported from your quiz result when you bought through it. Leave it blank and Module 2 picks it with you.</Muted>
+        <Muted>Optional. Imported from your quiz result when you bought through it. Leave it on &ldquo;Not sure yet&rdquo; and Module 2 picks it with you. Nothing before then needs it: the mindset, r&eacute;sum&eacute;, LinkedIn and networking lessons work for any title. A path only changes which examples, job postings and artifact brief you see.</Muted>
         <select value={path} onChange={(e) => setPath(e.target.value)} style={{ width: "100%", padding: "10px 12px", fontSize: 15, border: "1px solid var(--border)", borderRadius: 8, background: "var(--card)", fontFamily: font.sans }}>
           <option value="">Not sure yet</option>
           {Object.values(PATHS).map((p) => <option key={p.slug} value={p.slug}>{p.label} · {p.range}</option>)}
@@ -90,9 +93,9 @@ export function StartingLine({ answer, save, finish, done }: LessonProps) {
         <Muted>Ninety days out is the default. Fast paths (liaison, UR, clinical educator) fit inside it. Long builds run 6–15 months and the map stretches to match.</Muted>
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} style={{ padding: "10px 12px", fontSize: 15, border: "1px solid var(--border)", borderRadius: 8, fontFamily: font.sans }} />
       </Panel>
-      <div style={{ marginTop: 18, display: "flex", gap: 10, alignItems: "center" }}>
-        <Btn onClick={submit} disabled={!ok}>{done ? "Update my map" : "Set my starting line →"}</Btn>
-        {!ok && <span style={{ fontSize: 13, color: "var(--muted)" }}>Stage and income floor are the two that matter.</span>}
+      <div style={{ marginTop: 18, display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+        <Btn onClick={submit} disabled={!ok}>Save my starting line</Btn>
+        {done ? <Saved /> : !ok && <span style={{ fontSize: 13, color: "var(--muted)" }}>Stage and income floor are the two that matter.</span>}
       </div>
     </div>
   );
@@ -258,8 +261,10 @@ export function SunkCost({ answer, save, finish, done }: LessonProps) {
         <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "#92400E", marginBottom: 6 }}>Why the tuition feels refundable</div>
         <P style={{ margin: 0, fontSize: 14 }}>Arkes and Blumer (1985) gave theatre-goers randomly discounted season tickets. The people who paid full price went to more plays, because of what they had already spent. The money was gone either way. The tuition is gone either way too. The only thing still on the table is where the next ten years go.</P>
       </Panel>
-      {!done && <Btn onClick={submit} style={{ marginTop: 16 }}>Save my numbers to the map →</Btn>}
-      {done && <Btn onClick={submit} outline style={{ marginTop: 16 }}>Update my numbers</Btn>}
+      <div style={{ marginTop: 16, display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+        <Btn onClick={submit}>Save my numbers</Btn>
+        {done && <Saved />}
+      </div>
     </div>
   );
 }
@@ -310,7 +315,10 @@ export function Dials({ answer, save, finish, done }: LessonProps) {
           <Muted>Fit is the distance between your dials and each path&rsquo;s profile, which mirrors the scoring in the free quiz. It ranks; it doesn&rsquo;t decide. Module 2 does that with your résumé.</Muted>
         </div>
       </div>
-      <Btn onClick={() => { save({ dials: v, top: top.map((t) => t.slug) }); if (!done) finish(); }} style={{ marginTop: 12 }} outline={done}>{done ? "Update my dials" : "Save these three to my map →"}</Btn>
+      <div style={{ marginTop: 12, display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+        <Btn onClick={() => { save({ dials: v, top: top.map((t) => t.slug) }); if (!done) finish(); }}>Save these three to my map</Btn>
+        {done && <Saved />}
+      </div>
     </div>
   );
 }
@@ -343,7 +351,7 @@ export function Identity({ finish, done }: LessonProps) {
           </a>
         ))}
       </div>
-      {!done && <Btn onClick={() => finish()} style={{ marginTop: 16 }}>Continue →</Btn>}
+      <div style={{ marginTop: 16 }}>{done ? <Saved text="Watched." /> : <Btn onClick={() => finish()}>Mark as watched</Btn>}</div>
     </div>
   );
 }

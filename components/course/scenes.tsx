@@ -84,13 +84,19 @@ const GUARDRAILS = [
 ];
 
 export const threeLiesScenes: Scene[] = [
-  { id: "open", ms: 4200, caption: "Three things I believed when I wanted out. All three were wrong, and the advice threads repeat three facts that are wrong too.",
-    render: () => (<><Kicker>Module 0 · Lesson 3</Kicker><Big>Three things I believed. Three things the forums get wrong.</Big><Sub>About a minute each. I held all three of the first kind.</Sub></>) },
+  { id: "open", ms: 4200, caption: "Three things I believed when I wanted out. All three were wrong, and each one kept me in the building longer than I needed to be.",
+    render: () => (<><Kicker>Module 0 · Lesson 3</Kicker><Big>Three things I believed.</Big><Sub>About a minute each. I held all three, and I&rsquo;d guess you hold at least one.</Sub></>) },
   ...LIES.map((l, i): Scene => ({
     id: `lie${i}`, ms: 6400, caption: `Lie ${i + 1}: "${l.lie}" ${l.truth}`,
     render: () => (<><Kicker>Lie {i + 1} of 3</Kicker><Big><Strike delay={1600}>{l.lie}</Strike></Big><Sub delay={2400}>{l.truth}</Sub></>),
   })),
-  { id: "gr", ms: 4000, caption: "Now the guardrails: three things the advice forums get wrong, and what to do instead.",
+  { id: "close", ms: 5200, caption: "Those three were mine. Yours may be different, and Module 1 is where you find out.",
+    render: () => (<><Kicker>Done</Kicker><Big>Those three were mine.</Big><Sub>Yours may be different. Module 1 is where you find out which one is running things.</Sub></>) },
+];
+
+/** Module 2, lesson 5. Path facts, not mindset, so they live with the paths. */
+export const guardrailScenes: Scene[] = [
+  { id: "gr", ms: 4000, caption: "Three things the advice forums get wrong about specific paths, and what to do instead.",
     render: () => (<><Kicker>Guardrails</Kicker><Big>Three facts the forums get wrong.</Big><Sub>Each one costs people months.</Sub></>) },
   ...GUARDRAILS.map((g, i): Scene => ({
     id: `g${i}`, ms: 7200, caption: `${g.title}: ${g.fact} Instead: ${g.route}`,
@@ -103,6 +109,4 @@ export const threeLiesScenes: Scene[] = [
       </>
     ),
   })),
-  { id: "close", ms: 4200, caption: "That's the whole rulebook. Everything else in the program is specific to you.",
-    render: () => (<><Kicker>Done</Kicker><Big>That&rsquo;s the whole rulebook.</Big><Sub>Everything from here is about you, not SLPs in general.</Sub></>) },
 ];

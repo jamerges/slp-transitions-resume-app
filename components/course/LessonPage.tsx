@@ -53,9 +53,15 @@ export default function LessonPage({ id }: { id: string }) {
             <Panel tone="soft" style={{ marginTop: 18 }}><b>{lesson.action.label}.</b> {lesson.action.prompt}</Panel>
           )}
 
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 28, gap: 12, flexWrap: "wrap" }}>
-            <Btn href="/course" outline>← Quest log</Btn>
-            {next && <Btn href={`/course/${moduleOf(next).slug}/${next.id}`} outline={!done}>{done ? `Next: ${next.title} →` : `Skip to ${next.id} →`}</Btn>}
+          {/* Same two buttons on every lesson, same labels whether or not the
+              lesson is complete. The state lives in the checkmark above, not
+              in the button text. */}
+          <div style={{ marginTop: 28 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+              <Btn href="/course" outline>← Quest log</Btn>
+              {next && <Btn href={`/course/${moduleOf(next).slug}/${next.id}`}>Next lesson →</Btn>}
+            </div>
+            {next && <div style={{ textAlign: "right", fontSize: 13, color: "var(--muted)", marginTop: 8 }}>Up next: {next.title} · {next.minutes} min</div>}
           </div>
         </div>
 
