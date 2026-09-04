@@ -1,6 +1,6 @@
 "use client";
 import { useCallback, useState } from "react";
-import { lessonById, moduleOf, nextLesson, SOURCES, TYPE_LABEL, MODULES, type Lesson } from "@/lib/course";
+import { lessonById, moduleOf, nextLesson, prevLesson, SOURCES, TYPE_LABEL, type Lesson } from "@/lib/course";
 import { useProgress } from "@/lib/course-progress";
 import { CourseShell, UnlockToast, Btn, Panel, font } from "./ui";
 import * as L from "./lessons";
@@ -15,6 +15,7 @@ export default function LessonPage({ id }: { id: string }) {
   const lesson = lessonById(id)!;
   const mod = moduleOf(lesson);
   const next = nextLesson(id);
+  const prev = prevLesson(id);
   const { p, ready, pct, complete, saveAnswer } = useProgress();
   const [toast, setToast] = useState<{ xp: number; badges: any[] } | null>(null);
   const done = p.completed.includes(id);
@@ -53,15 +54,18 @@ export default function LessonPage({ id }: { id: string }) {
             <Panel tone="soft" style={{ marginTop: 18 }}><b>{lesson.action.label}.</b> {lesson.action.prompt}</Panel>
           )}
 
-          {/* Same two buttons on every lesson, same labels whether or not the
-              lesson is complete. The state lives in the checkmark above, not
-              in the button text. */}
+          {/* The same pair on every lesson: previous and next, labels fixed.
+              The quest log is one click away in the breadcrumb and the
+              module list on the right, so it doesn't need a third button. */}
           <div style={{ marginTop: 28 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-              <Btn href="/course" outline>← Quest log</Btn>
-              {next && <Btn href={`/course/${moduleOf(next).slug}/${next.id}`}>Next lesson →</Btn>}
+              {prev ? <Btn href={`/course/${moduleOf(prev).slug}/${prev.id}`} outline>← Previous lesson</Btn> : <Btn href="/course" outline>← Quest log</Btn>}
+              {next ? <Btn href={`/course/${moduleOf(next).slug}/${next.id}`}>Next lesson →</Btn> : <Btn href="/course">Back to the quest log →</Btn>}
             </div>
-            {next && <div style={{ textAlign: "right", fontSize: 13, color: "var(--muted)", marginTop: 8 }}>Up next: {next.title} · {next.minutes} min</div>}
+            <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "var(--muted)", marginTop: 8, gap: 12, flexWrap: "wrap" }}>
+              <span>{prev ? `${prev.id} ${prev.title}` : ""}</span>
+              <span>{next ? `${next.id} ${next.title} · ${next.minutes} min` : ""}</span>
+            </div>
           </div>
         </div>
 

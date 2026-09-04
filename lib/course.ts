@@ -179,6 +179,10 @@ export const MODULES: Module[] = [
 export const LESSONS: Lesson[] = MODULES.flatMap((m) => m.lessons);
 export const lessonById = (id: string) => LESSONS.find((l) => l.id === id);
 export const moduleOf = (l: Lesson) => MODULES.find((m) => m.n === l.module)!;
+export function prevLesson(id: string): Lesson | undefined {
+  const i = LESSONS.findIndex((l) => l.id === id);
+  return LESSONS.slice(0, Math.max(0, i)).reverse().find((l) => moduleOf(l).built);
+}
 export function nextLesson(id: string): Lesson | undefined {
   const i = LESSONS.findIndex((l) => l.id === id);
   return LESSONS.slice(i + 1).find((l) => moduleOf(l).built);

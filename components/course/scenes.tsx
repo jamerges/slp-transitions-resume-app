@@ -73,9 +73,9 @@ export const fiveStagesScenes: Scene[] = [
 ];
 
 const LIES = [
-  { lie: "I'd have to start over.", truth: "Lateral moves exist. Several pay more than clinical work from day one." },
-  { lie: "I need a certificate first.", truth: "\"No one took me seriously with a CAPM.\" Translated experience plus proof beats paper." },
-  { lie: "I'd be throwing away my degree.", truth: "Your licence is the qualification for liaison, UR, clinical education and speech-tech roles." },
+  { lie: "I'd have to start over.", truth: "A few moves are a step down, and the program names them. Most aren't: liaison, utilization review and customer success pay at or above clinical from day one." },
+  { lie: "I need a certificate first.", truth: "A few roles do require one, and Module 2 says which. Most hire on translated experience and proof. One transitioner got the CAPM first and said no one took her seriously until she could show the work." },
+  { lie: "I'd be throwing away my degree.", truth: "For liaison, UR, clinical education and speech-tech roles the license is the qualification. For a clean break like software, it's your backup plan rather than your credential." },
 ];
 const GUARDRAILS = [
   { title: "Epic certification", fact: "Cannot be bought. An employer has to sponsor you. Anyone selling an \"Epic cert\" is selling something else.", route: "Sponsor-track analyst roles, go-live support gigs, CAHIMS." },
@@ -87,8 +87,8 @@ export const threeLiesScenes: Scene[] = [
   { id: "open", ms: 4200, caption: "Three things I believed when I wanted out. All three were wrong, and each one kept me in the building longer than I needed to be.",
     render: () => (<><Kicker>Module 0 · Lesson 3</Kicker><Big>Three things I believed.</Big><Sub>About a minute each. I held all three, and I&rsquo;d guess you hold at least one.</Sub></>) },
   ...LIES.map((l, i): Scene => ({
-    id: `lie${i}`, ms: 6400, caption: `Lie ${i + 1}: "${l.lie}" ${l.truth}`,
-    render: () => (<><Kicker>Lie {i + 1} of 3</Kicker><Big><Strike delay={1600}>{l.lie}</Strike></Big><Sub delay={2400}>{l.truth}</Sub></>),
+    id: `lie${i}`, ms: 8200, caption: `Belief ${i + 1}: "${l.lie}" ${l.truth}`,
+    render: () => (<><Kicker>Belief {i + 1} of 3</Kicker><Big><Strike delay={1600}>{l.lie}</Strike></Big><Sub delay={2400}>{l.truth}</Sub></>),
   })),
   { id: "close", ms: 5200, caption: "Those three were mine. Yours may be different, and Module 1 is where you find out.",
     render: () => (<><Kicker>Done</Kicker><Big>Those three were mine.</Big><Sub>Yours may be different. Module 1 is where you find out which one is running things.</Sub></>) },

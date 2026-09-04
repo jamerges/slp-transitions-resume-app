@@ -405,7 +405,7 @@ export function Checkpoint1({ answer, save, finish, done, all }: LessonProps & {
         <div style={{ marginTop: 10, fontSize: 13, color: "var(--muted)" }}>Examples:</div>
         {PULL.map((x) => <button key={x} type="button" onClick={() => setWhy(x)} style={{ display: "block", textAlign: "left", background: "none", border: "none", color: "var(--accent)", fontSize: 14, cursor: "pointer", padding: "4px 0", fontFamily: font.sans }}>&ldquo;{x}&rdquo;</button>)}
       </Panel>
-      {!done ? <Btn onClick={() => { save({ why }); finish({ action: true }); }} disabled={why.trim().length < 12 || push} style={{ marginTop: 16 }}>Complete Module 1 →</Btn>
+      {!done ? <Btn onClick={() => { save({ why }); finish({ action: true }); }} disabled={why.trim().length < 12 || push} style={{ marginTop: 16 }}>Save and finish Module 1</Btn>
              : <Panel tone="soft" style={{ marginTop: 16 }}><b>Module 1 complete.</b> Explore is written and unlocks after James approves this sample. Your map on the dashboard already carries everything you set here.</Panel>}
     </div>
   );

@@ -58,7 +58,7 @@ export default function Dashboard() {
               </>
             ) : <div style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 700, margin: "6px 0 14px" }}>That&rsquo;s Modules 0 and 1. Explore is next, once James signs off on this sample.</div>}
           </div>
-          {next && <Btn href={`/course/${moduleOf(next).slug}/${next.id}`} style={{ width: "100%", textAlign: "center" }}>{p.startedAt ? "Continue →" : "Start →"}</Btn>}
+          {next && <Btn href={`/course/${moduleOf(next).slug}/${next.id}`} style={{ width: "100%", textAlign: "center" }}>{"Continue →"}</Btn>}
         </Panel>
       </div>
 
