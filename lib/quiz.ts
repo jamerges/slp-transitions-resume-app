@@ -153,6 +153,42 @@ export const PATHS: Record<string, QuizPath> = {
   },
 };
 
+/**
+ * Where the reader is emotionally (voice-of-customer.md, section 1). Not
+ * scored. It decides the first line of the result and which day-2 follow-up
+ * they get, so a stage-2 reader isn't greeted with ATS advice.
+ */
+export const STAGES = {
+  private: {
+    label: "I haven't told anyone I'm thinking about this.",
+    opener: "You don't have to tell anyone yet. Looking is allowed.",
+  },
+  guilt: {
+    label: "I feel guilty even looking. The degree, the loans, the people I'd leave.",
+    opener: "Wanting out doesn't undo the good you did, and it doesn't waste the degree. Every path below runs on it.",
+  },
+  permission: {
+    label: "I keep reading exit stories and wondering if it's really possible.",
+    opener: "It is possible. People on this site did it from exactly where you are, and the stories are linked below.",
+  },
+  panic: {
+    label: "I want out. I just don't know what else I could do.",
+    opener: "This page is the answer to \"what else\". Start with the one path below, not all twenty.",
+  },
+  action: {
+    label: "I know what I want. I'm applying and not getting traction.",
+    opener: "Skip the reading. Your resume is the bottleneck, and that's fixable this week.",
+  },
+} as const;
+export type StageKey = keyof typeof STAGES;
+export const STAGE_KEYS = Object.keys(STAGES) as StageKey[];
+export function stageFromLabel(label?: string | null): StageKey | null {
+  if (!label) return null;
+  return STAGE_KEYS.find((k) => STAGES[k].label === label) || null;
+}
+/** Result card for a path: public/quiz/<slug>.png, from scripts/make_quiz_path_images.py. */
+export const pathImage = (slug: string) => `/quiz/${slug}.png`;
+
 export interface QuizOption {
   label: string;
   scores: Partial<Record<string, number>>;
@@ -166,6 +202,8 @@ export interface QuizQuestion {
   prompt: string;
   help?: string;
   multi?: boolean;
+  /** Non-scoring: the answer is recorded as the reader's stage. */
+  stage?: boolean;
   options: QuizOption[];
 }
 
@@ -212,6 +250,14 @@ export const QUESTIONS: QuizQuestion[] = [
       { label: "Telling the story — writing, content, marketing", scores: { "content-marketing": 3 } },
       { label: "Leading a team or running a department", scores: { leadership: 3, "project-management": 1 } },
     ],
+  },
+  {
+    id: "stage",
+    section: "Your reality",
+    stage: true,
+    prompt: "Which of these sounds most like right now?",
+    help: "This one doesn't change your result. It changes what we say first.",
+    options: STAGE_KEYS.map((k) => ({ label: STAGES[k].label, scores: {} })),
   },
   {
     id: "income",

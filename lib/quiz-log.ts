@@ -20,12 +20,12 @@ function getRedis(): Redis | null {
 }
 
 const KEY = "quiz:completions";
-export interface Completion { email: string; slug: string; name?: string; ts: number }
+export interface Completion { email: string; slug: string; name?: string; stage?: string; ts: number }
 
-export async function recordQuizCompletion(email: string, slug: string, name?: string): Promise<void> {
+export async function recordQuizCompletion(email: string, slug: string, name?: string, stage?: string | null): Promise<void> {
   const r = getRedis(); if (!r) return;
   const ts = Date.now();
-  const member = JSON.stringify({ e: email.toLowerCase(), s: slug, n: name || "" });
+  const member = JSON.stringify({ e: email.toLowerCase(), s: slug, n: name || "", ...(stage ? { st: stage } : {}) });
   await r.zadd(KEY, { score: ts, member });
 }
 
@@ -37,7 +37,7 @@ export async function completionsBetween(fromMs: number, toMs: number): Promise<
   for (let i = 0; i + 1 < rows.length; i += 2) {
     try {
       const m = JSON.parse(String(rows[i]));
-      out.push({ email: m.e, slug: m.s, name: m.n || undefined, ts: Number(rows[i + 1]) });
+      out.push({ email: m.e, slug: m.s, name: m.n || undefined, stage: m.st || undefined, ts: Number(rows[i + 1]) });
     } catch { /* skip malformed */ }
   }
   return out;

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { PATHS } from "@/lib/quiz";
+import { PATHS, STAGES, type StageKey } from "@/lib/quiz";
 import { sendQuizResultEmail } from "@/lib/email";
 import { upsertSubscriber, QUIZ_PATH_GROUPS } from "@/lib/mailerlite";
 import { recordQuizCompletion } from "@/lib/quiz-log";
@@ -9,12 +9,14 @@ export const maxDuration = 30;
 
 export async function POST(req: Request) {
   try {
-    const { email, name, topSlug, runnerUpSlug } = (await req.json()) as {
+    const { email, name, topSlug, runnerUpSlug, stage: rawStage } = (await req.json()) as {
       email?: string;
       name?: string;
       topSlug?: string;
       runnerUpSlug?: string;
+      stage?: string | null;
     };
+    const stage: StageKey | null = rawStage && rawStage in STAGES ? (rawStage as StageKey) : null;
     if (!email || !email.includes("@")) {
       return NextResponse.json({ error: "Please enter a valid email." }, { status: 400 });
     }
@@ -29,17 +31,17 @@ export async function POST(req: Request) {
       email,
       name,
       groups: [process.env.MAILERLITE_GROUP_ID || "", QUIZ_PATH_GROUPS[top.roleOption] || ""],
-      fields: { quiz_result: top.label },
+      fields: { quiz_result: top.label, ...(stage ? { stage } : {}) },
     });
 
     // Our own timestamp for the follow-up cron. Never blocks the result.
-    recordQuizCompletion(email, top.slug, name).catch((e) =>
+    recordQuizCompletion(email, top.slug, name, stage).catch((e) =>
       console.error("[/api/quiz-result] completion log failed", e)
     );
 
     let emailed = false;
     try {
-      await sendQuizResultEmail({ to: email, name, top, runnerUp });
+      await sendQuizResultEmail({ to: email, name, top, runnerUp, stage });
       emailed = true;
     } catch (e) {
       console.error("[/api/quiz-result] email failed", e);

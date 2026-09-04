@@ -39,7 +39,7 @@ export async function GET(req: Request) {
       if (await isCustomer(c.email)) { skipped.customer++; continue; }
       if (!(await claimOnce(`fu:${stage}:${c.email}`))) { skipped.already++; continue; }
       const u = unsubUrl(c.email);
-      if (stage === "day2") await sendQuizFollowupDay2({ to: c.email, name: c.name, top, unsubUrl: u });
+      if (stage === "day2") await sendQuizFollowupDay2({ to: c.email, name: c.name, top, unsubUrl: u, stage: c.stage });
       else await sendQuizFollowupDay6({ to: c.email, name: c.name, top, unsubUrl: u });
       sent[stage].push(c.email);
     }

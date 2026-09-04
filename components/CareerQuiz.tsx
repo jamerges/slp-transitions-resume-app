@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { S, Card, ProgressBar, focusB, blurB } from "./ui";
 import { track } from "@/lib/analytics";
-import { QUESTIONS, PATHS, scoreQuiz, type QuizAnswers, type QuizPath } from "@/lib/quiz";
+import { QUESTIONS, PATHS, STAGES, pathImage, scoreQuiz, stageFromLabel, type QuizAnswers, type QuizPath } from "@/lib/quiz";
 
 /** CSS-only "product shot" for the $9 Pivot Report, so the thing being sold
  *  looks like an object rather than a paragraph.
@@ -236,6 +236,7 @@ export default function CareerQuiz({
           name,
           topSlug: pending.top.slug,
           runnerUpSlug: pending.runnerUp?.slug || null,
+          stage: stageFromLabel((answers.stage || [])[0]),
         }),
       });
       const data = await resp.json().catch(() => ({}));
@@ -301,32 +302,38 @@ export default function CareerQuiz({
 
   if (result) {
     const { top, runnerUp } = result;
+    const stageKey = stageFromLabel((answers.stage || [])[0]);
+    const opener = stageKey ? STAGES[stageKey].opener : null;
     return (
       <div style={S.wrap}>
         <div style={{ textAlign: "center", marginBottom: 20 }}>
           <span style={S.tag}>Your result</span>
-          <div
-            aria-hidden
+          {opener && (
+            <p style={{ fontSize: 17, lineHeight: 1.6, color: "var(--text)", maxWidth: 500, margin: "14px auto 4px" }}>
+              {opener}
+            </p>
+          )}
+          {/* The card carries the label, range and timeline, so the heading
+              is for screen readers and the text below is kept for copy-paste. */}
+          <img
+            src={pathImage(top.slug)}
+            alt=""
+            width={1200}
+            height={630}
             style={{
-              width: 92,
-              height: 92,
-              borderRadius: "50%",
-              background: "linear-gradient(135deg, var(--accent-bg) 0%, var(--accent-bg-subtle) 100%)",
-              border: "2px solid var(--accent)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 44,
-              margin: "18px auto 6px",
-              boxShadow: "0 4px 14px rgba(45,106,79,0.18)",
+              width: "100%",
+              maxWidth: 520,
+              height: "auto",
+              display: "block",
+              margin: "14px auto 6px",
+              borderRadius: 14,
+              border: "1px solid var(--border)",
+              boxShadow: "0 4px 14px rgba(45,106,79,0.12)",
             }}
-          >
-            {top.icon}
-          </div>
-          <h1 style={{ ...S.h1, fontSize: 30, marginTop: 10 }}>{top.label}</h1>
-          <div style={{ fontSize: 15, color: "var(--accent)", fontWeight: 600 }}>
-            {top.range} · typically {top.timeline}
-          </div>
+          />
+          <h1 style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0 0 0 0)" }}>
+            {top.label}: {top.range}, typically {top.timeline}
+          </h1>
           {/* Compact offer up top. Cold readers reaching this page (organic
               search, not a warm share) were consuming six blocks of free
               content and leaving before the full offer below: result→Buy fell
@@ -550,7 +557,7 @@ export default function CareerQuiz({
         <div style={{ textAlign: "center", marginBottom: 24 }}>
           <h1 style={{ ...S.h1, fontSize: 30 }}>Which direction actually fits you?</h1>
           <p style={{ ...S.p, maxWidth: 520, margin: "0 auto" }}>
-            Eight questions, about two minutes. Built from documented SLP transitions — so you'll get real
+            Nine questions, about two minutes. Built from documented SLP transitions — so you'll get real
             salary ranges, real timelines, and the honest catch for whichever path comes up.
           </p>
         </div>

@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { STAGES, pathImage, type StageKey } from "@/lib/quiz";
 
 let resend: Resend | null = null;
 function getResend(): Resend {
@@ -251,9 +252,12 @@ export async function sendQuizResultEmail(input: {
   name?: string;
   top: { label: string; slug?: string; roleOption?: string; icon?: string; range: string; timeline: string; why: string; entryDoor: string; firstMove: string; caveat: string };
   runnerUp?: { label: string; range: string; timeline: string } | null;
+  stage?: StageKey | null;
 }): Promise<void> {
-  const { to, name, top, runnerUp } = input;
+  const { to, name, top, runnerUp, stage } = input;
   const hi = name ? `Hi ${esc(name.split(" ")[0])},` : "Hi,";
+  const opener = stage ? STAGES[stage].opener : "";
+  const card = top.slug ? `<img src="${APP_URL}${pathImage(top.slug)}" alt="${esc(top.label)}" width="600" style="width:100%;max-width:600px;height:auto;display:block;border-radius:12px;border:1px solid #D8F3DC;margin:0 auto 16px;" />` : "";
   const html = `<!doctype html>
 <html><body style="margin:0;padding:0;background:#FAFAF9;font-family:-apple-system,'DM Sans',sans-serif;color:#1B1B1E;">
 <div style="max-width:640px;margin:0 auto;padding:32px 20px;">
@@ -262,9 +266,10 @@ export async function sendQuizResultEmail(input: {
   </div>
   <p style="font-size:15px;line-height:1.7;">${hi}</p>
   <p style="font-size:15px;line-height:1.7;">Here's your quiz result, saved so you don't lose it.</p>
+  ${opener ? `<p style="font-size:16px;line-height:1.7;color:#0B6B54;">${esc(opener)}</p>` : ""}
+  ${card}
 
   <div style="background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;padding:22px;margin:20px 0;">
-    ${top.icon ? `<div style="font-size:44px;line-height:1;text-align:center;margin-bottom:10px;">${top.icon}</div>` : ""}
     <div style="font-size:11px;font-weight:600;color:#2D6A4F;letter-spacing:0.05em;">YOUR DIRECTION</div>
     <div style="font-size:24px;font-weight:700;font-family:Georgia,serif;margin:6px 0 4px;">${esc(top.label)}</div>
     <div style="font-size:14px;color:#2D6A4F;font-weight:600;margin-bottom:12px;">${esc(top.range)} · typically ${esc(top.timeline)}</div>
@@ -419,19 +424,51 @@ export async function sendQuizFollowupDay2(input: {
   name?: string;
   top: { slug: string; label: string; roleOption: string; range: string; timeline: string; firstMove: string; caveat: string };
   unsubUrl: string;
+  stage?: string | null;
 }): Promise<void> {
-  const { to, name, top, unsubUrl } = input;
+  const { to, name, top, unsubUrl, stage } = input;
   const first = (name || "").trim().split(/\s+/)[0] || "there";
   const link = `${APP_URL}/?from=quiz&goal=report&path=${encodeURIComponent(top.roleOption)}`;
-  const html = plainWrap([
-    `Hi ${esc(first)},`,
-    `James here &mdash; I run SLP Transitions. Your quiz came back <strong>${esc(top.label)}</strong> a couple of days ago, and two days is usually when a result either gets bookmarked or forgotten. So, one nudge.`,
-    `If I were you, the first thing I&rsquo;d do this week: ${esc(top.firstMove)}`,
-    `For context, that path runs ${esc(top.range)}, and the typical move takes ${esc(top.timeline)}. ${esc(top.caveat)}`,
-    `The quiz ranked the paths, but it never saw your resume. If you want the version built from what you&rsquo;ve actually done &mdash; what you already qualify for, and what to do first &mdash; that&rsquo;s the $9 Pivot Report: <a href="${link}" style="color:#0B6B54;">${link}</a>`,
-    `Either way, reply and tell me where you are with it. I read every one of these.`,
-    `&mdash; James`,
-  ], unsubUrl);
+  const site = "https://slptransitions.com";
+  const a = (href: string, text: string) => `<a href="${href}" style="color:#0B6B54;">${text}</a>`;
+  const opening = `Hi ${esc(first)},`;
+  const intro = `James here &mdash; I run SLP Transitions. Your quiz came back <strong>${esc(top.label)}</strong> a couple of days ago, and two days is usually when a result either gets bookmarked or forgotten. So, one nudge.`;
+  const context = `For context, that path runs ${esc(top.range)}, and the typical move takes ${esc(top.timeline)}. ${esc(top.caveat)}`;
+  const report = `The quiz ranked the paths, but it never saw your resume. If you want the version built from what you&rsquo;ve actually done &mdash; what you already qualify for, and what to do first &mdash; that&rsquo;s the $9 Pivot Report: ${a(link, link)}`;
+  const close = `Either way, reply and tell me where you are with it. I read every one of these.`;
+  // The stage question decides what comes first. Stages 1-3 get no pitch:
+  // a stage-2 reader greeted with a checkout link stops reading.
+  let body: string[];
+  switch (stage) {
+    case "private":
+      body = [opening, intro,
+        `You said you haven&rsquo;t told anyone yet. That&rsquo;s fine. Most people who leave spend a while looking quietly first, and looking commits you to nothing. The one thing I&rsquo;d read this week is ${a(`${site}/should-you-quit-slp/`, "the honest decision framework")}: bad workplace, bad fit, or bad season. They need different fixes, and only one of them means leaving.`,
+        `When you&rsquo;re ready for the practical part, your result is ${esc(top.label)}: ${esc(top.range)}, typically ${esc(top.timeline)}. It&rsquo;ll keep.`,
+        close, `&mdash; James`];
+      break;
+    case "guilt":
+      body = [opening, intro,
+        `You said the guilt is the loud part right now. I&rsquo;m not going to argue you out of it in an email, but two things helped me: the degree doesn&rsquo;t go anywhere, every path on the site runs on it, and wanting out doesn&rsquo;t undo the good you did. If you want the longer version, ${a(`${site}/5-hidden-fears-stopping-slps-from-making-a-career-change-and-how-to-overcome-them/`, "this piece on the five fears")} names the sunk-cost trap directly.`,
+        `The practical part will still be here when you want it: ${esc(top.label)} runs ${esc(top.range)}, and the typical move takes ${esc(top.timeline)}.`,
+        close, `&mdash; James`];
+      break;
+    case "permission":
+      body = [opening, intro,
+        `You said you keep reading exit stories and wondering if it&rsquo;s really possible. It is, and not just for people with a coding side-hustle or a spouse with a big salary. ${a(`${site}/slp-to-software-engineer-jeannette-roberes/`, "Jeannette")} was a working SLP who taught herself. ${a(`${site}/slp-to-consultant-rachel-archambault/`, "Rachel")} built a consulting practice from one training she was already giving. ${a(`${site}/reinventing-yourself-mattie-murrey-tegels/`, "Mattie")} did it in her fifties.`,
+        `Your own result, when you want it: ${esc(top.label)}, ${esc(top.range)}, typically ${esc(top.timeline)}. The first move is small: ${esc(top.firstMove)}`,
+        close, `&mdash; James`];
+      break;
+    case "action":
+      body = [opening, intro,
+        `You said you&rsquo;re applying and not getting traction. Nine times out of ten that&rsquo;s the resume, not you: it still reads clinical, so it gets sorted into the wrong pile in about seven seconds. ${a(`${site}/slp-resume-non-clinical/`, "This is what actually gets interviews")}, and if you want yours translated line by line against a real posting, ${a(`${APP_URL}/`, "the Career Pivot Suite")} does that for $24, with a free preview first.`,
+        context, close, `&mdash; James`];
+      break;
+    default:
+      body = [opening, intro,
+        `If I were you, the first thing I&rsquo;d do this week: ${esc(top.firstMove)}`,
+        context, report, close, `&mdash; James`];
+  }
+  const html = plainWrap(body, unsubUrl);
   await getResend().emails.send({
     from: FROM_ADDRESS, to, replyTo: REPLY_TO,
     subject: `Your ${top.label} result, and the part I'd start with`,
