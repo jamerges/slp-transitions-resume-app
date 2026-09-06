@@ -62,9 +62,9 @@
     },
     "takeaways": [
       "The exit posts that got read share a plain description of the job, an honest number, a timeline with the grind, and an offer to talk.",
-      "Name the stage you started in; a reader in that stage recognises it before anything else.",
+      "Name the stage you started in, because a reader sitting in that stage will recognise it before anything else.",
       "Say what you did yesterday without acronyms, because \"what does the job actually do\" is the top question under every exit post.",
-      "Give one number even if it went down; the pay-cut stories get read too.",
+      "Give one number even if it went down. The pay-cut stories get read too.",
       "Nothing goes on the site without your say-so, and a conversation counts if you'd rather not type."
     ],
     "sources": [
@@ -95,7 +95,7 @@
           "One SLP went from a CF year to a university study coordinator role in about 18 months, then into pharma patient safety for +$10k base and a $5k bonus, then +$15k eighteen months after that. Study coordinator is the one path in this course where a pay cut is expected, and it worked exactly as a springboard.",
           "A hospital data analyst who came in at the same salary as their last SLP job, $15k below their peak home-health year, with guaranteed annual raises and \"85k+\" after the entry level.",
           "A marketer, about a year of applications in: \"I actually got a raise and bonus this year, whereas in my 5 years in healthcare I was given a .35 cent raise.\"",
-          "An associate project manager after one year; a different SLP in a six-figure IT project manager role after fifteen months.",
+          "An associate project manager after one year, and a different SLP in a six-figure IT project manager role after fifteen months.",
           "In customer success the entry doors are implementation specialist and onboarding manager, and customer success manager is the rung above them."
         ]
       },
@@ -135,7 +135,7 @@
       {
         "type": "list",
         "items": [
-          "The job stopped teaching you. One transitioner \"liked being entry level because it gave me time to learn about the different roles\"; once you can describe the roles above you in detail, that phase is over.",
+          "The job stopped teaching you. One transitioner \"liked being entry level because it gave me time to learn about the different roles.\" Once you can describe the roles above you in detail, that phase is over.",
           "The posting for the rung above reads like your current week. If you can point to evidence for most of its requirement lines, you're already doing the job at the lower title.",
           "The documented band for the next rung sits clearly above your pay, and your employer's answer to a raise is the annual review.",
           "Stay put if the only reason to move is that the new job feels quieter than a caseload. Quiet is what you paid for.",
@@ -158,10 +158,10 @@
       }
     ],
     "takeaways": [
-      "Clinical work offers lateral moves; the job you took to get out has a rung above it.",
+      "Clinical work offers lateral moves. The job you took to get out has a rung above it.",
       "The second moves we can document paid +$10k and then +$15k, and the study-coordinator pay cut worked as a springboard.",
       "Rehab management is a real ladder that starts as an internal promotion and costs on-call accountability and census pressure.",
-      "Give the first role a year unless it fails the bad-workplace test; the documented second move came at eighteen months.",
+      "Give the first role a year unless it fails the bad-workplace test. The documented second move came at eighteen months.",
       "Move when the posting for the next rung reads like your current week, and stay put if the reason is quiet or a title."
     ],
     "sources": [
@@ -207,7 +207,7 @@
       {
         "type": "script",
         "title": "A reply that takes ten minutes",
-        "text": "Hi [name], thanks for writing, and yes, this is real.\n\nQuick version: I was a [setting] SLP for [N] years, and I'm now [plain-language job] at [kind of company]. Yesterday I [three things you did]. The move took [N] months and about [N] applications; the first month was [one honest sentence].\n\nPay-wise I'm [a range, or how it compares to your SLP pay].\n\nIf it helps, I can [send my résumé / point you to a posting / do twenty minutes on a call next week]. What's the one thing you're most stuck on?"
+        "text": "Hi [name], thanks for writing, and yes, this is real.\n\nQuick version: I was a [setting] SLP for [N] years, and I'm now [plain-language job] at [kind of company]. Yesterday I [three things you did]. The move took [N] months and about [N] applications, and the first month was [one honest sentence].\n\nPay-wise I'm [a range, or how it compares to your SLP pay].\n\nIf it helps, I can [send my résumé / point you to a posting / do twenty minutes on a call next week]. What's the one thing you're most stuck on?"
       },
       {
         "type": "p",
@@ -220,7 +220,7 @@
       "done": "Answered. One fewer message in the pile that never hears back."
     },
     "takeaways": [
-      "About one in four informational-interview asks never gets an answer; you remember which of yours it was.",
+      "About one in four informational-interview asks never gets an answer, and you remember exactly which of yours it was.",
       "The questions under every exit post are small: what the day is, what it pays, whether you miss it.",
       "Answer in ten minutes with yesterday in three sentences, one number, the timeline, and one next thing.",
       "The résumé is what they want most and what almost nobody sends.",

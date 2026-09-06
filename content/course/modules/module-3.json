@@ -62,7 +62,7 @@
     ],
     "takeaways": [
       "The first pass is about 7.4 seconds and it only reaches the top third of page one, so rewrite the summary, skills and first three bullets first.",
-      "The 75 percent auto-rejection figure comes from a 2012 sales pitch; systems rank and humans reject, and knockout questions on the form are the real automatic filter.",
+      "The 75 percent auto-rejection figure comes from a 2012 sales pitch. Systems rank and humans reject, and the knockout questions on the application form are the real automatic filter.",
       "Formatting rules exist for parsing alone: single column, standard headers, no tables or graphics.",
       "Four doubts reject career changers: retention, unmappable clinical language, no proof of investment, and salary mismatch.",
       "Know the documented SLP band ($77,730 to $114,570, median $97,870) before a form asks you for a salary number."
@@ -92,7 +92,7 @@
       },
       {
         "type": "p",
-        "text": "How big was it, what did you do, and what changed. A bullet that answers all three survives the first pass; one that skips the third reads as a duty. The verb in the middle comes from the posting rather than from the clinic, and the number stays exactly where it already was. Clinical verbs describe care given: provided, delivered, implemented, facilitated, assisted with. The verbs a hiring manager reads as ownership describe a thing that moved: ran, rebuilt, led, cut, negotiated, trained, closed. You did all of the second kind, and nobody in a school or a hospital ever asked you to say so. Six good bullets under your most recent role beat fourteen complete ones, because a caseload trains you to account for your time rather than for what your time moved."
+        "text": "How big was it, what did you do, and what changed. A bullet that answers all three survives the first pass, and one that skips the third reads as a duty. The verb in the middle comes from the posting rather than from the clinic, and the number stays exactly where it already was. Clinical verbs describe care given: provided, delivered, implemented, facilitated, assisted with. The verbs a hiring manager reads as ownership describe a thing that moved: ran, rebuilt, led, cut, negotiated, trained, closed. You did all of the second kind, and nobody in a school or a hospital ever asked you to say so. Six good bullets under your most recent role beat fourteen complete ones, because a caseload trains you to account for your time rather than for what your time moved."
       },
       {
         "type": "example",
@@ -199,7 +199,7 @@
     ],
     "takeaways": [
       "No number, no bullet, and estimates you can defend count.",
-      "Size and rate are already in your calendar and your caseload; change is the kind you construct from something you quietly fixed.",
+      "Size and rate are already sitting in your calendar and your caseload. Change is the one you have to construct, out of something you quietly fixed.",
       "Rebuild one number from source rather than from memory, because the interview will ask you where it came from.",
       "Bracket anything unverified and round down when you are unsure.",
       "The numbers you mine here feed the résumé in 3.5 and the bridge statement in Module 5."
@@ -343,7 +343,7 @@
       "done": "First translation done. Your experience is now legible to someone who has never met an SLP."
     },
     "takeaways": [
-      "Paste your résumé untranslated; the tool needs to see the clinical version to translate it.",
+      "Paste your résumé untranslated, because the tool needs to see the clinical version before it can translate it.",
       "One real posting, not a job title, because the match score is built from actual requirement lines.",
       "Read the requirements coverage first and sort the gaps into forgotten bullets and real gaps.",
       "Spend refinements on specific complaints, since \"make it stronger\" only ever returns adjectives.",
@@ -420,7 +420,7 @@
       "Headline, About, titles and pinned skills are the fields recruiters search, so the target-role vocabulary has to live in them.",
       "Headline first, then the skills reorder, then About, then the top three bullets per role.",
       "Search your own target title in a private window to see whether you are findable, then find three people who have already made the move.",
-      "Translate the history, never delete or relabel it; at speech-tech companies the clinical credential is the asset."
+      "Translate the history and never delete or relabel it. At speech-tech companies the clinical credential is the asset."
     ],
     "sources": [
       "facts",
@@ -561,7 +561,7 @@
     },
     "takeaways": [
       "Applications in the first day or two of a posting are the ones that get read, so speed beats volume on any given week.",
-      "Referrals are behind most documented transitions; spend ten minutes finding one human before you submit.",
+      "Referrals are behind most documented transitions, so spend ten minutes finding one human before you submit.",
       "Knockout questions on the form are the real automatic filter, and the salary box wants a number you decided in advance.",
       "Tailor to the requirement lines in the posting's own words, and leave the gaps for Module 4.",
       "The documented ratio is roughly 113 applications to 7 interviews to 1 offer, which makes early silence a sample-size problem rather than a verdict."

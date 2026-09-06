@@ -9,7 +9,7 @@
    },
    {
     "type": "p",
-    "text": "Hiring managers rarely say that part out loud; they ask something softer and listen for it anyway."
+    "text": "Hiring managers rarely say that part out loud. They ask something softer and listen for it anyway."
    },
    {
     "type": "h",
@@ -160,7 +160,7 @@
   },
   "takeaways": [
    "The bridge statement has three parts: where you are going, how you prepared, one accomplishment with a number.",
-   "Push is what you are escaping and pull is where you are going; the same fact can be framed either way.",
+   "Push is what you are escaping and pull is where you are going, and the same fact can usually be framed either way.",
    "Forty-five seconds is about right. Longer and you start justifying.",
    "Say it aloud five times before you say it to a hiring manager."
   ],
@@ -224,7 +224,7 @@
   ],
   "takeaways": [
    "Six questions do most of the screening for career changers, and each has a recognisable good shape.",
-   "Weak answers name a quality; strong answers describe an event with a number in it.",
+   "Weak answers name a quality. Strong answers describe an event with a number in it.",
    "Behavioural answers need an objection, what you did, and the outcome.",
    "Application knockout questions filter more people than résumé parsing does."
   ],
@@ -283,7 +283,7 @@
   "action": {
    "label": "Log five answers",
    "prompt": "Run the mock interview above end to end. Answer all five questions out loud, then type what you said. Read the feedback, then run it a second time in a day or two.",
-   "done": "Five answered. Run it again whenever an interview is coming up; it never gets worse."
+   "done": "Five answered. Run it again whenever an interview is coming up. It never gets worse."
   },
   "takeaways": [
    "Answer out loud, then type what you said. Writing a polished version you would not speak defeats the exercise.",
@@ -407,10 +407,10 @@
    }
   ],
   "takeaways": [
-   "About thirty percent of people negotiate; two thirds or more of those who ask get something.",
+   "About thirty percent of people negotiate, and two thirds or more of those who ask get something.",
    "Offers are almost never withdrawn for negotiating, and most employers expect a counter.",
    "Anchor on the documented range for the path, not on your clinical salary.",
-   "In customer success most of the pay is base; in sales roughly half is variable, so ask how the target is measured.",
+   "In customer success most of the pay is base. In sales roughly half is variable, so ask how the target gets measured.",
    "A below-range first offer can still be right if the role has a ladder and you put a date on it."
   ],
   "sources": [
@@ -479,7 +479,7 @@
      "**Applications but no screens.** The résumé is still reading clinical, or you are applying outside your documented range. Back to Module 3.",
      "**Screens but no interviews.** The bridge statement is doing the wrong work, usually push instead of pull. Lesson 5.2.",
      "**Interviews but no offers.** Usually the proof problem. One artifact fixes more of this than another certificate will.",
-     "**Nothing at all for four weeks.** Volume, not quality. Fifteen tailored applications a month is a real pace; three is not."
+     "**Nothing at all for four weeks.** Volume, not quality. Fifteen tailored applications a month is a real pace, and three is not."
     ]
    },
    {
@@ -500,7 +500,7 @@
   "takeaways": [
    "One documented transition: 113 applications, 7 interviews, 1 offer, eleven months.",
    "Postings now average around 242 applicants, so a day-one application beats a perfect day-nine one.",
-   "Track applications, screens, interviews and offers; the ratio tells you which stage is broken.",
+   "Track applications, screens, interviews and offers, because the ratio between them tells you which stage is broken.",
    "Rejection at this stage is a volume statistic, and the maths only works if you keep feeding it."
   ],
   "sources": [
@@ -598,7 +598,7 @@
    },
    {
     "type": "p",
-    "text": "Empty boxes are a list of what to ask on the follow-up call, and asking is normal: most employers expect a counter and very few withdraw offers over one."
+    "text": "Empty boxes are a list of what to ask on the follow-up call, and asking is normal: most employers expect a counter, and hiring managers report fewer than two withdrawn offers across about twenty-seven they have made."
    },
    {
     "type": "p",

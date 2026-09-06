@@ -321,7 +321,7 @@ const ARTIFACTS: Record<string, { what: string; time: string; proves: string; wh
   "liaison-ur": { what: "A one-page admissions criteria cheat-sheet for one diagnosis group you know cold, written for a referral coordinator.", time: "2 hours", proves: "You can apply clinical judgment to coverage criteria fast.", where: "Bring it to the interview." },
   "research-coordinator": { what: "A recruitment and consent workflow for a small study, drawn as a flowchart with the timing and the failure points.", time: "2 hours", proves: "You understand protocol, compliance and follow-up.", where: "PDF attached to the application." },
   "informatics": { what: "A one-page write-up of the documentation-workflow problem you fixed or watched fail: before, after, who had to be convinced.", time: "2 hours", proves: "You see systems, not just screens.", where: "Your interview story, and a LinkedIn post." },
-  "instructional-design": { what: "One training you've already delivered, rebuilt as a ten-minute Rise or Storyline module with a short process note.", time: "6–8 hours", proves: "You can design learning, not just deliver it.", where: "Public link; this is sample one of three." },
+  "instructional-design": { what: "One training you've already delivered, rebuilt as a ten-minute Rise or Storyline module with a short process note.", time: "6–8 hours", proves: "You can design learning, not just deliver it.", where: "Public link, as sample one of three." },
   "content-marketing": { what: "One published piece explaining a clinical thing to a non-clinical audience: a LinkedIn article or a guest post.", time: "3–4 hours", proves: "You can write for a reader who isn't a clinician.", where: "LinkedIn or Medium, linked from the résumé." },
   "clinical-educator": { what: "A ten-minute recorded training on a device or protocol you know, aimed at a new clinician, with a one-page handout.", time: "3 hours", proves: "You can teach clinicians to use a product.", where: "Unlisted video link on the résumé." },
   "sales-bd": { what: "A one-page competitive comparison of two devices you've prescribed, written for a purchasing committee.", time: "2–3 hours", proves: "You can talk shop with the buyer and think about the sale.", where: "Bring it to the interview." },
@@ -376,7 +376,7 @@ function Runway({ shared, setShared }: ToolProps) {
         {num("months", "Months you expect the move to take", "documented: 6 to 15")}
       </div>
       <div className="tos-rise" style={{ marginTop: 14, padding: 14, background: months >= v.months ? "var(--accent-bg-subtle)" : "var(--warn-bg)", borderRadius: 12, fontSize: 15 }}>
-        Monthly gap about <b>{money(monthlyGap)}</b>. That&rsquo;s <b>{months > 60 ? "more than five years" : `${months.toFixed(1)} months`}</b> of runway against a {v.months}-month move. {months >= v.months ? "The bridge holds." : "The bridge is short; the fixes are a smaller dip, a shorter bridge, or a fast-exit path first."}
+        Monthly gap about <b>{money(monthlyGap)}</b>. That&rsquo;s <b>{months > 60 ? "more than five years" : `${months.toFixed(1)} months`}</b> of runway against a {v.months}-month move. {months >= v.months ? "The bridge holds." : "The bridge is short. The fixes are a smaller dip, a shorter bridge, or a fast-exit path first."}
       </div>
     </Panel>
   );
