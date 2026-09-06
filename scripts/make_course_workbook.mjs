@@ -87,7 +87,7 @@ const band = (cells, fill, ink, height = 700) => new Table({
 });
 
 /** The divider page that opens each module: number, name, and what the pages ask of you. */
-const moduleCover = (n, title, weeks, blurb, pages) => {
+const moduleCover = (n, title, weeks, blurb, pages, outcome) => {
   const a = ACCENT[n];
   return [
     pageBreak(),
@@ -104,6 +104,13 @@ const moduleCover = (n, title, weeks, blurb, pages) => {
     spacer(240),
     kickerIn("The pages in this module", a.ink),
     ...pages.map((t) => new Paragraph({ spacing: { after: 100 }, children: [new TextRun({ text: "\u2014  ", font: F, size: 22, color: a.ink }), run(t)] })),
+    spacer(360),
+    kickerIn("What you will have at the end", a.ink),
+    p(outcome, { size: 22, after: 320 }),
+    band([
+      { w: Math.floor(W / 2), fill: "FFFFFF", children: [p("Started this module on", { bold: true, size: 20, after: 60 }), p("______________________", { color: LINE })] },
+      { w: W - Math.floor(W / 2), fill: "FFFFFF", children: [p("Finished on", { bold: true, size: 20, after: 60 }), p("______________________", { color: LINE })] },
+    ], "FFFFFF", a.ink, 520),
   ];
 };
 
@@ -193,7 +200,7 @@ children.push(
 );
 // ------------------------------------------------------------------- 1.1
 children.push(
-  ...moduleCover(1, "Ground", "Week 1", "Before you look at a single job title, work out which problem you actually have. Three people with the same exhaustion need three different fixes, and picking the wrong one costs a year.", ["Your stage, and the belief underneath it", "Bad workplace, bad fit, or bad season", "The sunk-cost audit", "What gave you energy, and what took it", "Four dials, and what you cannot afford to lose", "What you keep when you leave", "Telling one person", "The checkpoint: two lists and one sentence"]),
+  ...moduleCover(1, "Ground", "Week 1", "Before you look at a single job title, work out which problem you actually have. Three people with the same exhaustion need three different fixes, and picking the wrong one costs a year.", ["Your stage, and the belief underneath it", "Bad workplace, bad fit, or bad season", "The sunk-cost audit", "What gave you energy, and what took it", "Four dials, and what you cannot afford to lose", "What you keep when you leave", "Telling one person", "The checkpoint: two lists and one sentence"], "A verdict in one word, and one sentence about where you are going that you did not have in week one."),
   pageBreak(),
   kickerIn("Module 1 · Lesson 1 · 6 min", ACCENT[1].ink), ...h1("You're allowed to want out", "Five stages. Find yours, then name the belief in your own words."),
   ...fields([["1  Private doubt", "\"Looking means deciding.\""], ["2  Guilt and identity", "\"Leaving wastes the degree.\""], ["3  Permission-seeking", "\"It works for other people, not me.\""], ["4  Practical panic", "\"I'd have to start over at the bottom.\""], ["5  Action", "\"If I were good enough, I'd get callbacks.\""]]),
@@ -303,7 +310,7 @@ children.push(
 
 // ---------------------------------------------------------------- Module 2
 children.push(
-  ...moduleCover(2, "Explore", "Weeks 2 and 3", "Twenty paths, with what each one pays and how long it took the people who did it. This module is for trying several on, not for choosing.", ["Twenty paths, tried on", "A Tuesday in the role, in your own words", "The requirement you meet, and the one you do not"]),
+  ...moduleCover(2, "Explore", "Weeks 2 and 3", "Twenty paths, with what each one pays and how long it took the people who did it. This module is for trying several on, not for choosing.", ["Twenty paths, tried on", "A Tuesday in the role, in your own words", "The requirement you meet, and the one you do not"], "Two or three paths you can describe out loud, and one you are curious enough to test first."),
   pageBreak(),
   kickerIn("Module 2 · Lesson 1", ACCENT[2].ink), ...h1("Twenty paths, tried on", "The screen ranks them. This page is where you argue with the ranking."),
   ...ask("Which three paths did the map and the dials put in front of you, and what was your gut reaction to each?", 5, "Gut reactions are data here. A path you dismissed in half a second is worth a sentence about why."),
@@ -312,7 +319,7 @@ children.push(
   muted("From the deep-dive and from any postings you read. Write it in your own words, not theirs."),
   ...ask("A Tuesday in this role, in four sentences.", 4),
   ...ask("Which requirement on the postings do you already meet, and which one is a genuine gap?", 4),
-  ...moduleCover(3, "Connect", "Weeks 3 to 5", "Your contact list is almost entirely SLPs, which is why nobody in it can refer you. This module is about finding the people who already hold the title you want, and what to say to them.", ["Three names, and where you found them", "Three messages, and what came back", "The follow-up log"]),
+  ...moduleCover(3, "Connect", "Weeks 3 to 5", "Your contact list is almost entirely SLPs, which is why nobody in it can refer you. This module is about finding the people who already hold the title you want, and what to say to them.", ["Three names, and where you found them", "Three messages, and what came back", "The follow-up log"], "Three names, three messages sent, and at least one conversation with somebody who already holds the title."),
   pageBreak(),
   kickerIn("Module 3 · Lesson 1", ACCENT[3].ink), ...h1("Three names", "Before the messages, the names. This page is the search, written down."),
   h2("The two groups you asked to join"),
@@ -340,7 +347,7 @@ children.push(
 
 // ---------------------------------------------------------------- Module 4
 children.push(
-  ...moduleCover(4, "Translate", "Weeks 5 to 7", "The work is already done. What is missing is the sentence that lets a hiring manager see it, which is a vocabulary problem rather than an experience one.", ["Your numbers, pulled from the calendar you already keep", "Three bullets, rewritten by hand", "The paragraph only you could write"]),
+  ...moduleCover(4, "Translate", "Weeks 5 to 7", "The work is already done. What is missing is the sentence that lets a hiring manager see it, which is a vocabulary problem rather than an experience one.", ["Your numbers, pulled from the calendar you already keep", "Three bullets, rewritten by hand", "The paragraph only you could write"], "A résumé a hiring manager can read in seven seconds, and one application sent properly."),
   pageBreak(),
   kickerIn("Module 4 · Lesson 3", ACCENT[4].ink), ...h1("The same work, their words", "The tool does the bulk translation. This page holds the two or three that need your judgement."),
   h2("Your numbers"),
@@ -359,7 +366,7 @@ children.push(
 
 // ---------------------------------------------------------------- Module 5
 children.push(
-  ...moduleCover(5, "Test", "Weeks 7 to 9", "One thing you make, and the three numbers that decide whether you can afford the move. This is the module where the plan meets the bank account.", ["The thing you make, planned so the week does not eat it", "The three numbers: loans, coverage, runway"]),
+  ...moduleCover(5, "Test", "Weeks 7 to 9", "One thing you make, and the three numbers that decide whether you can afford the move. This is the module where the plan meets the bank account.", ["The thing you make, planned so the week does not eat it", "The three numbers: loans, coverage, runway"], "One thing you made that a stranger can look at, and three numbers you have actually worked out."),
   pageBreak(),
   kickerIn("Module 5 · Lesson 2", ACCENT[5].ink), ...h1("The thing you make", "One artifact, two sessions, a process note. Plan it here so the week does not eat it."),
   ...fields([["What I am making", ""], ["Session 1, ninety minutes: date", ""], ["Session 2, ninety minutes: date", ""], ["Where it will live", ""]]),
@@ -377,7 +384,7 @@ children.push(
 
 // ---------------------------------------------------------------- Module 6
 children.push(
-  ...moduleCover(6, "Leap", "Weeks 9 to 12", "Career changers get screened out for three specific reasons, and none of them is that you cannot do the job. This module is the answers, said aloud until they stop sounding rehearsed.", ["Your bridge statement, in three parts", "The questions, and the number you decided in advance"]),
+  ...moduleCover(6, "Leap", "Weeks 9 to 12", "Career changers get screened out for three specific reasons, and none of them is that you cannot do the job. This module is the answers, said aloud until they stop sounding rehearsed.", ["Your bridge statement, in three parts", "The questions, and the number you decided in advance"], "A bridge statement you can say without flinching, and a number you decided before anyone asked."),
   pageBreak(),
   kickerIn("Module 6 · Lesson 2", ACCENT[6].ink), ...h1("Your bridge statement", "Three parts, said aloud until it stops sounding rehearsed."),
   ...ask("Pull: where you are going. Copy it from the Module 1 checkpoint, or improve it now.", 3),
@@ -404,7 +411,7 @@ children.push(
   ...fields([["Applications sent", ""], ["Screens", ""], ["Interviews", ""], ["Offers", ""], ["My ratio, so far", "113 to 7 to 1 is one documented transition"]]),
   ...ask("Which stage is actually broken? Applications without screens is a résumé problem, screens without interviews is a bridge-statement problem, interviews without offers is usually a proof problem.", 5),
   ...ask("What I am changing this week because of that.", 3),
-  ...moduleCover(7, "After", "Alumni", "What changes once you are in, and what you owe the person who is where you were a year ago.", ["Six months in", "The message you answer"]),
+  ...moduleCover(7, "After", "Alumni", "What changes once you are in, and what you owe the person who is where you were a year ago.", ["Six months in", "The message you answer"], "Your story written down, and one message answered for somebody a year behind you."),
   pageBreak(),
   kickerIn("Module 7 · Lesson 2", ACCENT[7].ink), ...h1("Six months in", "Come back to this page when you are on the other side."),
   ...ask("What is different on a Tuesday now? Compare it with what you wrote on the very first page.", 5),
