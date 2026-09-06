@@ -1,608 +1,502 @@
 [
- {
-  "id": "4.1",
-  "tldr": "Certificates open a door only when they sit next to translated experience and something you made. One thing you built beats three things you paid for.",
-  "blocks": [
-   {
-    "type": "p",
-    "text": "When I first started looking, my instinct was to go get qualified again. Our field trains that instinct into us: another certification, another CEU, another set of letters, and it feels like progress because it feels like studying. It is also the most expensive way to stall."
-   },
-   {
-    "type": "quote",
-    "text": "no one took me seriously with a CAPM",
-    "from": "a transitioned SLP, now a project manager"
-   },
-   {
-    "type": "p",
-    "text": "She got the certificate, and on its own it did nothing. What moved her was the certificate sitting next to experience a hiring manager could map, plus evidence she had already done some of the work."
-   },
-   {
-    "type": "h",
-    "text": "What hiring managers actually check"
-   },
-   {
-    "type": "quote",
-    "text": "I found a lot of jobs didn't care that I had a certificate in XYZ. They wanted a title and experience of PM.",
-    "from": "r/SLPcareertransitions"
-   },
-   {
-    "type": "p",
-    "text": "You cannot manufacture a title, but you can manufacture evidence. A thing you made on your own time answers the third doubt from lesson 5.1, because it proves you have spent something of yours on this field."
-   },
-   {
-    "type": "h",
-    "text": "Where certificates do earn their place"
-   },
-   {
-    "type": "list",
-    "items": [
-     "**Project management.** The Google Project Management certificate comes up repeatedly as affordable and digestible, and it teaches you the vocabulary you need to describe work you already did. CAPM runs about $175 and PMP about $400 plus membership.",
-     "**Healthcare data.** The Google Data Analytics certificate or DataCamp gives you the tools, and the tools are genuinely missing. You cannot fake SQL.",
-     "**Clinical informatics.** CAHIMS through HIMSS is the self-serve entry credential and has no experience prerequisite, which matters because Epic certification cannot be bought at all. It requires an employer to sponsor you."
+  {
+    "id": "4.1",
+    "tldr": "A recruiter spends about 7.4 seconds deciding whether you are a maybe or a no, and the software everybody blames is not the thing rejecting you. Four specific doubts do that, and the top third of page one is where three of them get answered.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "The first résumé I sent to a non-clinical job had a whole argument buried in it, years of why an SLP belonged in a marketing department, laid out in a summary I was quietly proud of. It landed in a pile of about 242, which is what the average corporate opening draws now, up 111 percent since 2022. Somebody gave it roughly 7.4 seconds. That is less time than it takes to say individualized education program with measurable annual goals."
+      },
+      {
+        "type": "p",
+        "text": "Seven seconds buys the reader three things: the top third of page one, a guess at what you currently do for a living, and a sort into maybe or no. Everything below that top third is for the second read, and the second read only happens to the maybe pile. So rewrite the summary, the skills line and the first three bullets under your most recent job before you touch anything else."
+      },
+      {
+        "type": "quote",
+        "text": "Any tips how you got through ATS?",
+        "from": "an SLP replying to a data analyst who got hired, r/SLPcareertransitions"
+      },
+      {
+        "type": "h",
+        "text": "What the software actually does"
+      },
+      {
+        "type": "p",
+        "text": "The answer that question got in the thread was one word, ChatGPT, which tells you how much of the ATS conversation is running on guesswork. The famous number, 75 percent of résumés auto-rejected before a human sees them, traces back to a 2012 sales pitch by a company selling screening software. In practice about 92 percent of recruiters do not auto-reject anyone on a match score. The systems rank and people reject. That is heavier news than the robot story, because it means a human being read your bullets, could not map them onto the job they were filling, and moved on."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Keyword stuffing is aimed at a robot that is not in the room. Modern systems match meaning, so pasting the job description in white text at the bottom of the page buys nothing and costs everything if a person notices.",
+          "The genuine automatic filter is the knockout question on the application form: years of experience, licenses, work authorization, salary. Those screen you out before anyone opens the file.",
+          "Formatting matters for one reason, which is parsing: single column, standard headers (Experience, Skills, Education), no tables, no text boxes, no graphics. A résumé the software cannot read never gets ranked, and the pretty two-column template is the usual culprit."
+        ]
+      },
+      {
+        "type": "h",
+        "text": "The four doubts doing the actual rejecting"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Retention doubt.** Will this person bail back to clinical work the first hard month? Ten years of one job title is the argument for that worry, and your letter is the argument against it.",
+          "**Clinical language nobody can map.** Caseload, IEP, dysphagia protocol, SOAP note, productivity. Every one of those is a real thing you did, and not one of them means anything to a person hiring for onboarding, program delivery or quality reporting.",
+          "**No proof of investment in the new field.** Nothing on the page cost you anything: no project, no course, no artifact, no evidence you have spoken to a single person who does this job.",
+          "**Salary mismatch.** They assume a master's-level clinician will find their band insulting, so they skip the conversation and skip you with it."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Your résumé fixes the second doubt outright and chips at the other three. The salary one is worth arriving with your own numbers for: median SLP pay is $97,870, and the middle half of the profession sits between $77,730 and $114,570. When an application form makes salary a required box, that band and the documented range for your path are what you answer from. Otherwise you invent a number at eleven at night with the posting open in another tab."
+      },
+      {
+        "type": "steps",
+        "items": [
+          "Print page one of your current résumé and cover everything below the top third with a sheet of paper.",
+          "Hand it to someone outside healthcare for seven seconds, then take it back before they can be polite about it.",
+          "Ask one question: what job do you think I am applying for?",
+          "If they say speech therapist, or they cannot say at all, you have found this week's work, and it is above the sheet of paper rather than below it.",
+          "Keep the page. Run the same test on the same person after lesson 4.5 and watch what changes."
+        ]
+      }
+    ],
+    "takeaways": [
+      "The first pass is about 7.4 seconds and it only reaches the top third of page one, so rewrite the summary, skills and first three bullets first.",
+      "The 75 percent auto-rejection figure comes from a 2012 sales pitch. Systems rank and humans reject, and the knockout questions on the application form are the real automatic filter.",
+      "Formatting rules exist for parsing alone: single column, standard headers, no tables or graphics.",
+      "Four doubts reject career changers: retention, unmappable clinical language, no proof of investment, and salary mismatch.",
+      "Know the documented SLP band ($77,730 to $114,570, median $97,870) before a form asks you for a salary number."
+    ],
+    "sources": [
+      "facts",
+      "forums",
+      "bls"
     ]
-   },
-   {
-    "type": "callout",
-    "tone": "warm",
-    "title": "Where they do not",
-    "text": "Instructional design is the clearest case. Hiring managers want the portfolio, and a $3,000 certificate buys you a portfolio identical to everyone else's from the same program. One transitioner describes bootcamp graduates arriving with generic portfolios that all look the same, which is worse than one honest piece."
-   },
-   {
-    "type": "p",
-    "text": "The UX version of the same rule is the sharpest sentence I found in the research: one honest case study including the wrong turns is worth more than six polished ones."
-   },
-   {
-    "type": "h",
-    "text": "So what do you build"
-   },
-   {
-    "type": "p",
-    "text": "Something small, real and specific to the path you chose in Module 2, built in a weekend rather than a semester. It has to come out of work you have already done, because that is the part nobody else applying can copy."
-   }
-  ],
-  "takeaways": [
-   "A certificate works when it sits next to translated experience and evidence you have done some of the work.",
-   "Project management, healthcare data and clinical informatics are the three paths where a credential genuinely helps.",
-   "Epic certification cannot be bought and needs employer sponsorship. CAHIMS is the self-serve alternative.",
-   "In instructional design and UX, a portfolio beats a certificate, and one honest piece beats six polished ones."
-  ],
-  "sources": [
-   "facts",
-   "forums"
-  ]
- },
- {
-  "id": "4.2",
-  "tldr": "Every path has one artifact that proves you can do the job, built from work you have already done. Pick yours and read the brief: what to make, how long it takes, what it proves, where it lives.",
-  "blocks": [
-   {
-    "type": "p",
-    "text": "An artifact is one thing, made in a few hours, that a hiring manager can look at and think: this person has already been doing a version of my job."
-   },
-   {
-    "type": "p",
-    "text": "The good ones come out of your real clinical work, so nobody else applying has the same one. They read in under two minutes, and they are the target role's actual work product rather than a description of your interest in it."
-   },
-   {
-    "type": "h",
-    "text": "Pick your path's brief"
-   },
-   {
-    "type": "tool",
-    "name": "artifact-menu"
-   },
-   {
-    "type": "h",
-    "text": "Two rules that make these work"
-   },
-   {
-    "type": "p",
-    "text": "First, use real detail changed enough to be safe: no names, no identifying details, no protected health information, and check your employer's policy before anything goes public. A rebuilt spreadsheet with your own progress-monitoring numbers is fine. A screenshot of an actual chart is not."
-   },
-   {
-    "type": "p",
-    "text": "Second, write the short process note: three or four sentences on what the problem was, what you decided and what you would do differently. That note is where the judgement shows, and judgement is what they are hiring."
-   },
-   {
-    "type": "example",
-    "title": "An artifact described two ways",
-    "before": "I made a training module about dysphagia for my portfolio.",
-    "after": "I rebuilt the aspiration-precautions training I ran for nursing staff as a ten-minute Rise module, with a knowledge check at the end. The original took me three tries to get right because nurses did not need the physiology, they needed the four decision points. The module leads with those."
-   },
-   {
-    "type": "p",
-    "text": "Three signals from four sentences: the person can teach, can edit and knows who the learner is, and none of it needed a certificate."
-   },
-   {
-    "type": "callout",
-    "tone": "soft",
-    "title": "If you have already made one",
-    "text": "Most SLPs have. The parent handout you redesigned because the district's version was unreadable. The tracking sheet the whole department borrowed. The training you gave twice. All of those already exist, and the work is picking one of them and writing the short note that explains the thinking behind it."
-   }
-  ],
-  "takeaways": [
-   "An artifact is one thing built from your real work that a stranger can read in two minutes.",
-   "It should be the target role's actual work product, not a description of your interest in the role.",
-   "Change or remove identifying details and check your employer's policy before publishing anything.",
-   "The three-sentence process note is where your judgement shows, and judgement is what gets hired."
-  ],
-  "sources": [
-   "facts",
-   "forums"
-  ]
- },
- {
-  "id": "4.3",
-  "tldr": "Give the artifact one week and two sessions. Draft it badly first, finish it second, then put it somewhere a stranger can find it.",
-  "blocks": [
-   {
-    "type": "p",
-    "text": "This is the week the program stops being reading and becomes the first thing you make."
-   },
-   {
-    "type": "h",
-    "text": "A schedule that works alongside a caseload"
-   },
-   {
-    "type": "steps",
-    "items": [
-     "**Session one, ninety minutes.** Get the ugly version out. No formatting, no polish. If it is a document, write it in the plainest tool you have. If it is a module, block out the screens on paper first.",
-     "**Let it sit two days.** You will see the obvious fix on the drive home, not at the desk.",
-     "**Session two, ninety minutes.** Cut a third of it, then make it look finished. Consistent headings, one font, no typos in the first line.",
-     "**Twenty minutes.** Write the process note: the problem, what you decided, what you would change.",
-     "**Ten minutes.** Put it where a stranger can reach it. A public link, a PDF you can attach, a LinkedIn post with the link in it."
-    ]
-   },
-   {
-    "type": "p",
-    "text": "Three and a half hours across a week is the entire ask, less time than most people spend rewriting a résumé for the fourth time."
-   },
-   {
-    "type": "tool",
-    "name": "artifact-menu"
-   },
-   {
-    "type": "h",
-    "text": "When you get stuck"
-   },
-   {
-    "type": "p",
-    "text": "Two failure modes, both predictable. The first is scope: you start building the definitive resource rather than one small thing, and if a third session looms, cut it in half rather than finish it. The second is perfectionism, which in clinicians presents as thoroughness, and the bar here is lower than the one in your head: good enough that a stranger sees the thinking."
-   },
-   {
-    "type": "callout",
-    "tone": "soft",
-    "title": "What this one artefact gets you",
-    "text": "Once this exists you have an answer to what have you done to prepare, a link on your LinkedIn, something concrete to send after an informational interview, and a story for the interview question about proof. One weekend, four uses."
-   }
-  ],
-  "action": {
-   "label": "I made it",
-   "prompt": "Pick your path's brief above and give it two sessions this week: ninety minutes to draft badly, ninety minutes to finish, twenty for the process note. Then paste the link.",
-   "done": "Made. That is the thing most applicants do not have, and it took you a weekend."
   },
-  "takeaways": [
-   "Two ninety-minute sessions with two days between them, plus twenty minutes for the process note.",
-   "Draft it badly first. The obvious fix arrives away from the desk.",
-   "If it needs a third session, cut it in half rather than finishing it.",
-   "One artifact answers the preparation question, fills a LinkedIn link, follows up an informational interview, and becomes an interview story."
-  ],
-  "sources": [
-   "facts",
-   "forums"
-  ]
- },
- {
-  "id": "4.4",
-  "tldr": "You do not have to quit to start. Part-time, PRN, contract and telepractice each buy you hours at a different price, and telehealth is a bridge rather than an exit.",
-  "blocks": [
-   {
-    "type": "p",
-    "text": "The version of leaving that lives in your head is probably a resignation letter, and that is almost never how it happens. Most documented transitions run alongside a paycheck for six to fifteen months, which is why this program is designed to fit around a caseload."
-   },
-   {
-    "type": "p",
-    "text": "The question worth answering is how to buy back three to five hours a week without giving up the income that makes the search survivable."
-   },
-   {
-    "type": "h",
-    "text": "Four ways to buy hours"
-   },
-   {
-    "type": "list",
-    "items": [
-     "**Drop to four days.** The cleanest trade if your employer allows it. Twenty percent less income for a full day a week, and that day is worth more than five scattered evenings because the search needs continuous attention.",
-     "**PRN or per-diem.** More control over volume, usually a higher hourly rate, and no benefits. Works best when someone else in the household carries health coverage.",
-     "**Contract or travel work.** Higher rates and a defined end date, which some people find easier to plan around than an open-ended notice.",
-     "**Telepractice.** Cuts the commute and often the setup and cleanup time. Presence, eLuma, Global Teletherapy and VocoVision are the platforms that come up most in transition threads."
+  {
+    "id": "4.2",
+    "tldr": "Translation means describing work you already did in words the reader already knows. Swapping nouns produces word salad. Rebuilding each bullet around how big it was, what you did and what changed produces an interview.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "I did the noun swap first, the way almost everybody does. Caseload became portfolio, parents became stakeholders, IEP meetings became cross-functional alignment, and the result read like a clinical résumé wearing a lanyard. The sentences still listed duties in the order I performed them, with no outcome anywhere. One SLP paid a résumé writer $220 for that same swap on the way to a six-figure project management job, and their verdict is the most useful sentence in the whole corpus."
+      },
+      {
+        "type": "quote",
+        "text": "My resume was better beforehand, they just turned it into word salad.",
+        "from": "an SLP who became a project manager, r/SLPcareertransitions"
+      },
+      {
+        "type": "h",
+        "text": "Three questions every bullet answers"
+      },
+      {
+        "type": "p",
+        "text": "How big was it, what did you do, and what changed. A bullet that answers all three survives the first pass, and one that skips the third reads as a duty. The verb in the middle comes from the posting rather than from the clinic, and the number stays exactly where it already was. Clinical verbs describe care given: provided, delivered, implemented, facilitated, assisted with. The verbs a hiring manager reads as ownership describe a thing that moved: ran, rebuilt, led, cut, negotiated, trained, closed. You did all of the second kind, and nobody in a school or a hospital ever asked you to say so. Six good bullets under your most recent role beat fourteen complete ones, because a caseload trains you to account for your time rather than for what your time moved."
+      },
+      {
+        "type": "example",
+        "title": "Caseload, rebuilt",
+        "before": "Managed a caseload of 62 students across three schools; completed evaluations and wrote IEPs.",
+        "after": "Managed a portfolio of 62 concurrent client engagements across three sites, each with its own goals, timeline and quarterly review, and completed [48] evaluations a year inside a fixed turnaround."
+      },
+      {
+        "type": "example",
+        "title": "The meeting nobody wants to run",
+        "before": "Attended IEP meetings with parents, teachers and administrators.",
+        "after": "Led [9] cross-functional meetings a month with families, educators and administrators, negotiating goals between people with competing priorities and closing each one with a written, signed plan."
+      },
+      {
+        "type": "h",
+        "text": "Where translation turns into spin"
+      },
+      {
+        "type": "p",
+        "text": "The test is faster than agonizing. Could you talk for ten minutes about the day behind that bullet, to someone who already does the job you want, without inventing anything? If yes it is translation, however corporate it sounds out loud. If your stomach moves, take the number down or take the claim out, because everything on the page comes back at you as an interview question. Work feels small from the inside when you have done it four hundred times, which is why so many SLPs read an accurate bullet about their own year and think it is bragging. Your title stays Speech-Language Pathologist, since changing it is the one screening flag nobody recovers from. The translation goes in a short function line underneath: client portfolio, cross-functional program delivery, staff training."
+      },
+      {
+        "type": "quote",
+        "text": "I won't lie, I exaggerated my role a lot to where it felt like lying.",
+        "from": "an SLP who became a project manager, r/SLPcareertransitions"
+      },
+      {
+        "type": "tool",
+        "name": "translation-pairs"
+      }
+    ],
+    "takeaways": [
+      "Swapping clinical nouns for business nouns leaves the sentence describing a duty, which is how expensive résumé rewrites turn into word salad.",
+      "Every bullet answers three questions in one sentence: how big it was, what you did, what changed.",
+      "Pull the verb from the posting and leave the number where it already is.",
+      "The honesty test is whether you could talk for ten minutes about the day behind the bullet without inventing anything.",
+      "Keep Speech-Language Pathologist as the title and put the translation in a function line underneath it."
+    ],
+    "sources": [
+      "facts",
+      "forums"
     ]
-   },
-   {
-    "type": "callout",
-    "tone": "warm",
-    "title": "Telehealth is a bridge, not the exit",
-    "text": "It is still clinical work, and platform contracts often pay less per hour than in-person. Its value is the time and energy it frees up, and the fact that the platforms themselves hire former clinicians into implementation, training and customer success. Do not count it as having left."
-   },
-   {
-    "type": "quote",
-    "text": "Working 3 days a week tele is my goal.",
-    "from": "an SLP on r/slp"
-   },
-   {
-    "type": "h",
-    "text": "What each one costs"
-   },
-   {
-    "type": "p",
-    "text": "Every option above trades income, benefits or stability for time, and which trade is open to you depends on the numbers you run in the next lesson. Two things have caught people out: whether the change affects health coverage, and whether it affects loan forgiveness if you are counting payments."
-   },
-   {
-    "type": "h",
-    "text": "The version where you change nothing"
-   },
-   {
-    "type": "p",
-    "text": "You can also change nothing: keep the job, keep the hours, and accept that the search takes longer because you are doing it in the margins. For a single earner or someone chasing forgiveness that is often the right call, and the cost is months rather than the outcome."
-   }
-  ],
-  "takeaways": [
-   "Most documented transitions happen alongside a paycheck over six to fifteen months.",
-   "Dropping to four days buys a continuous day, which is worth more than five scattered evenings.",
-   "Telepractice frees time and its platforms hire former clinicians, but it is still clinical work and often pays less per hour.",
-   "Changing nothing is a legitimate choice, and what it costs you is months rather than the outcome."
-  ],
-  "sources": [
-   "facts",
-   "forums"
-  ]
- },
- {
-  "id": "4.5",
-  "tldr": "Loan forgiveness is a payment count, not a life sentence, and leaving pauses it rather than destroying it. Work out three numbers before you change anything: payments left, coverage cost, and months of runway.",
-  "blocks": [
-   {
-    "type": "p",
-    "text": "This is the lesson nobody wrote, which is strange, because it is the question that comes up most. People stay in jobs that are hurting them for a loan balance, a payment count and a health plan, and no career advice ever addresses any of the three."
-   },
-   {
-    "type": "p",
-    "text": "So here are the mechanics, with two warnings. Federal loan rules changed several times in 2025 and 2026, and some of it is still being litigated, so treat this as a map rather than a ruling. I am not a financial adviser, and every number below needs checking against your own account."
-   },
-   {
-    "type": "h",
-    "text": "Forgiveness is a count, and the count survives you leaving"
-   },
-   {
-    "type": "p",
-    "text": "Public Service Loan Forgiveness requires 120 qualifying monthly payments made after October 2007, and they do not have to be consecutive. A gap does not send you back to zero."
-   },
-   {
-    "type": "numbers",
-    "items": [
-     {
-      "value": "120",
-      "label": "qualifying payments, and they need not be consecutive"
-     },
-     {
-      "value": "30 hrs",
-      "label": "a week counts as full time, and you can add jobs together to reach it"
-     },
-     {
-      "value": "Paused",
-      "label": "what happens to the count if you move to a non-qualifying employer"
-     },
-     {
-      "value": "Never",
-      "label": "whether a for-profit employer can qualify, at any job title"
-     }
-    ]
-   },
-   {
-    "type": "p",
-    "text": "A qualifying employer is a government body, a 501(c)(3) nonprofit, a Tribal college, or a nonprofit delivering a defined public service. Your job title inside it is irrelevant, because the employer is what qualifies rather than the work you do there."
-   },
-   {
-    "type": "callout",
-    "tone": "soft",
-    "title": "You can leave clinical work without leaving forgiveness",
-    "text": "Nonprofit hospital systems, universities and state agencies employ people in exactly the roles this program covers. A clinical informatics analyst inside a nonprofit health system, a research coordinator or instructional designer at a university, a reviewer at a state Disability Determination Services office, a coordinator at a school district. Same count, no caseload."
-   },
-   {
-    "type": "p",
-    "text": "One documented transitioner did precisely this, taking a thirteen thousand dollar pay cut to move into a state disability determination role in part to protect her forgiveness."
-   },
-   {
-    "type": "h",
-    "text": "If you are close, be careful with the last stretch"
-   },
-   {
-    "type": "p",
-    "text": "You have to be in qualifying full-time employment at your 120th payment and again when you apply. That is the detail that catches people who resign at payment 118 and assume the credit banks itself."
-   },
-   {
-    "type": "quote",
-    "text": "you cannot rock the boat in any way in this final stretch",
-    "from": "an SLP counting down to forgiveness, r/slp"
-   },
-   {
-    "type": "p",
-    "text": "If you are within a year, the usual strategy is to move sideways into a non-clinical role at another qualifying employer, which keeps the count running while changing the job. That takes longer to find than a for-profit role, so start earlier."
-   },
-   {
-    "type": "callout",
-    "tone": "soft",
-    "title": "Months that did not count",
-    "text": "If some of your months sat in a deferment or forbearance that earned no credit, there is a buyback option written into the regulation: you pay what a qualifying plan would have charged for those months, or show you would have owed nothing on an income-driven plan. In practice it is offered once you already have 120 months of qualifying employment, so it is a tidy-up at the end rather than a shortcut."
-   },
-   {
-    "type": "callout",
-    "tone": "warm",
-    "title": "Check this yourself, twice",
-    "text": "Look up your own employer in the official PSLF employer search rather than assuming from the name, and file the employment certification form regularly rather than at the end. A new employer-disqualification rule took effect in July 2026 and is still being litigated, so nobody can promise you what qualifies in five years."
-   },
-   {
-    "type": "h",
-    "text": "If your income drops, your payment can too"
-   },
-   {
-    "type": "p",
-    "text": "On an income-driven plan the payment follows your income, and federal rules let you ask for a recalculation mid-year with documentation that your income has fallen since your last tax return. You do not have to wait for the annual recertification. If you drop to four days a week, file the form."
-   },
-   {
-    "type": "p",
-    "text": "The plans themselves are mid-reshuffle, with new ones in regulation and older ones being wound down on published dates. Check your own plan's status in your federal loan account before you count on anything, including this."
-   },
-   {
-    "type": "h",
-    "text": "Coverage: what a gap actually costs"
-   },
-   {
-    "type": "p",
-    "text": "Health insurance is the second thing that keeps people in place."
-   },
-   {
-    "type": "numbers",
-    "items": [
-     {
-      "value": "~$777",
-      "label": "a month, the average full 2025 single premium your employer was quietly paying"
-     },
-     {
-      "value": "~$2,250",
-      "label": "a month, the same figure for family coverage"
-     },
-     {
-      "value": "18 mo",
-      "label": "how long COBRA usually runs, at up to 102% of the full premium"
-     },
-     {
-      "value": "60 days",
-      "label": "the election window, with at least 45 more to make the first payment"
-     }
-    ]
-   },
-   {
-    "type": "p",
-    "text": "COBRA feels expensive because you finally see the whole bill your employer had been paying most of. The average worker contributed about $1,440 a year toward a single plan that actually cost $9,325."
-   },
-   {
-    "type": "p",
-    "text": "The other option is the marketplace, where losing job-based coverage because you quit still opens a special enrollment period. Subsidies are based on your estimated income for the year rather than on whether you are employed, so a genuinely lower income for a stretch often makes the marketplace cheaper than COBRA."
-   },
-   {
-    "type": "p",
-    "text": "You have sixty days to elect COBRA and at least forty-five more to pay, and many plans make coverage retroactive to the day you lost it. Some do not, so read your plan documents. Used carefully, that window lets you go uninsured on paper while staying covered in practice if something happens."
-   },
-   {
-    "type": "callout",
-    "tone": "warm",
-    "title": "The mistake people make here",
-    "text": "Quitting your job opens a marketplace special enrollment period. Voluntarily dropping COBRA part way through does not. If you think the marketplace will be cheaper, compare the two before you elect COBRA rather than after, because changing your mind in month four can leave you waiting for open enrollment."
-   },
-   {
-    "type": "h",
-    "text": "The C's, honestly"
-   },
-   {
-    "type": "p",
-    "text": "Whether to keep paying ASHA dues once you leave is a real decision with a deadline attached, and the reinstatement rules are stricter than the forums suggest."
-   },
-   {
-    "type": "list",
-    "items": [
-     "Once certification has been expired more than twelve months, reinstatement needs a Praxis score less than five years old, plus professional development hours and a fee in the region of four hundred dollars.",
-     "In practice that means letting the C's lapse is close to a one-way door after five years, because you would be retaking the exam.",
-     "State licences are separate, and many states allow inactive status for a smaller fee. That is usually the cheaper backup plan.",
-     "Whether a specific non-clinical job requires an active licence depends on your state's practice act rather than the job title, so check the posting and the state board rather than guessing."
-    ]
-   },
-   {
-    "type": "p",
-    "text": "People in the forums stop calling the C's a sunk cost and start calling them a fishing licence, a thing you keep because it lets you go back if you want to."
-   },
-   {
-    "type": "h",
-    "text": "Now run your own numbers"
-   },
-   {
-    "type": "p",
-    "text": "Three inputs decide whether a bridge is possible: the income you would give up, the coverage you would pay for, and any change in the loan payment. Divide your savings by the sum of those and you have the number of months you can run."
-   },
-   {
-    "type": "tool",
-    "name": "runway-calculator"
-   },
-   {
-    "type": "callout",
-    "tone": "soft",
-    "title": "What to do with the answer",
-    "text": "If the runway is longer than the move, you have a choice about how fast to go. If it is shorter, you have three levers: a smaller pay dip, a shorter bridge, or one of the fast-exit paths from Module 2 that pays from day one. None of those levers is giving up."
-   }
-  ],
-  "action": {
-   "label": "Save my numbers",
-   "prompt": "Fill in the calculator above with real figures. Then do the two lookups this week: check your employer in the official PSLF employer search, and find your current plan and payment count in your federal loan account. Twenty minutes, and it replaces a year of vague dread with a date.",
-   "done": "Saved. You now know the three numbers that were making the decision for you."
   },
-  "takeaways": [
-   "PSLF needs 120 qualifying payments and they do not have to be consecutive, so leaving pauses the count rather than erasing it.",
-   "The employer qualifies, not the job title: nonprofit health systems, universities and state agencies employ people in these non-clinical roles.",
-   "You must be in qualifying employment at your 120th payment and when you apply, so do not resign at 118.",
-   "COBRA runs about 18 months at up to 102% of the full premium, and the marketplace is often cheaper if your income actually drops.",
-   "Once certification lapses beyond twelve months, reinstatement needs a Praxis score under five years old, so treat the C's as a fishing licence you decide about on purpose."
-  ],
-  "sources": [
-   "money",
-   "facts",
-   "forums"
-  ]
- },
- {
-  "id": "4.6",
-  "tldr": "One documented search took over 500 applications without referrals. The people who moved faster had someone on the inside, and getting one is a twenty-minute task you have already practised.",
-  "blocks": [
-   {
-    "type": "p",
-    "text": "You can be the best of two hundred and forty-two strangers, or you can be the person somebody already mentioned. The second is not fair, and it is how most of these moves actually happened."
-   },
-   {
-    "type": "numbers",
-    "items": [
-     {
-      "value": "500+",
-      "label": "applications over six months, one documented analyst transition"
-     },
-     {
-      "value": "~242",
-      "label": "applicants per opening on average, up 111% since 2022"
-     },
-     {
-      "value": "1 in 4",
-      "label": "roughly, how many of these messages get no answer at all"
-     },
-     {
-      "value": "48 hrs",
-      "label": "the window where an application still gets seen"
-     }
+  {
+    "id": "4.3",
+    "tldr": "No number, no bullet. You have more numbers than you think, and most were never written down because nobody has ever asked an SLP by how much.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Every SLP I have talked to about résumés says the same thing at the same moment, which is that they do not have numbers. Then they describe a normal week and the numbers fall out of it: 62 on the caseload in March, three buildings, 48 evaluations a year, 14 people trained through the EMR switch, nine IEP meetings in a heavy month, four hours of documentation on a Sunday nobody paid for. Clinical work is measured constantly, in the IEP tracker, the productivity report and the sign-in sheet from the in-service you ran. None of those places is your résumé."
+      },
+      {
+        "type": "quote",
+        "text": "companies want numbers - by how much did your project x improve variable y? Which is very hard as an SLP",
+        "from": "an SLP moving into data work, r/SLPcareertransitions"
+      },
+      {
+        "type": "h",
+        "text": "Three kinds of number"
+      },
+      {
+        "type": "p",
+        "text": "He is right that companies want the size of a change, and half right that it is hard for us. Numbers come in three kinds, and clinicians arrive holding two of them already, since size and rate are sitting in your calendar. Change is the one you have to construct, usually from something you fixed and never told anyone about. It feels out of reach because clinical outcome data belongs to the client rather than to the operation. You cannot put a child's progress on your résumé, and you should not want to. What you can put there is what happened to the system around that child: how long families waited, how many evaluations cleared, how much of the department's Sunday went to documentation after you rebuilt the template."
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Size.** The largest caseload you carried, buildings covered, evaluations completed in a year, people trained or supervised, districts or units served.",
+          "**Rate.** Anything per week, per month or per quarter: meetings led, sessions delivered, charts reviewed, referrals processed, notes written.",
+          "**Change.** A before and an after with your hand in the middle: evaluation backlog, no-show rate, dismissal rate, documentation minutes a day, time from referral to first session, goal attainment across the caseload."
+        ]
+      },
+      {
+        "type": "example",
+        "title": "The EMR rollout you helped with",
+        "before": "Assisted with the EMR transition.",
+        "after": "Trained [14] clinicians through an EMR transition, built the note templates the department still uses, and tracked documentation time down from [90] to [55] minutes a day."
+      },
+      {
+        "type": "example",
+        "title": "Chart audits, which are quality assurance",
+        "before": "Completed chart audits and peer reviews.",
+        "after": "Audited [40] charts a quarter against payer criteria, fed the three most common errors into a 30-minute team training, and cut returned claims from [12] a month to [4]."
+      },
+      {
+        "type": "h",
+        "text": "Where to go and get them this week"
+      },
+      {
+        "type": "steps",
+        "items": [
+          "Open last year's calendar, count the IEP meetings or care conferences in three ordinary months, and multiply. That is your rate, and it will be higher than you guessed.",
+          "Pull the largest caseload number you carried and note the month, so you can defend it out loud.",
+          "Count everyone you trained, supervised or oriented, including CFs, grad students, aides, teachers and the nurses at that one in-service.",
+          "Name one thing that got better or worse on your watch, then go find the two numbers on either side of it. A wait time, a backlog, a documentation load, a dismissal rate.",
+          "Put [brackets] around anything you cannot verify yet and keep moving. Brackets are a promise to check before you send, and they beat a rounded-up guess you will have to defend in an interview.",
+          "Round down when you are unsure. A defensible 55 does more for you than a wobbly 70."
+        ]
+      },
+      {
+        "type": "tool",
+        "name": "number-mining"
+      }
+    ],
+    "takeaways": [
+      "No number, no bullet, and estimates you can defend count.",
+      "Size and rate are already sitting in your calendar and your caseload. Change is the one you have to construct, out of something you quietly fixed.",
+      "Rebuild one number from source rather than from memory, because the interview will ask you where it came from.",
+      "Bracket anything unverified and round down when you are unsure.",
+      "The numbers you mine here feed the résumé in 3.5 and the bridge statement in Module 6."
+    ],
+    "sources": [
+      "facts",
+      "forums"
     ]
-   },
-   {
-    "type": "p",
-    "text": "That 500 number belongs to somebody who got there, landed a fully remote role and now earns twenty thousand more than she did as an SLP. The volume was the tax she paid for having no referrals."
-   },
-   {
-    "type": "h",
-    "text": "Three habits that do most of the work"
-   },
-   {
-    "type": "steps",
-    "items": [
-     "**Apply inside 48 hours.** Postings get most of their real attention in the first day or two. A tailored application on day one beats a perfect one on day nine.",
-     "**Message one person at the company, the same day.** Not the recruiter. Someone doing the job you applied for, ideally a former clinician. Say you applied, say the one specific thing that made you want the role, ask one question.",
-     "**Turn every conversation into a name.** At the end of any informational interview, ask who else they would talk to if they were you. That question is where a network comes from."
-    ]
-   },
-   {
-    "type": "p",
-    "text": "You already wrote the message in Module 2, and about one in four of them gets no answer, so three sent is usually two conversations."
-   },
-   {
-    "type": "h",
-    "text": "What to ask for, and when"
-   },
-   {
-    "type": "p",
-    "text": "Do not ask for a referral in a first message. Ask for twenty minutes about their work, because referrals come at the end of a conversation that already happened, and they are usually offered rather than requested."
-   },
-   {
-    "type": "script",
-    "title": "After a good conversation",
-    "text": "This was genuinely useful, thank you. Two things before I let you go. Is there anyone else you'd talk to if you were me? And if a [role] opens on your team, would you be open to me sending you the posting?"
-   },
-   {
-    "type": "p",
-    "text": "That second question is the referral ask in the least awkward form I have found: a yes or no about a hypothetical, easy to agree to, and it gives you permission to come back."
-   },
-   {
-    "type": "tool",
-    "name": "contact-tracker"
-   },
-   {
-    "type": "callout",
-    "tone": "soft",
-    "title": "Why this works better for us than for most",
-    "text": "Former SLPs are unusually willing to answer other SLPs, which is part of why the response rate is as high as it is. The exit threads are full of people offering to talk, and the ones who made it out tend to remember who answered them. You are not cold-messaging strangers. You are messaging people who were you two years ago."
-   }
-  ],
-  "takeaways": [
-   "Applications without referrals is the expensive route: one documented search took over 500.",
-   "Apply inside 48 hours and message someone doing the job the same day.",
-   "Never ask for a referral in a first message. Ask for twenty minutes, then ask who else you should talk to.",
-   "About one in four messages gets no answer, so three sent is usually two conversations."
-  ],
-  "sources": [
-   "facts",
-   "forums"
-  ]
- },
- {
-  "id": "4.7",
-  "tldr": "Two live conversations at any time is enough. Keep them warm with one short update a month, and they turn into referrals without you asking.",
-  "blocks": [
-   {
-    "type": "p",
-    "text": "Most networking advice assumes you want a network. What you want is two or three people who know what you are looking for and would forward you a posting, which is a much smaller job."
-   },
-   {
-    "type": "h",
-    "text": "The maintenance is smaller than you think"
-   },
-   {
-    "type": "p",
-    "text": "One message a month, per person, with one job: remind them you exist and show that you did something since last time."
-   },
-   {
-    "type": "script",
-    "title": "The monthly update",
-    "text": "Hi [name], quick update since we talked. I [built the thing / finished the certificate / had a first interview at X]. Still aiming at [role type]. If anything crosses your desk I'd love to hear about it. Hope [specific thing they mentioned] went well."
-   },
-   {
-    "type": "p",
-    "text": "That is four sentences and ninety seconds. The last one matters most, because remembering the thing they told you is what separates a relationship from a mailing list."
-   },
-   {
-    "type": "tool",
-    "name": "contact-tracker"
-   },
-   {
-    "type": "h",
-    "text": "When somebody goes quiet"
-   },
-   {
-    "type": "p",
-    "text": "They are busy, and it is not about you. Send one follow-up after two weeks, then let it rest, and come back in six months with something new to say."
-   },
-   {
-    "type": "callout",
-    "tone": "soft",
-    "title": "The thing that surprises people",
-    "text": "The conversation that produces the job is usually not the one you expected. In the documented transitions, the useful introduction tends to come third or fourth hand, from someone who was not obviously connected to the role at all. Which is an argument for keeping two warm rather than chasing the perfect one."
-   }
-  ],
-  "action": {
-   "label": "Two are warm",
-   "prompt": "Pick the two most promising people from your tracker and send each of them a monthly update this week. Four sentences, ninety seconds, ending with a question about something they told you.",
-   "done": "Two warm. That is the network. It does not need to be bigger than this."
   },
-  "takeaways": [
-   "Two live conversations is enough, because what you need is a couple of people who would forward you a posting rather than a network.",
-   "One four-sentence update a month keeps a conversation warm.",
-   "Silence means a busy month, not a closed door. One follow-up, then let it rest.",
-   "The introduction that works is usually third or fourth hand, which is why two warm beats one perfect."
-  ],
-  "sources": [
-   "facts",
-   "forums"
-  ]
- }
+  {
+    "id": "4.4",
+    "tldr": "One hiring manager found 35 percent of applicants had submitted identical AI-written answers, and 62 percent of employers say they reject AI-generated materials that lack personalization. The fix is in what you feed the tool and what you delete afterwards.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Somebody counted. A hiring manager reviewing a batch of applications found that 35 percent of candidates had submitted identical answers to the same question. Word for word, from people who had never met and who each presumably felt they had written something. Picture the moment they noticed the second one, then the fifth, then the fortieth."
+      },
+      {
+        "type": "p",
+        "text": "62 percent of employers say they reject AI-generated application materials that lack personalization, and 33.5 percent of hiring managers say they can spot AI writing in under 20 seconds. That is about how long your first paragraph lives. For a career changer a generic letter is fatal, because you are the one candidate whose application had actual explaining to do."
+      },
+      {
+        "type": "h",
+        "text": "The tell-words, and the shapes"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Adept, leverage, spearheaded, cutting-edge, results-driven. The words are harmless in themselves. A recruiter has read them two hundred times this week, in that order, with no number attached to any of them.",
+          "Adjectives sitting where a number belongs. \"Significantly improved outcomes\" is what a sentence says when nobody checked the tracker.",
+          "Everything arriving in threes: three adjectives, three-item lists, three parallel clauses in every paragraph. This is my own read rather than a documented finding, but once you notice the rhythm you cannot unnotice it, and neither can the person reading forty letters.",
+          "The five-paragraph skeleton: interest, adjectives about yourself, flattery about the company, restated résumé, look forward to discussing. Hiring managers could hum it."
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "can you provide the prompts you used for ChatGPT?",
+        "from": "an SLP on a transition thread, r/SLPcareertransitions"
+      },
+      {
+        "type": "h",
+        "text": "How to use it without producing the slop"
+      },
+      {
+        "type": "steps",
+        "items": [
+          "Never ask it to write the bullet. Give it your sentence, your number and the posting, and ask it to rewrite that sentence in the posting's vocabulary.",
+          "Make it interview you first. Ask it to ask you five questions about the bullet before it rewrites anything, and answer them out loud. The answers are the material.",
+          "Paste the posting and ask which of your bullets map to which requirement, and which requirements have no evidence behind them at all. That gap list is worth more than any prose it will hand you.",
+          "Feed it a sample of your own writing, an email or a message you actually sent, so the draft comes back in a voice you can edit rather than one you have to fumigate.",
+          "Delete every sentence that could appear on another applicant's page unchanged. If a teacher leaving the classroom could send it as written, it is doing nothing for you.",
+          "Read the whole thing aloud. Anything you would not say to a colleague standing in front of you comes out on that pass."
+        ]
+      },
+      {
+        "type": "example",
+        "title": "Generated, then remembered",
+        "before": "Adept at leveraging strong communication skills to spearhead results-driven outcomes across diverse stakeholder populations in fast-paced clinical environments.",
+        "after": "Rebuilt the referral intake form and the evaluation schedule after the backlog hit [11] weeks, and brought it to [4] weeks in one term without adding staff."
+      },
+      {
+        "type": "callout",
+        "tone": "soft",
+        "title": "The specifics are the part no model can generate",
+        "text": "The tool was not in your IEP meetings. It does not know the caseload hit 62 in March, that you trained 14 people through the EMR switch, or that the front office would only let you touch the note template. Those details are the reason you are the only person who can send your application, and generic output erases exactly them."
+      }
+    ],
+    "takeaways": [
+      "62 percent of employers reject AI-generated materials that lack personalization, and a third say they spot AI writing in under 20 seconds.",
+      "One hiring manager found 35 percent of applicants had submitted word-for-word identical AI answers.",
+      "Adept, leverage, spearheaded, cutting-edge and results-driven are the documented tell-words, and adjectives standing in for numbers are the wider tell.",
+      "Use the tool to interview you, to map your bullets against the posting's requirements, and to find your gaps, not to write your sentences.",
+      "Delete any sentence that could appear unchanged on another applicant's page."
+    ],
+    "sources": [
+      "facts",
+      "forums"
+    ]
+  },
+  {
+    "id": "4.5",
+    "tldr": "Paste your résumé exactly as it reads today and one real posting into the Suite. It returns every bullet translated against that posting's actual requirements, a cover letter, LinkedIn sections and a list of requirements you have no evidence for. Then you spend twenty minutes making every line true.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "The single most requested thing in every SLP exit thread is the document itself. One project manager's post drew more than twenty separate comments asking some version of the same question. The person almost never sends it, because their résumé has their employer, their city and their kids' school district on it."
+      },
+      {
+        "type": "quote",
+        "text": "Would you mind sharing your revamped resume with me?",
+        "from": "one of twenty-plus commenters on a single exit post, r/SLPcareertransitions"
+      },
+      {
+        "type": "p",
+        "text": "The Career Pivot Suite is the closest thing I could build to handing you that document, and your enrollment includes it. It reads your actual history against one actual posting and translates it, using the same rules you just learned in 3.2 and 3.3. That is why this lesson sits here and not in week one."
+      },
+      {
+        "type": "h",
+        "text": "What to paste"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Your résumé exactly as it reads today, clinical language and all. Pre-translating it first makes the output worse, because the tool needs to see the caseload before it can turn it into a portfolio.",
+          "One real posting for your path, pasted as text or as a URL. Not a job title, not a category. The requirement lines are what the match score is built from.",
+          "The numbers from 3.3, including the bracketed ones. Anything you leave out cannot come back in the bullets.",
+          "The pair you saved in 3.2, so the voice starts from a sentence you already approved.",
+          "A short sample of your own writing if you have one, so the cover letter arrives sounding like a person you recognize."
+        ]
+      },
+      {
+        "type": "h",
+        "text": "What comes back"
+      },
+      {
+        "type": "list",
+        "items": [
+          "A match score derived from the posting's actual requirements, plus every bullet on your résumé rewritten against them.",
+          "A tailored cover letter, application screening-question answers, and interview bridge statements for the same role.",
+          "A LinkedIn headline and About section, which is what lesson 3.4 checks against.",
+          "A requirements coverage list with gap-closing actions, a proof-artifact plan and a 90-day plan.",
+          "Editable Word documents, so nothing is trapped in the browser."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The section most people skim is the requirements coverage, and it is the one I would read first. Every requirement with no evidence behind it is either a bullet you forgot to write or a real gap, and telling those two apart takes about five minutes. The forgotten ones go back into the résumé this week, and the real ones become your shopping list for Module 5."
+      },
+      {
+        "type": "p",
+        "text": "Then refine. You get ten refinements across six sections, which is plenty if you spend them on specific complaints. \"Make this stronger\" gets you adjectives, while \"this bullet has no number in it\" and \"use the posting's word onboarding instead of orientation\" get you the sentence you wanted. Read every line before you send it anywhere, and fix anything you could not defend for ten minutes out loud."
+      },
+      {
+        "type": "tool",
+        "name": "suite-link"
+      }
+    ],
+    "action": {
+      "label": "I built the first draft",
+      "prompt": "Open the Suite, paste your résumé exactly as it reads today plus one real posting for your path, and run it. Then spend twenty minutes on the output: check every number, delete every sentence that could belong to another applicant, and spend two refinements on the two weakest sections.",
+      "done": "First translation done. Your experience is now legible to someone who has never met an SLP."
+    },
+    "takeaways": [
+      "Paste your résumé untranslated, because the tool needs to see the clinical version before it can translate it.",
+      "One real posting, not a job title, because the match score is built from actual requirement lines.",
+      "Read the requirements coverage first and sort the gaps into forgotten bullets and real gaps.",
+      "Spend refinements on specific complaints, since \"make it stronger\" only ever returns adjectives.",
+      "Every line has to be one you could defend out loud for ten minutes before it goes anywhere."
+    ],
+    "sources": [
+      "facts",
+      "forums"
+    ]
+  },
+  {
+    "id": "4.6",
+    "tldr": "A cover letter gets read as evidence that you spent effort on this company and no other one. Four beats, about 250 words, and one paragraph in the middle that nobody else could have written.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "A cover letter is judged on what it cost you before it is judged on its prose, which is why the AI-written ones fail even when the sentences are fine in a beige sort of way. They signal zero cost, and the reader can tell within a paragraph that the same letter went to eighty companies before lunch. Visible effort is cheap, though. Ten minutes of research and one honest paragraph put you ahead of most of the pile."
+      },
+      {
+        "type": "p",
+        "text": "Rewrite every sentence about what you are leaving as a sentence about where you are going. Your reasons are valid, and the productivity targets and the Sunday documentation are exactly what started my own search. But retention doubt is one of the four reasons career changers get rejected. A letter that says I am exhausted by clinical work reads to a hiring manager as a person running, and people who run once tend to run again."
+      },
+      {
+        "type": "h",
+        "text": "Four beats, about 250 words"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Open.** Name the role, name the pivot without apologizing for it, and land your bridge claim with a number nearby. Skip \"I am writing to express my interest\", because they know what a cover letter is.",
+          "**Map.** Two or three of your accomplishments connected explicitly to the problems this person will have in their first 90 days. Read the posting the way you read a chart: what is actually going wrong here, and which of my numbers speaks to it?",
+          "**Pull.** Where you are heading, plus one piece of evidence you have already invested in getting there. This is where the retention doubt gets answered without you ever promising not to leave.",
+          "**Close.** Two sentences, warm, forward-looking, no groveling. Under one page total, and well under."
+        ]
+      },
+      {
+        "type": "script",
+        "title": "The skeleton, with the parts you fill in",
+        "text": "Dear [name, if the posting or LinkedIn gives you one],\n\nI'm applying for [role] at [company]. I'm a speech-language pathologist moving into [function], and I've been doing [function] my whole career under a different job title: [one sentence with a number, e.g. 62 client accounts at a time, each with goals, a timeline and a quarterly review].\n\nYour posting says [requirement quoted or paraphrased in their words]. In my last role I [accomplishment, with the number and the change]. It also says [second requirement]. That's the work I did when [second accomplishment, with the number and the change].\n\n[The paragraph only you could write: the specific thing about this company, this product or the people they serve, and what it made you think. One or two sentences of what you have already done to prepare: the artifact, the course, the three conversations.]\n\nI'd welcome the chance to talk about [the first-90-days problem you named above].\n\n[Your name]"
+      },
+      {
+        "type": "h",
+        "text": "The paragraph only you could write"
+      },
+      {
+        "type": "p",
+        "text": "One paragraph in the middle has to be impossible to paste into another letter: a product you have actually used with a real client, a specific thing about who they serve, a question their pricing page raised for you. SLPs applying to speech-tech and AAC companies have an unfair advantage here and almost never use it. You have put their device in a child's hands, or explained their platform to a family on a Tuesday afternoon. No other applicant in that pile can write the sentence that starts with what happened next."
+      },
+      {
+        "type": "example",
+        "title": "The opening, before and after",
+        "before": "Dear Hiring Manager, I am writing to express my interest in the Implementation Specialist position at your organization. As a dedicated Speech-Language Pathologist with over [8] years of experience, I believe my strong communication skills make me an ideal candidate.",
+        "after": "I'm applying for the Implementation Specialist role, and I've been doing customer success my whole career. I just called it patient and family care: [62] accounts at a time, quarterly reviews with families who did not always want to hear the data, and [90] percent of them still with me a year later."
+      },
+      {
+        "type": "p",
+        "text": "Write it once, this week, for the posting you are going to send in 3.8. Then do one pass with a delete key, because any sentence that could survive a copy and paste into another company's letter is a sentence doing nothing for you."
+      }
+    ],
+    "takeaways": [
+      "A cover letter reads as proof of effort spent on this company specifically, which is why generic ones fail even when they are well written.",
+      "Rewrite every sentence about what you are leaving into a sentence about where you are going, because retention doubt is doing the rejecting.",
+      "Four beats: open with the pivot and a number, map two accomplishments to first-90-days problems, name the pull with your proof of investment, close short.",
+      "One middle paragraph must be impossible to paste into any other letter.",
+      "Delete anything portable, then send the shorter version."
+    ],
+    "sources": [
+      "facts",
+      "forums"
+    ]
+  },
+  {
+    "id": "4.7",
+    "tldr": "One application, done properly: a posting under 48 hours old, a résumé tailored to its actual requirement lines, a letter with one paragraph nobody else could write, ten minutes spent finding a human, and a row in the tracker.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Applications sent in the first day or two of a posting are the ones that get looked at, and by the end of week one the reader is triaging a pile rather than reading it. One application sent inside 48 hours is worth more than five sent the following Sunday. The Sunday batch is what most of us default to, because Sunday is when the dread arrives and the laptop is already open."
+      },
+      {
+        "type": "p",
+        "text": "The second thing that decides these transitions is whether anyone inside the building knows your name. Referrals are behind most of the documented successes, and generic applications with nobody attached to them are what the failed attempts have in common. So before you hit submit, spend ten minutes looking for one person with your target title at that company, or better, an SLP already working there, and send them the Module 2 message."
+      },
+      {
+        "type": "h",
+        "text": "The knockout questions are the real filter"
+      },
+      {
+        "type": "p",
+        "text": "The form after the résumé upload is where the automatic rejections actually happen: years of experience, licenses, work authorization, and the salary box. Answer honestly, since a false answer is discoverable and unrecoverable, and answer the experience question against the function rather than the title where the form allows a sentence. For the salary box, come with two numbers already decided: the documented range for your path, and where you currently sit. The profession's median is $97,870, and its middle half runs $77,730 to $114,570. If a knockout is a genuine hard no, that posting is not the one you send this week."
+      },
+      {
+        "type": "h",
+        "text": "Forty minutes, once, properly"
+      },
+      {
+        "type": "steps",
+        "items": [
+          "Pick one posting for your path that went up in the last 48 hours.",
+          "Copy its requirement lines into a list and mark every one you have evidence for. The unmarked ones are Module 5's problem, not today's.",
+          "Tailor the summary and the top three bullets under your most recent role to those lines, using the posting's own words and keeping your numbers.",
+          "Write the letter with the 3.7 skeleton, including the one paragraph nobody else could write.",
+          "Spend ten minutes finding one person at the company and send them a short message.",
+          "Submit, then log it in the tracker with the posting date, so the next month becomes a set of numbers instead of a feeling."
+        ]
+      },
+      {
+        "type": "numbers",
+        "items": [
+          {
+            "value": "48 hours",
+            "label": "the window in which a posting is still being read rather than triaged"
+          },
+          {
+            "value": "113 : 7 : 1",
+            "label": "one documented transition: tailored applications, interviews, offer"
+          },
+          {
+            "value": "6–15 months",
+            "label": "the typical documented timeline, with some at 1.5 to 2.5 years"
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "hire a resume writer who specializes in career changes and keep at it. It took me two years.",
+        "from": "an SLP who left, r/slp"
+      },
+      {
+        "type": "p",
+        "text": "That ratio is the kindest thing in this lesson, once you stop reading it as a verdict on you. One documented transition took 113 tailored applications to produce 7 interviews and 1 offer, and a data analyst sent more than 500 over six months and is now remote and paid above their SLP salary. At those rates, silence after the first ten applications is the sample being too small to tell you anything. Track the number, aim at a weekly count you can hit while working full time, and let the ratio do what ratios do."
+      },
+      {
+        "type": "tool",
+        "name": "application-tracker"
+      }
+    ],
+    "action": {
+      "label": "I sent one properly",
+      "prompt": "Pick one posting for your path that went up in the last 48 hours. Copy its requirement lines into a list, tailor your summary and top three bullets to them, write the letter with one paragraph only you could write, spend ten minutes finding one person at the company, then submit and log it in the tracker with the posting date.",
+      "done": "Sent, tailored, tracked. First row on a board that is going to get long, and long is how this works."
+    },
+    "takeaways": [
+      "Applications in the first day or two of a posting are the ones that get read, so speed beats volume on any given week.",
+      "Referrals are behind most documented transitions, so spend ten minutes finding one human before you submit.",
+      "Knockout questions on the form are the real automatic filter, and the salary box wants a number you decided in advance.",
+      "Tailor to the requirement lines in the posting's own words, and leave the gaps for Module 5.",
+      "The documented ratio is roughly 113 applications to 7 interviews to 1 offer, which makes early silence a sample-size problem rather than a verdict."
+    ],
+    "sources": [
+      "facts",
+      "forums",
+      "bls"
+    ]
+  }
 ]

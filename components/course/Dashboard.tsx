@@ -32,7 +32,7 @@ export default function Dashboard() {
           </h1>
           <div style={{ fontSize: 15, lineHeight: 1.6, opacity: 0.92, maxWidth: 560 }}>
             {!ready ? "" : !stage
-              ? "The next ninety days take you from wondering whether you're allowed to leave, to an offer in writing. Six modules, fifteen minutes to set up."
+              ? "The next ninety days take you from wondering whether you're allowed to leave, to interviewing for jobs outside the clinic. Seven modules, fifteen minutes to set up."
               : stage.n === 1 ? "Nobody has to know. You can work through all 46 lessons and still be on the schedule Monday."
               : stage.n === 2 ? "The kids you got talking are still talking. All twenty paths in Module 2 run on the degree rather than around it."
               : stage.n === 3 ? "Module 2 has the SLP who sent five hundred applications, and the one who landed a six-figure role in fifteen months."
@@ -132,7 +132,7 @@ export default function Dashboard() {
           </Panel>
           <Panel style={{ marginBottom: 14 }}>
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>Included with the program</div>
-            {[["📄", "Companion workbook (Word)", "/course/transition-os-workbook.docx"], ["📇", "Outreach and application tracker", "/course/transition-os-tracker-README.md"], ["🃏", "20 path cards with sourced ranges", "https://slptransitions.com/alternative-careers-speech-pathologists-slps/"], ["🏢", "120 companies that hire former SLPs", "/companies"], ["📬", "This week's open roles by path", "/jobs"], ["🧰", "Career Pivot Suite ($24, included)", "/"], ["🧾", "Pivot Report ($9, included)", "/quiz"]].map(([i, t, h]) => (
+            {[["📄", "Companion workbook (Word)", "/course/transition-os-workbook.docx"], ["📇", "Outreach and application tracker", "/course/transition-os-tracker-README.md"], ["🃏", "20 path cards with sourced ranges", "https://slptransitions.com/alternative-careers-speech-pathologists-slps/"], ["🏢", "120 companies that hire former SLPs", "/companies"], ["📬", "This week's open roles by path", "/jobs"], ["🧰", "Résumé, cover letter and LinkedIn tools", "/"]].map(([i, t, h]) => (
               <a key={t} href={h} style={{ display: "flex", gap: 8, fontSize: 13, color: "var(--text)", textDecoration: "none", padding: "6px 0", lineHeight: 1.4 }}><span aria-hidden>{i}</span>{t}</a>
             ))}
           </Panel>

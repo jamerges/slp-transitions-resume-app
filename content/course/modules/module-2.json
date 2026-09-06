@@ -1,11 +1,11 @@
 [
   {
     "id": "2.1",
-    "tldr": "Twenty paths, sorted by how long they take instead of how interesting they sound. Four are open to the license you already hold, four want six to twelve months, three are real builds. Pick the tier your runway can carry, then pick one path inside it.",
+    "tldr": "Twenty paths, sorted by how long they take instead of how interesting they sound. Four are open to the license you already hold, four want six to twelve months, three are real builds. Pick the tier your runway can carry.",
     "blocks": [
       {
         "type": "p",
-        "text": "Twenty-two threads in the forum corpus ask a version of the same question, and it is rarely which career to choose. Most are asking what exists at all. One SLP wrote that she feels dumb looking at other jobs, because she has no idea how anything works outside of speech, schools and therapy places. She had already decided. What she was short of was a list."
+        "text": "Most SLPs at this point are not choosing between careers. They are asking what exists at all. One SLP wrote that she feels dumb looking at other jobs, because she has no idea how anything works outside of speech, schools and therapy places. She had already decided. What she was short of was a list."
       },
       {
         "type": "quote",
@@ -23,9 +23,18 @@
       {
         "type": "numbers",
         "items": [
-          { "value": "$84k–$135k", "label": "clinical liaison, the best-paid door your license already opens" },
-          { "value": "6–15 months", "label": "what documented SLP transitions actually took, start to offer" },
-          { "value": "$97,870", "label": "median SLP pay (BLS, May 2025), the number to read every band against" }
+          {
+            "value": "$84k–$135k",
+            "label": "clinical liaison, the best-paid door your license already opens"
+          },
+          {
+            "value": "6–15 months",
+            "label": "what documented SLP transitions actually took, start to offer"
+          },
+          {
+            "value": "$97,870",
+            "label": "median SLP pay (BLS, May 2025), the number to read every band against"
+          }
         ]
       },
       {
@@ -38,13 +47,13 @@
       },
       {
         "type": "p",
-        "text": "Rehab management is usually an internal move, which is why the next lesson skips it: clinical or program manager first, director later, on a ladder you can already see from your desk. Clinical research coordination is fast to enter and carries the one warning on this map, because its band runs $48,000 to $72,000 against an SLP median of $97,870. A pay cut is the expected outcome there. Two documented SLPs used it as a first step, and one went from a CF year to a university study coordinator role in about eighteen months, then into pharma patient safety for $10,000 more base and a $5,000 bonus."
+        "text": "Two notes before you open it. Rehab management is usually an internal promotion rather than an application, so it runs on a track of its own. And clinical research coordination is the one path on this map that pays less than the job you have, at $48,000 to $72,000 against an SLP median of $97,870, which makes it a first step rather than a destination."
       },
       {
         "type": "callout",
         "tone": "warm",
         "title": "Telehealth is a bridge, and it is still clinical",
-        "text": "Teletherapy is the most common half-exit in the corpus and it belongs in your plan as a way to drop hours, lose the commute and buy back evenings for a search. It is not on this map, because the work is clinical, the pay tracks clinical, and platform contracts often pay less than in person. The non-clinical door at Presence, eLuma, Global Teletherapy or VocoVision is a job at the platform, not a caseload on it."
+        "text": "Teletherapy is not on this map, but it belongs in your plan as a way to drop hours and lose the commute while you search. The door worth knowing about is that Presence, eLuma, Global Teletherapy and VocoVision all hire for the platform itself, which is a job rather than a caseload."
       },
       {
         "type": "steps",
@@ -60,9 +69,13 @@
       "Documented transitions took six to fifteen months, with some running to two and a half years.",
       "Read every band against the SLP median of $97,870, because that is the number your budget is built on.",
       "Clinical research coordination is the one path where a pay cut is the expected outcome, and it works as a first step rather than a destination.",
-      "Telehealth is a bridge that buys you hours, but it is still clinical work and is not on this map."
+      "Teletherapy can buy you hours while you search, and the platforms themselves hire for non-clinical roles."
     ],
-    "sources": ["facts", "forums", "bls"]
+    "sources": [
+      "facts",
+      "forums",
+      "bls"
+    ]
   },
   {
     "id": "2.2",
@@ -75,9 +88,18 @@
       {
         "type": "numbers",
         "items": [
-          { "value": "$84k–$135k", "label": "clinical or rehab liaison" },
-          { "value": "$80k–$88k", "label": "utilization review, quoted hourly at $37–$62" },
-          { "value": "$78k–$116k", "label": "Tobii Dynavox Learning Consultant (Glassdoor)" }
+          {
+            "value": "$84k–$135k",
+            "label": "clinical or rehab liaison"
+          },
+          {
+            "value": "$80k–$88k",
+            "label": "utilization review, quoted hourly at $37–$62"
+          },
+          {
+            "value": "$78k–$116k",
+            "label": "Tobii Dynavox Learning Consultant (Glassdoor)"
+          }
         ]
       },
       {
@@ -127,7 +149,10 @@
       "Clinical educator roles at Tobii Dynavox, PRC-Saltillo, Lingraphica and Passy-Muir run $78,000 to $116,000, and travel is the variable to check first.",
       "Read the license line on case management postings, because many inpatient rehab roles require an RN."
     ],
-    "sources": ["facts", "forums"]
+    "sources": [
+      "facts",
+      "forums"
+    ]
   },
   {
     "id": "2.3",
@@ -161,9 +186,18 @@
       {
         "type": "numbers",
         "items": [
-          { "value": "$115k–$120k", "label": "medical SLP to remote SaaS customer success manager" },
-          { "value": "+$20k base", "label": "early-intervention SLP to remote healthcare data analyst" },
-          { "value": "500+ apps, 6 months", "label": "what that data analyst sent before the offer landed" }
+          {
+            "value": "$115k–$120k",
+            "label": "medical SLP to remote SaaS customer success manager"
+          },
+          {
+            "value": "+$20k base",
+            "label": "early-intervention SLP to remote healthcare data analyst"
+          },
+          {
+            "value": "500+ apps, 6 months",
+            "label": "what that data analyst sent before the offer landed"
+          }
         ]
       },
       {
@@ -185,7 +219,7 @@
         "items": [
           "Pick the cluster whose bad day you could live with, not the one whose good day sounds best.",
           "Search LinkedIn for that entry title plus \"CCC-SLP\" and find three people who already made the move.",
-          "Save those three profiles. You will message them in lesson 2.9."
+          "Save those three profiles. You will message them in lesson 3.3."
         ]
       }
     ],
@@ -196,7 +230,10 @@
       "Content and marketing runs $80,000 to $141,000, and freelance is a real on-ramp that started at one $200 article.",
       "In all four clusters, apply to the title one rung below the one you want."
     ],
-    "sources": ["facts", "forums"]
+    "sources": [
+      "facts",
+      "forums"
+    ]
   },
   {
     "id": "2.4",
@@ -233,9 +270,18 @@
       {
         "type": "numbers",
         "items": [
-          { "value": "$97.8k–$154k", "label": "clinical informatics and EHR analyst" },
-          { "value": "$67k–$154k", "label": "healthtech UX research, the realistic niche" },
-          { "value": "$80k → $93k", "label": "one self-taught SLP software engineer, starting pay and after two years" }
+          {
+            "value": "$97.8k–$154k",
+            "label": "clinical informatics and EHR analyst"
+          },
+          {
+            "value": "$67k–$154k",
+            "label": "healthtech UX research, the realistic niche"
+          },
+          {
+            "value": "$80k → $93k",
+            "label": "one self-taught SLP software engineer, starting pay and after two years"
+          }
         ]
       },
       {
@@ -260,15 +306,19 @@
       "Software engineering took one to two years for both documented SLPs, ending at $93,000 and $96,000.",
       "Before you commit, multiply your worst-week hours by the months, and compare that against the runway you set in Module 0."
     ],
-    "sources": ["facts", "forums", "bls"]
+    "sources": [
+      "facts",
+      "forums",
+      "bls"
+    ]
   },
   {
     "id": "2.5",
-    "tldr": "Three claims circulate in SLP forums that will cost you money or a year: that you can buy an Epic certification, that medical science liaison is a realistic pivot, and that UX research is wide open. Each is wrong in a specific way, and each has a real route sitting behind it.",
+    "tldr": "You cannot buy an Epic certification, medical science liaison is gated behind a doctorate, and UX research is oversaturated. All three have a real route behind them, and all three have somebody selling the shortcut.",
     "blocks": [
       {
         "type": "p",
-        "text": "Every one of these three claims has a product attached to it: a course that promises Epic certification, a certificate that promises to make you a medical science liaison, a bootcamp that promises a UX research career. The claim is what gets repeated in threads, and the route behind it is what actually hires people."
+        "text": "Every one of these three claims has a product attached to it: a course that promises Epic certification, a certificate that promises to make you a medical science liaison, a bootcamp that promises a UX research career. The claim is the part that gets repeated. The route behind it is what actually hires people."
       },
       {
         "type": "h",
@@ -292,14 +342,23 @@
       },
       {
         "type": "p",
-        "text": "Graduate output in UX grew about 35% in five years while openings stayed flat, which is why the field reads as open in blog posts and closed in your inbox. Mostly aspirational is the honest description of SLP to UX research in the file, resting on one documented story, a rehab director who went through a bootcamp. If you still want it, the route is the healthtech niche at $67,000 to $154,000, and what decides it is two to four deep case studies with the wrong turns left in. Conversation design and instructional design sit next door, are less crowded, and use most of the same muscles."
+        "text": "Graduate output in UX grew about 35% in five years while openings stayed flat, which is why the field reads as open in blog posts and closed in your inbox. The SLP to UX research move rests on a single documented story, a rehab director who went through a bootcamp, so mostly aspirational is the honest description of it. If you still want it, the route is the healthtech niche at $67,000 to $154,000, and what decides it is two to four deep case studies with the wrong turns left in. Conversation design and instructional design sit next door, are less crowded, and use most of the same muscles."
       },
       {
         "type": "numbers",
         "items": [
-          { "value": "$0", "label": "what an individual can pay Epic for certification" },
-          { "value": "$84k–$135k", "label": "clinical liaison, the accessible cousin of MSL" },
-          { "value": "35% more grads", "label": "UX graduate output over five years, against flat openings" }
+          {
+            "value": "$0",
+            "label": "what an individual can pay Epic for certification"
+          },
+          {
+            "value": "$84k–$135k",
+            "label": "clinical liaison, the accessible cousin of MSL"
+          },
+          {
+            "value": "35% more grads",
+            "label": "UX graduate output over five years, against flat openings"
+          }
         ]
       },
       {
@@ -324,11 +383,14 @@
       "Each of these three myths has a product attached, which is why the myth keeps circulating.",
       "Check any credential against three live postings and two people who hold the job before you spend a dollar."
     ],
-    "sources": ["facts", "forums"]
+    "sources": [
+      "facts",
+      "forums"
+    ]
   },
   {
     "id": "2.6",
-    "tldr": "Twenty paths is more than anyone can hold, and holding all of them is how people stay stuck for a year. The Pivot Report reads your actual résumé and returns a readiness profile, the stage you are in, three paths with entry doors, and a thirty-day plan. It is included, it takes about four minutes, and its whole job is to get you down to one.",
+    "tldr": "Twenty paths is more than anyone can hold, and holding all of them is how people stay stuck for a year. The Pivot Report reads your actual résumé and returns a readiness profile, the stage you are in, three paths with entry doors, and a thirty-day plan. It takes about four minutes, and you can run it against as many paths as you are curious about.",
     "blocks": [
       {
         "type": "p",
@@ -373,7 +435,7 @@
         "type": "callout",
         "tone": "soft",
         "title": "One path, and the other nineteen keep",
-        "text": "Pick one path to carry through Modules 3, 4 and 5. Everything after this works better narrow: one résumé translated for one target, one proof artifact, one set of conversations. The other paths do not expire. People who changed target at week six still got there, and nobody got there holding six at once."
+        "text": "Try on as many paths as you want here. Run the report again, open any of the twenty in the deep-dive, and argue with the ranking. The one place it has to narrow is Module 4, where you translate your résumé for one target at a time, because a résumé aimed at three jobs reads as aimed at none. People who switched target at week six still got there."
       },
       {
         "type": "steps",
@@ -385,17 +447,20 @@
       }
     ],
     "takeaways": [
-      "Twenty options is a decision trap, and the fix is committing to one path rather than reading a twenty-first article.",
+      "Twenty options is a decision trap, and the fix is testing them against your own résumé rather than reading a twenty-first article.",
       "The report reads your real résumé and returns a readiness profile, your stage, three paths with entry doors, and a thirty-day plan.",
       "The readiness profile names how you are approaching this, whether that is a depleted expert who needs a recovery pace or a restless builder with four tabs open and no target. Read your watch-out line twice.",
       "It ranks paths on the evidence in your résumé, so disagreeing with it in writing is a legitimate way to choose.",
-      "One path carries through the next three modules, and the other nineteen are still there if you change your mind."
+      "Try as many paths as you like here. Module 4 is where it has to narrow to one at a time."
     ],
-    "sources": ["facts", "forums"]
+    "sources": [
+      "facts",
+      "forums"
+    ]
   },
   {
     "id": "2.7",
-    "tldr": "Three live postings, read side by side, tell you more about a job than any article about it. The requirements that appear in all three are the actual job. Everything else is one company's wish list, and the gap between them is your plan for Module 4.",
+    "tldr": "Three live postings, read side by side, tell you more about a job than any article about it. The requirements that appear in all three are the actual job. Everything else is one company's wish list, and the gap between them is your plan for Module 5.",
     "blocks": [
       {
         "type": "p",
@@ -417,7 +482,7 @@
           "Underline every requirement that appears in all three. That overlap is the job.",
           "Mark each underlined line you already have evidence for, from a caseload, an EMR rollout, a supervision year or a program you built.",
           "List what is left over. That is your gap list, and it is usually shorter than you feared.",
-          "Copy the exact words the postings use for the things you can already do. You will mirror that vocabulary in Module 3."
+          "Copy the exact words the postings use for the things you can already do. You will mirror that vocabulary in Module 4."
         ]
       },
       {
@@ -441,156 +506,31 @@
       },
       {
         "type": "p",
-        "text": "Applications sent in the first day or two of a posting are the ones that reliably get seen, so treat this week's reading as research rather than a submission deadline. You apply in Module 3, with a résumé that uses the vocabulary you are collecting now. If a posting shows up this week that you would take tomorrow, save it with the date and move on."
+        "text": "Applications sent in the first day or two of a posting are the ones that reliably get seen, so treat this week's reading as research rather than a submission deadline. You apply in Module 4, with a résumé that uses the vocabulary you are collecting now. If a posting shows up this week that you would take tomorrow, save it with the date and move on."
       },
       {
         "type": "p",
-        "text": "Three postings takes about forty minutes at a kitchen table, against the months of reading most people in the corpus describe before they do anything. It also gives you something to say in lesson 2.9, because a message that quotes a real posting reads nothing like a message from someone browsing."
+        "text": "Three postings takes about forty minutes at a kitchen table, against the months of reading most people in the corpus describe before they do anything. It also gives you something to say in lesson 3.3, because a message that quotes a real posting reads nothing like a message from someone browsing."
       },
       {
         "type": "steps",
         "items": [
           "Read three postings for your top path and three for your second.",
           "Write the gap list for both on one page.",
-          "Circle the gap that shows up in both lists. That is the proof artifact you build in Module 4."
+          "Circle the gap that shows up in both lists. That is the proof artifact you build in Module 5."
         ]
       }
     ],
     "takeaways": [
       "The requirements appearing in all three postings are the real job. Everything else is one company's wish list.",
       "Mark the lines you already have evidence for, and what is left is your gap list.",
-      "Copy the postings' exact vocabulary now, because Module 3 rewrites your résumé in those words.",
+      "Copy the postings' exact vocabulary now, because Module 4 rewrites your résumé in those words.",
       "Read past the requirements for travel percentage, the license line, the commission split and the knockout questions.",
-      "The gap that appears on both of your lists is the artifact to build in Module 4."
+      "The gap that appears on both of your lists is the artifact to build in Module 5."
     ],
-    "sources": ["facts", "forums"]
-  },
-  {
-    "id": "2.8",
-    "tldr": "The message that gets answered is short, specific, and asks for fifteen minutes about their path with no job attached. About one in four asks never gets a reply, which is a volume problem rather than a verdict. Three templates below: the first message, the single follow-up, and the thank-you that keeps the door open.",
-    "blocks": [
-      {
-        "type": "p",
-        "text": "Referrals decide most of the successful transitions in the file, and generic applications through Indeed and LinkedIn without one are what fails. The forum threads already suspect it. Under one exit post somebody asked whether the writer had found the job through network connections or just by submitting a résumé, and some version of that question sits under most of them."
-      },
-      {
-        "type": "quote",
-        "text": "Did you find the new position through network connections or just by submitting your resume?",
-        "from": "an SLP, r/SLPcareertransitions"
-      },
-      {
-        "type": "p",
-        "text": "The ask that works is small: fifteen minutes, about how they got in, with no job attached. Expect roughly one in four to go unanswered, which means three messages is usually two conversations. Nobody in the corpus reported being annoyed by a polite ask from an SLP. What they reported, repeatedly, was being asked for their actual résumé, more than twenty times under a single post, and mostly saying yes."
-      },
-      {
-        "type": "p",
-        "text": "Four things make a first message answerable. You name the specific move they made, so it is obvious you are writing to them and not to forty people. You ask for a fixed and small amount of time, you attach no job ask, and you make it easy to decline, which is the part most people leave out and the part that makes a stranger feel safe replying at all."
-      },
-      {
-        "type": "script",
-        "title": "The first message (LinkedIn or email, under 90 words)",
-        "text": "Hi [Name], I'm an SLP in [setting] and I'm looking at [target title] roles. I found you because you made the same move, and I'd rather ask you than read another article about it.\n\nWould you be up for 15 minutes in the next couple of weeks? I mostly want to know how you got the first one and what you'd do differently. No job ask, I promise.\n\nEither way, thank you for putting your path somewhere someone like me could find it.\n\n[Your name]"
-      },
-      {
-        "type": "p",
-        "text": "One follow-up, seven to ten days later, and then you stop. Silence is almost always a full inbox and a bad Tuesday. A second follow-up converts almost nobody and costs you the option of asking again in six months, when you have something new to say."
-      },
-      {
-        "type": "script",
-        "title": "The follow-up, once, seven to ten days later",
-        "text": "Hi [Name], floating this back up in case it got buried.\n\nStill would love 15 minutes on how you got into [target title]. If a call is too much, I'd happily take two sentences by message instead: what surprised you most in your first three months?\n\nThank you either way. [Your name]"
-      },
-      {
-        "type": "list",
-        "items": [
-          "What did you actually do yesterday? Ask for the day, not the job description.",
-          "What did your employer require, and what did they ignore on your résumé?",
-          "Which part of clinical work turned out to be the most useful, and which part did you have to unlearn?",
-          "What would you do differently if you were starting this month?",
-          "Who else should I be talking to? This is the only question that turns a conversation into an introduction, so never skip it."
-        ]
-      },
-      {
-        "type": "script",
-        "title": "The thank-you, same day",
-        "text": "[Name], thank you for the time. The thing I'm taking away is [one specific sentence they said, in their words].\n\nI'm going to [the one concrete thing you'll do because of it] in the next two weeks, and I'll let you know how it lands. If [person they mentioned] would be open to the same 15 minutes, I'd be grateful for an introduction whenever it's convenient.\n\nThank you again. [Your name]"
-      },
-      {
-        "type": "p",
-        "text": "Send the thank-you the same day, then do the thing you said you would do, and tell them two weeks later that you did it. That second note is what turns a stranger into someone who forwards your résumé to a hiring manager, built out of two emails and one kept promise. Fill your setting, your target title and your name into all three templates tonight, and leave the [Name] blanks empty for the next lesson."
-      }
-    ],
-    "takeaways": [
-      "Referrals decide most documented transitions, and applications sent without one are what fails.",
-      "The ask is fifteen minutes about their path with no job attached, and about one in four goes unanswered.",
-      "A first message works when it names their specific move, asks for a fixed small amount of time, and makes it easy to decline.",
-      "Follow up once, seven to ten days later, then stop.",
-      "\"Who else should I be talking to?\" is the question that turns a conversation into an introduction."
-    ],
-    "sources": ["facts", "forums"]
-  },
-  {
-    "id": "2.9",
-    "tldr": "Three messages, twenty minutes, tonight. About one in four gets no answer, so three sent is usually two conversations, and one conversation is worth more than another week of reading.",
-    "blocks": [
-      {
-        "type": "p",
-        "text": "Everything in this module so far has been reading. This is the first step that involves another person, and it is the one people postpone for months. I put it off myself and called it research, which is what research becomes once you already know the answer."
-      },
-      {
-        "type": "p",
-        "text": "Three people, and they do not all have to be strangers. In order of value, an SLP who now holds the title you want, because they have already done the exact translation you are attempting. Then anyone who holds that title from any background, because they know what their employer actually required. Then someone at a company on your list, because a name inside beats a posting outside. The companies directory holds 120 employers that have hired for these roles, and the deep-dive tool in 2.7 already listed the ones matching your path."
-      },
-      {
-        "type": "h",
-        "text": "Why three, and why tonight"
-      },
-      {
-        "type": "p",
-        "text": "Three is a volume decision. About one in four gets no answer at all, so one message is a coin flip and three is a near-certainty of one real conversation. Sending three at once also stops you reading a single silence as a verdict on you. That is what ends most outreach after message one. Do it tonight, with the templates already filled in, because a tired brain will not do this on a Thursday three weeks from now."
-      },
-      {
-        "type": "quote",
-        "text": "burnt out brains really struggle to use executive functions, so planning and executing a career change is gonna be hard",
-        "from": "an SLP, quoted in the research file"
-      },
-      {
-        "type": "tool",
-        "name": "contact-tracker"
-      },
-      {
-        "type": "steps",
-        "items": [
-          "Set a timer for twenty minutes.",
-          "Open the three profiles you saved in lesson 2.3 or in the deep-dive tool.",
-          "Paste the first-message template, change the name, the setting and the target title, and read it once for anything that sounds like a cover letter.",
-          "Send all three before the timer runs out.",
-          "Log them in the tracker with today's date, and set a reminder eight days out for the single follow-up."
-        ]
-      },
-      {
-        "type": "callout",
-        "tone": "warm",
-        "title": "Do not ask for a job in the first message",
-        "text": "The ask is fifteen minutes about their path. A job ask puts a stranger in the position of saying no to something they cannot give you, and it is the most common reason these messages go unanswered. The referral comes later, at the end of a good conversation, when you ask who else you should be talking to."
-      },
-      {
-        "type": "p",
-        "text": "What comes back is rarely a job. It is a description of an ordinary Tuesday, the name of the credential their employer actually cared about, a posting that is not public yet, or a second name. Any one of those is worth more than another week of reading, and by Module 4 you will need one of these people to vouch for you."
-      }
-    ],
-    "action": {
-      "label": "I sent three",
-      "prompt": "Fill in the first-message template for three people: an SLP who now holds your target title, anyone else with that title, and someone at a company on your list. Change the name, the setting and the target role in each one. Send all three tonight, log them in the tracker with today's date, and set a reminder eight days out for the single follow-up.",
-      "done": "Three sent. Expect one silence, and that is the math working rather than anything about you."
-    },
-    "takeaways": [
-      "Message three people tonight: an SLP with your target title, anyone with that title, and someone at a company on your list.",
-      "About one in four asks goes unanswered, so three sent is usually two conversations.",
-      "Sending all three at once keeps a single silence from reading as a verdict.",
-      "Never ask for a job in the first message. Ask for fifteen minutes about how they got where they are.",
-      "What comes back is a real Tuesday, a credential that mattered, an unlisted posting, or a second name."
-    ],
-    "sources": ["facts", "forums"]
+    "sources": [
+      "facts",
+      "forums"
+    ]
   }
 ]

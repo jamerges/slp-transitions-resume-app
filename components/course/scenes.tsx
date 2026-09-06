@@ -124,7 +124,7 @@ export function JourneyMap({ stops, current }: { stops: { n: number; title: stri
     return `${d} C ${mx} ${prev.y}, ${mx} ${pt.y}, ${pt.x} ${pt.y}`;
   }, "");
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block", maxWidth: 900 }} role="img" aria-label="Your route through the six modules">
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block", maxWidth: 900 }} role="img" aria-label="Your route through the modules">
       <path d={path} fill="none" stroke="rgba(255,255,255,0.22)" strokeWidth={3} strokeLinecap="round" strokeDasharray="2 9" />
       {stops.map((s, i) => {
         const { x, y } = pts[i];

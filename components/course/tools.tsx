@@ -88,15 +88,19 @@ function PivotReport({ pathSlug }: ToolProps) {
 
 /* --------------------------- path deep-dive (2.7) --------------------------- */
 function PathDeepDive({ pathSlug, shared }: ToolProps) {
-  const candidates: string[] = pathSlug ? [pathSlug, ...(shared["1.5"]?.top || []).filter((s: string) => s !== pathSlug)].slice(0, 2) : (shared["1.5"]?.top || []).slice(0, 2);
-  const [slug, setSlug] = useState<string>(candidates[0] || "customer-success");
+  const suggested: string[] = pathSlug ? [pathSlug, ...(shared["1.5"]?.top || []).filter((s: string) => s !== pathSlug)].slice(0, 2) : (shared["1.5"]?.top || []).slice(0, 2);
+  // Every path stays openable: people try several on before Module 4 narrows to one.
+  const [all, setAll] = useState(false);
+  const candidates: string[] = all ? Object.keys(PATHS) : (suggested.length ? suggested : Object.keys(PATHS).slice(0, 2));
+  const [slug, setSlug] = useState<string>(suggested[0] || "customer-success");
   const p = PATHS[slug];
   const roles = rolesFor(slug).slice(0, 8);
   const companies = COMPANIES_DB.filter((c) => c.roles.some((r) => r.toLowerCase().includes(p.roleOption.split(" /")[0].toLowerCase().split(" ")[0]))).slice(0, 8);
   return (
     <div>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
-        {(candidates.length ? candidates : Object.keys(PATHS)).map((s) => <button key={s} type="button" onClick={() => setSlug(s)} style={{ padding: "7px 12px", borderRadius: 999, border: `1.5px solid ${s === slug ? "var(--accent)" : "var(--border)"}`, background: s === slug ? "var(--accent-bg-subtle)" : "var(--card)", color: s === slug ? "var(--accent)" : "var(--text)", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: font.sans }}>{PATHS[s].icon} {PATHS[s].label}</button>)}
+        {candidates.map((s) => <button key={s} type="button" onClick={() => setSlug(s)} style={{ padding: "7px 12px", borderRadius: 999, border: `1.5px solid ${s === slug ? "var(--accent)" : "var(--border)"}`, background: s === slug ? "var(--accent-bg-subtle)" : "var(--card)", color: s === slug ? "var(--accent)" : "var(--text)", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: font.sans }}>{PATHS[s].icon} {PATHS[s].label}</button>)}
+        {!all && <button type="button" onClick={() => setAll(true)} style={{ padding: "7px 12px", borderRadius: 999, border: "1.5px dashed var(--border)", background: "transparent", color: "var(--muted)", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: font.sans }}>Try another path</button>}
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }} className="tos-two-col">
         <Panel>

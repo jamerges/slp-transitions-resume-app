@@ -1,647 +1,460 @@
 [
- {
-  "id": "5.1",
-  "tldr": "Career changers get rejected for three specific reasons, and none of them is that you can't do the job. Once you know what the three are, most interview prep becomes obvious.",
-  "blocks": [
-   {
-    "type": "p",
-    "text": "The first time I got a real interview for a non-clinical job, I prepared the wrong thing. I rehearsed my strengths and had stories about my caseload ready. What I had not prepared for was whether I would still be there in a year, or whether I would miss the kids and go back."
-   },
-   {
-    "type": "p",
-    "text": "Hiring managers rarely say that part out loud. They ask something softer and listen for it anyway."
-   },
-   {
-    "type": "h",
-    "text": "The three doubts"
-   },
-   {
-    "type": "p",
-    "text": "Across documented transitions, the same three reasons come up for why a strong clinician gets passed over, and each one has a fixable answer."
-   },
-   {
-    "type": "list",
-    "items": [
-     "**Retention doubt.** Will this person bail back to clinical work the moment it gets hard? Six years of training and a licence look, from the outside, like a strong pull backward.",
-     "**Jargon they cannot map.** Your experience is described in words that mean nothing to a hiring manager outside healthcare, so they cannot tell whether you have done the job or not.",
-     "**No proof of investment.** Nothing on the page shows you have spent any of your own time on this field. Anyone can say they are interested."
+  {
+    "id": "5.1",
+    "tldr": "Certificates open a door only when they sit next to translated experience and something you made. One thing you built beats three things you paid for.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "When I first started looking, my instinct was to go get qualified again. Our field trains that instinct into us: another certification, another CEU, another set of letters, and it feels like progress because it feels like studying. It is also the most expensive way to stall."
+      },
+      {
+        "type": "quote",
+        "text": "no one took me seriously with a CAPM",
+        "from": "a transitioned SLP, now a project manager"
+      },
+      {
+        "type": "p",
+        "text": "She got the certificate, and on its own it did nothing. What moved her was the certificate sitting next to experience a hiring manager could map, plus evidence she had already done some of the work."
+      },
+      {
+        "type": "h",
+        "text": "What hiring managers actually check"
+      },
+      {
+        "type": "quote",
+        "text": "I found a lot of jobs didn't care that I had a certificate in XYZ. They wanted a title and experience of PM.",
+        "from": "r/SLPcareertransitions"
+      },
+      {
+        "type": "p",
+        "text": "You cannot manufacture a title, but you can manufacture evidence. A thing you made on your own time answers the third doubt from lesson 6.1, because it proves you have spent something of yours on this field."
+      },
+      {
+        "type": "h",
+        "text": "Where certificates do earn their place"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Project management.** The Google Project Management certificate comes up repeatedly as affordable and digestible, and it teaches you the vocabulary you need to describe work you already did. CAPM runs about $175 and PMP about $400 plus membership.",
+          "**Healthcare data.** The Google Data Analytics certificate or DataCamp gives you the tools, and the tools are genuinely missing. You cannot fake SQL.",
+          "**Clinical informatics.** CAHIMS through HIMSS is the self-serve entry credential and has no experience prerequisite, which matters because Epic certification cannot be bought at all. It requires an employer to sponsor you."
+        ]
+      },
+      {
+        "type": "callout",
+        "tone": "warm",
+        "title": "Where they do not",
+        "text": "Instructional design is the clearest case. Hiring managers want the portfolio, and a $3,000 certificate buys you a portfolio identical to everyone else's from the same program. One transitioner describes bootcamp graduates arriving with generic portfolios that all look the same, which is worse than one honest piece."
+      },
+      {
+        "type": "p",
+        "text": "The UX version of the same rule is the sharpest sentence I found in the research: one honest case study including the wrong turns is worth more than six polished ones."
+      },
+      {
+        "type": "h",
+        "text": "So what do you build"
+      },
+      {
+        "type": "p",
+        "text": "Something small, real and specific to the path you chose in Module 2, built in a weekend rather than a semester. It has to come out of work you have already done, because that is the part nobody else applying can copy."
+      }
+    ],
+    "takeaways": [
+      "A certificate works when it sits next to translated experience and evidence you have done some of the work.",
+      "Project management, healthcare data and clinical informatics are the three paths where a credential genuinely helps.",
+      "Epic certification cannot be bought and needs employer sponsorship. CAHIMS is the self-serve alternative.",
+      "In instructional design and UX, a portfolio beats a certificate, and one honest piece beats six polished ones."
+    ],
+    "sources": [
+      "facts",
+      "forums"
     ]
-   },
-   {
-    "type": "p",
-    "text": "There is a fourth, quieter one: a worry that your salary expectations are anchored somewhere they cannot reach, which lesson 5.5 handles."
-   },
-   {
-    "type": "h",
-    "text": "What each doubt actually wants"
-   },
-   {
-    "type": "p",
-    "text": "Retention doubt wants evidence that leaving was a decision rather than a flinch, which is exactly what your pull sentence from Module 1 does."
-   },
-   {
-    "type": "p",
-    "text": "The jargon problem wants translation, which is Module 3's whole job. Say portfolio, stakeholders, outcomes and adoption, because those are the words on their job posting."
-   },
-   {
-    "type": "p",
-    "text": "The proof problem wants an artifact: a Rise module, a rebuilt spreadsheet, a one-page workflow write-up, something you made on a weekend that nobody asked you for. In an interview it does more work than any certificate."
-   },
-   {
-    "type": "quote",
-    "text": "lots of prospective employees are skeptical about my actually wanting to transition into a different career field because of my background",
-    "from": "an SLP on r/slp"
-   },
-   {
-    "type": "h",
-    "text": "The shape of a good answer"
-   },
-   {
-    "type": "p",
-    "text": "Every answer to a career-change question has the same three parts, in this order. Where you are going, what you did to get ready, and one accomplishment with a number that maps onto a problem they have in the first ninety days."
-   },
-   {
-    "type": "p",
-    "text": "There is no explanation of what went wrong anywhere in that shape. Burnout, caseload sizes, productivity percentages and documentation hours are all true, and none of them belong in the room, because they confirm the doubt rather than answering it."
-   },
-   {
-    "type": "callout",
-    "tone": "soft",
-    "title": "The line that lands in customer success",
-    "text": "One transitioner opens with a version of this: I have been doing customer success my whole career, I just called it patient and family care. Then a metric. It works because it reframes the entire résumé in one sentence and then proves it."
-   },
-   {
-    "type": "p",
-    "text": "You are being sorted against three doubts, and every one of them has an answer you can build this week."
-   }
-  ],
-  "takeaways": [
-   "Career changers get screened out for three reasons: retention doubt, jargon that cannot be mapped, and no proof of investment.",
-   "Your pull sentence answers retention doubt, your translated bullets answer the jargon problem, and one artifact answers the proof problem.",
-   "Every good answer has the same shape: where you are going, how you prepared, one accomplishment with a number.",
-   "Burnout is a true reason and a bad answer. It confirms the doubt they already have."
-  ],
-  "sources": [
-   "facts",
-   "forums"
-  ]
- },
- {
-  "id": "5.2",
-  "tldr": "Your bridge statement is the sixty seconds that answers why are you leaving clinical work. Three parts: pull, preparation, proof. Build it once, say it until it sounds like you, and use it everywhere.",
-  "blocks": [
-   {
-    "type": "p",
-    "text": "You will answer this question in every interview, on every screening call, and probably at a wedding. Why are you leaving? Getting a version you believe, out loud, is worth more preparation than anything else in this module."
-   },
-   {
-    "type": "p",
-    "text": "The question sounds like it wants the story of what went wrong, when it wants to know whether you have thought about this and whether you are heading somewhere specific."
-   },
-   {
-    "type": "h",
-    "text": "Three parts, sixty seconds"
-   },
-   {
-    "type": "steps",
-    "items": [
-     "**Pull.** One sentence about where you are going. This is the sentence you wrote at the Module 1 checkpoint, and it is the only part that must be true to you rather than optimised.",
-     "**Preparation.** One sentence about what you have done to get ready. The artifact, the conversations, the course, the certificate if you took one.",
-     "**Proof.** One accomplishment from clinical work, with a real number, mapped onto a problem this role has in its first ninety days."
-    ]
-   },
-   {
-    "type": "p",
-    "text": "That is the whole structure, and it takes about forty-five seconds at a normal speaking pace. Longer, and you start explaining, which sounds like justifying."
-   },
-   {
-    "type": "h",
-    "text": "Push and pull, in practice"
-   },
-   {
-    "type": "p",
-    "text": "Push is what you are escaping and pull is what you are moving toward, and the same fact can be either, depending on the sentence you put around it."
-   },
-   {
-    "type": "example",
-    "title": "The same career, two framings",
-    "before": "I'm burned out. The caseload was 62 kids across three buildings and I was doing notes at 9pm every night. I need out of the schools.",
-    "after": "I want to work on the systems that decide how those 62 kids get served, rather than absorbing the consequences of them one session at a time. That's why I'm looking at program management."
-   },
-   {
-    "type": "example",
-    "title": "Preparation, said badly and well",
-    "before": "I've been researching the field and I'm a fast learner.",
-    "after": "I rebuilt one of my own trainings as a Rise module, and I talked to three people doing this job about what their first month looked like."
-   },
-   {
-    "type": "tool",
-    "name": "bridge-builder"
-   },
-   {
-    "type": "h",
-    "text": "Then say it out loud"
-   },
-   {
-    "type": "p",
-    "text": "Read it to a person, or to a recorder, five times. The first two will sound rehearsed, and around the fourth it starts sounding like something you actually think, which is what you want when the question arrives in a form you did not expect."
-   },
-   {
-    "type": "callout",
-    "tone": "warm",
-    "title": "One thing to check",
-    "text": "If any version of your statement contains the words burnout, paperwork, productivity, caseload size, or administration, rewrite that sentence. Those words are all true. They also hand the interviewer the retention doubt for free."
-   }
-  ],
-  "action": {
-   "label": "Save my statement",
-   "prompt": "Fill in the three parts above, then say the whole thing out loud five times: to a partner, a friend, or your phone's voice recorder. When it stops sounding rehearsed, it is ready.",
-   "done": "Saved. You will use that statement in every screening call from here."
   },
-  "takeaways": [
-   "The bridge statement has three parts: where you are going, how you prepared, one accomplishment with a number.",
-   "Push is what you are escaping and pull is where you are going, and the same fact can usually be framed either way.",
-   "Forty-five seconds is about right. Longer and you start justifying.",
-   "Say it aloud five times before you say it to a hiring manager."
-  ],
-  "sources": [
-   "facts",
-   "forums"
-  ]
- },
- {
-  "id": "5.3",
-  "tldr": "Six questions do most of the screening for career changers. Each one has a shape of answer that works and a common answer that quietly disqualifies you.",
-  "blocks": [
-   {
-    "type": "p",
-    "text": "Interviews feel unpredictable, but the questions a career changer gets are not. Six of them do most of the work, and they show up in phone screens, on application forms, and in the first ten minutes with a hiring manager."
-   },
-   {
-    "type": "tool",
-    "name": "screening-questions"
-   },
-   {
-    "type": "h",
-    "text": "The pattern underneath"
-   },
-   {
-    "type": "p",
-    "text": "Every good answer above uses the vocabulary of the role rather than of the clinic, and contains at least one number that could be checked."
-   },
-   {
-    "type": "p",
-    "text": "The weak ones reach for a quality instead of an event: communication skills, detail-oriented, works well under pressure, passionate about helping people. Those describe about ninety percent of applicants and prove nothing about any of them."
-   },
-   {
-    "type": "example",
-    "title": "A behavioural answer, twice",
-    "before": "I'm great with difficult parents. I always stay calm and find common ground.",
-    "after": "A parent refused an AAC trial for four months because she thought it would stop her son talking. I brought her the research, then a two-week trial with a defined stop point. She agreed to the trial and requested the device herself at week three."
-   },
-   {
-    "type": "p",
-    "text": "The second answer has an objection, an intervention and an outcome, and a customer success manager hears their own job description in it."
-   },
-   {
-    "type": "h",
-    "text": "The written screen"
-   },
-   {
-    "type": "p",
-    "text": "Application forms are where a lot of career changers quietly lose, because the knockout questions filter more people than résumé parsing does: years of experience in the field, do you have X certification, are you authorised to work without sponsorship. Answer them honestly, and where a form gives you a text box, use it to bridge rather than to apologise."
-   },
-   {
-    "type": "callout",
-    "tone": "warm",
-    "title": "On identical answers",
-    "text": "One hiring manager reported that 35 percent of applicants gave word-for-word identical answers to her screening questions, because they had all asked the same tool the same way. A screening box is the cheapest place in the whole process to sound like a person."
-   },
-   {
-    "type": "p",
-    "text": "Pick the two questions above you would fumble today, write your answers longhand, then cut them by half. Short and specific beats complete every time."
-   }
-  ],
-  "takeaways": [
-   "Six questions do most of the screening for career changers, and each has a recognisable good shape.",
-   "Weak answers name a quality. Strong answers describe an event with a number in it.",
-   "Behavioural answers need an objection, what you did, and the outcome.",
-   "Application knockout questions filter more people than résumé parsing does."
-  ],
-  "sources": [
-   "facts",
-   "forums"
-  ]
- },
- {
-  "id": "5.4",
-  "tldr": "Practise the five questions with a coach that knows your path and your own pull sentence. It tells you what landed, what read as escaping rather than moving toward, and where a number was missing.",
-  "blocks": [
-   {
-    "type": "p",
-    "text": "Reading about interview answers and giving one are different skills, and the gap closes with repetition you cannot easily arrange when the only people who would practise with you are the people you have not told yet."
-   },
-   {
-    "type": "p",
-    "text": "So practise here first. The coach below runs five questions for your path, in the order a real screen takes them, and gives you feedback after each answer. It knows your pull sentence from Module 1 and the documented range for your path."
-   },
-   {
-    "type": "h",
-    "text": "How to get value from it"
-   },
-   {
-    "type": "steps",
-    "items": [
-     "Answer out loud first, as if the question came from a person, then type roughly what you said. Typing a polished version you would never say aloud defeats the exercise.",
-     "Let it be bad the first time. The first run is diagnostic, not a performance.",
-     "Watch specifically for push language creeping in, and for answers with no number in them.",
-     "Run it again two days later. The second run is where it starts to feel like yours."
+  {
+    "id": "5.2",
+    "tldr": "Every path has one artifact that proves you can do the job, built from work you have already done. Pick yours and read the brief: what to make, how long it takes, what it proves, where it lives.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "An artifact is one thing, made in a few hours, that a hiring manager can look at and think: this person has already been doing a version of my job."
+      },
+      {
+        "type": "p",
+        "text": "The good ones come out of your real clinical work, so nobody else applying has the same one. They read in under two minutes, and they are the target role's actual work product rather than a description of your interest in it."
+      },
+      {
+        "type": "h",
+        "text": "Pick your path's brief"
+      },
+      {
+        "type": "tool",
+        "name": "artifact-menu"
+      },
+      {
+        "type": "h",
+        "text": "Two rules that make these work"
+      },
+      {
+        "type": "p",
+        "text": "First, use real detail changed enough to be safe: no names, no identifying details, no protected health information, and check your employer's policy before anything goes public. A rebuilt spreadsheet with your own progress-monitoring numbers is fine. A screenshot of an actual chart is not."
+      },
+      {
+        "type": "p",
+        "text": "Second, write the short process note: three or four sentences on what the problem was, what you decided and what you would do differently. That note is where the judgement shows, and judgement is what they are hiring."
+      },
+      {
+        "type": "example",
+        "title": "An artifact described two ways",
+        "before": "I made a training module about dysphagia for my portfolio.",
+        "after": "I rebuilt the aspiration-precautions training I ran for nursing staff as a ten-minute Rise module, with a knowledge check at the end. The original took me three tries to get right because nurses did not need the physiology, they needed the four decision points. The module leads with those."
+      },
+      {
+        "type": "p",
+        "text": "Three signals from four sentences: the person can teach, can edit and knows who the learner is, and none of it needed a certificate."
+      },
+      {
+        "type": "callout",
+        "tone": "soft",
+        "title": "If you have already made one",
+        "text": "Most SLPs have. The parent handout you redesigned because the district's version was unreadable. The tracking sheet the whole department borrowed. The training you gave twice. All of those already exist, and the work is picking one of them and writing the short note that explains the thinking behind it."
+      }
+    ],
+    "takeaways": [
+      "An artifact is one thing built from your real work that a stranger can read in two minutes.",
+      "It should be the target role's actual work product, not a description of your interest in the role.",
+      "Change or remove identifying details and check your employer's policy before publishing anything.",
+      "The three-sentence process note is where your judgement shows, and judgement is what gets hired."
+    ],
+    "sources": [
+      "facts",
+      "forums"
     ]
-   },
-   {
-    "type": "tool",
-    "name": "mock-interview"
-   },
-   {
-    "type": "h",
-    "text": "What to listen for in yourself"
-   },
-   {
-    "type": "p",
-    "text": "Three tells that a practice answer needs work. You used the word just, as in I just did therapy. You explained your job title before you described what you did, or you finished a story without saying what changed as a result."
-   },
-   {
-    "type": "quote",
-    "text": "we're all master's-level smart; I promise a lot of folks can do what I do.",
-    "from": "a transitioned SLP, r/SLPcareertransitions"
-   },
-   {
-    "type": "p",
-    "text": "The interview is the last place to undersell six years of training."
-   }
-  ],
-  "action": {
-   "label": "Log five answers",
-   "prompt": "Run the mock interview above end to end. Answer all five questions out loud, then type what you said. Read the feedback, then run it a second time in a day or two.",
-   "done": "Five answered. Run it again whenever an interview is coming up. It never gets worse."
   },
-  "takeaways": [
-   "Answer out loud, then type what you said. Writing a polished version you would not speak defeats the exercise.",
-   "The first run is diagnostic. Let it be bad.",
-   "Three tells that an answer needs work: the word just, explaining your title before your work, and no stated outcome.",
-   "Run it twice, a couple of days apart, before a real interview."
-  ],
-  "sources": [
-   "facts",
-   "forums"
-  ]
- },
- {
-  "id": "5.5",
-  "tldr": "About thirty percent of people negotiate, most who ask get something, and offers are almost never withdrawn for asking. Anchor on the documented range for your path rather than on your clinical salary.",
-  "blocks": [
-   {
-    "type": "p",
-    "text": "This is the lesson where being an SLP works against you, because our field has almost no negotiation culture. Pay scales are published, steps are fixed, and the honest answer to what can I ask for is usually nothing, which is a habit that follows people out and costs them."
-   },
-   {
-    "type": "h",
-    "text": "What the evidence says"
-   },
-   {
-    "type": "numbers",
-    "items": [
-     {
-      "value": "~30%",
-      "label": "of people negotiate their offer at all (Pew 2023; ZipRecruiter Q4 2025)"
-     },
-     {
-      "value": "66–91%",
-      "label": "of those who ask get something (Pew; Fidelity; ZipRecruiter)"
-     },
-     {
-      "value": "~$5,000",
-      "label": "more per year for negotiators in the best field study of new hires"
-     },
-     {
-      "value": "84%",
-      "label": "of employers say they expect a counter"
-     }
+  {
+    "id": "5.3",
+    "tldr": "Give the artifact one week and two sessions. Draft it badly first, finish it second, then put it somewhere a stranger can find it.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "This is the week the program stops being reading and becomes the first thing you make."
+      },
+      {
+        "type": "h",
+        "text": "A schedule that works alongside a caseload"
+      },
+      {
+        "type": "steps",
+        "items": [
+          "**Session one, ninety minutes.** Get the ugly version out. No formatting, no polish. If it is a document, write it in the plainest tool you have. If it is a module, block out the screens on paper first.",
+          "**Let it sit two days.** You will see the obvious fix on the drive home, not at the desk.",
+          "**Session two, ninety minutes.** Cut a third of it, then make it look finished. Consistent headings, one font, no typos in the first line.",
+          "**Twenty minutes.** Write the process note: the problem, what you decided, what you would change.",
+          "**Ten minutes.** Put it where a stranger can reach it. A public link, a PDF you can attach, a LinkedIn post with the link in it."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Three and a half hours across a week is the entire ask, less time than most people spend rewriting a résumé for the fourth time."
+      },
+      {
+        "type": "tool",
+        "name": "artifact-menu"
+      },
+      {
+        "type": "h",
+        "text": "When you get stuck"
+      },
+      {
+        "type": "p",
+        "text": "Two failure modes, both predictable. The first is scope: you start building the definitive resource rather than one small thing, and if a third session looms, cut it in half rather than finish it. The second is perfectionism, which in clinicians presents as thoroughness, and the bar here is lower than the one in your head: good enough that a stranger sees the thinking."
+      },
+      {
+        "type": "callout",
+        "tone": "soft",
+        "title": "What this one artefact gets you",
+        "text": "Once this exists you have an answer to what have you done to prepare, a link on your LinkedIn, something concrete to send after an informational interview, and a story for the interview question about proof. One weekend, four uses."
+      }
+    ],
+    "action": {
+      "label": "I made it",
+      "prompt": "Pick your path's brief above and give it two sessions this week: ninety minutes to draft badly, ninety minutes to finish, twenty for the process note. Then paste the link.",
+      "done": "Made. That is the thing most applicants do not have, and it took you a weekend."
+    },
+    "takeaways": [
+      "Two ninety-minute sessions with two days between them, plus twenty minutes for the process note.",
+      "Draft it badly first. The obvious fix arrives away from the desk.",
+      "If it needs a third session, cut it in half rather than finishing it.",
+      "One artifact answers the preparation question, fills a LinkedIn link, follows up an informational interview, and becomes an interview story."
+    ],
+    "sources": [
+      "facts",
+      "forums"
     ]
-   },
-   {
-    "type": "p",
-    "text": "The fear that asking will cost you the offer is close to unfounded. Withdrawals are rare enough in the employer data to be a rounding error, and most hiring managers build a counter into their plan."
-   },
-   {
-    "type": "callout",
-    "tone": "warm",
-    "title": "How solid this is",
-    "text": "The dollar figures come from two modest samples of new hires and graduates, and none of the surveys sampled SLPs. Treat them as evidence that asking is normal and usually pays, not as a promise of a specific number."
-   },
-   {
-    "type": "h",
-    "text": "Anchor on the range, not on your clinical salary"
-   },
-   {
-    "type": "p",
-    "text": "Your current salary is the wrong reference point in both directions. If it is low for the new field you will underask, and if it is high you will sound unrealistic without the documented range to back you."
-   },
-   {
-    "type": "paths",
-    "note": "Your path's documented band. The middle of it is a reasonable anchor for a first non-clinical role with strong translated experience."
-   },
-   {
-    "type": "p",
-    "text": "In at least twelve states and Washington D.C. the range has to be posted on the job ad, and in around twenty states an employer cannot ask what you currently earn. Both lists change several times a year, so check a current tracker rather than trusting a number in any course, including this one. If the range is posted, negotiate inside it."
-   },
-   {
-    "type": "script",
-    "title": "When they ask what you're expecting",
-    "text": "Based on what I've seen for this role, I've been looking at the [$X to $Y] range. I care about the whole package though, so if the base sits at the lower end I'd want to talk about [remote days / PTO / start date]. What range did you have budgeted?"
-   },
-   {
-    "type": "script",
-    "title": "Countering an offer",
-    "text": "Thank you, I'm glad we got here. I'd like to accept at [$Y]. That's inside the range you posted, and it reflects [the specific thing: the clinical background the role asks for, the systems experience, the licence]. If the base is fixed, could we look at [sign-on / an early review / extra PTO]?"
-   },
-   {
-    "type": "script",
-    "title": "Asking for time",
-    "text": "This is great news, thank you. Could I have until [day] to go through it properly? I want to say yes with my full attention rather than in the first ten minutes."
-   },
-   {
-    "type": "h",
-    "text": "The rest of the package"
-   },
-   {
-    "type": "p",
-    "text": "Base is rarely the whole number. In customer success the split runs roughly eighty-three percent base to seventeen percent variable in the one survey with published numbers, and in sales it moves toward half and half, which changes how a $110,000 offer should feel when your mortgage is fixed."
-   },
-   {
-    "type": "list",
-    "items": [
-     "**Variable pay.** Ask what the target is, how it is measured, and when it pays. A target nobody hit last year is not income.",
-     "**Equity, at startups.** Grants typically vest over four years with a one-year cliff, so leaving inside twelve months means it was worth nothing. Ask how many shares, out of how many total.",
-     "**Sign-on bonus.** A common tool, though only about fifteen percent of new hires got one in late 2025. It exists mostly for people who ask.",
-     "**PTO, remote days, start date.** All routinely negotiated, and often easier to move than base."
-    ]
-   },
-   {
-    "type": "h",
-    "text": "When the number is low"
-   },
-   {
-    "type": "p",
-    "text": "Sometimes the offer is genuinely below the range and they will not move. The decision rule is the runway you calculated in Module 4, the ladder inside the role, and whether the title gets you the next job. Non-clinical work has ladders where clinical work mostly has lateral moves, which is why a lower first number can still be the better ten-year decision."
-   },
-   {
-    "type": "p",
-    "text": "The clearest documented case is the research coordinator path at $48,000 to $72,000, which sits below where most SLPs already are. One person moved from a university coordinator role into pharma patient safety for ten thousand more, then another fifteen thousand eighteen months later. Taking that job as a destination is a mistake, and taking it as a bridge with a date on it is a strategy."
-   },
-   {
-    "type": "callout",
-    "tone": "soft",
-    "title": "Before you answer any offer",
-    "text": "Say the counter out loud once, to a person, before you say it to them. The sentence that feels outrageous in your head almost always sounds reasonable in the air."
-   }
-  ],
-  "takeaways": [
-   "About thirty percent of people negotiate, and two thirds or more of those who ask get something.",
-   "Offers are almost never withdrawn for negotiating, and most employers expect a counter.",
-   "Anchor on the documented range for the path, not on your clinical salary.",
-   "In customer success most of the pay is base. In sales roughly half is variable, so ask how the target gets measured.",
-   "A below-range first offer can still be right if the role has a ladder and you put a date on it."
-  ],
-  "sources": [
-   "facts",
-   "forums",
-   "bls"
-  ]
- },
- {
-  "id": "5.6",
-  "tldr": "One documented transition took 113 tailored applications, 7 interviews and 1 offer over eleven months. Tracking the numbers turns silence into a rate you can work with.",
-  "blocks": [
-   {
-    "type": "p",
-    "text": "Somewhere around week six, the silence starts to feel personal, so it is worth knowing what the numbers looked like for the people who got where you are going."
-   },
-   {
-    "type": "numbers",
-    "items": [
-     {
-      "value": "113",
-      "label": "tailored applications, one documented transition"
-     },
-     {
-      "value": "7",
-      "label": "interviews from those applications"
-     },
-     {
-      "value": "1",
-      "label": "offer, taken, after eleven months"
-     },
-     {
-      "value": "6–15",
-      "label": "months, the typical documented transition"
-     }
-    ]
-   },
-   {
-    "type": "p",
-    "text": "Another SLP sent more than five hundred applications over six months before landing a fully remote analyst role above her clinical salary, and a third describes a year of daily effort."
-   },
-   {
-    "type": "quote",
-    "text": "I applied to more than 500 jobs. I built a portfolio, earned certifications, rewrote my resume and cover letters dozens of times",
-    "from": "a transitioned SLP, r/SLPcareertransitions"
-   },
-   {
-    "type": "h",
-    "text": "Why the volume is higher than it used to be"
-   },
-   {
-    "type": "p",
-    "text": "Postings now average around 242 applications each, roughly double what they drew in 2022, so a thoughtful application sent on day one beats a perfect one sent on day nine."
-   },
-   {
-    "type": "h",
-    "text": "Track four numbers, not your mood"
-   },
-   {
-    "type": "p",
-    "text": "Applications sent, screens, interviews, offers: that is the entire dashboard, and once you have twenty logged you have a ratio that tells you which stage is broken."
-   },
-   {
-    "type": "list",
-    "items": [
-     "**Applications but no screens.** The résumé is still reading clinical, or you are applying outside your documented range. Back to Module 3.",
-     "**Screens but no interviews.** The bridge statement is doing the wrong work, usually push instead of pull. Lesson 5.2.",
-     "**Interviews but no offers.** Usually the proof problem. One artifact fixes more of this than another certificate will.",
-     "**Nothing at all for four weeks.** Volume, not quality. Fifteen tailored applications a month is a real pace, and three is not."
-    ]
-   },
-   {
-    "type": "tool",
-    "name": "application-tracker"
-   },
-   {
-    "type": "callout",
-    "tone": "soft",
-    "title": "The reframe that helps",
-    "text": "Rejection at this stage is a volume statistic. Seven interviews out of 113 applications is a six percent rate, and that person is now employed. The maths only works if you keep feeding it, which is easier when you can see the numbers instead of feeling them."
-   },
-   {
-    "type": "p",
-    "text": "Job searching while burnt out is genuinely harder, because the executive function it takes is the exact thing burnout eats first. If your pace is slower than the numbers above, that is information about your capacity this month rather than about your prospects."
-   }
-  ],
-  "takeaways": [
-   "One documented transition: 113 applications, 7 interviews, 1 offer, eleven months.",
-   "Postings now average around 242 applicants, so a day-one application beats a perfect day-nine one.",
-   "Track applications, screens, interviews and offers, because the ratio between them tells you which stage is broken.",
-   "Rejection at this stage is a volume statistic, and the maths only works if you keep feeding it."
-  ],
-  "sources": [
-   "facts",
-   "forums"
-  ]
- },
- {
-  "id": "5.7",
-  "tldr": "Three clinical habits make you good in the first ninety days, and two will hold you back. Bank one visible win by day sixty and the rest takes care of itself.",
-  "blocks": [
-   {
-    "type": "p",
-    "text": "You will get the offer, and then the strange part starts: being new at something after years of being competent. Clinicians arrive with a specific mix of unusual strengths and one or two habits that quietly cost them."
-   },
-   {
-    "type": "h",
-    "text": "What travels well"
-   },
-   {
-    "type": "list",
-    "items": [
-     "**Documentation.** You write things down as a reflex, in a way that most teams do not. Within a month you will be the person whose notes everyone asks for.",
-     "**Reading a room.** Years of IEP meetings taught you to spot the person who has not spoken and the one who has already decided. That skill is rare and highly paid.",
-     "**Working without supervision.** You have managed your own caseload, calendar and priorities for years. Most new hires need more direction than you will."
-    ]
-   },
-   {
-    "type": "quote",
-    "text": "It was a huge mentality shift for me because most roles don't completely throw you into the deep end, like I was as an SLP.",
-    "from": "a transitioned SLP, r/SLPcareertransitions"
-   },
-   {
-    "type": "h",
-    "text": "What to unlearn"
-   },
-   {
-    "type": "p",
-    "text": "Both habits come from being the expert in the room for years. The first is over-explaining: in therapy thoroughness is care, but in a business meeting a three-minute answer to a one-minute question reads as uncertainty. Say the conclusion, then stop."
-   },
-   {
-    "type": "p",
-    "text": "The second is waiting to be told, because clinical work runs on referrals, assignments and required timelines. Most non-clinical roles expect you to notice the gap and fill it, and in your first month the fastest way to look senior is to bring a problem nobody assigned you, with a proposal attached."
-   },
-   {
-    "type": "h",
-    "text": "The first ninety days, roughly"
-   },
-   {
-    "type": "steps",
-    "items": [
-     "**Weeks one to two: ask, do not perform.** Meet everyone your work touches and ask each of them what would make their month easier. Write it all down.",
-     "**Weeks three to six: find the small broken thing.** Every team has a process everyone complains about and nobody owns. Pick one, fix it, tell somebody.",
-     "**Weeks seven to twelve: bank the visible win.** Something with a before and after that your manager can repeat to their manager. This is what your first review is made of.",
-     "**Throughout: keep a file.** Every number, every thank-you, every problem you solved. In six months you will need it for a review, and in two years for the next job."
-    ]
-   },
-   {
-    "type": "callout",
-    "tone": "soft",
-    "title": "On imposter feelings",
-    "text": "They arrive around week three, when the novelty fades and you notice everyone else knows the acronyms. Two things are true at once: you are genuinely behind on the domain, and you were hired for judgement that takes years to build. The acronyms take about a month."
-   },
-   {
-    "type": "p",
-    "text": "You will also, at some point in the first year, miss a patient or a student. That means you cared about the work, which is the same thing that made you good at it and is now making you good at this."
-   }
-  ],
-  "takeaways": [
-   "Documentation, reading a room and working unsupervised are three habits that make clinicians strong in a first non-clinical job.",
-   "Over-explaining and waiting to be assigned work are the two habits to drop.",
-   "Ask everyone what would make their month easier in the first two weeks, then fix one small broken thing.",
-   "Bank a visible win by day sixty and keep a file of numbers and thank-yous from day one."
-  ],
-  "sources": [
-   "facts",
-   "forums"
-  ]
- },
- {
-  "id": "5.8",
-  "tldr": "Run the offer through seven checks before you answer. If it does not hold up, the same seven tell you what to ask for or when to keep going.",
-  "blocks": [
-   {
-    "type": "p",
-    "text": "An offer arrives with a deadline attached and a warm feeling that makes it hard to think, so the checklist below hands the decision to the version of you who did Modules 1 and 4."
-   },
-   {
-    "type": "tool",
-    "name": "offer-checklist"
-   },
-   {
-    "type": "h",
-    "text": "If several boxes stay empty"
-   },
-   {
-    "type": "p",
-    "text": "Empty boxes are a list of what to ask on the follow-up call, and asking is normal: most employers expect a counter, and hiring managers report fewer than two withdrawn offers across about twenty-seven they have made."
-   },
-   {
-    "type": "p",
-    "text": "There are three answers and only one of them is a yes: accept, counter and then accept, or decline and keep going. Declining is real when the number sits below your runway, the role has no ladder, or the interview showed you a manager you did not believe, and it costs a few weeks to save a year."
-   },
-   {
-    "type": "h",
-    "text": "When you accept"
-   },
-   {
-    "type": "steps",
-    "items": [
-     "Get it in writing before you resign anything. Base, title, start date, remote arrangement, variable pay terms.",
-     "Check the health coverage start date against your last day, and bridge the gap deliberately if there is one.",
-     "Give notice the way you would want it given to you, and do not use the resignation to explain the profession to anyone.",
-     "Tell the people who helped you. The person who answered your message in Module 2 will want to know it worked."
-    ]
-   },
-   {
-    "type": "callout",
-    "tone": "soft",
-    "title": "If it is a no, for now",
-    "text": "A declined offer means the process works. You got to an offer, which means the résumé, the statement and the artifact are all doing their jobs. Log it in the tracker and keep the pace."
-   },
-   {
-    "type": "p",
-    "text": "When you do accept, come back and mark it here. It is the last box in ninety days of work that started with you not telling anyone."
-   }
-  ],
-  "action": {
-   "label": "I have an offer",
-   "prompt": "Run the offer through the seven checks above. Ask for anything that is missing, in one message. Then, whichever way you decide, mark it here.",
-   "done": "Marked. Whatever you decided, you got to a real offer from a standing start. Tell somebody."
   },
-  "takeaways": [
-   "Run every offer through the seven checks before answering, with the version of you who did the runway maths.",
-   "Empty boxes are questions for a follow-up call, not reasons to decline.",
-   "Declining is a real answer when the number is below your runway or the role has no ladder.",
-   "Get everything in writing before resigning, and check the coverage start date against your last day."
-  ],
-  "sources": [
-   "facts",
-   "forums"
-  ]
- }
+  {
+    "id": "5.4",
+    "tldr": "You do not have to quit to start. Part-time, PRN, contract and telepractice each buy you hours at a different price, and telehealth is a bridge rather than an exit.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "The version of leaving that lives in your head is probably a resignation letter, and that is almost never how it happens. Most documented transitions run alongside a paycheck for six to fifteen months, which is why this program is designed to fit around a caseload."
+      },
+      {
+        "type": "p",
+        "text": "The question worth answering is how to buy back three to five hours a week without giving up the income that makes the search survivable."
+      },
+      {
+        "type": "h",
+        "text": "Four ways to buy hours"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Drop to four days.** The cleanest trade if your employer allows it. Twenty percent less income for a full day a week, and that day is worth more than five scattered evenings because the search needs continuous attention.",
+          "**PRN or per-diem.** More control over volume, usually a higher hourly rate, and no benefits. Works best when someone else in the household carries health coverage.",
+          "**Contract or travel work.** Higher rates and a defined end date, which some people find easier to plan around than an open-ended notice.",
+          "**Telepractice.** Cuts the commute and often the setup and cleanup time. Presence, eLuma, Global Teletherapy and VocoVision are the platforms that come up most in transition threads."
+        ]
+      },
+      {
+        "type": "callout",
+        "tone": "warm",
+        "title": "Telehealth is a bridge, not the exit",
+        "text": "It is still clinical work, and platform contracts often pay less per hour than in-person. Its value is the time and energy it frees up, and the fact that the platforms themselves hire former clinicians into implementation, training and customer success. Do not count it as having left."
+      },
+      {
+        "type": "quote",
+        "text": "Working 3 days a week tele is my goal.",
+        "from": "an SLP on r/slp"
+      },
+      {
+        "type": "h",
+        "text": "What each one costs"
+      },
+      {
+        "type": "p",
+        "text": "Every option above trades income, benefits or stability for time, and which trade is open to you depends on the numbers you run in the next lesson. Two things have caught people out: whether the change affects health coverage, and whether it affects loan forgiveness if you are counting payments."
+      },
+      {
+        "type": "h",
+        "text": "The version where you change nothing"
+      },
+      {
+        "type": "p",
+        "text": "You can also change nothing: keep the job, keep the hours, and accept that the search takes longer because you are doing it in the margins. For a single earner or someone chasing forgiveness that is often the right call, and the cost is months rather than the outcome."
+      }
+    ],
+    "takeaways": [
+      "Most documented transitions happen alongside a paycheck over six to fifteen months.",
+      "Dropping to four days buys a continuous day, which is worth more than five scattered evenings.",
+      "Telepractice frees time and its platforms hire former clinicians, but it is still clinical work and often pays less per hour.",
+      "Changing nothing is a legitimate choice, and what it costs you is months rather than the outcome."
+    ],
+    "sources": [
+      "facts",
+      "forums"
+    ]
+  },
+  {
+    "id": "5.5",
+    "tldr": "Loan forgiveness is a payment count, not a life sentence, and leaving pauses it rather than destroying it. Work out three numbers before you change anything: payments left, coverage cost, and months of runway.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "This is the lesson nobody wrote, which is strange, because it is the question that comes up most. People stay in jobs that are hurting them for a loan balance, a payment count and a health plan, and no career advice ever addresses any of the three."
+      },
+      {
+        "type": "p",
+        "text": "So here are the mechanics, with two warnings. Federal loan rules changed several times in 2025 and 2026, and some of it is still being litigated, so treat this as a map rather than a ruling. I am not a financial adviser, and every number below needs checking against your own account."
+      },
+      {
+        "type": "h",
+        "text": "Forgiveness is a count, and the count survives you leaving"
+      },
+      {
+        "type": "p",
+        "text": "Public Service Loan Forgiveness requires 120 qualifying monthly payments made after October 2007, and they do not have to be consecutive. A gap does not send you back to zero."
+      },
+      {
+        "type": "numbers",
+        "items": [
+          {
+            "value": "120",
+            "label": "qualifying payments, and they need not be consecutive"
+          },
+          {
+            "value": "30 hrs",
+            "label": "a week counts as full time, and you can add jobs together to reach it"
+          },
+          {
+            "value": "Paused",
+            "label": "what happens to the count if you move to a non-qualifying employer"
+          },
+          {
+            "value": "Never",
+            "label": "whether a for-profit employer can qualify, at any job title"
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A qualifying employer is a government body, a 501(c)(3) nonprofit, a Tribal college, or a nonprofit delivering a defined public service. Your job title inside it is irrelevant, because the employer is what qualifies rather than the work you do there."
+      },
+      {
+        "type": "callout",
+        "tone": "soft",
+        "title": "You can leave clinical work without leaving forgiveness",
+        "text": "Nonprofit hospital systems, universities and state agencies employ people in exactly the roles this program covers. A clinical informatics analyst inside a nonprofit health system, a research coordinator or instructional designer at a university, a reviewer at a state Disability Determination Services office, a coordinator at a school district. Same count, no caseload."
+      },
+      {
+        "type": "p",
+        "text": "One documented transitioner did precisely this, taking a thirteen thousand dollar pay cut to move into a state disability determination role in part to protect her forgiveness."
+      },
+      {
+        "type": "h",
+        "text": "If you are close, be careful with the last stretch"
+      },
+      {
+        "type": "p",
+        "text": "You have to be in qualifying full-time employment at your 120th payment and again when you apply. That is the detail that catches people who resign at payment 118 and assume the credit banks itself."
+      },
+      {
+        "type": "quote",
+        "text": "you cannot rock the boat in any way in this final stretch",
+        "from": "an SLP counting down to forgiveness, r/slp"
+      },
+      {
+        "type": "p",
+        "text": "If you are within a year, the usual strategy is to move sideways into a non-clinical role at another qualifying employer, which keeps the count running while changing the job. That takes longer to find than a for-profit role, so start earlier."
+      },
+      {
+        "type": "callout",
+        "tone": "soft",
+        "title": "Months that did not count",
+        "text": "If some of your months sat in a deferment or forbearance that earned no credit, there is a buyback option written into the regulation: you pay what a qualifying plan would have charged for those months, or show you would have owed nothing on an income-driven plan. In practice it is offered once you already have 120 months of qualifying employment, so it is a tidy-up at the end rather than a shortcut."
+      },
+      {
+        "type": "callout",
+        "tone": "warm",
+        "title": "Check this yourself, twice",
+        "text": "Look up your own employer in the official PSLF employer search rather than assuming from the name, and file the employment certification form regularly rather than at the end. A new employer-disqualification rule took effect in July 2026 and is still being litigated, so nobody can promise you what qualifies in five years."
+      },
+      {
+        "type": "h",
+        "text": "If your income drops, your payment can too"
+      },
+      {
+        "type": "p",
+        "text": "On an income-driven plan the payment follows your income, and federal rules let you ask for a recalculation mid-year with documentation that your income has fallen since your last tax return. You do not have to wait for the annual recertification. If you drop to four days a week, file the form."
+      },
+      {
+        "type": "p",
+        "text": "The plans themselves are mid-reshuffle, with new ones in regulation and older ones being wound down on published dates. Check your own plan's status in your federal loan account before you count on anything, including this."
+      },
+      {
+        "type": "h",
+        "text": "Coverage: what a gap actually costs"
+      },
+      {
+        "type": "p",
+        "text": "Health insurance is the second thing that keeps people in place."
+      },
+      {
+        "type": "numbers",
+        "items": [
+          {
+            "value": "~$777",
+            "label": "a month, the average full 2025 single premium your employer was quietly paying"
+          },
+          {
+            "value": "~$2,250",
+            "label": "a month, the same figure for family coverage"
+          },
+          {
+            "value": "18 mo",
+            "label": "how long COBRA usually runs, at up to 102% of the full premium"
+          },
+          {
+            "value": "60 days",
+            "label": "the election window, with at least 45 more to make the first payment"
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "text": "COBRA feels expensive because you finally see the whole bill your employer had been paying most of. The average worker contributed about $1,440 a year toward a single plan that actually cost $9,325."
+      },
+      {
+        "type": "p",
+        "text": "The other option is the marketplace, where losing job-based coverage because you quit still opens a special enrollment period. Subsidies are based on your estimated income for the year rather than on whether you are employed, so a genuinely lower income for a stretch often makes the marketplace cheaper than COBRA."
+      },
+      {
+        "type": "p",
+        "text": "You have sixty days to elect COBRA and at least forty-five more to pay, and many plans make coverage retroactive to the day you lost it. Some do not, so read your plan documents. Used carefully, that window lets you go uninsured on paper while staying covered in practice if something happens."
+      },
+      {
+        "type": "callout",
+        "tone": "warm",
+        "title": "The mistake people make here",
+        "text": "Quitting your job opens a marketplace special enrollment period. Voluntarily dropping COBRA part way through does not. If you think the marketplace will be cheaper, compare the two before you elect COBRA rather than after, because changing your mind in month four can leave you waiting for open enrollment."
+      },
+      {
+        "type": "h",
+        "text": "The C's, honestly"
+      },
+      {
+        "type": "p",
+        "text": "Whether to keep paying ASHA dues once you leave is a real decision with a deadline attached, and the reinstatement rules are stricter than the forums suggest."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Once certification has been expired more than twelve months, reinstatement needs a Praxis score less than five years old, plus professional development hours and a fee in the region of four hundred dollars.",
+          "In practice that means letting the C's lapse is close to a one-way door after five years, because you would be retaking the exam.",
+          "State licences are separate, and many states allow inactive status for a smaller fee. That is usually the cheaper backup plan.",
+          "Whether a specific non-clinical job requires an active licence depends on your state's practice act rather than the job title, so check the posting and the state board rather than guessing."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "People in the forums stop calling the C's a sunk cost and start calling them a fishing licence, a thing you keep because it lets you go back if you want to."
+      },
+      {
+        "type": "h",
+        "text": "Now run your own numbers"
+      },
+      {
+        "type": "p",
+        "text": "Three inputs decide whether a bridge is possible: the income you would give up, the coverage you would pay for, and any change in the loan payment. Divide your savings by the sum of those and you have the number of months you can run."
+      },
+      {
+        "type": "tool",
+        "name": "runway-calculator"
+      },
+      {
+        "type": "callout",
+        "tone": "soft",
+        "title": "What to do with the answer",
+        "text": "If the runway is longer than the move, you have a choice about how fast to go. If it is shorter, you have three levers: a smaller pay dip, a shorter bridge, or one of the fast-exit paths from Module 2 that pays from day one. None of those levers is giving up."
+      }
+    ],
+    "action": {
+      "label": "Save my numbers",
+      "prompt": "Fill in the calculator above with real figures. Then do the two lookups this week: check your employer in the official PSLF employer search, and find your current plan and payment count in your federal loan account. Twenty minutes, and it replaces a year of vague dread with a date.",
+      "done": "Saved. You now know the three numbers that were making the decision for you."
+    },
+    "takeaways": [
+      "PSLF needs 120 qualifying payments and they do not have to be consecutive, so leaving pauses the count rather than erasing it.",
+      "The employer qualifies, not the job title: nonprofit health systems, universities and state agencies employ people in these non-clinical roles.",
+      "You must be in qualifying employment at your 120th payment and when you apply, so do not resign at 118.",
+      "COBRA runs about 18 months at up to 102% of the full premium, and the marketplace is often cheaper if your income actually drops.",
+      "Once certification lapses beyond twelve months, reinstatement needs a Praxis score under five years old, so treat the C's as a fishing licence you decide about on purpose."
+    ],
+    "sources": [
+      "money",
+      "facts",
+      "forums"
+    ]
+  }
 ]
