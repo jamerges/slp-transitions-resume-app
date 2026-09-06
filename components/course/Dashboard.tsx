@@ -28,16 +28,16 @@ export default function Dashboard() {
         <Panel style={{ background: "linear-gradient(160deg, #0A3D31 0%, #0B6B54 100%)", color: "#fff", border: "none", padding: "clamp(20px, 4vw, 32px)" }}>
           <div style={{ fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", opacity: 0.8 }}>Transition OS</div>
           <h1 style={{ fontFamily: font.serif, fontSize: "clamp(26px, 4vw, 38px)", fontWeight: 700, lineHeight: 1.12, margin: "6px 0 10px" }}>
-            Everything you know how to do still counts. The next ninety days are about finding out where.
+            You run a caseload that would break most project managers, and you learn a new system in a week. Ninety days to find out who else pays for that.
           </h1>
           <div style={{ fontSize: 15, lineHeight: 1.6, opacity: 0.92, maxWidth: 560 }}>
             {!ready ? "" : !stage
-              ? "Start with the fifteen-minute setup. It asks where you are and what you can't afford to lose, and the rest of the program is built around your answers."
-              : stage.n === 1 ? "You don't have to tell anyone yet. Looking around is allowed, and it commits you to nothing."
-              : stage.n === 2 ? "Wanting out doesn't undo the good you did, and it doesn't waste the degree. Every path in here runs on it."
-              : stage.n === 3 ? "People have done this from exactly where you are. Their stories are in Module 1, and none of them had a shortcut you don't have."
-              : stage.n === 4 ? "You don't need to know what's next yet. Module 2 works that out with you, one path at a time."
-              : "You know what you want. The next modules turn what you've already done into a résumé and a plan that get callbacks."}
+              ? "Fifteen minutes of setup first: your pay floor, a target date, and how far from clinical you want to land. Every lesson after that reads those three answers."
+              : stage.n === 1 ? "Nobody has to know. You can work through all 46 lessons, fill in the workbook, and still be on the schedule Monday morning."
+              : stage.n === 2 ? "The kids you got talking are still talking. All twenty paths in Module 2 run on the degree rather than around it."
+              : stage.n === 3 ? "Module 2 has the SLP who sent five hundred applications before an offer came, and the one who landed a six-figure project manager role in fifteen months. Neither had a shortcut you don't have."
+              : stage.n === 4 ? "Module 2 lists twenty paths with what each one pays and how long it took people, so you can pick one and stop reading."
+              : "Modules 3 to 5 turn what you already do into six résumé bullets, one piece of proof, and answers to the three questions every career changer gets."}
           </div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 16 }}>
             {stage && <Tag>Stage {stage.n} · {stage.name}</Tag>}
