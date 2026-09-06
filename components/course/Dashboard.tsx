@@ -28,11 +28,11 @@ export default function Dashboard() {
         <Panel style={{ background: "linear-gradient(160deg, #0A3D31 0%, #0B6B54 100%)", color: "#fff", border: "none", padding: "clamp(20px, 4vw, 32px)" }}>
           <div style={{ fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", opacity: 0.8 }}>Transition OS</div>
           <h1 style={{ fontFamily: font.serif, fontSize: "clamp(26px, 4vw, 38px)", fontWeight: 700, lineHeight: 1.12, margin: "6px 0 10px" }}>
-            Your SLP skills transfer. The next ninety days show you where, and what it pays.
+            Your SLP skills transfer.
           </h1>
           <div style={{ fontSize: 15, lineHeight: 1.6, opacity: 0.92, maxWidth: 560 }}>
             {!ready ? "" : !stage
-              ? "Start with fifteen minutes of setup: your pay floor, your target date, and how far from clinical you want to land."
+              ? "The next ninety days take you from wondering whether you're allowed to leave, to an offer in writing. Six modules, fifteen minutes to set up."
               : stage.n === 1 ? "Nobody has to know. You can work through all 46 lessons and still be on the schedule Monday."
               : stage.n === 2 ? "The kids you got talking are still talking. All twenty paths in Module 2 run on the degree rather than around it."
               : stage.n === 3 ? "Module 2 has the SLP who sent five hundred applications, and the one who landed a six-figure role in fifteen months."
