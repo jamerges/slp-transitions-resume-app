@@ -32,7 +32,7 @@ export function Welcome({ finish, done }: LessonProps) {
       <VideoSlot title="Welcome from James" minutes={3} poster="This one is recorded on camera." />
       <Panel style={{ marginTop: 16 }}>
         <H>Script (what the video says)</H>
-        <P>Hi. I'm James. I was a school and clinic SLP, and now I do marketing at a health-tech company. I built this because the two pieces of advice I got when I wanted out were &ldquo;tough it out&rdquo; and &ldquo;start over,&rdquo; and both were wrong.</P>
+        <P>Hi. I'm James. I was an SLP, and I now work in marketing at a health-tech company. I built this because the advice SLPs get when they want out is usually some version of &ldquo;tough it out&rdquo; or &ldquo;start over,&rdquo; and both are wrong.</P>
         <P>This program is ninety days. Six modules, short lessons, one action each. You will not watch anything longer than twelve minutes, and you will never be asked to do something vague. Every number in here comes from documented SLP transitions and public salary data, and the source sits under every lesson.</P>
         <P>You won&rsquo;t get cheerleading here, or a promise of six figures by fall. What you get is a map with the mileage marked, drawn by someone who has driven it. Some people finish in six weeks. Most take the full ninety days alongside a full-time caseload, which is how I designed it.</P>
         <P>If it doesn&rsquo;t help, write to me inside thirty days and you get your money back. No form, no call. Let&rsquo;s set your starting line.</P>
@@ -156,7 +156,7 @@ export function DecisionTree({ answer, save, finish, done }: LessonProps) {
   const reveal = () => { save({ answers: ans, verdict }); setShow(true); if (!done) finish(); };
   return (
     <div>
-      <P>When I wanted to quit, it turned out to be three different problems at once: my building, the work itself, and a rough year at home. These six questions pull them apart so you can fix the right one. Answer honestly. Nothing here is graded, and the verdict can change next month.</P>
+      <P>&ldquo;I want to quit&rdquo; is usually three problems at once: the building, the work itself, and whatever is happening outside work. These six questions pull them apart so you can fix the right one. Answer honestly. Nothing here is graded, and the verdict can change next month.</P>
       <Quote text="I've worked in several settings so can't imagine a setting change is the answer. It's all the same story, different font." from="a school SLP, r/slp" />
       <P>If that&rsquo;s you, pay attention to question two. Everyone who says they want out gets told to try a different setting, usually by people who haven&rsquo;t tried it themselves. If you&rsquo;ve already changed settings and the feeling followed you, that counts as evidence.</P>
       {QS.map((q, i) => (
@@ -224,7 +224,7 @@ export function SunkCost({ answer, save, finish, done }: LessonProps) {
           <label style={{ fontSize: 13, fontWeight: 600 }}>Years in the field</label>{num(years, setYears, 1)}
           <div style={{ height: 10 }} />
           <label style={{ fontSize: 13, fontWeight: 600 }}>Student debt remaining ($)</label>{num(debt, setDebt)}
-          <Muted>More than two-thirds of CSD master&rsquo;s students graduate with unpaid debt; the most common band is $10,000 to $50,000 (ASHA, 2024). The balance is the same on both sides of this page. If you&rsquo;re on PSLF or income-driven repayment, the loan is a calendar, not a leash: Module 4 covers the 120-payment count, what employers qualify, and how people time the exit. Nothing on the market covers this, and the forums ask for it more than anything except a sample r&eacute;sum&eacute;.</Muted>
+          <Muted>More than two-thirds of CSD master&rsquo;s students graduate with unpaid debt; the most common band is $10,000 to $50,000 (ASHA, 2024). The balance is the same on both sides of this page. If you&rsquo;re on PSLF or income-driven repayment, the loan is a calendar, not a leash: Module 5 covers the 120-payment count, what employers qualify, and how people time the exit. Nothing on the market covers this, and the forums ask for it more than anything except a sample r&eacute;sum&eacute;.</Muted>
         </Panel>
         <Panel>
           <H>Still live</H>

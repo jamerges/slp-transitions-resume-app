@@ -148,14 +148,13 @@ children.push(
 );
 // --------------------------------------------------------- how to use it
 children.push(
-  ...h1("How to use this", "Three rules, and one from me."),
+  ...h1("How to use this", "Three rules."),
   ...bullets([
     "Do the lesson on screen first, then the page here. The screen does the arithmetic and the sorting. These pages hold the answers only you have.",
     "Write badly. Fragments, half-sentences, a list. If you catch yourself drafting sentences, you have switched into work mode, and this is not work.",
     "Come back. Every page has a date line. The answers change, and the difference between the first and the third pass is the useful part.",
   ]),
-  spacer(),
-  p("And mine: I filled in a version of these pages in 2019 with a pen, in a car, before a shift. Most of what I wrote was wrong, and it still got me out. Wrong answers you've written down are worth more than right answers you're still thinking about.", { italics: true }),
+
   spacer(200),
   kicker("What's in here"),
   ...fields([["Modules 0 and 1", "Ground: permission, the decision, the dials"], ["Module 2", "Explore: twenty paths, and the ones you try on"], ["Module 3", "Connect: who to find, and what to say to them"], ["Module 4", "Translate: your words into theirs"], ["Module 5", "Test: proof, and the money"], ["Module 6", "Leap: interviews and the offer"], ["Module 7", "After: your story, and the next rung"]]),

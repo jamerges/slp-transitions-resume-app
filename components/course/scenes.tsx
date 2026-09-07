@@ -84,8 +84,8 @@ const GUARDRAILS = [
 ];
 
 export const threeLiesScenes: Scene[] = [
-  { id: "open", ms: 4200, caption: "Three things I believed when I wanted out. All three were wrong, and each one kept me in the building longer than I needed to be.",
-    render: () => (<><Kicker>Module 0 · Lesson 3</Kicker><Big>Three things I believed.</Big><Sub>About a minute each. I held all three, and I&rsquo;d guess you hold at least one.</Sub></>) },
+  { id: "open", ms: 4200, caption: "Three things SLPs believe when they want out. All three are wrong, and each one keeps people in the building longer than they need to be.",
+    render: () => (<><Kicker>Module 0 · Lesson 3</Kicker><Big>Three things I believed.</Big><Sub>About a minute each. Most people hold at least one of them.</Sub></>) },
   ...LIES.map((l, i): Scene => ({
     id: `lie${i}`, ms: 8200, caption: `Belief ${i + 1}: "${l.lie}" ${l.truth}`,
     render: () => (<><Kicker>Belief {i + 1} of 3</Kicker><Big><Strike delay={1600}>{l.lie}</Strike></Big><Sub delay={2400}>{l.truth}</Sub></>),
