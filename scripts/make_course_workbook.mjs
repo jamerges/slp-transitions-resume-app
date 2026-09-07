@@ -136,7 +136,7 @@ children.push(
   spacer(1800),
   kicker("Transition OS · companion workbook"),
   new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "The workbook.", font: SERIF, size: 66, bold: true, color: DARK })] }),
-  new Paragraph({ spacing: { after: 240 }, children: [new TextRun({ text: "Ninety days of the thinking that does not fit in a text box. One page per lesson that is worth writing by hand.", font: SERIF, size: 28, color: MUTED })] }),
+  new Paragraph({ spacing: { after: 240 }, children: [new TextRun({ text: "Ninety days of the thinking that does not fit in a text box. A page for every lesson worth writing by hand.", font: SERIF, size: 28, color: MUTED })] }),
   rule(),
   p("Seven modules. About four hours of writing, spread over three months. Nobody reads this but you.", { color: MUTED, size: 22 }),
   spacer(240),

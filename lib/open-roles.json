@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-03",
- "scanned": 1778,
+ "generated": "2026-09-07",
+ "scanned": 1544,
  "paths": [
   {
    "slug": "customer-success",
@@ -58,14 +58,6 @@
   },
   {
    "company": "Handshake",
-   "title": "AI Model Policy Trainer, Image Evaluation - Remote US",
-   "location": "Seattle, WA",
-   "url": "https://jobs.ashbyhq.com/handshake/2c10a785-ad18-4fd7-8148-995ad76f3e7d",
-   "remote": true,
-   "path": "clinical-educator"
-  },
-  {
-   "company": "Handshake",
    "title": "AI Model Policy Trainer, Image Evaluation - Seattle Onsite",
    "location": "Seattle, WA",
    "url": "https://jobs.ashbyhq.com/handshake/4dcdfc01-076f-43f3-9bed-1acafd2c1cfa",
@@ -74,7 +66,7 @@
   },
   {
    "company": "Handshake",
-   "title": "AI Model Policy Trainer, Mental Health",
+   "title": "AI Model Policy Trainer, Mental Health (Seattle)",
    "location": "Seattle, WA",
    "url": "https://jobs.ashbyhq.com/handshake/1e3a9711-d13c-4b79-8599-34dfb3133621",
    "remote": false,
@@ -225,22 +217,6 @@
    "path": "customer-success"
   },
   {
-   "company": "IQVIA",
-   "title": "eCOA Implementation Project Manager",
-   "location": "Durham, North Carolina, United States of America",
-   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Durham-North-Carolina-United-States-of-America/eCOA-Implementation-Project-Manager_R1557148-1",
-   "remote": false,
-   "path": "customer-success"
-  },
-  {
-   "company": "Included Health",
-   "title": "Client Success Portfolio Manager",
-   "location": "Remote",
-   "url": "https://jobs.lever.co/includedhealth/6a5a34b7-9297-4d3d-97e7-a8025356fa47",
-   "remote": true,
-   "path": "customer-success"
-  },
-  {
    "company": "Instructure",
    "title": "Customer Success Manager, K-12",
    "location": "US-REMOTE-Utah",
@@ -337,27 +313,11 @@
    "path": "customer-success"
   },
   {
-   "company": "Raintree Systems",
-   "title": "MIPS - Clinical Implementation Consultant",
-   "location": "United States - Remote",
-   "url": "https://jobs.ashbyhq.com/raintree-systems/257ed268-68e5-4422-922c-215f337b201b",
-   "remote": true,
-   "path": "customer-success"
-  },
-  {
    "company": "Virta Health",
    "title": "Client Success Manager, Labor & Multi Employer Funds",
    "location": "Remote",
    "url": "https://jobs.ashbyhq.com/virtahealth/c634ae20-8a13-464a-9e57-2b4e63bb4379",
    "remote": true,
-   "path": "customer-success"
-  },
-  {
-   "company": "WellSky",
-   "title": "Client Success Executive",
-   "location": "Overland Park, KS",
-   "url": "https://wellsky.wd1.myworkdayjobs.com/en-US/WellSkyCareers/job/Overland-Park-KS/Sr-Client-Success-Executive_JR5102-1",
-   "remote": false,
    "path": "customer-success"
   },
   {
@@ -377,18 +337,18 @@
    "path": "customer-success"
   },
   {
+   "company": "Wiley",
+   "title": "Customer Success Manager",
+   "location": "Remote, FL, USA",
+   "url": "https://wiley.wd1.myworkdayjobs.com/en-US/Wiley_Careers/job/Remote-FL-USA/Customer-Success-Manager_R2601217",
+   "remote": true,
+   "path": "customer-success"
+  },
+  {
    "company": "Covera Health",
    "title": "Manager, Performance Analytics",
    "location": "Remote",
    "url": "https://job-boards.greenhouse.io/coverahealth/jobs/7809625003",
-   "remote": true,
-   "path": "data-analysis"
-  },
-  {
-   "company": "Included Health",
-   "title": "Workforce Analytics Model Standardization Consultant (Contractor)",
-   "location": "Remote",
-   "url": "https://jobs.lever.co/includedhealth/33800dc5-4220-4e46-86dc-15284e94cceb",
    "remote": true,
    "path": "data-analysis"
   },
@@ -438,14 +398,6 @@
    "location": "Remote",
    "url": "https://jobs.ashbyhq.com/virtahealth/0195b18e-628b-4695-ba85-3abdaaa637a8",
    "remote": true,
-   "path": "data-analysis"
-  },
-  {
-   "company": "WellSky",
-   "title": "Data Analyst",
-   "location": "Overland Park, KS; Remote",
-   "url": "https://wellsky.wd1.myworkdayjobs.com/en-US/WellSkyCareers/job/Overland-Park-KS/Data-Analyst_JR4857",
-   "remote": false,
    "path": "data-analysis"
   },
   {
@@ -546,6 +498,14 @@
   },
   {
    "company": "Nordic Consulting",
+   "title": "Site Learning Specialist (Richmond, VA)",
+   "location": "Richmond, VA",
+   "url": "https://nordic.wd1.myworkdayjobs.com/en-US/Nordic/job/Richmond-VA/Site-Learning-Specialist--Richmond--VA-_R6011",
+   "remote": false,
+   "path": "instructional-design"
+  },
+  {
+   "company": "Nordic Consulting",
    "title": "Site Learning Specialist - Ambulatory (Charleston, SC)",
    "location": "Charleston, SC",
    "url": "https://nordic.wd1.myworkdayjobs.com/en-US/Nordic/job/Charleston-SC/Site-Learning-Specialist---Ambulatory--Charleston--SC-_R5824-1",
@@ -561,10 +521,10 @@
    "path": "leadership"
   },
   {
-   "company": "IQVIA",
-   "title": "Clinical Program Manager",
-   "location": "Durham, North Carolina, United States of America; Parsippany, New Jersey, United States of America",
-   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Durham-North-Carolina-United-States-of-America/Clinical-Program-Manager_R1505780",
+   "company": "Intermountain Health",
+   "title": "EMS Clinical Operations Manager",
+   "location": "Intermountain Health St Vincent Regional Hospital",
+   "url": "https://imh.wd108.myworkdayjobs.com/en-US/IntermountainCareers/job/Intermountain-Health-St-Vincent-Regional-Hospital/EMS-Clinical-Operations-Manager_R182785",
    "remote": false,
    "path": "leadership"
   },
@@ -593,14 +553,6 @@
    "path": "liaison-ur"
   },
   {
-   "company": "Intermountain Health",
-   "title": "Social Work Care Manager - Palliative Care",
-   "location": "Saint Joseph Hospital",
-   "url": "https://imh.wd108.myworkdayjobs.com/en-US/IntermountainCareers/job/Saint-Joseph-Hospital/Social-Work-Care-Manager---Palliative-Care_R168946",
-   "remote": false,
-   "path": "liaison-ur"
-  },
-  {
    "company": "WellSky",
    "title": "Transitional Care Coordinator - Tampa, Florida",
    "location": "Remote - Florida",
@@ -618,9 +570,17 @@
   },
   {
    "company": "Elevance Health",
-   "title": "Program Manager",
-   "location": "MD-HANOVER, 7550 TEAGUE RD, STE 500",
-   "url": "https://elevancehealth.wd1.myworkdayjobs.com/en-US/ANT/job/MD-HANOVER-7550-TEAGUE-RD-STE-500/Program-Manager_JR205500",
+   "title": "Program Manager- Ohio Claims",
+   "location": "OH-COLUMBUS, 8940 LYRA DR, STE 300; OH-SEVEN HILLS, 6000 LOMBARDO CENTER, STE 200; OH-MASON, 4361 IRWIN SIMPSON RD",
+   "url": "https://elevancehealth.wd1.myworkdayjobs.com/en-US/ANT/job/OH-COLUMBUS-8940-LYRA-DR-STE-300/Program-Manager--Ohio-Claims_JR200003-1",
+   "remote": false,
+   "path": "project-management"
+  },
+  {
+   "company": "Elevance Health",
+   "title": "Project Manager",
+   "location": "PR-SAN JUAN, 654 MUNOZ RIVERA AVE, SUITES 1500 & 1600; PR-MAYAGUEZ, VILLA CAPTAIN I BUILDING, PR STREET #2, KM. 159, STE 301",
+   "url": "https://elevancehealth.wd1.myworkdayjobs.com/en-US/ANT/job/PR-SAN-JUAN-654-MUNOZ-RIVERA-AVE-SUITES-1500--1600/Project-Manager_JR205452",
    "remote": false,
    "path": "project-management"
   },
@@ -641,18 +601,18 @@
    "path": "project-management"
   },
   {
-   "company": "Included Health",
-   "title": "Marketing & Communications Program Manager",
-   "location": "Remote",
-   "url": "https://jobs.lever.co/includedhealth/3bc2c0e7-a47d-4013-929d-778646c91e57",
-   "remote": true,
-   "path": "project-management"
-  },
-  {
    "company": "Netsmart",
    "title": "Project Coordinator - Plexus Services Sales Enablement",
    "location": "Overland Park, KS",
    "url": "https://ntst.wd1.myworkdayjobs.com/en-US/Careers/job/Overland-Park-KS/Project-Coordinator---Plexus-Services-Sales-Enablement_R015815",
+   "remote": false,
+   "path": "project-management"
+  },
+  {
+   "company": "Nordic Consulting",
+   "title": "Program Coordinator",
+   "location": "US - National",
+   "url": "https://nordic.wd1.myworkdayjobs.com/en-US/Nordic/job/US---National/Program-Coordinator_R6018",
    "remote": false,
    "path": "project-management"
   },
@@ -673,42 +633,10 @@
    "path": "project-management"
   },
   {
-   "company": "IQVIA",
-   "title": "Clinical Research Coordinator",
-   "location": "Gilbert, AZ, United States of America",
-   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Gilbert-AZ-United-States-of-America/Clinical-Research-Coordinator_R1558539",
-   "remote": false,
-   "path": "research-coordinator"
-  },
-  {
-   "company": "IQVIA",
-   "title": "Clinical Research Coordinator",
-   "location": "Scottsdale, AZ, United States of America",
-   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Scottsdale-AZ-United-States-of-America/Clinical-Research-Coordinator_R1563753",
-   "remote": false,
-   "path": "research-coordinator"
-  },
-  {
-   "company": "IQVIA",
-   "title": "Clinical Research Coordinator",
-   "location": "Covington, LA, United States of America; Kenner, LA, United States of America",
-   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Covington-LA-United-States-of-America/Clinical-Research-Coordinator_R1566072-1",
-   "remote": false,
-   "path": "research-coordinator"
-  },
-  {
-   "company": "IQVIA",
-   "title": "Clinical Research Coordinator I",
-   "location": "Elkhorn, NE, United States of America",
-   "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/IQVIA/job/Elkhorn-NE-United-States-of-America/Clinical-Research-Coordinator-I_R1555951",
-   "remote": false,
-   "path": "research-coordinator"
-  },
-  {
    "company": "Intermountain Health",
-   "title": "Biorepository Research Coordinator",
-   "location": "Biorepository",
-   "url": "https://imh.wd108.myworkdayjobs.com/en-US/IntermountainCareers/job/Biorepository/Biorepository-Research-Coordinator_R182703",
+   "title": "Clinical Research Coordinator",
+   "location": "Intermountain Health Intermountain Medical Center",
+   "url": "https://imh.wd108.myworkdayjobs.com/en-US/IntermountainCareers/job/Intermountain-Health-Intermountain-Medical-Center/Clinical-Research-Coordinator_R177521",
    "remote": false,
    "path": "research-coordinator"
   },
