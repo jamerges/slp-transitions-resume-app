@@ -134,11 +134,11 @@ const children = [];
 // ------------------------------------------------------------------ cover
 children.push(
   spacer(1800),
-  kicker("Transition OS · companion workbook"),
-  new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "The workbook.", font: SERIF, size: 66, bold: true, color: DARK })] }),
-  new Paragraph({ spacing: { after: 240 }, children: [new TextRun({ text: "Ninety days of the thinking that does not fit in a text box. A page for every lesson worth writing by hand.", font: SERIF, size: 28, color: MUTED })] }),
+  kickerIn("Transition OS · ninety days", GREEN),
+  new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "Workbook", font: SERIF, size: 66, bold: true, color: DARK })] }),
+  new Paragraph({ spacing: { after: 240 }, children: [new TextRun({ text: "Print it, or type straight into it. Every lesson that asks you to write something down has a page in here.", font: SERIF, size: 28, color: MUTED })] }),
   rule(),
-  p("Seven modules. About four hours of writing, spread over three months. Nobody reads this but you.", { color: MUTED, size: 22 }),
+  p("Seven modules, forty-eight lessons. Nobody reads this but you.", { color: MUTED, size: 22 }),
   spacer(240),
   progressStrip(),
   spacer(1400),
@@ -150,8 +150,8 @@ children.push(
 children.push(
   ...h1("How to use this", "Three rules, and one from me."),
   ...bullets([
-    "Do the lesson on screen first, then the page here. The screen version has the calculators and the animations; this is where you say what you actually think.",
-    "Write badly. Fragments, half-sentences, a list. The box is for thinking, not for prose. If you find yourself drafting, you've switched into work mode, and this isn't work.",
+    "Do the lesson on screen first, then the page here. The screen does the arithmetic and the sorting. These pages hold the answers only you have.",
+    "Write badly. Fragments, half-sentences, a list. If you catch yourself drafting sentences, you have switched into work mode, and this is not work.",
     "Come back. Every page has a date line. The answers change, and the difference between the first and the third pass is the useful part.",
   ]),
   spacer(),
