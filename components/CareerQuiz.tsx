@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { S, Card, ProgressBar, focusB, blurB } from "./ui";
 import { track } from "@/lib/analytics";
 import { QUESTIONS, PATHS, STAGES, pathImage, scoreQuiz, stageFromLabel, type QuizAnswers, type QuizPath } from "@/lib/quiz";
+import StageMap from "./StageMap";
+import { offerForStage, mapUrl } from "@/lib/stage-map";
 
 /** CSS-only "product shot" for the $9 Pivot Report, so the thing being sold
  *  looks like an object rather than a paragraph.
@@ -144,6 +146,15 @@ export default function CareerQuiz({
   }, []);
   const [buyError, setBuyError] = useState("");
 
+  // The stage question decides what this page leads with. Stages 1 to 3 get
+  // the map and no pitch; stage 4 arrived asking "what else could I do", which
+  // is the report's question; stage 5 already has a résumé, so the report is a
+  // detour and the Suite is the thing. No stage (a preset ?path= visit) keeps
+  // the report, the historical default.
+  const stageKey = stageFromLabel((answers.stage || [])[0]);
+  const offer = offerForStage(stageKey);
+  const suiteHref = (top: QuizPath) => `/?from=quiz&path=${encodeURIComponent(top.roleOption)}`;
+
   // Straight from the result to Stripe. Asking for a resume first was the
   // biggest drop in the funnel — people take this quiz on a phone, at peak
   // motivation, without their resume anywhere near them. The resume is
@@ -197,6 +208,8 @@ export default function CareerQuiz({
         price: 9,
         quantity: 1,
       }],
+      stage: stageKey || "none",
+      offer,
     });
   }, [result?.top.slug]);
 
@@ -302,7 +315,6 @@ export default function CareerQuiz({
 
   if (result) {
     const { top, runnerUp } = result;
-    const stageKey = stageFromLabel((answers.stage || [])[0]);
     const opener = stageKey ? STAGES[stageKey].opener : null;
     return (
       <div style={S.wrap}>
@@ -334,36 +346,80 @@ export default function CareerQuiz({
           <h1 style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0 0 0 0)" }}>
             {top.label}: {top.range}, typically {top.timeline}
           </h1>
-          {/* Compact offer up top. Cold readers reaching this page (organic
-              search, not a warm share) were consuming six blocks of free
-              content and leaving before the full offer below: result→Buy fell
-              from 7% to 2% while quiz volume held. The full pitch stays below
-              for readers who want the reasoning first. */}
-          <button
-            onClick={() => {
-              track("begin_checkout", {
-                currency: "USD",
-                value: 9,
-                items: [{ item_id: "pivot_report", item_name: "$9 Pivot Report" }],
-                placement: "result_top",
-              });
-              buyReport(top);
-            }}
-            disabled={buying}
-            style={{
-              ...S.btn,
-              marginTop: 16,
-              padding: "11px 22px",
-              fontSize: 14.5,
-              opacity: buying ? 0.7 : 1,
-            }}
-          >
-            {buying ? "Opening checkout…" : "Get my Pivot Report — $9 →"}
-          </button>
-          <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>
-            Built from your actual resume. 30-day refund, no questions.
-          </div>
+          {/* What sits under the card depends on the stage. Cold readers were
+              consuming six blocks of free content and leaving before the offer
+              (result→Buy fell from 7% to 2% while volume held), so stage 4
+              keeps the compact $9 button here. Stage 5 gets the Suite instead:
+              they have the résumé, the report would be a detour. Stages 1 to 3
+              get nothing here at all; their map is the next card down. */}
+          {offer === "report" && (
+            <>
+              <button
+                onClick={() => {
+                  track("begin_checkout", {
+                    currency: "USD",
+                    value: 9,
+                    items: [{ item_id: "pivot_report", item_name: "$9 Pivot Report" }],
+                    placement: "result_top",
+                    stage: stageKey || "none",
+                  });
+                  buyReport(top);
+                }}
+                disabled={buying}
+                style={{ ...S.btn, marginTop: 16, padding: "11px 22px", fontSize: 14.5, opacity: buying ? 0.7 : 1 }}
+              >
+                {buying ? "Opening checkout…" : "Get my Pivot Report — $9 →"}
+              </button>
+              <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>
+                Which of the twenty paths your résumé already qualifies you for. 30-day refund, no questions.
+              </div>
+            </>
+          )}
+          {offer === "suite" && (
+            <>
+              <button
+                onClick={() => {
+                  track("select_item", {
+                    item_list_id: "quiz_result",
+                    item_list_name: "Quiz result",
+                    items: [{ item_id: "career_pivot_suite", item_name: "$24 Career Pivot Suite", item_category: top.slug, price: 24, quantity: 1 }],
+                    placement: "result_top",
+                    stage: stageKey || "none",
+                  });
+                  go(suiteHref(top));
+                }}
+                style={{ ...S.btn, marginTop: 16, padding: "11px 22px", fontSize: 14.5 }}
+              >
+                Translate my résumé — $24 →
+              </button>
+              <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>
+                Includes the $9 Pivot Report. Free preview before you pay.
+              </div>
+            </>
+          )}
         </div>
+
+        {/* The map: where you are, the belief holding you there, the one move,
+            and what the next stage looks like. Shown to every stage, because a
+            stage-5 reader still benefits from seeing there is a stage after
+            this one. Only omitted when there is no stage answer (preset path). */}
+        {stageKey && (
+          <Card>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10, flexWrap: "wrap", marginBottom: 10 }}>
+              <h3 style={{ ...S.h3, margin: 0 }}>Where you are, and the one move</h3>
+              <a
+                href={mapUrl(stageKey, top.slug)}
+                target={embedded ? "_blank" : undefined}
+                rel="noopener"
+                onClick={() => track("select_content", { content_type: "stage_map", stage: stageKey, item_id: top.slug })}
+                style={{ fontSize: 13, color: "var(--accent)", fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap" }}
+              >
+                Print or save your map →
+              </a>
+            </div>
+            <StageMap stage={stageKey} suiteHref={`https://app.slptransitions.com${suiteHref(top)}`} external={embedded} hideCta={offer === "suite"} />
+          </Card>
+        )}
 
         <Card highlight>
           <p style={{ fontSize: 15, lineHeight: 1.75, margin: 0 }}>{top.why}</p>
@@ -397,137 +453,237 @@ export default function CareerQuiz({
           </Card>
         )}
 
-        <Card style={{ border: "1.5px solid var(--accent)", background: "linear-gradient(135deg, var(--accent-bg-subtle) 0%, #fff 100%)" }}>
-          <ReportGraphic />
-          <div style={{ textAlign: "center" }}>
-            <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>This is the general version.</h3>
-            <p style={{ ...S.p, maxWidth: 470, margin: "0 auto 18px" }}>
-              Everything above is what we'd tell any SLP who scored like you. Your{" "}
-              <strong>Pivot Report</strong> is built from your actual resume — what
-              to do first, and what you specifically already qualify for.
-            </p>
-          </div>
-
-          <div style={{ maxWidth: 470, margin: "0 auto 20px", textAlign: "left" }}>
-            {/* Ordered act-then-know, deliberately. Readers reaching this screen
-                are overwhelmingly stuck rather than short of options — the most
-                answered post in the largest SLP-transition group is someone
-                writing "I'm just stuck. I'm frozen." Leading with "your 3
-                best-fit roles" hands more options to someone already drowning in
-                them; leading with stage and a dated plan answers the question
-                they actually have, which is what to do on Monday. */}
-            {[
-              "Your readiness profile and the stage you're actually in",
-              "A week-by-week 30-day plan sized for someone working full-time",
-              "3 LinkedIn outreach scripts written in your voice, ready to send",
-              "Your 3 best-fit roles, chosen from your real experience — not a quiz score",
-              "Which of your clinical work already reads as qualified, in their words",
-              "The honest caveats — timelines and tradeoffs for your situation",
-            ].map((line) => (
-              <div key={line} style={{ display: "flex", gap: 9, alignItems: "flex-start", marginBottom: 9, fontSize: 14, lineHeight: 1.6 }}>
-                <span style={{ color: "var(--accent)", fontWeight: 700, flexShrink: 0 }}>✓</span>
-                <span>{line}</span>
-              </div>
-            ))}
-          </div>
-
-          {buyError && (
-            <div style={{ fontSize: 13, color: "var(--warn)", textAlign: "center", marginBottom: 10 }}>
-              {buyError}
+        {offer === "report" && (
+          <Card style={{ border: "1.5px solid var(--accent)", background: "linear-gradient(135deg, var(--accent-bg-subtle) 0%, #fff 100%)" }}>
+            <ReportGraphic />
+            <div style={{ textAlign: "center" }}>
+              <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>This is the general version.</h3>
+              <p style={{ ...S.p, maxWidth: 470, margin: "0 auto 18px" }}>
+                Everything above is what we'd tell any SLP who scored like you. Your{" "}
+                <strong>Pivot Report</strong> is built from your actual resume — what
+                to do first, and what you specifically already qualify for.
+              </p>
             </div>
-          )}
 
-          <div style={{ textAlign: "center" }}>
-            {isDesktop && (
-              <div style={{ textAlign: "left", margin: "0 auto 18px", maxWidth: 470 }}>
-                <label style={{ ...S.label, marginBottom: 4 }}>
-                  Paste your resume now <span style={{ color: "var(--muted)", fontWeight: 400 }}>(optional)</span>
-                </label>
-                <textarea
-                  value={resumeText}
-                  onChange={(e) => setResumeText(e.target.value)}
-                  placeholder="Paste the text of your resume here and the report starts building the moment you pay. Skip it and we'll ask after checkout."
-                  rows={5}
-                  style={{ ...S.textarea, minHeight: 110, fontSize: 14 }}
-                />
-                {resumeText.trim().length > 0 && resumeText.trim().length < 50 && (
-                  <div style={{ fontSize: 12.5, color: "var(--warn)", marginTop: 6 }}>
-                    That looks too short to be a resume — paste the whole thing, or leave it blank for now.
-                  </div>
-                )}
+            <div style={{ maxWidth: 470, margin: "0 auto 20px", textAlign: "left" }}>
+              {/* Ordered act-then-know, deliberately. Readers reaching this screen
+                  are overwhelmingly stuck rather than short of options — the most
+                  answered post in the largest SLP-transition group is someone
+                  writing "I'm just stuck. I'm frozen." Leading with "your 3
+                  best-fit roles" hands more options to someone already drowning in
+                  them; leading with stage and a dated plan answers the question
+                  they actually have, which is what to do on Monday. */}
+              {[
+                "Your readiness profile and the stage you're actually in",
+                "A week-by-week 30-day plan sized for someone working full-time",
+                "3 LinkedIn outreach scripts written in your voice, ready to send",
+                "Your 3 best-fit roles, chosen from your real experience — not a quiz score",
+                "Which of your clinical work already reads as qualified, in their words",
+                "The honest caveats — timelines and tradeoffs for your situation",
+              ].map((line) => (
+                <div key={line} style={{ display: "flex", gap: 9, alignItems: "flex-start", marginBottom: 9, fontSize: 14, lineHeight: 1.6 }}>
+                  <span style={{ color: "var(--accent)", fontWeight: 700, flexShrink: 0 }}>✓</span>
+                  <span>{line}</span>
+                </div>
+              ))}
+            </div>
+
+            {buyError && (
+              <div style={{ fontSize: 13, color: "var(--warn)", textAlign: "center", marginBottom: 10 }}>
+                {buyError}
               </div>
             )}
-            <button
-              style={{ ...S.btn, padding: "15px 44px", fontSize: 17, opacity: buying ? 0.6 : 1 }}
-              disabled={buying}
-              onClick={() => {
-                track("begin_checkout", {
-                  currency: "USD",
-                  value: 9,
-                  items: [{
-                    item_id: "pivot_report",
-                    item_name: "$9 Pivot Report",
-                    item_category: top.slug,
-                    price: 9,
-                    quantity: 1,
-                  }],
-                });
-                buyReport(top);
+
+            <div style={{ textAlign: "center" }}>
+              {isDesktop && (
+                <div style={{ textAlign: "left", margin: "0 auto 18px", maxWidth: 470 }}>
+                  <label style={{ ...S.label, marginBottom: 4 }}>
+                    Paste your resume now <span style={{ color: "var(--muted)", fontWeight: 400 }}>(optional)</span>
+                  </label>
+                  <textarea
+                    value={resumeText}
+                    onChange={(e) => setResumeText(e.target.value)}
+                    placeholder="Paste the text of your resume here and the report starts building the moment you pay. Skip it and we'll ask after checkout."
+                    rows={5}
+                    style={{ ...S.textarea, minHeight: 110, fontSize: 14 }}
+                  />
+                  {resumeText.trim().length > 0 && resumeText.trim().length < 50 && (
+                    <div style={{ fontSize: 12.5, color: "var(--warn)", marginTop: 6 }}>
+                      That looks too short to be a resume — paste the whole thing, or leave it blank for now.
+                    </div>
+                  )}
+                </div>
+              )}
+              <button
+                style={{ ...S.btn, padding: "15px 44px", fontSize: 17, opacity: buying ? 0.6 : 1 }}
+                disabled={buying}
+                onClick={() => {
+                  track("begin_checkout", {
+                    currency: "USD",
+                    value: 9,
+                    items: [{
+                      item_id: "pivot_report",
+                      item_name: "$9 Pivot Report",
+                      item_category: top.slug,
+                      price: 9,
+                      quantity: 1,
+                    }],
+                    stage: stageKey || "none",
+                  });
+                  buyReport(top);
+                }}
+              >
+                {buying ? "Opening checkout…" : "Get my Pivot Report — $9 →"}
+              </button>
+              <p style={{ fontSize: 12, color: "var(--light)", marginTop: 10, lineHeight: 1.6 }}>
+                One-time payment, no subscription ever. 30-day refund if it doesn't help.
+                <br />
+                You'll add your resume right after checkout — no need to find it now.
+              </p>
+            </div>
+
+            {/* The $24 suite rewrites an application against ONE posting, so it only
+                helps someone who already has that posting in hand — which most quiz
+                takers don't. Offering it as an equal button would dead-end them at
+                the job-posting step. Kept as a labelled second door instead: it
+                routes the minority who are further along, and the larger number
+                sitting next to $9 does the anchoring either way. */}
+            <div
+              style={{
+                borderTop: "1px solid var(--line, #E5E7EB)",
+                marginTop: 22,
+                paddingTop: 16,
+                textAlign: "center",
               }}
             >
-              {buying ? "Opening checkout…" : "Get my Pivot Report — $9 →"}
-            </button>
-            <p style={{ fontSize: 12, color: "var(--light)", marginTop: 10, lineHeight: 1.6 }}>
-              One-time payment, no subscription ever. 30-day refund if it doesn't help.
-              <br />
-              You'll add your resume right after checkout — no need to find it now.
+              <p style={{ fontSize: 13, lineHeight: 1.65, color: "var(--muted)", margin: "0 0 10px" }}>
+                <strong style={{ color: "var(--fg, inherit)" }}>
+                  Already staring at a specific job posting?
+                </strong>
+                <br />
+                The <strong>$24 Career Pivot Suite</strong> rewrites the whole
+                application around it — every resume bullet, a cover letter in your
+                voice, your LinkedIn, and the interview answers. It includes this report.
+              </p>
+              <a
+                href={`/?from=quiz&path=${encodeURIComponent(top.roleOption)}`}
+                onClick={() =>
+                  track("select_item", {
+                    item_list_id: "quiz_result",
+                    item_list_name: "Quiz result upsell",
+                    items: [{
+                      item_id: "career_pivot_suite",
+                      item_name: "$24 Career Pivot Suite",
+                      item_category: top.slug,
+                      price: 24,
+                      quantity: 1,
+                    }],
+                  })
+                }
+                style={{ ...S.btnOut, fontSize: 14, display: "inline-block", textDecoration: "none" }}
+              >
+                See the $24 Suite →
+              </a>
+            </div>
+          </Card>
+        )}
+        {offer === "suite" && (
+          <Card style={{ border: "1.5px solid var(--accent)", background: "linear-gradient(135deg, var(--accent-bg-subtle) 0%, #fff 100%)" }}>
+            <div style={{ textAlign: "center" }}>
+              <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>Your résumé is the bottleneck.</h3>
+              <p style={{ ...S.p, maxWidth: 470, margin: "0 auto 18px" }}>
+                You said you&rsquo;re applying and not getting traction. Nine times out of ten the résumé
+                still reads clinical, so a recruiter files it in the wrong pile in about seven seconds. The{" "}
+                <strong>Career Pivot Suite</strong> rewrites it against a real posting, line by line.
+              </p>
+            </div>
+            <div style={{ maxWidth: 470, margin: "0 auto 20px", textAlign: "left" }}>
+              {[
+                "Every résumé bullet translated against the posting's own requirement lines",
+                "A cover letter in your voice, with the one paragraph nobody else could paste",
+                "Your LinkedIn headline and About, matched to the résumé",
+                "Answers to the three questions every career changer gets asked",
+                "The $9 Pivot Report, included",
+              ].map((line) => (
+                <div key={line} style={{ display: "flex", gap: 9, alignItems: "flex-start", marginBottom: 9, fontSize: 14, lineHeight: 1.6 }}>
+                  <span style={{ color: "var(--accent)", fontWeight: 700, flexShrink: 0 }}>✓</span>
+                  <span>{line}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ textAlign: "center" }}>
+              <button
+                style={{ ...S.btn, padding: "15px 44px", fontSize: 17 }}
+                onClick={() => {
+                  track("select_item", {
+                    item_list_id: "quiz_result",
+                    item_list_name: "Quiz result",
+                    items: [{ item_id: "career_pivot_suite", item_name: "$24 Career Pivot Suite", item_category: top.slug, price: 24, quantity: 1 }],
+                    placement: "result_offer",
+                    stage: stageKey || "none",
+                  });
+                  go(suiteHref(top));
+                }}
+              >
+                Translate my résumé — $24 →
+              </button>
+              <p style={{ fontSize: 12, color: "var(--light)", marginTop: 10, lineHeight: 1.6 }}>
+                Free preview before you pay. One-time payment, 30-day refund if it doesn&rsquo;t help.
+              </p>
+            </div>
+            {buyError && (
+              <div style={{ fontSize: 13, color: "var(--warn)", textAlign: "center", marginTop: 10 }}>{buyError}</div>
+            )}
+            <div style={{ borderTop: "1px solid var(--line, #E5E7EB)", marginTop: 22, paddingTop: 16, textAlign: "center" }}>
+              <p style={{ fontSize: 13, lineHeight: 1.65, color: "var(--muted)", margin: 0 }}>
+                No posting in hand yet?{" "}
+                <button
+                  type="button"
+                  disabled={buying}
+                  onClick={() => {
+                    track("begin_checkout", { currency: "USD", value: 9, items: [{ item_id: "pivot_report", item_name: "$9 Pivot Report" }], placement: "result_offer_secondary", stage: stageKey || "none" });
+                    buyReport(top);
+                  }}
+                  style={{ background: "none", border: "none", padding: 0, color: "var(--accent)", fontWeight: 600, cursor: "pointer", fontFamily: "inherit", fontSize: 13 }}
+                >
+                  {buying ? "Opening checkout…" : "Get just the Pivot Report, $9 →"}
+                </button>
+              </p>
+            </div>
+          </Card>
+        )}
+        {offer === "map" && (
+          <Card>
+            <h3 style={{ ...S.h3, marginBottom: 8 }}>When you&rsquo;re ready for the practical part</h3>
+            <p style={{ ...S.p, marginBottom: 0 }}>
+              Nothing on this page needs buying. When you want your actual résumé read against these paths,
+              the{" "}
+              <button
+                type="button"
+                disabled={buying}
+                onClick={() => {
+                  track("begin_checkout", { currency: "USD", value: 9, items: [{ item_id: "pivot_report", item_name: "$9 Pivot Report" }], placement: "result_quiet", stage: stageKey || "none" });
+                  buyReport(top);
+                }}
+                style={{ background: "none", border: "none", padding: 0, color: "var(--accent)", fontWeight: 600, cursor: "pointer", fontFamily: "inherit", fontSize: "inherit" }}
+              >
+                {buying ? "opening checkout…" : "$9 Pivot Report"}
+              </button>{" "}
+              does that, and the{" "}
+              <a
+                href={suiteHref(top)}
+                target={embedded ? "_blank" : undefined}
+                rel="noopener"
+                onClick={() => track("select_item", { item_list_id: "quiz_result", item_list_name: "Quiz result", items: [{ item_id: "career_pivot_suite", item_name: "$24 Career Pivot Suite", item_category: top.slug, price: 24, quantity: 1 }], placement: "result_quiet", stage: stageKey || "none" })}
+                style={{ color: "var(--accent)", fontWeight: 600 }}
+              >
+                $24 Career Pivot Suite
+              </a>{" "}
+              rewrites a whole application against one posting and includes the report. Both will keep.
             </p>
-          </div>
-
-          {/* The $24 suite rewrites an application against ONE posting, so it only
-              helps someone who already has that posting in hand — which most quiz
-              takers don't. Offering it as an equal button would dead-end them at
-              the job-posting step. Kept as a labelled second door instead: it
-              routes the minority who are further along, and the larger number
-              sitting next to $9 does the anchoring either way. */}
-          <div
-            style={{
-              borderTop: "1px solid var(--line, #E5E7EB)",
-              marginTop: 22,
-              paddingTop: 16,
-              textAlign: "center",
-            }}
-          >
-            <p style={{ fontSize: 13, lineHeight: 1.65, color: "var(--muted)", margin: "0 0 10px" }}>
-              <strong style={{ color: "var(--fg, inherit)" }}>
-                Already staring at a specific job posting?
-              </strong>
-              <br />
-              The <strong>$24 Career Pivot Suite</strong> rewrites the whole
-              application around it — every resume bullet, a cover letter in your
-              voice, your LinkedIn, and the interview answers.
-            </p>
-            <a
-              href={`/?from=quiz&path=${encodeURIComponent(top.roleOption)}`}
-              onClick={() =>
-                track("select_item", {
-                  item_list_id: "quiz_result",
-                  item_list_name: "Quiz result upsell",
-                  items: [{
-                    item_id: "career_pivot_suite",
-                    item_name: "$24 Career Pivot Suite",
-                    item_category: top.slug,
-                    price: 24,
-                    quantity: 1,
-                  }],
-                })
-              }
-              style={{ ...S.btnOut, fontSize: 14, display: "inline-block", textDecoration: "none" }}
-            >
-              See the $24 Suite →
-            </a>
-          </div>
-        </Card>
+            {buyError && <div style={{ fontSize: 13, color: "var(--warn)", marginTop: 10 }}>{buyError}</div>}
+          </Card>
+        )}
 
         {emailed && (
           <Card>

@@ -1,5 +1,6 @@
 import { Resend } from "resend";
 import { STAGES, pathImage, type StageKey } from "@/lib/quiz";
+import { STAGE_MAP, offerForStage, mapUrl } from "@/lib/stage-map";
 
 let resend: Resend | null = null;
 function getResend(): Resend {
@@ -247,16 +248,51 @@ function renderResultsHTML(jobTitle: string, r: any): string {
 </body></html>`;
 }
 
-export async function sendQuizResultEmail(input: {
+export interface QuizResultEmailInput {
   to: string;
   name?: string;
   top: { label: string; slug?: string; roleOption?: string; icon?: string; range: string; timeline: string; why: string; entryDoor: string; firstMove: string; caveat: string };
   runnerUp?: { label: string; range: string; timeline: string } | null;
   stage?: StageKey | null;
-}): Promise<void> {
-  const { to, name, top, runnerUp, stage } = input;
+}
+/** The HTML only, so the email can be previewed in dev without sending. */
+export function renderQuizResultEmail(input: QuizResultEmailInput): string {
+  const { name, top, runnerUp, stage } = input;
   const hi = name ? `Hi ${esc(name.split(" ")[0])},` : "Hi,";
   const opener = stage ? STAGES[stage].opener : "";
+  const offer = offerForStage(stage);
+  const suiteLink = `${APP_URL}/?from=quiz${top.roleOption ? `&path=${encodeURIComponent(top.roleOption)}` : ""}`;
+  const reportLink = `${APP_URL}/quiz?path=${encodeURIComponent(top.slug || "")}`;
+  const sheet = mapUrl(stage, top.slug || "", APP_URL);
+  const btn = (href: string, text: string) => `<a href="${href}" style="display:inline-block;padding:13px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:15px;font-weight:600;">${text}</a>`;
+  const map = stage ? (() => {
+    const m = STAGE_MAP[stage];
+    const href = stage === "action" ? suiteLink : m.move.href;
+    return `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin:20px 0 14px;">
+    <div style="font-size:11px;font-weight:600;color:#2D6A4F;letter-spacing:0.05em;">YOUR MAP &middot; STAGE ${m.n} OF 5 &middot; ${esc(m.name.toUpperCase())}</div>
+    <div style="font-size:14px;line-height:1.7;color:#6B7280;margin-top:6px;">${esc(m.here)}</div>
+    <div style="font-size:14px;line-height:1.65;background:#F0FAF3;border-left:3px solid #2D6A4F;border-radius:6px;padding:10px 14px;margin-top:12px;"><b>The one move: ${esc(m.move.label)}.</b> ${esc(m.move.detail)}${href && m.move.cta ? ` <a href="${href}" style="color:#0B6B54;font-weight:600;">${esc(m.move.cta)} &rarr;</a>` : ""}</div>
+    <div style="font-size:13px;line-height:1.6;color:#6B7280;margin-top:10px;"><b style="color:#1B1B1E;">Next, when you're there: ${esc(m.next.name)}.</b> ${esc(m.next.line)}</div>
+    <div style="text-align:center;margin-top:14px;"><a href="${sheet}" style="display:inline-block;padding:10px 20px;border:1.5px solid #2D6A4F;color:#2D6A4F;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Print or save your map &rarr;</a></div>
+  </div>`;
+  })() : "";
+  // Stages 1 to 3 get no pitch: a checkout button under a stage-2 reader's
+  // result is the point at which she stops reading. Stage 5 skips the report.
+  const cta = offer === "map"
+    ? `<p style="font-size:14px;line-height:1.7;margin-top:20px;">Nothing above needs buying. When you want your actual résumé read against these paths, the <a href="${reportLink}" style="color:#0B6B54;">$9 Pivot Report</a> does that, and the <a href="${suiteLink}" style="color:#0B6B54;">$24 Career Pivot Suite</a> rewrites a whole application against one posting and includes the report. Both will keep.</p>`
+    : offer === "suite"
+    ? `<div style="padding:22px;background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;margin-top:20px;">
+    <div style="font-size:17px;font-weight:700;margin-bottom:8px;">Your résumé is the bottleneck.</div>
+    <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">You said you're applying and not getting traction. Nine times out of ten the résumé still reads clinical, so a recruiter files it in the wrong pile in about seven seconds. The <b>Career Pivot Suite</b> rewrites every bullet against a real posting, plus the cover letter, your LinkedIn and the interview answers. $24 once, free preview first, and it includes the $9 Pivot Report.</div>
+    <div style="text-align:center;">${btn(suiteLink, "Translate my résumé &rarr;")}</div>
+  </div>`
+    : `<div style="padding:22px;background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;margin-top:20px;">
+    <div style="font-size:17px;font-weight:700;margin-bottom:8px;">Which of the twenty is actually open to you?</div>
+    <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">
+      This result came from nine questions. The <b>Pivot Report</b> reads your real résumé and tells you which paths your specific experience already qualifies you for: your readiness profile, the stage you're actually in, your top three paths with entry doors, and a week-by-week 30-day plan. $9, once.
+    </div>
+    <div style="text-align:center;">${btn(reportLink, "Get my Pivot Report &rarr;")}</div>
+  </div>`;
   const card = top.slug ? `<img src="${APP_URL}${pathImage(top.slug)}" alt="${esc(top.label)}" width="600" style="width:100%;max-width:600px;height:auto;display:block;border-radius:12px;border:1px solid #D8F3DC;margin:0 auto 16px;" />` : "";
   const html = `<!doctype html>
 <html><body style="margin:0;padding:0;background:#FAFAF9;font-family:-apple-system,'DM Sans',sans-serif;color:#1B1B1E;">
@@ -275,7 +311,7 @@ export async function sendQuizResultEmail(input: {
     <div style="font-size:14px;color:#2D6A4F;font-weight:600;margin-bottom:12px;">${esc(top.range)} · typically ${esc(top.timeline)}</div>
     <div style="font-size:14px;line-height:1.75;">${esc(top.why)}</div>
   </div>
-
+  ${map}
   <div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:14px;">
     <h2 style="font-size:15px;margin:0 0 8px;">How people actually get in</h2>
     <div style="font-size:14px;color:#6B7280;line-height:1.7;">${esc(top.entryDoor)}</div>
@@ -293,15 +329,7 @@ export async function sendQuizResultEmail(input: {
       : ""
   }
 
-  <div style="padding:22px;background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;margin-top:20px;">
-    <div style="font-size:17px;font-weight:700;margin-bottom:8px;">Want the version built on your actual resume?</div>
-    <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">
-      This result came from eight questions. The <b>Pivot Report</b> reads your real resume and tells you which of these paths your specific experience already qualifies you for: your readiness profile, the stage you're actually in, your top three paths with entry doors, and a week-by-week 30-day plan. $9, once.
-    </div>
-    <div style="text-align:center;">
-      <a href="${APP_URL}/quiz?path=${encodeURIComponent(top.slug || "")}" style="display:inline-block;padding:13px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:15px;font-weight:600;">Get my Pivot Report →</a>
-    </div>
-  </div>
+  ${cta}
 
   <p style="font-size:14px;line-height:1.7;margin-top:22px;">
     I'll also send you the occasional note with real SLP transition stories and what actually worked. If that's not useful, unsubscribe any time. No hard feelings.
@@ -313,6 +341,12 @@ export async function sendQuizResultEmail(input: {
 </div>
 </body></html>`;
 
+  return html;
+}
+
+export async function sendQuizResultEmail(input: QuizResultEmailInput): Promise<void> {
+  const html = renderQuizResultEmail(input);
+  const { to, top } = input;
   await getResend().emails.send({
     from: FROM_ADDRESS,
     to,
@@ -419,14 +453,15 @@ ${paras.map((t) => `<p style="margin:0 0 16px;">${t}</p>`).join("\n")}
 <p style="margin:28px 0 0;font-size:12px;color:#9CA3AF;">You took the career quiz at slptransitions.com. <a href="${unsub}" style="color:#9CA3AF;">Stop these emails</a>.</p>
 </div>`;
 
-export async function sendQuizFollowupDay2(input: {
+export interface QuizFollowupDay2Input {
   to: string;
   name?: string;
   top: { slug: string; label: string; roleOption: string; range: string; timeline: string; firstMove: string; caveat: string };
   unsubUrl: string;
   stage?: string | null;
-}): Promise<void> {
-  const { to, name, top, unsubUrl, stage } = input;
+}
+export function renderQuizFollowupDay2(input: QuizFollowupDay2Input): { subject: string; html: string } {
+  const { name, top, unsubUrl, stage } = input;
   const first = (name || "").trim().split(/\s+/)[0] || "there";
   const link = `${APP_URL}/?from=quiz&goal=report&path=${encodeURIComponent(top.roleOption)}`;
   const site = "https://slptransitions.com";
@@ -436,6 +471,7 @@ export async function sendQuizFollowupDay2(input: {
   const context = `For context, that path runs ${esc(top.range)}, and the typical move takes ${esc(top.timeline)}. ${esc(top.caveat)}`;
   const report = `The quiz ranked the paths without ever seeing your resume. The $9 Pivot Report reads the resume and tells you what you already qualify for and what to do first: ${a(link, link)}`;
   const close = `Either way, reply and tell me where you are with it. I read every one of these.`;
+  const sheet = `Your map from the result page, if you want it on paper: ${a(mapUrl(stage as StageKey | null, top.slug), "print or save it here")}. It has the one move for your stage and three dated lines for weeks 1, 6 and 12.`;
   // The stage question decides what comes first. Stages 1-3 get no pitch:
   // a stage-2 reader greeted with a checkout link stops reading.
   let body: string[];
@@ -444,34 +480,39 @@ export async function sendQuizFollowupDay2(input: {
       body = [opening, intro,
         `You said you haven&rsquo;t told anyone yet. That&rsquo;s fine. Most people who leave spend a while looking quietly first, and looking commits you to nothing. The one thing I&rsquo;d read this week is ${a(`${site}/youre-allowed-to-want-out/`, "the five stages of leaving")}: it names the belief that keeps people stuck at each one and the single small move out of it, and stage one is exactly where you are.`,
         `When you&rsquo;re ready for the practical part, your result is ${esc(top.label)}: ${esc(top.range)}, typically ${esc(top.timeline)}. It&rsquo;ll keep.`,
-        close, `James`];
+        sheet, close, `James`];
       break;
     case "guilt":
       body = [opening, intro,
         `You said the guilt is the loud part right now. I won&rsquo;t argue you out of it in an email. Two things helped me: the degree goes with you (every path on the site runs on it), and wanting out doesn&rsquo;t undo the good you did. If you want the longer version, ${a(`${site}/5-hidden-fears-stopping-slps-from-making-a-career-change-and-how-to-overcome-them/`, "this piece on the five fears")} names the sunk-cost trap directly.`,
         `The practical part will still be here when you want it: ${esc(top.label)} runs ${esc(top.range)}, and the typical move takes ${esc(top.timeline)}.`,
-        close, `James`];
+        sheet, close, `James`];
       break;
     case "permission":
       body = [opening, intro,
         `You said you keep reading exit stories and wondering if it&rsquo;s really possible. It is, including for people without a coding side-hustle or a spouse with a big salary. ${a(`${site}/slp-to-software-engineer-jeannette-roberes/`, "Jeannette")} was a working SLP who taught herself. ${a(`${site}/slp-to-consultant-rachel-archambault/`, "Rachel")} built a consulting practice from one training she was already giving. ${a(`${site}/reinventing-yourself-mattie-murrey-tegels/`, "Mattie")} did it in her fifties.`,
         `Your own result, when you want it: ${esc(top.label)}, ${esc(top.range)}, typically ${esc(top.timeline)}. The first move is small: ${esc(top.firstMove)}`,
-        close, `James`];
+        sheet, close, `James`];
       break;
     case "action":
       body = [opening, intro,
-        `You said you&rsquo;re applying and not getting traction. Nine times out of ten the resume is the problem. It still reads clinical, so a recruiter files it in the wrong pile in about seven seconds. ${a(`${site}/slp-resume-non-clinical/`, "This is what actually gets interviews")}, and if you want yours translated line by line against a real posting, ${a(`${APP_URL}/`, "the Career Pivot Suite")} does that for $24, with a free preview first.`,
-        context, close, `James`];
+        `You said you&rsquo;re applying and not getting traction. Nine times out of ten the resume is the problem. It still reads clinical, so a recruiter files it in the wrong pile in about seven seconds. ${a(`${site}/slp-resume-non-clinical/`, "This is what actually gets interviews")}, and if you want yours translated line by line against a real posting, ${a(`${APP_URL}/?from=quiz&path=${encodeURIComponent(top.roleOption)}`, "the Career Pivot Suite")} does that for $24, with a free preview first, and it includes the $9 report.`,
+        context, sheet, close, `James`];
       break;
     default:
       body = [opening, intro,
         `If I were you, the first thing I&rsquo;d do this week: ${esc(top.firstMove)}`,
-        context, report, close, `James`];
+        context, report, sheet, close, `James`];
   }
-  const html = plainWrap(body, unsubUrl);
+  return { subject: `Your ${top.label} result, and the part I'd start with`, html: plainWrap(body, unsubUrl) };
+}
+
+export async function sendQuizFollowupDay2(input: QuizFollowupDay2Input): Promise<void> {
+  const { subject, html } = renderQuizFollowupDay2(input);
+  const { to } = input;
   await getResend().emails.send({
     from: FROM_ADDRESS, to, replyTo: REPLY_TO,
-    subject: `Your ${top.label} result, and the part I'd start with`,
+    subject,
     html,
   });
 }
