@@ -609,7 +609,8 @@ export default function CareerQuiz({
               </a>
             </div>
             <div style={{ borderTop: "1px solid var(--border)", marginTop: 18, paddingTop: 14 }}>
-              <ProductMenu recommended="report" order={["ground", "suite"]} onPick={pickProduct} hrefFor={hrefForProduct} />
+              <ProductMenu
+            order={["ground", "suite"]} onPick={pickProduct} hrefFor={hrefForProduct} />
             </div>
           </Card>
         )}
@@ -677,7 +678,8 @@ export default function CareerQuiz({
               </p>
             </div>
             <div style={{ borderTop: "1px solid var(--border)", marginTop: 18, paddingTop: 14 }}>
-              <ProductMenu recommended="suite" order={["ground", "report"]} onPick={pickProduct} hrefFor={hrefForProduct} />
+              <ProductMenu
+            order={["ground", "report"]} onPick={pickProduct} hrefFor={hrefForProduct} />
             </div>
           </Card>
         )}
@@ -716,7 +718,8 @@ export default function CareerQuiz({
             </p>
             {buyError && <div style={{ fontSize: 13, color: "var(--warn)", marginTop: 10 }}>{buyError}</div>}
             <div style={{ borderTop: "1px solid var(--border)", marginTop: 18, paddingTop: 14 }}>
-              <ProductMenu recommended="ground" order={["report", "suite"]} onPick={pickProduct} hrefFor={hrefForProduct} />
+              <ProductMenu
+            order={["report", "suite"]} onPick={pickProduct} hrefFor={hrefForProduct} />
             </div>
           </Card>
         )}

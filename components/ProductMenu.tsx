@@ -33,14 +33,12 @@ export const PRODUCTS: Record<ProductKey, { name: string; price: number; answers
 };
 
 export default function ProductMenu({
-  recommended,
   order,
   onPick,
   hrefFor,
   heading = "The other two, if one of them is closer",
 }: {
-  recommended: ProductKey;
-  /** Which to list, in order. Usually the two that aren't recommended. */
+  /** Which to list, in order: the ones NOT already sold by the card above. */
   order: ProductKey[];
   onPick: (k: ProductKey) => void;
   hrefFor: (k: ProductKey) => string | undefined;
@@ -60,13 +58,11 @@ export default function ProductMenu({
             </div>
             <div style={{ fontSize: 13.5, color: "var(--text)", marginTop: 3 }}>{p.answers}</div>
             <div style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 3 }}>{p.detail}</div>
-            {k === recommended && <div style={{ fontSize: 11.5, fontWeight: 700, color: "var(--accent)", marginTop: 5 }}>Matches where you said you are</div>}
           </>
         );
         const style: React.CSSProperties = {
           display: "block", width: "100%", textAlign: "left", padding: "12px 14px", marginBottom: 8,
-          border: `1px solid ${k === recommended ? "var(--accent)" : "var(--border)"}`, borderRadius: 10,
-          background: k === recommended ? "var(--accent-bg-subtle)" : "var(--card)",
+          border: "1px solid var(--border)", borderRadius: 10, background: "var(--card)",
           cursor: "pointer", fontFamily: "inherit", textDecoration: "none",
         };
         return href ? (

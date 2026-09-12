@@ -150,7 +150,6 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
 
         <Card>
           <ProductMenu
-            recommended="ground"
             order={["report", "suite"]}
             heading="Not the one you need?"
             onPick={(k) => track("select_item", { item_list_id: "ground_page", item_list_name: "Ground page menu", items: [{ item_id: k, quantity: 1 }], placement: "ground_menu" })}
