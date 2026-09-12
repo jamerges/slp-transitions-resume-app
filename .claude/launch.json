@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "language-sample-app",
+      "runtimeExecutable": "/Users/jamesberges/Desktop/language-sample-app/node_modules/.bin/vite",
+      "runtimeArgs": ["/Users/jamesberges/Desktop/language-sample-app", "--port", "5187", "--strictPort"],
+      "port": 5187
+    },
+    {
+      "name": "slp-career-suite",
+      "runtimeExecutable": "/Users/jamesberges/Desktop/SLP Career Suite : Resume Tool/node_modules/.bin/next",
+      "runtimeArgs": ["dev"],
+      "port": 3000
+    }
+  ]
+}

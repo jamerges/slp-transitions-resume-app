@@ -30,7 +30,9 @@ yarn-error.log*
 .vercel
 
 # editor / agent local config
-.claude
+.claude/*
+!.claude/skills/
+!.claude/launch.json
 .idea
 .vscode
 
