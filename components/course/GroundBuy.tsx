@@ -93,7 +93,7 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
           <p style={{ fontSize: 15, lineHeight: 1.75, margin: 0 }}>
             Most SLPs spend a year deciding and a weekend leaving. This is the deciding: which of three problems you actually
             have, what the degree is worth now, what gave you energy and what took it, and what you can&rsquo;t afford to lose.
-            You finish with one sentence about where you&rsquo;re going, and everything after runs on it.
+            Leave with written clarity and set your &ldquo;why&rdquo; to ground you in your transition.
           </p>
         </Card>
 
@@ -154,9 +154,6 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
           />
         </Card>
 
-        <div style={{ textAlign: "center", margin: "6px 0 30px" }}>
-          <a href="/course" style={{ fontSize: 13.5, color: "var(--accent)", fontWeight: 600 }}>The setup is free. Start there →</a>
-        </div>
       </div>
     </PageShell>
   );
