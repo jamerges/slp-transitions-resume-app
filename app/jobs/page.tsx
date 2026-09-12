@@ -85,7 +85,7 @@ export default function JobsPage() {
           reachable from this page or it is stranded. */}
       <p style={{ ...S.p, fontSize: 14, marginBottom: 10 }}>
         Nothing open that fits? The{" "}
-        <a href="/companies" style={{ color: "var(--accent)", fontWeight: 600 }}>120 companies that hire former SLPs</a>{" "}
+        <a href="https://slptransitions.com/ed-health-tech-jobs/" style={{ color: "var(--accent)", fontWeight: 600 }}>120 companies that hire former SLPs</a>{" "}
         is the list to work from between postings.
       </p>
       <p style={{ ...S.p, fontSize: 13, color: "var(--muted)", marginBottom: 26 }}>

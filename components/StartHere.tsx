@@ -18,7 +18,7 @@ const HREF: Record<ProductKey, string> = { ground: "/course/ground", report: "/q
 const FREE = [
   { label: "The two-minute quiz", detail: "Nine questions, and it names the path your experience already fits.", href: "/quiz" },
   { label: "Open roles, by path", detail: "What is actually posted this week for each of the twenty paths.", href: "/jobs" },
-  { label: "120 companies that hire former SLPs", detail: "Searchable, with the roles each one has hired for.", href: "/companies" },
+  { label: "120 companies that hire former SLPs", detail: "Who has actually hired a former SLP, and for what. Sent to your inbox.", href: "https://slptransitions.com/ed-health-tech-jobs/" },
   { label: "The five stages of leaving", detail: "Where people get stuck, and the one move out of each.", href: "https://slptransitions.com/youre-allowed-to-want-out/" },
 ];
 
@@ -71,7 +71,7 @@ export default function StartHere() {
         </div>
 
         <Card>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(112px, 1fr))", gap: 8 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(184px, 1fr))", gap: 8 }}>
             {STAGE_ORDER.map((k) => {
               const info = STAGE_MAP[k];
               const on = stage === k;
@@ -87,15 +87,16 @@ export default function StartHere() {
                     color: on ? "var(--accent)" : "var(--text)", fontFamily: "inherit",
                   }}
                 >
-                  <div style={{ fontSize: 12, fontWeight: 700, opacity: 0.7 }}>{info.n}</div>
-                  <div style={{ fontSize: 14, fontWeight: on ? 700 : 600, lineHeight: 1.25, marginTop: 2 }}>{info.name}</div>
+                  <div style={{ fontSize: 11.5, fontWeight: 700, opacity: 0.65 }}>STAGE {info.n}</div>
+                  <div style={{ fontSize: 14.5, fontWeight: 700, lineHeight: 1.25, margin: "3px 0 4px" }}>{info.name}</div>
+                  <div style={{ fontSize: 12.5, lineHeight: 1.45, color: on ? "var(--accent)" : "var(--muted)", fontWeight: 500 }}>&ldquo;{info.belief}&rdquo;</div>
                 </button>
               );
             })}
           </div>
           {!stage && (
             <p style={{ fontSize: 13.5, color: "var(--muted)", margin: "14px 0 0" }}>
-              Not sure? <a href="/quiz" style={{ color: "var(--accent)", fontWeight: 600 }}>The quiz picks for you</a>, and names a path while it is at it.
+              Most people recognise one of those immediately. If two fit, take the earlier one.
             </p>
           )}
         </Card>
@@ -118,7 +119,7 @@ export default function StartHere() {
         {!stage && (
           <Card>
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 10 }}>
-              Everything, if you would rather just look
+              Resources to help you find clarity and take action
             </div>
             {(["ground", "report", "suite"] as ProductKey[]).map((k) => <Product key={k} k={k} />)}
           </Card>
