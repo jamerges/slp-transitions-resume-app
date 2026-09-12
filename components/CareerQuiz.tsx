@@ -444,37 +444,20 @@ export default function CareerQuiz({
           </Card>
         )}
 
-        <Card highlight>
-          <p style={{ fontSize: 15, lineHeight: 1.75, margin: 0 }}>{top.why}</p>
-        </Card>
-
-        {/* The action comes before the explanation. Readers arriving here are
-            overwhelmingly stuck rather than uninformed — they know options
-            exist and can't tell what to do first — so the one concrete step
-            gets its own card instead of sitting below the entry-door prose. */}
+        {/* One card, one colour. This used to be four cards with a green
+            action box and an amber caveat box before the reader reached any
+            offer, which buried the decision under a magazine article. */}
         <Card>
-          <h3 style={{ ...S.h3, marginBottom: 8 }}>Start here this week</h3>
-          <div style={{ fontSize: 15, padding: "12px 14px", background: "var(--accent-bg-subtle)", borderLeft: "3px solid var(--accent)", borderRadius: 6, lineHeight: 1.65 }}>
-            {top.firstMove}
-          </div>
+          <p style={{ fontSize: 15, lineHeight: 1.75, margin: "0 0 14px" }}>{top.why}</p>
+          <p style={{ fontSize: 15, lineHeight: 1.7, margin: "0 0 14px" }}>
+            <strong>Start here this week.</strong> {top.firstMove}
+          </p>
+          <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--muted)", margin: "0 0 10px" }}>{top.entryDoor}</p>
+          <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--muted)", margin: 0 }}>
+            <strong style={{ color: "var(--text)" }}>The honest caveat:</strong> {top.caveat}
+            {runnerUp && <> Your runner-up is {runnerUp.label}, {runnerUp.range}, typically {runnerUp.timeline}.</>}
+          </p>
         </Card>
-
-        <Card>
-          <h3 style={{ ...S.h3, marginBottom: 8 }}>How people actually get in</h3>
-          <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--muted)", marginBottom: 14 }}>{top.entryDoor}</p>
-          <div style={{ fontSize: 14, padding: "12px 14px", background: "var(--warn-bg)", borderRadius: 6, lineHeight: 1.6 }}>
-            <strong>The honest caveat:</strong> {top.caveat}
-          </div>
-        </Card>
-
-        {runnerUp && (
-          <Card>
-            <div style={{ fontSize: 12, fontWeight: 600, color: "var(--accent)", letterSpacing: "0.04em", marginBottom: 6 }}>ALSO WORTH A LOOK</div>
-            <div style={{ fontSize: 16, fontWeight: 600 }}>{runnerUp.label}</div>
-            <div style={{ fontSize: 13, color: "var(--muted)", marginTop: 2 }}>{runnerUp.range} · {runnerUp.timeline}</div>
-            <p style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.65, marginTop: 8, marginBottom: 0 }}>{runnerUp.why}</p>
-          </Card>
-        )}
 
         {offer === "report" && (
           <Card style={{ border: "1.5px solid var(--accent)", background: "linear-gradient(135deg, var(--accent-bg-subtle) 0%, #fff 100%)" }}>
@@ -685,12 +668,15 @@ export default function CareerQuiz({
         )}
         {offer === "map" && (
           <Card style={{ border: "1.5px solid var(--accent)" }}>
-            <h3 style={{ ...S.h3, marginBottom: 8 }}>Before you start looking</h3>
+            <h3 style={{ ...S.h3, marginBottom: 4 }}>Before you start looking</h3>
+            <div style={{ fontSize: 12.5, color: "var(--muted)", marginBottom: 10 }}>
+              Module 1 of Transition OS, the ninety-day program. ${GROUND_PRICE} once, and it comes off the full program later.
+            </div>
             <p style={{ ...S.p, marginBottom: 14 }}>
-              Everything above is a direction. <strong>Module 1 of Transition OS</strong> is the decision underneath it:
-              bad workplace, bad fit or bad season, the sunk-cost audit, what actually gave you energy, and the four things you
-              can&rsquo;t afford to lose. Eight lessons and five tools, read and do, with the companion workbook for the parts
-              worth writing by hand. ${GROUND_PRICE} once, and it comes off the full program later.
+              Everything above is a direction. The decision underneath it is whether you are leaving at all, and what the next
+              job has to give you. That is what this works through: bad workplace, bad fit or bad season, the sunk-cost audit,
+              what actually gave you energy, and the four things you can&rsquo;t afford to lose. Eight lessons and five tools,
+              about fifty minutes, with a workbook that fills in with your answers as you go.
             </p>
             <a
               href={`/course/ground?stage=${stageKey || ""}&path=${encodeURIComponent(top.slug)}`}

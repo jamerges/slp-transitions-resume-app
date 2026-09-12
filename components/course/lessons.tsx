@@ -2,7 +2,7 @@
 // Interactive lessons for Modules 0 and 1. Each receives the saved answer for
 // its lesson, a save callback, and a `finish` callback that marks the lesson
 // (and, for action lessons, the action) complete.
-import { useMemo, useState, type ReactNode } from "react";
+import { useMemo, useState, type ReactNode, useEffect } from "react";
 import { PATHS } from "@/lib/quiz";
 import { DIAL_PROFILES, ENERGY_PATHS } from "@/lib/course";
 import { Btn, Panel, Slider, font } from "./ui";
@@ -29,26 +29,10 @@ const rangeMid = (s: string) => { const m = s.replace(/,/g, "").match(/\d+/g)?.m
 export function Welcome({ finish, done }: LessonProps) {
   return (
     <div>
-      <VideoSlot title="Welcome from James" minutes={3} poster="This one is recorded on camera." />
-      <Panel style={{ marginTop: 16 }}>
-        <H>Script (what the video says)</H>
-        <P>Hi. I'm James. I was an SLP, and I now work in marketing at a health-tech company. I built this because the advice SLPs get when they want out is usually some version of &ldquo;tough it out&rdquo; or &ldquo;start over,&rdquo; and both are wrong.</P>
-        <P>This program is ninety days. Six modules, short lessons, one action each. You will not watch anything longer than twelve minutes, and you will never be asked to do something vague. Every number in here comes from documented SLP transitions and public salary data, and the source sits under every lesson.</P>
-        <P>You won&rsquo;t get cheerleading here, or a promise of six figures by fall. What you get is a map with the mileage marked, drawn by someone who has driven it. Some people finish in six weeks. Most take the full ninety days alongside a full-time caseload, which is how I designed it.</P>
-        <P>If it doesn&rsquo;t help, write to me inside thirty days and you get your money back. No form, no call. Let&rsquo;s set your starting line.</P>
-      </Panel>
-      <div style={{ marginTop: 16 }}>{done ? <Saved text="Watched." /> : <Btn onClick={() => finish()}>Mark as watched</Btn>}</div>
-    </div>
-  );
-}
-
-export function VideoSlot({ title, minutes, poster }: { title: string; minutes: number; poster: string }) {
-  return (
-    <div style={{ aspectRatio: "16 / 9", borderRadius: 16, background: "linear-gradient(160deg, #0A3D31 0%, #0B6B54 70%, #00A080 100%)", color: "#fff", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "clamp(16px, 4vw, 32px)", position: "relative", overflow: "hidden" }}>
-      <div style={{ position: "absolute", top: 18, left: 20, fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", opacity: 0.85 }}>Transition OS · video</div>
-      <div style={{ position: "absolute", top: "40%", left: "50%", transform: "translate(-50%,-50%)", width: 72, height: 72, borderRadius: "50%", background: "rgba(255,255,255,0.18)", border: "2px solid rgba(255,255,255,0.7)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 26, paddingLeft: 5 }}>▶</div>
-      <div style={{ fontFamily: font.serif, fontSize: "clamp(20px, 3vw, 30px)", fontWeight: 700 }}>{title}</div>
-      <div style={{ fontSize: 13, opacity: 0.85, marginTop: 4 }}>{minutes} min · {poster} Recording slot: James, from the script below.</div>
+      <P>Hi. I&rsquo;m James. I was an SLP, and I now work in marketing at a health-tech company. I built this because the advice SLPs get when they want out is usually some version of &ldquo;tough it out&rdquo; or &ldquo;start over,&rdquo; and both are wrong.</P>
+      <P>This module is the decision: whether you are leaving at all, and what the next job has to give you. Eight lessons, short, one thing to do in each. You will never be asked to do something vague, every number comes from documented SLP transitions and public salary data, and the source sits under every lesson.</P>
+      <P>You won&rsquo;t get cheerleading here, or a promise of six figures by fall. What you get is a map with the mileage marked. Most people work through this alongside a full-time caseload, which is how it is built.</P>
+      <P style={{ margin: 0 }}>If it doesn&rsquo;t help, write to me inside thirty days and you get your money back. No form, no call.</P>
     </div>
   );
 }
@@ -59,38 +43,31 @@ const plus90 = () => { const d = new Date(); d.setDate(d.getDate() + 90); return
 
 export function StartingLine({ answer, save, finish, done }: LessonProps) {
   const a = answer || {};
-  const [stage, setStage] = useState<string>(a.stage || "");
-  const [path, setPath] = useState<string>(a.path || "");
   const [floor, setFloor] = useState<number>(a.floor ?? -1);
   const [date, setDate] = useState<string>(a.date || plus90());
-  const ok = stage && floor >= 0 && date;
-  const submit = () => { save({ stage, path, floor, date }); finish({ action: true }); };
+  // Auto-save. Nothing here needs a button: what you pick is what is kept, and
+  // the lesson completes once both answers exist. The stage question lives in
+  // lesson 1.1 and the path comes from the quiz, so neither is asked twice.
+  useEffect(() => {
+    if (floor < 0 || !date) return;
+    save({ ...a, floor, date });
+    if (!done) finish({ action: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [floor, date]);
   return (
     <div>
       <Panel>
-        <H>1. Which of these sounds most like right now?</H>
-        {STAGE_META.map((s) => <Choice key={s.key} on={stage === s.key} onClick={() => setStage(s.key)}><b>{s.n}.</b> {s.name}: <span style={{ color: "var(--muted)" }}>&ldquo;{s.belief}&rdquo;</span></Choice>)}
-      </Panel>
-      <Panel style={{ marginTop: 14 }}>
-        <H>2. A path, if you have one</H>
-        <Muted>Optional. Imported from your quiz result when you bought through it. Leave it on &ldquo;Not sure yet&rdquo; and Module 2 picks it with you. Nothing before then needs it: the mindset, r&eacute;sum&eacute;, LinkedIn and networking lessons work for any title. A path only changes which examples, job postings and artifact brief you see.</Muted>
-        <select value={path} onChange={(e) => setPath(e.target.value)} style={{ width: "100%", padding: "10px 12px", fontSize: 15, border: "1px solid var(--border)", borderRadius: 8, background: "var(--card)", fontFamily: font.sans }}>
-          <option value="">Not sure yet</option>
-          {Object.values(PATHS).map((p) => <option key={p.slug} value={p.slug}>{p.label} · {p.range}</option>)}
-        </select>
-      </Panel>
-      <Panel style={{ marginTop: 14 }}>
-        <H>3. Your income floor</H>
+        <H>1. Your income floor</H>
+        <Muted>The number the next job has to clear. It decides which paths stay on your map and which get flagged as below it.</Muted>
         {FLOORS.map((f, i) => <Choice key={f} on={floor === i} onClick={() => setFloor(i)}>{f}</Choice>)}
       </Panel>
       <Panel style={{ marginTop: 14 }}>
-        <H>4. Target date</H>
-        <Muted>Ninety days out is the default. Fast paths (liaison, UR, clinical educator) fit inside it. Long builds run 6–15 months and the map stretches to match.</Muted>
+        <H>2. A date to aim at</H>
+        <Muted>Ninety days out is the default. Fast paths (liaison, utilization review, clinical educator) fit inside it. Long builds run six to fifteen months and the map stretches to match.</Muted>
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} style={{ padding: "10px 12px", fontSize: 15, border: "1px solid var(--border)", borderRadius: 8, fontFamily: font.sans }} />
       </Panel>
-      <div style={{ marginTop: 18, display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
-        <Btn onClick={submit} disabled={!ok}>Save my starting line</Btn>
-        {done ? <Saved /> : !ok && <span style={{ fontSize: 13, color: "var(--muted)" }}>Stage and income floor are the two that matter.</span>}
+      <div style={{ marginTop: 16, fontSize: 13.5, color: "var(--muted)" }}>
+        {floor >= 0 && date ? <Saved /> : "Pick an income floor and this saves itself."}
       </div>
     </div>
   );
@@ -153,7 +130,14 @@ export function DecisionTree({ answer, save, finish, done }: LessonProps) {
   }, [ans]);
   const verdict = (Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0]) as Verdict;
   const complete = ans.every((a) => a !== null);
-  const reveal = () => { save({ answers: ans, verdict }); setShow(true); if (!done) finish(); };
+  // Auto-save: what you pick is what is kept, with no extra button.
+  useEffect(() => {
+    if (!complete) return;
+    setShow(true);
+    save({ answers: ans, verdict });
+    if (!done) finish();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [complete, verdict]);
   return (
     <div>
       <P>&ldquo;I want to quit&rdquo; is usually three problems at once: the building, the work itself, and whatever is happening outside work. These six questions pull them apart so you can fix the right one. Answer honestly. Nothing here is graded, and the verdict can change next month.</P>
@@ -172,7 +156,7 @@ export function DecisionTree({ answer, save, finish, done }: LessonProps) {
           </div>
         </Panel>
       ))}
-      {!show && <Btn onClick={reveal} disabled={!complete} style={{ marginTop: 6 }}>Show my verdict →</Btn>}
+      {!show && !complete && <div style={{ marginTop: 10, fontSize: 13.5, color: "var(--muted)" }}>Answer all six and the verdict appears here.</div>}
       {show && (
         <div className="tos-rise" style={{ marginTop: 14 }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8, marginBottom: 14 }} className="tos-two-col">
@@ -257,7 +241,7 @@ export function SunkCost({ answer, save, finish, done }: LessonProps) {
         <P style={{ margin: 0, fontSize: 14 }}>Arkes and Blumer (1985) gave theatre-goers randomly discounted season tickets. The people who paid full price went to more plays, because of what they had already spent. The money was gone either way. The tuition is gone either way too. The only thing still on the table is where the next ten years go.</P>
       </Panel>
       <div style={{ marginTop: 16, display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
-        <Btn onClick={submit}>Save my numbers</Btn>
+        <Saved text="Saved." />
         {done && <Saved />}
       </div>
     </div>
@@ -314,6 +298,14 @@ export function EnergyAudit({ answer, save, finish, done }: LessonProps) {
   }, [ups.join("|"), downs.join("|")]);
 
   const set = (t: string, v: "up" | "down") => setE((prev) => ({ ...prev, [t]: prev[t] === v ? undefined : v }));
+
+  // Auto-save: what you mark is what is kept, with no extra button.
+  useEffect(() => {
+    if (ups.length === 0) return;
+    save({ energy: e, custom, energyPaths: ranked });
+    if (!done) finish();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [e, custom, ranked]);
 
   return (
     <div>
@@ -397,7 +389,7 @@ export function EnergyAudit({ answer, save, finish, done }: LessonProps) {
       </Panel>
 
       <div style={{ marginTop: 16, display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
-        <Btn onClick={() => { save({ energy: e, custom, energyPaths: ranked }); if (!done) finish(); }} disabled={ups.length === 0}>Save my audit</Btn>
+        {ups.length > 0 ? <Saved text="Saved. Your map is updated." /> : <span style={{ fontSize: 13.5, color: "var(--muted)" }}>Mark at least one thing that gave you energy and this saves itself.</span>}
         {done && <Saved />}
         {ups.length === 0 && <span style={{ fontSize: 13, color: "var(--muted)" }}>Mark at least one thing that gave you energy.</span>}
       </div>
@@ -420,6 +412,12 @@ export function Dials({ answer, save, finish, done, all }: LessonProps & { all?:
     return { slug, fit: Math.round((1 - d) * 100) };
   }).sort((a, b) => b.fit - a.fit), [v]);
   const top = ranked.slice(0, 3);
+  // Auto-save: what you pick is what is kept, with no extra button.
+  useEffect(() => {
+    save({ dials: v, top: top.map((t) => t.slug) });
+    if (!done) finish();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [v]);
   return (
     <div>
       <P>Set these four where you actually are this month, not where you&rsquo;d like to be. The paths on the right reorder as you move them, and the three at the top are the ones worth reading first.</P>
@@ -448,7 +446,7 @@ export function Dials({ answer, save, finish, done, all }: LessonProps & { all?:
         </div>
       </div>
       <div style={{ marginTop: 12, display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
-        <Btn onClick={() => { save({ dials: v, top: top.map((t) => t.slug) }); if (!done) finish(); }}>Save these three to my map</Btn>
+        <Saved text="Saved. These three are on your map." />
         {done && <Saved />}
       </div>
     </div>
@@ -464,11 +462,9 @@ const STORIES = [
 export function Identity({ finish, done }: LessonProps) {
   return (
     <div>
-      <VideoSlot title="Still you" minutes={5} poster="On camera." />
-      <Panel style={{ marginTop: 16 }}>
-        <H>Script</H>
+      <Panel>
         <P>Every SLP I&rsquo;ve interviewed who left took something with them, and it was never the title. It was the part of the work that was actually them: explaining hard things simply, holding a room of people to a plan they didn&rsquo;t want, reading a page of data and knowing what to do next. In every case, that part turned out to be the thing they were hired for.</P>
-        <P>Here are three, thirty seconds each. Watch for what each of them kept.</P>
+        <P>Three of them are below. Look at what each one kept.</P>
         <Quote text="I've taken a long time to grieve the loss of who I was in my previous role." from="a comment on a former SLP's essay about leaving" />
         <P style={{ margin: 0 }}>Grief is the right word, and it&rsquo;s the word the people who left use most. One of them called leaving a completion rather than a failure. You chose this field at 22, before you knew yourself. Finishing it is allowed.</P>
       </Panel>
@@ -483,7 +479,6 @@ export function Identity({ finish, done }: LessonProps) {
           </a>
         ))}
       </div>
-      <div style={{ marginTop: 16 }}>{done ? <Saved text="Watched." /> : <Btn onClick={() => finish()}>Mark as watched</Btn>}</div>
     </div>
   );
 }
@@ -602,9 +597,11 @@ export function Checkpoint1({ answer, save, finish, done, all }: LessonProps & {
           </div>
           <Muted style={{ marginTop: 10, marginBottom: 0 }}>
             Two people can write the same push and need opposite things, which is why the sentence below is yours
-            rather than a category. This pushes-and-pulls framing comes from the Jobs to Be Done work of Bob Moesta
-            and Clayton Christensen.
+            rather than a category.
           </Muted>
+          <div style={{ fontSize: 11.5, color: "var(--light)", marginTop: 10 }}>
+            Pushes and pulls is from the Jobs to Be Done work of Bob Moesta and Clayton Christensen.
+          </div>
         </Panel>
       )}
 

@@ -90,7 +90,7 @@ export const MODULES: Module[] = [
     n: 0, slug: "start", title: "Start here", phase: "Setup", week: "Day 1", built: true,
     tagline: "Fifteen minutes to set up your map: where you're starting from, what you can't afford to lose, and a date to aim at.",
     lessons: [
-      { id: "0.1", module: 0, title: "Welcome from James", type: "video", minutes: 3, component: "Welcome",
+      { id: "0.1", module: 0, title: "Welcome from James", type: "explainer", minutes: 3, component: "Welcome",
         summary: "Three minutes on how the program works, what to expect from it, and the refund promise.", sources: ["facts"] },
       { id: "0.2", module: 0, title: "Your starting line", type: "interactive", minutes: 5, resources: [R.workbook1, R.workbookPdf], component: "StartingLine",
         summary: "Tell the program where you're starting from. It builds your map from these answers, and you can change them any time.",
@@ -113,7 +113,7 @@ export const MODULES: Module[] = [
         summary: "Go through your last month of work and mark what gave you energy and what took it. It is better evidence than any preference test.", resources: [], sources: ["voc", "forums"] },
       { id: "1.5", module: 1, title: "What you can't afford to lose", type: "interactive", minutes: 8, component: "Dials",
         summary: "Four dials for what you need to protect: pay, closeness to clinical work, people-time, and tools. The paths reorder as you move them.", resources: [R.paths], sources: ["facts"] },
-      { id: "1.6", module: 1, title: "What you keep when you leave", type: "video", minutes: 5, resources: [R.workbook1, R.workbookPdf], component: "Identity",
+      { id: "1.6", module: 1, title: "What you keep when you leave", type: "explainer", minutes: 5, resources: [R.workbook1, R.workbookPdf], component: "Identity",
         summary: "Three people who left and kept the part of the work they loved. Watch for what each of them took with them.", sources: ["voc", "forums"] },
       { id: "1.7", module: 1, title: "Tell one person", type: "action", minutes: 3, resources: [R.workbook1, R.workbookPdf], component: "TellOne",
         summary: "Say one sentence to one person. It's the cheapest way to stop this from feeling like a secret.",
@@ -128,9 +128,9 @@ export const MODULES: Module[] = [
     tagline: "Twenty real paths with what each one pays and how long it takes.",
     lessons: [
       { id: "2.1", module: 2, title: "The map: twenty paths by timeline", type: "explainer", minutes: 9, summary: "", resources: [R.paths] },
-      { id: "2.2", module: 2, title: "Four jobs your licence already qualifies you for", type: "video", minutes: 8, summary: "Liaison, utilization review, clinical educator, case management.", resources: [R.jobs, R.companies] },
-      { id: "2.3", module: 2, title: "Where SLPs actually land", type: "video", minutes: 9, summary: "Customer success, project management, data, content.", resources: [R.paths, R.companies] },
-      { id: "2.4", module: 2, title: "Careers that take 12 months or more", type: "video", minutes: 7, summary: "Informatics, instructional design, UX, software, conversation design.", resources: [R.paths] },
+      { id: "2.2", module: 2, title: "Four jobs your licence already qualifies you for", type: "explainer", minutes: 8, summary: "Liaison, utilization review, clinical educator, case management.", resources: [R.jobs, R.companies] },
+      { id: "2.3", module: 2, title: "Where SLPs actually land", type: "explainer", minutes: 9, summary: "Customer success, project management, data, content.", resources: [R.paths, R.companies] },
+      { id: "2.4", module: 2, title: "Careers that take 12 months or more", type: "explainer", minutes: 7, summary: "Informatics, instructional design, UX, software, conversation design.", resources: [R.paths] },
       { id: "2.5", module: 2, title: "Epic, MSL and UX research: what they really require", type: "explainer", minutes: 6, summary: "Three claims that cost SLPs money, and the real route behind each one.", resources: [R.paths] },
       { id: "2.6", module: 2, title: "Try paths against your r\u00e9sum\u00e9", type: "interactive", minutes: 8, summary: "", resources: [R.suite] },
       { id: "2.7", module: 2, title: "Compare paths side by side", type: "interactive", minutes: 10, summary: "", resources: [R.jobs, R.companies] },
@@ -141,12 +141,12 @@ export const MODULES: Module[] = [
     tagline: "Find the people already doing the job, and learn what to say to them.",
     lessons: [
       { id: "3.1", module: 3, title: "Where to find people in your target field", type: "explainer", minutes: 7, summary: "", resources: [R.companies] },
-      { id: "3.2", module: 3, title: "Messages that get answered", type: "video", minutes: 9, summary: "", resources: [R.workbook1] },
+      { id: "3.2", module: 3, title: "Messages that get answered", type: "explainer", minutes: 9, summary: "", resources: [R.workbook1] },
       { id: "3.3", module: 3, title: "Reach out to three people", type: "action", minutes: 20, summary: "", resources: [R.tracker, R.workbook1] },
-      { id: "3.4", module: 3, title: "LinkedIn: what recruiters check", type: "video", minutes: 8, summary: "", resources: [R.linkedinPost] },
-      { id: "3.5", module: 3, title: "Why referrals beat applications", type: "video", minutes: 7, summary: "", resources: [R.jobs, R.companies] },
+      { id: "3.4", module: 3, title: "LinkedIn: what recruiters check", type: "explainer", minutes: 8, summary: "", resources: [R.linkedinPost] },
+      { id: "3.5", module: 3, title: "Why referrals beat applications", type: "explainer", minutes: 7, summary: "", resources: [R.jobs, R.companies] },
       { id: "3.6", module: 3, title: "Keep two conversations warm", type: "action", minutes: 15, summary: "", resources: [R.tracker, R.workbook1] },
-      { id: "3.7", module: 3, title: "Recruiters, and how to follow up", type: "video", minutes: 6, summary: "", resources: [R.tracker] },
+      { id: "3.7", module: 3, title: "Recruiters, and how to follow up", type: "explainer", minutes: 6, summary: "", resources: [R.tracker] },
     ],
   },
   {
@@ -154,11 +154,11 @@ export const MODULES: Module[] = [
     tagline: "Rewrite your r\u00e9sum\u00e9 and cover letter so a hiring manager can see what you already do.",
     lessons: [
       { id: "4.1", module: 4, title: "How your r\u00e9sum\u00e9 actually gets screened", type: "explainer", minutes: 5, summary: "", resources: [R.resumePost] },
-      { id: "4.2", module: 4, title: "Translating clinical work into business language", type: "video", minutes: 10, summary: "", resources: [R.resumePost, R.workbook1] },
+      { id: "4.2", module: 4, title: "Translating clinical work into business language", type: "explainer", minutes: 10, summary: "", resources: [R.resumePost, R.workbook1] },
       { id: "4.3", module: 4, title: "Numbers you already have", type: "interactive", minutes: 8, summary: "", resources: [R.workbook1] },
-      { id: "4.4", module: 4, title: "Why AI-written applications get rejected", type: "video", minutes: 6, summary: "", resources: [R.coverPost] },
+      { id: "4.4", module: 4, title: "Why AI-written applications get rejected", type: "explainer", minutes: 6, summary: "", resources: [R.coverPost] },
       { id: "4.5", module: 4, title: "Build your r\u00e9sum\u00e9 in the Suite", type: "interactive", minutes: 15, summary: "", resources: [R.suite, R.resumePost] },
-      { id: "4.6", module: 4, title: "Writing a cover letter worth reading", type: "video", minutes: 6, summary: "", resources: [R.coverPost] },
+      { id: "4.6", module: 4, title: "Writing a cover letter worth reading", type: "explainer", minutes: 6, summary: "", resources: [R.coverPost] },
       { id: "4.7", module: 4, title: "Send one application properly", type: "action", minutes: 30, summary: "", resources: [R.tracker, R.jobs] },
     ],
   },
@@ -166,10 +166,10 @@ export const MODULES: Module[] = [
     n: 5, slug: "test", title: "Test", phase: "Test", week: "Weeks 7\u20139", built: false,
     tagline: "Build one piece of proof, and work out the money before you move.",
     lessons: [
-      { id: "5.1", module: 5, title: "Do certificates actually help?", type: "video", minutes: 6, summary: "", resources: [R.paths] },
+      { id: "5.1", module: 5, title: "Do certificates actually help?", type: "explainer", minutes: 6, summary: "", resources: [R.paths] },
       { id: "5.2", module: 5, title: "Pick one thing to build", type: "interactive", minutes: 8, summary: "", resources: [R.workbook1] },
       { id: "5.3", module: 5, title: "Make it in a week", type: "action", minutes: 120, summary: "", resources: [R.workbook1] },
-      { id: "5.4", module: 5, title: "Keeping the paycheck while you leave", type: "video", minutes: 7, summary: "", resources: [R.jobs] },
+      { id: "5.4", module: 5, title: "Keeping the paycheck while you leave", type: "explainer", minutes: 7, summary: "", resources: [R.jobs] },
       { id: "5.5", module: 5, title: "Student loans, pay cuts and health insurance", type: "interactive", minutes: 9, summary: "", resources: [R.workbook1] },
     ],
   },
@@ -177,13 +177,13 @@ export const MODULES: Module[] = [
     n: 6, slug: "leap", title: "Leap", phase: "Leap", week: "Weeks 9\u201312", built: false,
     tagline: "Interviews, the three questions every career changer gets, and how to handle the offer.",
     lessons: [
-      { id: "6.1", module: 6, title: "How career changers get screened", type: "video", minutes: 7, summary: "", resources: [R.workbook1] },
+      { id: "6.1", module: 6, title: "How career changers get screened", type: "explainer", minutes: 7, summary: "", resources: [R.workbook1] },
       { id: "6.2", module: 6, title: "Explaining why you're changing careers", type: "interactive", minutes: 9, summary: "", resources: [R.workbook1] },
       { id: "6.3", module: 6, title: "Screening questions that filter you out", type: "interactive", minutes: 8, summary: "", resources: [R.workbook1] },
       { id: "6.4", module: 6, title: "The mock interview", type: "interactive", minutes: 15, summary: "", resources: [R.suite] },
-      { id: "6.5", module: 6, title: "Salary and the offer", type: "video", minutes: 8, summary: "", resources: [R.paths, R.workbook1, R.workbookPdf] },
-      { id: "6.6", module: 6, title: "What a real job search takes", type: "video", minutes: 6, summary: "", resources: [R.tracker, R.jobs] },
-      { id: "6.7", module: 6, title: "The first 90 days", type: "video", minutes: 7, summary: "", resources: [R.workbook1] },
+      { id: "6.5", module: 6, title: "Salary and the offer", type: "explainer", minutes: 8, summary: "", resources: [R.paths, R.workbook1, R.workbookPdf] },
+      { id: "6.6", module: 6, title: "What a real job search takes", type: "explainer", minutes: 6, summary: "", resources: [R.tracker, R.jobs] },
+      { id: "6.7", module: 6, title: "The first 90 days", type: "explainer", minutes: 7, summary: "", resources: [R.workbook1] },
       { id: "6.8", module: 6, title: "Accept, or keep going", type: "action", minutes: 5, summary: "", resources: [R.workbook1] },
     ],
   },
@@ -192,7 +192,7 @@ export const MODULES: Module[] = [
     tagline: "What to do once you're in, and how to help the next person out.",
     lessons: [
       { id: "7.1", module: 7, title: "Tell your story", type: "action", minutes: 15, summary: "", resources: [R.storyForm] },
-      { id: "7.2", module: 7, title: "A year in: what changes", type: "video", minutes: 4, summary: "", resources: [R.paths] },
+      { id: "7.2", module: 7, title: "A year in: what changes", type: "explainer", minutes: 4, summary: "", resources: [R.paths] },
       { id: "7.3", module: 7, title: "Answer one message from someone starting out", type: "action", minutes: 10, summary: "", resources: [R.storyForm] },
     ],
   },
@@ -234,7 +234,8 @@ export function nextLesson(id: string): Lesson | undefined {
   const i = LESSONS.findIndex((l) => l.id === id);
   return LESSONS.slice(i + 1).find((l) => moduleOf(l).built);
 }
-export const TYPE_LABEL: Record<LessonType, string> = { video: "Video", explainer: "Animated explainer", interactive: "Interactive", action: "Action", checkpoint: "Checkpoint" };
+// Nothing is labelled Video: there is no footage, and a Video tag promises one.
+export const TYPE_LABEL: Record<LessonType, string> = { video: "Read", explainer: "Read", interactive: "Interactive", action: "Action", checkpoint: "Checkpoint" };
 
 // The five dials (lesson 1.5). Each path's profile mirrors the sign of its
 // scores on the income, time, proximity, people and tech questions in

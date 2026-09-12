@@ -68,8 +68,8 @@ export const fiveStagesScenes: Scene[] = [
       </>
     ),
   })),
-  { id: "close", ms: 6000, caption: "Nothing in the five stages asks you to become someone else. The title changes. The competence goes with you.",
-    render: () => (<><Kicker>Still you</Kicker><Big>The title changes. The competence goes with you.</Big><Sub>The person who explains a diagnosis to a frightened parent and tracks outcomes on sixty people at once is the person every one of these roles is hiring.</Sub></>) },
+  { id: "close", ms: 6000, caption: "Nothing in the five stages asks you to become someone else. Your title changes, but your skills carry over.",
+    render: () => (<><Kicker>Still you</Kicker><Big>Your title changes, but your skills carry over.</Big><Sub>The person who explains a diagnosis to a frightened parent and tracks outcomes on sixty people at once is the person every one of these roles is hiring.</Sub></>) },
 ];
 
 const LIES = [
