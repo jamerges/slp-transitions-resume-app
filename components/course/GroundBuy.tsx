@@ -1,0 +1,86 @@
+"use client";
+import { useState } from "react";
+import { PageShell, S, Card } from "@/components/ui";
+import { track } from "@/lib/analytics";
+
+const LESSONS = [
+  ["You're allowed to want out", "The five stages, and the belief that keeps people at each one."],
+  ["Bad workplace, bad fit, or bad season?", "Six questions and a verdict. Only one of the three means leaving the field."],
+  ["The sunk-cost audit", "The years and the money, as numbers, and the sentence underneath them."],
+  ["What actually gave you energy", "Fifteen tasks from your last month, marked gave or took."],
+  ["What you can't afford to lose", "Pay floor, distance from clinical, people-time, tools. Four dials."],
+  ["What you keep when you leave", "The part of the work that goes with you into any job."],
+  ["Tell one person", "The smallest possible disclosure."],
+  ["Checkpoint", "Pushes, pulls, and one sentence about where you're going."],
+];
+
+export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas }: { stage: string; path: string; canceled: boolean; badLink: boolean; alreadyHas: boolean }) {
+  const [email, setEmail] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState("");
+  const buy = async () => {
+    if (busy) return;
+    setBusy(true); setErr("");
+    track("begin_checkout", { currency: "USD", value: 24, items: [{ item_id: "ground", item_name: "$24 Ground (Transition OS Week 1)", price: 24, quantity: 1 }], placement: "ground_page", stage: stage || "none" });
+    try {
+      const r = await fetch("/api/ground-checkout", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email, stage, path }) });
+      const d = await r.json();
+      if (!r.ok || !d.url) throw new Error(d.error || "Checkout failed");
+      window.location.href = d.url;
+    } catch (e: any) { setErr(e?.message || "Couldn't open checkout. Please try again."); setBusy(false); }
+  };
+  return (
+    <PageShell>
+      <div style={{ ...S.wrap, maxWidth: 620 }}>
+        {badLink && <Card style={{ background: "var(--warn-bg)" }}><div style={{ fontSize: 14 }}>That access link didn&rsquo;t verify. Open the link from your access email again, or reply to it and I&rsquo;ll resend.</div></Card>}
+        {canceled && <Card><div style={{ fontSize: 14, color: "var(--muted)" }}>Checkout closed. Nothing was charged.</div></Card>}
+        {alreadyHas && <Card style={{ background: "var(--accent-bg-subtle)" }}><div style={{ fontSize: 14 }}>This browser already has access. <a href="/course" style={{ color: "var(--accent)", fontWeight: 600 }}>Open the quest log →</a></div></Card>}
+
+        <div style={{ textAlign: "center", marginTop: 8 }}>
+          <span style={S.tag}>Transition OS · Week 1</span>
+          <h1 style={{ ...S.h1, fontSize: 40, margin: "12px 0 8px" }}>Ground</h1>
+          <p style={{ ...S.p, fontSize: 17, maxWidth: 520, margin: "0 auto 22px" }}>Work out whether you&rsquo;re actually leaving, and what you&rsquo;re protecting if you do.</p>
+        </div>
+
+        <Card highlight>
+          <p style={{ fontSize: 15, lineHeight: 1.75, margin: 0 }}>
+            Most SLPs who want out spend a year deciding and a weekend leaving. Ground is the deciding, done properly in a week: which of three problems you actually have, what the degree is worth now, what gave you energy and what took it, and the four things you cannot afford to lose. You finish with one sentence about where you&rsquo;re going, and it&rsquo;s the sentence the rest of the program is built on.
+          </p>
+        </Card>
+
+        <Card>
+          <h3 style={{ ...S.h3, marginBottom: 12 }}>Eight lessons, about fifty minutes</h3>
+          {LESSONS.map(([t, d], i) => (
+            <div key={t} style={{ display: "flex", gap: 12, padding: "9px 0", borderTop: i ? "1px solid var(--border)" : "none" }}>
+              <div style={{ width: 26, height: 26, borderRadius: "50%", background: "var(--accent-bg)", color: "var(--accent)", fontSize: 12, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{i + 1}</div>
+              <div><div style={{ fontSize: 15, fontWeight: 600 }}>{t}</div><div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.55 }}>{d}</div></div>
+            </div>
+          ))}
+          <p style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.6, margin: "14px 0 0" }}>
+            Read and do, no video. The decision tree, the sunk-cost calculator, the energy audit, the dials and the checkpoint are interactive, and each one saves your answers so the later lessons can read them. Module 0, the three-lesson setup, is free and already open.
+          </p>
+        </Card>
+
+        <Card style={{ border: "1.5px solid var(--accent)" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
+            <div><div style={{ fontSize: 30, fontWeight: 700, fontFamily: "'Playfair Display', Georgia, serif" }}>$24</div><div style={{ fontSize: 13, color: "var(--muted)" }}>once, no subscription</div></div>
+            <div style={{ fontSize: 13.5, color: "var(--muted)", maxWidth: 300, lineHeight: 1.55 }}>Comes off the full program when it launches, so you never pay for Week 1 twice. 30-day refund by replying to one email.</div>
+          </div>
+          <div style={{ marginTop: 16 }}>
+            <label style={S.label}>Email for your access link <span style={{ color: "var(--muted)", fontWeight: 400 }}>(you can also enter it at checkout)</span></label>
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@email.com" style={S.input} />
+          </div>
+          {err && <div style={{ fontSize: 13, color: "var(--warn)", marginTop: 10 }}>{err}</div>}
+          <div style={{ textAlign: "center", marginTop: 16 }}>
+            <button onClick={buy} disabled={busy} style={{ ...S.btn, padding: "15px 40px", fontSize: 17, opacity: busy ? 0.7 : 1 }}>{busy ? "Opening checkout…" : "Start Ground — $24 →"}</button>
+            <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 10, lineHeight: 1.6 }}>Access arrives by email the moment payment clears, and opens on this browser immediately. Progress saves in the browser you use.</p>
+          </div>
+        </Card>
+
+        <div style={{ textAlign: "center", margin: "6px 0 30px" }}>
+          <a href="/course" style={{ fontSize: 13.5, color: "var(--accent)", fontWeight: 600 }}>Try the free Module 0 first →</a>
+        </div>
+      </div>
+    </PageShell>
+  );
+}

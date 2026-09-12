@@ -2,6 +2,7 @@ import { NextResponse, after } from "next/server";
 import Stripe from "stripe";
 import { claimOnce, retrieveInputs, retrieveResult, type StashedInputs } from "@/lib/stash";
 import { sendResumeLinkEmail, sendOpsAlert } from "@/lib/email";
+import { revokeAccess, clearGroundBuyer } from "@/lib/quiz-log";
 
 export const runtime = "nodejs";
 // Fulfilment runs after the 200 response via after(), but the function must
@@ -34,7 +35,45 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://app.slptransitions.c
  * `resume_link:` latch, so the browser path and this path can both run without
  * double-sending or double-charging tokens.
  */
+/** Ground is access, not a generated document: finalize issues the link and
+ *  the customer flags. Same route the welcome page calls, so both paths agree. */
+async function fulfilGround(session: Stripe.Checkout.Session): Promise<void> {
+  const amount = ((session.amount_total ?? 0) / 100).toFixed(2);
+  const email = session.customer_details?.email || session.customer_email || "";
+  const note = [`product: $24 Ground (Transition OS Week 1)`, `amount: $${amount}`, `email: ${email || "(none captured)"}`, `session: ${session.id}`];
+  try {
+    const resp = await fetch(`${APP_URL}/api/ground-finalize`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ sessionId: session.id }) });
+    const body = await resp.json().catch(() => ({}));
+    if (!resp.ok) {
+      note.push(`status: ACCESS NOT ISSUED (${resp.status}) ${String(body?.error || "").slice(0, 200)}`);
+      note.push(`recover: ${APP_URL}/course/welcome?session_id=${session.id}`);
+      await sendOpsAlert({ subject: `⚠️ PAID BUT NO ACCESS — $${amount} Ground`, lines: note });
+      return;
+    }
+    note.push(`status: access issued (email sent now: ${body?.emailSent === true}; false means the browser path already sent it)`);
+    await sendOpsAlert({ subject: `Sale: $${amount} Ground`, lines: note });
+  } catch (err: any) {
+    note.push(`status: THREW — ${String(err?.message || err).slice(0, 200)}`);
+    await sendOpsAlert({ subject: `⚠️ PAID BUT NO ACCESS — $${amount} Ground`, lines: note }).catch(() => {});
+  }
+}
+
+/** A refunded Ground purchase loses access and the OS credit. */
+async function refundGround(charge: Stripe.Charge): Promise<void> {
+  if (charge.metadata?.product !== "ground") return;
+  const pi = typeof charge.payment_intent === "string" ? charge.payment_intent : charge.payment_intent?.id;
+  if (!pi) return;
+  const list = await getStripe().checkout.sessions.list({ payment_intent: pi, limit: 1 });
+  const s = list.data[0];
+  if (!s) return;
+  await revokeAccess(s.id);
+  const email = s.customer_details?.email || s.customer_email || "";
+  if (email) await clearGroundBuyer(email);
+  await sendOpsAlert({ subject: "Refund: Ground access revoked", lines: [`session: ${s.id}`, `email: ${email || "(none)"}`] }).catch(() => {});
+}
+
 async function fulfil(session: Stripe.Checkout.Session): Promise<void> {
+  if (session.metadata?.product === "ground") return fulfilGround(session);
   const sessionId = session.id;
   const email = session.customer_details?.email || session.customer_email || "";
   const product = session.metadata?.product === "pivot_report" ? "report" : "suite";
@@ -149,6 +188,11 @@ export async function POST(req: Request) {
       // Stripe retries anything that doesn't answer within seconds, and a
       // generation takes ~90s — so acknowledge first and fulfil after.
       after(() => fulfil(s));
+      break;
+    }
+    case "charge.refunded": {
+      const c = event.data.object as Stripe.Charge;
+      after(() => refundGround(c).catch((e) => console.error("[stripe-webhook] refund handling failed", e)));
       break;
     }
     case "payment_intent.succeeded":

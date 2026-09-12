@@ -278,11 +278,13 @@ export function renderQuizResultEmail(input: QuizResultEmailInput): string {
   })() : "";
   // Stages 1 to 3 get no pitch: a checkout button under a stage-2 reader's
   // result is the point at which she stops reading. Stage 5 skips the report.
+  const groundLink = `${APP_URL}/course/ground?stage=${stage || ""}&path=${encodeURIComponent(top.slug || "")}`;
   const cta = offer === "map"
-    ? `<div style="padding:20px 22px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;margin-top:20px;">
-    <div style="font-size:15px;font-weight:700;margin-bottom:6px;">When you're ready for the practical part</div>
-    <div style="font-size:14px;line-height:1.7;color:#1B1B1E;">The <b>Pivot Report</b> reads your actual résumé against these paths and tells you which ones you already qualify for, with a 30-day plan. $9, once. <a href="${reportLink}" style="color:#0B6B54;font-weight:600;">Get the report &rarr;</a></div>
-    <div style="font-size:13px;line-height:1.7;color:#6B7280;margin-top:10px;">Already have a posting in hand? The <a href="${suiteLink}" style="color:#0B6B54;">$24 Career Pivot Suite</a> rewrites the whole application against it, and includes the report.</div>
+    ? `<div style="padding:22px;background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;margin-top:20px;">
+    <div style="font-size:17px;font-weight:700;margin-bottom:8px;">The stage you're in has its own week</div>
+    <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;"><b>Ground</b> is Week 1 of Transition OS: the decision (bad workplace, bad fit, or bad season), the sunk-cost audit, what gave you energy, what you can't afford to lose, and one sentence about where you're going. Eight lessons, read and do, no video. $24 once, and it comes off the full program later.</div>
+    <div style="text-align:center;">${btn(groundLink, "Start Ground &rarr;")}</div>
+    <div style="font-size:13px;line-height:1.7;color:#6B7280;margin-top:14px;">Rather start from your résumé? The <a href="${reportLink}" style="color:#0B6B54;">$9 Pivot Report</a> reads it against these paths and tells you which ones you already qualify for.</div>
   </div>`
     : offer === "suite"
     ? `<div style="padding:22px;background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;margin-top:20px;">
@@ -407,6 +409,26 @@ export async function sendResumeLinkEmail(input: {
  * link on purchase day was all they ever got. Sent once, 48h+ after payment,
  * by the stalled-reports cron.
  */
+/** The Ground access link. The link is the login: it sets access in whichever
+ *  browser opens it, so the email is the thing to keep. */
+export async function sendGroundAccessEmail(input: { to: string; unlockUrl: string }): Promise<void> {
+  const { to, unlockUrl } = input;
+  const html = `<!doctype html>
+<html><body style="margin:0;padding:0;background:#FAFAF9;font-family:-apple-system,'DM Sans',sans-serif;color:#1B1B1E;">
+<div style="max-width:560px;margin:0 auto;padding:32px 20px;">
+  <div style="text-align:center;margin-bottom:22px;"><div style="font-size:20px;font-weight:700;color:#2D6A4F;font-family:Georgia,serif;">SLP Transitions</div></div>
+  <p style="font-size:16px;line-height:1.7;">Thanks. Here's your way into Ground, Week 1 of Transition OS.</p>
+  <div style="text-align:center;margin:22px 0;"><a href="${unlockUrl}" style="display:inline-block;padding:14px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Open Module 1 &rarr;</a></div>
+  <p style="font-size:15px;line-height:1.7;">That link is your login. It works in any browser, on any device, as many times as you like, so keep this email. Your progress saves in whichever browser you use, and Module 0 is open to everyone, so start there if you haven't.</p>
+  <p style="font-size:15px;line-height:1.7;">Eight lessons, about fifty minutes, and every one ends with something to actually do. The decision tree and the sunk-cost audit are the two most people come back to.</p>
+  <p style="font-size:15px;line-height:1.7;">What you paid today comes off the full program when it launches. You won't pay for Week 1 twice.</p>
+  <p style="font-size:15px;line-height:1.7;">If it doesn't help, reply within 30 days and I'll refund it. No form.</p>
+  <p style="font-size:15px;line-height:1.7;">James</p>
+  <p style="font-size:12px;color:#9CA3AF;margin-top:26px;">If the button doesn't work, paste this into your browser:<br/><span style="word-break:break-all;">${unlockUrl}</span></p>
+</div></body></html>`;
+  await getResend().emails.send({ from: FROM_ADDRESS, to, replyTo: REPLY_TO, subject: "Your Ground access link", html });
+}
+
 export async function sendReportReminderEmail(input: {
   to: string;
   sessionId: string;
@@ -476,6 +498,7 @@ export function renderQuizFollowupDay2(input: QuizFollowupDay2Input): { subject:
   const report = `The quiz ranked the paths without ever seeing your resume. The $9 Pivot Report reads the resume and tells you what you already qualify for and what to do first: ${a(link, link)}`;
   const close = `Either way, reply and tell me where you are with it. I read every one of these.`;
   const sheet = `Your map from the result page, if you want it on paper: ${a(mapUrl(stage as StageKey | null, top.slug), "print or save it here")}. It has the one move for your stage and three dated lines for weeks 1, 6 and 12.`;
+  const ground = `If you want the structured version of this stage, ${a(`${APP_URL}/course/ground?stage=${stage || ""}&path=${encodeURIComponent(top.slug)}`, "Ground")} is Week 1 of Transition OS: the decision, the sunk-cost audit, the energy audit, the four dials, and one sentence about where you&rsquo;re going. Eight lessons, no video, $24 once, and it comes off the full program later.`;
   // The stage question decides what comes first. Stages 1-3 get no pitch:
   // a stage-2 reader greeted with a checkout link stops reading.
   let body: string[];
@@ -484,19 +507,19 @@ export function renderQuizFollowupDay2(input: QuizFollowupDay2Input): { subject:
       body = [opening, intro,
         `You said you haven&rsquo;t told anyone yet. That&rsquo;s fine. Most people who leave spend a while looking quietly first, and looking commits you to nothing. The one thing I&rsquo;d read this week is ${a(`${site}/youre-allowed-to-want-out/`, "the five stages of leaving")}: it names the belief that keeps people stuck at each one and the single small move out of it, and stage one is exactly where you are.`,
         `When you&rsquo;re ready for the practical part, your result is ${esc(top.label)}: ${esc(top.range)}, typically ${esc(top.timeline)}. It&rsquo;ll keep.`,
-        sheet, close, `James`];
+        sheet, ground, close, `James`];
       break;
     case "guilt":
       body = [opening, intro,
         `You said the guilt is the loud part right now. I won&rsquo;t argue you out of it in an email. Two things helped me: the degree goes with you (every path on the site runs on it), and wanting out doesn&rsquo;t undo the good you did. If you want the longer version, ${a(`${site}/5-hidden-fears-stopping-slps-from-making-a-career-change-and-how-to-overcome-them/`, "this piece on the five fears")} names the sunk-cost trap directly.`,
         `The practical part will still be here when you want it: ${esc(top.label)} runs ${esc(top.range)}, and the typical move takes ${esc(top.timeline)}.`,
-        sheet, close, `James`];
+        sheet, ground, close, `James`];
       break;
     case "permission":
       body = [opening, intro,
         `You said you keep reading exit stories and wondering if it&rsquo;s really possible. It is, including for people without a coding side-hustle or a spouse with a big salary. ${a(`${site}/slp-to-software-engineer-jeannette-roberes/`, "Jeannette")} was a working SLP who taught herself. ${a(`${site}/slp-to-consultant-rachel-archambault/`, "Rachel")} built a consulting practice from one training she was already giving. ${a(`${site}/reinventing-yourself-mattie-murrey-tegels/`, "Mattie")} did it in her fifties.`,
         `Your own result, when you want it: ${esc(top.label)}, ${esc(top.range)}, typically ${esc(top.timeline)}. The first move is small: ${esc(top.firstMove)}`,
-        sheet, close, `James`];
+        sheet, ground, close, `James`];
       break;
     case "action":
       body = [opening, intro,

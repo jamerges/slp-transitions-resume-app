@@ -4,6 +4,7 @@ import { lessonById, moduleOf, nextLesson, prevLesson, SOURCES, TYPE_LABEL, MODU
 import { contentFor } from "@/lib/course-content";
 import { useProgress } from "@/lib/course-progress";
 import { CourseShell, UnlockToast, Btn, Panel, font } from "./ui";
+import type { CourseProduct } from "@/lib/course-tiers";
 import { Blocks } from "./Blocks";
 import * as L from "./lessons";
 
@@ -30,7 +31,7 @@ function ReadingBar() {
   return <div aria-hidden style={{ position: "fixed", top: 0, left: 0, right: 0, height: 3, zIndex: 40, background: "transparent" }}><div style={{ height: "100%", width: `${pct}%`, background: "var(--accent)", transition: "width 90ms linear" }} /></div>;
 }
 
-export default function LessonPage({ id }: { id: string }) {
+export default function LessonPage({ id, access }: { id: string; access?: { product: CourseProduct } | null }) {
   const lesson = lessonById(id)!;
   const mod = moduleOf(lesson);
   const next = nextLesson(id);
@@ -60,7 +61,7 @@ export default function LessonPage({ id }: { id: string }) {
   const action = content?.action || lesson.action;
 
   return (
-    <CourseShell xp={p.xp} streak={p.streak.count} pct={pct}>
+    <CourseShell xp={p.xp} streak={p.streak.count} pct={pct} note={access?.product === "ground" ? "Ground: Modules 0 and 1 are yours. The full program opens Modules 2 to 7. Progress is saved in this browser." : undefined}>
       <ReadingBar />
       {toast && <UnlockToast xp={toast.xp} badges={toast.badges} onDone={() => setToast(null)} />}
       <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) 280px", gap: 28 }} className="tos-two-col">

@@ -29,6 +29,7 @@ export const QUIZ_PATH_GROUPS: Record<string, string> = {
 export const CUSTOMER_GROUPS = {
   report: "194651292982838675",  // $9 Pivot Report
   suite: "194651293732570803",   // $24 Career Pivot Suite
+  ground: "198364363480893430",  // $24 Ground: Week 1 of Transition OS (created 2026-09-11)
 } as const;
 
 export async function upsertSubscriber(input: {

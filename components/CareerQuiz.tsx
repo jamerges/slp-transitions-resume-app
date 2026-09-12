@@ -653,35 +653,36 @@ export default function CareerQuiz({
           </Card>
         )}
         {offer === "map" && (
-          <Card>
-            <h3 style={{ ...S.h3, marginBottom: 8 }}>When you&rsquo;re ready for the practical part</h3>
+          <Card style={{ border: "1.5px solid var(--accent)" }}>
+            <h3 style={{ ...S.h3, marginBottom: 8 }}>The stage you&rsquo;re in has its own week</h3>
             <p style={{ ...S.p, marginBottom: 14 }}>
-              The <strong>Pivot Report</strong> reads your actual résumé against these paths and tells you which ones
-              you already qualify for, with a week-by-week 30-day plan. $9, once, 30-day refund.
+              <strong>Ground</strong> is Week 1 of Transition OS: the decision (bad workplace, bad fit, or bad season),
+              the sunk-cost audit, what gave you energy, what you can&rsquo;t afford to lose, and one sentence about
+              where you&rsquo;re going. Eight lessons, read and do, no video. $24 once, and it comes off the full program later.
             </p>
-            <button
-              type="button"
-              disabled={buying}
-              onClick={() => {
-                track("begin_checkout", { currency: "USD", value: 9, items: [{ item_id: "pivot_report", item_name: "$9 Pivot Report", item_category: top.slug, price: 9, quantity: 1 }], placement: "result_after_map", stage: stageKey || "none" });
-                buyReport(top);
-              }}
-              style={{ ...S.btnOut, opacity: buying ? 0.7 : 1 }}
+            <a
+              href={`/course/ground?stage=${stageKey || ""}&path=${encodeURIComponent(top.slug)}`}
+              target={embedded ? "_blank" : undefined}
+              rel="noopener"
+              onClick={() => track("select_item", { item_list_id: "quiz_result", item_list_name: "Quiz result", items: [{ item_id: "ground", item_name: "$24 Ground (Transition OS Week 1)", item_category: top.slug, price: 24, quantity: 1 }], placement: "result_after_map", stage: stageKey || "none" })}
+              style={{ ...S.btn, display: "inline-block", textDecoration: "none" }}
             >
-              {buying ? "Opening checkout…" : "Get my Pivot Report — $9 →"}
-            </button>
+              Start Ground — $24 →
+            </a>
             <p style={{ fontSize: 13, lineHeight: 1.65, color: "var(--muted)", margin: "14px 0 0" }}>
-              Already have a posting in hand? The{" "}
-              <a
-                href={suiteHref(top)}
-                target={embedded ? "_blank" : undefined}
-                rel="noopener"
-                onClick={() => track("select_item", { item_list_id: "quiz_result", item_list_name: "Quiz result", items: [{ item_id: "career_pivot_suite", item_name: "$24 Career Pivot Suite", item_category: top.slug, price: 24, quantity: 1 }], placement: "result_after_map", stage: stageKey || "none" })}
-                style={{ color: "var(--accent)", fontWeight: 600 }}
+              Rather start from your résumé? The{" "}
+              <button
+                type="button"
+                disabled={buying}
+                onClick={() => {
+                  track("begin_checkout", { currency: "USD", value: 9, items: [{ item_id: "pivot_report", item_name: "$9 Pivot Report", item_category: top.slug, price: 9, quantity: 1 }], placement: "result_after_map", stage: stageKey || "none" });
+                  buyReport(top);
+                }}
+                style={{ background: "none", border: "none", padding: 0, color: "var(--accent)", fontWeight: 600, cursor: "pointer", fontFamily: "inherit", fontSize: 13 }}
               >
-                $24 Career Pivot Suite
-              </a>{" "}
-              rewrites the whole application against it, and includes the report.
+                {buying ? "opening checkout…" : "$9 Pivot Report"}
+              </button>{" "}
+              reads it against these paths and tells you which ones you already qualify for.
             </p>
             {buyError && <div style={{ fontSize: 13, color: "var(--warn)", marginTop: 10 }}>{buyError}</div>}
           </Card>

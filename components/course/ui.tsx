@@ -45,7 +45,7 @@ export function Pill({ children, tone = "accent", style }: { children: ReactNode
   return <span style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "6px 12px", borderRadius: 999, background: bg, color, fontSize: 13, fontWeight: 600, whiteSpace: "nowrap", ...style }}>{children}</span>;
 }
 
-export function CourseShell({ children, xp, streak, pct, right }: { children: ReactNode; xp: number; streak: number; pct: number; right?: ReactNode }) {
+export function CourseShell({ children, xp, streak, pct, right, note }: { children: ReactNode; xp: number; streak: number; pct: number; right?: ReactNode; note?: ReactNode }) {
   return (
     <div style={{ ...S.root, padding: 0 }}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
@@ -67,8 +67,8 @@ export function CourseShell({ children, xp, streak, pct, right }: { children: Re
           </div>
         </div>
       </div>
-      <div style={{ background: "var(--warn-bg)", color: "#92400E", fontSize: 12, textAlign: "center", padding: "6px 12px" }}>
-        Prototype build for review. Your progress is saved in this browser only.
+      <div style={{ background: "var(--accent-bg-subtle)", color: "var(--accent)", fontSize: 12, textAlign: "center", padding: "6px 12px" }}>
+        {note ?? "Progress is saved in this browser."}
       </div>
       <div style={{ maxWidth: 1040, margin: "0 auto", padding: "24px 16px 60px" }}>{children}</div>
     </div>

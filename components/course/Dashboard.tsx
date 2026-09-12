@@ -4,13 +4,21 @@ import { PATHS } from "@/lib/quiz";
 import { useProgress } from "@/lib/course-progress";
 import { CourseShell, Btn, Panel, font, Ring } from "./ui";
 import { STAGE_META, StageRoad, JourneyMap } from "./scenes";
+import { canOpen, type CourseProduct } from "@/lib/course-tiers";
+
+const NOTE: Record<string, string> = {
+  none: "Module 0 is free. Ground ($24) opens Module 1. Progress is saved in this browser.",
+  ground: "Ground: Modules 0 and 1 are yours. The full program opens Modules 2 to 7. Progress is saved in this browser.",
+  os: "Progress is saved in this browser.",
+};
 
 const TYPE_ICON: Record<string, string> = { video: "▶", explainer: "✦", interactive: "⌘", action: "⚡", checkpoint: "◎" };
 
 const daysUntil = (iso?: string) => iso ? Math.max(0, Math.round((Date.parse(iso) - Date.now()) / 86_400_000)) : null;
 
-export default function Dashboard() {
+export default function Dashboard({ access }: { access: { product: CourseProduct } | null }) {
   const { p, ready, pct, reset } = useProgress();
+  const held = access?.product || "none";
   const A = p.answers as Record<string, any>;
   const start = A["0.2"] || {};
   const stageKey = A["1.1"]?.stage || start.stage;
@@ -18,11 +26,11 @@ export default function Dashboard() {
   const path = start.path ? PATHS[start.path] : undefined;
   const topDials: string[] = A["1.5"]?.top || [];
   const verdict = A["1.2"]?.verdict;
-  const next: Lesson | undefined = LESSONS.find((l) => moduleOf(l).built && !p.completed.includes(l.id));
+  const next: Lesson | undefined = LESSONS.find((l) => moduleOf(l).built && canOpen(moduleOf(l).n, access) && !p.completed.includes(l.id));
   const days = daysUntil(start.date);
 
   return (
-    <CourseShell xp={p.xp} streak={p.streak.count} pct={pct}>
+    <CourseShell xp={p.xp} streak={p.streak.count} pct={pct} note={NOTE[held]}>
       {/* ---------------- hero: the map ---------------- */}
       <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) 320px", gap: 22, alignItems: "stretch" }} className="tos-two-col">
         <Panel style={{ background: "linear-gradient(160deg, #0A3D31 0%, #0B6B54 100%)", color: "#fff", border: "none", padding: "clamp(20px, 4vw, 32px)" }}>
@@ -81,7 +89,9 @@ export default function Dashboard() {
             const doneN = m.lessons.filter((l) => p.completed.includes(l.id)).length;
             const mpct = Math.round((doneN / m.lessons.length) * 100);
             const current = next && next.module === m.n;
-            const locked = !m.built;
+            const locked = !m.built || !canOpen(m.n, access);
+            const lockLabel = !m.built ? "Coming next" : m.n === 1 ? "Ground · $24" : "Full program";
+            const lockHref = m.built ? "/course/ground" : undefined;
             const minsLeft = m.lessons.filter((l) => !p.completed.includes(l.id)).reduce((n, l) => n + l.minutes, 0);
             return (
               <div key={m.n} style={{ display: "grid", gridTemplateColumns: "40px 1fr", gap: 12, marginBottom: 6 }}>
@@ -97,7 +107,7 @@ export default function Dashboard() {
                       <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.5, maxWidth: "56ch" }}>{m.tagline}</div>
                     </div>
                     <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
-                      {locked ? <span style={{ fontSize: 12, color: "var(--light)", background: "#F3F4F6", padding: "4px 10px", borderRadius: 999 }}>Coming next</span> : <Ring pct={mpct} size={44} />}
+                      {locked ? (lockHref ? <a href={lockHref} style={{ fontSize: 12, color: "var(--accent)", background: "var(--accent-bg-subtle)", padding: "4px 10px", borderRadius: 999, textDecoration: "none", fontWeight: 600 }}>🔒 {lockLabel}</a> : <span style={{ fontSize: 12, color: "var(--light)", background: "#F3F4F6", padding: "4px 10px", borderRadius: 999 }}>{lockLabel}</span>) : <Ring pct={mpct} size={44} />}
                     </div>
                   </div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 12 }}>
@@ -136,7 +146,7 @@ export default function Dashboard() {
               <a key={t} href={h} style={{ display: "flex", gap: 8, fontSize: 13, color: "var(--text)", textDecoration: "none", padding: "6px 0", lineHeight: 1.4 }}><span aria-hidden>{i}</span>{t}</a>
             ))}
           </Panel>
-          <button type="button" onClick={() => { if (confirm("Reset this browser's progress?")) reset(); }} style={{ background: "none", border: "none", color: "var(--light)", fontSize: 12, cursor: "pointer", fontFamily: font.sans, padding: 0 }}>Reset prototype progress</button>
+          <button type="button" onClick={() => { if (confirm("Reset this browser's progress?")) reset(); }} style={{ background: "none", border: "none", color: "var(--light)", fontSize: 12, cursor: "pointer", fontFamily: font.sans, padding: 0 }}>Reset my progress</button>
         </aside>
       </div>
     </CourseShell>

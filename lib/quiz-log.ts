@@ -60,6 +60,33 @@ export async function markCustomer(email: string): Promise<void> {
   await r.set(`customer:${email.toLowerCase()}`, "1");
 }
 
+/** Ground buyers, keyed by email, holding what they paid in cents. The full
+ *  program's checkout reads this to take that amount off, so nobody pays for
+ *  Week 1 twice. No expiry: the credit is good whenever OS launches. */
+export async function markGroundBuyer(email: string, cents: number, sessionId: string): Promise<void> {
+  const r = getRedis(); if (!r) return;
+  await r.set(`ground:${email.toLowerCase()}`, JSON.stringify({ cents, sid: sessionId, at: Date.now() }));
+}
+export async function groundCreditFor(email: string): Promise<{ cents: number; sid: string } | null> {
+  const r = getRedis(); if (!r) return null;
+  const v = await r.get<string | { cents: number; sid: string }>(`ground:${email.toLowerCase()}`);
+  if (!v) return null;
+  try { return typeof v === "string" ? JSON.parse(v) : v; } catch { return null; }
+}
+export async function clearGroundBuyer(email: string): Promise<void> {
+  const r = getRedis(); if (!r) return;
+  await r.del(`ground:${email.toLowerCase()}`);
+}
+/** A refunded purchase loses access: the cookie still verifies, this says no. */
+export async function revokeAccess(sessionId: string): Promise<void> {
+  const r = getRedis(); if (!r) return;
+  await r.set(`revoked:${sessionId}`, "1");
+}
+export async function isAccessRevoked(sessionId: string): Promise<boolean> {
+  const r = getRedis(); if (!r) return false;
+  return !!(await r.get(`revoked:${sessionId}`));
+}
+
 /** Signed opt-out link. Keyed on CRON_SECRET so no extra env var is needed. */
 export function unsubToken(email: string): string {
   const secret = process.env.CRON_SECRET || "";
