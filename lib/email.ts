@@ -279,7 +279,11 @@ export function renderQuizResultEmail(input: QuizResultEmailInput): string {
   // Stages 1 to 3 get no pitch: a checkout button under a stage-2 reader's
   // result is the point at which she stops reading. Stage 5 skips the report.
   const cta = offer === "map"
-    ? `<p style="font-size:14px;line-height:1.7;margin-top:20px;">Nothing above needs buying. When you want your actual résumé read against these paths, the <a href="${reportLink}" style="color:#0B6B54;">$9 Pivot Report</a> does that, and the <a href="${suiteLink}" style="color:#0B6B54;">$24 Career Pivot Suite</a> rewrites a whole application against one posting and includes the report. Both will keep.</p>`
+    ? `<div style="padding:20px 22px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;margin-top:20px;">
+    <div style="font-size:15px;font-weight:700;margin-bottom:6px;">When you're ready for the practical part</div>
+    <div style="font-size:14px;line-height:1.7;color:#1B1B1E;">The <b>Pivot Report</b> reads your actual résumé against these paths and tells you which ones you already qualify for, with a 30-day plan. $9, once. <a href="${reportLink}" style="color:#0B6B54;font-weight:600;">Get the report &rarr;</a></div>
+    <div style="font-size:13px;line-height:1.7;color:#6B7280;margin-top:10px;">Already have a posting in hand? The <a href="${suiteLink}" style="color:#0B6B54;">$24 Career Pivot Suite</a> rewrites the whole application against it, and includes the report.</div>
+  </div>`
     : offer === "suite"
     ? `<div style="padding:22px;background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;margin-top:20px;">
     <div style="font-size:17px;font-weight:700;margin-bottom:8px;">Your résumé is the bottleneck.</div>
