@@ -4,7 +4,7 @@
 // (and, for action lessons, the action) complete.
 import { useMemo, useState, type ReactNode, useEffect } from "react";
 import { PATHS } from "@/lib/quiz";
-import { DIAL_PROFILES, ENERGY_PATHS } from "@/lib/course";
+import { DIAL_PROFILES, ENERGY_PATHS, DIALS } from "@/lib/course";
 import { Btn, Panel, Slider, font } from "./ui";
 import { Explainer } from "./Explainer";
 import { fiveStagesScenes, threeLiesScenes, STAGE_META, StageRoad } from "./scenes";
@@ -398,12 +398,6 @@ export function EnergyAudit({ answer, save, finish, done }: LessonProps) {
 }
 
 /* -------------------------------- 1.4 Dials ------------------------------- */
-const DIALS: { key: keyof typeof DIAL_PROFILES[string]; label: string; left: string; right: string }[] = [
-  { key: "pay", label: "Pay floor", left: "I have runway", right: "Must match SLP pay now" },
-  { key: "clinical", label: "Distance from clinical", left: "Clean break", right: "Stay close" },
-  { key: "people", label: "Live people-time", left: "As little as possible", right: "Still love 1:1" },
-  { key: "tech", label: "New tools and software", left: "Rather work with people", right: "Colleagues come to me" },
-];
 export function Dials({ answer, save, finish, done, all }: LessonProps & { all?: Record<string, any> }) {
   const fromAudit: string[] = all?.["1.4"]?.energyPaths || [];
   const [v, setV] = useState<Record<string, number>>(answer?.dials || { pay: 70, clinical: 60, people: 60, tech: 50 });

@@ -67,9 +67,10 @@ export const BADGES: BadgeDef[] = [
 ];
 
 const R = {
-  // Gated: /api/course/workbook checks the access cookie and picks the edition.
-  workbook1: { label: "Companion workbook (Word)", href: "/api/course/workbook?f=docx", kind: "worksheet" as const },
-  workbookPdf: { label: "Companion workbook (PDF, print-ready)", href: "/api/course/workbook?f=pdf", kind: "worksheet" as const },
+  // The filled workbook reads your saved answers; the blank ones are gated by
+  // /api/course/workbook, which picks the edition from the access cookie.
+  workbook1: { label: "Your workbook (with your answers)", href: "/course/workbook", kind: "worksheet" as const },
+  workbookPdf: { label: "Blank copy to write in (PDF)", href: "/api/course/workbook?f=pdf", kind: "worksheet" as const },
   sunkSheet: { label: "Sunk-cost calculator (this lesson, saved to your map)", href: "#", kind: "tool" as const },
   fears: { label: "5 hidden fears stopping SLPs from making a career change", href: "https://slptransitions.com/5-hidden-fears-stopping-slps-from-making-a-career-change-and-how-to-overcome-them/", kind: "link" as const },
   stages: { label: "You're allowed to want out: the five stages", href: "https://slptransitions.com/youre-allowed-to-want-out/", kind: "link" as const },
@@ -262,6 +263,14 @@ export const ENERGY_PATHS: Record<string, string[]> = {
   "Advocating for a client or a service": ["sales-bd", "liaison-ur", "content-marketing"],
   "Learning a new system or platform": ["informatics", "data-analysis", "instructional-design"],
 };
+
+/** The four dials in lesson 1.5. Read by the lesson and by the filled workbook. */
+export const DIALS: { key: keyof typeof DIAL_PROFILES[string]; label: string; left: string; right: string }[] = [
+  { key: "pay", label: "Pay floor", left: "I have runway", right: "Must match SLP pay now" },
+  { key: "clinical", label: "Distance from clinical", left: "Clean break", right: "Stay close" },
+  { key: "people", label: "Live people-time", left: "As little as possible", right: "Still love 1:1" },
+  { key: "tech", label: "New tools and software", left: "Rather work with people", right: "Colleagues come to me" },
+];
 
 export const DIAL_PROFILES: Record<string, DialProfile> = {
   "liaison-ur":           { pay: 1,   clinical: 1,   people: 0.6, tech: 0.3 },

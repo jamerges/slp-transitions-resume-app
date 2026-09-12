@@ -110,8 +110,9 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
           ))}
           <p style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.6, margin: "14px 0 0" }}>
             Read and do, no video. Five of the eight are interactive and they pass answers forward, so the dials at lesson 5 read
-            the energy audit at lesson 4. The workbook holds the three things a program shouldn&rsquo;t: what you wouldn&rsquo;t type into
-            software, what you carry into a room with another person, and the questions you answer again at weeks 6 and 12.
+            the energy audit at lesson 4. Your workbook fills in as you go: every answer you give lands on a printable page, with
+            blank lines for the parts worth writing by hand. Print it at week 1, again at week 6, and the distance between them is
+            the thing worth having.
           </p>
         </Card>
 
