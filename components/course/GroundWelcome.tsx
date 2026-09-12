@@ -29,7 +29,7 @@ export default function GroundWelcome({ sessionId }: { sessionId: string }) {
           {state === "done" && (<>
             <h1 style={{ ...S.h2, marginBottom: 8 }}>You&rsquo;re in.</h1>
             <p style={S.p}>Module 1 is open in this browser now{email ? `, and the access link is on its way to ${email}` : ""}. That link is your login on any other device, so keep the email.</p>
-            <a href="/course?unlocked=1" style={{ ...S.btn, display: "inline-block", textDecoration: "none" }}>Open the quest log →</a>
+            <a href="/course?unlocked=1" style={{ ...S.btn, display: "inline-block", textDecoration: "none" }}>Start the first lesson →</a>
           </>)}
           {state === "error" && (<>
             <h1 style={{ ...S.h2, marginBottom: 8 }}>One second.</h1>

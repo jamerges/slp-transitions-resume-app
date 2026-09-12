@@ -41,11 +41,11 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
           <div style={{ fontSize: 15, lineHeight: 1.6, opacity: 0.92, maxWidth: 560 }}>
             {!ready ? "" : !stage
               ? "The next ninety days take you from wondering whether you're allowed to leave, to interviewing for jobs outside the clinic. Seven modules, fifteen minutes to set up."
-              : stage.n === 1 ? "Nobody has to know. You can work through all 46 lessons and still be on the schedule Monday."
+              : stage.n === 1 ? "Nobody has to know. You can work through this at eleven at night and still be on the schedule Monday morning."
               : stage.n === 2 ? "The kids you got talking are still talking. All twenty paths in Module 2 run on the degree rather than around it."
               : stage.n === 3 ? "Module 2 has the SLP who sent five hundred applications, and the one who landed a six-figure role in fifteen months."
               : stage.n === 4 ? "Module 2 lists twenty paths with what each pays and how long it took, so you can pick one and stop reading."
-              : "Modules 3 to 5 turn what you already do into six résumé bullets, one piece of proof, and three interview answers."}
+              : "Later on, this turns what you already do into six résumé bullets, one piece of proof, and three interview answers."}
           </div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 16 }}>
             {stage && <Tag>Stage {stage.n} · {stage.name}</Tag>}
@@ -72,9 +72,18 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
                 <div style={{ fontSize: 13, color: "var(--muted)" }}>Module {next.module} · {next.minutes} min · {next.type}</div>
                 <p style={{ fontSize: 14, lineHeight: 1.55, margin: "10px 0 14px" }}>{next.summary}</p>
               </>
-            ) : <div style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 700, margin: "6px 0 14px" }}>That&rsquo;s Modules 0 and 1. Explore is next, once James signs off on this sample.</div>}
+            ) : (
+              <>
+                <div style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 700, margin: "6px 0 6px", lineHeight: 1.2 }}>You&rsquo;re through everything that&rsquo;s open.</div>
+                <p style={{ fontSize: 14, lineHeight: 1.55, margin: "0 0 14px" }}>
+                  Your answers are on your workbook page, and you can change any of them whenever you want.
+                </p>
+              </>
+            )}
           </div>
-          {next && <Btn href={`/course/${moduleOf(next).slug}/${next.id}`} style={{ width: "100%", textAlign: "center" }}>{"Continue →"}</Btn>}
+          {next
+            ? <Btn href={`/course/${moduleOf(next).slug}/${next.id}`} style={{ width: "100%", textAlign: "center" }}>{"Continue →"}</Btn>
+            : <Btn href="/course/workbook" style={{ width: "100%", textAlign: "center" }}>{"Your workbook →"}</Btn>}
         </Panel>
       </div>
 
@@ -135,12 +144,12 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
               {BADGES.map((b) => { const on = p.badges.includes(b.id); return (
                 <div key={b.id} title={`${b.label}: ${b.blurb}`} style={{ aspectRatio: "1", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, background: on ? "var(--accent-bg-subtle)" : "#F3F4F6", border: `1px solid ${on ? "var(--accent-bg)" : "var(--border)"}`, filter: on ? "none" : "grayscale(1)", opacity: on ? 1 : 0.45 }} className={on ? "tos-pop" : undefined}>{b.icon}</div>); })}
             </div>
-            <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 10, lineHeight: 1.5 }}>Badges are for things you did, never for things you watched.</div>
+            <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 10, lineHeight: 1.5 }}>Badges are for things you did, never for things you read.</div>
           </Panel>
           <Panel style={{ marginBottom: 14 }}>
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>Streak</div>
             <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}><span style={{ fontFamily: font.serif, fontSize: 34, fontWeight: 700 }}>{p.streak.count}</span><span style={{ color: "var(--muted)", fontSize: 14 }}>day{p.streak.count === 1 ? "" : "s"} with an action</span></div>
-            <div style={{ fontSize: 12, color: "var(--muted)", lineHeight: 1.5, marginTop: 4 }}>One missed day is forgiven. Two resets it. Actions count; watching doesn&rsquo;t.</div>
+            <div style={{ fontSize: 12, color: "var(--muted)", lineHeight: 1.5, marginTop: 4 }}>One missed day is forgiven. Two resets it. Doing something counts; reading doesn&rsquo;t.</div>
           </Panel>
           <Panel style={{ marginBottom: 14 }}>
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>Included with the program</div>

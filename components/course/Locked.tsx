@@ -27,7 +27,7 @@ export default function LockedLesson({ moduleN, moduleTitle, lessonTitle, owns }
                     This one is in the rest of the program, which isn&rsquo;t open yet. You already have Module 1, and what you
                     paid comes off the full program when it opens. I&rsquo;ll email you the day it does.
                   </p>
-                  <Btn href="/course">← Back to your quest log</Btn>
+                  <Btn href="/course">← Back to your lessons</Btn>
                   <div style={{ marginTop: 14 }}><a href="/course/workbook" style={{ fontSize: 13.5, color: "var(--accent)", fontWeight: 600 }}>Your workbook, with your answers →</a></div>
                 </>
               ) : (

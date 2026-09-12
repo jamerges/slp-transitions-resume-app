@@ -81,7 +81,7 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
       <div style={{ ...S.wrap, maxWidth: 620 }}>
         {badLink && <Card style={{ background: "var(--warn-bg)" }}><div style={{ fontSize: 14 }}>That access link didn&rsquo;t verify. Open the link from your access email again, or reply to it and I&rsquo;ll resend.</div></Card>}
         {canceled && <Card><div style={{ fontSize: 14, color: "var(--muted)" }}>Checkout closed. Nothing was charged.</div></Card>}
-        {alreadyHas && <Card style={{ background: "var(--accent-bg-subtle)" }}><div style={{ fontSize: 14 }}>This browser already has access. <a href="/course" style={{ color: "var(--accent)", fontWeight: 600 }}>Open the quest log →</a></div></Card>}
+        {alreadyHas && <Card style={{ background: "var(--accent-bg-subtle)" }}><div style={{ fontSize: 14 }}>You already have this. <a href="/course" style={{ color: "var(--accent)", fontWeight: 600 }}>Pick up where you left off →</a></div></Card>}
 
         <div style={{ textAlign: "center", marginTop: 8 }}>
           <span style={S.tag}>Transition OS · Module 1</span>
