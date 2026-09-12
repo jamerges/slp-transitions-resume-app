@@ -90,8 +90,10 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
             const mpct = Math.round((doneN / m.lessons.length) * 100);
             const current = next && next.module === m.n;
             const locked = !m.built || !canOpen(m.n, access);
-            const lockLabel = !m.built ? "Coming next" : m.n === 1 ? "$19 · Module 1" : "Full program";
-            const lockHref = m.built ? "/course/ground" : undefined;
+            const ownsGround = held === "ground" || held === "os";
+            const lockLabel = !m.built ? "Coming next" : m.n === 1 && !ownsGround ? "$19 · Module 1" : ownsGround ? "Opens after Module 1" : "Full program";
+            // Never link a buyer back to the page that sells them what they own.
+            const lockHref = m.built && m.n === 1 && !ownsGround ? "/course/ground" : undefined;
             const minsLeft = m.lessons.filter((l) => !p.completed.includes(l.id)).reduce((n, l) => n + l.minutes, 0);
             return (
               <div key={m.n} style={{ display: "grid", gridTemplateColumns: "40px 1fr", gap: 12, marginBottom: 6 }}>

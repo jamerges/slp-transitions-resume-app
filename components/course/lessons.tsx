@@ -549,6 +549,33 @@ export function Checkpoint1({ answer, save, finish, done, all }: LessonProps & {
   const stage = all["1.1"]?.stage || all["0.2"]?.stage;
   const push = /burn|exhaust|hate|can't|cannot|paperwork|productivity|toxic|miserable/i.test(why);
 
+  // Finishing puts the answers in their inbox: the progress store is one
+  // browser, and this is a paid product they should be able to re-read.
+  const [sent, setSent] = useState<"idle" | "ok" | "skip">("idle");
+  useEffect(() => {
+    if (!done || sent !== "idle") return;
+    const summary: Record<string, string> = {};
+    const stageName = STAGE_META.find((x) => x.key === stage)?.name;
+    if (stageName) summary["The stage you named"] = stageName;
+    if (verdict) summary["Bad workplace, bad fit, or bad season"] = VERDICTS[verdict].title;
+    const floorIdx = all["0.2"]?.floor;
+    if (typeof floorIdx === "number" && floorIdx >= 0) summary["Your income floor"] = FLOORS[floorIdx];
+    if (all["0.2"]?.date) summary["The date you are aiming at"] = all["0.2"].date;
+    const marks: Record<string, string> = all["1.4"]?.energy || {};
+    const gave = Object.keys(marks).filter((k) => marks[k] === "up");
+    if (gave.length) summary["What gave you energy"] = gave.join("\n");
+    if (top.length) summary["The three paths your dials produced"] = top.map((sl) => PATHS[sl]?.label).filter(Boolean).join(", ");
+    if (all["1.7"]?.who) summary["The person you told"] = all["1.7"].who;
+    if (pushes.length) summary["Moving away from"] = pushes.join("\n");
+    if (pulls.length) summary["Moving toward"] = pulls.join("\n");
+    if (why.trim()) summary["Where you're going, in one sentence"] = why.trim();
+    fetch("/api/course/module1-complete", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ summary }) })
+      .then((r) => r.json())
+      .then((d) => setSent(d?.emailed ? "ok" : "skip"))
+      .catch(() => setSent("skip"));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [done]);
+
   return (
     <div>
       <P>
@@ -619,9 +646,25 @@ export function Checkpoint1({ answer, save, finish, done, all }: LessonProps & {
       </Panel>
 
       {!done ? (
-        <Btn onClick={() => { save({ pushes, pulls, why }); finish({ action: true }); }} disabled={why.trim().length < 12 || push} style={{ marginTop: 16 }}>Save and finish Module 1</Btn>
+        <Btn onClick={() => { save({ pushes, pulls, why }); finish({ action: true }); }} disabled={why.trim().length < 12 || push} style={{ marginTop: 16 }}>Finish Module 1</Btn>
       ) : (
-        <Panel tone="soft" style={{ marginTop: 16 }}><b>Module 1 complete.</b> Explore opens next, and your map on the dashboard now carries everything you set this week.</Panel>
+        <Panel tone="soft" style={{ marginTop: 16 }}>
+          <H>That&rsquo;s Module 1.</H>
+          <P style={{ marginBottom: 10 }}>
+            You have a verdict, the four things you are protecting, and one sentence about where you are going.
+            Everything after this runs on that sentence.
+          </P>
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 12 }}>
+            <Btn href="/course/workbook">Your workbook, with your answers →</Btn>
+            <Btn href="/course" outline>← Quest log</Btn>
+          </div>
+          <Muted style={{ margin: 0 }}>
+            {sent === "ok" ? "A copy is on its way to your inbox, so your answers live somewhere other than this browser."
+              : sent === "skip" ? "Your answers are saved in this browser and on your workbook page."
+              : "Sending a copy to your inbox\u2026"}
+            {" "}The rest of the program isn&rsquo;t open yet. What you paid comes off it, and you&rsquo;ll get an email the day it opens.
+          </Muted>
+        </Panel>
       )}
     </div>
   );

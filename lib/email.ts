@@ -430,6 +430,40 @@ export async function sendGroundAccessEmail(input: { to: string; unlockUrl: stri
   await getResend().emails.send({ from: FROM_ADDRESS, to, replyTo: REPLY_TO, subject: "Your Ground access link", html });
 }
 
+/** What they worked out in Module 1, in their inbox, plus the links back in. */
+export function renderModule1SummaryEmail(summary: Record<string, string>): string {
+  const row = (k: string, v: string) =>
+    `<tr><td style="padding:10px 0;border-bottom:1px solid #E5E7EB;font-size:13px;color:#6B7280;width:38%;vertical-align:top;">${esc(k)}</td>
+      <td style="padding:10px 0;border-bottom:1px solid #E5E7EB;font-size:14px;line-height:1.6;">${nl2br(v)}</td></tr>`;
+  const rows = Object.entries(summary).filter(([, v]) => v && v.trim()).map(([k, v]) => row(k, v)).join("");
+  const html = `<!doctype html>
+<html><body style="margin:0;padding:0;background:#FAFAF9;font-family:-apple-system,'DM Sans',sans-serif;color:#1B1B1E;">
+<div style="max-width:620px;margin:0 auto;padding:32px 20px;">
+  <div style="text-align:center;margin-bottom:22px;"><div style="font-size:20px;font-weight:700;color:#2D6A4F;font-family:Georgia,serif;">SLP Transitions</div></div>
+  <p style="font-size:16px;line-height:1.7;">You finished Module 1. Here is what you worked out, so it is somewhere other than one browser.</p>
+  <table style="width:100%;border-collapse:collapse;margin:18px 0;">${rows}</table>
+  <div style="background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;padding:20px;margin-top:18px;">
+    <div style="font-size:15px;font-weight:700;margin-bottom:8px;">Everything that came with it</div>
+    <div style="font-size:14px;line-height:1.9;">
+      &bull; <a href="${APP_URL}/course/workbook" style="color:#0B6B54;">Your workbook</a>, with these answers filled in, ready to print<br/>
+      &bull; <a href="${APP_URL}/api/course/workbook?f=pdf" style="color:#0B6B54;">A blank copy</a> to write on by hand<br/>
+      &bull; <a href="${APP_URL}/course" style="color:#0B6B54;">Your quest log</a>, to change any answer whenever you want
+    </div>
+  </div>
+  <p style="font-size:15px;line-height:1.7;margin-top:20px;">The rest of the program isn&rsquo;t open yet. What you paid comes off it when it is, and I&rsquo;ll write to you the day that happens. Nothing else to do.</p>
+  <p style="font-size:15px;line-height:1.7;">If any of this didn&rsquo;t help, reply and I&rsquo;ll refund you. That offer stands for thirty days.</p>
+  <p style="font-size:15px;line-height:1.7;">James</p>
+</div></body></html>`;
+  return html;
+}
+
+export async function sendModule1SummaryEmail(input: { to: string; summary: Record<string, string> }): Promise<void> {
+  await getResend().emails.send({
+    from: FROM_ADDRESS, to: input.to, replyTo: REPLY_TO,
+    subject: "Your Module 1 answers", html: renderModule1SummaryEmail(input.summary),
+  });
+}
+
 export async function sendReportReminderEmail(input: {
   to: string;
   sessionId: string;

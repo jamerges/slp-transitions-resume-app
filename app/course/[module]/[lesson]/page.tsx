@@ -13,6 +13,6 @@ export default async function Page({ params }: { params: Promise<{ module: strin
   if (!l || moduleOf(l).slug !== slug || !moduleOf(l).built) notFound();
   const m = moduleOf(l);
   const access = await getCourseAccess();
-  if (!canOpen(m.n, access)) return <LockedLesson moduleN={m.n} moduleTitle={m.title} lessonTitle={l.title} />;
+  if (!canOpen(m.n, access)) return <LockedLesson moduleN={m.n} moduleTitle={m.title} lessonTitle={l.title} owns={access?.product ?? null} />;
   return <LessonPage id={lesson} access={access ? { product: access.product } : null} />;
 }
