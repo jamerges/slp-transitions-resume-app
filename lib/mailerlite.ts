@@ -32,6 +32,10 @@ export const CUSTOMER_GROUPS = {
   ground: "198364363480893430",  // $24 Ground: Week 1 of Transition OS (created 2026-09-11)
 } as const;
 
+export const WAITLIST_GROUPS = {
+  ground: "198391691796809364",  // "Waitlist · Ground (opening notice)" (created 2026-09-12)
+} as const;
+
 export async function upsertSubscriber(input: {
   email: string;
   name?: string;

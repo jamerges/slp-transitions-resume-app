@@ -14,10 +14,22 @@ const LESSONS = [
   ["Checkpoint", "Pushes, pulls, and one sentence about where you're going."],
 ];
 
-export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas }: { stage: string; path: string; canceled: boolean; badLink: boolean; alreadyHas: boolean }) {
+export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, live }: { stage: string; path: string; canceled: boolean; badLink: boolean; alreadyHas: boolean; live: boolean }) {
   const [email, setEmail] = useState("");
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState("");
+  const [waited, setWaited] = useState(false);
+  const waitlist = async () => {
+    if (busy) return;
+    setBusy(true); setErr("");
+    track("generate_lead", { placement: "ground_waitlist", stage: stage || "none" });
+    try {
+      const r = await fetch("/api/ground-waitlist", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email }) });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || "Could not save that.");
+      setWaited(true);
+    } catch (e: any) { setErr(e?.message || "Could not save that."); } finally { setBusy(false); }
+  };
   const buy = async () => {
     if (busy) return;
     setBusy(true); setErr("");
@@ -67,15 +79,32 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas }
             <div><div style={{ fontSize: 30, fontWeight: 700, fontFamily: "'Playfair Display', Georgia, serif" }}>$24</div><div style={{ fontSize: 13, color: "var(--muted)" }}>once, no subscription</div></div>
             <div style={{ fontSize: 13.5, color: "var(--muted)", maxWidth: 300, lineHeight: 1.55 }}>Comes off the full program when it launches, so you never pay for Week 1 twice. 30-day refund by replying to one email.</div>
           </div>
-          <div style={{ marginTop: 16 }}>
-            <label style={S.label}>Email for your access link <span style={{ color: "var(--muted)", fontWeight: 400 }}>(you can also enter it at checkout)</span></label>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@email.com" style={S.input} />
-          </div>
-          {err && <div style={{ fontSize: 13, color: "var(--warn)", marginTop: 10 }}>{err}</div>}
-          <div style={{ textAlign: "center", marginTop: 16 }}>
-            <button onClick={buy} disabled={busy} style={{ ...S.btn, padding: "15px 40px", fontSize: 17, opacity: busy ? 0.7 : 1 }}>{busy ? "Opening checkout…" : "Start Ground — $24 →"}</button>
-            <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 10, lineHeight: 1.6 }}>Access arrives by email the moment payment clears, and opens on this browser immediately. Progress saves in the browser you use.</p>
-          </div>
+          {live ? (
+            <>
+              <div style={{ marginTop: 16 }}>
+                <label style={S.label}>Email for your access link <span style={{ color: "var(--muted)", fontWeight: 400 }}>(you can also enter it at checkout)</span></label>
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@email.com" style={S.input} />
+              </div>
+              {err && <div style={{ fontSize: 13, color: "var(--warn)", marginTop: 10 }}>{err}</div>}
+              <div style={{ textAlign: "center", marginTop: 16 }}>
+                <button onClick={buy} disabled={busy} style={{ ...S.btn, padding: "15px 40px", fontSize: 17, opacity: busy ? 0.7 : 1 }}>{busy ? "Opening checkout…" : "Start Ground — $24 →"}</button>
+                <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 10, lineHeight: 1.6 }}>Access arrives by email the moment payment clears, and opens on this browser immediately. Progress saves in the browser you use.</p>
+              </div>
+            </>
+          ) : waited ? (
+            <div style={{ marginTop: 16, fontSize: 14.5, color: "var(--accent)", fontWeight: 600 }}>✓ You&rsquo;ll get the link the day it opens. The free setup is open now.</div>
+          ) : (
+            <>
+              <div style={{ marginTop: 16 }}>
+                <label style={S.label}>Ground opens this week. Leave your email and you&rsquo;ll get the link the day it does.</label>
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@email.com" style={S.input} onKeyDown={(e) => { if (e.key === "Enter") waitlist(); }} />
+              </div>
+              {err && <div style={{ fontSize: 13, color: "var(--warn)", marginTop: 10 }}>{err}</div>}
+              <div style={{ textAlign: "center", marginTop: 14 }}>
+                <button onClick={waitlist} disabled={busy} style={{ ...S.btn, padding: "13px 32px", fontSize: 15.5, opacity: busy ? 0.7 : 1 }}>{busy ? "Saving…" : "Tell me when it opens →"}</button>
+              </div>
+            </>
+          )}
         </Card>
 
         <div style={{ textAlign: "center", margin: "6px 0 30px" }}>
