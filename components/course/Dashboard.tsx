@@ -142,7 +142,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
           </Panel>
           <Panel style={{ marginBottom: 14 }}>
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>Included with the program</div>
-            {[["📄", "Companion workbook (Word)", "/course/transition-os-workbook.docx"], ["📇", "Outreach and application tracker", "/course/transition-os-tracker-README.md"], ["🃏", "20 path cards with sourced ranges", "https://slptransitions.com/alternative-careers-speech-pathologists-slps/"], ["🏢", "120 companies that hire former SLPs", "/companies"], ["📬", "This week's open roles by path", "/jobs"], ["🧰", "Résumé, cover letter and LinkedIn tools", "/"]].map(([i, t, h]) => (
+            {[["📄", "Companion workbook", "/api/course/workbook?f=pdf"], ["📇", "Outreach and application tracker", "/course/transition-os-tracker-README.md"], ["🃏", "20 path cards with sourced ranges", "https://slptransitions.com/alternative-careers-speech-pathologists-slps/"], ["🏢", "120 companies that hire former SLPs", "/companies"], ["📬", "This week's open roles by path", "/jobs"], ["🧰", "Résumé, cover letter and LinkedIn tools", "/"]].map(([i, t, h]) => (
               <a key={t} href={h} style={{ display: "flex", gap: 8, fontSize: 13, color: "var(--text)", textDecoration: "none", padding: "6px 0", lineHeight: 1.4 }}><span aria-hidden>{i}</span>{t}</a>
             ))}
           </Panel>

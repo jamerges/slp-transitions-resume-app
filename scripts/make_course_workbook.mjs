@@ -6,7 +6,7 @@ import {
   WidthType, BorderStyle, ShadingType, HeightRule, PageBreak, Footer, Header, PageNumber,
   LevelFormat, TabStopType,
 } from "docx";
-import { writeFileSync } from "node:fs";
+import { writeFileSync, mkdirSync } from "node:fs";
 
 const F = "Calibri", SERIF = "Georgia";
 const GREEN = "2D6A4F", DARK = "1B1B1E", MUTED = "6B7280", LINE = "D1D5DB", SOFT = "F0FAF3", CREAM = "FAFAF9", AMBER = "FEF3C7";
@@ -147,15 +147,23 @@ const matrix = (cols, rows) => {
   return new Table({ width: { size: W, type: WidthType.DXA }, columnWidths: widths, rows: [head, ...body] });
 };
 
+/* Two editions from one source. The $19 product is Module 1, so its workbook
+ * is the Module 1 pages plus the tracker that spans the whole program. The
+ * sheets you carry into a room belong to Modules 3 and 6 and ship with the
+ * full program. Run: node scripts/make_course_workbook.mjs [module1|full|both]
+ */
+const EDITION = process.argv[2] || "both";
+const MODULE1_ONLY = EDITION === "module1";
+
 const children = [];
 // ------------------------------------------------------------------ cover
 children.push(
   spacer(1800),
-  kickerIn("Transition OS · ninety days", GREEN),
+  kickerIn(MODULE1_ONLY ? "Transition OS · module 1" : "Transition OS · ninety days", GREEN),
   new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "Workbook", font: SERIF, size: 66, bold: true, color: DARK })] }),
-  new Paragraph({ spacing: { after: 240 }, children: [new TextRun({ text: "Print it, or type straight into it. Eleven pages holding the three things the program on screen deliberately does not.", font: SERIF, size: 28, color: MUTED })] }),
+  new Paragraph({ spacing: { after: 240 }, children: [new TextRun({ text: MODULE1_ONLY ? "Print it, or type straight into it. Five pages holding the things the program on screen deliberately does not." : "Print it, or type straight into it. Eleven pages holding the three things the program on screen deliberately does not.", font: SERIF, size: 28, color: MUTED })] }),
   rule(),
-  p("What you would not type into software, what you carry into a room, and what you answer more than once. Nobody reads this but you.", { color: MUTED, size: 22 }),
+  p(MODULE1_ONLY ? "What you would not type into software, and what you answer more than once. Nobody reads this but you." : "What you would not type into software, what you carry into a room, and what you answer more than once. Nobody reads this but you.", { color: MUTED, size: 22 }),
   spacer(240),
   progressStrip(),
   spacer(1400),
@@ -168,12 +176,20 @@ children.push(
   ...h1("How to use this", "Three rules."),
   ...bullets([
     "Do the lesson on screen first. The screen does the arithmetic, the sorting and the ranking, and it keeps your answers. Nothing in here repeats it.",
-    "These pages hold the three things a program should not. What you would not type into software, what you carry into a room with another person, and what you answer more than once.",
+    MODULE1_ONLY
+      ? "These pages hold what a program should not. What you would not type into software, and what you answer again at weeks 6 and 12."
+      : "These pages hold the three things a program should not. What you would not type into software, what you carry into a room with another person, and what you answer more than once.",
     "Write badly. Fragments, half-sentences, a list. If you catch yourself drafting sentences, you have switched into work mode, and this is not work.",
   ]),
   spacer(200),
   kicker("What's in here"),
-  ...fields([
+  ...fields(MODULE1_ONLY ? [
+    ["Weeks 1, 6 and 12", "The same five questions, three times"],
+    ["The sentence you tell yourself", "The one underneath the sunk-cost maths"],
+    ["The list you would not type", "Everything you want to leave, unsoftened"],
+    ["What you will miss", "The part every exit story has"],
+    ["Tell one person", "Who, when, and what they said back"],
+  ] : [
     ["Weeks 1, 6 and 12", "The same five questions, three times"],
     ["The sentence you tell yourself", "The one underneath the sunk-cost maths"],
     ["The list you would not type", "Everything you want to leave, unsoftened"],
@@ -184,6 +200,7 @@ children.push(
     ["The offer conversation", "Two numbers and three sentences, decided early"],
     ["Six months in", "Come back when you are on the other side"],
   ]),
+  ...(MODULE1_ONLY ? [muted("The sheets you take into a room with another person, the twenty-minute conversation, the interview page and the offer page, come with the full program.")] : []),
   pageBreak(),
 );
 
@@ -246,7 +263,7 @@ const conversationPage = (n) => [
   ...ask("The sentence you are taking away, and what you do in the next fortnight because of it.", 2, "You asked for fifteen minutes. Running over it is the fastest way to not get a second conversation."),
   pageBreak(),
 ];
-children.push(...conversationPage(1), ...conversationPage(2));
+if (!MODULE1_ONLY) children.push(...conversationPage(1), ...conversationPage(2));
 
 const interviewPage = (n) => [
   kickerIn(`Module 6 \u00b7 interview ${n} of 2`, ACCENT[6].ink),
@@ -261,9 +278,9 @@ const interviewPage = (n) => [
   muted("Burnout is a true reason and a bad answer. Answer with where you are going, not what you are leaving."),
   pageBreak(),
 ];
-children.push(...interviewPage(1), ...interviewPage(2));
+if (!MODULE1_ONLY) children.push(...interviewPage(1), ...interviewPage(2));
 
-children.push(
+if (!MODULE1_ONLY) children.push(
   kickerIn("Module 6 · the offer", ACCENT[6].ink),
   ...h1("The offer conversation", "Two numbers and three sentences, decided before the phone rings."),
   ...fields([
@@ -281,7 +298,7 @@ children.push(
 );
 
 // ---------------------------------------------------------------- after
-children.push(
+if (!MODULE1_ONLY) children.push(
   kickerIn("Module 7 · after", ACCENT[7].ink),
   ...h1("Six months in", "Come back to this page when you are on the other side."),
   ...ask("What is different on a Tuesday now? Compare it with the first pass on the three-passes page.", 5),
@@ -306,5 +323,9 @@ const doc = new Document({
 });
 
 const buf = await Packer.toBuffer(doc);
-writeFileSync("public/course/transition-os-workbook.docx", buf);
-console.log("wrote public/course/transition-os-workbook.docx", buf.length, "bytes");
+const out = MODULE1_ONLY
+  ? "content/course/workbook/transition-os-workbook-module1.docx"
+  : "content/course/workbook/transition-os-workbook.docx";
+mkdirSync("content/course/workbook", { recursive: true });
+writeFileSync(out, buf);
+console.log(`wrote ${out} (${EDITION})`, buf.length, "bytes");

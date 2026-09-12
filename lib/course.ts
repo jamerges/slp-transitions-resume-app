@@ -67,8 +67,9 @@ export const BADGES: BadgeDef[] = [
 ];
 
 const R = {
-  workbook1: { label: "Companion workbook (Word)", href: "/course/transition-os-workbook.docx", kind: "worksheet" as const },
-  workbookPdf: { label: "Companion workbook (PDF, print-ready)", href: "/course/transition-os-workbook.pdf", kind: "worksheet" as const },
+  // Gated: /api/course/workbook checks the access cookie and picks the edition.
+  workbook1: { label: "Companion workbook (Word)", href: "/api/course/workbook?f=docx", kind: "worksheet" as const },
+  workbookPdf: { label: "Companion workbook (PDF, print-ready)", href: "/api/course/workbook?f=pdf", kind: "worksheet" as const },
   sunkSheet: { label: "Sunk-cost calculator (this lesson, saved to your map)", href: "#", kind: "tool" as const },
   fears: { label: "5 hidden fears stopping SLPs from making a career change", href: "https://slptransitions.com/5-hidden-fears-stopping-slps-from-making-a-career-change-and-how-to-overcome-them/", kind: "link" as const },
   stages: { label: "You're allowed to want out: the five stages", href: "https://slptransitions.com/youre-allowed-to-want-out/", kind: "link" as const },
