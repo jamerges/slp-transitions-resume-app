@@ -81,6 +81,13 @@ export default function JobsPage() {
         </p>
       )}
 
+      {/* The nav sends "Jobs & companies" here, so the companies list has to be
+          reachable from this page or it is stranded. */}
+      <p style={{ ...S.p, fontSize: 14, marginBottom: 10 }}>
+        Nothing open that fits? The{" "}
+        <a href="/companies" style={{ color: "var(--accent)", fontWeight: 600 }}>120 companies that hire former SLPs</a>{" "}
+        is the list to work from between postings.
+      </p>
       <p style={{ ...S.p, fontSize: 13, color: "var(--muted)", marginBottom: 26 }}>
         Updated {updated}. Postings close without warning, so if a link is dead the
         role is gone &mdash; check the company&rsquo;s careers page for what replaced it.
