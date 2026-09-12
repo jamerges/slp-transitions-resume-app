@@ -67,6 +67,27 @@ export default function JobsPage() {
         the quiz uses.
       </p>
 
+      {/* The nav sends "Jobs & companies" here, so the list is the other half of
+          what this page promises and sits above the postings, not under them. */}
+      <a
+        href="https://slptransitions.com/ed-health-tech-jobs/"
+        style={{
+          display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16,
+          textDecoration: "none", color: "inherit", border: "1.5px solid var(--accent)",
+          background: "var(--accent-bg-subtle)", borderRadius: 12,
+          padding: "16px 20px", margin: "4px 0 18px", flexWrap: "wrap",
+        }}
+      >
+        <div>
+          <div style={{ fontSize: 20, fontWeight: 700, fontFamily: "'Playfair Display', Georgia, serif", lineHeight: 1.25 }}>
+            Here are 120 companies that hire former SLPs
+          </div>
+          <div style={{ fontSize: 14, color: "var(--muted)", marginTop: 4, lineHeight: 1.55 }}>
+            Who has actually hired one, and for what. The list to work from between postings.
+          </div>
+        </div>
+        <span style={{ fontSize: 15, fontWeight: 700, color: "var(--accent)", whiteSpace: "nowrap" }}>Get the list &rarr;</span>
+      </a>
       {/* A plain, quotable statement of what the week's data shows. Nobody else
           publishes these numbers for this audience, and it gives both readers
           and answer engines something to take away from a page of links. */}
@@ -81,13 +102,6 @@ export default function JobsPage() {
         </p>
       )}
 
-      {/* The nav sends "Jobs & companies" here, so the companies list has to be
-          reachable from this page or it is stranded. */}
-      <p style={{ ...S.p, fontSize: 14, marginBottom: 10 }}>
-        Nothing open that fits? The{" "}
-        <a href="https://slptransitions.com/ed-health-tech-jobs/" style={{ color: "var(--accent)", fontWeight: 600 }}>120 companies that hire former SLPs</a>{" "}
-        is the list to work from between postings.
-      </p>
       <p style={{ ...S.p, fontSize: 13, color: "var(--muted)", marginBottom: 26 }}>
         Updated {updated}. Postings close without warning, so if a link is dead the
         role is gone &mdash; check the company&rsquo;s careers page for what replaced it.
