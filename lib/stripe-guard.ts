@@ -8,7 +8,8 @@ export function assertKeyPriceMatch(secretKey: string, priceId: string, label: s
   const KNOWN_TEST_PRICES = new Set([
     "price_1TRlBQKyPrmclvwmo8coeL30", // $24 test
     "price_1Tz6TjKyPrmclvwmJBqCzPcB", // $9 test
-    "price_1UEfLQKyPrmclvwm04D8JjvY", // $24 Ground test (2026-09-11)
+    "price_1UEfLQKyPrmclvwm04D8JjvY", // $24 Ground test (2026-09-11, superseded)
+    "price_1UErFiKyPrmclvwmJlcQC7fE", // $19 Before You Start Looking test (2026-09-12)
   ]);
   if (keyIsLive && KNOWN_TEST_PRICES.has(priceId)) {
     throw new Error(

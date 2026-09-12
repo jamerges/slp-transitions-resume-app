@@ -5,11 +5,15 @@ export type CourseProduct = "ground" | "os";
 export function canOpen(moduleN: number, access: { product: CourseProduct } | null | undefined): boolean {
   if (moduleN <= 0) return true;           // the setup is free
   if (!access) return false;
-  if (moduleN <= 2) return access.product === "ground" || access.product === "os";
+  if (moduleN === 1) return access.product === "ground" || access.product === "os";
   return access.product === "os";
 }
 
 /** What the $24 is called where a buyer can see it. "Ground" and "Explore"
  *  stay as the module names inside the course; this is the product. */
 export const GROUND_NAME = "Before You Start Looking";
-export const GROUND_SUB = "Bad workplace, bad fit, or bad season, what gave you energy, and which of the twenty paths actually fit.";
+export const GROUND_SUB = "Work out whether you're actually leaving, and what you're protecting if you are.";
+/** One place owns the price. $19 sits between the $9 report and the $24 Suite
+ *  so the ladder reads at a glance, and it credits in full toward the program:
+ *  its job is deposits, not margin. */
+export const GROUND_PRICE = 19;

@@ -6,6 +6,8 @@ import { track } from "@/lib/analytics";
 import { QUESTIONS, PATHS, STAGES, pathImage, scoreQuiz, stageFromLabel, type QuizAnswers, type QuizPath } from "@/lib/quiz";
 import StageMap from "./StageMap";
 import { offerForStage, mapUrl } from "@/lib/stage-map";
+import ProductMenu, { type ProductKey } from "./ProductMenu";
+import { GROUND_PRICE } from "@/lib/course-tiers";
 
 /** CSS-only "product shot" for the $9 Pivot Report, so the thing being sold
  *  looks like an object rather than a paragraph.
@@ -154,6 +156,27 @@ export default function CareerQuiz({
   const stageKey = stageFromLabel((answers.stage || [])[0]);
   const offer = offerForStage(stageKey);
   const suiteHref = (top: QuizPath) => `/?from=quiz&path=${encodeURIComponent(top.roleOption)}`;
+  // The menu under each offer. The stage question is a good guess, not a
+  // verdict, so all three products stay one click away with their price and
+  // the question each one answers.
+  const hrefForProduct = (k: ProductKey) => {
+    const t = result?.top;
+    if (!t) return undefined;
+    if (k === "ground") return `/course/ground?stage=${stageKey || ""}&path=${encodeURIComponent(t.slug)}`;
+    if (k === "suite") return suiteHref(t);
+    return undefined; // the report opens Stripe rather than a page
+  };
+  const pickProduct = (k: ProductKey) => {
+    const t = result?.top;
+    const base = { item_list_id: "quiz_result", item_list_name: "Quiz result", placement: "result_menu", stage: stageKey || "none" };
+    if (k === "report") {
+      track("begin_checkout", { currency: "USD", value: 9, items: [{ item_id: "pivot_report", item_name: "$9 Pivot Report", item_category: t?.slug, price: 9, quantity: 1 }], ...base });
+      if (t) buyReport(t);
+      return;
+    }
+    if (k === "suite") track("select_item", { items: [{ item_id: "career_pivot_suite", item_name: "$24 Career Pivot Suite", item_category: t?.slug, price: 24, quantity: 1 }], ...base });
+    else track("select_item", { items: [{ item_id: "ground", item_name: "Before You Start Looking", item_category: t?.slug, price: GROUND_PRICE, quantity: 1 }], ...base });
+  };
 
   // Straight from the result to Stripe. Asking for a resume first was the
   // biggest drop in the funnel — people take this quiz on a phone, at peak
@@ -585,6 +608,9 @@ export default function CareerQuiz({
                 See the $24 Suite →
               </a>
             </div>
+            <div style={{ borderTop: "1px solid var(--border)", marginTop: 18, paddingTop: 14 }}>
+              <ProductMenu recommended="report" order={["ground", "suite"]} onPick={pickProduct} hrefFor={hrefForProduct} />
+            </div>
           </Card>
         )}
         {offer === "suite" && (
@@ -650,25 +676,28 @@ export default function CareerQuiz({
                 </button>
               </p>
             </div>
+            <div style={{ borderTop: "1px solid var(--border)", marginTop: 18, paddingTop: 14 }}>
+              <ProductMenu recommended="suite" order={["ground", "report"]} onPick={pickProduct} hrefFor={hrefForProduct} />
+            </div>
           </Card>
         )}
         {offer === "map" && (
           <Card style={{ border: "1.5px solid var(--accent)" }}>
             <h3 style={{ ...S.h3, marginBottom: 8 }}>Before you start looking</h3>
             <p style={{ ...S.p, marginBottom: 14 }}>
-              This page ranked the paths from nine questions. <strong>Modules 1 and 2 of Transition OS</strong> do it properly:
-              bad workplace, bad fit or bad season, what gave you energy, what you can&rsquo;t afford to lose, then all twenty paths
-              with the ones that fit your answers marked and anything under your income floor flagged. Fifteen lessons,
-              read and do, no video. $24 once, and it comes off the full program later.
+              Everything above is a direction. <strong>Module 1 of Transition OS</strong> is the decision underneath it:
+              bad workplace, bad fit or bad season, the sunk-cost audit, what actually gave you energy, and the four things you
+              can&rsquo;t afford to lose. Eight lessons and five tools, read and do, with the companion workbook for the parts
+              worth writing by hand. ${GROUND_PRICE} once, and it comes off the full program later.
             </p>
             <a
               href={`/course/ground?stage=${stageKey || ""}&path=${encodeURIComponent(top.slug)}`}
               target={embedded ? "_blank" : undefined}
               rel="noopener"
-              onClick={() => track("select_item", { item_list_id: "quiz_result", item_list_name: "Quiz result", items: [{ item_id: "ground", item_name: "$24 Before You Start Looking", item_category: top.slug, price: 24, quantity: 1 }], placement: "result_after_map", stage: stageKey || "none" })}
+              onClick={() => track("select_item", { item_list_id: "quiz_result", item_list_name: "Quiz result", items: [{ item_id: "ground", item_name: "Before You Start Looking", item_category: top.slug, price: GROUND_PRICE, quantity: 1 }], placement: "result_after_map", stage: stageKey || "none" })}
               style={{ ...S.btn, display: "inline-block", textDecoration: "none" }}
             >
-              Start Modules 1 and 2 — $24 →
+              Start Module 1 — ${GROUND_PRICE} →
             </a>
             <p style={{ fontSize: 13, lineHeight: 1.65, color: "var(--muted)", margin: "14px 0 0" }}>
               Rather start from your résumé? The{" "}
@@ -686,6 +715,9 @@ export default function CareerQuiz({
               reads it against these paths and tells you which ones you already qualify for.
             </p>
             {buyError && <div style={{ fontSize: 13, color: "var(--warn)", marginTop: 10 }}>{buyError}</div>}
+            <div style={{ borderTop: "1px solid var(--border)", marginTop: 18, paddingTop: 14 }}>
+              <ProductMenu recommended="ground" order={["report", "suite"]} onPick={pickProduct} hrefFor={hrefForProduct} />
+            </div>
           </Card>
         )}
 
