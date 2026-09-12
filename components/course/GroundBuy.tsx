@@ -91,28 +91,24 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
 
         <Card highlight>
           <p style={{ fontSize: 15, lineHeight: 1.75, margin: 0 }}>
-            Most SLPs who want out spend a year deciding and a weekend leaving. This is the deciding, done properly in a week:
-            which of three problems you actually have, what the degree is worth now, what gave you energy and what took it, and
-            the four things you cannot afford to lose. You finish with one sentence about where you&rsquo;re going, and everything
-            after this, the paths, the résumé, the applications, runs on that sentence.
+            Most SLPs spend a year deciding and a weekend leaving. This is the deciding: which of three problems you actually
+            have, what the degree is worth now, what gave you energy and what took it, and what you can&rsquo;t afford to lose.
+            You finish with one sentence about where you&rsquo;re going, and everything after runs on it.
           </p>
         </Card>
 
         <Card>
           <ProductShot />
           <h3 style={{ ...S.h3, marginBottom: 4 }}>What ${GROUND_PRICE} buys</h3>
-          <p style={{ fontSize: 13.5, color: "var(--muted)", margin: "0 0 14px" }}>Eight lessons, five tools, about fifty minutes, plus the companion workbook. The fifteen-minute setup before it is free.</p>
+          <p style={{ fontSize: 13.5, color: "var(--muted)", margin: "0 0 14px" }}>Eight lessons, five tools, about fifty minutes, plus the companion workbook.</p>
           {LESSONS.map(([t, d], i) => (
             <div key={t} style={{ display: "flex", gap: 12, padding: "9px 0", borderTop: i ? "1px solid var(--border)" : "none" }}>
               <div style={{ width: 26, height: 26, borderRadius: "50%", background: "var(--accent-bg)", color: "var(--accent)", fontSize: 12, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{i + 1}</div>
               <div><div style={{ fontSize: 15, fontWeight: 600 }}>{t}</div><div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.55 }}>{d}</div></div>
             </div>
           ))}
-          <p style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.6, margin: "14px 0 0" }}>
-            Read and do, no video. Five of the eight are interactive and they pass answers forward, so the dials at lesson 5 read
-            the energy audit at lesson 4. Your workbook fills in as you go: every answer you give lands on a printable page, with
-            blank lines for the parts worth writing by hand. Print it at week 1, again at week 6, and the distance between them is
-            the thing worth having.
+          <p style={{ fontSize: 18, fontWeight: 700, fontFamily: "'Playfair Display', Georgia, serif", margin: "18px 0 0" }}>
+            Ready to find clarity?
           </p>
         </Card>
 

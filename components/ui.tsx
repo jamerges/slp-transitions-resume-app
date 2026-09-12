@@ -160,10 +160,13 @@ export function CoverageTable({ items }: { items: Array<{ requirement: string; s
 // rather than a detached app. Keep in sync if the site menu changes.
 const SITE = "https://slptransitions.com";
 const NAV = [
-  { label: "Articles", href: `${SITE}/` },
+  // Mirrors the WordPress primary menu (29). Keep the two in step or the site
+  // and the app disagree about what exists. Jobs & companies is one item: /jobs
+  // carries the companies banner.
+  { label: "Start here", href: "/start" },
   { label: "Career Quiz", href: "/quiz" },
-  { label: "Open Roles", href: "/jobs" },
-  { label: "Companies List", href: `${SITE}/ed-health-tech-jobs/` },
+  { label: "Jobs & companies", href: "/jobs" },
+  { label: "Articles", href: `${SITE}/` },
   { label: "About", href: `${SITE}/about/` },
   { label: "Contact", href: `${SITE}/contact-us/` },
 ];
