@@ -7,8 +7,8 @@ import { STAGE_META, StageRoad, JourneyMap } from "./scenes";
 import { canOpen, type CourseProduct } from "@/lib/course-tiers";
 
 const NOTE: Record<string, string> = {
-  none: "The setup is free. Ground, $24, opens Module 1. The rest is the full program. Progress is saved in this browser.",
-  ground: "Ground: Modules 0 and 1 are yours. The full program opens Modules 2 to 7. Progress is saved in this browser.",
+  none: "The setup is free. $24 opens Modules 1 and 2. The rest is the full program. Progress is saved in this browser.",
+  ground: "Modules 0, 1 and 2 are yours. The full program opens Modules 3 to 7. Progress is saved in this browser.",
   os: "Progress is saved in this browser.",
 };
 
@@ -90,7 +90,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
             const mpct = Math.round((doneN / m.lessons.length) * 100);
             const current = next && next.module === m.n;
             const locked = !m.built || !canOpen(m.n, access);
-            const lockLabel = !m.built ? "Coming next" : m.n === 1 ? "Ground · $24" : "Full program · after Ground";
+            const lockLabel = !m.built ? "Coming next" : m.n <= 2 ? "$24 · Modules 1 and 2" : "Full program";
             const lockHref = m.built ? "/course/ground" : undefined;
             const minsLeft = m.lessons.filter((l) => !p.completed.includes(l.id)).reduce((n, l) => n + l.minutes, 0);
             return (

@@ -4,6 +4,7 @@
 // the same progress store as everything else.
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { PATHS } from "@/lib/quiz";
+import { ENERGY_PATHS } from "@/lib/course";
 import { pathImage } from "@/lib/quiz";
 import { ROLES, rolesFor, formatUpdated } from "@/lib/open-roles";
 import { COMPANIES_DB } from "@/lib/companies";
@@ -17,11 +18,12 @@ const Muted = ({ children }: { children: ReactNode }) => <p style={{ fontSize: 1
 const input: React.CSSProperties = { width: "100%", padding: "9px 12px", fontSize: 14.5, border: "1px solid var(--border)", borderRadius: 8, fontFamily: font.sans, background: "var(--card)" };
 const money = (n: number) => "$" + Math.round(n).toLocaleString("en-US");
 const rangeLo = (s: string) => Number((s.replace(/,/g, "").match(/\d+/g) || ["0"])[0]);
+const rangeHi = (s: string) => { const m = (s.replace(/,/g, "").match(/\d+/g) || ["0"]).map(Number); return m[m.length - 1] || 0; };
 const rangeMid = (s: string) => { const m = s.replace(/,/g, "").match(/\d+/g)?.map(Number) || []; return m.length >= 2 ? (m[0] + m[1]) / 2 : m[0] || 0; };
 
 export function Tool(props: ToolProps) {
   switch (props.name) {
-    case "path-map": return <PathMap />;
+    case "path-map": return <PathMap {...props} />;
     case "pivot-report": return <PivotReport {...props} />;
     case "path-deep-dive": return <PathDeepDive {...props} />;
     case "contact-tracker": return <ContactTracker {...props} />;
@@ -46,27 +48,91 @@ const TIERS: { title: string; blurb: string; slugs: string[] }[] = [
   { title: "Six to twelve months", blurb: "Some vocabulary and one proof piece, then applications.", slugs: ["customer-success", "sales-bd", "content-marketing", "instructional-design"] },
   { title: "Twelve to twenty-four months", blurb: "Real upskilling. Higher ceilings, longer runway.", slugs: ["project-management", "data-analysis", "informatics"] },
 ];
-export function PathMap() {
+/** The twenty paths, read against what Module 1 already knows about you.
+ *  The public article can list these; it cannot tell you that three of them
+ *  sit under the pay floor you set in lesson 0.2, or that two line up with the
+ *  tasks you marked as energising. That difference is the product. */
+export function PathMap({ shared }: ToolProps) {
   const [open, setOpen] = useState<string | null>(null);
+  const [onlyFits, setOnlyFits] = useState(false);
+
+  const dialTop: string[] = shared["1.5"]?.top || [];
+  const energy: Record<string, "up" | "down" | undefined> = shared["1.4"]?.energy || {};
+  const floorIdx: number = shared["0.2"]?.floor ?? -1;
+  const hasModule1 = dialTop.length > 0 || Object.keys(energy).length > 0;
+
+  // Tasks marked "gave energy" point at paths (the mapping lives in the audit).
+  const energyHits = useMemo(() => {
+    const c: Record<string, number> = {};
+    for (const [task, v] of Object.entries(energy)) {
+      if (v !== "up") continue;
+      for (const slug of ENERGY_PATHS[task] || []) c[slug] = (c[slug] || 0) + 1;
+    }
+    return c;
+  }, [energy]);
+
+  // "Must match my SLP pay from day one" is floor 0. The SLP median is $97,870,
+  // so a band whose top sits under that cannot clear the floor they set.
+  const underFloor = (slug: string) => floorIdx === 0 && rangeHi(PATHS[slug].range) < 97870;
+
+  const fits = (slug: string) => dialTop.includes(slug) || (energyHits[slug] || 0) >= 2;
+  const shortlist = Object.keys(PATHS).filter((s) => fits(s) && !underFloor(s));
+
   return (
     <div>
-      {TIERS.map((t, ti) => (
+      {hasModule1 && (
+        <Panel tone="soft" style={{ marginBottom: 16 }}>
+          <H>Read against your Module 1 answers</H>
+          {shortlist.length > 0 ? (
+            <>
+              <Muted>
+                {shortlist.length === 1 ? "One path lines up" : `${shortlist.length} paths line up`} with the dials you set and the tasks you marked as energising.
+                Everything else stays on the map, because the point of this lesson is to see the whole thing once.
+              </Muted>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 10 }}>
+                {shortlist.map((s) => (
+                  <span key={s} style={{ fontSize: 13, fontWeight: 600, padding: "6px 11px", borderRadius: 999, background: "var(--card)", border: "1.5px solid var(--accent)", color: "var(--accent)" }}>
+                    {PATHS[s].icon} {PATHS[s].label}
+                  </span>
+                ))}
+              </div>
+            </>
+          ) : (
+            <Muted>Your dials and your energy audit do not agree yet, which is common and not a problem. Read the whole map first, then come back to lesson 1.5 and move the dials to where you actually are this month.</Muted>
+          )}
+          <label style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: 13.5, cursor: "pointer", color: "var(--text)" }}>
+            <input type="checkbox" checked={onlyFits} onChange={(e) => setOnlyFits(e.target.checked)} />
+            Show only these
+          </label>
+        </Panel>
+      )}
+
+      {TIERS.map((t, ti) => {
+        const slugs = t.slugs.filter((s) => !onlyFits || fits(s));
+        if (!slugs.length) return null;
+        return (
         <div key={t.title} className="tos-rise" style={{ animationDelay: `${ti * 120}ms`, marginBottom: 18 }}>
           <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 8 }}>
             <span style={{ fontFamily: font.serif, fontSize: 19, fontWeight: 700 }}>{t.title}</span><span style={{ fontSize: 13, color: "var(--muted)" }}>{t.blurb}</span>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(210px, 1fr))", gap: 10 }}>
-            {t.slugs.map((s) => { const p = PATHS[s]; const on = open === s; return (
-              <button key={s} type="button" onClick={() => setOpen(on ? null : s)} className="tos-card-hover" style={{ textAlign: "left", background: on ? "var(--accent-bg-subtle)" : "var(--card)", border: `1.5px solid ${on ? "var(--accent)" : "var(--border)"}`, borderRadius: 12, padding: 12, cursor: "pointer", fontFamily: font.sans }}>
-                <div style={{ fontSize: 22 }}>{p.icon}</div>
+            {slugs.map((s) => { const p = PATHS[s]; const on = open === s; const fit = fits(s); const low = underFloor(s); return (
+              <button key={s} type="button" onClick={() => setOpen(on ? null : s)} className="tos-card-hover" style={{ textAlign: "left", background: on ? "var(--accent-bg-subtle)" : "var(--card)", border: `1.5px solid ${on ? "var(--accent)" : fit ? "var(--accent-bg)" : "var(--border)"}`, borderRadius: 12, padding: 12, cursor: "pointer", fontFamily: font.sans, opacity: low ? 0.72 : 1 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                  <div style={{ fontSize: 22 }}>{p.icon}</div>
+                  {fit && <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", color: "var(--accent)", background: "var(--accent-bg)", padding: "3px 7px", borderRadius: 999 }}>Fits you</span>}
+                </div>
                 <div style={{ fontWeight: 700, fontSize: 14.5, marginTop: 4 }}>{p.label}</div>
                 <div style={{ fontSize: 12.5, color: "var(--accent)", fontWeight: 600, marginTop: 2 }}>{p.range}</div>
                 <div style={{ fontSize: 12, color: "var(--muted)" }}>typically {p.timeline}</div>
+                {low && <div style={{ fontSize: 11.5, color: "#92400E", marginTop: 5, lineHeight: 1.4 }}>Below the income floor you set</div>}
+                {fit && (energyHits[s] || 0) >= 2 && <div style={{ fontSize: 11.5, color: "var(--accent)", marginTop: 5, lineHeight: 1.4 }}>{energyHits[s]} of the tasks you marked as energising point here</div>}
+                {fit && (energyHits[s] || 0) < 2 && dialTop.includes(s) && <div style={{ fontSize: 11.5, color: "var(--accent)", marginTop: 5, lineHeight: 1.4 }}>One of your top three on the dials</div>}
                 {on && <div className="tos-fade" style={{ fontSize: 13, lineHeight: 1.5, marginTop: 8, color: "var(--text)" }}><b>The catch:</b> {p.caveat}</div>}
               </button>); })}
           </div>
         </div>
-      ))}
+      ); })}
       <Muted>Tap a card for the catch. Ranges are the documented bands from the research file; timelines are what documented transitions took.</Muted>
     </div>
   );

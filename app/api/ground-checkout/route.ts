@@ -5,7 +5,7 @@ import { assertKeyPriceMatch } from "@/lib/stripe-guard";
 export const runtime = "nodejs";
 
 /**
- * $24 Ground: Week 1 of Transition OS. No inputs to stash: the product is
+ * $24 Before You Start Looking (Modules 1-2). No inputs to stash: the product is
  * access, and access is issued from the Stripe session id after payment
  * (see ground-finalize). Refuses to run without its price id rather than
  * falling back, so a half-configured environment fails at the button and

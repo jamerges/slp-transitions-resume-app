@@ -240,6 +240,26 @@ export const TYPE_LABEL: Record<LessonType, string> = { video: "Video", explaine
 // (The "hours outside work" dial was dropped 2026-09-04: it read as two
 // different questions, job-search time now vs. hours in the new job.)
 export interface DialProfile { pay: number; clinical: number; people: number; tech: number }
+/** Clinical tasks from the energy audit (1.4), and the paths each one points at.
+ *  Read by the audit itself and by the path map in 2.1, so the two agree. */
+export const ENERGY_PATHS: Record<string, string[]> = {
+  "Direct therapy sessions": ["clinical-educator", "customer-success"],
+  "Evaluations and report writing": ["research-coordinator", "liaison-ur", "data-analysis"],
+  "IEP or care-plan meetings": ["project-management", "leadership", "customer-success"],
+  "Progress notes and documentation": ["informatics", "liaison-ur"],
+  "Parent and family conversations": ["customer-success", "sales-bd", "clinical-educator"],
+  "Supervising CFs or students": ["clinical-educator", "instructional-design", "leadership"],
+  "Training colleagues or staff": ["clinical-educator", "instructional-design", "sales-bd"],
+  "Scheduling and caseload management": ["project-management", "leadership"],
+  "Insurance, authorisations, appeals": ["liaison-ur"],
+  "Data collection and progress monitoring": ["data-analysis", "research-coordinator", "informatics"],
+  "Choosing or trialling AAC and devices": ["sales-bd", "clinical-educator", "customer-success"],
+  "Materials and resource creation": ["instructional-design", "content-marketing"],
+  "Meetings with administrators": ["leadership", "project-management"],
+  "Advocating for a client or a service": ["sales-bd", "liaison-ur", "content-marketing"],
+  "Learning a new system or platform": ["informatics", "data-analysis", "instructional-design"],
+};
+
 export const DIAL_PROFILES: Record<string, DialProfile> = {
   "liaison-ur":           { pay: 1,   clinical: 1,   people: 0.6, tech: 0.3 },
   "customer-success":     { pay: 0.8, clinical: 0.6, people: 0.9, tech: 0.5 },

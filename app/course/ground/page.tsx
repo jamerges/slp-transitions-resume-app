@@ -1,8 +1,8 @@
 import GroundBuy from "@/components/course/GroundBuy";
 import { getCourseAccess } from "@/lib/course-access";
 export const metadata = {
-  title: "Ground: Week 1 of Transition OS | SLP Transitions",
-  description: "Work out whether you're actually leaving, and what you're protecting if you do. Eight lessons, read and do, $24 once.",
+  title: "Before You Start Looking | SLP Transitions",
+  description: "Modules 1 and 2 of Transition OS: whether you're actually leaving, what you're protecting if you are, and which of the twenty paths fit. Fifteen lessons, $24 once.",
   robots: { index: false, follow: true },
 };
 export default async function GroundPage({ searchParams }: { searchParams: Promise<{ stage?: string; path?: string; canceled?: string; link?: string; live?: string }> }) {

@@ -49,7 +49,7 @@ export async function POST(req: Request) {
     if (email) {
       markCustomer(email).catch(() => {});
       markGroundBuyer(email, session.amount_total ?? 2400, session.id).catch(() => {});
-      upsertSubscriber({ email, groups: [CUSTOMER_GROUPS.ground], fields: { customer_product: "$24 Ground (Transition OS Week 1)" } }).catch(() => {});
+      upsertSubscriber({ email, groups: [CUSTOMER_GROUPS.ground], fields: { customer_product: "$24 Before You Start Looking (Modules 1-2)" } }).catch(() => {});
     }
 
     const res = NextResponse.json({ ok: true, unlockUrl: link, email, emailSent });

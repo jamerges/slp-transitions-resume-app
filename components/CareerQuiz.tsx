@@ -654,20 +654,21 @@ export default function CareerQuiz({
         )}
         {offer === "map" && (
           <Card style={{ border: "1.5px solid var(--accent)" }}>
-            <h3 style={{ ...S.h3, marginBottom: 8 }}>The stage you&rsquo;re in has its own week</h3>
+            <h3 style={{ ...S.h3, marginBottom: 8 }}>Before you start looking</h3>
             <p style={{ ...S.p, marginBottom: 14 }}>
-              <strong>Ground</strong> is Week 1 of Transition OS: the decision (bad workplace, bad fit, or bad season),
-              the sunk-cost audit, what gave you energy, what you can&rsquo;t afford to lose, and one sentence about
-              where you&rsquo;re going. Eight lessons, read and do, no video. $24 once, and it comes off the full program later.
+              This page ranked the paths from nine questions. <strong>Modules 1 and 2 of Transition OS</strong> do it properly:
+              bad workplace, bad fit or bad season, what gave you energy, what you can&rsquo;t afford to lose, then all twenty paths
+              with the ones that fit your answers marked and anything under your income floor flagged. Fifteen lessons,
+              read and do, no video. $24 once, and it comes off the full program later.
             </p>
             <a
               href={`/course/ground?stage=${stageKey || ""}&path=${encodeURIComponent(top.slug)}`}
               target={embedded ? "_blank" : undefined}
               rel="noopener"
-              onClick={() => track("select_item", { item_list_id: "quiz_result", item_list_name: "Quiz result", items: [{ item_id: "ground", item_name: "$24 Ground (Transition OS Week 1)", item_category: top.slug, price: 24, quantity: 1 }], placement: "result_after_map", stage: stageKey || "none" })}
+              onClick={() => track("select_item", { item_list_id: "quiz_result", item_list_name: "Quiz result", items: [{ item_id: "ground", item_name: "$24 Before You Start Looking", item_category: top.slug, price: 24, quantity: 1 }], placement: "result_after_map", stage: stageKey || "none" })}
               style={{ ...S.btn, display: "inline-block", textDecoration: "none" }}
             >
-              Start Ground — $24 →
+              Start Modules 1 and 2 — $24 →
             </a>
             <p style={{ fontSize: 13, lineHeight: 1.65, color: "var(--muted)", margin: "14px 0 0" }}>
               Rather start from your résumé? The{" "}

@@ -4,7 +4,7 @@
 // (and, for action lessons, the action) complete.
 import { useMemo, useState, type ReactNode } from "react";
 import { PATHS } from "@/lib/quiz";
-import { DIAL_PROFILES } from "@/lib/course";
+import { DIAL_PROFILES, ENERGY_PATHS } from "@/lib/course";
 import { Btn, Panel, Slider, font } from "./ui";
 import { Explainer } from "./Explainer";
 import { fiveStagesScenes, threeLiesScenes, STAGE_META, StageRoad } from "./scenes";
@@ -283,6 +283,9 @@ function Bars({ a, b, labelA, labelB }: { a: number; b: number; labelA: string; 
    and from Cliff Maxwell's energy-profile exercise. The SLP-specific task
    prompts and the mapping onto our eleven paths are ours. */
 
+/** Which paths each clinical task points at. Shared with the path map in Module 2. */
+const TASK_PATHS = ENERGY_PATHS;
+
 const SLP_TASKS = [
   "Direct therapy sessions", "Evaluations and report writing", "IEP or care-plan meetings",
   "Progress notes and documentation", "Parent and family conversations", "Supervising CFs or students",
@@ -292,23 +295,6 @@ const SLP_TASKS = [
 ];
 /* Which paths each task points at when it energises someone. Mirrors the
    scoring weights in lib/quiz.ts rather than inventing a second system. */
-const TASK_PATHS: Record<string, string[]> = {
-  "Direct therapy sessions": ["clinical-educator", "customer-success"],
-  "Evaluations and report writing": ["research-coordinator", "liaison-ur", "data-analysis"],
-  "IEP or care-plan meetings": ["project-management", "leadership", "customer-success"],
-  "Progress notes and documentation": ["informatics", "liaison-ur"],
-  "Parent and family conversations": ["customer-success", "sales-bd", "clinical-educator"],
-  "Supervising CFs or students": ["clinical-educator", "instructional-design", "leadership"],
-  "Training colleagues or staff": ["clinical-educator", "instructional-design", "sales-bd"],
-  "Scheduling and caseload management": ["project-management", "leadership"],
-  "Insurance, authorisations, appeals": ["liaison-ur"],
-  "Data collection and progress monitoring": ["data-analysis", "research-coordinator", "informatics"],
-  "Choosing or trialling AAC and devices": ["sales-bd", "clinical-educator", "customer-success"],
-  "Materials and resource creation": ["instructional-design", "content-marketing"],
-  "Meetings with administrators": ["leadership", "project-management"],
-  "Advocating for a client or a service": ["sales-bd", "liaison-ur", "content-marketing"],
-  "Learning a new system or platform": ["informatics", "data-analysis", "instructional-design"],
-};
 
 type EnergyState = Record<string, "up" | "down" | undefined>;
 

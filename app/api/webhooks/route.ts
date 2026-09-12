@@ -40,21 +40,21 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://app.slptransitions.c
 async function fulfilGround(session: Stripe.Checkout.Session): Promise<void> {
   const amount = ((session.amount_total ?? 0) / 100).toFixed(2);
   const email = session.customer_details?.email || session.customer_email || "";
-  const note = [`product: $24 Ground (Transition OS Week 1)`, `amount: $${amount}`, `email: ${email || "(none captured)"}`, `session: ${session.id}`];
+  const note = [`product: $24 Before You Start Looking (Modules 1-2)`, `amount: $${amount}`, `email: ${email || "(none captured)"}`, `session: ${session.id}`];
   try {
     const resp = await fetch(`${APP_URL}/api/ground-finalize`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ sessionId: session.id }) });
     const body = await resp.json().catch(() => ({}));
     if (!resp.ok) {
       note.push(`status: ACCESS NOT ISSUED (${resp.status}) ${String(body?.error || "").slice(0, 200)}`);
       note.push(`recover: ${APP_URL}/course/welcome?session_id=${session.id}`);
-      await sendOpsAlert({ subject: `⚠️ PAID BUT NO ACCESS — $${amount} Ground`, lines: note });
+      await sendOpsAlert({ subject: `⚠️ PAID BUT NO ACCESS — $${amount} (Modules 1-2)`, lines: note });
       return;
     }
     note.push(`status: access issued (email sent now: ${body?.emailSent === true}; false means the browser path already sent it)`);
-    await sendOpsAlert({ subject: `Sale: $${amount} Ground`, lines: note });
+    await sendOpsAlert({ subject: `Sale: $${amount} Modules 1-2`, lines: note });
   } catch (err: any) {
     note.push(`status: THREW — ${String(err?.message || err).slice(0, 200)}`);
-    await sendOpsAlert({ subject: `⚠️ PAID BUT NO ACCESS — $${amount} Ground`, lines: note }).catch(() => {});
+    await sendOpsAlert({ subject: `⚠️ PAID BUT NO ACCESS — $${amount} (Modules 1-2)`, lines: note }).catch(() => {});
   }
 }
 

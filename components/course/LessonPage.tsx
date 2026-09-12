@@ -61,7 +61,7 @@ export default function LessonPage({ id, access }: { id: string; access?: { prod
   const action = content?.action || lesson.action;
 
   return (
-    <CourseShell xp={p.xp} streak={p.streak.count} pct={pct} note={access?.product === "ground" ? "Ground: Modules 0 and 1 are yours. The full program opens Modules 2 to 7. Progress is saved in this browser." : undefined}>
+    <CourseShell xp={p.xp} streak={p.streak.count} pct={pct} note={access?.product === "ground" ? "Modules 0, 1 and 2 are yours. The full program opens Modules 3 to 7. Progress is saved in this browser." : undefined}>
       <ReadingBar />
       {toast && <UnlockToast xp={toast.xp} badges={toast.badges} onDone={() => setToast(null)} />}
       <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) 280px", gap: 28 }} className="tos-two-col">
