@@ -49,7 +49,8 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas }
         </Card>
 
         <Card>
-          <h3 style={{ ...S.h3, marginBottom: 12 }}>Eight lessons, about fifty minutes</h3>
+          <h3 style={{ ...S.h3, marginBottom: 4 }}>What $24 buys: Module 1</h3>
+          <p style={{ fontSize: 13.5, color: "var(--muted)", margin: "0 0 12px" }}>Eight lessons, five tools, about fifty minutes. The fifteen-minute setup before it is free.</p>
           {LESSONS.map(([t, d], i) => (
             <div key={t} style={{ display: "flex", gap: 12, padding: "9px 0", borderTop: i ? "1px solid var(--border)" : "none" }}>
               <div style={{ width: 26, height: 26, borderRadius: "50%", background: "var(--accent-bg)", color: "var(--accent)", fontSize: 12, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{i + 1}</div>
@@ -57,7 +58,7 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas }
             </div>
           ))}
           <p style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.6, margin: "14px 0 0" }}>
-            Read and do, no video. The decision tree, the sunk-cost calculator, the energy audit, the dials and the checkpoint are interactive, and each one saves your answers so the later lessons can read them. Module 0, the three-lesson setup, is free and already open.
+            Read and do, no video. The decision tree, the sunk-cost calculator, the energy audit, the dials and the checkpoint are interactive, and each one saves your answers so the later lessons can read them.
           </p>
         </Card>
 
@@ -78,7 +79,7 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas }
         </Card>
 
         <div style={{ textAlign: "center", margin: "6px 0 30px" }}>
-          <a href="/course" style={{ fontSize: 13.5, color: "var(--accent)", fontWeight: 600 }}>Try the free Module 0 first →</a>
+          <a href="/course" style={{ fontSize: 13.5, color: "var(--accent)", fontWeight: 600 }}>The setup is free. Start there →</a>
         </div>
       </div>
     </PageShell>

@@ -7,7 +7,7 @@ import { STAGE_META, StageRoad, JourneyMap } from "./scenes";
 import { canOpen, type CourseProduct } from "@/lib/course-tiers";
 
 const NOTE: Record<string, string> = {
-  none: "Module 0 is free. Ground ($24) opens Module 1. Progress is saved in this browser.",
+  none: "The setup is free. Ground, $24, opens Module 1. The rest is the full program. Progress is saved in this browser.",
   ground: "Ground: Modules 0 and 1 are yours. The full program opens Modules 2 to 7. Progress is saved in this browser.",
   os: "Progress is saved in this browser.",
 };
@@ -90,7 +90,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
             const mpct = Math.round((doneN / m.lessons.length) * 100);
             const current = next && next.module === m.n;
             const locked = !m.built || !canOpen(m.n, access);
-            const lockLabel = !m.built ? "Coming next" : m.n === 1 ? "Ground · $24" : "Full program";
+            const lockLabel = !m.built ? "Coming next" : m.n === 1 ? "Ground · $24" : "Full program · after Ground";
             const lockHref = m.built ? "/course/ground" : undefined;
             const minsLeft = m.lessons.filter((l) => !p.completed.includes(l.id)).reduce((n, l) => n + l.minutes, 0);
             return (
@@ -102,7 +102,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
                 <Panel className="tos-rise tos-card-hover" style={{ padding: 16, marginBottom: 10, opacity: locked ? 0.72 : 1, borderColor: current ? "var(--accent)" : undefined, animationDelay: `${mi * 60}ms`, borderLeft: `4px solid ${locked ? "var(--border)" : (MODULE_ACCENT[m.n]?.edge || "var(--accent-bg)")}` }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10, flexWrap: "wrap" }}>
                     <div style={{ minWidth: 0 }}>
-                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: locked ? "var(--light)" : (MODULE_ACCENT[m.n]?.ink || "var(--accent)") }}>{m.phase} · {m.week}</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: locked ? "var(--light)" : (MODULE_ACCENT[m.n]?.ink || "var(--accent)") }}>{m.phase} · {m.week}{m.n === 0 && <span style={{ marginLeft: 8, padding: "2px 7px", borderRadius: 999, background: "var(--accent-bg)", color: "var(--accent)", fontSize: 10 }}>Free</span>}</div>
                       <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 700, margin: "2px 0" }}>{m.title}</div>
                       <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.5, maxWidth: "56ch" }}>{m.tagline}</div>
                     </div>

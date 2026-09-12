@@ -419,7 +419,7 @@ export async function sendGroundAccessEmail(input: { to: string; unlockUrl: stri
   <div style="text-align:center;margin-bottom:22px;"><div style="font-size:20px;font-weight:700;color:#2D6A4F;font-family:Georgia,serif;">SLP Transitions</div></div>
   <p style="font-size:16px;line-height:1.7;">Thanks. Here's your way into Ground, Week 1 of Transition OS.</p>
   <div style="text-align:center;margin:22px 0;"><a href="${unlockUrl}" style="display:inline-block;padding:14px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Open Module 1 &rarr;</a></div>
-  <p style="font-size:15px;line-height:1.7;">That link is your login. It works in any browser, on any device, as many times as you like, so keep this email. Your progress saves in whichever browser you use, and Module 0 is open to everyone, so start there if you haven't.</p>
+  <p style="font-size:15px;line-height:1.7;">That link is your login. It works in any browser, on any device, as many times as you like, so keep this email. Your progress saves in whichever browser you use. If you haven't done the free fifteen-minute setup yet, it comes first.</p>
   <p style="font-size:15px;line-height:1.7;">Eight lessons, about fifty minutes, and every one ends with something to actually do. The decision tree and the sunk-cost audit are the two most people come back to.</p>
   <p style="font-size:15px;line-height:1.7;">What you paid today comes off the full program when it launches. You won't pay for Week 1 twice.</p>
   <p style="font-size:15px;line-height:1.7;">If it doesn't help, reply within 30 days and I'll refund it. No form.</p>

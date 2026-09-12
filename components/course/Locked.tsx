@@ -17,11 +17,11 @@ export default function LockedLesson({ moduleN, moduleTitle, lessonTitle }: { mo
             <>
               <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--muted)", margin: "0 0 18px" }}>This lesson is in Ground, Week 1 of Transition OS: eight lessons on whether you&rsquo;re actually leaving and what you&rsquo;re protecting if you do. $24 once, and it comes off the full program later.</p>
               <Btn href="/course/ground">See what&rsquo;s in Ground →</Btn>
-              <div style={{ marginTop: 14 }}><a href="/course" style={{ fontSize: 13.5, color: "var(--accent)", fontWeight: 600 }}>Module 0 is free, start there →</a></div>
+              <div style={{ marginTop: 14 }}><a href="/course" style={{ fontSize: 13.5, color: "var(--accent)", fontWeight: 600 }}>The setup is free, start there →</a></div>
             </>
           ) : (
             <>
-              <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--muted)", margin: "0 0 18px" }}>This module is part of the full Transition OS program, which isn&rsquo;t open yet. Ground, Week 1, is available now and counts toward it.</p>
+              <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--muted)", margin: "0 0 18px" }}>This module is in the full Transition OS program, which opens after Ground. Ground, Week 1, is available now, and what you pay for it comes off the full program.</p>
               <Btn href="/course/ground">See Ground →</Btn>
               <div style={{ marginTop: 14 }}><a href="/course" style={{ fontSize: 13.5, color: "var(--accent)", fontWeight: 600 }}>← Quest log</a></div>
             </>
