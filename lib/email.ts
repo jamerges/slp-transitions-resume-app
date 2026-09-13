@@ -242,7 +242,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
   </div>
 
   <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:32px;">
-    SLP Transitions • Your degree isn't a prison. Your skills compound.
+    SLP Transitions • Your degree isn't a prison. The skills go with you.
   </p>
 </div>
 </body></html>`;
@@ -343,7 +343,7 @@ export function renderQuizResultEmail(input: QuizResultEmailInput): string {
   </p>
   <p style="font-size:14px;line-height:1.7;">James</p>
   <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:28px;">
-    SLP Transitions • Your degree isn't a prison. Your skills compound.
+    SLP Transitions • Your degree isn't a prison. The skills go with you.
   </p>
 </div>
 </body></html>`;
@@ -391,7 +391,7 @@ export async function sendResumeLinkEmail(input: {
   </p>
   <p style="font-size:14px;line-height:1.7;">James</p>
   <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:28px;">
-    SLP Transitions • Your degree isn't a prison. Your skills compound.
+    SLP Transitions • Your degree isn't a prison. The skills go with you.
   </p>
 </div>
 </body></html>`;
@@ -447,7 +447,7 @@ export function renderModule1SummaryEmail(summary: Record<string, string>): stri
     <div style="font-size:14px;line-height:1.9;">
       &bull; <a href="${APP_URL}/course/workbook" style="color:#0B6B54;">Your workbook</a>, with these answers filled in, ready to print<br/>
       &bull; <a href="${APP_URL}/api/course/workbook?f=pdf" style="color:#0B6B54;">A blank copy</a> to write on by hand<br/>
-      &bull; <a href="${APP_URL}/course" style="color:#0B6B54;">Your quest log</a>, to change any answer whenever you want
+      &bull; <a href="${APP_URL}/course" style="color:#0B6B54;">Your lessons</a>, to change any answer whenever you want
     </div>
   </div>
   <p style="font-size:15px;line-height:1.7;margin-top:20px;">The rest of the program isn&rsquo;t open yet. What you paid comes off it when it is, and I&rsquo;ll write to you the day that happens. Nothing else to do.</p>
@@ -487,7 +487,7 @@ export async function sendReportReminderEmail(input: {
   </p>
   <p style="font-size:14px;line-height:1.7;">James</p>
   <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:28px;">
-    SLP Transitions &bull; Your degree isn&rsquo;t a prison. Your skills compound.
+    SLP Transitions &bull; Your degree isn&rsquo;t a prison. The skills go with you.
   </p>
 </div>
 </body></html>`;
@@ -733,7 +733,7 @@ export async function sendReportEmail(input: {
       </div>
     </div>
   </div>
-  <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:32px;">SLP Transitions • Your degree isn't a prison. Your skills compound.</p>
+  <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:32px;">SLP Transitions • Your degree isn't a prison. The skills go with you.</p>
 </div>
 </body></html>`;
 

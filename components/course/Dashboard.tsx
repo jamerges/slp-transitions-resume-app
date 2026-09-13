@@ -91,7 +91,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
       <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) 320px", gap: 22, marginTop: 22 }} className="tos-two-col">
         <div>
           <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 10 }}>
-            <h2 style={{ fontFamily: font.serif, fontSize: 24, fontWeight: 700, margin: 0 }}>Quest log</h2>
+            <h2 style={{ fontFamily: font.serif, fontSize: 24, fontWeight: 700, margin: 0 }}>Your lessons</h2>
             <span style={{ fontSize: 13, color: "var(--muted)" }}>{p.completed.length} of {LESSONS.length} lessons · {LESSONS.reduce((s, l) => s + l.minutes, 0)} min total</span>
           </div>
           {MODULES.map((m, mi) => {

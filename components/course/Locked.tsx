@@ -15,9 +15,9 @@ export default function LockedLesson({ moduleN, moduleTitle, lessonTitle, owns }
           <h1 style={{ fontFamily: font.serif, fontSize: 28, margin: "8px 0 10px" }}>{lessonTitle}</h1>
           {ground ? (
             <>
-              <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--muted)", margin: "0 0 18px" }}>This lesson is in <strong>Before You Start Looking</strong>, Module 1 of Transition OS plus the companion workbook: whether you&rsquo;re actually leaving, and what you&rsquo;re protecting if you are. $19 once, and it comes off the full program later.</p>
+              <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--muted)", margin: "0 0 18px" }}>This lesson is in <strong>Before You Start Looking</strong>, Module 1 of Transition OS plus the workbook: whether you&rsquo;re actually leaving, and what you&rsquo;re protecting if you are. $19 once, and it comes off the full program later.</p>
               <Btn href="/course/ground">See what&rsquo;s in it →</Btn>
-              <div style={{ marginTop: 14 }}><a href="/course" style={{ fontSize: 13.5, color: "var(--accent)", fontWeight: 600 }}>The setup is free, start there →</a></div>
+              <div style={{ marginTop: 14 }}><a href="/course" style={{ fontSize: 13.5, color: "var(--accent)", fontWeight: 600 }}>Module 0 is free, start there →</a></div>
             </>
           ) : (
             <>
@@ -34,7 +34,7 @@ export default function LockedLesson({ moduleN, moduleTitle, lessonTitle, owns }
                 <>
                   <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--muted)", margin: "0 0 18px" }}>This module is in the full Transition OS program, which isn&rsquo;t open yet. Module 1 is available now for $19, and what you pay comes off the full program.</p>
                   <Btn href="/course/ground">See Module 1 →</Btn>
-                  <div style={{ marginTop: 14 }}><a href="/course" style={{ fontSize: 13.5, color: "var(--accent)", fontWeight: 600 }}>← Quest log</a></div>
+                  <div style={{ marginTop: 14 }}><a href="/course" style={{ fontSize: 13.5, color: "var(--accent)", fontWeight: 600 }}>← Your lessons</a></div>
                 </>
               )}
             </>

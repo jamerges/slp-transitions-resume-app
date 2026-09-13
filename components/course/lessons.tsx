@@ -656,7 +656,7 @@ export function Checkpoint1({ answer, save, finish, done, all }: LessonProps & {
           </P>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 12 }}>
             <Btn href="/course/workbook">Your workbook, with your answers →</Btn>
-            <Btn href="/course" outline>← Quest log</Btn>
+            <Btn href="/course" outline>← Your lessons</Btn>
           </div>
           <Muted style={{ margin: 0 }}>
             {sent === "ok" ? "A copy is on its way to your inbox, so your answers live somewhere other than this browser."

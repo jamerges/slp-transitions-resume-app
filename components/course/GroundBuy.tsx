@@ -6,14 +6,14 @@ import ProductMenu from "@/components/ProductMenu";
 import { GROUND_NAME, GROUND_SUB, GROUND_PRICE } from "@/lib/course-tiers";
 
 const LESSONS = [
-  ["You're allowed to want out", "The five stages, and the belief that keeps people at each one."],
-  ["Bad workplace, bad fit, or bad season?", "Six questions and a verdict. Only one of the three means leaving the field."],
-  ["The sunk-cost audit", "The years and the money, as numbers, and the sentence underneath them."],
-  ["What actually gave you energy", "Fifteen tasks from your last month, marked gave or took."],
-  ["What you can't afford to lose", "Pay floor, distance from clinical, people-time, tools. Four dials."],
-  ["What you keep when you leave", "The part of the work that goes with you into any job."],
-  ["Tell one person", "The smallest possible disclosure."],
-  ["Checkpoint", "Pushes, pulls, and one sentence about where you're going."],
+  ["You're allowed to want out", "Which of the five reasons people stay is the one keeping you here."],
+  ["Bad workplace, bad fit, or bad season?", "Only one of the three means leaving the field. Find out which one you have."],
+  ["Why leaving isn't a wasted degree", "What the years and the debt are actually worth to you now."],
+  ["What actually gave you energy", "The parts of the job you would keep, and the parts you would never do again."],
+  ["What you can't afford to lose", "Your pay floor, and how far from clinical work you are willing to go."],
+  ["What you keep when you leave", "The skills that come with you, named so you can say them out loud."],
+  ["Tell one person", "Say it out loud to one person, and plan exactly what you will say."],
+  ["Your why, in writing", "One sentence about where you are going, written down."],
 ];
 
 /** The thing being bought, drawn rather than photographed: the eight lessons,
@@ -91,16 +91,16 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
 
         <Card highlight>
           <p style={{ fontSize: 15, lineHeight: 1.75, margin: 0 }}>
-            Most SLPs spend a year deciding and a weekend leaving. This is the deciding: which of three problems you actually
-            have, what the degree is worth now, what gave you energy and what took it, and what you can&rsquo;t afford to lose.
-            Leave with written clarity and set your &ldquo;why&rdquo; to ground you in your transition.
+            This is the deciding part, before the r&eacute;sum&eacute;s and the applications: whether it is the workplace, the fit or
+            the season, what your degree is worth to you now, which parts of the job you would keep, and what you can&rsquo;t
+            afford to lose. Leave with written clarity and set your &ldquo;why&rdquo; to ground you in your transition.
           </p>
         </Card>
 
         <Card>
           <ProductShot />
           <h3 style={{ ...S.h3, marginBottom: 4 }}>What ${GROUND_PRICE} buys</h3>
-          <p style={{ fontSize: 13.5, color: "var(--muted)", margin: "0 0 14px" }}>Eight lessons, five tools, about fifty minutes, plus the companion workbook.</p>
+          <p style={{ fontSize: 13.5, color: "var(--muted)", margin: "0 0 14px" }}>Eight lessons, about fifty minutes, and the workbook.</p>
           {LESSONS.map(([t, d], i) => (
             <div key={t} style={{ display: "flex", gap: 12, padding: "9px 0", borderTop: i ? "1px solid var(--border)" : "none" }}>
               <div style={{ width: 26, height: 26, borderRadius: "50%", background: "var(--accent-bg)", color: "var(--accent)", fontSize: 12, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{i + 1}</div>
@@ -126,11 +126,11 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
               {err && <div style={{ fontSize: 13, color: "var(--warn)", marginTop: 10 }}>{err}</div>}
               <div style={{ textAlign: "center", marginTop: 16 }}>
                 <button onClick={buy} disabled={busy} style={{ ...S.btn, padding: "15px 40px", fontSize: 17, opacity: busy ? 0.7 : 1 }}>{busy ? "Opening checkout…" : `Start Module 1 — $${GROUND_PRICE} →`}</button>
-                <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 10, lineHeight: 1.6 }}>Access arrives by email the moment payment clears, and opens on this browser immediately. Progress saves in the browser you use.</p>
+                <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 10, lineHeight: 1.6 }}>Your link arrives by email, and the lessons open here straight away. Your answers save in this browser.</p>
               </div>
             </>
           ) : waited ? (
-            <div style={{ marginTop: 16, fontSize: 14.5, color: "var(--accent)", fontWeight: 600 }}>✓ You&rsquo;ll get the link the day it opens. The free setup is open now.</div>
+            <div style={{ marginTop: 16, fontSize: 14.5, color: "var(--accent)", fontWeight: 600 }}>✓ You&rsquo;ll get the link the day it opens. Module 0 is free and open now.</div>
           ) : (
             <>
               <div style={{ marginTop: 16 }}>

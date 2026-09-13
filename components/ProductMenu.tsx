@@ -16,13 +16,13 @@ export const PRODUCTS: Record<ProductKey, { name: string; price: number; answers
     name: GROUND_NAME,
     price: GROUND_PRICE,
     answers: "Should I go, and what am I protecting if I do?",
-    detail: "Module 1 of Transition OS plus the workbook. The decision, the sunk-cost audit, the energy audit, the four dials.",
+    detail: "Module 1 of Transition OS plus the workbook. Whether it is the workplace or the field, what your degree is worth now, and the pay floor the next job has to clear.",
   },
   report: {
     name: "Pivot Report",
     price: 9,
     answers: "Which paths does my résumé already qualify me for?",
-    detail: "Reads your actual résumé and returns three best-fit paths with entry doors, and a 30-day plan.",
+    detail: "Reads your résumé and names three paths you already qualify for, plus what to do in the first 30 days.",
   },
   suite: {
     name: "Career Pivot Suite",
@@ -36,7 +36,7 @@ export default function ProductMenu({
   order,
   onPick,
   hrefFor,
-  heading = "The other two, if one of them is closer",
+  heading = "The other two, and what each one answers",
 }: {
   /** Which to list, in order: the ones NOT already sold by the card above. */
   order: ProductKey[];

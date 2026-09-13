@@ -68,7 +68,7 @@ export default function LessonPage({ id, access }: { id: string; access?: { prod
         <div>
           <div style={{ height: 4, borderRadius: 2, background: accent.edge, marginBottom: 12, maxWidth: 90 }} aria-hidden />
           <div style={{ fontSize: 13, color: "var(--muted)", marginBottom: 8 }}>
-            <a href="/course" style={{ color: "var(--muted)" }}>Quest log</a> › <span style={{ color: accent.ink, fontWeight: 600 }}>Module {mod.n}: {mod.title}</span> › Lesson {idx + 1} of {mod.lessons.length}
+            <a href="/course" style={{ color: "var(--muted)" }}>Your lessons</a> › <span style={{ color: accent.ink, fontWeight: 600 }}>Module {mod.n}: {mod.title}</span> › Lesson {idx + 1} of {mod.lessons.length}
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 6, flexWrap: "wrap" }}>
             <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: accent.ink, background: accent.tint, padding: "3px 10px", borderRadius: 4 }}>{TYPE_ICON[lesson.type]} {TYPE_LABEL[lesson.type]}</span>
@@ -98,8 +98,8 @@ export default function LessonPage({ id, access }: { id: string; access?: { prod
 
           <div style={{ marginTop: 28 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-              {prev ? <Btn href={`/course/${moduleOf(prev).slug}/${prev.id}`} outline>← Previous lesson</Btn> : <Btn href="/course" outline>← Quest log</Btn>}
-              {next ? <Btn href={`/course/${moduleOf(next).slug}/${next.id}`}>Next lesson →</Btn> : <Btn href="/course">Back to the quest log →</Btn>}
+              {prev ? <Btn href={`/course/${moduleOf(prev).slug}/${prev.id}`} outline>← Previous lesson</Btn> : <Btn href="/course" outline>← Your lessons</Btn>}
+              {next ? <Btn href={`/course/${moduleOf(next).slug}/${next.id}`}>Next lesson →</Btn> : <Btn href="/course">Back to your lessons →</Btn>}
             </div>
             <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "var(--muted)", marginTop: 8, gap: 12, flexWrap: "wrap" }}>
               <span>{prev ? `${prev.id} ${prev.title}` : ""}</span>

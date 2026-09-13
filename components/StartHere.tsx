@@ -16,7 +16,7 @@ import type { StageKey } from "@/lib/quiz";
  */
 const HREF: Record<ProductKey, string> = { ground: "/course/ground", report: "/quiz", suite: "/" };
 const FREE = [
-  { label: "The two-minute quiz", detail: "Nine questions, and it names the path your experience already fits.", href: "/quiz" },
+  { label: "The two-minute quiz", detail: "Names the path your experience already fits, without needing your r\u00e9sum\u00e9.", href: "/quiz" },
   { label: "Open roles, by path", detail: "What is actually posted this week for each of the twenty paths.", href: "/jobs" },
   { label: "120 companies that hire former SLPs", detail: "Who has actually hired a former SLP, and for what. Sent to your inbox.", href: "https://slptransitions.com/ed-health-tech-jobs/" },
   { label: "The five stages of leaving", detail: "Where people get stuck, and the one move out of each.", href: "https://slptransitions.com/youre-allowed-to-want-out/" },
@@ -96,7 +96,7 @@ export default function StartHere() {
           </div>
           {!stage && (
             <p style={{ fontSize: 13.5, color: "var(--muted)", margin: "14px 0 0" }}>
-              Most people recognise one of those immediately. If two fit, take the earlier one.
+              If two of them fit, take the earlier one.
             </p>
           )}
         </Card>
@@ -126,7 +126,7 @@ export default function StartHere() {
         )}
 
         <Card>
-          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 10 }}>Free, and worth the time</div>
+          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 10 }}>Free</div>
           {FREE.map((f, i) => (
             <a key={f.href} href={f.href} onClick={() => track("select_content", { content_type: "start_free", item_id: f.href })}
               style={{ display: "block", textDecoration: "none", color: "inherit", padding: "11px 0", borderTop: i ? "1px solid var(--border)" : "none" }}>

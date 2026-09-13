@@ -55,7 +55,7 @@ export default function MyWorkbook() {
     <PageShell>
       <style>{`
         @media print { .no-print { display: none !important; } header, footer, nav { display: none !important; }
-          body { background:#fff !important; } .sheet { box-shadow:none !important; border:none !important; padding:0 !important; } }
+          body { background:#fff !important; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .sheet { box-shadow:none !important; border:none !important; padding:0 !important; } }
         @page { size: Letter; margin: 0.7in; }
       `}</style>
       <div style={{ ...S.wrap, maxWidth: 680 }}>
@@ -68,9 +68,14 @@ export default function MyWorkbook() {
 
         <Card style={{ padding: 28 }}>
           <div className="sheet">
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 18 }}>
-              <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)" }}>SLP Transitions · your workbook</div>
-              <div style={{ fontSize: 12, color: "var(--muted)" }}>{new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</div>
+            <div style={{ background: "var(--accent)", color: "#fff", padding: "22px 26px", marginBottom: 24 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", paddingBottom: 12, borderBottom: "1px solid var(--accent-light)" }}>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent-bg)" }}>Workbook</div>
+                <div style={{ fontSize: 11, letterSpacing: "0.08em", color: "#A7D3BC" }}>{new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</div>
+              </div>
+              <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 34, fontWeight: 700, margin: "20px 0 0", letterSpacing: "-0.02em" }}>Transition OS</h1>
+              <div style={{ width: 54, height: 3, background: "var(--accent-bg)", margin: "14px 0 0" }} />
+              <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 16, lineHeight: 1.45, color: "var(--accent-bg)", margin: "14px 0 0" }}>Your answers so far, with blank lines where you have not written one yet.</p>
             </div>
 
             <Section n={1} title="Your starting line" sub="From lesson 0.2.">
@@ -84,7 +89,7 @@ export default function MyWorkbook() {
               <Field label="What you would say to a CF who told you the same thing" lines={4} />
             </Section>
 
-            <Section n={3} title="The sentence you tell yourself" sub="From lesson 1.3. The calculator did the years and the money; this is the sentence underneath them.">
+            <Section n={3} title="Why leaving isn’t a wasted degree" sub="From lesson 1.3.">
               {sunk.years != null && (
                 <div style={{ fontSize: 14, color: "var(--muted)", marginBottom: 12, lineHeight: 1.6 }}>
                   {sunk.years} years in · {money(sunk.debt || 0)} of debt · {money(sunk.salary || 0)} now
@@ -108,7 +113,7 @@ export default function MyWorkbook() {
               </div>
             </Section>
 
-            <Section n={5} title="What you can't afford to lose" sub="From lesson 1.5.">
+            <Section n={5} title="What you can’t afford to lose" sub="From lesson 1.5.">
               {dials.dials ? (
                 <div style={{ marginBottom: 12 }}>
                   {DIALS.map((d: any) => (
@@ -121,7 +126,7 @@ export default function MyWorkbook() {
               <Field label="The three paths that came out of it" value={top.length ? top.map((sl) => PATHS[sl]?.label).filter(Boolean).join(", ") : null} />
             </Section>
 
-            <Section n={6} title="What you will miss, and who you told" sub="From lessons 1.6 and 1.7.">
+            <Section n={6} title="What you’ll miss, and who you told" sub="From lessons 1.6 and 1.7.">
               <Field label="Finish the sentence: I will miss being the person who …" lines={3} />
               <Field label="The person you told" value={told.who || null} />
               <Field label="What they said back" lines={3} />
@@ -142,13 +147,13 @@ export default function MyWorkbook() {
             </Section>
 
             <div style={{ fontSize: 11.5, color: "var(--muted)", lineHeight: 1.5 }}>
-              Come back at weeks 6 and 12 and print it again. The distance between the three is the useful part.
+              Print this again at weeks 6 and 12, so one bad Tuesday does not decide it.
             </div>
           </div>
         </Card>
 
         <div className="no-print" style={{ textAlign: "center", margin: "14px 0 34px", fontSize: 13.5 }}>
-          <a href="/course" style={{ color: "var(--accent)", fontWeight: 600 }}>← Quest log</a>
+          <a href="/course" style={{ color: "var(--accent)", fontWeight: 600 }}>← Your lessons</a>
           <span style={{ color: "var(--light)", margin: "0 10px" }}>·</span>
           <a href="/api/course/workbook?f=pdf" style={{ color: "var(--accent)", fontWeight: 600 }}>Blank copy to write in (PDF)</a>
         </div>

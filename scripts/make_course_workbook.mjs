@@ -9,7 +9,7 @@ import {
 import { writeFileSync, mkdirSync } from "node:fs";
 
 const F = "Calibri", SERIF = "Georgia";
-const GREEN = "2D6A4F", DARK = "1B1B1E", MUTED = "6B7280", LINE = "D1D5DB", SOFT = "F0FAF3", CREAM = "FAFAF9", AMBER = "FEF3C7";
+const GREEN = "2D6A4F", DARK = "1B1B1E", MUTED = "6B7280", LINE = "D1D5DB", SOFT = "F0FAF3", CREAM = "FAFAF9", AMBER = "FEF3C7", ACCENT_LIGHT = "40916C", PALE = "D8F3DC", PALER = "A7D3BC";
 const W = 9360; // 6.5in text width in DXA
 
 const run = (text, o = {}) => new TextRun({ text, font: o.serif ? SERIF : F, size: o.size ?? 22, bold: o.bold, italics: o.italics, color: o.color ?? DARK });
@@ -40,11 +40,19 @@ const fieldsTable = (rows) => new Table({ width: { size: W, type: WidthType.DXA 
   new TableCell({ width: { size: 5760, type: WidthType.DXA }, borders: cellBorders, shading: { type: ShadingType.CLEAR, fill: "FFFFFF", color: "auto" }, margins: { top: 120, bottom: 120, left: 160, right: 160 }, children: [p(" ")] }),
 ] })) });
 const fields = (rows) => [fieldsTable(rows), gap()];
+/** Contents: page name, what you get from it, and a box to tick when it is done. */
+const contentsTable = (rows) => new Table({ width: { size: W, type: WidthType.DXA }, columnWidths: [3300, 5460, 600], rows: rows.map(([title, note]) => new TableRow({ children: [
+  new TableCell({ width: { size: 3300, type: WidthType.DXA }, borders: { top: { style: BorderStyle.NONE }, bottom: { style: BorderStyle.SINGLE, size: 4, color: LINE }, left: { style: BorderStyle.NONE }, right: { style: BorderStyle.NONE } }, margins: { top: 130, bottom: 130, left: 40, right: 160 }, children: [p(title, { bold: true, size: 22, after: 0 })] }),
+  new TableCell({ width: { size: 5460, type: WidthType.DXA }, borders: { top: { style: BorderStyle.NONE }, bottom: { style: BorderStyle.SINGLE, size: 4, color: LINE }, left: { style: BorderStyle.NONE }, right: { style: BorderStyle.NONE } }, margins: { top: 130, bottom: 130, left: 0, right: 160 }, children: [p(note, { color: MUTED, size: 22, after: 0 })] }),
+  new TableCell({ width: { size: 600, type: WidthType.DXA }, borders: { top: { style: BorderStyle.NONE }, bottom: { style: BorderStyle.SINGLE, size: 4, color: LINE }, left: { style: BorderStyle.NONE }, right: { style: BorderStyle.NONE } }, margins: { top: 130, bottom: 130, left: 0, right: 0 }, children: [new Paragraph({ alignment: AlignmentType.RIGHT, spacing: { after: 0 }, children: [new TextRun({ text: "\u2610", font: "Segoe UI Symbol", size: 24, color: ACCENT_LIGHT })] })] }),
+] })) });
 /** Tick list: checkbox glyph + label, one row each. */
 const ticks = (items) => [...items.map((t) => new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "☐  ", font: "Segoe UI Symbol", size: 24, color: GREEN }), run(t)] })), gap(120)];
 /** Shaded callout: a real quote from the forums, or a note. */
 const calloutTable = (text, from, fill = SOFT) => new Table({ width: { size: W, type: WidthType.DXA }, columnWidths: [W], rows: [new TableRow({ children: [new TableCell({ width: { size: W, type: WidthType.DXA }, borders: { top: { style: BorderStyle.NONE }, bottom: { style: BorderStyle.NONE }, right: { style: BorderStyle.NONE }, left: { style: BorderStyle.SINGLE, size: 24, color: GREEN } }, shading: { type: ShadingType.CLEAR, fill, color: "auto" }, margins: { top: 120, bottom: 120, left: 200, right: 200 }, children: [p([run(`“${text}”`, { italics: true, size: 22 }), ...(from ? [run(`   ${from}`, { size: 18, color: MUTED })] : [])], { after: 0 })] })] })] });
 const callout = (text, from, fill = SOFT) => [gap(120), calloutTable(text, from, fill), gap()];
+/** A shaded instruction. calloutTable is for quotes, this is for directions. */
+const noteTable = (text) => new Table({ width: { size: W, type: WidthType.DXA }, columnWidths: [W], rows: [new TableRow({ children: [new TableCell({ width: { size: W, type: WidthType.DXA }, borders: { top: { style: BorderStyle.NONE }, bottom: { style: BorderStyle.NONE }, right: { style: BorderStyle.NONE }, left: { style: BorderStyle.SINGLE, size: 24, color: GREEN } }, shading: { type: ShadingType.CLEAR, fill: SOFT, color: "auto" }, margins: { top: 140, bottom: 140, left: 200, right: 200 }, children: [p(text, { size: 22, after: 0 })] })] })] });
 const spacer = (h = 120) => new Paragraph({ spacing: { after: h }, children: [run(" ")] });
 const pageBreak = () => new Paragraph({ children: [new PageBreak()] });
 /** Five labelled tick boxes in a row. Tick one on screen (type an X) or on paper. */
@@ -81,7 +89,7 @@ const band = (cells, fill, ink, height = 700) => new Table({
     borders: { top: { style: BorderStyle.NONE }, bottom: { style: BorderStyle.NONE }, left: { style: BorderStyle.NONE }, right: { style: BorderStyle.NONE } },
     shading: { type: ShadingType.CLEAR, fill: c.fill ?? fill, color: "auto" },
     margins: { top: 140, bottom: 140, left: c.pad ?? 200, right: c.pad ?? 200 },
-    verticalAlign: "center",
+    verticalAlign: c.valign ?? "center",
     children: c.children,
   })) })],
 });
@@ -157,57 +165,60 @@ const MODULE1_ONLY = EDITION === "module1";
 
 const children = [];
 // ------------------------------------------------------------------ cover
+// Emerald field over a cream foot: the palette James picked, with the page
+// rhythm from the quieter direction (title high, room falling below it).
 children.push(
-  spacer(1800),
-  kickerIn(MODULE1_ONLY ? "Transition OS · module 1" : "Transition OS · ninety days", GREEN),
-  new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "Workbook", font: SERIF, size: 66, bold: true, color: DARK })] }),
-  new Paragraph({ spacing: { after: 240 }, children: [new TextRun({ text: MODULE1_ONLY ? "Print it, or type straight into it. Five pages holding the things the program on screen deliberately does not." : "Print it, or type straight into it. Eleven pages holding the three things the program on screen deliberately does not.", font: SERIF, size: 28, color: MUTED })] }),
-  rule(),
-  p(MODULE1_ONLY ? "What you would not type into software, and what you answer more than once. Nobody reads this but you." : "What you would not type into software, what you carry into a room, and what you answer more than once. Nobody reads this but you.", { color: MUTED, size: 22 }),
-  spacer(240),
+  band([{ w: W, fill: GREEN, pad: 260, valign: "top", children: [
+    new Paragraph({ spacing: { after: 60 }, children: [new TextRun({ text: "WORKBOOK", font: F, size: 17, bold: true, color: PALE, characterSpacing: 30 })] }),
+    new Paragraph({ spacing: { after: 700 }, border: { bottom: { style: BorderStyle.SINGLE, size: 4, color: ACCENT_LIGHT, space: 6 } }, children: [new TextRun({ text: MODULE1_ONLY ? "MODULE 1" : "NINETY DAYS", font: F, size: 17, color: PALER, characterSpacing: 24 })] }),
+    new Paragraph({ spacing: { after: 200 }, children: [new TextRun({ text: "Transition OS", font: SERIF, size: 72, bold: true, color: "FFFFFF" })] }),
+    new Paragraph({ spacing: { after: 260 }, border: { bottom: { style: BorderStyle.SINGLE, size: 18, color: PALE, space: 2 } }, children: [new TextRun({ text: "     ", font: F, size: 10 })] }),
+    new Paragraph({ spacing: { after: 0 }, children: [new TextRun({ text: MODULE1_ONLY
+      ? "Work out whether you are actually leaving, and what you are protecting if you are."
+      : "Ninety days, from wondering whether you\u2019re allowed to leave to interviewing outside the clinic.", font: SERIF, size: 28, color: PALE })] }),
+  ] }], GREEN, GREEN, 8200),
+  spacer(500),
+  kicker("The eight stops"),
   progressStrip(),
-  spacer(1400),
+  spacer(700),
   p("Name", { bold: true, size: 20, after: 40 }), p("________________________________________", { color: LINE }),
-  p("Started on", { bold: true, size: 20, after: 40, before: 120 }), p("________________________________________", { color: LINE }),
+  p("Started on", { bold: true, size: 20, after: 40, before: 160 }), p("________________________________________", { color: LINE }),
+  spacer(400),
+  p("Print it, or type straight into it.", { color: MUTED, size: 21 }),
   pageBreak(),
 );
-// --------------------------------------------------------- how to use it
+// ------------------------------------------------------------ what's in here
 children.push(
-  ...h1("How to use this", "Three rules."),
-  ...bullets([
-    "Do the lesson on screen first. The screen does the arithmetic, the sorting and the ranking, and it keeps your answers. Nothing in here repeats it.",
-    MODULE1_ONLY
-      ? "These pages hold what a program should not. What you would not type into software, and what you answer again at weeks 6 and 12."
-      : "These pages hold the three things a program should not. What you would not type into software, what you carry into a room with another person, and what you answer more than once.",
-    "Write badly. Fragments, half-sentences, a list. If you catch yourself drafting sentences, you have switched into work mode, and this is not work.",
-  ]),
-  spacer(200),
-  kicker("What's in here"),
-  ...fields(MODULE1_ONLY ? [
-    ["Weeks 1, 6 and 12", "The same five questions, three times"],
-    ["The sentence you tell yourself", "The one underneath the sunk-cost maths"],
-    ["The list you would not type", "Everything you want to leave, unsoftened"],
-    ["What you will miss", "The part every exit story has"],
-    ["Tell one person", "Who, when, and what they said back"],
+  ...h1("What\u2019s in here"),
+  contentsTable(MODULE1_ONLY ? [
+    ["Bad week, or time to go", "Answer the same thing in week 1, 6 and 12 so one bad Tuesday does not decide it"],
+    ["Why leaving isn\u2019t a wasted degree", "Why the years and the debt already spent are not a reason to stay"],
+    ["Your why, in writing", "What you actually want to leave, so you know what to look for in the next job"],
+    ["What you\u2019ll miss", "What you give up by leaving, and which parts you can keep anyway"],
+    ["Telling the first person", "Say it out loud to one person, and plan exactly what you\u2019ll say first"],
   ] : [
-    ["Weeks 1, 6 and 12", "The same five questions, three times"],
-    ["The sentence you tell yourself", "The one underneath the sunk-cost maths"],
-    ["The list you would not type", "Everything you want to leave, unsoftened"],
-    ["What you will miss", "The part every exit story has"],
-    ["Tell one person", "Who, when, and what they said back"],
-    ["The twenty-minute conversation", "Two copies. Print and take to the call"],
-    ["Interview prep, on one page", "Two copies. Take it in with you"],
-    ["The offer conversation", "Two numbers and three sentences, decided early"],
-    ["Six months in", "Come back when you are on the other side"],
+    ["Bad week, or time to go", "Answer the same thing in week 1, 6 and 12 so one bad Tuesday does not decide it"],
+    ["Why leaving isn\u2019t a wasted degree", "Why the years and the debt already spent are not a reason to stay"],
+    ["Your why, in writing", "What you actually want to leave, so you know what to look for in the next job"],
+    ["What you\u2019ll miss", "What you give up by leaving, and which parts you can keep anyway"],
+    ["Telling the first person", "Say it out loud to one person, and plan exactly what you\u2019ll say first"],
+    ["Informational interview sheet", "What to ask someone who already left, and how to turn one call into two"],
+    ["Interview prep on one page", "Your 45-second intro, and answering \u2018why are you leaving\u2019 without saying burnout"],
+    ["Negotiating the offer", "Your opening number and your walk-away floor, decided before the phone rings"],
+    ["Six months in", "What\u2019s different on a Tuesday now, and what you\u2019d tell someone in week one"],
   ]),
-  ...(MODULE1_ONLY ? [muted("The sheets you take into a room with another person, the twenty-minute conversation, the interview page and the offer page, come with the full program.")] : []),
+  ...(MODULE1_ONLY ? [gap(200), muted("The informational interview sheet, the interview page and the offer page come with the full program.")] : []),
+  spacer(400),
+  noteTable("Do the lesson on screen first. It does the maths, the sorting and the ranking, and it keeps your answers."),
+  gap(120),
+  noteTable("Write badly. Fragments, half-sentences, a list. If you catch yourself drafting sentences, you have switched into work mode."),
   pageBreak(),
 );
 
 // ----------------------------------------------- 1. answered more than once
 children.push(
   kickerIn("Weeks 1, 6 and 12", ACCENT[1].ink),
-  ...h1("The same five questions, three times", "The screen keeps your current answer. This page keeps all three, and the distance between them is the part worth seeing."),
+  ...h1("Bad week, or time to go", "Answer these in week 1, then again in week 6 and week 12. One bad Tuesday should not be the thing that decides it."),
   matrix(["", "Week 1", "Week 6", "Week 12"], [
     "Date",
     "The stage you are in",
@@ -221,8 +232,8 @@ children.push(
 
 // ------------------------------------------------ 2. not for a text field
 children.push(
-  kickerIn("Module 1 · the sunk cost", ACCENT[1].ink),
-  ...h1("The sentence you tell yourself", "The calculator on screen handles the years and the money. This is for the sentence underneath, which is the part that actually keeps people in the building."),
+  kickerIn("Module 1 · sunk cost", ACCENT[1].ink),
+  ...h1("Why leaving isn\u2019t a wasted degree", "The years and the debt are already spent either way. This is where you stop counting them as a reason to stay."),
   ...ask("Write it exactly as it sounds in your head. Not the reasonable version.", 4, "It usually starts with “after all that” or “I should be able to”."),
   ...callout("I know it's the sunken cost fallacy but it's so hard to quit after putting so much time, money, and effort into this career.", "an SLP, r/slp"),
   ...ask("Who taught you that sentence? A supervisor, a cohort, a parent, yourself at twenty-four.", 3),
@@ -230,13 +241,13 @@ children.push(
   pageBreak(),
 
   kickerIn("Module 1 · the checkpoint", ACCENT[1].ink),
-  ...h1("The list you would not type into a program", "The screen asks for the tidy version. Write the untidy one here, because the untidy one is the accurate one."),
-  ...ask("Everything you want to leave. Names, days, specific meetings, the thing you have never said out loud. Do not soften it.", 10, "Nobody reads this. That is the entire reason it is on paper and not in the app."),
+  ...h1("Your why, in writing", "What you want to leave, in your own words, so you know what you are looking for in the next job."),
+  ...ask("Everything you want to leave. Names, days, specific meetings, the thing you have never said out loud. Do not soften it.", 10, "Nobody reads this."),
   ...ask("Read it back, and mark the three that would still be true in a different building.", 4, "Those three are about the work. Everything else is about this job, and that is a different problem with a faster fix."),
   pageBreak(),
 
   kickerIn("Module 1 · what you keep", ACCENT[1].ink),
-  ...h1("What you will miss", "Every exit story has a version of this page, and skipping it is what sends people back."),
+  ...h1("What you\u2019ll miss", "Name it now. The people who skip this are the ones who end up going back."),
   ...ask("Finish the sentence: I will miss being the person who …", 4),
   ...callout("I've taken a long time to grieve the loss of who I was in my previous role.", "a comment on a former SLP's essay about leaving"),
   ...ask("Which part of that goes with you into any job? A moment, a person, a session. Be specific.", 4),
@@ -244,7 +255,7 @@ children.push(
   pageBreak(),
 
   kickerIn("Module 1 · lesson 7", ACCENT[1].ink),
-  ...h1("Tell one person", "The smallest possible disclosure, and the first page here that involves somebody else."),
+  ...h1("Telling the first person", "Say it out loud to one person. Plan who, when, and what you will say."),
   ...fields([["Who", "Not a colleague, if you can avoid it"], ["When", "A date, not “soon”"], ["What you plan to say", "One sentence"]]),
   ...ask("What you actually said, and what they said back.", 6, "Fill this in afterwards. People are almost always less surprised than you expect them to be."),
   ...ask("What changed for you in the hour after.", 3),
@@ -253,8 +264,8 @@ children.push(
 
 // --------------------------------------------- 3. carried into a room
 const conversationPage = (n) => [
-  kickerIn(`Module 3 \u00b7 conversation ${n} of 2`, ACCENT[3].ink),
-  ...h1("The twenty-minute conversation", "Keep this open while you talk. Their answers, in their words."),
+  kickerIn(`Module 3 \u00b7 sheet ${n} of 2`, ACCENT[3].ink),
+  ...h1("Informational interview sheet", "Keep this open while you talk. Their answers, in their words."),
   ...fields([["Who, and their title now", "How you found them"], ["Date", ""]]),
   ...ask("How did you get the first one? Walk me through the six months before the offer.", 3),
   ...ask("What does a Tuesday actually look like?", 2),
@@ -267,7 +278,7 @@ if (!MODULE1_ONLY) children.push(...conversationPage(1), ...conversationPage(2))
 
 const interviewPage = (n) => [
   kickerIn(`Module 6 \u00b7 interview ${n} of 2`, ACCENT[6].ink),
-  ...h1("Interview prep, on one page", "Take this in with you. All of it decided in advance rather than in the room."),
+  ...h1("Interview prep on one page", "Take this in with you, decided in advance rather than in the room."),
   ...fields([["Company and role", "Who you are speaking to"], ["Date", ""]]),
   h2("Your bridge statement"),
   muted("Where you are going, how you prepared, one accomplishment with a number in it. Forty-five seconds."),
@@ -282,7 +293,7 @@ if (!MODULE1_ONLY) children.push(...interviewPage(1), ...interviewPage(2));
 
 if (!MODULE1_ONLY) children.push(
   kickerIn("Module 6 · the offer", ACCENT[6].ink),
-  ...h1("The offer conversation", "Two numbers and three sentences, decided before the phone rings."),
+  ...h1("Negotiating the offer", "Your opening number and your walk-away floor, decided before the phone rings."),
   ...fields([
     ["The number you say first", "The top of the documented range for your path"],
     ["Your floor", "Below this you decline. Write it now, not on the call"],
@@ -300,7 +311,7 @@ if (!MODULE1_ONLY) children.push(
 // ---------------------------------------------------------------- after
 if (!MODULE1_ONLY) children.push(
   kickerIn("Module 7 · after", ACCENT[7].ink),
-  ...h1("Six months in", "Come back to this page when you are on the other side."),
+  ...h1("Six months in", "Fill this in when you are on the other side."),
   ...ask("What is different on a Tuesday now? Compare it with the first pass on the three-passes page.", 5),
   ...ask("What did you worry about that turned out not to matter?", 4),
   ...ask("What would you tell the person who is where you were in week one?", 5),
@@ -317,7 +328,7 @@ const doc = new Document({
   sections: [{
     properties: { page: { size: { width: 12240, height: 15840 }, margin: { top: 1300, bottom: 1200, left: 1440, right: 1440 } } },
     headers: { default: new Header({ children: [new Paragraph({ tabStops: [{ type: TabStopType.RIGHT, position: W }], children: [new TextRun({ text: "TRANSITION OS", font: F, size: 16, bold: true, color: GREEN, characterSpacing: 30 }), new TextRun({ text: "\tCompanion workbook", font: F, size: 16, color: MUTED })] })] }) },
-    footers: { default: new Footer({ children: [new Paragraph({ tabStops: [{ type: TabStopType.RIGHT, position: W }], children: [new TextRun({ text: "slptransitions.com · Nobody reads this but you.", font: F, size: 16, color: MUTED }), new TextRun({ children: ["\t", PageNumber.CURRENT], font: F, size: 16, color: MUTED })] })] }) },
+    footers: { default: new Footer({ children: [new Paragraph({ tabStops: [{ type: TabStopType.RIGHT, position: W }], children: [new TextRun({ text: "slptransitions.com", font: F, size: 16, color: MUTED }), new TextRun({ children: ["\t", PageNumber.CURRENT], font: F, size: 16, color: MUTED })] })] }) },
     children,
   }],
 });

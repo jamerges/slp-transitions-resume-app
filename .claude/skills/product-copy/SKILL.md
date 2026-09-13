@@ -1,6 +1,6 @@
 ---
 name: product-copy
-description: Write or edit any words a buyer sees on SLP Transitions product surfaces: landing and sales pages, course lessons, in-app UI, transactional and lifecycle emails, nav labels, buttons, error states. Use before shipping copy, and as a review pass on copy already written. Encodes James's corrections so the same mistakes stop recurring.
+description: Write or edit any words a buyer sees on SLP Transitions product surfaces: landing and sales pages, course lessons, in-app UI, transactional and lifecycle emails, nav labels, buttons, error states, plus contents lists, page and section titles, workbook and PDF pages, and copy inside design mockups. Read it BEFORE writing, not only as a review pass. Encodes James's corrections so the same mistakes stop recurring.
 ---
 
 # Product copy for SLP Transitions
@@ -11,7 +11,19 @@ checking against how SLPs actually speak use `voice-of-customer`. This file is
 the record of what James has sent back, in his words where possible. Every rule
 below exists because a draft shipped and got corrected.
 
-## The four failures, in the order they happen
+## Read this before you write, not after
+
+Every correction recorded here arrived after a draft had already shipped. The
+2026-09-12 round is the clearest case: a workbook cover, a contents list and
+four page titles were written as *design* work, never run through this file, and
+reproduced a failure that was already documented in it.
+
+**Any words a buyer reads are product copy.** That includes a page inside a PDF,
+a workbook, a printed sheet, a mockup, a design canvas, a chart label and a
+contents list. If you are about to write a sentence someone who paid will read,
+open this file first.
+
+## The five failures, in the order they happen
 
 Run these as a pass over any draft. Most bad copy fails one of them.
 
@@ -31,7 +43,37 @@ the format instead of telling the reader something.
 **Test:** does this sentence tell them what to do or what they get? If it tells
 them what the page *is*, cut it.
 
-### 2. It's vague where it could be concrete
+### 2. It names the mechanic, not the outcome
+
+> "they don't need to know they're getting check-ins, just delete or change it to
+> something more concrete" ... "they need to know their 'why' so they have
+> certainty of what they're looking for in their search" (James)
+
+Contents lists, lesson titles and feature bullets fail this way. They describe
+the shape of the exercise (a list, two copies, five questions, three numbers)
+instead of what the reader ends up certain about. The reader has no context yet,
+so a mechanic reads as a riddle.
+
+| Shipped | Why it failed | Fixed |
+|---|---|---|
+| "Check in at weeks 1, 6 and 12" | Names the ritual, not the reason for it | "Bad week, or time to go" |
+| "The same five questions, three times" | A count is not an outcome | "Answer the same thing in week 1, 6 and 12 so one bad Tuesday doesn't decide it" |
+| "The unedited list, then which three would follow you to another job" | Instructions for a page they cannot see yet | "What you actually want to leave, so you know what to look for in the next job" |
+| "The part every exit story has" | A teaser. Means nothing cold | "What you give up by leaving, and which parts you can keep anyway" |
+| "Two copies. Print and take to the call" | Logistics as the headline | "What to ask someone who already left, and how to turn one call into two" |
+| "Two numbers and three sentences, decided early" | Counts the parts | "Your opening number and your walk-away floor, decided before the phone rings" |
+| "Three stories, each with a number in it" | The format, not the fear | "Answering 'why are you leaving' without saying burnout" |
+
+**Test:** cover the title and read only the description. If it says what the
+reader will be certain about afterwards, keep it. If it says what the page
+contains, rewrite it.
+
+**Carry the whole reframe.** "Why leaving feels like waste" was sent back for
+"why leaving feels like a wasted degree (but why it's not)". Name the specific
+thing the reader believes is wasted, then carry the turn. Half a reframe is
+worse than none.
+
+### 3. It's vague where it could be concrete
 
 > "lines like these are too vague, opt for more direct concrete things people
 > can visualize when possible" (James)
@@ -49,7 +91,7 @@ must say what the thing is. Apply the portability test in reverse too: if a
 sentence could run unchanged on a site for teachers or nurses, make it SLP-specific
 or cut it.
 
-### 3. It's longer than it needs to be, and it narrates
+### 4. It's longer than it needs to be, and it narrates
 
 > "keep this tighter and more in my tone of voice, less like an epic narrator" (James)
 
@@ -59,7 +101,7 @@ things that come later.
 - Cut "done properly in a week", "everything after this, the paths, the résumé, the applications"
 - Prefer the outcome to the mechanism: "You finish with one sentence and everything after runs on it" → **"Leave with written clarity and set your 'why' to ground you in your transition."**
 
-### 4. It isn't how a person talks
+### 5. It isn't how a person talks
 
 - "This browser already has access. Open the quest log →" → **"Pick up where you left off →"**
 - Don't state a fact the reader can't act on. "You already have this" was cut entirely; the link was the whole message.
