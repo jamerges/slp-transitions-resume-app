@@ -674,7 +674,7 @@ export default function CareerQuiz({
             </div>
             <p style={{ ...S.p, marginBottom: 14 }}>
               Everything above is a direction. The decision underneath it is whether you are leaving at all, and what the next
-              job has to give you. That is what this works through: bad workplace, bad fit or bad season, the sunk-cost audit,
+              job has to give you. That is what this works through: bad workplace, bad fit or bad season, what your degree is worth to you now,
               what actually gave you energy, and the four things you can&rsquo;t afford to lose. Eight lessons and five tools,
               about fifty minutes, with a workbook that fills in with your answers as you go.
             </p>

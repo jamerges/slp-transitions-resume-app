@@ -116,7 +116,7 @@ const QS: { q: string; yes: Partial<Record<Verdict, number>>; no: Partial<Record
 ];
 const VERDICTS: Record<Verdict, { title: string; body: string; next: string }> = {
   workplace: { title: "Bad workplace", body: "The profession might be fine and your setting is not. The thing draining you is a specific administrator, building or productivity requirement. That is a job problem, and the boring truth is that changing the conditions first is faster than changing careers, and it protects you from trading one burnout for a new-field version of the same burnout.", next: "Change the conditions first: setting, hours, employer. Keep this program as the plan behind the plan. One transitioner's version, from the forums: change settings as you leave the field, not instead of leaving it. If the feeling follows you to the new setting, come back to this lesson. The verdict will have changed." },
-  fit: { title: "Bad fit", body: "The conditions could be perfect and you'd still feel it. The sessions drain you. You're more interested in the data, the training, the coordination and the technology around the therapy than in the therapy. You may have switched settings already and watched the feeling follow you. That's your interests talking, and they don't usually stop.", next: "Continue. Modules 2 to 5 are built for exactly this verdict. Your first move is the sunk-cost audit, next lesson, so the money question stops running the decision from the background." },
+  fit: { title: "Bad fit", body: "The conditions could be perfect and you'd still feel it. The sessions drain you. You're more interested in the data, the training, the coordination and the technology around the therapy than in the therapy. You may have switched settings already and watched the feeling follow you. That's your interests talking, and they don't usually stop.", next: "Continue. Modules 2 to 5 are built for exactly this verdict. Your first move is the next lesson, on why leaving isn't a wasted degree, so the money question stops running the decision from the background." },
   season: { title: "Bad season", body: "Life outside work is taking everything you've got, and any job would feel impossible right now. This deserves real caution: burnt-out brains struggle with executive function, and planning a career change is one of the most executive-function-heavy things you can do.", next: "Survive the season first. Reduce hours if you can. Lower the bar. The program will hold your place and nothing expires. Make the big decision with a brain that can make it, and rerun this lesson then." },
 };
 
@@ -418,7 +418,7 @@ export function Dials({ answer, save, finish, done, all }: LessonProps & { all?:
       {fromAudit.length > 0 && (
         <Panel tone="soft" style={{ marginBottom: 14 }}>
           <div style={{ fontSize: 13.5, lineHeight: 1.6 }}>
-            <b>Your energy audit pointed at {fromAudit.map((s2) => PATHS[s2]?.label).filter(Boolean).join(", ")}.</b> If the
+            <b>What gave you energy pointed at {fromAudit.map((s2) => PATHS[s2]?.label).filter(Boolean).join(", ")}.</b> If the
             dials disagree, that is worth sitting with, because the audit is built from what you actually did and the
             dials are built from what you think you want.
           </div>

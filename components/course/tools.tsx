@@ -98,7 +98,7 @@ export function PathMap({ shared }: ToolProps) {
               </div>
             </>
           ) : (
-            <Muted>Your dials and your energy audit do not agree yet, which is common and not a problem. Read the whole map first, then come back to lesson 1.5 and move the dials to where you actually are this month.</Muted>
+            <Muted>Your dials and what you marked as energising do not agree yet, which is common and not a problem. Read the whole map first, then come back to lesson 1.5 and move the dials to where you actually are this month.</Muted>
           )}
           <label style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: 13.5, cursor: "pointer", color: "var(--text)" }}>
             <input type="checkbox" checked={onlyFits} onChange={(e) => setOnlyFits(e.target.checked)} />
