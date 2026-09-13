@@ -4,6 +4,8 @@ import { PageShell, S, Card } from "@/components/ui";
 import { track } from "@/lib/analytics";
 import ProductMenu from "@/components/ProductMenu";
 import { GROUND_NAME, GROUND_SUB, GROUND_PRICE } from "@/lib/course-tiers";
+import { STAGE_MAP } from "@/lib/stage-map";
+import type { StageKey } from "@/lib/quiz";
 
 const LESSONS = [
   ["You're allowed to want out", "Which of the five reasons people stay is the one keeping you here."],
@@ -16,32 +18,33 @@ const LESSONS = [
   ["Your why, in writing", "One sentence about where you are going, written down."],
 ];
 
-/** The thing being bought, drawn rather than photographed: the eight lessons,
- *  the verdict they produce, and the workbook page beside them. Decorative. */
-function ProductShot() {
-  const sheet = (i: number): React.CSSProperties => ({
-    width: 38, height: 30, borderRadius: 5, flexShrink: 0,
-    background: i === 7 ? "var(--accent)" : "var(--card)",
-    border: `1px solid ${i === 7 ? "var(--accent)" : "var(--border)"}`,
-  });
-  const line = (w: string | number, dark?: boolean): React.CSSProperties => ({ width: w, height: 5, borderRadius: 3, background: dark ? "var(--muted)" : "var(--border)" });
+/** The questions that stop people at this price, answered where they occur
+ *  rather than in a support inbox. Every answer here is checked against the
+ *  code: no lesson in Module 1 reads a résumé or calls the model. */
+const FAQ: [string, string][] = [
+  ["Do I need my résumé?", "No. Nothing in Module 1 asks for it. This is for before you're looking, when there's nothing to send anyone yet. The $9 report and the $24 Suite are the ones that read a résumé."],
+  ["Is this the free articles again?", "The articles describe the five stages. Module 1 asks you the questions and keeps your answers, so you finish with your own reasons written down rather than a description of everyone's."],
+  ["Is any of it AI?", "No. You read eight lessons and answer them yourself. Nothing in Module 1 is generated."],
+  ["What if I decide to stay?", "Then you'll know that, and why, instead of deciding it again every bad week. Lesson 2 only says to leave the field for one of the three problems."],
+  ["What do I actually get?", "The eight lessons in your browser, with your answers saved as you go. When you finish, an email with every answer and a workbook to print. And the $19 comes off the full program when it launches."],
+];
+
+/** A real page of the workbook, not a drawing of one. */
+function WorkbookPage() {
   return (
-    <div aria-hidden style={{ background: "linear-gradient(160deg, var(--accent-bg-subtle) 0%, var(--card) 100%)", border: "1px solid var(--border)", borderRadius: 14, padding: 18, marginBottom: 18, display: "flex", gap: 16, alignItems: "stretch" }}>
-      <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 8 }}>Eight lessons</div>
-        <div style={{ display: "flex", gap: 5, marginBottom: 12, flexWrap: "wrap" }}>{[0, 1, 2, 3, 4, 5, 6, 7].map((i) => <div key={i} style={sheet(i)} />)}</div>
-        <div style={{ background: "var(--card)", border: "1px solid var(--accent)", borderRadius: 8, padding: "9px 11px" }}>
-          <div style={{ ...line(64, true), marginBottom: 6 }} />
-          <div style={{ ...line("100%"), marginBottom: 4 }} />
-          <div style={line("58%")} />
-        </div>
-      </div>
-      <div style={{ width: 92, flexShrink: 0 }}>
-        <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 8 }}>Workbook</div>
-        <div style={{ background: "#fff", border: "1px solid var(--border)", borderRadius: 6, padding: 9, height: 118, display: "flex", flexDirection: "column", gap: 7 }}>
-          <div style={line("70%", true)} />
-          {[0, 1, 2, 3, 4].map((i) => <div key={i} style={line("100%")} />)}
-        </div>
+    <div style={{ display: "flex", gap: 18, alignItems: "flex-start", marginBottom: 18 }}>
+      <img
+        src="/course/workbook-page.png"
+        width={174}
+        height={225}
+        alt="A page of the workbook titled Why leaving isn't a wasted degree, with three prompts and lines to write on"
+        style={{ width: 174, height: "auto", flexShrink: 0, border: "1px solid var(--border)", borderRadius: 4, boxShadow: "0 2px 10px rgba(27,27,30,0.08)" }}
+      />
+      <div style={{ paddingTop: 4 }}>
+        <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 8 }}>The workbook</div>
+        <p style={{ fontSize: 14, lineHeight: 1.6, color: "var(--muted)", margin: 0 }}>
+          One page of it. You get the blank copy to print, and when you finish Module 1, your answers arrive by email with a filled-in copy to print too.
+        </p>
       </div>
     </div>
   );
@@ -52,6 +55,7 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState("");
   const [waited, setWaited] = useState(false);
+  const stageInfo = stage && stage in STAGE_MAP ? STAGE_MAP[stage as StageKey] : null;
 
   const waitlist = async () => {
     if (busy) return;
@@ -86,8 +90,31 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
         <div style={{ textAlign: "center", marginTop: 8 }}>
           <span style={S.tag}>Transition OS · Module 1</span>
           <h1 style={{ ...S.h1, fontSize: 38, margin: "12px 0 8px", lineHeight: 1.15 }}>{GROUND_NAME}</h1>
-          <p style={{ ...S.p, fontSize: 17, maxWidth: 500, margin: "0 auto 22px" }}>{GROUND_SUB}</p>
+          <p style={{ ...S.p, fontSize: 17, maxWidth: 500, margin: "0 auto 10px", color: "var(--text)" }}>{GROUND_SUB}</p>
+          <p style={{ ...S.p, fontSize: 15, maxWidth: 460, margin: "0 auto 20px" }}>
+            Eight short lessons you read and answer, about fifty minutes, no r&eacute;sum&eacute; needed. You finish with your reasons in writing and your answers in your inbox.
+          </p>
+          {!alreadyHas && (
+            <div style={{ marginBottom: 6 }}>
+              <a href="#buy" style={{ ...S.btn, display: "inline-block", textDecoration: "none", padding: "14px 30px", fontSize: 16 }}>
+                {live ? `Work out whether you're leaving · $${GROUND_PRICE} →` : "Tell me when it opens →"}
+              </a>
+              <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 10, lineHeight: 1.6 }}>
+                {live ? `$${GROUND_PRICE} once. Comes off the full program later. 30-day refund.` : "Opens in a few days. Module 0 is free now."}
+              </p>
+            </div>
+          )}
         </div>
+
+        {stageInfo && (
+          <Card style={{ background: "var(--accent-bg-subtle)", borderColor: "var(--accent-bg)" }}>
+            <div style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 6 }}>
+              Where you said you are &middot; stage {stageInfo.n}, {stageInfo.name}
+            </div>
+            <p style={{ fontSize: 16, fontWeight: 600, margin: "0 0 6px", fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic" }}>&ldquo;{stageInfo.belief}&rdquo;</p>
+            <p style={{ fontSize: 14, color: "var(--muted)", margin: 0, lineHeight: 1.6 }}>Lesson 1 is the five stages and what keeps people at each one. The rest of Module 1 is built for this one.</p>
+          </Card>
+        )}
 
         <Card highlight>
           <p style={{ fontSize: 15, lineHeight: 1.75, margin: 0 }}>
@@ -98,7 +125,18 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
         </Card>
 
         <Card>
-          <ProductShot />
+          <h3 style={{ ...S.h3, marginBottom: 4 }}>Try the free part first</h3>
+          <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "var(--muted)", margin: "0 0 12px" }}>
+            Module 0 is the setup, about ten minutes, and it&rsquo;s free for everyone. Do it before you pay. If it isn&rsquo;t useful, don&rsquo;t buy this.
+          </p>
+          <a href="/course" onClick={() => track("select_content", { content_type: "ground_free_module", stage: stage || "none" })} style={{ fontSize: 14.5, fontWeight: 600, color: "var(--accent)" }}>Start Module 0, free &rarr;</a>
+          <p style={{ fontSize: 12.5, color: "var(--muted)", margin: "16px 0 0", paddingTop: 12, borderTop: "1px solid var(--border)", lineHeight: 1.6 }}>
+            Written by James Berges, a former SLP who now works in marketing at a health-tech company.
+          </p>
+        </Card>
+
+        <Card>
+          <WorkbookPage />
           <h3 style={{ ...S.h3, marginBottom: 4 }}>What ${GROUND_PRICE} buys</h3>
           <p style={{ fontSize: 13.5, color: "var(--muted)", margin: "0 0 14px" }}>Eight lessons, about fifty minutes, and the workbook.</p>
           {LESSONS.map(([t, d], i) => (
@@ -112,6 +150,7 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
           </p>
         </Card>
 
+        <div id="buy" />
         <Card style={{ border: "1.5px solid var(--accent)" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
             <div><div style={{ fontSize: 30, fontWeight: 700, fontFamily: "'Playfair Display', Georgia, serif" }}>${GROUND_PRICE}</div><div style={{ fontSize: 13, color: "var(--muted)" }}>once, no subscription</div></div>
@@ -125,7 +164,7 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
               </div>
               {err && <div style={{ fontSize: 13, color: "var(--warn)", marginTop: 10 }}>{err}</div>}
               <div style={{ textAlign: "center", marginTop: 16 }}>
-                <button onClick={buy} disabled={busy} style={{ ...S.btn, padding: "15px 40px", fontSize: 17, opacity: busy ? 0.7 : 1 }}>{busy ? "Opening checkout…" : `Start Module 1 — $${GROUND_PRICE} →`}</button>
+                <button onClick={buy} disabled={busy} style={{ ...S.btn, padding: "14px 30px", fontSize: 16, opacity: busy ? 0.7 : 1 }}>{busy ? "Opening checkout…" : `Work out whether you're leaving · $${GROUND_PRICE} →`}</button>
                 <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 10, lineHeight: 1.6 }}>Your link arrives by email, and the lessons open here straight away. Your answers save in this browser.</p>
               </div>
             </>
@@ -143,6 +182,16 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
               </div>
             </>
           )}
+        </Card>
+
+        <Card>
+          <h3 style={{ ...S.h3, marginBottom: 12 }}>Before you buy</h3>
+          {FAQ.map(([q, a], i) => (
+            <div key={q} style={{ padding: "11px 0", borderTop: i ? "1px solid var(--border)" : "none" }}>
+              <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 3 }}>{q}</div>
+              <div style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.6 }}>{a}</div>
+            </div>
+          ))}
         </Card>
 
         <Card>

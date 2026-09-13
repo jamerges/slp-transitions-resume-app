@@ -1,6 +1,6 @@
 ---
 name: product-copy
-description: Write or edit any words a buyer sees on SLP Transitions product surfaces: landing and sales pages, course lessons, in-app UI, transactional and lifecycle emails, nav labels, buttons, error states, plus contents lists, page and section titles, workbook and PDF pages, and copy inside design mockups. Read it BEFORE writing, not only as a review pass. Encodes James's corrections so the same mistakes stop recurring.
+description: Write or edit any words a buyer sees on SLP Transitions product surfaces: landing and sales pages, course lessons, in-app UI, transactional and lifecycle emails, nav labels, buttons, error states, plus contents lists, page and section titles, workbook and PDF pages, and copy inside design mockups. Read it BEFORE writing, not only as a review pass. Encodes James's corrections so the same mistakes stop recurring, and points at playbook.md, the general system for page structure, proof, objections, CTAs and states.
 ---
 
 # Product copy for SLP Transitions
@@ -10,6 +10,38 @@ emails, error states. For articles and essays use `slp-transitions-writer`. For
 checking against how SLPs actually speak use `voice-of-customer`. This file is
 the record of what James has sent back, in his words where possible. Every rule
 below exists because a draft shipped and got corrected.
+
+## Two files, and which one wins
+
+`playbook.md` in this folder is the general system: a synthesis of Harry Dry,
+Demand Curve and VeryGoodCopy covering page architecture, hero anatomy, proof,
+objections, CTAs as calls to value, microcopy by state, price framing, and
+workbooks as interfaces. Read it for **structure**: what a page needs, in what
+order, and what question each section answers. Its editing passes (§41) and
+critique prompt (§57) are the review method.
+
+This file is the record of what James has actually sent back. **Where the two
+disagree, this file wins.** The known disagreements:
+
+- **Playbook §14, "short sentences, more periods."** Its example, *"Upload your
+  resume. Add the job description. See where you match."*, is the exact pattern
+  the linter flags and this file bans in prose: no runs of three short
+  sentences, and no semicolons stitching them back together. Use that rhythm
+  for buttons, step lists and field hints. In paragraphs, vary the length.
+- **Playbook §35, "show a realistic example answer."** Never invented. An
+  example is a real quote from `content/voice-of-customer.md` or the forum
+  corpus, attributed the way the r/slp quote on the sunk-cost page is. See
+  "Never invent James" below.
+- **Playbook §11, first-person CTAs** ("Translate my resume"). The site is
+  second person ("Pick up where you left off"). Stay second person.
+- **Playbook §22 and §8, proof in the hero.** Only proof we have clearance
+  for. With no testimonials for a product, the playbook's own answer is sample
+  proof: the free module, a real page of the output, the documented one-line
+  author bio. Never a fabricated quote, count or logo.
+
+Its §38 (create agency not shame, never imply the degree was wasted, don't
+frame every reader as burned out) already matches the push-to-pull rule and
+needs no override.
 
 ## Read this before you write, not after
 
