@@ -11,11 +11,12 @@ import { GROUND_NAME, GROUND_PRICE } from "@/lib/course-tiers";
  */
 export type ProductKey = "ground" | "report" | "suite";
 
-export const PRODUCTS: Record<ProductKey, { name: string; price: number; answers: string; detail: string }> = {
+export const PRODUCTS: Record<ProductKey, { name: string; price: number; answers: string; detail: string; thumb?: string }> = {
   ground: {
     name: GROUND_NAME,
     price: GROUND_PRICE,
     answers: "Should I go, and what am I protecting if I do?",
+    thumb: "/marketing/workbook-cover.png",
     detail: "Module 1 of Transition OS plus the workbook. Whether it is the workplace or the field, what your degree is worth now, and the pay floor the next job has to clear.",
   },
   report: {
@@ -51,14 +52,17 @@ export default function ProductMenu({
         const p = PRODUCTS[k];
         const href = hrefFor(k);
         const body = (
-          <>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10 }}>
-              <div style={{ fontSize: 15, fontWeight: 700, color: "var(--text)" }}>{p.name}</div>
-              <div style={{ fontSize: 14, fontWeight: 700, color: "var(--accent)", flexShrink: 0 }}>${p.price}</div>
+          <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
+            <div style={{ flexGrow: 1, minWidth: 0 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10 }}>
+                <div style={{ fontSize: 15, fontWeight: 700, color: "var(--text)" }}>{p.name}</div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: "var(--accent)", flexShrink: 0 }}>${p.price}</div>
+              </div>
+              <div style={{ fontSize: 13.5, color: "var(--text)", marginTop: 3 }}>{p.answers}</div>
+              <div style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 3 }}>{p.detail}</div>
             </div>
-            <div style={{ fontSize: 13.5, color: "var(--text)", marginTop: 3 }}>{p.answers}</div>
-            <div style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 3 }}>{p.detail}</div>
-          </>
+            {p.thumb && <img src={p.thumb} width={44} height={57} alt="" style={{ width: 44, height: 57, objectFit: "cover", objectPosition: "top", borderRadius: 3, border: "1px solid var(--border)", flexShrink: 0 }} />}
+          </div>
         );
         const style: React.CSSProperties = {
           display: "block", width: "100%", textAlign: "left", padding: "12px 14px", marginBottom: 8,

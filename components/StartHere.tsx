@@ -48,13 +48,18 @@ export default function StartHere() {
           padding: lead ? "18px 20px" : "14px 16px", marginBottom: 10,
         }}
       >
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
-          <div style={{ fontSize: lead ? 19 : 16, fontWeight: 700, fontFamily: lead ? "'Playfair Display', Georgia, serif" : undefined }}>{p.name}</div>
-          <div style={{ fontSize: lead ? 19 : 15, fontWeight: 700, color: "var(--accent)", flexShrink: 0 }}>${p.price}</div>
+        <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+          <div style={{ flexGrow: 1, minWidth: 0 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
+              <div style={{ fontSize: lead ? 19 : 16, fontWeight: 700, fontFamily: lead ? "'Playfair Display', Georgia, serif" : undefined }}>{p.name}</div>
+              <div style={{ fontSize: lead ? 19 : 15, fontWeight: 700, color: "var(--accent)", flexShrink: 0 }}>${p.price}</div>
+            </div>
+            <div style={{ fontSize: lead ? 15 : 14, marginTop: 4 }}>{p.answers}</div>
+            <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 4 }}>{p.detail}</div>
+            {lead && <div style={{ marginTop: 12, fontSize: 14.5, fontWeight: 700, color: "var(--accent)" }}>Start &rarr;</div>}
+          </div>
+          {p.thumb && <img src={p.thumb} width={lead ? 60 : 44} height={lead ? 78 : 57} alt="" style={{ width: lead ? 60 : 44, height: lead ? 78 : 57, objectFit: "cover", objectPosition: "top", borderRadius: 3, border: "1px solid var(--border)", flexShrink: 0 }} />}
         </div>
-        <div style={{ fontSize: lead ? 15 : 14, marginTop: 4 }}>{p.answers}</div>
-        <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 4 }}>{p.detail}</div>
-        {lead && <div style={{ marginTop: 12, fontSize: 14.5, fontWeight: 700, color: "var(--accent)" }}>Start &rarr;</div>}
       </a>
     );
   };

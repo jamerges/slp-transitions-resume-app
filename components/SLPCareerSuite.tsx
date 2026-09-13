@@ -457,7 +457,7 @@ export default function SLPCareerSuite() {
     <div style={{ ...S.wrap, textAlign: "center", padding: "48px 0 20px" }}>
       <span style={S.tag}>Free Preview • No Account Required</span>
       <h1 style={{ ...S.h1, fontSize: 36, marginTop: 16 }}>Your SLP resume, translated<br />into a career you actually want.</h1>
-      <p style={{ ...S.p, maxWidth: 520, margin: "0 auto 28px", fontSize: 16 }}>Upload your resume and a job description. We'll show you exactly how your clinical experience maps to non-clinical roles — in language hiring managers understand.</p>
+      <p style={{ ...S.p, maxWidth: 520, margin: "0 auto 28px", fontSize: 16 }}>Upload your resume and a job description. We'll show you exactly how your clinical experience maps to non-clinical roles, in language hiring managers understand.</p>
       <button style={S.btn} onClick={() => setStep(STEPS.RESUME)}
         onMouseEnter={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent-light)")}
         onMouseLeave={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent)")}>
@@ -465,9 +465,18 @@ export default function SLPCareerSuite() {
       </button>
       <p style={{ fontSize: 13, color: "var(--light)", marginTop: 14 }}>Takes ~3 minutes • Full package $24, one-time</p>
 
+      {/* The product, shown rather than described: two real bullets from the résumé post, before and after. */}
+      <img
+        src="/marketing/resume-before-after-hero.png"
+        width={1200}
+        height={560}
+        alt="Two résumé bullets before and after translation. Managed caseload of 55 students becomes managed a portfolio of 55 concurrent clients, running each engagement through assessment, goal-setting, delivery and documented outcome review."
+        style={{ display: "block", width: "100%", maxWidth: 640, height: "auto", margin: "32px auto 0", borderRadius: 12, border: "1px solid var(--border)", boxShadow: "0 8px 30px rgba(27,27,30,0.08)" }}
+      />
+
       <Card style={{ marginTop: 36, textAlign: "left" }} highlight>
         <div style={{ fontSize: 14, fontWeight: 700, color: "var(--accent)", marginBottom: 4 }}>
-          Free — no payment, no account
+          Free: no payment, no account
         </div>
         <div style={{ fontSize: 12, color: "var(--muted)", marginBottom: 10 }}>Just your email, so we can send your results.</div>
         {[
