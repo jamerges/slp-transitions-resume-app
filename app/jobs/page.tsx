@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageShell, S } from "@/components/ui";
 import OpenRoles from "@/components/OpenRoles";
 import { collectionLd, JsonLd } from "@/lib/seo";
+import { COMPANY_COUNT } from "@/lib/companies";
 import {
   ROLES,
   PATH_LIST,
@@ -80,7 +81,7 @@ export default function JobsPage() {
       >
         <div>
           <div style={{ fontSize: 20, fontWeight: 700, fontFamily: "'Playfair Display', Georgia, serif", lineHeight: 1.25 }}>
-            Here are 120 companies that hire former SLPs
+            Here are {COMPANY_COUNT} companies that hire former SLPs
           </div>
           <div style={{ fontSize: 14, color: "var(--muted)", marginTop: 4, lineHeight: 1.55 }}>
             Who has actually hired one, and for what. The list to work from between postings.

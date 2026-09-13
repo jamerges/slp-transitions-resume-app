@@ -220,6 +220,9 @@ export const COMPANIES_DB: Company[] = [
   {"name": "Vibra Healthcare", "url": "vibrahealthcare.com", "note": "Post-acute network; client success and liaison roles", "roles": ["Clinical", "Customer Success"], "categories": ["HealthTech"]},
 ];
 
+/** The count every surface quotes. Derived, so it cannot drift from the list again. */
+export const COMPANY_COUNT = COMPANIES_DB.length;
+
 export const TRANSITION_STORIES: TransitionStory[] = [
   { name: "Emily H.", from: "Pediatric School SLP", to: "Research Coordinator", setting: "Pediatric neuroscience lab", quote: "I didn't need a new degree. I just needed to show them I already had the skills.", tags: ["Research", "Clinical Research", "Program Management"] },
   { name: "Jon", from: "SLP with Clinical Doctorate", to: "Entertainment Industry PA", setting: "Entertainment law firm", quote: "If you are not happy where you are, move. You are not a tree.", tags: ["Career Change", "Non-traditional", "Quality of Life"] },

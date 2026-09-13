@@ -7,7 +7,7 @@ import { PATHS } from "@/lib/quiz";
 import { ENERGY_PATHS } from "@/lib/course";
 import { pathImage } from "@/lib/quiz";
 import { ROLES, rolesFor, formatUpdated } from "@/lib/open-roles";
-import { COMPANIES_DB } from "@/lib/companies";
+import { COMPANIES_DB, COMPANY_COUNT } from "@/lib/companies";
 import { Btn, Panel, Slider, font } from "./ui";
 import { Script } from "./Blocks";
 
@@ -185,7 +185,7 @@ function PathDeepDive({ pathSlug, shared }: ToolProps) {
           <Panel>
             <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>Companies that have hired for this</div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>{(companies.length ? companies : COMPANIES_DB.slice(0, 8)).map((c) => <a key={c.name} href={c.url} target="_blank" rel="noreferrer" style={{ fontSize: 12.5, padding: "4px 10px", borderRadius: 999, border: "1px solid var(--border)", textDecoration: "none", color: "var(--text)" }}>{c.name}</a>)}</div>
-            <a href="/companies" style={{ display: "inline-block", marginTop: 10, fontSize: 13, color: "var(--accent)" }}>All 120 companies ↗</a>
+            <a href="/companies" style={{ display: "inline-block", marginTop: 10, fontSize: 13, color: "var(--accent)" }}>All {COMPANY_COUNT} companies ↗</a>
           </Panel>
         </div>
       </div>

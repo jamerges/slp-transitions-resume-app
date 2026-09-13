@@ -11,7 +11,7 @@ Grounded in July 2026 SERP research. Strategy: own the **thin, high-intent long-
 | 3 | Your SLP Transferable Skills (With the Exact Words to Use) | slp transferable skills | Thin SERP; feeds every other post | Low |
 | 4 | SLP to Project Management: The Most-Traveled Road Out | slp to project management, slp project manager | #1 documented landing path; cert-path questions searchable | Low |
 | 5 | SLP to Data Analyst: The Quiet Six-Figure-Adjacent Path | slp to data analyst | Tier-1 path, zero dedicated content | Low |
-| 6 | 120+ Companies That Hire Former SLPs (And How to Actually Get In) | companies that hire slps, jobs for former slps | Proven viral format (teacher niche analog); powers Pinterest + lead magnet | Low |
+| 6 | 188 Companies That Hire Former SLPs (And How to Actually Get In) | companies that hire slps, jobs for former slps | Proven viral format (teacher niche analog); powers Pinterest + lead magnet | Low |
 | 7 | Should You Quit Being an SLP? An Honest Decision Framework | should i quit slp, quitting speech pathology | Emotional head-term, thin SERP (only Reddit + Substacks) | Low |
 | 8 | How Long Does It Take to Leave the SLP Field? (Real Timelines) | leaving the slp field, slp career change timeline | Site already ranks for "leaving the slp field" — reinforce the cluster | Low |
 | 9 | The Non-Clinical Cover Letter SLPs Actually Need in the AI Era | slp cover letter non clinical | Nobody ranks; AI-backlash angle is fresh | Low |

@@ -4,6 +4,7 @@
 // lessons are written after James approves the sample.
 import type { Progress } from "./course-progress";
 import { contentIds, summaryFor } from "./course-content";
+import { COMPANY_COUNT } from "./companies";
 
 export type LessonType = "video" | "explainer" | "interactive" | "action" | "checkpoint";
 
@@ -76,7 +77,7 @@ const R = {
   stages: { label: "You're allowed to want out: the five stages", href: "https://slptransitions.com/youre-allowed-to-want-out/", kind: "link" as const },
   quit: { label: "Should you quit? Bad workplace, bad fit, bad season", href: "https://slptransitions.com/should-you-quit-slp/", kind: "link" as const },
   paths: { label: "The 20 paths, with sourced salary ranges", href: "https://slptransitions.com/alternative-careers-speech-pathologists-slps/", kind: "link" as const },
-  companies: { label: "120 companies that hire former SLPs", href: "/companies", kind: "link" as const },
+  companies: { label: `${COMPANY_COUNT} companies that hire former SLPs`, href: "/companies", kind: "link" as const },
   jobs: { label: "Open roles this week, by path", href: "/jobs", kind: "link" as const },
   suite: { label: "Career Pivot Suite (included)", href: "/", kind: "tool" as const },
   resumePost: { label: "The non-clinical SLP resume", href: "https://slptransitions.com/slp-resume-non-clinical/", kind: "link" as const },

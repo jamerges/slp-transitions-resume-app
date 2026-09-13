@@ -16,6 +16,15 @@ import re, sys, os
 sys.path.insert(0, "/Users/jamesberges/Desktop/SLP Career Suite : Resume Tool/scripts")
 from wp_publish import api
 
+# The companies count, derived from lib/companies.ts so this page and the app
+# never disagree again (they did: 120 / 123 / 126 / 188 across surfaces).
+def company_count() -> int:
+    ts = open(os.path.join(os.path.dirname(__file__), "..", "lib", "companies.ts"), encoding="utf-8").read()
+    n = len(re.findall(r'^  \{"name":', ts, re.M))
+    assert n > 100, f"companies count looks wrong: {n}"
+    return n
+COMPANY_COUNT = company_count()
+
 QUIZ = "https://app.slptransitions.com/quiz"
 APP = "https://app.slptransitions.com/"
 SITE = "https://slptransitions.com"
@@ -287,7 +296,7 @@ def build():
     a(f'<div class="slp-actions"><a class="slp-btn slp-btn-primary" href="{QUIZ}">Find my career path →</a>'
       f'<a class="slp-btn slp-btn-ghost" href="{APP}">Translate my resume</a></div>')
     a('<p class="slp-trust"><b>Free</b> · <b>2 minutes</b> · built from '
-      f'<a href="{SITE}/ed-health-tech-jobs/" style="border-bottom:1px solid currentColor">188 companies</a> that hire former SLPs</p>')
+      f'<a href="{SITE}/ed-health-tech-jobs/" style="border-bottom:1px solid currentColor">{COMPANY_COUNT} companies</a> that hire former SLPs</p>')
     a('</div>')
 
     # Right column. The three process cards said the same thing as the Guides
@@ -298,8 +307,8 @@ def build():
     # The + on two of the three is doing real work: 13 is what we have
     # documented, not a ceiling, and the salary top is the top of the
     # *employed* ranges - working for yourself has no equivalent number.
-    # 188 stays exact because it is an exact count of the companies list.
-    for n, l in [("188", "companies that hire former SLPs"),
+    # The companies figure stays exact because it is an exact count of the list.
+    for n, l in [(str(COMPANY_COUNT), "companies that hire former SLPs"),
                  ("20", "non-clinical paths documented"),
                  ("$154k+", "top of the documented salary ranges")]:
         a(f'<article class="slp-proof-card slp-rv"><span class="slp-proof-n">{n}</span>'
@@ -354,7 +363,7 @@ def build():
     a(f'<p style="margin-top:1.8rem"><a class="slp-quiet" href="{SITE}/blog/">Browse every article →</a></p>')
     # companies list gets its own CTA here rather than crowding the final one
     a(f'<div class="slp-band"><div><h3>Know where to look first.</h3>'
-      f'<p>126 ed-tech, health-tech and speech companies that hire former SLPs, searchable and free.</p></div>'
+      f'<p>{COMPANY_COUNT} ed-tech, health-tech and speech companies that hire former SLPs, searchable and free.</p></div>'
       f'<a class="slp-btn slp-btn-ghost" href="{SITE}/ed-health-tech-jobs/">Browse the companies list →</a></div>')
     a('</div></section>')
 

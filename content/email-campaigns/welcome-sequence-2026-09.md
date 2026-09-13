@@ -14,13 +14,13 @@ content/research-facts.md. Style: content/style-guide.md sections 8a and 8b.
 
 ## E1 · immediately · The list, and one thing before you open it
 **Subject:** Your companies list (and one thing before you open it)
-**Preview:** 120 ed-tech and health-tech companies that hire former SLPs.
+**Preview:** 188 ed-tech and health-tech companies that hire former SLPs.
 
 Hi {$name|default(there)},
 
 Welcome to SLP Transitions. Pat yourself on the back. You did the hard part, which is admitting you're curious.
 
-Your list of 120 ed-tech and health-tech companies that hire former SLPs:
+Your list of 188 ed-tech and health-tech companies that hire former SLPs:
 
 [Open the companies list →] https://app.slptransitions.com/companies
 

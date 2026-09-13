@@ -97,7 +97,7 @@ and medical-necessity experience is the job.
 Both keep you adjacent to healthcare, which some people want and some people
 really don't. That's worth being honest with yourself about before you apply.
 
-I keep a list of 120+ ed-tech and health-tech companies that hire former SLPs,
+I keep a list of 188 ed-tech and health-tech companies that hire former SLPs,
 sorted by what they hire for. If you grabbed it when you signed up, it's grown
 a lot since:
 

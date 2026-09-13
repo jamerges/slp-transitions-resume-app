@@ -1,5 +1,5 @@
 ---
-title: "120+ Companies That Hire Former SLPs (And How to Actually Get In)"
+title: "188 Companies That Hire Former SLPs (And How to Actually Get In)"
 slug: companies-that-hire-former-slps
 metaDescription: "The companies that actually hire former SLPs: speech tech, AAC, health systems, edtech: with real salary ranges, entry-door roles, and how to get in."
 targetKeyword: "companies that hire slps"
@@ -94,9 +94,9 @@ A list of companies is only a map. Three moves turn it into interviews:
 
 **3. Translate before you apply.** Your resume in clinical language is invisible to these employers. Recruiters spend about 7.4 seconds on a first pass, and "caseload of 60 students with IEPs" doesn't survive it. "Managed a portfolio of 60 concurrent clients with individual goals, timelines, and documented outcomes" does. Keep your numbers, mirror the job description's exact vocabulary, and lead with a value summary rather than an objective (objective statements get ~28% fewer callbacks). Companies want numbers: by how much did your project improve which variable?
 
-## Where's the full list of 120+ companies?
+## Where's the full list of 188 companies?
 
-This post gave you the categories and the named anchors. The full curated list, **120+ ed-tech and health-tech companies that hire former SLPs**, is the free download I maintain: [grab the companies list here](https://slptransitions.com/ed-health-tech-jobs/). It's email-gated, which is the honest trade. You get the list, I get to stay in touch, and you can unsubscribe the moment it stops being useful.
+This post gave you the categories and the named anchors. The full curated list, **188 ed-tech and health-tech companies that hire former SLPs**, is the free download I maintain: [grab the companies list here](https://slptransitions.com/ed-health-tech-jobs/). It's email-gated, which is the honest trade. You get the list, I get to stay in touch, and you can unsubscribe the moment it stops being useful.
 
 And if you want the targeting done *for* you: the [SLP Career Pivot Suite](https://app.slptransitions.com) matches companies to your specific background as part of the full package, along with the translated resume, tailored cover letter, and LinkedIn rewrite that step 3 above requires. Free preview first, $24 one-time if it's useful, no subscription ever.
 

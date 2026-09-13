@@ -2,7 +2,7 @@
 
 import { useState, type ReactNode } from "react";
 import { S, Card, CopyButton, CoverageTable } from "./ui";
-import { getRelevantCompanies, getRelevantStories } from "@/lib/companies";
+import { getRelevantCompanies, getRelevantStories, COMPANY_COUNT } from "@/lib/companies";
 import { downloadResumeDocx, downloadCoverLetterDocx } from "./exportDocx";
 import type { UserGoals } from "@/lib/prompts";
 
@@ -348,7 +348,7 @@ export default function FullResults({
 
       {companies.length > 0 && (
         <Section title="Companies Known to Hire Former SLPs" id="companies">
-          <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12 }}>From our curated database of 123 ed-tech and health-tech companies with a track record of hiring former clinicians, sorted by best match for your background. We don't track live vacancies — tap <strong>See open roles</strong> to jump to that company's careers page.</p>
+          <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12 }}>From our curated database of {COMPANY_COUNT} ed-tech and health-tech companies with a track record of hiring former clinicians, sorted by best match for your background. We don't track live vacancies — tap <strong>See open roles</strong> to jump to that company's careers page.</p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
             {companies.map((c, i) => {
               // We don't store per-company careers URLs (paths vary: /careers,
