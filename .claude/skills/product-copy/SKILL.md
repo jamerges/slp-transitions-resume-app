@@ -145,7 +145,8 @@ Checked with `jv-k/deslopper` plus the taxonomy from `shessenauer/deslop-ai-lint
 
 - **No em-dashes.** Colon, comma, brackets, or two sentences.
 - **No semicolons in prose.** This was a real tic: fixing "too many short punchy sentences" by joining them with semicolons just moved the tell. Rewrite as two sentences or a real conjunction. Semicolons are fine inside citation lists and numeric ranges.
-- **No "it's not X, it's Y"**, no "here's the thing", no "in today's landscape".
+- **No "it's not X, it's Y"**, and no "Not X. Y." either. "Not founders. People who applied for a job and got it." shipped on the homepage and in a video, and James cut it: it was untrue (the site does feature founders and part-timers) and it only made sense if you already knew what it was arguing against. **Every line must be clear on its own, with no inside reference to something the reader hasn't seen.** Fixed: "Three of the SLPs featured on the site, and where they work now."
+- No "here's the thing", no "in today's landscape".
 - **Vary sentence length in prose.** Target 19-22 words average, under 15% of sentences below ten words, and **zero runs of three or more short sentences**. Consecutive fragments read as machine-written. This applies to paragraphs a reader reads, not to button labels, list items, table cells or field hints, where short is correct.
 - **Don't cite the research as framing.** "Three claims circulate in SLP forums that…" → say the three things are false and what the real route is. The corpus is where facts come from, not a character in the sentence.
 - **Don't state the obvious.** Readers know telehealth is clinical work.
