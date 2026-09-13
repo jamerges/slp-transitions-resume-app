@@ -19,7 +19,7 @@ const HREF: Record<ProductKey, string> = { ground: "/course/ground", report: "/q
 const FREE = [
   { label: "The two-minute quiz", detail: "Names the path your experience already fits, without needing your r\u00e9sum\u00e9.", href: "/quiz" },
   { label: "Open roles, by path", detail: "What is actually posted this week for each of the twenty paths.", href: "/jobs" },
-  { label: `${COMPANY_COUNT} companies that hire former SLPs`, detail: "Who has actually hired a former SLP, and for what. Sent to your inbox.", href: "https://slptransitions.com/ed-health-tech-jobs/" },
+  { label: `${COMPANY_COUNT} companies that hire former SLPs`, detail: "Health-tech and ed-tech companies that value clinical skills. Sent to your inbox.", href: "https://slptransitions.com/ed-health-tech-jobs/" },
   { label: "The five stages of leaving", detail: "Where people get stuck, and the one move out of each.", href: "https://slptransitions.com/youre-allowed-to-want-out/" },
 ];
 

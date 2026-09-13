@@ -60,7 +60,7 @@ Cut sentences whose only job is to announce the significance of the sentence nex
 Also vary sentence rhythm more aggressively than a stock "short punchy sentence after a long one" pattern — that itself becomes a tic if every section does it. Pull actual technique from prose craft: reorder a sentence so the most vivid word lands last ("The small boys came early to the hanging," not "...to the hanging early"); cut adverbs and reach for the stronger verb instead; let some sentences run long and specific, not just short and declarative. Read a paragraph aloud before it ships — if every sentence has the same shape, rewrite one.
 
 ## 9. Tagline note
-"Your degree isn't a prison. The skills go with you." (app tagline) does NOT appear on the site but is philosophically consistent. Use as thesis where useful; body copy should sound like the quotes above — warmer, more conversational than the tagline.
+"Your degree isn't a prison. Your skills can translate outside of clinical work." (app tagline) does NOT appear on the site but is philosophically consistent. Use as thesis where useful; body copy should sound like the quotes above — warmer, more conversational than the tagline.
 
 ## 8b. The trope list (James, 2026-09-03). Applies to every email and every post.
 - No em-dash overuse. Default to none; a comma, a period, or a colon does the job.

@@ -84,7 +84,7 @@ export default function JobsPage() {
             Here are {COMPANY_COUNT} companies that hire former SLPs
           </div>
           <div style={{ fontSize: 14, color: "var(--muted)", marginTop: 4, lineHeight: 1.55 }}>
-            Who has actually hired one, and for what. The list to work from between postings.
+            Health-tech and ed-tech companies that value clinical skills. The list to work from between postings.
           </div>
         </div>
         <span style={{ fontSize: 15, fontWeight: 700, color: "var(--accent)", whiteSpace: "nowrap" }}>Get the list &rarr;</span>

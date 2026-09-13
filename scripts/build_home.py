@@ -333,8 +333,7 @@ def build():
     # ---- stories
     a('<section class="slp-sec slp-stories" id="real-stories"><div class="slp-wrap">')
     a('<div class="slp-sec-intro"><div><p class="slp-kicker" style="color:#7FD6BC">Real transitions</p>'
-      '<h2>See where other SLPs actually landed.</h2></div>'
-      '<p>Three of the SLPs featured on the site, and where they work now.</p></div>')
+      '<h2>See where other SLPs actually landed.</h2></div></div>')
     a('<div class="slp-story-grid" data-stagger>')
     for s in STORIES:
         a(f'<a class="slp-story slp-rv" href="{s["href"]}">'

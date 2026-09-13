@@ -183,7 +183,7 @@ function PathDeepDive({ pathSlug, shared }: ToolProps) {
             <a href={`/jobs/${slug}`} style={{ display: "inline-block", marginTop: 10, fontSize: 13, color: "var(--accent)" }}>All {slug} openings ↗</a>
           </Panel>
           <Panel>
-            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>Companies that have hired for this</div>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>Companies that have listed roles like this</div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>{(companies.length ? companies : COMPANIES_DB.slice(0, 8)).map((c) => <a key={c.name} href={c.url} target="_blank" rel="noreferrer" style={{ fontSize: 12.5, padding: "4px 10px", borderRadius: 999, border: "1px solid var(--border)", textDecoration: "none", color: "var(--text)" }}>{c.name}</a>)}</div>
             <a href="/companies" style={{ display: "inline-block", marginTop: 10, fontSize: 13, color: "var(--accent)" }}>All {COMPANY_COUNT} companies ↗</a>
           </Panel>

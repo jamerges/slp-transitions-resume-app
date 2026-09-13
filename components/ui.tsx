@@ -213,7 +213,7 @@ export function PageShell({ children, wide = false }: { children: ReactNode; wid
           <span style={{ fontSize: 13, fontWeight: 600, color: "var(--accent)", fontFamily: "'Playfair Display', Georgia, serif" }}>SLP Transitions</span>
         </div>
         <p style={{ fontSize: 12, color: "var(--light)", margin: 0 }}>
-          Your degree isn't a prison. The skills go with you.
+          Your degree isn't a prison. Your skills can translate outside of clinical work.
         </p>
       </div>
     </div>

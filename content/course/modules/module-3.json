@@ -33,7 +33,7 @@
         "items": [
           "The subreddit for the job title, not for your profession. Search Reddit for your target title and read the complaint threads first. People describe the actual daily work there in a way no job posting will, and it is the fastest way to find out whether you want it.",
           "The professional community for that field. Instructional Design Central for ID, Mixed Methods for UX research, the Conversation Design Institute for conversation design, HIMSS and AMIA for informatics, your local PMI chapter for project management. Most are free to read.",
-          "The 188 companies on your list. This is the one nobody else can give you, because these are companies with a documented history of hiring former SLPs. Every one of them has people on LinkedIn."
+          "The 188 companies on your list. This is the one nobody else can give you, because these are health-tech and ed-tech companies that value clinical skills. Every one of them has people on LinkedIn."
         ]
       },
       {
@@ -153,7 +153,7 @@
       },
       {
         "type": "p",
-        "text": "Three people, and they do not all have to be strangers. In order of value, an SLP who now holds the title you want, because they have already done the exact translation you are attempting. Then anyone who holds that title from any background, because they know what their employer actually required. Then someone at a company on your list, because a name inside beats a posting outside. The companies directory holds 120 employers that have hired for these roles, and the deep-dive tool in 2.7 already listed the ones matching your path."
+        "text": "Three people, and they do not all have to be strangers. In order of value, an SLP who now holds the title you want, because they have already done the exact translation you are attempting. Then anyone who holds that title from any background, because they know what their employer actually required. Then someone at a company on your list, because a name inside beats a posting outside. The companies directory holds 188 health-tech and ed-tech companies that value clinical skills, and the deep-dive tool in 2.7 already listed the ones matching your path."
       },
       {
         "type": "h",

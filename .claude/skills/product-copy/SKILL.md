@@ -171,6 +171,7 @@ never fabricate a quote, and never attribute one to a named person.
 
 ## Selling
 
+- **The companies list is "health-tech and ed-tech companies that value clinical skills."** Never "companies that have hired a former SLP", "who has actually hired one", "track record" or "documented history" of hiring. James: "that isn't true." The lead magnet's name, "companies that hire former SLPs", is the one allowed phrasing, and only as the name.
 - **Don't promise what can't be delivered.** "from wondering whether you're allowed to leave, to an offer in writing" became "to interviewing for jobs outside the clinic". Ninety days cannot guarantee an offer.
 - **Decide, don't hedge.** Pick the one thing this reader should do, say it plainly, then list alternatives underneath as a menu with the question each one answers.
 - **Match the offer to the stage.** Stages 1–3 (private doubt, guilt, permission) have no résumé ready; selling them a résumé tool is the wrong ask at the wrong moment. See `lib/stage-map.ts` and `offerForStage`.

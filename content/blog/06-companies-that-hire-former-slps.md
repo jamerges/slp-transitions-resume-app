@@ -102,6 +102,6 @@ And if you want the targeting done *for* you: the [SLP Career Pivot Suite](https
 
 ---
 
-Thanks for reading. Your degree isn't a prison. The skills go with you. You just have to point them at the right buildings.
+Thanks for reading. Your degree isn't a prison. Your skills can translate outside of clinical work. You just have to point them at the right buildings.
 
 James

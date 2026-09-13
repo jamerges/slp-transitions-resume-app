@@ -99,6 +99,6 @@ This path fits if the part of SLP work you'd rescue from the burning building is
 
 It fits less well if you're mostly drawn to "remote job that isn't therapy," because the 6-12 month build and the competitive market will test a lukewarm why.
 
-But if you read the ADDIE section nodding, if some part of you thought *wait, I already do this*, pay attention to that. Your degree isn't a prison. The skills go with you. You've been an instructional designer without the title for years; the portfolio is just the paperwork.
+But if you read the ADDIE section nodding, if some part of you thought *wait, I already do this*, pay attention to that. Your degree isn't a prison. Your skills can translate outside of clinical work. You've been an instructional designer without the title for years; the portfolio is just the paperwork.
 
 And for once, it's paperwork that works for you. The free list of 100+ ed-tech and health-tech companies that hire former SLPs pairs nicely with a portfolio-in-progress. And if you're mid-transition and stuck, email me at james@slptransitions.com. I answer.

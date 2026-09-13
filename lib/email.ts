@@ -242,7 +242,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
   </div>
 
   <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:32px;">
-    SLP Transitions • Your degree isn't a prison. The skills go with you.
+    SLP Transitions • Your degree isn't a prison. Your skills can translate outside of clinical work.
   </p>
 </div>
 </body></html>`;
@@ -343,7 +343,7 @@ export function renderQuizResultEmail(input: QuizResultEmailInput): string {
   </p>
   <p style="font-size:14px;line-height:1.7;">James</p>
   <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:28px;">
-    SLP Transitions • Your degree isn't a prison. The skills go with you.
+    SLP Transitions • Your degree isn't a prison. Your skills can translate outside of clinical work.
   </p>
 </div>
 </body></html>`;
@@ -391,7 +391,7 @@ export async function sendResumeLinkEmail(input: {
   </p>
   <p style="font-size:14px;line-height:1.7;">James</p>
   <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:28px;">
-    SLP Transitions • Your degree isn't a prison. The skills go with you.
+    SLP Transitions • Your degree isn't a prison. Your skills can translate outside of clinical work.
   </p>
 </div>
 </body></html>`;
@@ -487,7 +487,7 @@ export async function sendReportReminderEmail(input: {
   </p>
   <p style="font-size:14px;line-height:1.7;">James</p>
   <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:28px;">
-    SLP Transitions &bull; Your degree isn&rsquo;t a prison. The skills go with you.
+    SLP Transitions &bull; Your degree isn&rsquo;t a prison. Your skills can translate outside of clinical work.
   </p>
 </div>
 </body></html>`;
@@ -733,7 +733,7 @@ export async function sendReportEmail(input: {
       </div>
     </div>
   </div>
-  <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:32px;">SLP Transitions • Your degree isn't a prison. The skills go with you.</p>
+  <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:32px;">SLP Transitions • Your degree isn't a prison. Your skills can translate outside of clinical work.</p>
 </div>
 </body></html>`;
 

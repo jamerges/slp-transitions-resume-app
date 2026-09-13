@@ -36,7 +36,7 @@ Eight questions. About two minutes. At the end you get:
 - **The honest caveat** for that path, including the ones I'd want a friend to warn me about
 - **A second path worth considering**, since almost nobody has just one option
 
-You'll also get the list of 100+ ed-tech and health-tech companies with a track record of hiring former clinicians.
+You'll also get the list of 188 ed-tech and health-tech companies that value clinical skills.
 
 **[Start the quiz →]**
 
