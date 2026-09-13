@@ -18,17 +18,6 @@ const LESSONS = [
   ["Your why, in writing", "One sentence about where you are going, written down."],
 ];
 
-/** The questions that stop people at this price, answered where they occur
- *  rather than in a support inbox. Every answer here is checked against the
- *  code: no lesson in Module 1 reads a résumé or calls the model. */
-const FAQ: [string, string][] = [
-  ["Do I need my résumé?", "No. Nothing in Module 1 asks for it. This is for before you're looking, when there's nothing to send anyone yet. The $9 report and the $24 Suite are the ones that read a résumé."],
-  ["Is this the free articles again?", "The articles describe the five stages. Module 1 asks you the questions and keeps your answers, so you finish with your own reasons written down rather than a description of everyone's."],
-  ["Is any of it AI?", "No. You read eight lessons and answer them yourself. Nothing in Module 1 is generated."],
-  ["What if I decide to stay?", "Then you'll know that, and why, instead of deciding it again every bad week. Lesson 2 only says to leave the field for one of the three problems."],
-  ["What do I actually get?", "The eight lessons in your browser, with your answers saved as you go. When you finish, an email with every answer and a workbook to print. And the $19 comes off the full program when it launches."],
-];
-
 /** A real page of the workbook, not a drawing of one. */
 function WorkbookPage() {
   return (
@@ -182,16 +171,6 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
               </div>
             </>
           )}
-        </Card>
-
-        <Card>
-          <h3 style={{ ...S.h3, marginBottom: 12 }}>Before you buy</h3>
-          {FAQ.map(([q, a], i) => (
-            <div key={q} style={{ padding: "11px 0", borderTop: i ? "1px solid var(--border)" : "none" }}>
-              <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 3 }}>{q}</div>
-              <div style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.6 }}>{a}</div>
-            </div>
-          ))}
         </Card>
 
         <Card>
