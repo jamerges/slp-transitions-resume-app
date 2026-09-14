@@ -11,24 +11,30 @@ import { GROUND_NAME, GROUND_PRICE } from "@/lib/course-tiers";
  */
 export type ProductKey = "ground" | "report" | "suite";
 
-export const PRODUCTS: Record<ProductKey, { name: string; price: number; answers: string; detail: string; thumb?: string }> = {
+/** The verb on each card's button. `direct` when the click is a checkout,
+ *  `via` when it goes somewhere first (the quiz, the free preview). The price
+ *  is appended at render from `price`, so it is never typed twice. */
+export const PRODUCTS: Record<ProductKey, { name: string; price: number; answers: string; detail: string; thumb?: string; cta: { direct: string; via: string } }> = {
   ground: {
     name: GROUND_NAME,
     price: GROUND_PRICE,
     answers: "Should I go, and what am I protecting if I do?",
     thumb: "/marketing/workbook-cover.png",
+    cta: { direct: "Buy", via: "Buy" },
     detail: "Module 1 of Transition OS plus the workbook. Whether it is the workplace or the field, what your degree is worth now, and the pay floor the next job has to clear.",
   },
   report: {
     name: "Pivot Report",
     price: 9,
     answers: "Which paths does my résumé already qualify me for?",
+    cta: { direct: "Buy", via: "Start with the quiz" },
     detail: "Reads your résumé and names three paths you already qualify for, plus what to do in the first 30 days.",
   },
   suite: {
     name: "Career Pivot Suite",
     price: 24,
     answers: "How do I write this application?",
+    cta: { direct: "Start with a free preview", via: "Start with a free preview" },
     detail: "One posting, rewritten end to end: every résumé bullet, the cover letter, your LinkedIn, the interview answers.",
   },
 };
@@ -54,12 +60,12 @@ export default function ProductMenu({
         const body = (
           <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
             <div style={{ flexGrow: 1, minWidth: 0 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10 }}>
-                <div style={{ fontSize: 15, fontWeight: 700, color: "var(--text)" }}>{p.name}</div>
-                <div style={{ fontSize: 14, fontWeight: 700, color: "var(--accent)", flexShrink: 0 }}>${p.price}</div>
-              </div>
+              <div style={{ fontSize: 15, fontWeight: 700, color: "var(--text)" }}>{p.name}</div>
               <div style={{ fontSize: 13.5, color: "var(--text)", marginTop: 3 }}>{p.answers}</div>
               <div style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 3 }}>{p.detail}</div>
+              <span style={{ display: "inline-block", marginTop: 10, padding: "8px 14px", borderRadius: 8, background: "var(--accent)", color: "#fff", fontSize: 13.5, fontWeight: 600 }}>
+                {href ? p.cta.via : p.cta.direct} &middot; ${p.price}&nbsp;&rarr;
+              </span>
             </div>
             {p.thumb && <img src={p.thumb} width={44} height={57} alt="" style={{ width: 44, height: 57, objectFit: "cover", objectPosition: "top", borderRadius: 3, border: "1px solid var(--border)", flexShrink: 0 }} />}
           </div>

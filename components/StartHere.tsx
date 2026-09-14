@@ -51,13 +51,12 @@ export default function StartHere() {
       >
         <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
           <div style={{ flexGrow: 1, minWidth: 0 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
-              <div style={{ fontSize: lead ? 19 : 16, fontWeight: 700, fontFamily: lead ? "'Playfair Display', Georgia, serif" : undefined }}>{p.name}</div>
-              <div style={{ fontSize: lead ? 19 : 15, fontWeight: 700, color: "var(--accent)", flexShrink: 0 }}>${p.price}</div>
-            </div>
+            <div style={{ fontSize: lead ? 19 : 16, fontWeight: 700, fontFamily: lead ? "'Playfair Display', Georgia, serif" : undefined }}>{p.name}</div>
             <div style={{ fontSize: lead ? 15 : 14, marginTop: 4 }}>{p.answers}</div>
             <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 4 }}>{p.detail}</div>
-            {lead && <div style={{ marginTop: 12, fontSize: 14.5, fontWeight: 700, color: "var(--accent)" }}>Start &rarr;</div>}
+            <span style={{ display: "inline-block", marginTop: lead ? 14 : 10, padding: lead ? "11px 18px" : "8px 14px", borderRadius: 8, background: "var(--accent)", color: "#fff", fontSize: lead ? 15 : 13.5, fontWeight: 600 }}>
+              {p.cta.via} &middot; ${p.price}&nbsp;&rarr;
+            </span>
           </div>
           {p.thumb && <img src={p.thumb} width={lead ? 60 : 44} height={lead ? 78 : 57} alt="" style={{ width: lead ? 60 : 44, height: lead ? 78 : 57, objectFit: "cover", objectPosition: "top", borderRadius: 3, border: "1px solid var(--border)", flexShrink: 0 }} />}
         </div>
