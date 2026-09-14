@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { PageShell, S, Card } from "@/components/ui";
+import { SUPPORT_EMAIL } from "@/lib/contact";
 
 /** After Stripe. Finalize issues access, sets the cookie on this browser, and
  *  emails the link for every other one. Then straight into the quest log. */
@@ -34,7 +35,7 @@ export default function GroundWelcome({ sessionId }: { sessionId: string }) {
           {state === "error" && (<>
             <h1 style={{ ...S.h2, marginBottom: 8 }}>One second.</h1>
             <p style={S.p}>{msg}</p>
-            <p style={{ ...S.p, fontSize: 13 }}>If you paid and this keeps happening, forward your Stripe receipt to james@slptransitions.com and I&rsquo;ll send the link by hand.</p>
+            <p style={{ ...S.p, fontSize: 13 }}>If you paid and this keeps happening, forward your Stripe receipt to {SUPPORT_EMAIL} and I&rsquo;ll send the link by hand.</p>
           </>)}
         </Card>
       </div>

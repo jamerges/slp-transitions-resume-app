@@ -10,6 +10,7 @@ import {
 } from "@/lib/companies";
 import type { UserGoals } from "@/lib/prompts";
 import { track } from "@/lib/analytics";
+import { SUPPORT_EMAIL } from "@/lib/contact";
 
 const STEPS = {
   WELCOME: 0, RESUME: 1, GOALS: 2, JOB: 3, EMAIL: 4,
@@ -404,7 +405,7 @@ export default function SLPCareerSuite() {
       window.location.href = data.url;
     } catch (err: any) {
       console.error(err);
-      setError(`Could not start checkout: ${err.message}. Please try again or email hello@slptransitions.com.`);
+      setError(`Could not start checkout: ${err.message}. Please try again or email ${SUPPORT_EMAIL}.`);
       // Quiz-path buyers have no explore results to return to.
       setStep(reportIntent ? STEPS.REPORT_INTAKE : STEPS.EXPLORE_RESULTS);
     }
@@ -434,7 +435,7 @@ export default function SLPCareerSuite() {
       window.location.href = data.url;
     } catch (err: any) {
       console.error(err);
-      setError(`Could not start checkout: ${err.message}. Please try again or email hello@slptransitions.com.`);
+      setError(`Could not start checkout: ${err.message}. Please try again or email ${SUPPORT_EMAIL}.`);
       setStep(STEPS.PREVIEW);
     }
   };

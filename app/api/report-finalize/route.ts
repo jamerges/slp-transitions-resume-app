@@ -6,6 +6,7 @@ import { claimOnce, retrieveInputs, retrieveResult, stashResult } from "@/lib/st
 import { sendReportEmail, sendResumeLinkEmail } from "@/lib/email";
 import { upsertSubscriber, CUSTOMER_GROUPS, QUIZ_PATH_GROUPS } from "@/lib/mailerlite";
 import { markCustomer } from "@/lib/quiz-log";
+import { SUPPORT_EMAIL } from "@/lib/contact";
 
 export const runtime = "nodejs";
 // Full generation measured at ~140s with all sections; 300 is the Fluid-compute ceiling on Hobby.
@@ -49,7 +50,7 @@ export async function POST(req: Request) {
       return NextResponse.json(
         {
           error:
-            "Could not retrieve your answers — they may have expired. Email hello@slptransitions.com with your receipt and we'll generate your report manually.",
+            `Could not retrieve your answers — they may have expired. Email ${SUPPORT_EMAIL} with your receipt and we'll generate your report manually.`,
         },
         { status: 410 }
       );

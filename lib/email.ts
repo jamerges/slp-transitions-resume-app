@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 import { STAGES, pathImage, type StageKey } from "@/lib/quiz";
 import { STAGE_MAP, offerForStage, mapUrl } from "@/lib/stage-map";
+import { SUPPORT_EMAIL } from "./contact";
 
 let resend: Resend | null = null;
 function getResend(): Resend {
@@ -507,7 +508,7 @@ export async function sendReportReminderEmail(input: {
  * quiz-followups cron: day 2 nudges toward the report, day 6 asks one
  * question and pitches nothing. Every one carries a signed opt-out link.
  */
-const REPLY_TO = "james@slptransitions.com";
+const REPLY_TO = SUPPORT_EMAIL;
 const plainWrap = (paras: string[], unsub: string) =>
   `<div style="max-width:560px;margin:0 auto;padding:24px 20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#1F2937;">
 ${paras.map((t) => `<p style="margin:0 0 16px;">${t}</p>`).join("\n")}

@@ -6,6 +6,7 @@ import { retrieveInputs, retrieveResult, stashResult } from "@/lib/stash";
 import { sendFullResultsEmail } from "@/lib/email";
 import { upsertSubscriber, CUSTOMER_GROUPS } from "@/lib/mailerlite";
 import { markCustomer } from "@/lib/quiz-log";
+import { SUPPORT_EMAIL } from "@/lib/contact";
 
 export const runtime = "nodejs";
 // Full generation measured at ~140s with all sections; 300 is the Fluid-compute ceiling on Hobby.
@@ -51,7 +52,7 @@ export async function POST(req: Request) {
       return NextResponse.json(
         {
           error:
-            "Could not retrieve your inputs. They may have expired. Please email hello@slptransitions.com with your Stripe receipt and we'll generate your results manually.",
+            `Could not retrieve your inputs. They may have expired. Please email ${SUPPORT_EMAIL} with your Stripe receipt and we'll generate your results manually.`,
         },
         { status: 410 }
       );

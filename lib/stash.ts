@@ -1,5 +1,6 @@
 import { Redis } from "@upstash/redis";
 import type { UserGoals } from "./prompts";
+import { SUPPORT_EMAIL } from "./contact";
 
 export interface StashedInputs {
   resumeText: string;
@@ -80,7 +81,7 @@ export async function updateInputs(
   const r = getRedis();
   if (!r) {
     throw new Error(
-      "Upstash Redis is not configured, so we can't save your resume against this purchase. Email hello@slptransitions.com with your receipt and we'll generate your report manually."
+      `Upstash Redis is not configured, so we can't save your resume against this purchase. Email ${SUPPORT_EMAIL} with your receipt and we'll generate your report manually.`
     );
   }
   await r.set(`inputs:${sessionKey}`, JSON.stringify(inputs), { ex: TTL_SECONDS });

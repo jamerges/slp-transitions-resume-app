@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { S, Card } from "@/components/ui";
 import FullResults from "@/components/FullResults";
+import { SUPPORT_EMAIL } from "@/lib/contact";
 
 type FetchState =
   | { status: "loading"; message: string }
@@ -55,7 +56,7 @@ export default function SuccessFlow({ sessionId }: { sessionId?: string }) {
       setState({
         status: "error",
         reason:
-          "Missing session_id. If you completed payment, please email hello@slptransitions.com with your receipt.",
+          `Missing session_id. If you completed payment, please email ${SUPPORT_EMAIL} with your receipt.`,
       });
       return;
     }
@@ -138,10 +139,10 @@ export default function SuccessFlow({ sessionId }: { sessionId?: string }) {
           <p style={{ fontSize: 13, color: "var(--muted)", marginBottom: 0 }}>
             Still stuck after a couple of tries? Email{" "}
             <a
-              href="mailto:hello@slptransitions.com"
+              href={`mailto:${SUPPORT_EMAIL}`}
               style={{ color: "var(--accent)" }}
             >
-              hello@slptransitions.com
+              {SUPPORT_EMAIL}
             </a>{" "}
             with your Stripe receipt and we'll generate it manually{state.email ? ` and send it to ${state.email}` : ""}.
           </p>

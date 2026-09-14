@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { callClaude } from "@/lib/anthropic";
 import { retrieveInputs, retrieveResult, stashResult } from "@/lib/stash";
+import { SUPPORT_EMAIL } from "@/lib/contact";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -69,14 +70,14 @@ export async function POST(req: Request) {
     const cached = await retrieveResult(sessionId);
     if (!cached?.results) {
       return NextResponse.json(
-        { error: "Results have expired from our cache (they were emailed to you). Re-run the tool or email hello@slptransitions.com." },
+        { error: `Results have expired from our cache (they were emailed to you). Re-run the tool or email ${SUPPORT_EMAIL}.` },
         { status: 410 }
       );
     }
     const refineCount = cached.refineCount || 0;
     if (refineCount >= MAX_REFINES) {
       return NextResponse.json(
-        { error: "Refine limit reached for this purchase. Email hello@slptransitions.com if you need more." },
+        { error: `Refine limit reached for this purchase. Email ${SUPPORT_EMAIL} if you need more.` },
         { status: 429 }
       );
     }

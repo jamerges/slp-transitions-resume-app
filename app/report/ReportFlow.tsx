@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { S, Card } from "@/components/ui";
 import ReportResults from "@/components/ReportResults";
 import { STAGE_OPTIONS } from "@/lib/companies";
+import { SUPPORT_EMAIL } from "@/lib/contact";
 
 type FetchState =
   | { status: "loading"; message: string }
@@ -95,7 +96,7 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
       setState({
         status: "error",
         reason:
-          "Missing session_id. If you completed payment, please email hello@slptransitions.com with your receipt.",
+          `Missing session_id. If you completed payment, please email ${SUPPORT_EMAIL} with your receipt.`,
       });
       return;
     }
