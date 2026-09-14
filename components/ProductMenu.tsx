@@ -6,8 +6,8 @@ import { GROUND_NAME, GROUND_PRICE } from "@/lib/course-tiers";
  * The three paid products as a menu, with the one that matches this reader's
  * stage marked. Shown under whichever offer the result page led with, so a
  * stage-2 reader who happens to have a posting in hand can still find the
- * Suite without hunting. Each line says what question it answers, because
- * "which of these do I need" is the actual decision.
+ * Suite without hunting. Each card opens with the situation it is for, in
+ * the reader's terms, because "which of these is me" is the actual decision.
  */
 export type ProductKey = "ground" | "report" | "suite";
 
@@ -18,7 +18,7 @@ export const PRODUCTS: Record<ProductKey, { name: string; price: number; answers
   ground: {
     name: GROUND_NAME,
     price: GROUND_PRICE,
-    answers: "Should I go, and what am I protecting if I do?",
+    answers: "Not sure whether you're leaving?",
     thumb: "/marketing/workbook-cover.png",
     cta: { direct: "Buy", via: "Buy" },
     detail: "Module 1 of Transition OS plus the workbook. Whether it is the workplace or the field, what your degree is worth now, and the pay floor the next job has to clear.",
@@ -26,16 +26,16 @@ export const PRODUCTS: Record<ProductKey, { name: string; price: number; answers
   report: {
     name: "Pivot Report",
     price: 9,
-    answers: "Which paths does my résumé already qualify me for?",
+    answers: "Sure you're leaving, not sure where?",
     cta: { direct: "Buy", via: "Start with the quiz" },
     detail: "Reads your résumé and names three paths you already qualify for, plus what to do in the first 30 days.",
   },
   suite: {
     name: "Career Pivot Suite",
     price: 24,
-    answers: "How do I write this application?",
-    cta: { direct: "Start with a free preview", via: "Start with a free preview" },
-    detail: "One posting, rewritten end to end: every résumé bullet, the cover letter, your LinkedIn, the interview answers.",
+    answers: "Ready to start applying?",
+    cta: { direct: "Start for free", via: "Start for free" },
+    detail: "Your résumé and one job posting, rewritten end to end: every bullet, the cover letter, your LinkedIn, the interview answers.",
   },
 };
 
