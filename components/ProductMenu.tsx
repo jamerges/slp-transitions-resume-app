@@ -18,15 +18,15 @@ export const PRODUCTS: Record<ProductKey, { name: string; price: number; answers
   ground: {
     name: GROUND_NAME,
     price: GROUND_PRICE,
-    answers: "Not sure whether you're leaving?",
+    answers: "Want out, but don't know where to start?",
     thumb: "/marketing/workbook-cover.png",
     cta: { direct: "Buy", via: "Buy" },
-    detail: "Module 1 of Transition OS plus the workbook. Whether it is the workplace or the field, what your degree is worth now, and the pay floor the next job has to clear.",
+    detail: "Module 1 of Transition OS plus the workbook. Get clear on why you're leaving, what your degree is worth now and what you can't give up, in writing.",
   },
   report: {
     name: "Pivot Report",
     price: 9,
-    answers: "Sure you're leaving, not sure where?",
+    answers: "Ready to pick a path?",
     cta: { direct: "Buy", via: "Start with the quiz" },
     detail: "Reads your résumé and names three paths you already qualify for, plus what to do in the first 30 days.",
   },

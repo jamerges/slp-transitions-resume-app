@@ -36,7 +36,7 @@ export default function StartHere() {
       placement, stage: stage || "none",
     });
 
-  const Product = ({ k, lead }: { k: ProductKey; lead?: boolean }) => {
+  const Product = ({ k, lead, tag }: { k: ProductKey; lead?: boolean; tag?: string }) => {
     const p = PRODUCTS[k];
     return (
       <a
@@ -51,6 +51,7 @@ export default function StartHere() {
       >
         <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
           <div style={{ flexGrow: 1, minWidth: 0 }}>
+            {tag && <div style={{ display: "inline-block", fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)", background: "var(--accent-bg)", padding: "3px 9px", borderRadius: 4, marginBottom: 8 }}>{tag}</div>}
             <div style={{ fontSize: lead ? 19 : 16, fontWeight: 700, fontFamily: lead ? "'Playfair Display', Georgia, serif" : undefined }}>{p.name}</div>
             <div style={{ fontSize: lead ? 15 : 14, marginTop: 4 }}>{p.answers}</div>
             <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 4 }}>{p.detail}</div>
@@ -126,7 +127,8 @@ export default function StartHere() {
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 10 }}>
               Resources to help you find clarity and take action
             </div>
-            {(["ground", "report", "suite"] as ProductKey[]).map((k) => <Product key={k} k={k} />)}
+            <Product k="ground" lead tag="Start here" />
+            {(["report", "suite"] as ProductKey[]).map((k) => <Product key={k} k={k} />)}
           </Card>
         )}
 

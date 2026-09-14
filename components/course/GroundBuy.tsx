@@ -4,7 +4,7 @@ import { PageShell, S, Card } from "@/components/ui";
 import { track } from "@/lib/analytics";
 import ProductMenu from "@/components/ProductMenu";
 import { GROUND_NAME, GROUND_SUB, GROUND_PRICE } from "@/lib/course-tiers";
-import { STAGE_MAP } from "@/lib/stage-map";
+import { STAGE_MAP, STAGE_ORDER } from "@/lib/stage-map";
 import type { StageKey } from "@/lib/quiz";
 
 const LESSONS = [
@@ -44,7 +44,10 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState("");
   const [waited, setWaited] = useState(false);
-  const stageInfo = stage && stage in STAGE_MAP ? STAGE_MAP[stage as StageKey] : null;
+  // The quiz passes a stage in the URL. A cold visitor picks one below instead.
+  const urlStage = stage && stage in STAGE_MAP ? (stage as StageKey) : null;
+  const [picked, setPicked] = useState<StageKey | null>(null);
+  const stageInfo = urlStage ? STAGE_MAP[urlStage] : picked ? STAGE_MAP[picked] : null;
 
   const waitlist = async () => {
     if (busy) return;
@@ -94,6 +97,27 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
             </div>
           )}
         </div>
+
+        {!urlStage && (
+          <Card>
+            <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 10 }}>Sound familiar?</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              {STAGE_ORDER.map((k) => {
+                const on = picked === k;
+                return (
+                  <button
+                    key={k}
+                    type="button"
+                    onClick={() => { setPicked(k); track("select_content", { content_type: "ground_stage", stage: k }); }}
+                    style={{ cursor: "pointer", fontFamily: "inherit", fontSize: 13.5, lineHeight: 1.35, textAlign: "left", padding: "9px 12px", borderRadius: 10, border: `1.5px solid ${on ? "var(--accent)" : "var(--border)"}`, background: on ? "var(--accent-bg-subtle)" : "var(--card)", color: on ? "var(--accent)" : "var(--text)", fontWeight: on ? 600 : 500 }}
+                  >
+                    &ldquo;{STAGE_MAP[k].belief}&rdquo;
+                  </button>
+                );
+              })}
+            </div>
+          </Card>
+        )}
 
         {stageInfo && (
           <Card style={{ background: "var(--accent-bg-subtle)", borderColor: "var(--accent-bg)" }}>

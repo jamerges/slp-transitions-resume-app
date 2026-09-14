@@ -12,7 +12,7 @@ export function canOpen(moduleN: number, access: { product: CourseProduct } | nu
 /** What the $24 is called where a buyer can see it. "Ground" and "Explore"
  *  stay as the module names inside the course; this is the product. */
 export const GROUND_NAME = "Before You Start Looking";
-export const GROUND_SUB = "Work out whether you're actually leaving, and what you're protecting if you are.";
+export const GROUND_SUB = "For SLPs who know they want out but don't know where to start: get your reasons in writing before you look at a single job posting.";
 /** One place owns the price. $19 sits between the $9 report and the $24 Suite
  *  so the ladder reads at a glance, and it credits in full toward the program:
  *  its job is deposits, not margin. */
