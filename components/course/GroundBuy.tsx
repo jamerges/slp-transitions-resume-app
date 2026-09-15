@@ -88,11 +88,14 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
           </p>
           {!alreadyHas && (
             <div style={{ marginBottom: 6 }}>
-              <a href="#buy" style={{ ...S.btn, display: "inline-block", textDecoration: "none", padding: "14px 30px", fontSize: 16 }}>
-                {live ? `Work out whether you're leaving · $${GROUND_PRICE} →` : "Tell me when it opens →"}
-              </a>
+              <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
+                <a href="/course" onClick={() => track("select_content", { content_type: "ground_free_start", stage: stage || "none" })} style={{ ...S.btn, display: "inline-block", textDecoration: "none", padding: "14px 30px", fontSize: 16 }}>Start free &rarr;</a>
+                <a href="#buy" style={{ ...S.btnOut, display: "inline-block", textDecoration: "none", padding: "13px 24px", fontSize: 15 }}>
+                  {live ? `Get Module 1 · $${GROUND_PRICE} →` : "Tell me when it opens →"}
+                </a>
+              </div>
               <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 10, lineHeight: 1.6 }}>
-                {live ? `$${GROUND_PRICE} once. Comes off the full program later. 30-day refund.` : "Opens in a few days. Module 0 is free now."}
+                {live ? `Module 0 is free and needs no account. Module 1 is $${GROUND_PRICE} once, credited toward the full program later. 30-day refund.` : "Module 0 is free now. Module 1 opens in a few days."}
               </p>
             </div>
           )}
@@ -138,9 +141,9 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
         </Card>
 
         <Card>
-          <h3 style={{ ...S.h3, marginBottom: 4 }}>Try the free part first</h3>
+          <h3 style={{ ...S.h3, marginBottom: 4 }}>Start with Module 0, free</h3>
           <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "var(--muted)", margin: "0 0 12px" }}>
-            Module 0 is the setup, about ten minutes, and it&rsquo;s free for everyone. Do it before you pay. If it isn&rsquo;t useful, don&rsquo;t buy this.
+            Ten minutes, no account, nothing to buy. Do it first. If it doesn&rsquo;t help you, don&rsquo;t buy Module 1.
           </p>
           <a href="/course" onClick={() => track("select_content", { content_type: "ground_free_module", stage: stage || "none" })} style={{ fontSize: 14.5, fontWeight: 600, color: "var(--accent)" }}>Start Module 0, free &rarr;</a>
           <p style={{ fontSize: 12.5, color: "var(--muted)", margin: "16px 0 0", paddingTop: 12, borderTop: "1px solid var(--border)", lineHeight: 1.6 }}>
@@ -167,7 +170,7 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
         <Card style={{ border: "1.5px solid var(--accent)" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
             <div><div style={{ fontSize: 30, fontWeight: 700, fontFamily: "'Playfair Display', Georgia, serif" }}>${GROUND_PRICE}</div><div style={{ fontSize: 13, color: "var(--muted)" }}>once, no subscription</div></div>
-            <div style={{ fontSize: 13.5, color: "var(--muted)", maxWidth: 300, lineHeight: 1.55 }}>Comes off the full program when it launches, so you never pay for this twice. 30-day refund by replying to one email.</div>
+            <div style={{ fontSize: 13.5, color: "var(--muted)", maxWidth: 300, lineHeight: 1.55 }}>Credited in full toward the full program when it launches, so you never pay for this twice. 30-day refund by replying to one email.</div>
           </div>
           {live ? (
             <>
@@ -177,7 +180,7 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
               </div>
               {err && <div style={{ fontSize: 13, color: "var(--warn)", marginTop: 10 }}>{err}</div>}
               <div style={{ textAlign: "center", marginTop: 16 }}>
-                <button onClick={buy} disabled={busy} style={{ ...S.btn, padding: "14px 30px", fontSize: 16, opacity: busy ? 0.7 : 1 }}>{busy ? "Opening checkout…" : `Work out whether you're leaving · $${GROUND_PRICE} →`}</button>
+                <button onClick={buy} disabled={busy} style={{ ...S.btn, padding: "14px 30px", fontSize: 16, opacity: busy ? 0.7 : 1 }}>{busy ? "Opening checkout…" : `Get Module 1 · $${GROUND_PRICE} →`}</button>
                 <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 10, lineHeight: 1.6 }}>Your link arrives by email, and the lessons open here straight away. Your answers save in this browser.</p>
               </div>
             </>

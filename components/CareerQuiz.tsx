@@ -670,7 +670,7 @@ export default function CareerQuiz({
           <Card style={{ border: "1.5px solid var(--accent)" }}>
             <h3 style={{ ...S.h3, marginBottom: 4 }}>Before you start looking</h3>
             <div style={{ fontSize: 12.5, color: "var(--muted)", marginBottom: 10 }}>
-              Module 1 of Transition OS, the ninety-day program. ${GROUND_PRICE} once, and it comes off the full program later.
+              Module 1 of Transition OS, the ninety-day program. ${GROUND_PRICE} once, credited toward the full program later.
             </div>
             <p style={{ ...S.p, marginBottom: 14 }}>
               Everything above is a direction. The decision underneath it is whether you are leaving at all, and what the next

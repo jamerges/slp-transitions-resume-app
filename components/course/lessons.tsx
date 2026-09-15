@@ -662,7 +662,7 @@ export function Checkpoint1({ answer, save, finish, done, all }: LessonProps & {
             {sent === "ok" ? "A copy is on its way to your inbox, so your answers live somewhere other than this browser."
               : sent === "skip" ? "Your answers are saved in this browser and on your workbook page."
               : "Sending a copy to your inbox\u2026"}
-            {" "}The rest of the program isn&rsquo;t open yet. What you paid comes off it, and you&rsquo;ll get an email the day it opens.
+            {" "}The rest of the program isn&rsquo;t open yet. What you paid is credited toward it, and you&rsquo;ll get an email the day it opens.
           </Muted>
         </Panel>
       )}

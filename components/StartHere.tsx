@@ -71,8 +71,7 @@ export default function StartHere() {
         <div style={{ textAlign: "center", marginTop: 10 }}>
           <h1 style={{ ...S.h1, fontSize: 38, margin: "0 0 10px", lineHeight: 1.15 }}>Where are you?</h1>
           <p style={{ ...S.p, fontSize: 17, maxWidth: 480, margin: "0 auto 22px" }}>
-            Everyone who leaves goes through the same five stages. Pick the one that sounds like this week and the page
-            shows you the next move.
+            Everyone who leaves goes through the same five stages. Pick the one that sounds like this week and see your next move.
           </p>
         </div>
 

@@ -28,14 +28,14 @@ export const PRODUCTS: Record<ProductKey, { name: string; price: number; answers
     price: 9,
     answers: "Ready to pick a path?",
     cta: { direct: "Get the report", via: "Take the quiz" },
-    detail: "Reads your résumé and names three paths you already qualify for, plus what to do in the first 30 days.",
+    detail: "Upload your résumé and get three paths you already qualify for, plus what to do in the first 30 days.",
   },
   suite: {
     name: "Career Pivot Suite",
     price: 24,
     answers: "Ready to start applying?",
     cta: { direct: "Try it free", via: "Try it free" },
-    detail: "Your résumé and one job posting, rewritten end to end: every bullet, the cover letter, your LinkedIn, the interview answers.",
+    detail: "Paste one job posting. Get every bullet, the cover letter, your LinkedIn and the interview answers rewritten for it.",
   },
 };
 

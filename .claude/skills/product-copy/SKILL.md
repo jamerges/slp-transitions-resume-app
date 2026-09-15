@@ -135,6 +135,24 @@ things that come later.
 
 ### 5. It isn't how a person talks
 
+**Write to one person, in the second person, in the active voice.** James,
+2026-09-15: "always write as if we're talking directly to one person, 2nd
+person active tense." So not "For SLPs who know they want out" (about them)
+but "You know you want out" (to them); not "Your résumé and one job
+posting, rewritten end to end" (passive) but "Paste one job posting. Get
+every bullet rewritten for it." Product-as-subject lines ("Reads your
+résumé and names three paths") become what *you* do and get ("Upload your
+résumé and get three paths"). The author line is the one allowed third
+person.
+
+**The $19 is credited toward the full program, it does not "come off" it.**
+"Comes off the full program later" read as "comes with the full program
+later" and was cut from seven places. Say "credited toward".
+
+**Free first, then the upsell inside.** Module 0 is the on-ramp and the
+locked lesson is the checkout. The product page leads with the free start;
+"Module 0 is free for everyone" as an aside was cut as confusing.
+
 - "This browser already has access. Open the quest log →" → **"Pick up where you left off →"**
 - Don't state a fact the reader can't act on. "You already have this" was cut entirely; the link was the whole message.
 - Watch invented nouns: *quest log, artifact, readiness profile, bridge statement*. Some are load-bearing, but none of them should be the first word a buyer reads after paying.
