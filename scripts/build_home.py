@@ -293,12 +293,13 @@ def build():
     # isn't for them.
     a('<p class="slp-lede">You&rsquo;re allowed to want out. See the paths, what they pay, '
       'and how long each move takes.</p>')
-    # Three doors, in the order the stage data says people arrive: the quiz
-    # (free, the proven email source), the stage picker with all three products
-    # (75 of 135 quiz takers on 2026-09-11 were stuck at the start), and the
-    # résumé tool for the few who already have a posting in hand.
+    # Two doors: the quiz (free, the proven email source, and the front door
+    # for anyone still deciding) and the résumé tool for the few who already
+    # have a posting in hand. A third "Start here" button sat between them
+    # 2026-09-14/15 and was cut: three CTAs competed, and a label that says
+    # "start here" outranks the green button beside it. /start stays as the
+    # first nav item.
     a(f'<div class="slp-actions"><a class="slp-btn slp-btn-primary" href="{QUIZ}">Find my career path →</a>'
-      f'<a class="slp-btn slp-btn-ghost" href="{APP.rstrip("/")}/start">Start here →</a>'
       f'<a class="slp-btn slp-btn-ghost" href="{APP}">Translate my resume</a></div>')
     a('<p class="slp-trust"><b>Free</b> · <b>2 minutes</b> · built from '
       f'<a href="{SITE}/ed-health-tech-jobs/" style="border-bottom:1px solid currentColor">{COMPANY_COUNT} companies</a> that hire former SLPs</p>')
