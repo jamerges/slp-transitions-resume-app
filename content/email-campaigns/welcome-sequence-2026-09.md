@@ -32,6 +32,10 @@ The SLPs I've interviewed for this site didn't start over. They repackaged. Same
 
 So here's what the next two weeks look like. First the part nobody talks about: the guilt, the "who am I if I'm not an SLP." Then the practical part: what pays what, how to translate your résumé, how to get interviews. No countdown timers. Leave whenever you like.
 
+If you'd rather not wait two weeks: pick the stage that sounds like this week and see your next move.
+
+[Where are you? →] https://app.slptransitions.com/start
+
 One favor, and it changes what I write: hit reply and tell me what has you stuck. Burnout? No idea what to aim at? Résumé dread? I read every reply.
 
 Talk soon,
@@ -86,6 +90,10 @@ All five fears, with how the SLPs I've interviewed got past them:
 [5 hidden fears stopping SLPs from making a career change →] https://slptransitions.com/5-hidden-fears-stopping-slps-from-making-a-career-change-and-how-to-overcome-them/
 
 Read it with curiosity rather than dread. The fears are trying to protect you. They're just working from old information, like a smoke alarm that goes off when you make toast.
+
+If you'd rather work through the degree question with a pen than an article, that's lesson 3 of Before You Start Looking. Module 0 is free. Module 1 is $19 once, credited toward the full program later.
+
+[Start free →] https://app.slptransitions.com/course/ground?stage=guilt
 
 Talk soon,
 James
