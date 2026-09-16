@@ -468,18 +468,29 @@ export async function sendModule1SummaryEmail(input: { to: string; summary: Reco
 export async function sendReportReminderEmail(input: {
   to: string;
   sessionId: string;
+  /** 1 = the day-after reminder, 2 = the shorter day-five nudge. */
+  nudge?: 1 | 2;
 }): Promise<void> {
-  const { to, sessionId } = input;
+  const { to, sessionId, nudge = 1 } = input;
   const link = `${APP_URL}/report?session_id=${encodeURIComponent(sessionId)}`;
-  const html = `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#F7F7F5;">
-<div style="max-width:600px;margin:0 auto;padding:32px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#1F2937;background:#fff;">
-  <h1 style="font-size:22px;line-height:1.3;margin:0 0 14px;">Your Pivot Report is still waiting</h1>
+  const opening = nudge === 2
+    ? `<h1 style="font-size:22px;line-height:1.3;margin:0 0 14px;">Still want your Pivot Report?</h1>
   <p style="font-size:15px;line-height:1.7;">
-    You picked up the $9 Pivot Report a couple of days ago and it never got built. It needs your resume first, and that step is easy to lose on a phone.
+    You paid for it five days ago and it is still unbuilt, because it needs your resume and nobody has one on their phone. This is the last time I will nudge you about it.
+  </p>
+  <p style="font-size:15px;line-height:1.7;">
+    Open this on a computer and paste or upload your resume. About a minute:
+  </p>`
+    : `<h1 style="font-size:22px;line-height:1.3;margin:0 0 14px;">Your Pivot Report is still waiting</h1>
+  <p style="font-size:15px;line-height:1.7;">
+    You picked up the $9 Pivot Report yesterday and it never got built. It needs your resume first, and that step is easy to lose on a phone.
   </p>
   <p style="font-size:15px;line-height:1.7;">
     Nothing has expired. Open this from a computer, add your resume, and it takes about a minute:
-  </p>
+  </p>`;
+  const html = `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#F7F7F5;">
+<div style="max-width:600px;margin:0 auto;padding:32px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#1F2937;background:#fff;">
+  ${opening}
   <p style="text-align:center;margin:26px 0;">
     <a href="${link}" style="display:inline-block;padding:14px 32px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Finish my report &rarr;</a>
   </p>
@@ -496,7 +507,7 @@ export async function sendReportReminderEmail(input: {
   await getResend().emails.send({
     from: FROM_ADDRESS,
     to,
-    subject: "Your Pivot Report is still waiting",
+    subject: nudge === 2 ? "Still want your Pivot Report?" : "Your Pivot Report is still waiting",
     html,
   });
 }

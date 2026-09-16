@@ -41,7 +41,7 @@ export async function GET(req: Request) {
 
   const now = Math.floor(Date.now() / 1000);
   const sessions = await getStripe().checkout.sessions.list({
-    created: { gte: now - 14 * DAY, lte: now - 2 * DAY },
+    created: { gte: now - 14 * DAY, lte: now - 1 * DAY },
     status: "complete",
     limit: 100,
   });
@@ -69,9 +69,18 @@ export async function GET(req: Request) {
       continue;
     }
 
+    // First nudge once the payment is a day old; a second, shorter one at day
+    // five for anyone the first did not move. Each fires once per session.
+    // (The first ran at 48h until 2026-09-15; the key name keeps old claims valid.)
+    const age = now - s.created;
+    if (age >= 5 * DAY && (await claimOnce(`reminder5d:${s.id}`))) {
+      await sendReportReminderEmail({ to: email, sessionId: s.id, nudge: 2 });
+      reminded.push(`${email} (second nudge)`);
+      continue;
+    }
     if (!(await claimOnce(`reminder48:${s.id}`))) { skipped.alreadyReminded++; continue; }
 
-    await sendReportReminderEmail({ to: email, sessionId: s.id });
+    await sendReportReminderEmail({ to: email, sessionId: s.id, nudge: 1 });
     reminded.push(email);
   }
 

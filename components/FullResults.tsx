@@ -400,9 +400,18 @@ export default function FullResults({
       )}
 
       <div style={{ textAlign: "center", marginTop: 28, marginBottom: 40 }}>
-        <p style={{ fontSize: 14, color: "var(--muted)", marginBottom: 16 }}>Copy each section into your resume, cover letter, and LinkedIn.</p>
+        <p style={{ fontSize: 14, color: "var(--muted)", marginBottom: 20 }}>Copy each section into your resume, cover letter, and LinkedIn.</p>
         {onTranslateAnother && (
-          <button style={S.btnOut} onClick={onTranslateAnother}>Translate for another role →</button>
+          <Card style={{ textAlign: "center", border: "1.5px solid var(--accent)" }}>
+            <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>Applying somewhere else too?</h3>
+            <p style={{ ...S.p, maxWidth: 440, margin: "0 auto 16px" }}>
+              Your r&eacute;sum&eacute; carries over, so you only add the next posting. Free preview first, $24 once.
+            </p>
+            <button style={{ ...S.btn, padding: "14px 40px", fontSize: 16 }} onClick={onTranslateAnother}>Try it free &middot; $24 &rarr;</button>
+            <p style={{ fontSize: 13, marginTop: 14 }}>
+              <a href="/jobs" style={{ color: "var(--accent)", fontWeight: 600 }}>See what&rsquo;s posted this week, by path &rarr;</a>
+            </p>
+          </Card>
         )}
       </div>
     </div>

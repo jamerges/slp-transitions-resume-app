@@ -209,9 +209,9 @@ export default function ReportResults({
       )}
 
       <Card style={{ textAlign: "center", border: "1.5px solid var(--accent)", background: "linear-gradient(135deg, var(--accent-bg-subtle) 0%, #fff 100%)" }}>
-        <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>Ready to go after one of these?</h3>
+        <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>Ready to start applying?</h3>
         <p style={{ ...S.p, maxWidth: 440, margin: "0 auto 16px" }}>
-          When you find a real job posting, the Career Pivot Suite translates your entire resume for it — every bullet, cover letter, LinkedIn profile, interview prep, and a 90-day plan. $24, once.
+          Find one real job posting. The Career Pivot Suite rewrites every bullet, the cover letter, your LinkedIn and the interview answers for it, and your r&eacute;sum&eacute; carries over from here.
         </p>
         <button
           style={{ ...S.btn, padding: "14px 40px", fontSize: 16 }}
@@ -224,10 +224,10 @@ export default function ReportResults({
               : "/";
           }}
         >
-          Translate my resume for a real job →
+          Try it free &middot; $24 &rarr;
         </button>
         <p style={{ fontSize: 12, color: "var(--light)", marginTop: 8 }}>
-          {sessionId ? "Your resume carries over — just add the job posting. " : ""}Free preview first. No subscription, ever.
+          {sessionId ? "Your resume carries over, so you only add the posting. " : ""}Free preview first, $24 once, no subscription.
         </p>
       </Card>
     </div>

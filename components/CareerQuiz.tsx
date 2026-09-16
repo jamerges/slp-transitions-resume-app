@@ -154,7 +154,13 @@ export default function CareerQuiz({
   // detour and the Suite is the thing. No stage (a preset ?path= visit) keeps
   // the report, the historical default.
   const stageKey = stageFromLabel((answers.stage || [])[0]);
-  const offer = offerForStage(stageKey);
+  // Panic is the largest stage (45 of 135 on 2026-09-11) and the result page
+  // led it to the $9 report, which needs a résumé the reader rarely has on a
+  // phone: that is where the post-payment stall comes from. On a phone, lead
+  // panic with the map and the $19 instead; desktop keeps the report, where
+  // the résumé is collected before payment. `offer` rides on every GA event,
+  // so the two arms compare as stage=panic, offer=map vs offer=report.
+  const offer = stageKey === "panic" && !isDesktop ? "map" : offerForStage(stageKey);
   const suiteHref = (top: QuizPath) => `/?from=quiz&path=${encodeURIComponent(top.roleOption)}`;
   // The menu under each offer. The stage question is a good guess, not a
   // verdict, so all three products stay one click away with their price and
