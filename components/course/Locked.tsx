@@ -44,7 +44,7 @@ export default function LockedLesson({ moduleN, moduleTitle, lessonTitle, owns }
           <h1 style={{ fontFamily: font.serif, fontSize: 28, margin: "8px 0 10px" }}>{lessonTitle}</h1>
           {ground ? (
             <>
-              <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--muted)", margin: "0 0 6px" }}>This lesson is in <strong>Before You Start Looking</strong>, Module 1 plus the workbook: work out whether you&rsquo;re actually leaving, and what you&rsquo;re protecting if you are.</p>
+              <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--muted)", margin: "0 0 6px" }}>This lesson is in <strong>Before You Start Looking</strong>, Module 1 plus the workbook: your reasons for leaving in writing, and what you&rsquo;re protecting when you go.</p>
               <p style={{ fontSize: 14, lineHeight: 1.6, color: "var(--muted)", margin: "0 0 18px" }}>${GROUND_PRICE} once, credited toward the full program later. 30-day refund by replying to one email.</p>
               <GroundCheckout />
               <div style={{ marginTop: 14 }}><a href="/course/ground" style={{ fontSize: 13.5, color: "var(--accent)", fontWeight: 600 }}>See what&rsquo;s in it &rarr;</a></div>

@@ -26,7 +26,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
   const stage = STAGE_META.find((s) => s.key === stageKey);
   const path = start.path ? PATHS[start.path] : undefined;
   const topDials: string[] = A["1.5"]?.top || [];
-  const verdict = A["1.2"]?.verdict;
+  const verdict = A["0.3"]?.verdict;
   const next: Lesson | undefined = LESSONS.find((l) => moduleOf(l).built && canOpen(moduleOf(l).n, access) && !p.completed.includes(l.id));
   const days = daysUntil(start.date);
   // A visitor sees three things: the free module, the $19 module, and one
@@ -47,7 +47,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
           <div style={{ fontSize: 15, lineHeight: 1.6, opacity: 0.92, maxWidth: 560 }}>
             {!ready ? "" : !stage
               ? visitor
-                ? "Ten free minutes to set your starting line. Then Module 1, for $19, works out whether you're really leaving. The rest of the program is on its way, and the $19 is credited toward it."
+                ? "Twenty free minutes: set your starting line and find out whether it's the workplace, the work, or the season. Then Module 1, for $19, puts your reasons in writing. The rest of the program is on its way, and the $19 is credited toward it."
                 : "The next ninety days take you from wondering whether you're allowed to leave, to interviewing for jobs outside the clinic. Seven modules, ten minutes to set up."
               : stage.n === 1 ? "Nobody has to know. You can work through this at eleven at night and still be on the schedule Monday morning."
               : stage.n === 2 ? "The kids you got talking are still talking. All twenty paths in Module 2 run on the degree rather than around it."
@@ -169,7 +169,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
             <Panel tone="soft" style={{ marginBottom: 14 }}>
               <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 6 }}>Module 1 · $19</div>
               <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 700, lineHeight: 1.2, marginBottom: 8 }}>Before You Start Looking</div>
-              <p style={{ fontSize: 13.5, lineHeight: 1.55, margin: "0 0 12px", color: "var(--text)" }}>Eight short lessons to work out whether you&rsquo;re really leaving and what you&rsquo;re protecting if you are, plus the workbook that keeps your answers. Credited toward the full program. 30-day refund.</p>
+              <p style={{ fontSize: 13.5, lineHeight: 1.55, margin: "0 0 12px", color: "var(--text)" }}>Seven short lessons that put your reasons in writing: what your degree is worth now, what gave you energy, and what you can&rsquo;t afford to lose, plus the workbook that keeps your answers. Credited toward the full program. 30-day refund.</p>
               <Btn href="/course/ground" outline style={{ width: "100%", textAlign: "center" }}>{"See what's in it →"}</Btn>
             </Panel>
           )}

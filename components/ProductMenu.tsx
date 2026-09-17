@@ -24,7 +24,7 @@ export const PRODUCTS: Record<ProductKey, { name: string; price: number; answers
     thumb: "/marketing/workbook-cover.png",
     cta: { direct: "Start here", via: "Start here" },
     button: "Find clarity, free",
-    detail: "Ten free minutes: know the number your next job has to clear, the date you're aiming at, and which belief is keeping you in the building. Module 1 is $19 after that, with the workbook.",
+    detail: "Twenty free minutes: know the number your next job has to clear, and whether it's your workplace, the work, or the season that's wrong. Module 1 is $19 after that: your reasons in writing, with the workbook.",
   },
   report: {
     name: "Pivot Report",

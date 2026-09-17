@@ -56,9 +56,9 @@ export type BadgeId =
 
 export const BADGES: BadgeDef[] = [
   { id: "starting-line", label: "Starting line", blurb: "You set a target date. Most people never do.", xp: 30, icon: "🏁", when: (p) => p.completed.includes("0.2") },
-  { id: "verdict", label: "A verdict", blurb: "Bad workplace, bad fit, or bad season. You named it.", xp: 30, icon: "⚖️", when: (p) => p.completed.includes("1.2") },
+  { id: "verdict", label: "A verdict", blurb: "Bad workplace, bad fit, or bad season. You named it.", xp: 30, icon: "⚖️", when: (p) => p.completed.includes("0.3") },
   { id: "said-it-out-loud", label: "Said it out loud", blurb: "One person knows. The secret stopped costing you energy.", xp: 60, icon: "🗣️", when: (p) => p.actions.includes("1.7") },
-  { id: "ground-complete", label: "Grounded", blurb: "Module 1 done. You know why, and you know which problem you have.", xp: 100, icon: "🌱", when: (p) => ["1.1","1.2","1.3","1.4","1.5","1.6","1.7","1.8"].every((id) => p.completed.includes(id)) },
+  { id: "ground-complete", label: "Grounded", blurb: "Module 1 done. You know why, and you know which problem you have.", xp: 100, icon: "🌱", when: (p) => ["1.1","1.3","1.4","1.5","1.6","1.7","1.8"].every((id) => p.completed.includes(id)) },
   { id: "first-reach-out", label: "First reach-out", blurb: "One message sent to someone who made the move.", xp: 60, icon: "✉️", when: (p) => p.actions.includes("3.3") },
   { id: "first-translation", label: "First translation", blurb: "One clinical bullet, rewritten so a hiring manager gets it.", xp: 60, icon: "🔁", when: (p) => p.actions.includes("4.5") },
   { id: "proof-artifact", label: "Something you built", blurb: "You made a real thing. A certificate cannot compete with it.", xp: 100, icon: "🧩", when: (p) => p.actions.includes("5.3") },
@@ -90,25 +90,25 @@ const R = {
 export const MODULES: Module[] = [
   {
     n: 0, slug: "start", title: "Start here", phase: "Setup", week: "Day 1", built: true,
-    tagline: "Ten minutes to set your starting line: the pay your next job has to clear, a date to aim at, and three beliefs worth checking.",
+    tagline: "Twenty minutes to set your starting line: the pay your next job has to clear, a date to aim at, and whether it's the workplace, the work, or the season that's wrong.",
     lessons: [
       { id: "0.1", module: 0, title: "Welcome from James", type: "explainer", minutes: 3, component: "Welcome",
         summary: "Three minutes on what's free, what's $19, and what you'll have by the end of today.", sources: ["facts"] },
       { id: "0.2", module: 0, title: "Your starting line", type: "interactive", minutes: 5, resources: [R.workbook1, R.workbookPdf], component: "StartingLine",
         summary: "Tell the program where you're starting from. It builds your map from these answers, and you can change them any time.",
         action: { label: "Set my target date", prompt: "Pick the date you want to be in a new role. Ninety days from now is the default and it is realistic for the fast paths; the long builds take 6–15 months and the map adjusts.", done: "Target date set." } },
-      { id: "0.3", module: 0, title: "Three things I believed", type: "explainer", minutes: 3, component: "ThreeLies",
+      { id: "0.3", module: 0, title: "Bad workplace, bad fit, or bad season?", type: "interactive", minutes: 8, component: "DecisionTree",
+        summary: "Six questions to work out whether the problem is your workplace, the work itself, or this season of your life.", resources: [R.quit], sources: ["facts", "voc", "forums"] },
+      { id: "0.4", module: 0, title: "Three things I believed", type: "explainer", minutes: 3, component: "ThreeLies",
         summary: "The three beliefs that kept me in the building longer than I needed to be. Check which ones you're carrying.", sources: ["facts"] },
     ],
   },
   {
     n: 1, slug: "ground", title: "Ground", phase: "Ground", week: "Week 1", built: true,
-    tagline: "You're allowed to want out. This week is for working out what's actually wrong, so the fix matches the problem.",
+    tagline: "You've named the problem. This week puts your reasons in writing: what the degree is worth now, what gave you energy, and what you can't afford to lose.",
     lessons: [
       { id: "1.1", module: 1, title: "You're allowed to want out", type: "explainer", minutes: 6, component: "FiveStages",
         summary: "Most people leave in five stages. Find yours, and take the one small move that belongs to it.", resources: [R.stages], sources: ["voc", "facts", "forums"] },
-      { id: "1.2", module: 1, title: "Bad workplace, bad fit, or bad season?", type: "interactive", minutes: 8, component: "DecisionTree",
-        summary: "Six questions to work out whether the problem is your workplace, the work itself, or this season of your life.", resources: [R.quit], sources: ["facts", "voc", "forums"] },
       { id: "1.3", module: 1, title: "Why leaving isn't a wasted degree", type: "interactive", minutes: 7, component: "SunkCost",
         summary: "Separate the money you've already spent from the money still on the table, so the tuition stops making the decision for you.", resources: [R.sunkSheet, R.fears, R.workbook1, R.workbookPdf], sources: ["bls", "ashaDebt", "arkes", "facts", "forums"] },
       { id: "1.4", module: 1, title: "What actually gave you energy", type: "interactive", minutes: 8, component: "EnergyAudit",

@@ -9,7 +9,6 @@ import type { StageKey } from "@/lib/quiz";
 
 const LESSONS = [
   ["You're allowed to want out", "Which of the five reasons people stay is the one keeping you here."],
-  ["Bad workplace, bad fit, or bad season?", "Only one of the three means leaving the field. Find out which one you have."],
   ["Why leaving isn't a wasted degree", "What the years and the debt are actually worth to you now."],
   ["What actually gave you energy", "The parts of the job you would keep, and the parts you would never do again."],
   ["What you can't afford to lose", "Your pay floor, and how far from clinical work you are willing to go."],
@@ -84,7 +83,7 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
           <h1 style={{ ...S.h1, fontSize: 38, margin: "12px 0 8px", lineHeight: 1.15 }}>{GROUND_NAME}</h1>
           <p style={{ ...S.p, fontSize: 17, maxWidth: 500, margin: "0 auto 10px", color: "var(--text)" }}>{GROUND_SUB}</p>
           <p style={{ ...S.p, fontSize: 15, maxWidth: 460, margin: "0 auto 20px" }}>
-            Eight short lessons you read and answer, about fifty minutes, no r&eacute;sum&eacute; needed. You finish with your reasons in writing and your answers in your inbox.
+            Seven short lessons you read and answer, about forty minutes, no r&eacute;sum&eacute; needed. You finish with your reasons in writing and your answers in your inbox.
           </p>
           {!alreadyHas && (
             <div style={{ marginBottom: 6 }}>
@@ -143,7 +142,7 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
         <Card>
           <h3 style={{ ...S.h3, marginBottom: 4 }}>Start with Module 0, free</h3>
           <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "var(--muted)", margin: "0 0 12px" }}>
-            Ten minutes, no account, nothing to buy. Do it first. If it doesn&rsquo;t help you, don&rsquo;t buy Module 1.
+            Twenty minutes, no account, nothing to buy. Do it first. If it doesn&rsquo;t help you, don&rsquo;t buy Module 1.
           </p>
           <a href="/course" onClick={() => track("select_content", { content_type: "ground_free_module", stage: stage || "none" })} style={{ fontSize: 14.5, fontWeight: 600, color: "var(--accent)" }}>Start Module 0, free &rarr;</a>
           <p style={{ fontSize: 12.5, color: "var(--muted)", margin: "16px 0 0", paddingTop: 12, borderTop: "1px solid var(--border)", lineHeight: 1.6 }}>
@@ -154,7 +153,7 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
         <Card>
           <WorkbookPage />
           <h3 style={{ ...S.h3, marginBottom: 4 }}>What ${GROUND_PRICE} buys</h3>
-          <p style={{ fontSize: 13.5, color: "var(--muted)", margin: "0 0 14px" }}>Eight lessons, about fifty minutes, and the workbook.</p>
+          <p style={{ fontSize: 13.5, color: "var(--muted)", margin: "0 0 14px" }}>Seven lessons, about forty minutes, and the workbook.</p>
           {LESSONS.map(([t, d], i) => (
             <div key={t} style={{ display: "flex", gap: 12, padding: "9px 0", borderTop: i ? "1px solid var(--border)" : "none" }}>
               <div style={{ width: 26, height: 26, borderRadius: "50%", background: "var(--accent-bg)", color: "var(--accent)", fontSize: 12, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{i + 1}</div>

@@ -283,7 +283,7 @@ export function renderQuizResultEmail(input: QuizResultEmailInput): string {
   const cta = offer === "map"
     ? `<div style="padding:22px;background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;margin-top:20px;">
     <div style="font-size:17px;font-weight:700;margin-bottom:8px;">Before you start looking</div>
-    <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">Your result is a direction. <b>Module 1 of Transition OS</b> is the decision underneath it: bad workplace, bad fit or bad season, what your degree is worth to you now, what actually gave you energy, and what you can't afford to lose. Eight lessons, about fifty minutes, and the workbook. $19 once, credited toward the full program later.</div>
+    <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">Your result is a direction. <b>Module 1 of Transition OS</b> puts your reasons in writing: what your degree is worth to you now, what actually gave you energy, and what you can't afford to lose. Seven lessons, about forty minutes, and the workbook. $19 once, credited toward the full program later.</div>
     <div style="text-align:center;">${btn(groundLink, "Start Module 1 &rarr;")}</div>
     <div style="font-size:13px;line-height:1.7;color:#6B7280;margin-top:14px;">Not the one you need? The <a href="${reportLink}" style="color:#0B6B54;">$9 Pivot Report</a> reads your résumé and names the paths you already qualify for. The <a href="${suiteLink}" style="color:#0B6B54;">$24 Career Pivot Suite</a> rewrites a whole application against one posting.</div>
     <div style="font-size:13px;line-height:1.7;color:#6B7280;margin-top:14px;">Rather start from your résumé? The <a href="${reportLink}" style="color:#0B6B54;">$9 Pivot Report</a> reads it against these paths and tells you which ones you already qualify for.</div>
@@ -422,7 +422,7 @@ export async function sendGroundAccessEmail(input: { to: string; unlockUrl: stri
   <p style="font-size:16px;line-height:1.7;">Thanks. Here's your way into Module 1 of Transition OS.</p>
   <div style="text-align:center;margin:22px 0;"><a href="${unlockUrl}" style="display:inline-block;padding:14px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Open Module 1 &rarr;</a></div>
   <p style="font-size:15px;line-height:1.7;">That link is your login. It works in any browser, on any device, as many times as you like, so keep this email. Your progress saves in whichever browser you use. If you haven't done the free fifteen-minute setup yet, it comes first.</p>
-  <p style="font-size:15px;line-height:1.7;">Eight lessons, about fifty minutes, and every one ends with something to actually do. Your <a href="${APP_URL}/course/workbook" style="color:#0B6B54;">workbook</a> fills in as you go and prints to PDF whenever you want it on paper.</p>
+  <p style="font-size:15px;line-height:1.7;">Seven lessons, about forty minutes, and every one ends with something to actually do. Your <a href="${APP_URL}/course/workbook" style="color:#0B6B54;">workbook</a> fills in as you go and prints to PDF whenever you want it on paper.</p>
   <p style="font-size:15px;line-height:1.7;">What you paid today is credited toward the full program when it launches, so you won't pay for it twice.</p>
   <p style="font-size:15px;line-height:1.7;">If it doesn't help, reply within 30 days and I'll refund it. No form.</p>
   <p style="font-size:15px;line-height:1.7;">James</p>
@@ -545,7 +545,7 @@ export function renderQuizFollowupDay2(input: QuizFollowupDay2Input): { subject:
   const report = `The quiz ranked the paths without ever seeing your resume. The $9 Pivot Report reads the resume and tells you what you already qualify for and what to do first: ${a(link, link)}`;
   const close = `Either way, reply and tell me where you are with it. I read every one of these.`;
   const sheet = `Your map from the result page, if you want it on paper: ${a(mapUrl(stage as StageKey | null, top.slug), "print or save it here")}. It has the one move for your stage and three dated lines for weeks 1, 6 and 12.`;
-  const ground = `If you want the guided version of the decision itself, ${a(`${APP_URL}/course/ground?stage=${stage || ""}&path=${encodeURIComponent(top.slug)}`, "Module 1 of Transition OS")} runs it properly: bad workplace, bad fit or bad season, what your degree is worth now, what gave you energy, and what you can't afford to lose, with the workbook. Eight lessons, $19 once, credited toward the full program later.`;
+  const ground = `If you want the guided version of the decision itself, ${a(`${APP_URL}/course/ground?stage=${stage || ""}&path=${encodeURIComponent(top.slug)}`, "Module 1 of Transition OS")} puts it in writing: what your degree is worth now, what gave you energy, and what you can't afford to lose, with the workbook. Seven lessons, $19 once, credited toward the full program later.`;
   // The stage question decides what comes first. Stages 1-3 get no pitch:
   // a stage-2 reader greeted with a checkout link stops reading.
   let body: string[];

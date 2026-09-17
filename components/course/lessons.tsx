@@ -30,8 +30,8 @@ export function Welcome({ finish, done }: LessonProps) {
   return (
     <div>
       <P>Hi. I&rsquo;m James. I was an SLP, and I now work in marketing at a health-tech company. I built this because the advice SLPs get when they want out is usually some version of &ldquo;tough it out&rdquo; or &ldquo;start over,&rdquo; and both are wrong.</P>
-      <P>These three lessons are free and take about ten minutes. You&rsquo;ll set the number your next job has to clear, pick a date to aim at, and check three beliefs that keep most SLPs in the building longer than they need to be. No account, no card.</P>
-      <P>After that, Module 1 is $19: eight short lessons to work out whether you&rsquo;re really leaving and what you&rsquo;re protecting if you are, plus the workbook that keeps your answers. The full program comes later, and the $19 is credited toward it.</P>
+      <P>These four lessons are free and take about twenty minutes. You&rsquo;ll set the number your next job has to clear, pick a date to aim at, work out whether the problem is your workplace, the work itself, or this season, and check three beliefs that keep most SLPs in the building longer than they need to be. No account, no card.</P>
+      <P>After that, Module 1 is $19: seven short lessons that put your reasons in writing, with what your degree is worth now, what gave you energy and what you can&rsquo;t afford to lose, plus the workbook that keeps your answers. The full program comes later, and the $19 is credited toward it.</P>
       <P style={{ margin: 0 }}>You won&rsquo;t get cheerleading here, or a promise of six figures by fall. Every number comes from documented SLP transitions and public salary data, and the source sits under every lesson. Most people work through this alongside a full-time caseload, which is how it is built.</P>
     </div>
   );
@@ -544,7 +544,7 @@ export function Checkpoint1({ answer, save, finish, done, all }: LessonProps & {
   const [pulls, setPulls] = useState<string[]>(answer?.pulls || []);
   const [why, setWhy] = useState<string>(answer?.why || "");
   const [dp, setDp] = useState(""); const [dl, setDl] = useState("");
-  const verdict = all["1.2"]?.verdict as Verdict | undefined;
+  const verdict = all["0.3"]?.verdict as Verdict | undefined;
   const top: string[] = all["1.5"]?.top || [];
   const stage = all["1.1"]?.stage || all["0.2"]?.stage;
   const push = /burn|exhaust|hate|can't|cannot|paperwork|productivity|toxic|miserable/i.test(why);

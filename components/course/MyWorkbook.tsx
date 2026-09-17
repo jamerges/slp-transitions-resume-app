@@ -41,7 +41,7 @@ export default function MyWorkbook() {
   const { p, ready } = useProgress();
   if (!ready) return <PageShell><div style={{ ...S.wrap, padding: 40 }}>Loading your answers…</div></PageShell>;
   const A = p.answers as Record<string, any>;
-  const start = A["0.2"] || {}, tree = A["1.2"] || {}, sunk = A["1.3"] || {};
+  const start = A["0.2"] || {}, tree = A["0.3"] || {}, sunk = A["1.3"] || {};
   const energy = A["1.4"] || {}, dials = A["1.5"] || {}, told = A["1.7"] || {}, cp = A["1.8"] || {};
   const stageKey = A["1.1"]?.stage || start.stage;
   const stage = STAGE_META.find((s) => s.key === stageKey);

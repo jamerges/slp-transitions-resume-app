@@ -679,10 +679,9 @@ export default function CareerQuiz({
               Module 1 of Transition OS, the ninety-day program. ${GROUND_PRICE} once, credited toward the full program later.
             </div>
             <p style={{ ...S.p, marginBottom: 14 }}>
-              Everything above is a direction. The decision underneath it is whether you are leaving at all, and what the next
-              job has to give you. That is what this works through: bad workplace, bad fit or bad season, what your degree is worth to you now,
-              what actually gave you energy, and the four things you can&rsquo;t afford to lose. Eight lessons and five tools,
-              about fifty minutes, with a workbook that fills in with your answers as you go.
+              Everything above is a direction. Underneath it is what the next job has to give you, and that is what this
+              puts in writing: what your degree is worth to you now, what actually gave you energy, and the four things you
+              can&rsquo;t afford to lose. Seven lessons, about forty minutes, with a workbook that fills in with your answers as you go.
             </p>
             <a
               href={`/course/ground?stage=${stageKey || ""}&path=${encodeURIComponent(top.slug)}`}

@@ -95,7 +95,7 @@ export const STAGE_MAP: Record<StageKey, StageInfo> = {
     name: "Action",
     here: "You have a target role or two, you've applied to some things, and the silence is starting to feel personal.",
     belief: "If you were good enough, you'd be getting callbacks.",
-    truth: "A recruiter gives a résumé about seven seconds. \"Managed a caseload of 62 students\" lands in the clinical pile no matter who wrote it. You get sorted by vocabulary long before anyone judges your ability.",
+    truth: "You are qualified. \"Managed a caseload of 62 students\" just lands in the clinical pile, because a recruiter reads the words before the person. Change the words and the callbacks change.",
     move: {
       label: "Fix the résumé before you send another application",
       detail: "Translate it line by line against a real posting, and do the same to your LinkedIn, because they check it before they call.",

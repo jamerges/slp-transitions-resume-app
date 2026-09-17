@@ -21,8 +21,23 @@ const EMPTY: Progress = { startedAt: null, completed: [], actions: [], xp: 0, ba
 const today = () => new Date().toISOString().slice(0, 10);
 const daysBetween = (a: string, b: string) => Math.round((Date.parse(b) - Date.parse(a)) / 86_400_000);
 
+// 2026-09-17: the verdict lesson moved from 1.2 to 0.3 and "Three things I
+// believed" from 0.3 to 0.4. Anything saved under the old ids is renamed on
+// load so nobody loses a verdict or an XP badge over a renumbering.
+function migrate(p: Progress): Progress {
+  const a = p.answers as Record<string, any>;
+  // Old "Three things I believed" is a completed 0.3 with no answer (it never
+  // saved one); the verdict always saves one, so this cannot match new data.
+  const oldThreeLies = p.completed.includes("0.3") && !a["0.3"];
+  const oldVerdict = "1.2" in a || p.completed.includes("1.2");
+  if (!oldThreeLies && !oldVerdict) return p;
+  const ren = (id: string) => (oldThreeLies && id === "0.3" ? "0.4" : oldVerdict && id === "1.2" ? "0.3" : id);
+  const answers: Record<string, any> = {};
+  for (const [k, v] of Object.entries(a)) answers[ren(k)] = v;
+  return { ...p, answers, completed: Array.from(new Set(p.completed.map(ren))), actions: p.actions.map(ren) };
+}
 function load(): Progress {
-  try { const raw = localStorage.getItem(KEY); return raw ? { ...EMPTY, ...JSON.parse(raw) } : EMPTY; } catch { return EMPTY; }
+  try { const raw = localStorage.getItem(KEY); return raw ? migrate({ ...EMPTY, ...JSON.parse(raw) }) : EMPTY; } catch { return EMPTY; }
 }
 function save(p: Progress) { try { localStorage.setItem(KEY, JSON.stringify(p)); } catch { /* private mode */ } }
 
