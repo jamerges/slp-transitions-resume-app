@@ -5,9 +5,10 @@ import { useProgress } from "@/lib/course-progress";
 import { CourseShell, Btn, Panel, font, Ring } from "./ui";
 import { STAGE_META, StageRoad, JourneyMap } from "./scenes";
 import { canOpen, type CourseProduct } from "@/lib/course-tiers";
+import { COMPANY_COUNT } from "@/lib/companies";
 
 const NOTE: Record<string, string> = {
-  none: "The setup is free. $19 opens Module 1. The rest is the full program. Progress is saved in this browser.",
+  none: "Module 0 is free. Module 1 is $19, credited toward the full program when it opens. Progress is saved in this browser.",
   ground: "Modules 0 and 1 are yours. The full program opens Modules 2 to 7. Progress is saved in this browser.",
   os: "Progress is saved in this browser.",
 };
@@ -28,6 +29,11 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
   const verdict = A["1.2"]?.verdict;
   const next: Lesson | undefined = LESSONS.find((l) => moduleOf(l).built && canOpen(moduleOf(l).n, access) && !p.completed.includes(l.id));
   const days = daysUntil(start.date);
+  // A visitor sees three things: the free module, the $19 module, and one
+  // "coming soon" card for the rest. Buyers get the whole map.
+  const visitor = held === "none";
+  const shown = visitor ? MODULES.filter((m) => m.n <= 1) : MODULES;
+  const m0 = MODULES[0];
 
   return (
     <CourseShell xp={p.xp} streak={p.streak.count} pct={pct} note={NOTE[held]}>
@@ -40,7 +46,9 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
           </h1>
           <div style={{ fontSize: 15, lineHeight: 1.6, opacity: 0.92, maxWidth: 560 }}>
             {!ready ? "" : !stage
-              ? "The next ninety days take you from wondering whether you're allowed to leave, to interviewing for jobs outside the clinic. Seven modules, fifteen minutes to set up."
+              ? visitor
+                ? "Ten free minutes to set your starting line. Then Module 1, for $19, works out whether you're really leaving. The rest of the program is on its way, and the $19 is credited toward it."
+                : "The next ninety days take you from wondering whether you're allowed to leave, to interviewing for jobs outside the clinic. Seven modules, ten minutes to set up."
               : stage.n === 1 ? "Nobody has to know. You can work through this at eleven at night and still be on the schedule Monday morning."
               : stage.n === 2 ? "The kids you got talking are still talking. All twenty paths in Module 2 run on the degree rather than around it."
               : stage.n === 3 ? "Module 2 has the SLP who sent five hundred applications, and the one who landed a six-figure role in fifteen months."
@@ -92,9 +100,11 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
         <div>
           <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 10 }}>
             <h2 style={{ fontFamily: font.serif, fontSize: 24, fontWeight: 700, margin: 0 }}>Your lessons</h2>
-            <span style={{ fontSize: 13, color: "var(--muted)" }}>{p.completed.length} of {LESSONS.length} lessons · {LESSONS.reduce((s, l) => s + l.minutes, 0)} min total</span>
+            <span style={{ fontSize: 13, color: "var(--muted)" }}>{visitor
+              ? `${m0.lessons.length} free lessons · ${m0.lessons.reduce((s, l) => s + l.minutes, 0)} min`
+              : `${p.completed.length} of ${LESSONS.length} lessons · ${LESSONS.reduce((s, l) => s + l.minutes, 0)} min total`}</span>
           </div>
-          {MODULES.map((m, mi) => {
+          {shown.map((m, mi) => {
             const doneN = m.lessons.filter((l) => p.completed.includes(l.id)).length;
             const mpct = Math.round((doneN / m.lessons.length) * 100);
             const current = next && next.module === m.n;
@@ -108,7 +118,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
               <div key={m.n} style={{ display: "grid", gridTemplateColumns: "40px 1fr", gap: 12, marginBottom: 6 }}>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                   <div className={current ? "tos-pulse" : undefined} style={{ width: 34, height: 34, borderRadius: "50%", background: mpct === 100 ? "var(--accent)" : current ? "var(--card)" : "var(--bg)", border: `2px solid ${mpct === 100 || current ? "var(--accent)" : "var(--border)"}`, color: mpct === 100 ? "#fff" : current ? "var(--accent)" : "var(--light)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 14, flexShrink: 0 }}>{mpct === 100 ? "✓" : m.n}</div>
-                  {mi < MODULES.length - 1 && <div style={{ width: 2, flex: 1, background: mpct === 100 ? "var(--accent)" : "var(--border)", margin: "4px 0", minHeight: 24 }} />}
+                  {(mi < shown.length - 1 || visitor) && <div style={{ width: 2, flex: 1, background: mpct === 100 ? "var(--accent)" : "var(--border)", margin: "4px 0", minHeight: 24 }} />}
                 </div>
                 <Panel className="tos-rise tos-card-hover" style={{ padding: 16, marginBottom: 10, opacity: locked ? 0.72 : 1, borderColor: current ? "var(--accent)" : undefined, animationDelay: `${mi * 60}ms`, borderLeft: `4px solid ${locked ? "var(--border)" : (MODULE_ACCENT[m.n]?.edge || "var(--accent-bg)")}` }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10, flexWrap: "wrap" }}>
@@ -135,9 +145,35 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
               </div>
             );
           })}
+          {visitor && (
+            <div style={{ display: "grid", gridTemplateColumns: "40px 1fr", gap: 12, marginBottom: 6 }}>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <div style={{ width: 34, height: 34, borderRadius: "50%", background: "var(--bg)", border: "2px solid var(--border)", color: "var(--light)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 11, flexShrink: 0 }}>2–7</div>
+              </div>
+              <Panel style={{ padding: 16, marginBottom: 10, opacity: 0.72, borderLeft: "4px solid var(--border)" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10, flexWrap: "wrap" }}>
+                  <div style={{ minWidth: 0 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--light)" }}>Full program · Weeks 2–12</div>
+                    <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 700, margin: "2px 0" }}>Explore, Connect, Translate, Test, Leap</div>
+                    <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.5, maxWidth: "56ch" }}>Twenty paths with real pay and timelines, the people to talk to, your résumé rewritten, one piece of proof, and the interviews. What you pay for Module 1 is credited toward it.</div>
+                  </div>
+                  <span style={{ fontSize: 12, color: "var(--light)", background: "#F3F4F6", padding: "4px 10px", borderRadius: 999, flexShrink: 0 }}>Coming soon</span>
+                </div>
+              </Panel>
+            </div>
+          )}
         </div>
 
         <aside>
+          {visitor && (
+            <Panel tone="soft" style={{ marginBottom: 14 }}>
+              <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 6 }}>Module 1 · $19</div>
+              <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 700, lineHeight: 1.2, marginBottom: 8 }}>Before You Start Looking</div>
+              <p style={{ fontSize: 13.5, lineHeight: 1.55, margin: "0 0 12px", color: "var(--text)" }}>Eight short lessons to work out whether you&rsquo;re really leaving and what you&rsquo;re protecting if you are, plus the workbook that keeps your answers. Credited toward the full program. 30-day refund.</p>
+              <Btn href="/course/ground" outline style={{ width: "100%", textAlign: "center" }}>{"See what's in it →"}</Btn>
+            </Panel>
+          )}
+          {!visitor && (<>
           <Panel style={{ marginBottom: 14 }}>
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 10 }}>Badges · {p.badges.length} of {BADGES.length}</div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 8 }}>
@@ -153,10 +189,11 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
           </Panel>
           <Panel style={{ marginBottom: 14 }}>
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>Included with the program</div>
-            {[["📄", "Your workbook (fills in as you go)", "/course/workbook"], ["📇", "Outreach and application tracker", "/course/transition-os-tracker-README.md"], ["🃏", "20 path cards with sourced ranges", "https://slptransitions.com/alternative-careers-speech-pathologists-slps/"], ["🏢", "120 companies that hire former SLPs", "/companies"], ["📬", "This week's open roles by path", "/jobs"], ["🧰", "Résumé, cover letter and LinkedIn tools", "/"]].map(([i, t, h]) => (
+            {[["📄", "Your workbook (fills in as you go)", "/course/workbook"], ["📇", "Outreach and application tracker", "/course/transition-os-tracker-README.md"], ["🃏", "20 path cards with sourced ranges", "https://slptransitions.com/alternative-careers-speech-pathologists-slps/"], ["🏢", `${COMPANY_COUNT} health-tech and ed-tech companies that value clinical skills`, "/companies"], ["📬", "This week's open roles by path", "/jobs"], ["🧰", "Résumé, cover letter and LinkedIn tools", "/"]].map(([i, t, h]) => (
               <a key={t} href={h} style={{ display: "flex", gap: 8, fontSize: 13, color: "var(--text)", textDecoration: "none", padding: "6px 0", lineHeight: 1.4 }}><span aria-hidden>{i}</span>{t}</a>
             ))}
           </Panel>
+          </>)}
           <button type="button" onClick={() => { if (confirm("Reset this browser's progress?")) reset(); }} style={{ background: "none", border: "none", color: "var(--light)", fontSize: 12, cursor: "pointer", fontFamily: font.sans, padding: 0 }}>Reset my progress</button>
         </aside>
       </div>

@@ -120,11 +120,16 @@ export default function LessonPage({ id, access }: { id: string; access?: { prod
           {lesson.resources && lesson.resources.length > 0 && (
             <Panel style={{ marginBottom: 14 }}>
               <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 10 }}>Resources</div>
-              {lesson.resources.map((r) => (
-                <a key={r.label} href={r.href} target={r.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" style={{ display: "flex", gap: 8, alignItems: "flex-start", fontSize: 13, color: "var(--accent)", textDecoration: "none", padding: "6px 0", lineHeight: 1.4 }}>
-                  <span aria-hidden>{r.kind === "worksheet" ? "📄" : r.kind === "sheet" ? "📊" : r.kind === "tool" ? "🧰" : "↗"}</span>{r.label}
+              {lesson.resources.map((r) => {
+                // The workbooks are gated. A visitor gets told where they open rather
+                // than a redirect to a sales page or a bare 403.
+                const gated = !access && (r.href.startsWith("/course/workbook") || r.href.startsWith("/api/course/workbook"));
+                const href = gated ? "/course/ground" : r.href;
+                return (
+                <a key={r.label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" style={{ display: "flex", gap: 8, alignItems: "flex-start", fontSize: 13, color: gated ? "var(--muted)" : "var(--accent)", textDecoration: "none", padding: "6px 0", lineHeight: 1.4 }}>
+                  <span aria-hidden>{r.kind === "worksheet" ? "📄" : r.kind === "sheet" ? "📊" : r.kind === "tool" ? "🧰" : "↗"}</span>{r.label}{gated && <span style={{ color: "var(--light)" }}> · opens with Module 1</span>}
                 </a>
-              ))}
+              ); })}
             </Panel>
           )}
           {(() => { const keys = content?.sources || lesson.sources || []; return keys.length > 0 && (

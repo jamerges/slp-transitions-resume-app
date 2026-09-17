@@ -30,9 +30,9 @@ export function Welcome({ finish, done }: LessonProps) {
   return (
     <div>
       <P>Hi. I&rsquo;m James. I was an SLP, and I now work in marketing at a health-tech company. I built this because the advice SLPs get when they want out is usually some version of &ldquo;tough it out&rdquo; or &ldquo;start over,&rdquo; and both are wrong.</P>
-      <P>This module is the decision: whether you are leaving at all, and what the next job has to give you. Eight lessons, short, one thing to do in each. You will never be asked to do something vague, every number comes from documented SLP transitions and public salary data, and the source sits under every lesson.</P>
-      <P>You won&rsquo;t get cheerleading here, or a promise of six figures by fall. What you get is a map with the mileage marked. Most people work through this alongside a full-time caseload, which is how it is built.</P>
-      <P style={{ margin: 0 }}>If it doesn&rsquo;t help, write to me inside thirty days and you get your money back. No form, no call.</P>
+      <P>These three lessons are free and take about ten minutes. You&rsquo;ll set the number your next job has to clear, pick a date to aim at, and check three beliefs that keep most SLPs in the building longer than they need to be. No account, no card.</P>
+      <P>After that, Module 1 is $19: eight short lessons to work out whether you&rsquo;re really leaving and what you&rsquo;re protecting if you are, plus the workbook that keeps your answers. The full program comes later, and the $19 is credited toward it.</P>
+      <P style={{ margin: 0 }}>You won&rsquo;t get cheerleading here, or a promise of six figures by fall. Every number comes from documented SLP transitions and public salary data, and the source sits under every lesson. Most people work through this alongside a full-time caseload, which is how it is built.</P>
     </div>
   );
 }

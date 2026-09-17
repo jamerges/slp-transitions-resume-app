@@ -90,10 +90,10 @@ const R = {
 export const MODULES: Module[] = [
   {
     n: 0, slug: "start", title: "Start here", phase: "Setup", week: "Day 1", built: true,
-    tagline: "Fifteen minutes to set up your map: where you're starting from, what you can't afford to lose, and a date to aim at.",
+    tagline: "Ten minutes to set your starting line: the pay your next job has to clear, a date to aim at, and three beliefs worth checking.",
     lessons: [
       { id: "0.1", module: 0, title: "Welcome from James", type: "explainer", minutes: 3, component: "Welcome",
-        summary: "Three minutes on how the program works, what to expect from it, and the refund promise.", sources: ["facts"] },
+        summary: "Three minutes on what's free, what's $19, and what you'll have by the end of today.", sources: ["facts"] },
       { id: "0.2", module: 0, title: "Your starting line", type: "interactive", minutes: 5, resources: [R.workbook1, R.workbookPdf], component: "StartingLine",
         summary: "Tell the program where you're starting from. It builds your map from these answers, and you can change them any time.",
         action: { label: "Set my target date", prompt: "Pick the date you want to be in a new role. Ninety days from now is the default and it is realistic for the fast paths; the long builds take 6–15 months and the map adjusts.", done: "Target date set." } },
