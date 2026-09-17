@@ -19,6 +19,7 @@ For any substantial draft or rewrite, read:
 
 Also read:
 
+- `references/mechanics.md` for sentence construction (James's Strunk & White / Pinker guide: answer first, no labels, no em dashes, no hedging, actor-plus-verb, emphatic word last, edit before sending)
 - `references/anti-slop.md` before final line editing
 - `references/examples.md` when calibrating tone, structure, or example selection
 

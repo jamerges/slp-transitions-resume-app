@@ -62,6 +62,9 @@ Also vary sentence rhythm more aggressively than a stock "short punchy sentence 
 ## 9. Tagline note
 "Your degree isn't a prison. Your skills can translate outside of clinical work." (app tagline) does NOT appear on the site but is philosophically consistent. Use as thesis where useful; body copy should sound like the quotes above — warmer, more conversational than the tagline.
 
+## 8c. Sentence mechanics (James, 2026-09-17). Applies to everything.
+The full guide is `content/writer-kit/mechanics.md`. In one breath: start with the answer; no shell-noun-plus-colon labels ("Bottom line:"); no em dashes, an en dash only when unavoidable; cut filler, hedges ("arguably", "somewhat") and meta-discourse ("it is important to note"); ground every abstraction in a concrete noun or mechanism; make a named actor the subject of a strong verb instead of a nominalization; resolve pronouns to a named antecedent; keep subject and verb close and early; prefer positive form; put the emphatic word last; edit against the list before sending.
+
 ## 8b. The trope list (James, 2026-09-03). Applies to every email and every post.
 - No em-dash overuse. Default to none; a comma, a period, or a colon does the job.
 - No "it's not X. It's Y." constructions, including the quieter "X, not Y" used as a reveal.

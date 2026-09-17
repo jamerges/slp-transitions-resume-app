@@ -8,6 +8,7 @@ description: Check any draft (blog, email, social post, landing copy) against ho
 You are auditing a piece of SLP Transitions copy against two documents:
 1. `content/voice-of-customer.md` — the *reader's* language (phrase bank, themes, register rules)
 2. `content/style-guide.md` — the *writer's* voice (James: empathetic-direct, anti-hype, psychology-literate, self-deprecating)
+3. `content/writer-kit/mechanics.md` — sentence construction (answer first, no labels, no em dashes, no hedging, actor-plus-verb). Flag violations in the audit alongside voice misses.
 
 Read both before judging anything.
 

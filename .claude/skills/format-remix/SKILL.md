@@ -8,7 +8,7 @@ description: Turn a topic into platform-ready content by remixing proven formats
 Two modes. Both depend on three documents — read them first:
 1. `content/competitor-formats.md` — the pattern library + saved specimens
 2. `content/voice-of-customer.md` — the reader's language and register rules
-3. `content/style-guide.md` — James's voice
+3. `content/style-guide.md` — James's voice, and `content/writer-kit/mechanics.md` for how each sentence is built (a remixed format still starts with the answer, carries no labels or em dashes, and ends each sentence on its emphatic word)
 
 ## Mode 1 — Generate (default)
 
