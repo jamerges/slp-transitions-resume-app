@@ -168,7 +168,7 @@ export default function CareerQuiz({
   const hrefForProduct = (k: ProductKey) => {
     const t = result?.top;
     if (!t) return undefined;
-    if (k === "ground") return `/course/ground?stage=${stageKey || ""}&path=${encodeURIComponent(t.slug)}`;
+    if (k === "ground") return "/course"; // the menu card is the free door; the lead card above keeps the stage-aware sales page
     if (k === "suite") return suiteHref(t);
     return undefined; // the report opens Stripe rather than a page
   };

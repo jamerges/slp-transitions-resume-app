@@ -15,7 +15,7 @@ import { COMPANY_COUNT } from "@/lib/companies";
  * the one thing worth buying, if any. Same logic as the quiz result, minus
  * the nine questions.
  */
-const HREF: Record<ProductKey, string> = { ground: "/course/ground", report: "/quiz", suite: "/" };
+const HREF: Record<ProductKey, string> = { ground: "/course", report: "/quiz", suite: "/" };
 const FREE = [
   { label: "The two-minute quiz", detail: "Names the path your experience already fits, without needing your r\u00e9sum\u00e9.", href: "/quiz" },
   { label: "Open roles, by path", detail: "What is actually posted this week for each of the twenty paths.", href: "/jobs" },
@@ -56,7 +56,7 @@ export default function StartHere() {
             <div style={{ fontSize: lead ? 15 : 14, marginTop: 4 }}>{p.answers}</div>
             <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 4 }}>{p.detail}</div>
             <span style={{ display: "inline-block", marginTop: lead ? 14 : 10, padding: lead ? "11px 18px" : "8px 14px", borderRadius: 8, background: "var(--accent)", color: "#fff", fontSize: lead ? 15 : 13.5, fontWeight: 600 }}>
-              {p.cta.via} &middot; ${p.price}&nbsp;&rarr;
+              {p.button ? <>{p.button}&nbsp;&rarr;</> : <>{p.cta.via} &middot; ${p.price}&nbsp;&rarr;</>}
             </span>
           </div>
           {p.thumb && <img src={p.thumb} width={lead ? 60 : 44} height={lead ? 78 : 57} alt="" style={{ width: lead ? 60 : 44, height: lead ? 78 : 57, objectFit: "cover", objectPosition: "top", borderRadius: 3, border: "1px solid var(--border)", flexShrink: 0 }} />}

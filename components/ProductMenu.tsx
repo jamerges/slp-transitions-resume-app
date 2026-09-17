@@ -14,14 +14,17 @@ export type ProductKey = "ground" | "report" | "suite";
 /** The verb on each card's button. `direct` when the click is a checkout,
  *  `via` when it goes somewhere first (the quiz, the free preview). The price
  *  is appended at render from `price`, so it is never typed twice. */
-export const PRODUCTS: Record<ProductKey, { name: string; price: number; answers: string; detail: string; thumb?: string; cta: { direct: string; via: string } }> = {
+/** `button`, when set, replaces the verb-plus-price button entirely: the free
+ *  door to a product is the button, and the price lives in `detail`. */
+export const PRODUCTS: Record<ProductKey, { name: string; price: number; answers: string; detail: string; thumb?: string; cta: { direct: string; via: string }; button?: string }> = {
   ground: {
     name: GROUND_NAME,
     price: GROUND_PRICE,
     answers: "Want out, but don't know where to start?",
     thumb: "/marketing/workbook-cover.png",
     cta: { direct: "Start here", via: "Start here" },
-    detail: "Module 1 of Transition OS plus the workbook. Get clear on why you're leaving, what your degree is worth now and what you can't give up, in writing.",
+    button: "Find clarity, free",
+    detail: "Ten free minutes: know the number your next job has to clear, the date you're aiming at, and which belief is keeping you in the building. Module 1 is $19 after that, with the workbook.",
   },
   report: {
     name: "Pivot Report",
@@ -64,7 +67,7 @@ export default function ProductMenu({
               <div style={{ fontSize: 13.5, color: "var(--text)", marginTop: 3 }}>{p.answers}</div>
               <div style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 3 }}>{p.detail}</div>
               <span style={{ display: "inline-block", marginTop: 10, padding: "8px 14px", borderRadius: 8, background: "var(--accent)", color: "#fff", fontSize: 13.5, fontWeight: 600 }}>
-                {href ? p.cta.via : p.cta.direct} &middot; ${p.price}&nbsp;&rarr;
+                {p.button ? <>{p.button}&nbsp;&rarr;</> : <>{href ? p.cta.via : p.cta.direct} &middot; ${p.price}&nbsp;&rarr;</>}
               </span>
             </div>
             {p.thumb && <img src={p.thumb} width={44} height={57} alt="" style={{ width: 44, height: 57, objectFit: "cover", objectPosition: "top", borderRadius: 3, border: "1px solid var(--border)", flexShrink: 0 }} />}
