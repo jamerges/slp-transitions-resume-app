@@ -428,7 +428,7 @@ export async function sendGroundAccessEmail(input: { to: string; unlockUrl: stri
   <p style="font-size:15px;line-height:1.7;">James</p>
   <p style="font-size:12px;color:#9CA3AF;margin-top:26px;">If the button doesn't work, paste this into your browser:<br/><span style="word-break:break-all;">${unlockUrl}</span></p>
 </div></body></html>`;
-  await getResend().emails.send({ from: FROM_ADDRESS, to, replyTo: REPLY_TO, subject: "Your Ground access link", html });
+  await getResend().emails.send({ from: FROM_ADDRESS, to, replyTo: REPLY_TO, subject: "Your Transition OS login link", html });
 }
 
 /** The same link again, for a buyer on a new device or with a cleared browser. Sent from /api/course/find-link. */

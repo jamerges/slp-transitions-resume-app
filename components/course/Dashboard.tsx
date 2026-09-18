@@ -6,6 +6,8 @@ import { CourseShell, Btn, Panel, font, Ring } from "./ui";
 import { STAGE_META, StageRoad, JourneyMap } from "./scenes";
 import { canOpen, type CourseProduct } from "@/lib/course-tiers";
 import { COMPANY_COUNT } from "@/lib/companies";
+import ProductMenu from "@/components/ProductMenu";
+import { track } from "@/lib/analytics";
 
 const NOTE: Record<string, string> = {
   none: "Module 0 is free. Module 1 is $19, credited toward the full program when it opens. Progress is saved in this browser.",
@@ -160,6 +162,17 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
                   <span style={{ fontSize: 12, color: "var(--light)", background: "#F3F4F6", padding: "4px 10px", borderRadius: 999, flexShrink: 0 }}>Coming soon</span>
                 </div>
               </Panel>
+            </div>
+          )}
+          {visitor && (
+            <div style={{ marginTop: 22 }}>
+              <ProductMenu
+                order={["report", "suite"]}
+                heading="Already know where you're going? The two faster tools"
+                onPick={(k) => track("select_item", { item_list_id: "course_dashboard", item_list_name: "Course dashboard menu", items: [{ item_id: k, quantity: 1 }], placement: "course_menu" })}
+                hrefFor={(k) => (k === "report" ? "/quiz" : k === "suite" ? "/" : undefined)}
+              />
+              <div style={{ fontSize: 13.5, color: "var(--muted)", marginTop: 10 }}>Not sure which fits? <a href="/start" style={{ color: "var(--accent)", fontWeight: 600 }}>Pick your stage and see</a>, or take the <a href="/quiz" style={{ color: "var(--accent)", fontWeight: 600 }}>career quiz</a>.</div>
             </div>
           )}
         </div>
