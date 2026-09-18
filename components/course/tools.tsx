@@ -38,6 +38,9 @@ export function Tool(props: ToolProps) {
     case "screening-questions": return <ScreeningQuestions />;
     case "mock-interview": return <MockInterview {...props} />;
     case "offer-checklist": return <Checklist {...props} slot="offer" items={OFFER} title="Before you say yes" />;
+    case "time-budget": return <TimeBudget {...props} />;
+    case "questions-asked": return <Report {...props} kind="questions" />;
+    case "landed": return <Report {...props} kind="landed" />;
     default: return <Panel tone="warm">Tool &ldquo;{props.name}&rdquo; is not built yet.</Panel>;
   }
 }
@@ -72,8 +75,10 @@ export function PathMap({ shared }: ToolProps) {
   }, [energy]);
 
   // "Must match my SLP pay from day one" is floor 0. The SLP median is $97,870,
-  // so a band whose top sits under that cannot clear the floor they set.
-  const underFloor = (slug: string) => floorIdx === 0 && rangeHi(PATHS[slug].range) < 97870;
+  // so a band whose top sits under that cannot clear the floor they set. A
+  // dollar floor from lesson 0.2 (expenses plus tax) is checked the same way.
+  const floorDollars: number = shared["0.2"]?.floorDollars || 0;
+  const underFloor = (slug: string) => (floorIdx === 0 && rangeHi(PATHS[slug].range) < 97870) || (floorDollars > 0 && rangeHi(PATHS[slug].range) < floorDollars);
 
   const fits = (slug: string) => dialTop.includes(slug) || (energyHits[slug] || 0) >= 2;
   const shortlist = Object.keys(PATHS).filter((s) => fits(s) && !underFloor(s));
@@ -277,11 +282,20 @@ function TranslationPairs({ shared, setShared }: ToolProps) {
 /* ----------------------------- number mining (3.3) ---------------------------- */
 const MINES = [
   ["Caseload size (largest you carried)", "students / clients"],
-  ["People you trained or supervised", "CFs, students, teachers, aides"],
-  ["Meetings you led in a typical month", "IEPs, care conferences, family meetings"],
-  ["Systems you helped roll out or change", "EMR, scheduling, a new protocol"],
   ["Sites or buildings you covered", ""],
   ["Evaluations you completed in a year", ""],
+  ["Plans you wrote in a year", "IEPs, care plans, treatment plans"],
+  ["Meetings you led in a typical month", "IEPs, care conferences, family meetings"],
+  ["Families you trained on a home program", "a year, or a caseload's worth"],
+  ["Staff you trained on a protocol or device", "AAC, dysphagia precautions, an EMR"],
+  ["People you supervised", "CFs, grad students, aides"],
+  ["Systems you helped roll out or change", "EMR, scheduling, a new protocol"],
+  ["Productivity target you held, and for how long", "e.g. 85% for two years"],
+  ["Authorizations, appeals or denials you handled", "a month or a year"],
+  ["Discharges or transitions you planned in a month", ""],
+  ["Programs, protocols or materials you built that others used", "name them"],
+  ["In-services or trainings you delivered", "a year"],
+  ["Committees, audits or leadership you were part of", ""],
   ["Documentation hours per week (unpaid ones count)", ""],
   ["One outcome you moved, with a before and after", "e.g. dismissal rate, wait time, goal attainment"],
 ];
@@ -298,9 +312,16 @@ function NumberMining({ shared, setShared }: ToolProps) {
           <div key={k}><label style={{ fontSize: 13, fontWeight: 600, display: "block", marginBottom: 3 }}>{k}</label><input value={v[k] || ""} onChange={(e) => set(k, e.target.value)} placeholder={hint} style={input} /></div>
         ))}
       </div>
-      <div style={{ marginTop: 10, fontSize: 13, color: filled ? "var(--accent)" : "var(--muted)", fontWeight: 600 }}>{filled} of {MINES.length} filled. Every one becomes a bullet.</div>
+      <div style={{ marginTop: 10, fontSize: 13, color: filled ? "var(--accent)" : "var(--muted)", fontWeight: 600 }}>{filled} of {MINES.length} filled. Every one becomes a bullet, and the Suite reads them when you open it from here.</div>
     </Panel>
   );
+}
+
+/** The numbers from 4.3 as one block of text the Suite can drop into the résumé step. */
+export function numbersAsText(numbers: Record<string, string> | undefined): string {
+  if (!numbers) return "";
+  const lines = MINES.map(([k]) => [k, (numbers[k] || "").trim()]).filter(([, v]) => v).map(([k, v]) => `- ${k}: ${v}`);
+  return lines.length ? `Numbers from my clinical work:\n${lines.join("\n")}` : "";
 }
 
 /* ------------------------------ suite link (3.5) ------------------------------ */
@@ -311,7 +332,93 @@ function SuiteLink({ pathSlug, shared }: ToolProps) {
       <H>Build it in the Suite</H>
       <Muted>The Career Pivot Suite is included. Paste your résumé and one real posting; it translates every bullet, writes the cover letter and the LinkedIn sections, and lets you refine any of six sections until it sounds like you.</Muted>
       {shared.translation?.out && <div style={{ fontSize: 13.5, marginBottom: 10, padding: "8px 12px", background: "var(--card)", borderRadius: 8, border: "1px solid var(--accent-bg)" }}><b>Your saved pair:</b> {shared.translation.out}</div>}
+      {shared.numbers && Object.values(shared.numbers as Record<string, string>).some((v) => (v || "").trim()) && (
+        <div style={{ fontSize: 13.5, marginBottom: 10, color: "var(--accent)", fontWeight: 600 }}>Your numbers from lesson 4.3 come with you. The Suite offers to add them under your résumé.</div>
+      )}
       <Btn href={`/?from=course${p ? `&path=${encodeURIComponent(p.roleOption)}` : ""}`}>Open the Suite →</Btn>
+    </Panel>
+  );
+}
+
+/* ------------------------------ time budget (2.0) ------------------------------ */
+function TimeBudget({ shared, setShared }: ToolProps) {
+  const v = shared.time || { hours: 6 };
+  const hours: number = Number(v.hours) || 0;
+  const proof = Math.round(hours * 0.6 * 2) / 2, people = Math.round(hours * 0.3 * 2) / 2, read = Math.max(0, Math.round((hours - proof - people) * 2) / 2);
+  return (
+    <Panel>
+      <H>Hours this week</H>
+      <Muted>Be honest rather than ambitious. Six real hours beat fifteen imagined ones, and you can raise it later.</Muted>
+      <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
+        <input type="range" min={1} max={20} step={1} value={hours} onChange={(e) => setShared("time", { ...v, hours: Number(e.target.value) })} style={{ flex: 1, minWidth: 180 }} />
+        <div style={{ fontFamily: font.serif, fontSize: 26, fontWeight: 700, minWidth: 90 }}>{hours} hrs</div>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, marginTop: 14 }} className="tos-two-col">
+        {[["Proof", proof, "a portfolio piece, a course, a project at work"], ["People", people, "messages, calls, the closed groups"], ["Reading", read, "articles, this course, the subreddit"]].map(([k, n, hint]) => (
+          <div key={String(k)} style={{ padding: 12, borderRadius: 10, border: "1px solid var(--border)", background: "var(--card)" }}>
+            <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "var(--muted)" }}>{k as string}</div>
+            <div style={{ fontFamily: font.serif, fontSize: 24, fontWeight: 700, margin: "2px 0" }}>{n as number} hrs</div>
+            <div style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.45 }}>{hint as string}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{ marginTop: 10, fontSize: 13, color: "var(--accent)", fontWeight: 600 }}>Saved. Your workbook keeps the split.</div>
+    </Panel>
+  );
+}
+
+/* --------------------- reports back to the program (6.4, 7.1) --------------------- */
+const LANDED_BANDS = ["Under $50,000", "$50,000 to $69,999", "$70,000 to $89,999", "$90,000 to $109,999", "$110,000 or more", "Prefer not to say"];
+/**
+ * Two small forms that send something back to James: the questions an SLP was
+ * actually asked in an interview, and where they landed. Both go to the ops
+ * inbox through a buyer-only route; nothing is published without asking.
+ */
+function Report({ shared, setShared, kind }: ToolProps & { kind: "questions" | "landed" }) {
+  const key = kind === "questions" ? "report_questions" : "report_landed";
+  const v = shared[key] || {};
+  const [sending, setSending] = useState(false);
+  const [state, setState] = useState<"idle" | "sent" | "error">(v.sent ? "sent" : "idle");
+  const set = (k: string, val: string) => setShared(key, { ...v, [k]: val });
+  const ready = kind === "questions" ? (v.questions || "").trim().length > 20 : !!(v.title || "").trim() && !!v.start;
+  const send = async () => {
+    setSending(true);
+    try {
+      const r = await fetch("/api/course/report", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ kind, payload: v }) });
+      if (!r.ok) throw new Error("failed");
+      setShared(key, { ...v, sent: true }); setState("sent");
+    } catch { setState("error"); } finally { setSending(false); }
+  };
+  if (kind === "questions") return (
+    <Panel>
+      <H>What did they actually ask you?</H>
+      <Muted>After an interview, while it is fresh: the questions, as close to their words as you can. It goes to James, gets grouped by path, and becomes the question bank the next SLP prepares from. No names, no company unless you want to include it.</Muted>
+      <input value={v.role || ""} onChange={(e) => set("role", e.target.value)} placeholder="The role you interviewed for" style={{ ...input, marginBottom: 8 }} />
+      <textarea value={v.questions || ""} onChange={(e) => set("questions", e.target.value)} rows={6} placeholder={"One question per line.\nWhy are you leaving clinical work?\nTell me about a time you had to deliver bad news to a customer."} style={{ ...input, resize: "vertical" }} />
+      <div style={{ marginTop: 10, display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+        {state === "sent" ? <span style={{ color: "var(--accent)", fontWeight: 600, fontSize: 14 }}>&#10003; Sent. Thank you. The next person prepares from this.</span>
+          : <Btn onClick={send} disabled={!ready || sending}>{sending ? "Sending…" : "Send the questions"}</Btn>}
+        {state === "error" && <span style={{ fontSize: 13, color: "var(--muted)" }}>That didn&rsquo;t send. Your text is saved here; try again in a minute.</span>}
+      </div>
+    </Panel>
+  );
+  return (
+    <Panel>
+      <H>Where you landed</H>
+      <Muted>Four answers. They become the numbers the next SLP reads before deciding, published only as bands and never with a name.</Muted>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }} className="tos-two-col">
+        <div><label style={{ fontSize: 13, fontWeight: 600, display: "block", marginBottom: 3 }}>Title now</label><input value={v.title || ""} onChange={(e) => set("title", e.target.value)} placeholder="Implementation Specialist" style={input} /></div>
+        <div><label style={{ fontSize: 13, fontWeight: 600, display: "block", marginBottom: 3 }}>Path</label><input value={v.path || ""} onChange={(e) => set("path", e.target.value)} placeholder="Customer success" style={input} /></div>
+        <div><label style={{ fontSize: 13, fontWeight: 600, display: "block", marginBottom: 3 }}>Starting salary band</label>
+          <select value={v.start || ""} onChange={(e) => set("start", e.target.value)} style={input}><option value="">Choose</option>{LANDED_BANDS.map((b) => <option key={b} value={b}>{b}</option>)}</select></div>
+        <div><label style={{ fontSize: 13, fontWeight: 600, display: "block", marginBottom: 3 }}>Band now, if it changed</label>
+          <select value={v.now || ""} onChange={(e) => set("now", e.target.value)} style={input}><option value="">Same, or too soon to say</option>{LANDED_BANDS.map((b) => <option key={b} value={b}>{b}</option>)}</select></div>
+      </div>
+      <div style={{ marginTop: 10, display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+        {state === "sent" ? <span style={{ color: "var(--accent)", fontWeight: 600, fontSize: 14 }}>&#10003; Sent. Thank you. That row is proof for someone at stage three.</span>
+          : <Btn onClick={send} disabled={!ready || sending}>{sending ? "Sending…" : "Send where I landed"}</Btn>}
+        {state === "error" && <span style={{ fontSize: 13, color: "var(--muted)" }}>That didn&rsquo;t send. Your answers are saved here; try again in a minute.</span>}
+      </div>
     </Panel>
   );
 }

@@ -9,6 +9,23 @@
       },
       {
         "type": "h",
+        "text": "Start with the people you already know outside speech"
+      },
+      {
+        "type": "p",
+        "text": "Before a single stranger, list the people in your life who work somewhere else: a partner's colleagues, a college friend in tech, the neighbour who sells software, a former classmate who left the field. A referral from someone who can vouch for you as a person carries more than any message to a stranger, and these people already will. The ask is small and specific, and it never asks for a job."
+      },
+      {
+        "type": "script",
+        "title": "The warm ask",
+        "text": "I'm looking at [target title] roles, and I know you've been at [company] a while. Could you tell me what the [title] there actually does day to day? And if there's someone doing it you'd trust me to talk to, I'd love fifteen minutes with them.\n\nNo job ask. I'm working out whether it fits before I go further."
+      },
+      {
+        "type": "p",
+        "text": "Say the title. People do not guess on your behalf, and \"anything outside the clinic\" gives them nothing to remember you by. When they can't help, ask who else they know who works somewhere interesting. That second name is usually the one that matters."
+      },
+      {
+        "type": "h",
         "text": "Where the ones who left actually went"
       },
       {
@@ -265,6 +282,12 @@
         "tone": "warm",
         "title": "Do not scrub the clinician out",
         "text": "A profile with a hole where a decade should be raises more questions than a translated one, and at speech-tech and health-tech companies the license is the qualification rather than the obstacle. Never change a title, a date or a role to something it was not. Fabrication is the one screening flag nobody recovers from, and your résumé and profile will be read side by side."
+      },
+      {
+        "type": "callout",
+        "tone": "warm",
+        "title": "Everything you post sits under your name",
+        "text": "A recruiter who finds you reads the last ten things you commented on. A post about the caseload, a reply venting about administration, a like on someone else's exit rant: each one answers the retention question for them before you get to. Use LinkedIn the way you'd speak in a conference room with the hiring manager in it, and keep the venting for the closed groups."
       },
       {
         "type": "tool",

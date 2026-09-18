@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { numbersAsText } from "@/components/course/tools";
 import {
   S, Card, CopyButton, Chip, ProgressBar, CoverageTable, focusB, blurB,
 } from "./ui";
@@ -122,6 +123,17 @@ export default function SLPCareerSuite() {
   const [step, setStep] = useState<Step>(STEPS.WELCOME);
   const [inputMode, setInputMode] = useState<"upload" | "paste">("upload");
   const [resumeText, setResumeText] = useState("");
+  // Numbers mined in course lesson 4.3 live in this browser's progress store.
+  // When they exist, the résumé step offers to append them, so the generator
+  // starts with figures instead of asking for them.
+  const [courseNumbers, setCourseNumbers] = useState("");
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("tos:progress:v1");
+      const shared = raw ? JSON.parse(raw)?.answers?.__shared : null;
+      setCourseNumbers(numbersAsText(shared?.numbers));
+    } catch { /* private mode or no course yet */ }
+  }, []);
   const [fileName, setFileName] = useState("");
   const [fileError, setFileError] = useState("");
   const [parsing, setParsing] = useState(false);
@@ -607,7 +619,13 @@ export default function SLPCareerSuite() {
       )}
 
       {fileError && <div style={{ fontSize: 13, color: "var(--err)", marginBottom: 12 }}>{fileError}</div>}
-      <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 20 }}>💡 Include job titles, bullet points, and metrics</p>
+      <p style={{ fontSize: 13, color: "var(--light)", marginBottom: courseNumbers ? 10 : 20 }}>Numbers make the difference: caseload size, evaluations a year, people you trained, one outcome you moved. Put them in even if the résumé leaves them out.</p>
+      {courseNumbers && !resumeText.includes("Numbers from my clinical work:") && (
+        <div style={{ marginBottom: 20, padding: "10px 14px", borderRadius: 10, background: "var(--accent-bg-subtle)", border: "1px solid var(--accent-bg)", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+          <span style={{ fontSize: 13.5 }}>You mined {courseNumbers.split("\n").length - 1} numbers in the course. Add them under your résumé so every bullet gets one.</span>
+          <button type="button" style={{ ...S.btn, padding: "8px 14px", fontSize: 13.5 }} onClick={() => setResumeText((t) => (t.trim() ? `${t.trim()}\n\n${courseNumbers}` : courseNumbers))}>Add my numbers</button>
+        </div>
+      )}
 
       <div style={{ display: "flex", gap: 12 }}>
         <button style={S.btnOut} onClick={() => setStep(STEPS.WELCOME)}>← Back</button>

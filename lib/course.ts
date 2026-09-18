@@ -90,12 +90,12 @@ const R = {
 export const MODULES: Module[] = [
   {
     n: 0, slug: "start", title: "Start here", phase: "Setup", week: "Day 1", built: true,
-    tagline: "Twenty minutes to set your starting line: the pay your next job has to clear, a date to aim at, and whether it's the workplace, the work, or the season that's wrong.",
+    tagline: "Twenty minutes: what you really earn per hour, the pay your next job has to clear, a date to aim at, and whether it's the workplace, the work, or the season that's wrong.",
     lessons: [
       { id: "0.1", module: 0, title: "Welcome from James", type: "explainer", minutes: 3, component: "Welcome",
         summary: "Three minutes on what's free, what's $19, and what you'll have by the end of today.", sources: ["facts"] },
-      { id: "0.2", module: 0, title: "Your starting line", type: "interactive", minutes: 5, resources: [R.workbook1, R.workbookPdf], component: "StartingLine",
-        summary: "Tell the program where you're starting from. It builds your map from these answers, and you can change them any time.",
+      { id: "0.2", module: 0, title: "Your starting line", type: "interactive", minutes: 8, resources: [R.workbook1, R.workbookPdf], component: "StartingLine",
+        summary: "What you really earn per hour, the salary the next job has to clear, the date you're aiming at, and what you'd trade to get there. Four numbers the rest of the program runs on.",
         action: { label: "Set my target date", prompt: "Pick the date you want to be in a new role. Ninety days from now is the default and it is realistic for the fast paths; the long builds take 6–15 months and the map adjusts.", done: "Target date set." } },
       { id: "0.3", module: 0, title: "Bad workplace, bad fit, or bad season?", type: "interactive", minutes: 8, component: "DecisionTree",
         summary: "Six questions to work out whether the problem is your workplace, the work itself, or this season of your life.", resources: [R.quit], sources: ["facts", "voc", "forums"] },
@@ -118,7 +118,7 @@ export const MODULES: Module[] = [
       { id: "1.6", module: 1, title: "What you keep when you leave", type: "explainer", minutes: 5, resources: [R.workbook1, R.workbookPdf], component: "Identity",
         summary: "Three people who left and kept the part of the work they loved. Watch for what each of them took with them.", sources: ["voc", "forums"] },
       { id: "1.7", module: 1, title: "Tell one person", type: "action", minutes: 3, resources: [R.workbook1, R.workbookPdf], component: "TellOne",
-        summary: "Say one sentence to one person. It's the cheapest way to stop this from feeling like a secret.",
+        summary: "Say one sentence to one person, and keep it from everyone else until there's an offer in writing. Six settings and habits that keep a search private.",
         action: { label: "I told someone", prompt: "Pick one person who will not argue with you: a partner, a friend outside the field, a former colleague who left. Say one sentence: \"I'm looking at what else I could do with my SLP background.\" That's it. No plan required.", done: "Said out loud. The secret stopped costing you energy." },
         sources: ["voc", "forums"] },
       { id: "1.8", module: 1, title: "Your why, in writing", type: "checkpoint", minutes: 2, resources: [R.workbook1, R.workbookPdf], component: "Checkpoint1",
@@ -129,6 +129,7 @@ export const MODULES: Module[] = [
     n: 2, slug: "explore", title: "Explore", phase: "Explore", week: "Weeks 2\u20133", built: false,
     tagline: "Twenty real paths with what each one pays and how long it takes.",
     lessons: [
+      { id: "2.0", module: 2, title: "How much time this takes, and when", type: "interactive", minutes: 7, summary: "", resources: [R.tracker, R.workbook1] },
       { id: "2.1", module: 2, title: "The map: twenty paths by timeline", type: "explainer", minutes: 9, summary: "", resources: [R.paths] },
       { id: "2.2", module: 2, title: "Four jobs your licence already qualifies you for", type: "explainer", minutes: 8, summary: "Liaison, utilization review, clinical educator, case management.", resources: [R.jobs, R.companies] },
       { id: "2.3", module: 2, title: "Where SLPs actually land", type: "explainer", minutes: 9, summary: "Customer success, project management, data, content.", resources: [R.paths, R.companies] },

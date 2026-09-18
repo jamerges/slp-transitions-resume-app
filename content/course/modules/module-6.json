@@ -278,6 +278,18 @@
       {
         "type": "p",
         "text": "The interview is the last place to undersell six years of training."
+      },
+      {
+        "type": "h",
+        "text": "After a real one"
+      },
+      {
+        "type": "p",
+        "text": "The mock coach knows the five questions every career changer gets. It does not know what a hiring manager at a teletherapy platform asked last month. You will, and the next SLP interviewing there deserves to."
+      },
+      {
+        "type": "tool",
+        "name": "questions-asked"
       }
     ],
     "action": {
@@ -487,6 +499,30 @@
         "name": "application-tracker"
       },
       {
+        "type": "h",
+        "text": "Two questions on the form that stop people"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**\"May we contact your current employer?\"** No is a complete answer, and it is the normal one for anyone still employed. Offer a past supervisor, a mentor, or a colleague who already left instead. References come up late, after an interview, so gather them when asked rather than before.",
+          "**\"Expected salary.\"** If the box takes text, write negotiable and point at the range in lesson 6.5. If it only takes a number, use the middle of your path's documented band, not your clinical salary."
+        ]
+      },
+      {
+        "type": "h",
+        "text": "After the interview"
+      },
+      {
+        "type": "p",
+        "text": "Send a short thank-you the same day: one line for their time, one thing from the conversation you're taking with you, one sentence that you want the role. Then wait for the timeline they gave you. If they said two weeks, write on day fifteen, not day five. One more note two weeks after that, and then you let it go. Three follow-ups is the ceiling; more reads as pressure, and the offer you're waiting on is not the only one you're working."
+      },
+      {
+        "type": "script",
+        "title": "The follow-up, when the timeline has passed",
+        "text": "Hi [Name], you mentioned you'd have an update by [date], so I wanted to check in. I'm still very interested in the [title] role and happy to send anything else that would help. Is there a revised timeline I should work to?"
+      },
+      {
         "type": "callout",
         "tone": "soft",
         "title": "The reframe that helps",
@@ -622,6 +658,15 @@
         "tone": "soft",
         "title": "If it is a no, for now",
         "text": "A declined offer means the process works. You got to an offer, which means the résumé, the statement and the artifact are all doing their jobs. Log it in the tracker and keep the pace."
+      },
+      {
+        "type": "script",
+        "title": "Answering a no from a company you liked",
+        "text": "Thank you for letting me know, and for the time your team gave me. I enjoyed the conversations about [specific thing], and I'd still like to work with you. If a similar role opens in the next few months, I'd welcome the chance to be considered, and I'll keep an eye on the careers page.\n\n[Your name]"
+      },
+      {
+        "type": "p",
+        "text": "Send that within a day. A no on one role is often a maybe on the next one, and the people who interviewed you are the warmest contacts you have at that company. Log it in the tracker and keep the pace."
       },
       {
         "type": "p",

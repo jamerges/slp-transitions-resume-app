@@ -1,5 +1,81 @@
 [
   {
+    "id": "2.0",
+    "tldr": "A transition is a second job you do without pay, on top of the first one. Decide how many hours a week it gets, split them on purpose, and start the heavy applying six to eight weeks before the date you can actually start.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Nobody plans the hours. They plan the outcome, then wonder in week six why nothing has moved. The documented transitions in the research file took six to fifteen months, and the people who got there treated the search like a caseload: a fixed number of hours, a schedule, and something written down at the end of each week."
+      },
+      {
+        "type": "h",
+        "text": "Split the hours before you spend them"
+      },
+      {
+        "type": "p",
+        "text": "Split whatever you can give this into three buckets, and keep the proportions even when the total changes. Roughly six parts building proof (a portfolio piece, a course, a project at work you can point to), three parts talking to people who hold the title you want, and one part reading. Most people do it backwards: ten parts reading, and a search that never leaves the browser."
+      },
+      {
+        "type": "tool",
+        "name": "time-budget"
+      },
+      {
+        "type": "h",
+        "text": "When the calendar says apply"
+      },
+      {
+        "type": "p",
+        "text": "Interviews take weeks, and two weeks' notice is the convention, so plan on starting two to four weeks after an offer. Work back from the earliest date you can start, and begin applying hard six to eight weeks before it. Everything before that window is proof and conversations, which is the work that makes the applications land."
+      },
+      {
+        "type": "list",
+        "items": [
+          "**School setting.** Your contract has a resignation window and, in some districts, a letter-of-intent date in spring. Find both dates now. If you can start in August, the heavy applying is May and June; the proof and the conversations are the winter.",
+          "**Medical, SNF or outpatient.** Your notice period is in the handbook, and there is no season. Pick the date, count back eight weeks, and put it on the calendar today.",
+          "**Already out, or PRN.** Treat the search as the job. Fixed hours, a start time, and a log at the end of each day."
+        ]
+      },
+      {
+        "type": "h",
+        "text": "The honest volume"
+      },
+      {
+        "type": "p",
+        "text": "One documented SLP sent 113 tailored applications over eleven months for seven interviews and one offer. Another sent more than five hundred in six months. Both are in lesson 6.6 with the tracker. The point here is only that one application a week is a year, and the calendar has to hold that."
+      },
+      {
+        "type": "callout",
+        "tone": "soft",
+        "title": "Where the hours go wrong",
+        "text": "Refreshing job boards, rereading the same three postings, and rewriting one bullet a fourth time are the ways a week disappears. Boards update daily at most. Give them one fixed slot and spend the rest on proof and people."
+      },
+      {
+        "type": "steps",
+        "items": [
+          "Write down the hours you can give this week, then split them six, three and one.",
+          "Find your resignation window and letter-of-intent date, or your notice period, and put the start of your applying window on the calendar.",
+          "Block the proof hours first, at the time of day you think best. Boards get the leftover slot."
+        ]
+      }
+    ],
+    "action": {
+      "label": "Hours are on the calendar",
+      "prompt": "Set your weekly hours and the split in the tool above, then put the first proof block and your applying window on the calendar you actually look at.",
+      "done": "Set. A search with hours attached is the one that finishes."
+    },
+    "takeaways": [
+      "Decide the hours a week before you decide anything else, and split them six parts proof, three parts people, one part reading.",
+      "Start the heavy applying six to eight weeks before the earliest date you can start.",
+      "School SLPs work back from the contract dates; medical SLPs from the notice period.",
+      "Documented transitions took six to fifteen months, so the calendar has to hold a long search.",
+      "Job boards get one fixed slot a week. Proof and conversations get the rest."
+    ],
+    "sources": [
+      "facts",
+      "forums"
+    ]
+  },
+  {
     "id": "2.1",
     "tldr": "Twenty paths, sorted by how long they take instead of how interesting they sound. Four are open to the license you already hold, four want six to twelve months, three are real builds. Pick the tier your runway can carry.",
     "blocks": [

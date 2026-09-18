@@ -9,9 +9,9 @@ import type { StageKey } from "@/lib/quiz";
 
 const LESSONS = [
   ["You're allowed to want out", "Which of the five reasons people stay is the one keeping you here."],
-  ["Why leaving isn't a wasted degree", "What the years and the debt are actually worth to you now."],
+  ["Why leaving isn't a wasted degree", "Your years in, your debt and your salary, run against the path you're weighing, so the tuition stops making the decision."],
   ["What actually gave you energy", "The parts of the job you would keep, and the parts you would never do again."],
-  ["What you can't afford to lose", "Your pay floor, and how far from clinical work you are willing to go."],
+  ["What you can't afford to lose", "Four dials, set where you are this month, and the three paths that come out of them."],
   ["What you keep when you leave", "The skills that come with you, named so you can say them out loud."],
   ["Tell one person", "Say it out loud to one person, and plan exactly what you will say."],
   ["Your why, in writing", "One sentence about where you are going, written down."],

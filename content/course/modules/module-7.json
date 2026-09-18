@@ -51,6 +51,14 @@
         "text": "What did you do as an SLP?\n[Setting], [N] years, caseload of about [N]. I started thinking about leaving at the [stage] stage. The sentence in my head was \"[what you told yourself]\".\n\nWhat do you do now?\n[Title] at [kind of company]. Yesterday I [three things you did, no acronyms].\n\nHow long did the move take?\n[N] months. [N] applications, [N] interviews, [N] offers. The first month: [the thing you were scared of, and what happened].\n\nLinkedIn or website\n[A link, so a reader can find you]\n\nAnything else?\nThe number: [+ or - $N a year, or N hours a week, or N sessions a day I no longer do]. The thing I wish someone had told me: [one sentence]."
       },
       {
+        "type": "h",
+        "text": "And the four answers that become data"
+      },
+      {
+        "type": "tool",
+        "name": "landed"
+      },
+      {
         "type": "p",
         "text": "The form goes straight to me, and nothing gets published without asking you first. If you'd rather talk than type, say so in the last box and we'll record it as a conversation instead."
       }

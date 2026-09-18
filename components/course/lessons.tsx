@@ -30,7 +30,7 @@ export function Welcome({ finish, done }: LessonProps) {
   return (
     <div>
       <P>Hi. I&rsquo;m James. I was an SLP, and I now work in marketing at a health-tech company. I built this because the advice SLPs get when they want out is usually some version of &ldquo;tough it out&rdquo; or &ldquo;start over,&rdquo; and both are wrong.</P>
-      <P>These four lessons are free and take about twenty minutes. You&rsquo;ll set the number your next job has to clear, pick a date to aim at, work out whether the problem is your workplace, the work itself, or this season, and check three beliefs that keep most SLPs in the building longer than they need to be. No account, no card.</P>
+      <P>These four lessons are free and take about twenty minutes. You&rsquo;ll see what you really earn per hour, set the number your next job has to clear, pick a date to aim at, work out whether the problem is your workplace, the work itself, or this season, and check three beliefs that keep most SLPs in the building longer than they need to be. No account, no card.</P>
       <P>After that, Module 1 is $19: seven short lessons that put your reasons in writing, with what your degree is worth now, what gave you energy and what you can&rsquo;t afford to lose, plus the workbook that keeps your answers. The full program comes later, and the $19 is credited toward it.</P>
       <P style={{ margin: 0 }}>You won&rsquo;t get cheerleading here, or a promise of six figures by fall. Every number comes from documented SLP transitions and public salary data, and the source sits under every lesson. Most people work through this alongside a full-time caseload, which is how it is built.</P>
     </div>
@@ -41,31 +41,122 @@ export function Welcome({ finish, done }: LessonProps) {
 const FLOORS = ["Must match my SLP pay from day one", "I can take a small dip for better conditions", "I have runway for a bigger jump"];
 const plus90 = () => { const d = new Date(); d.setDate(d.getDate() + 90); return d.toISOString().slice(0, 10); };
 
+const TRADES: { key: string; text: string }[] = [
+  { key: "move", text: "Move to a new city for the right role" },
+  { key: "dip", text: "Take a dip in pay for the right first door" },
+  { key: "benefits", text: "Go without employer benefits for a while, on a contract or freelance" },
+  { key: "commute", text: "Commute again, if the role is right" },
+  { key: "remote", text: "Work fully remote, with fewer people around you" },
+  { key: "office", text: "Be in an office most days" },
+];
+const numInput: React.CSSProperties = { width: "100%", padding: "9px 12px", fontSize: 15, border: "1px solid var(--border)", borderRadius: 8, fontFamily: font.sans, background: "var(--card)" };
+/* Declared outside StartingLine: a component created inside a render function is
+   a new type every keystroke, which remounts the input and drops focus. */
+const MoneyField = ({ label, value, onChange, placeholder, prefix }: { label: string; value: string; onChange: (v: string) => void; placeholder: string; prefix?: string }) => (
+  <label style={{ display: "block", fontSize: 13, fontWeight: 600 }}>
+    <span style={{ display: "block", marginBottom: 4 }}>{label}</span>
+    <span style={{ position: "relative", display: "block" }}>
+      {prefix && <span style={{ position: "absolute", left: 12, top: 10, color: "var(--muted)", fontSize: 15 }}>{prefix}</span>}
+      <input inputMode="decimal" value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} style={{ ...numInput, paddingLeft: prefix ? 24 : 12 }} />
+    </span>
+  </label>
+);
+const num = (s: string) => { const n = Number(String(s).replace(/[^0-9.]/g, "")); return isFinite(n) && n > 0 ? n : 0; };
+
 export function StartingLine({ answer, save, finish, done }: LessonProps) {
   const a = answer || {};
   const [floor, setFloor] = useState<number>(a.floor ?? -1);
   const [date, setDate] = useState<string>(a.date || plus90());
-  // Auto-save. Nothing here needs a button: what you pick is what is kept, and
-  // the lesson completes once both answers exist. The stage question lives in
-  // lesson 1.1 and the path comes from the quiz, so neither is asked twice.
+  const [salary, setSalary] = useState<string>(a.salary ? String(a.salary) : "");
+  const [hours, setHours] = useState<string>(a.hours ? String(a.hours) : "");
+  const [weeks, setWeeks] = useState<string>(a.weeks ? String(a.weeks) : "");
+  const [expenses, setExpenses] = useState<string>(a.expenses ? String(a.expenses) : "");
+  const [taxPct, setTaxPct] = useState<number>(a.taxPct ?? 25);
+  const [trades, setTrades] = useState<Record<string, boolean>>(a.trades || {});
+
+  const sal = num(salary), hrs = num(hours), wks = num(weeks), exp = num(expenses);
+  const yearHours = hrs * wks;
+  const hourly = sal && yearHours ? sal / yearHours : 0;
+  // The comparison job: a 40-hour week with about four weeks off, 1,920 hours a year.
+  const altHourly = sal ? sal / 1920 : 0;
+  const hoursBack = yearHours > 1920 ? yearHours - 1920 : 0;
+  const floorDollars = exp ? Math.round((exp * 12) / (1 - taxPct / 100)) : 0;
+
+  // Auto-save. Nothing here needs a button: what you type is what is kept, and
+  // the lesson completes once a floor and a date exist. The stage question
+  // lives in lesson 1.1 and the path comes from the quiz, so neither is asked twice.
   useEffect(() => {
-    if (floor < 0 || !date) return;
-    save({ ...a, floor, date });
-    if (!done) finish({ action: true });
+    save({ ...a, floor, date, salary: sal, hours: hrs, weeks: wks, expenses: exp, taxPct, floorDollars, hourly: Math.round(hourly * 100) / 100, trades });
+    if (floor >= 0 && date && !done) finish({ action: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [floor, date]);
+  }, [floor, date, salary, hours, weeks, expenses, taxPct, trades]);
+
   return (
     <div>
       <Panel>
-        <H>1. Your income floor</H>
+        <H>1. What you are really paid per hour</H>
+        <Muted>Count the hours you actually work, including notes at home, evening meetings and the planning nobody sees. Then count the weeks you actually work. A job that pays the same salary for a forty-hour week is a raise you can measure.</Muted>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }} className="tos-two-col">
+          <MoneyField label="Salary now" value={salary} onChange={setSalary} placeholder="77,000" prefix="$" />
+          <MoneyField label="Hours in a real week" value={hours} onChange={setHours} placeholder="50" />
+          <MoneyField label="Weeks you work a year" value={weeks} onChange={setWeeks} placeholder="42" />
+        </div>
+        {hourly > 0 && (
+          <div className="tos-fade" style={{ marginTop: 14, padding: "12px 14px", borderRadius: 10, background: "var(--accent-bg-subtle)", fontSize: 14.5, lineHeight: 1.6 }}>
+            <b>${hourly.toFixed(2)} an hour</b> is what you make now, over {yearHours.toLocaleString("en-US")} hours a year.
+            {" "}The same ${sal.toLocaleString("en-US")} at forty hours a week with four weeks off is <b>${altHourly.toFixed(2)} an hour</b>
+            {hoursBack > 0 ? <>, and gives you back about <b>{Math.round(hoursBack).toLocaleString("en-US")} hours a year</b>.</> : <>.</>}
+            {" "}Use that number when a lower salary comes with a shorter week.
+          </div>
+        )}
+      </Panel>
+
+      <Panel style={{ marginTop: 14 }}>
+        <H>2. Your income floor</H>
         <Muted>The number the next job has to clear. It decides which paths stay on your map and which get flagged as below it.</Muted>
         {FLOORS.map((f, i) => <Choice key={f} on={floor === i} onClick={() => setFloor(i)}>{f}</Choice>)}
+        <div style={{ marginTop: 14, paddingTop: 14, borderTop: "1px solid var(--border)" }}>
+          <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 4 }}>Put a dollar figure on it</div>
+          <Muted>Add up a month of rent or mortgage, loans, insurance, food, transport, childcare and savings. The floor is that month, twelve times, plus what tax takes before you see it. Social Security and Medicare alone take 7.65 percent of pay; federal and state income tax come on top, so set the slider where your last pay stub puts you.</Muted>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, alignItems: "end" }} className="tos-two-col">
+            <MoneyField label="Monthly expenses" value={expenses} onChange={setExpenses} placeholder="4,800" prefix="$" />
+            <label style={{ display: "block", fontSize: 13, fontWeight: 600 }}>
+              <span style={{ display: "block", marginBottom: 4 }}>Tax taken from pay: {taxPct}%</span>
+              <input type="range" min={15} max={40} step={1} value={taxPct} onChange={(e) => setTaxPct(Number(e.target.value))} style={{ width: "100%" }} />
+            </label>
+          </div>
+          {floorDollars > 0 && (
+            <div className="tos-fade" style={{ marginTop: 12, padding: "12px 14px", borderRadius: 10, background: "var(--accent-bg-subtle)", fontSize: 14.5, lineHeight: 1.6 }}>
+              Your floor is about <b>${floorDollars.toLocaleString("en-US")} a year</b> before tax. Any path whose top pays less than that gets flagged on your map.
+            </div>
+          )}
+        </div>
       </Panel>
+
       <Panel style={{ marginTop: 14 }}>
-        <H>2. A date to aim at</H>
+        <H>3. A date to aim at</H>
         <Muted>Ninety days out is the default. Fast paths (liaison, utilization review, clinical educator) fit inside it. Long builds run six to fifteen months and the map stretches to match.</Muted>
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} style={{ padding: "10px 12px", fontSize: 15, border: "1px solid var(--border)", borderRadius: 8, fontFamily: font.sans }} />
       </Panel>
+
+      <Panel style={{ marginTop: 14 }}>
+        <H>4. What you would trade</H>
+        <Muted>Decide these now, while nothing is on the table. A tired brain talks you out of good offers over things you would have said yes to on a calm day.</Muted>
+        {TRADES.map((t) => {
+          const v = trades[t.key];
+          return (
+            <div key={t.key} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "9px 0", borderTop: "1px solid var(--border)" }}>
+              <span style={{ fontSize: 14.5, lineHeight: 1.45 }}>{t.text}</span>
+              <span style={{ display: "flex", gap: 6, flexShrink: 0 }}>
+                {[["Yes", true], ["No", false]].map(([label, val]) => (
+                  <button key={String(label)} type="button" onClick={() => setTrades({ ...trades, [t.key]: val as boolean })} style={{ padding: "6px 14px", borderRadius: 999, border: `1.5px solid ${v === val ? "var(--accent)" : "var(--border)"}`, background: v === val ? "var(--accent-bg-subtle)" : "var(--card)", color: v === val ? "var(--accent)" : "var(--text)", fontFamily: font.sans, fontSize: 13.5, fontWeight: v === val ? 700 : 500, cursor: "pointer" }}>{label as string}</button>
+                ))}
+              </span>
+            </div>
+          );
+        })}
+      </Panel>
+
       <div style={{ marginTop: 16, fontSize: 13.5, color: "var(--muted)" }}>
         {floor >= 0 && date ? <Saved /> : "Pick an income floor and this saves itself."}
       </div>
@@ -479,8 +570,19 @@ export function Identity({ finish, done }: LessonProps) {
 
 /* ------------------------------ 1.6 Tell one ------------------------------ */
 const WHO = ["A partner", "A friend outside the field", "A colleague who already left", "A therapist or coach", "Someone else"];
+const PRIVATE = [
+  "The search happens on your own device and your own email. Nothing on the work laptop, the work Wi-Fi or the district account.",
+  "Your résumé and LinkedIn carry a personal email address, not the work one.",
+  "On LinkedIn, \u201cShare profile updates with your network\u201d is off, and Open to Work is set to recruiters only.",
+  "Your current supervisor is not on your reference list yet. A past supervisor, a mentor or a colleague who already left is.",
+  "You know your contract\u2019s resignation window and any letter-of-intent date, or your notice period if you\u2019re in a medical setting.",
+  "If someone at work asks, the sentence is the one above. It is true and it ends the conversation.",
+];
+
 export function TellOne({ answer, save, finish, done }: LessonProps) {
   const [who, setWho] = useState<string>(answer?.who || "");
+  const [priv, setPriv] = useState<boolean[]>(answer?.private || PRIVATE.map(() => false));
+  const togglePriv = (i: number) => { const n = priv.map((x, j) => (j === i ? !x : x)); setPriv(n); save({ ...(answer || {}), who, private: n }); };
   return (
     <div>
       <P>Keeping this to yourself is more tiring than it looks. You clear the search history, keep your face neutral in the staff room, and carry the whole thing alone. Telling one person, in one sentence, takes most of that weight off, and it doesn&rsquo;t commit you to anything.</P>
@@ -502,7 +604,18 @@ export function TellOne({ answer, save, finish, done }: LessonProps) {
           <div style={{ padding: 12, borderRadius: 10, background: "var(--bg)", border: "1px solid var(--border)", fontSize: 14, lineHeight: 1.5 }}><b>&ldquo;There&rsquo;s a shortage. This makes it worse.&rdquo;</b><br />&ldquo;A burnt-out clinician isn&rsquo;t a gift to the kids. They deserve someone who wants to be in the room.&rdquo;</div>
         </div>
       </Panel>
-      {!done ? <Btn onClick={() => { save({ who }); finish({ action: true }); }} style={{ marginTop: 16 }} disabled={!who}>I told someone ✓</Btn>
+      <Panel style={{ marginTop: 14 }}>
+        <H>And no one else, yet</H>
+        <Muted>One person knows. Until you have an offer in writing, the rest of the building doesn&rsquo;t need to, and most of the ways people get found out are settings and habits. Six things to check.</Muted>
+        {PRIVATE.map((t, i) => (
+          <label key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", padding: "8px 0", borderTop: i ? "1px solid var(--border)" : "none", cursor: "pointer", fontSize: 14, lineHeight: 1.5 }}>
+            <input type="checkbox" checked={!!priv[i]} onChange={() => togglePriv(i)} style={{ marginTop: 4 }} />
+            <span style={{ color: priv[i] ? "var(--muted)" : "var(--text)", textDecoration: priv[i] ? "line-through" : "none" }}>{t}</span>
+          </label>
+        ))}
+        <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>{priv.filter(Boolean).length} of {PRIVATE.length} in place. Your workbook keeps the list.</div>
+      </Panel>
+      {!done ? <Btn onClick={() => { save({ who, private: priv }); finish({ action: true }); }} style={{ marginTop: 16 }} disabled={!who}>I told someone ✓</Btn>
              : <div style={{ marginTop: 16, color: "var(--accent)", fontWeight: 600 }}>Done. That was the hardest sentence in the program.</div>}
     </div>
   );

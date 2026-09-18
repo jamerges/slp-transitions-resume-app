@@ -13,6 +13,14 @@ import { DIALS } from "@/lib/course";
  */
 const FLOORS = ["Match my SLP pay from day one", "A small dip for better conditions", "Runway for a bigger jump"];
 const VERDICT_LABEL: Record<string, string> = { workplace: "Bad workplace", fit: "Bad fit", season: "Bad season" };
+const TRADE_LABELS = [
+  { key: "move", text: "move to a new city for the right role" },
+  { key: "dip", text: "take a dip in pay for the right first door" },
+  { key: "benefits", text: "go without employer benefits for a while" },
+  { key: "commute", text: "commute again" },
+  { key: "remote", text: "work fully remote" },
+  { key: "office", text: "be in an office most days" },
+];
 const money = (n: number) => "$" + Math.round(n).toLocaleString("en-US");
 
 function Line({ n = 1 }: { n?: number }) {
@@ -79,8 +87,10 @@ export default function MyWorkbook() {
             </div>
 
             <Section n={1} title="Your starting line" sub="From lesson 0.2.">
-              <Field label="The income floor the next job has to clear" value={start.floor >= 0 ? FLOORS[start.floor] : null} />
+              <Field label="What you really earn per hour now" value={start.hourly > 0 ? `$${Number(start.hourly).toFixed(2)} an hour, over ${Math.round((start.hours || 0) * (start.weeks || 0)).toLocaleString("en-US")} hours a year` : null} />
+              <Field label="The income floor the next job has to clear" value={start.floor >= 0 ? FLOORS[start.floor] + (start.floorDollars > 0 ? ` · about ${money(start.floorDollars)} a year before tax` : "") : null} />
               <Field label="The date you are aiming at" value={start.date || null} />
+              <Field label="What you would trade" value={start.trades && Object.keys(start.trades).length ? TRADE_LABELS.filter((t) => start.trades[t.key] !== undefined).map((t) => `${start.trades[t.key] ? "Yes" : "No"}: ${t.text}`).join("\n") : null} lines={3} />
             </Section>
 
             <Section n={2} title="Where you are, and the verdict" sub="From lessons 1.1 and 1.2.">
@@ -130,6 +140,7 @@ export default function MyWorkbook() {
               <Field label="Finish the sentence: I will miss being the person who …" lines={3} />
               <Field label="The person you told" value={told.who || null} />
               <Field label="What they said back" lines={3} />
+              <Field label="Kept private" value={Array.isArray(told.private) ? `${told.private.filter(Boolean).length} of ${told.private.length} settings and habits in place` : null} />
             </Section>
 
             <Section n={7} title="Pushes, pulls, and the sentence" sub="From the Module 1 checkpoint.">
