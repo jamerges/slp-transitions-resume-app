@@ -38,9 +38,10 @@ HTML = f"""<!DOCTYPE html><html><body style="margin:0;padding:0;background:#F7F7
 
 if __name__ == "__main__":
     group = sys.argv[1] if len(sys.argv) > 1 else TEST_GROUP
+    groups = [g for g in group.split(",") if g]
     name = sys.argv[2] if len(sys.argv) > 2 else "2026-09-18 Friday compass v3 (TEST James only)"
-    r = api("/campaigns", "POST", {"name": name, "type": "regular", "groups": [group], "emails": [{"subject": SUBJECT, "from_name": FROM_NAME, "from": FROM, "content": HTML}]})
+    r = api("/campaigns", "POST", {"name": name, "type": "regular", "groups": groups, "emails": [{"subject": SUBJECT, "from_name": FROM_NAME, "from": FROM, "content": HTML}]})
     cid = (r.get("data") or {}).get("id")
     if not cid: print("CREATE FAILED:", json.dumps(r)[:400]); sys.exit(1)
     s = api(f"/campaigns/{cid}/schedule", "POST", {"delivery": "instant"})
-    print(f"campaign {cid} -> {(s.get('data') or {}).get('status')} (group {group})")
+    print(f"campaign {cid} -> {(s.get('data') or {}).get('status')} (groups {groups})")
