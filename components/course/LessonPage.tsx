@@ -7,6 +7,7 @@ import { CourseShell, UnlockToast, Btn, Panel, font } from "./ui";
 import type { CourseProduct } from "@/lib/course-tiers";
 import { Blocks } from "./Blocks";
 import * as L from "./lessons";
+import SaveMyPlace from "./SaveMyPlace";
 
 // Modules 0 and 1 are hand-built React lessons (the calculators and the
 // animated explainers). Modules 2 onward are authored as JSON and rendered by
@@ -109,6 +110,8 @@ export default function LessonPage({ id, access }: { id: string; access?: { prod
         </div>
 
         <aside>
+          {/* The free module lives in one browser until they ask for a link; on Module 0 the ask sits where a first-timer can see it. */}
+          {mod.n === 0 && (!access || access.product === "free") && <SaveMyPlace compact />}
           <Panel style={{ marginBottom: 14 }}>
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 10 }}>Module {mod.n} · {mod.title}</div>
             {mod.lessons.map((l) => { const d = p.completed.includes(l.id), cur = l.id === id; return (
