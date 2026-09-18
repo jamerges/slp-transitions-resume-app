@@ -421,7 +421,7 @@ export async function sendGroundAccessEmail(input: { to: string; unlockUrl: stri
   <div style="text-align:center;margin-bottom:22px;"><div style="font-size:20px;font-weight:700;color:#2D6A4F;font-family:Georgia,serif;">SLP Transitions</div></div>
   <p style="font-size:16px;line-height:1.7;">Thanks. Here's your way into Module 1 of Transition OS.</p>
   <div style="text-align:center;margin:22px 0;"><a href="${unlockUrl}" style="display:inline-block;padding:14px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Open Module 1 &rarr;</a></div>
-  <p style="font-size:15px;line-height:1.7;">That link is your login. It works in any browser, on any device, as many times as you like, so keep this email. Your progress saves in whichever browser you use. If you haven't done the free fifteen-minute setup yet, it comes first.</p>
+  <p style="font-size:15px;line-height:1.7;">That link is your login. It works in any browser, on any device, as many times as you like, so keep this email. Your progress is saved to your purchase, so it is there on any device you open this link on. If you haven't done the free fifteen-minute setup yet, it comes first.</p>
   <p style="font-size:15px;line-height:1.7;">Seven lessons, about forty minutes, and every one ends with something to actually do. Your <a href="${APP_URL}/course/workbook" style="color:#0B6B54;">workbook</a> fills in as you go and prints to PDF whenever you want it on paper.</p>
   <p style="font-size:15px;line-height:1.7;">What you paid today is credited toward the full program when it launches, so you won't pay for it twice.</p>
   <p style="font-size:15px;line-height:1.7;">If it doesn't help, reply within 30 days and I'll refund it. No form.</p>
@@ -429,6 +429,23 @@ export async function sendGroundAccessEmail(input: { to: string; unlockUrl: stri
   <p style="font-size:12px;color:#9CA3AF;margin-top:26px;">If the button doesn't work, paste this into your browser:<br/><span style="word-break:break-all;">${unlockUrl}</span></p>
 </div></body></html>`;
   await getResend().emails.send({ from: FROM_ADDRESS, to, replyTo: REPLY_TO, subject: "Your Ground access link", html });
+}
+
+/** The same link again, for a buyer on a new device or with a cleared browser. Sent from /api/course/find-link. */
+export async function sendCourseLinkEmail(input: { to: string; unlockUrl: string }): Promise<void> {
+  const { to, unlockUrl } = input;
+  const html = `<!doctype html>
+<html><body style="margin:0;padding:0;background:#FAFAF9;font-family:-apple-system,'DM Sans',sans-serif;color:#1B1B1E;">
+<div style="max-width:560px;margin:0 auto;padding:32px 20px;">
+  <div style="text-align:center;margin-bottom:22px;"><div style="font-size:20px;font-weight:700;color:#2D6A4F;font-family:Georgia,serif;">SLP Transitions</div></div>
+  <p style="font-size:16px;line-height:1.7;">Here's your way back into Transition OS.</p>
+  <div style="text-align:center;margin:22px 0;"><a href="${unlockUrl}" style="display:inline-block;padding:14px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Open my lessons &rarr;</a></div>
+  <p style="font-size:15px;line-height:1.7;">This link is your login. It works in any browser, on any device, as many times as you like, and your answers and your people list are saved to your purchase, so they will be there when it opens.</p>
+  <p style="font-size:15px;line-height:1.7;">If you didn't ask for this, ignore it. Nothing changes until the link is opened.</p>
+  <p style="font-size:15px;line-height:1.7;">James</p>
+  <p style="font-size:12px;color:#9CA3AF;margin-top:26px;">If the button doesn't work, paste this into your browser:<br/><span style="word-break:break-all;">${unlockUrl}</span></p>
+</div></body></html>`;
+  await getResend().emails.send({ from: FROM_ADDRESS, to, replyTo: REPLY_TO, subject: "Your Transition OS link", html });
 }
 
 /** What they worked out in Module 1, in their inbox, plus the links back in. */

@@ -166,6 +166,7 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
         </Card>
 
         <div id="buy" />
+        <div style={{ fontSize: 13.5, color: "var(--muted)", margin: "0 0 10px" }}>Already bought it? <a href="/course/find" style={{ color: "var(--accent)", fontWeight: 600 }}>Get your link sent again &rarr;</a></div>
         <Card style={{ border: "1.5px solid var(--accent)" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
             <div><div style={{ fontSize: 30, fontWeight: 700, fontFamily: "'Playfair Display', Georgia, serif" }}>${GROUND_PRICE}</div><div style={{ fontSize: 13, color: "var(--muted)" }}>once, no subscription</div></div>

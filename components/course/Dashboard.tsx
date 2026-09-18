@@ -171,6 +171,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
               <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 700, lineHeight: 1.2, marginBottom: 8 }}>Before You Start Looking</div>
               <p style={{ fontSize: 13.5, lineHeight: 1.55, margin: "0 0 12px", color: "var(--text)" }}>Seven short lessons that put your reasons in writing: what your degree is worth now, what gave you energy, and what you can&rsquo;t afford to lose, plus the workbook that keeps your answers. Credited toward the full program. 30-day refund.</p>
               <Btn href="/course/ground" outline style={{ width: "100%", textAlign: "center" }}>{"See what's in it →"}</Btn>
+              <div style={{ fontSize: 13, marginTop: 12, lineHeight: 1.5 }}>Already bought it? <a href="/course/find" style={{ color: "var(--accent)", fontWeight: 600 }}>Get your link sent again &rarr;</a></div>
             </Panel>
           )}
           {!visitor && (<>
