@@ -1,6 +1,7 @@
 /** Pure, importable from client components. Module 0 is free for everyone.
  *  Ground opens Module 1. The full program opens the rest. */
-export type CourseProduct = "ground" | "os";
+/** "free" is the Module 0 link: it opens nothing paid but carries a stable session id so progress syncs. */
+export type CourseProduct = "free" | "ground" | "os";
 
 export function canOpen(moduleN: number, access: { product: CourseProduct } | null | undefined): boolean {
   if (moduleN <= 0) return true;           // the setup is free

@@ -7,10 +7,12 @@ import { STAGE_META, StageRoad, JourneyMap } from "./scenes";
 import { canOpen, type CourseProduct } from "@/lib/course-tiers";
 import { COMPANY_COUNT } from "@/lib/companies";
 import ProductMenu from "@/components/ProductMenu";
+import SaveMyPlace from "./SaveMyPlace";
 import { track } from "@/lib/analytics";
 
 const NOTE: Record<string, string> = {
   none: "Module 0 is free. Module 1 is $19, credited toward the full program when it opens. Progress is saved in this browser.",
+  free: "Module 0 is yours and saved to your link. Module 1 is $19, credited toward the full program when it opens.",
   ground: "Modules 0 and 1 are yours. The full program opens Modules 2 to 7. Progress is saved to your purchase.",
   os: "Progress is saved to your purchase, on any device.",
 };
@@ -33,7 +35,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
   const days = daysUntil(start.date);
   // A visitor sees three things: the free module, the $19 module, and one
   // "coming soon" card for the rest. Buyers get the whole map.
-  const visitor = held === "none";
+  const visitor = held === "none" || held === "free";
   const shown = visitor ? MODULES.filter((m) => m.n <= 1) : MODULES;
   const m0 = MODULES[0];
 
@@ -178,6 +180,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
         </div>
 
         <aside>
+          {visitor && p.completed.length > 0 && <SaveMyPlace compact />}
           {visitor && (
             <Panel tone="soft" style={{ marginBottom: 14 }}>
               <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 6 }}>Module 1 · $19</div>

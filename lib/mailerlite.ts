@@ -32,6 +32,10 @@ export const CUSTOMER_GROUPS = {
   ground: "198364363480893430",  // $24 Ground: Week 1 of Transition OS (created 2026-09-11)
 } as const;
 
+export const COURSE_GROUPS = {
+  free: "198976109575931265",   // "Course · Module 0 (free link)" (created 2026-09-18): asked for a link back at the end of Module 0
+} as const;
+
 export const WAITLIST_GROUPS = {
   ground: "198391691796809364",  // "Waitlist · Ground (opening notice)" (created 2026-09-12)
 } as const;

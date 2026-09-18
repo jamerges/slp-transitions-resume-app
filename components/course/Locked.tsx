@@ -33,7 +33,7 @@ function GroundCheckout() {
 
 /** What a visitor sees on a lesson they don't hold. Module 1 sells Ground;
  *  the rest point at the full program. */
-export default function LockedLesson({ moduleN, moduleTitle, lessonTitle, owns }: { moduleN: number; moduleTitle: string; lessonTitle: string; owns?: "ground" | "os" | null }) {
+export default function LockedLesson({ moduleN, moduleTitle, lessonTitle, owns }: { moduleN: number; moduleTitle: string; lessonTitle: string; owns?: "free" | "ground" | "os" | null }) {
   const { p, pct } = useProgress();
   const ground = moduleN === 1 && owns !== "ground";
   return (

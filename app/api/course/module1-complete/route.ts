@@ -25,7 +25,7 @@ function getStripe(): Stripe {
 
 export async function POST(req: Request) {
   const access = await getCourseAccess();
-  if (!access) return NextResponse.json({ error: "No access" }, { status: 403 });
+  if (!access || access.product === "free") return NextResponse.json({ error: "No access" }, { status: 403 });
   try {
     const { summary } = (await req.json()) as { summary?: Record<string, string> };
     if (!summary) return NextResponse.json({ error: "Missing summary" }, { status: 400 });

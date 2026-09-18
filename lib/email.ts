@@ -448,6 +448,30 @@ export async function sendCourseLinkEmail(input: { to: string; unlockUrl: string
   await getResend().emails.send({ from: FROM_ADDRESS, to, replyTo: REPLY_TO, subject: "Your Transition OS link", html });
 }
 
+/** The free tier's link, with the starting line in it so the email is worth keeping. Sent from /api/course/free-link. */
+export async function sendFreeLinkEmail(input: { to: string; unlockUrl: string; summary: { floor: string; date: string; verdict: string } }): Promise<void> {
+  const { to, unlockUrl, summary } = input;
+  const esc = (v: string) => v.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c] as string));
+  const lines = [
+    summary.floor ? `<li>The number your next job has to clear: <b>${esc(summary.floor)}</b></li>` : "",
+    summary.date ? `<li>The date you are aiming at: <b>${esc(summary.date)}</b></li>` : "",
+    summary.verdict ? `<li>Your verdict: <b>${esc(summary.verdict)}</b></li>` : "",
+  ].filter(Boolean).join("");
+  const html = `<!doctype html>
+<html><body style="margin:0;padding:0;background:#FAFAF9;font-family:-apple-system,'DM Sans',sans-serif;color:#1B1B1E;">
+<div style="max-width:560px;margin:0 auto;padding:32px 20px;">
+  <div style="text-align:center;margin-bottom:22px;"><div style="font-size:20px;font-weight:700;color:#2D6A4F;font-family:Georgia,serif;">SLP Transitions</div></div>
+  <p style="font-size:16px;line-height:1.7;">Here's your starting line, and the way back to it.</p>
+  ${lines ? `<ul style="font-size:15px;line-height:1.8;padding-left:20px;">${lines}</ul>` : ""}
+  <div style="text-align:center;margin:22px 0;"><a href="${unlockUrl}" style="display:inline-block;padding:14px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Open my lessons &rarr;</a></div>
+  <p style="font-size:15px;line-height:1.7;">That link is your login. It works in any browser, on any device, as many times as you like, and everything you answer is saved to it. Keep this email.</p>
+  <p style="font-size:15px;line-height:1.7;">Module 1 puts your reasons in writing, seven lessons and the workbook, for $19. It opens from the same link if you decide to.</p>
+  <p style="font-size:15px;line-height:1.7;">James</p>
+  <p style="font-size:12px;color:#9CA3AF;margin-top:26px;">If the button doesn't work, paste this into your browser:<br/><span style="word-break:break-all;">${unlockUrl}</span></p>
+</div></body></html>`;
+  await getResend().emails.send({ from: FROM_ADDRESS, to, replyTo: REPLY_TO, subject: "Your starting line, and your Transition OS link", html });
+}
+
 /** What they worked out in Module 1, in their inbox, plus the links back in. */
 export function renderModule1SummaryEmail(summary: Record<string, string>): string {
   const row = (k: string, v: string) =>

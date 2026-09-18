@@ -42,7 +42,7 @@ export function verifyAccess(token: string | undefined | null): CourseAccess | n
   if (mac.length !== expected.length || !timingSafeEqual(Buffer.from(mac), Buffer.from(expected))) return null;
   try {
     const j = JSON.parse(unb64u(payload)) as { s?: string; p?: string; x?: number };
-    if (!j.s || (j.p !== "ground" && j.p !== "os")) return null;
+    if (!j.s || (j.p !== "ground" && j.p !== "os" && j.p !== "free")) return null;
     if (!j.x || j.x < Date.now() / 1000) return null;
     return { product: j.p, sid: j.s };
   } catch { return null; }

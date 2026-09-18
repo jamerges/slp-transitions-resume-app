@@ -3,6 +3,7 @@
 // its lesson, a save callback, and a `finish` callback that marks the lesson
 // (and, for action lessons, the action) complete.
 import { useMemo, useState, type ReactNode, useEffect } from "react";
+import SaveMyPlace from "./SaveMyPlace";
 import { PATHS } from "@/lib/quiz";
 import { DIAL_PROFILES, ENERGY_PATHS, DIALS } from "@/lib/course";
 import { Btn, Panel, Slider, font } from "./ui";
@@ -174,7 +175,7 @@ function Choice({ on, onClick, children }: { on: boolean; onClick: () => void; c
 
 /* ------------------------- 0.3 / 1.1 explainers -------------------------- */
 export function ThreeLies({ finish, done }: LessonProps) {
-  return <div><Explainer title="Three lies, three guardrails" scenes={threeLiesScenes} onFinished={() => { if (!done) finish(); }} /></div>;
+  return <div><Explainer title="Three lies, three guardrails" scenes={threeLiesScenes} onFinished={() => { if (!done) finish(); }} /><SaveMyPlace /></div>;
 }
 
 export function FiveStages({ answer, save, finish, done }: LessonProps) {

@@ -23,7 +23,7 @@ const FILES = {
 
 export async function GET(req: Request) {
   const access = await getCourseAccess();
-  if (!access) {
+  if (!access || access.product === "free") {
     return NextResponse.json(
       { error: "The workbook comes with Module 1.", where: "/course/ground" },
       { status: 403 }
@@ -31,7 +31,7 @@ export async function GET(req: Request) {
   }
   const url = new URL(req.url);
   const ext = url.searchParams.get("f") === "docx" ? "docx" : "pdf";
-  const base = FILES[access.product];
+  const base = FILES[access.product as "ground" | "os"];
   try {
     const buf = await readFile(path.join(process.cwd(), "content/course/workbook", `${base}.${ext}`));
     return new NextResponse(new Uint8Array(buf), {
