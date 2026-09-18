@@ -36,7 +36,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
   const m0 = MODULES[0];
 
   return (
-    <CourseShell xp={p.xp} streak={p.streak.count} pct={pct} note={NOTE[held]}>
+    <CourseShell xp={p.xp} pct={pct} note={NOTE[held]}>
       {/* ---------------- hero: the map ---------------- */}
       <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) 320px", gap: 22, alignItems: "stretch" }} className="tos-two-col">
         <Panel style={{ background: "linear-gradient(160deg, #0A3D31 0%, #0B6B54 100%)", color: "#fff", border: "none", padding: "clamp(20px, 4vw, 32px)" }}>
@@ -183,13 +183,8 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
             <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 10, lineHeight: 1.5 }}>Badges are for things you did, never for things you read.</div>
           </Panel>
           <Panel style={{ marginBottom: 14 }}>
-            <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>Streak</div>
-            <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}><span style={{ fontFamily: font.serif, fontSize: 34, fontWeight: 700 }}>{p.streak.count}</span><span style={{ color: "var(--muted)", fontSize: 14 }}>day{p.streak.count === 1 ? "" : "s"} with an action</span></div>
-            <div style={{ fontSize: 12, color: "var(--muted)", lineHeight: 1.5, marginTop: 4 }}>One missed day is forgiven. Two resets it. Doing something counts; reading doesn&rsquo;t.</div>
-          </Panel>
-          <Panel style={{ marginBottom: 14 }}>
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>Included with the program</div>
-            {[["📄", "Your workbook (fills in as you go)", "/course/workbook"], ["📇", "Outreach and application tracker", "/course/transition-os-tracker-README.md"], ["🃏", "20 path cards with sourced ranges", "https://slptransitions.com/alternative-careers-speech-pathologists-slps/"], ["🏢", `${COMPANY_COUNT} health-tech and ed-tech companies that value clinical skills`, "/companies"], ["📬", "This week's open roles by path", "/jobs"], ["🧰", "Résumé, cover letter and LinkedIn tools", "/"]].map(([i, t, h]) => (
+            {[["📄", "Your workbook (fills in as you go)", "/course/workbook"], ["📇", "Your people and applications", "/course/tracker"], ["🃏", "20 path cards with sourced ranges", "https://slptransitions.com/alternative-careers-speech-pathologists-slps/"], ["🏢", `${COMPANY_COUNT} health-tech and ed-tech companies that value clinical skills`, "/companies"], ["📬", "This week's open roles by path", "/jobs"], ["🧰", "Résumé, cover letter and LinkedIn tools", "/"]].map(([i, t, h]) => (
               <a key={t} href={h} style={{ display: "flex", gap: 8, fontSize: 13, color: "var(--text)", textDecoration: "none", padding: "6px 0", lineHeight: 1.4 }}><span aria-hidden>{i}</span>{t}</a>
             ))}
           </Panel>

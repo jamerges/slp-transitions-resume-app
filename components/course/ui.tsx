@@ -45,7 +45,7 @@ export function Pill({ children, tone = "accent", style }: { children: ReactNode
   return <span style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "6px 12px", borderRadius: 999, background: bg, color, fontSize: 13, fontWeight: 600, whiteSpace: "nowrap", ...style }}>{children}</span>;
 }
 
-export function CourseShell({ children, xp, streak, pct, right, note }: { children: ReactNode; xp: number; streak: number; pct: number; right?: ReactNode; note?: ReactNode }) {
+export function CourseShell({ children, xp, pct, right, note }: { children: ReactNode; xp: number; pct: number; right?: ReactNode; note?: ReactNode }) {
   return (
     <div style={{ ...S.root, padding: 0 }}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
@@ -61,7 +61,6 @@ export function CourseShell({ children, xp, streak, pct, right, note }: { childr
           </a>
           <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
             <Pill><span aria-hidden>✦</span> <CountUp value={xp} /> XP</Pill>
-            <Pill tone={streak > 0 ? "warm" : "muted"}><span aria-hidden>🔥</span> {streak} day{streak === 1 ? "" : "s"}</Pill>
             <Ring pct={pct} size={40} />
             {right}
           </div>

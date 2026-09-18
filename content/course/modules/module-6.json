@@ -221,8 +221,15 @@
         "text": "Interviews feel unpredictable, but the questions a career changer gets are not. Six of them do most of the work, and they show up in phone screens, on application forms, and in the first ten minutes with a hiring manager."
       },
       {
-        "type": "tool",
-        "name": "screening-questions"
+        "type": "list",
+        "items": [
+          "**Why are you leaving clinical work?** Works: one sentence of pull, one of the evidence you have prepared. Sinks: any sentence that starts with what you are escaping. They hear a retention risk.",
+          "**You don't have experience in this role. Why should we consider you?** Works: two accomplishments mapped onto the role's first-ninety-days problems, with numbers. \"I've been doing customer success my whole career; I called it family care. Sixty-two accounts, quarterly reviews, ninety percent retention.\" Sinks: a list of soft skills. \"Communication\" is not an answer.",
+          "**What do you know about our product or company?** Works: one specific thing you found by using it or talking to a customer, and one question it raised. Sinks: reciting the About page.",
+          "**Where do you see yourself in three years?** Works: inside this function, with a bigger scope, still using the clinical lens, and the next title named honestly. Sinks: a \"back in clinical\" joke, or a title from a different department.",
+          "**What's your salary expectation?** Works: the documented range for the path, anchored at the middle, with a line about the whole package (lesson 6.5). Sinks: naming your clinical salary first.",
+          "**Tell me about a time you handled a difficult stakeholder.** Works: a parent or administrator story told with the business nouns: the objection, what you changed, the outcome. Sinks: a story where the resolution is that you were right."
+        ]
       },
       {
         "type": "h",
@@ -566,8 +573,8 @@
         ]
       },
       {
-        "type": "tool",
-        "name": "application-tracker"
+        "type": "p",
+        "text": "The list itself lives on your people and applications page, the same one you started in 4.7. Keep it in one place, because the four numbers only mean something next to each other."
       },
       {
         "type": "h",

@@ -25,7 +25,6 @@ export function Tool(props: ToolProps) {
   switch (props.name) {
     case "path-map": return <PathMap {...props} />;
     case "pivot-report": return <PivotReport {...props} />;
-    case "path-deep-dive": return <PathDeepDive {...props} />;
     case "contact-tracker": return <ContactTracker {...props} />;
     case "contact-tracker-warm": return <ContactTracker {...props} goal="warm" />;
     case "prompt-kit": return <PromptKit {...props} />;
@@ -37,7 +36,6 @@ export function Tool(props: ToolProps) {
     case "artifact-menu": return <ArtifactMenu {...props} />;
     case "runway-calculator": return <Runway {...props} />;
     case "bridge-builder": return <BridgeBuilder {...props} />;
-    case "screening-questions": return <ScreeningQuestions />;
     case "mock-interview": return <MockInterview {...props} />;
     case "offer-checklist": return <Checklist {...props} slot="offer" items={OFFER} title="Before you say yes" />;
     case "time-budget": return <TimeBudget {...props} />;
@@ -159,48 +157,6 @@ function PivotReport({ pathSlug }: ToolProps) {
   );
 }
 
-/* --------------------------- path deep-dive (2.7) --------------------------- */
-function PathDeepDive({ pathSlug, shared }: ToolProps) {
-  const suggested: string[] = pathSlug ? [pathSlug, ...(shared["1.5"]?.top || []).filter((s: string) => s !== pathSlug)].slice(0, 2) : (shared["1.5"]?.top || []).slice(0, 2);
-  // Every path stays openable: people try several on before Module 4 narrows to one.
-  const [all, setAll] = useState(false);
-  const candidates: string[] = all ? Object.keys(PATHS) : (suggested.length ? suggested : Object.keys(PATHS).slice(0, 2));
-  const [slug, setSlug] = useState<string>(suggested[0] || "customer-success");
-  const p = PATHS[slug];
-  const roles = rolesFor(slug).slice(0, 8);
-  const companies = COMPANIES_DB.filter((c) => c.roles.some((r) => r.toLowerCase().includes(p.roleOption.split(" /")[0].toLowerCase().split(" ")[0]))).slice(0, 8);
-  return (
-    <div>
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
-        {candidates.map((s) => <button key={s} type="button" onClick={() => setSlug(s)} style={{ padding: "7px 12px", borderRadius: 999, border: `1.5px solid ${s === slug ? "var(--accent)" : "var(--border)"}`, background: s === slug ? "var(--accent-bg-subtle)" : "var(--card)", color: s === slug ? "var(--accent)" : "var(--text)", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: font.sans }}>{PATHS[s].icon} {PATHS[s].label}</button>)}
-        {!all && <button type="button" onClick={() => setAll(true)} style={{ padding: "7px 12px", borderRadius: 999, border: "1.5px dashed var(--border)", background: "transparent", color: "var(--muted)", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: font.sans }}>Try another path</button>}
-      </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }} className="tos-two-col">
-        <Panel>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={pathImage(slug)} alt="" style={{ width: "100%", borderRadius: 10, display: "block", marginBottom: 10 }} />
-          <div style={{ fontSize: 14, lineHeight: 1.6 }}><b>Door in:</b> {p.entryDoor}</div>
-          <div style={{ fontSize: 14, lineHeight: 1.6, marginTop: 8 }}><b>First move:</b> {p.firstMove}</div>
-          <div style={{ fontSize: 13.5, lineHeight: 1.6, marginTop: 8, padding: "8px 12px", background: "var(--warn-bg)", borderRadius: 8 }}><b>The catch:</b> {p.caveat}</div>
-        </Panel>
-        <div>
-          <Panel style={{ marginBottom: 12 }}>
-            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>Open this week · updated {formatUpdated()}</div>
-            {roles.length ? roles.map((r) => <a key={r.url} href={r.url} target="_blank" rel="noreferrer" style={{ display: "block", fontSize: 13.5, lineHeight: 1.45, padding: "6px 0", borderBottom: "1px solid var(--border)", textDecoration: "none", color: "var(--text)" }}><b>{r.company}</b> · {r.title}<span style={{ color: "var(--muted)" }}> · {r.remote ? "Remote" : r.location}</span></a>) : <div style={{ fontSize: 13.5, color: "var(--muted)" }}>Nothing matched this week. The full board is at /jobs.</div>}
-            <a href={`/jobs/${slug}`} style={{ display: "inline-block", marginTop: 10, fontSize: 13, color: "var(--accent)" }}>All {slug} openings ↗</a>
-          </Panel>
-          <Panel>
-            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>Companies that have listed roles like this</div>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>{(companies.length ? companies : COMPANIES_DB.slice(0, 8)).map((c) => <a key={c.name} href={c.url} target="_blank" rel="noreferrer" style={{ fontSize: 12.5, padding: "4px 10px", borderRadius: 999, border: "1px solid var(--border)", textDecoration: "none", color: "var(--text)" }}>{c.name}</a>)}</div>
-            <a href="/companies" style={{ display: "inline-block", marginTop: 10, fontSize: 13, color: "var(--accent)" }}>All {COMPANY_COUNT} companies ↗</a>
-          </Panel>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* --------------------------- contact tracker (2.9/4.7) -------------------------- */
 /* ---------------- your people: the networking CRM (3.1, 3.3, 3.5, 3.6, 3.7) ---------------- */
 type Source = "cohort" | "rep" | "left" | "alumni" | "warm" | "cold" | "event" | "recruiter";
 type Stage = "to" | "sent" | "replied" | "spoke" | "warm" | "referred" | "closed";
@@ -262,7 +218,9 @@ const small: React.CSSProperties = { fontSize: 12, fontWeight: 600, color: "var(
 function ContactTracker({ shared, setShared, finish, done, pathSlug, synced, goal = "three" }: ToolProps & { goal?: "three" | "warm" }) {
   const rows: Contact[] = shared.contacts || [];
   const title = pathSlug ? PATHS[pathSlug].label.split(" / ")[0] : "";
-  const weekGoal: number = Number(shared.contactGoal) || 3;
+  // The weekly goal comes from the 2.0 time budget (thirty percent of the hours are people), capped at the two-to-five range 3.6 teaches.
+  const budgetHours = Number(shared.time?.hours) || 0;
+  const weekGoal = budgetHours ? Math.max(2, Math.min(5, Math.round(budgetHours * 0.3 * 2))) : 3;
   const [draft, setDraft] = useState<Contact>({ name: "", role: "", where: "", sent: "", replied: false, next: "", company: "", source: "cold", stage: "to", link: "" });
   const [open, setOpen] = useState<number | null>(null);
   const [copied, setCopied] = useState<string>("");
@@ -290,17 +248,13 @@ function ContactTracker({ shared, setShared, finish, done, pathSlug, synced, goa
   return (
     <Panel>
       <H>Your people</H>
-      <Muted>{goal === "three" ? "Three messages is the action for this lesson. About one in four gets no answer at all, so three sent is usually two conversations." : "Everyone you are talking to, in one place. Log what happened and it tells you who is due and what the next touch is."}</Muted>
+      <Muted>{goal === "three" ? "Three messages is the action for this lesson. Add the three names, copy each message with their name already in it, send, and log it." : "Everyone you are talking to, in one place. Log what happened and it tells you who is due and what the next touch is."}</Muted>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, marginBottom: 12 }} className="tos-two-col">
         {[["Due now", dueRows.length], ["Sent this week", `${sentThisWeek} of ${weekGoal}`], ["In conversation", rows.filter((r) => IN_CONVERSATION.includes(stageOf(r))).length], ["Referred you", rows.filter((r) => stageOf(r) === "referred").length]].map(([l, n]) => (
           <div key={String(l)} style={{ background: "var(--bg)", borderRadius: 10, padding: "8px 10px", textAlign: "center" }}><div style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 700 }}>{n}</div><div style={{ fontSize: 11.5, color: "var(--muted)" }}>{l}</div></div>
         ))}
       </div>
-      <div style={{ display: "flex", gap: 8, alignItems: "center", fontSize: 12.5, color: "var(--muted)", marginBottom: 12, flexWrap: "wrap" }}>
-        <span>Messages a week you are aiming for:</span>
-        <input type="number" min={1} max={20} value={weekGoal} onChange={(e) => setShared("contactGoal", Number(e.target.value) || 1)} style={{ ...sel, width: 60 }} />
-        <span>Two while you are building, five once you are applying.</span>
-      </div>
+      <div style={{ fontSize: 12.5, color: "var(--muted)", marginBottom: 12 }}>{budgetHours ? `${weekGoal} a week, from the ${budgetHours} hours you set in lesson 2.0.` : "Three a week until you set your hours in lesson 2.0."} Two while you are building, five once you are applying.</div>
       {dueRows.length > 0 && (
         <Panel tone="soft" style={{ marginBottom: 12, padding: "12px 14px" }}>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 6 }}>Due</div>
@@ -383,8 +337,6 @@ function PromptKit({ shared, setShared, pathSlug }: ToolProps) {
     { title: "Rehearse the fifteen minutes", when: "The night before a call. Talk out loud; type what you'd say.", text: `Role-play with me. You are ${who}, a ${title} at ${co} who used to be a clinician. I'm an SLP and I have asked you for fifteen minutes about how you got the first role. Play it realistically: you are busy, friendly, and you will get bored if I ask anything I could have Googled. Interrupt me when I do. Start by saying hello and asking what I'm hoping to get out of the call. At the end, tell me the two things I did that made you want to help and the one that made you want to end the call.` },
     { title: "Turn call notes into next steps", when: "Within an hour of hanging up, before the notes go cold.", text: `Below are my rough notes from a fifteen-minute call with ${who}, who works in ${title}. Give me:\n1. The three facts I learned, in their words where I wrote them down.\n2. The person or company they named that I should follow up with.\n3. The one thing I said I would do, as a task with a date two weeks out.\n4. A thank-you message under 60 words that quotes one specific thing they said. ${rules}\n\nNotes:\n[paste here]` },
     { title: "Translate a posting into a checklist", when: "Before you apply, and before the hiring-manager note in 3.7.", text: `Here is a job posting for a ${title} role at ${co}, and here are numbers from my clinical work. Make a two-column list: each requirement in the posting, and which of my experiences answers it, using the posting's own words. Then list the requirements I do not meet and, for each, the cheapest honest way to close it before an interview (a named course, a small project, a conversation). Do not soften a gap and do not invent experience I did not give you.\n\nMy numbers:\n${numbers}\n\nPosting:\n[paste here]` },
-    { title: "Find the rooms, then verify them", when: "Once, when you pick a path. Check every name before you rely on it.", text: `List the conferences, LinkedIn groups, Slack or Discord communities and newsletters where people who do ${title} work in health-tech and ed-tech actually gather. For each, say whether it is for practitioners or for job-seekers, and whether a clinician moving in would be welcome. Give me the official name so I can search it; I know you sometimes invent these, so I will verify each one.` },
-    { title: "Rewrite the monthly update", when: "When the four sentences will not come.", text: `I'm sending a short update to ${who}, who gave me fifteen minutes about ${title} work a month ago. Since then: [what you did]. They told me: [the thing they said]. Write four sentences: what I did, that I'm still aiming at ${title}, that their advice turned out to be right, and that there is no ask. ${rules}` },
   ];
   return (
     <div>
@@ -749,29 +701,6 @@ function BridgeBuilder({ shared, setShared, pathSlug }: ToolProps) {
         <div style={{ marginTop: 10 }}><Btn onClick={() => setShared("bridge", { prep, win })}>Save</Btn></div>
       </Panel>
       <Script title="Your bridge statement" text={text} />
-    </div>
-  );
-}
-
-/* --------------------------- screening questions (5.3) -------------------------- */
-const SCREENS: { q: string; good: string; avoid: string }[] = [
-  { q: "Why are you leaving clinical work?", good: "One sentence of pull (where you're going), one of evidence you've prepared. Nothing about burnout, caseloads or paperwork.", avoid: "Any sentence that starts with what you're escaping. They hear a retention risk." },
-  { q: "You don't have experience in this role. Why should we consider you?", good: "Map two accomplishments onto the role's first-90-days problems, with numbers. \"I've been doing customer success my whole career; I called it family care. Sixty-two accounts, quarterly reviews, 90% retention.\"", avoid: "Listing soft skills. \"Communication\" is not an answer." },
-  { q: "What do you know about our product / company?", good: "One specific thing you found by using it or talking to a customer, and one question it raised.", avoid: "Reciting the About page." },
-  { q: "Where do you see yourself in three years?", good: "Inside this function, with a bigger scope, still using the clinical lens. Name the next title honestly.", avoid: "\"Back in clinical\" jokes, or a title from a different department." },
-  { q: "What's your salary expectation?", good: "The documented range for the path, anchored at the middle, with a line about total compensation. See lesson 5.5.", avoid: "Naming your clinical salary first." },
-  { q: "Tell me about a time you handled a difficult stakeholder.", good: "A parent or administrator story, told with the business nouns: the objection, what you changed, the outcome.", avoid: "A story where the resolution is that you were right." },
-];
-function ScreeningQuestions() {
-  const [open, setOpen] = useState<number | null>(0);
-  return (
-    <div style={{ border: "1px solid var(--border)", borderRadius: 14, overflow: "hidden" }}>
-      {SCREENS.map((s, i) => (
-        <div key={i} style={{ borderTop: i ? "1px solid var(--border)" : "none" }}>
-          <button type="button" onClick={() => setOpen(open === i ? null : i)} style={{ width: "100%", textAlign: "left", padding: "12px 14px", background: open === i ? "var(--accent-bg-subtle)" : "var(--card)", border: "none", fontSize: 15, fontWeight: 600, cursor: "pointer", fontFamily: font.sans, display: "flex", justifyContent: "space-between" }}><span>{s.q}</span><span style={{ color: "var(--muted)" }}>{open === i ? "–" : "+"}</span></button>
-          {open === i && <div className="tos-fade" style={{ padding: "0 14px 14px", background: "var(--accent-bg-subtle)", fontSize: 14, lineHeight: 1.6 }}><div style={{ marginBottom: 6 }}><b style={{ color: "var(--accent)" }}>A good answer has:</b> {s.good}</div><div><b style={{ color: "#92400E" }}>Avoid:</b> {s.avoid}</div></div>}
-        </div>
-      ))}
     </div>
   );
 }

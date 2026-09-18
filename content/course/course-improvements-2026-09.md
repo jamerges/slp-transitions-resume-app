@@ -71,6 +71,33 @@ rehearse the call, notes into next steps, posting into a checklist, find the
 rooms, the monthly update), the never-paste rule for client and employer
 material, and the it-will-invent warning.
 
+## Simplification pass (2026-09-18, James: "make it cleaner/simpler")
+
+The rule: one tool per job, one place per number, one sentence per fact.
+Her lessons run 656 to 6,668 spoken words (median about 1,700), so ours at
+300 to 1,400 written words are in the same ballpark and were not cut for
+length; they were cut for repetition.
+
+- **Tools 20 to 17** (18 names, one a variant). Cut: the path deep-dive
+  (2.7, the map and the pivot report already compare paths) and the
+  screening-questions accordion (its six questions are now a list in 6.3).
+  **Mounts 24 to 18:** the people list is mounted only in 3.3 and 3.6, the
+  application tracker only in 4.7; both live together on **/course/tracker**
+  ("Your people and applications"), linked from 3.1, 3.5, 3.7, 3.8, 6.6 and
+  the dashboard. The artifact menu is mounted once.
+- **Lessons 50 to 48.** 2.7 cut. 5.3 merged into 5.2, "Pick one thing and
+  make it in a week" (the badge and any saved progress follow it).
+- **One number, one place.** The weekly outreach goal is derived from the
+  2.0 time budget; the second box in the people list is gone. The prompt kit
+  is six prompts, not eight.
+- **The "one in four gets no reply" sentence** appeared seven times; it now
+  appears in 3.2's opener and 3.3's body. The sixty-second pitch moved from
+  3.2 to 3.1, beside "say the title", so 3.2 is the three messages again.
+- **The streak is gone from the screen.** The data still saves; nothing
+  reads it. XP and badges stay.
+- **Not touched:** Module 2's path lessons (2.2 to 2.4), which overlap the
+  $9 report and the pillar article. That is a product decision, not a trim.
+
 ## Do when the rows exist
 
 5. **The interview question bank.** Lesson 6.4 now asks buyers what they

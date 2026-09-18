@@ -37,7 +37,7 @@ export default function LockedLesson({ moduleN, moduleTitle, lessonTitle, owns }
   const { p, pct } = useProgress();
   const ground = moduleN === 1 && owns !== "ground";
   return (
-    <CourseShell xp={p.xp} streak={p.streak.count} pct={pct}>
+    <CourseShell xp={p.xp} pct={pct}>
       <div style={{ maxWidth: 640, margin: "30px auto" }}>
         <Panel style={{ padding: 28, textAlign: "center" }}>
           <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)" }}>Module {moduleN} · {moduleTitle}</div>

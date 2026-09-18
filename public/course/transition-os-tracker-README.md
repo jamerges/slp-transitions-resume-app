@@ -23,8 +23,7 @@ have your own.
 ## How to actually use it
 
 **People** is the one that matters most. Referrals decide more of these moves
-than applications do, and about one in four messages gets no answer, so three
-sent is usually two conversations. Fill in `Who they suggested next` after
+than applications do. Fill in `Who they suggested next` after
 every call, because that column is where a network comes from.
 
 **Applications** exists to give you a ratio rather than a feeling. Once you

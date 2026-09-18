@@ -39,8 +39,19 @@ function migrate(p: Progress): Progress {
   for (const [k, v] of Object.entries(a)) answers[ren(k)] = v;
   return { ...p, answers, completed: Array.from(new Set(p.completed.map(ren))), actions: p.actions.map(ren) };
 }
+// 2026-09-18: 5.3 ("Make it in a week") merged into 5.2 and 2.7 was cut, so a
+// saved 5.3 keeps its badge under 5.2 and ids that no longer exist stop
+// counting toward the percentage.
+const KNOWN = new Set(LESSONS.map((l) => l.id));
+function tidy(p: Progress): Progress {
+  const ren = (id: string) => (id === "5.3" ? "5.2" : id);
+  const keep = (ids: string[]) => Array.from(new Set(ids.map(ren))).filter((id) => KNOWN.has(id));
+  const a = p.answers as Record<string, any>;
+  const answers = "5.3" in a && !("5.2" in a) ? { ...a, "5.2": a["5.3"] } : a;
+  return { ...p, completed: keep(p.completed), actions: keep(p.actions), answers };
+}
 function load(): Progress {
-  try { const raw = localStorage.getItem(KEY); return raw ? migrate({ ...EMPTY, ...JSON.parse(raw) }) : EMPTY; } catch { return EMPTY; }
+  try { const raw = localStorage.getItem(KEY); return raw ? tidy(migrate({ ...EMPTY, ...JSON.parse(raw) })) : EMPTY; } catch { return EMPTY; }
 }
 function save(p: Progress) { try { localStorage.setItem(KEY, JSON.stringify(p)); } catch { /* private mode */ } }
 
@@ -102,7 +113,7 @@ export function useProgress() {
       const { progress, store } = await r.json();
       if (!store) { setSynced(false); return; }
       syncRef.current = true; setSynced(true);
-      const merged = progress ? merge(ref.current, migrate({ ...EMPTY, ...progress })) : ref.current;
+      const merged = progress ? merge(ref.current, tidy(migrate({ ...EMPTY, ...progress }))) : ref.current;
       ref.current = merged; setP(merged); save(merged);
       push(merged);
     }).catch(() => { if (!cancelled) setSynced(false); });

@@ -77,7 +77,7 @@
   },
   {
     "id": "5.2",
-    "tldr": "Every path has one artifact that proves you can do the job, built from work you have already done. Pick yours and read the brief: what to make, how long it takes, what it proves, where it lives.",
+    "tldr": "Every path has one artifact that proves you can do the job, built from work you have already done. Pick yours, give it two ninety-minute sessions this week, and put it where a stranger can find it.",
     "blocks": [
       {
         "type": "p",
@@ -122,26 +122,6 @@
         "tone": "soft",
         "title": "If you have already made one",
         "text": "Most SLPs have. The parent handout you redesigned because the district's version was unreadable. The tracking sheet the whole department borrowed. The training you gave twice. All of those already exist, and the work is picking one of them and writing the short note that explains the thinking behind it."
-      }
-    ],
-    "takeaways": [
-      "An artifact is one thing built from your real work that a stranger can read in two minutes.",
-      "It should be the target role's actual work product, not a description of your interest in the role.",
-      "Change or remove identifying details and check your employer's policy before publishing anything.",
-      "The three-sentence process note is where your judgement shows, and judgement is what gets hired."
-    ],
-    "sources": [
-      "facts",
-      "forums"
-    ]
-  },
-  {
-    "id": "5.3",
-    "tldr": "Give the artifact one week and two sessions. Draft it badly first, finish it second, then put it somewhere a stranger can find it.",
-    "blocks": [
-      {
-        "type": "p",
-        "text": "This is the week the program stops being reading and becomes the first thing you make."
       },
       {
         "type": "h",
@@ -162,10 +142,6 @@
         "text": "Three and a half hours across a week is the entire ask, less time than most people spend rewriting a résumé for the fourth time."
       },
       {
-        "type": "tool",
-        "name": "artifact-menu"
-      },
-      {
         "type": "h",
         "text": "When you get stuck"
       },
@@ -180,21 +156,23 @@
         "text": "Once this exists you have an answer to what have you done to prepare, a link on your LinkedIn, something concrete to send after an informational interview, and a story for the interview question about proof. One weekend, four uses."
       }
     ],
-    "action": {
-      "label": "I made it",
-      "prompt": "Pick your path's brief above and give it two sessions this week: ninety minutes to draft badly, ninety minutes to finish, twenty for the process note. Then paste the link.",
-      "done": "Made. That is the thing most applicants do not have, and it took you a weekend."
-    },
     "takeaways": [
+      "An artifact is one thing built from your real work that a stranger can read in two minutes.",
+      "It should be the target role's actual work product, not a description of your interest in the role.",
+      "Change or remove identifying details and check your employer's policy before publishing anything.",
       "Two ninety-minute sessions with two days between them, plus twenty minutes for the process note.",
       "Draft it badly first. The obvious fix arrives away from the desk.",
-      "If it needs a third session, cut it in half rather than finishing it.",
       "One artifact answers the preparation question, fills a LinkedIn link, follows up an informational interview, and becomes an interview story."
     ],
     "sources": [
       "facts",
       "forums"
-    ]
+    ],
+    "action": {
+      "label": "I made it",
+      "prompt": "Pick your path's brief above and give it two sessions this week: ninety minutes to draft badly, ninety minutes to finish, twenty for the process note. Then paste the link.",
+      "done": "Made. That is the thing most applicants do not have, and it took you a weekend."
+    }
   },
   {
     "id": "5.4",

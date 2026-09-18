@@ -40,6 +40,32 @@
       },
       {
         "type": "h",
+        "text": "When they ask what you're looking for"
+      },
+      {
+        "type": "p",
+        "text": "Somewhere in the fifteen minutes they will ask. Have sixty seconds ready that says the years, the two things you'd do all day, the title, and the ask. Yours is below; fill the brackets tonight and say it out loud twice, because the first time it comes out of your mouth should not be on the call."
+      },
+      {
+        "type": "bypath",
+        "title": "Sixty seconds, out loud",
+        "note": "Your path opens first. The chips show the others.",
+        "items": {
+          "liaison-ur": "I've spent [N] years as a medical SLP, most of it in [acute / inpatient rehab / SNF], where half my week was case conferences, discharge planning and explaining to families and physicians why a patient did or didn't qualify for the next level of care. I'm moving into clinical liaison work, where that's the whole job. If you know a rehab facility or home health agency that's adding a liaison, I'd like to hear about it.\n\nFor utilization review instead:\n\n[N] years as an SLP, and the part I'm good at is the part most people hate: reading the chart, matching what was done against what the payer will cover, and writing the justification that survives an audit. I'm moving into utilization review. If you know a health plan or a UR vendor that hires therapists into reviewer roles, I'd welcome an introduction.",
+          "customer-success": "I'm an SLP with [N] years in [setting]. The part of the job I'd keep is onboarding: getting a family or a teacher to actually use the device or the plan after I leave the room. I'm moving into customer success at a health-tech or teletherapy company, where that's the work all day. If your team is hiring an implementation or onboarding specialist, I'd like to talk.",
+          "informatics": "I've been the SLP who ends up fixing the documentation system. [N] years in [setting], superuser through the [EMR name] rollout, built the note templates the department still uses. I'm moving into clinical informatics, the analyst or trainer side, where I translate between the clinicians and the people building the system. If your organisation has an EHR analyst or trainer opening, I'd like to be considered.",
+          "clinical-educator": "[N] years as an SLP, and the work I loved most was teaching other clinicians to use [AAC / a speaking valve / a dysphagia protocol]. I've trained [teams / a district / nursing staff] on it. I'm moving into a clinical educator role at a company that makes the products, where teaching clinicians is the job. If you know one that's hiring, I'd like to talk.",
+          "instructional-design": "I'm an SLP with [N] years in [setting]. I've built training for adults the whole time: in-services, onboarding for CFs, a [program] the department still runs. I've rebuilt one of them as a [Rise / Storyline] module so you can see how I work. I'm moving into instructional design. If your team needs someone who can design for adults who are busy and sceptical, I'd like to show you the module.",
+          "data-analysis": "[N] years as an SLP, and I'm the one who kept the outcome data nobody asked for: [dismissal rates / wait times / goal attainment] by [setting], in a spreadsheet that answered questions a year later. I'm moving into healthcare analytics, and I've been learning [SQL / Tableau] to do it properly. If your quality or analytics team has an analyst opening, I'd welcome a conversation.",
+          "project-management": "For [N] years I've run programs that had a deadline, a budget and a dozen people who didn't report to me: [a caseload of 60 across three buildings / a dysphagia program / an EMR transition]. I'm moving into project management in healthcare, and I'm working through [the Google PM certificate / CAPM]. If your organisation has a coordinator or associate PM role, I'd like to be considered.",
+          "content-marketing": "I'm an SLP with [N] years of explaining hard clinical ideas to people who didn't ask for a glossary: families, teachers, nurses. I've started writing that down: [a blog / three samples / a newsletter]. I'm moving into health content and marketing, where translation is the whole job. If your team needs a writer who has actually done the clinical work, I'd like to send you the samples.",
+          "sales-bd": "[N] years as an SLP. Every week I sold a treatment plan to a family that didn't want to hear it and a protocol to nurses who were too busy for it, and most of them came round. I'm moving into clinical sales for a [device / health-tech] company, where that's the work with a quota attached. If your sales team is adding a clinical specialist, I'd like to hear about it.",
+          "research-coordinator": "[N] years as an SLP in [setting], and the part of my week that ran most like a study was the part I ran best: consenting families, following the protocol to the letter, keeping the data clean and the follow-ups on schedule. I'm moving into clinical research coordination. If your site or sponsor has a coordinator opening, I'd like to be considered.",
+          "leadership": "I've been an SLP in [setting] for [N] years and I already run the parts of the department nobody bills for: the schedule, the coverage, the audits, the new grad who's drowning. I'm looking to move into a clinical manager or program manager role, here or somewhere like here. Who did the last two openings go to, and what did they have that I don't yet?"
+        }
+      },
+      {
+        "type": "h",
         "text": "Where the ones who left actually went"
       },
       {
@@ -106,8 +132,8 @@
         "text": "Read a group for a week before you post anything. When you do post, ask a question rather than introducing yourself, because an introduction asks the room for attention and a question gives someone an easy reason to reply."
       },
       {
-        "type": "tool",
-        "name": "contact-tracker"
+        "type": "p",
+        "text": "Save the names as you find them on your people and applications page (linked under this lesson). It is the same list lesson 3.3 sends from and lesson 3.6 keeps warm, so a name goes in once."
       },
       {
         "type": "steps",
@@ -125,7 +151,8 @@
       "Read the subreddit for the job title, not for your profession. The complaint threads describe the real work.",
       "LinkedIn people search, filtered to a company on your list plus CCC-SLP, finds people who made your exact move.",
       "Save three names before you write a single message.",
-      "Your cohort, the reps who sell into your building, and the ones who already left are warmer than any stranger. The exhibit hall is the one part of a conference full of employers rather than competitors."
+      "Your cohort, the reps who sell into your building, and the ones who already left are warmer than any stranger. The exhibit hall is the one part of a conference full of employers rather than competitors.",
+      "Have sixty seconds ready for \"so what are you looking for?\": years, the two things you'd do all day, the title, the ask."
     ],
     "sources": [
       "voc",
@@ -147,7 +174,7 @@
       },
       {
         "type": "p",
-        "text": "The ask that works is small: fifteen minutes, about how they got in, with no job attached. Expect roughly one in four to go unanswered, which means three messages is usually two conversations. Nobody in the corpus reported being annoyed by a polite ask from an SLP. What they reported, repeatedly, was being asked for their actual résumé, more than twenty times under a single post, and mostly saying yes."
+        "text": "The ask that works is small: fifteen minutes, about how they got in, with no job attached. Nobody in the corpus reported being annoyed by a polite ask from an SLP. What they reported, repeatedly, was being asked for their actual résumé, more than twenty times under a single post, and mostly saying yes."
       },
       {
         "type": "p",
@@ -160,12 +187,7 @@
       {
         "type": "script",
         "title": "The connection request, under 300 characters",
-        "text": "Hi [Name], I'm an SLP in [setting] looking at [target title] roles, and I noticed you made that move from [their old setting]. I'd be glad to connect, and if you don't mind, I have one question about how the first year went."
-      },
-      {
-        "type": "script",
-        "title": "The alumni version",
-        "text": "Hi [Name], I saw you went through [program] too and you're now at [company]. I'm an SLP looking at [target title] roles and would love to connect. If you're open to it, I have a couple of questions about how you got there."
+        "text": "Hi [Name], I'm an SLP in [setting] looking at [target title] roles, and I noticed you made that move from [their old setting]. I'd be glad to connect, and if you don't mind, I have one question about how the first year went.\n\nIf you share a program: Hi [Name], I saw you went through [program] too and you're now at [company]. I'm an SLP looking at [target title] roles and would love to connect. If you're open to it, I have a couple of questions about how you got there."
       },
       {
         "type": "example",
@@ -208,43 +230,16 @@
         "text": "[Name], thank you for the time. The thing I'm taking away is [one specific sentence they said, in their words].\n\nI'm going to [the one concrete thing you'll do because of it] in the next two weeks, and I'll let you know how it lands. If [person they mentioned] would be open to the same 15 minutes, I'd be grateful for an introduction whenever it's convenient.\n\nThank you again. [Your name]"
       },
       {
-        "type": "h",
-        "text": "When they ask what you're looking for"
-      },
-      {
-        "type": "p",
-        "text": "Somewhere in the fifteen minutes they will ask. Have sixty seconds ready that says the years, the two things you'd do all day, the title, and the ask. Yours is below; fill the brackets tonight and say it out loud twice, because the first time it comes out of your mouth should not be on the call."
-      },
-      {
-        "type": "bypath",
-        "title": "Sixty seconds, out loud",
-        "note": "Your path opens first. The chips show the others.",
-        "items": {
-          "liaison-ur": "I've spent [N] years as a medical SLP, most of it in [acute / inpatient rehab / SNF], where half my week was case conferences, discharge planning and explaining to families and physicians why a patient did or didn't qualify for the next level of care. I'm moving into clinical liaison work, where that's the whole job. If you know a rehab facility or home health agency that's adding a liaison, I'd like to hear about it.\n\nFor utilization review instead:\n\n[N] years as an SLP, and the part I'm good at is the part most people hate: reading the chart, matching what was done against what the payer will cover, and writing the justification that survives an audit. I'm moving into utilization review. If you know a health plan or a UR vendor that hires therapists into reviewer roles, I'd welcome an introduction.",
-          "customer-success": "I'm an SLP with [N] years in [setting]. The part of the job I'd keep is onboarding: getting a family or a teacher to actually use the device or the plan after I leave the room. I'm moving into customer success at a health-tech or teletherapy company, where that's the work all day. If your team is hiring an implementation or onboarding specialist, I'd like to talk.",
-          "informatics": "I've been the SLP who ends up fixing the documentation system. [N] years in [setting], superuser through the [EMR name] rollout, built the note templates the department still uses. I'm moving into clinical informatics, the analyst or trainer side, where I translate between the clinicians and the people building the system. If your organisation has an EHR analyst or trainer opening, I'd like to be considered.",
-          "clinical-educator": "[N] years as an SLP, and the work I loved most was teaching other clinicians to use [AAC / a speaking valve / a dysphagia protocol]. I've trained [teams / a district / nursing staff] on it. I'm moving into a clinical educator role at a company that makes the products, where teaching clinicians is the job. If you know one that's hiring, I'd like to talk.",
-          "instructional-design": "I'm an SLP with [N] years in [setting]. I've built training for adults the whole time: in-services, onboarding for CFs, a [program] the department still runs. I've rebuilt one of them as a [Rise / Storyline] module so you can see how I work. I'm moving into instructional design. If your team needs someone who can design for adults who are busy and sceptical, I'd like to show you the module.",
-          "data-analysis": "[N] years as an SLP, and I'm the one who kept the outcome data nobody asked for: [dismissal rates / wait times / goal attainment] by [setting], in a spreadsheet that answered questions a year later. I'm moving into healthcare analytics, and I've been learning [SQL / Tableau] to do it properly. If your quality or analytics team has an analyst opening, I'd welcome a conversation.",
-          "project-management": "For [N] years I've run programs that had a deadline, a budget and a dozen people who didn't report to me: [a caseload of 60 across three buildings / a dysphagia program / an EMR transition]. I'm moving into project management in healthcare, and I'm working through [the Google PM certificate / CAPM]. If your organisation has a coordinator or associate PM role, I'd like to be considered.",
-          "content-marketing": "I'm an SLP with [N] years of explaining hard clinical ideas to people who didn't ask for a glossary: families, teachers, nurses. I've started writing that down: [a blog / three samples / a newsletter]. I'm moving into health content and marketing, where translation is the whole job. If your team needs a writer who has actually done the clinical work, I'd like to send you the samples.",
-          "sales-bd": "[N] years as an SLP. Every week I sold a treatment plan to a family that didn't want to hear it and a protocol to nurses who were too busy for it, and most of them came round. I'm moving into clinical sales for a [device / health-tech] company, where that's the work with a quota attached. If your sales team is adding a clinical specialist, I'd like to hear about it.",
-          "research-coordinator": "[N] years as an SLP in [setting], and the part of my week that ran most like a study was the part I ran best: consenting families, following the protocol to the letter, keeping the data clean and the follow-ups on schedule. I'm moving into clinical research coordination. If your site or sponsor has a coordinator opening, I'd like to be considered.",
-          "leadership": "I've been an SLP in [setting] for [N] years and I already run the parts of the department nobody bills for: the schedule, the coverage, the audits, the new grad who's drowning. I'm looking to move into a clinical manager or program manager role, here or somewhere like here. Who did the last two openings go to, and what did they have that I don't yet?"
-        }
-      },
-      {
         "type": "p",
         "text": "Send the thank-you the same day, then do the thing you said you would do, and tell them two weeks later that you did it. That second note is what turns a stranger into someone who forwards your résumé to a hiring manager, built out of two emails and one kept promise. Fill your setting, your target title and your name into all three templates tonight, and leave the [Name] blanks empty for the next lesson."
       }
     ],
     "takeaways": [
       "Referrals decide most documented transitions, and applications sent without one are what fails.",
-      "The ask is fifteen minutes about their path with no job attached, and about one in four goes unanswered.",
+      "The ask is fifteen minutes about their path with no job attached.",
       "A first message works when it names their specific move, asks for a fixed small amount of time, and makes it easy to decline.",
       "Follow up once, seven to ten days later, then stop.",
-      "\"Who else should I be talking to?\" is the question that turns a conversation into an introduction.",
-      "Have sixty seconds ready for \"so what are you looking for?\": years, the two things you'd do all day, the title, the ask."
+      "\"Who else should I be talking to?\" is the question that turns a conversation into an introduction."
     ],
     "sources": [
       "facts",
@@ -316,7 +311,7 @@
     },
     "takeaways": [
       "Message three people tonight: an SLP with your target title, anyone with that title, and someone at a company on your list.",
-      "About one in four asks goes unanswered, so three sent is usually two conversations.",
+      "Three is a volume decision. One message is a coin flip; three is a near-certainty of one real conversation.",
       "Sending all three at once keeps a single silence from reading as a verdict.",
       "Never ask for a job in the first message. Ask for fifteen minutes about how they got where they are.",
       "What comes back is a real Tuesday, a credential that mattered, an unlisted posting, or a second name."
@@ -487,7 +482,7 @@
       },
       {
         "type": "p",
-        "text": "You already wrote the message in Module 2, and about one in four of them gets no answer, so three sent is usually two conversations."
+        "text": "You already wrote the message in lesson 3.2, so this is a twenty-minute task rather than a new skill."
       },
       {
         "type": "h",
@@ -511,8 +506,8 @@
         "text": "That second question is the referral ask in the least awkward form I have found: a yes or no about a hypothetical, easy to agree to, and it gives you permission to come back. One more, near the end: what other companies do work like yours? Three names from someone inside is a better list than an hour of searching."
       },
       {
-        "type": "tool",
-        "name": "contact-tracker"
+        "type": "p",
+        "text": "Every name from these conversations goes on your people and applications page, with the person they suggested next in its own column. That column is where a network comes from."
       },
       {
         "type": "callout",
@@ -524,8 +519,7 @@
     "takeaways": [
       "Applications without referrals is the expensive route: one documented search took over 500.",
       "Apply inside 48 hours and message someone doing the job the same day.",
-      "Never ask for a referral in a first message. Ask for twenty minutes, then ask who else you should talk to.",
-      "About one in four messages gets no answer, so three sent is usually two conversations."
+      "Never ask for a referral in a first message. Ask for twenty minutes, then ask who else you should talk to."
     ],
     "sources": [
       "facts",
@@ -679,7 +673,7 @@
         "type": "callout",
         "tone": "soft",
         "title": "What silence means here",
-        "text": "About one in four asks gets no reply, and with recruiters the rate is worse, because reqs get frozen and pipelines fill before anyone updates a posting. Silence is almost always about the req and almost never about you."
+        "text": "Silence from a recruiter is even less personal than silence from a peer, because reqs get frozen and pipelines fill before anyone updates a posting. Silence is almost always about the req and almost never about you."
       },
       {
         "type": "steps",
