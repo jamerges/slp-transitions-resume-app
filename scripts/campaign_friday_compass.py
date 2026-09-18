@@ -28,16 +28,16 @@ HTML = f"""<!DOCTYPE html><html><body style="margin:0;padding:0;background:#F7F7
 <p {P}>I&rsquo;ve been building more resources for SLPs figuring out what&rsquo;s next, and I&rsquo;d love you to test them.</p>
 <p {P}>Module 0 is free: <a href="https://app.slptransitions.com/course" {A}>app.slptransitions.com/course</a>. Twenty minutes, no account. Module 1 is only $19, and it&rsquo;s credited toward the full course once it comes out.</p>
 <p {P}>A quote I keep coming back to: always remember the compass was invented before the clock, because direction was more important than how long it took to get there.</p>
-<p {P}>Careers are windy now, mine included. I can&rsquo;t tell you how long yours will take. I&rsquo;m hoping these give you a compass.</p>
+<p {P}>Careers are windy now (more than ever with the rate of change) &ndash; mine included. I&rsquo;m hoping these give you a compass.</p>
 <p {P}>If you&rsquo;d rather read first: <a href="https://slptransitions.com/youre-allowed-to-want-out/" {A}>You&rsquo;re allowed to want out</a> or <a href="https://slptransitions.com/alternative-careers-speech-pathologists-slps/" {A}>the 20 paths and what they pay</a>.</p>
 <p {P}>Reply with any feedback. I read every one.</p>
-<p {P}>James</p>
+<p {P}>Wishing nothing but the best,<br>James</p>
 <p style="font-size:12px;color:#9CA3AF;margin-top:28px;">You&rsquo;re getting this because you signed up at slptransitions.com. <a href="{{$unsubscribe}}" style="color:#9CA3AF;">Unsubscribe</a>.</p>
 </div></body></html>"""
 
 if __name__ == "__main__":
     group = sys.argv[1] if len(sys.argv) > 1 else TEST_GROUP
-    name = sys.argv[2] if len(sys.argv) > 2 else "2026-09-18 Friday compass (TEST James only)"
+    name = sys.argv[2] if len(sys.argv) > 2 else "2026-09-18 Friday compass v2 (TEST James only)"
     r = api("/campaigns", "POST", {"name": name, "type": "regular", "groups": [group], "emails": [{"subject": SUBJECT, "from_name": FROM_NAME, "from": FROM, "content": HTML}]})
     cid = (r.get("data") or {}).get("id")
     if not cid: print("CREATE FAILED:", json.dumps(r)[:400]); sys.exit(1)
