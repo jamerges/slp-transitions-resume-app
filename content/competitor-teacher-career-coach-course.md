@@ -474,3 +474,117 @@ The affirmation pages, the career wheel, the mind map, the work-style page,
 the reading list, the department tour, the Betterment and Coursera affiliate
 links, the Trello board, video-only delivery, the community platform as a
 separate signup.
+
+---
+
+# Part 3: the 25 uncaptioned videos, transcribed (2026-09-18, evening)
+
+Transcribed locally with faster-whisper after James ran the download. About
+300 minutes. The workbook's "three key lessons" pages had already captured
+the skeleton of each video, so this part records only what the videos add:
+the scripts, the numbers she quotes, and the stories. Her numbers are hers
+and mostly unsourced; they are here so we know what her students have heard,
+not so we repeat them.
+
+## Numbers she quotes in the videos
+
+- 85% of jobs are found through networking (1.4, unsourced).
+- One in five cold LinkedIn messages gets a reply (2.5).
+- Six to eight weeks from first interview to start date, so apply hard two
+  months before you can start (1.3, 4.1).
+- Five to ten applications a week in season (4.3); five to ten networking
+  reach-outs a week (3.4); no more than three résumé templates (4.1).
+- Counter-offer no more than 10% above the offer; students have won 16% (5.3).
+- Follow-ups: thank-you same day (before 2 pm, send 2 to 4 pm; after 2 pm, 9
+  am next day), then one week, then two weeks, four emails total (5.2).
+- Interviewers screen 200 to 1,000 applicants down to the few they meet, so
+  an interview already means "qualified" (5.5, 5.1).
+- 36% of the US workforce freelances; save six months before relying on it
+  (2.3).
+- Five imposter patterns: superhero, perfectionist, expert, soloist, natural
+  genius (1.5).
+- Full-time freelance, one-year contracts and independent-contractor roles
+  are all treated as legitimate outcomes, with the tradeoffs named (1B, 5.4).
+
+## Scripts and moves worth an SLP version
+
+- **The warm ask (1.4).** "I'm looking at roles in X. You've been at that
+  company a while. Can you tell me what the X there actually does, and could
+  I pick their brain about whether it fits me?" Never "can you get me a
+  job". The internal-referral bonus is why acquaintances say yes.
+- **The informational interview (2.5).** You run it, you have one learning
+  goal, you never ask for a job, you ask "who else could spare fifteen
+  minutes", and you circle back a month later with progress. Keep it on
+  LinkedIn; coffee is too big an ask.
+- **The bad DM (2.5).** She shows a real one: five questions that would take
+  two hours to answer. The rule: if Google can answer it, don't ask.
+- **The hiring-manager note (4.1).** "Does the X role posted on LinkedIn
+  report to you? I've spent N years in [field], and [one specific thing]. If
+  you're hiring for it I'd like to connect." One sentence of proof, one ask.
+- **The recruiter comeback (4.3).** "I don't have Salesforce yet. If I took
+  two courses before the interview date, would you be comfortable putting
+  me forward?" Then ask where they'd want you to learn it.
+- **The cover-letter test (4.1B).** If the letter could have been written by
+  any teacher, rewrite it. Her customer-success hiring story: hundreds of
+  "please find my résumé attached"; the ones interviewed told a specific
+  story about being the go-to person for problems.
+- **Salary, plan A and plan B (5.1).** Deflect once ("I'm focused on the
+  right fit; salary is negotiable"), then have a floor ready ("I couldn't go
+  below $55k") because phone screens ask anyway. The likeable counter: "Is
+  that number flexible? I'd be more comfortable at $60k; my research puts
+  starts there and my years support it." Never "I know my worth".
+- **Stories over claims (5.1).** Not "I'm organised and good with data" but
+  "my admin needed two-year-old student data nobody could find; I had it in
+  a spreadsheet in ten minutes." Every strength gets a scene.
+- **The unknown term (5.1).** "I'm not familiar with that. Is it similar to
+  [thing you do know]?"
+- **The nerves line (5.1).** "Sorry, I'm excited about this role and my
+  nerves are getting the better of me." Then breathe and continue.
+- **The last question (5.1).** "Is there any reason you've seen so far that
+  would make you hesitate to hire me?" Only if you can hear the answer.
+- **Eager, not desperate (5.1).** Desperate: "I'd be happier anywhere but
+  teaching." Eager: "I learned X in teaching and this role is where I want
+  to use it, because A, B, C." Desperate closes with "when will I hear?";
+  eager closes with "what's your timeline for the other candidates?"
+- **Answering a no (5.5).** Reply, say what you liked about them, ask to be
+  considered for future roles. The interview was networking.
+- **Why-leaving, in one breath (5.1, 3.5).** Address it inside "tell me
+  about yourself", positively, then never again. Practise saying "I am an
+  instructional designer", not "I'm learning about instructional design".
+
+## Things she says that we should say differently
+
+- **"Healthcare needs industry experience, steer clear" (2.2).** She lists
+  healthcare, supply chain and manufacturing as the industries teachers
+  can't enter without specific experience. SLPs already have it. That is
+  our whole positioning in one line: the industry teachers are told to
+  avoid is the one you already speak.
+- **"This will be the greatest acting job of your life" (3.5).** Our
+  version is honest reframing, not acting: the code phrases in 6.2 are
+  true sentences about a true situation.
+- **"85% of jobs come from networking."** We don't have a source and
+  shouldn't use it. Our sourced equivalent is that a referral bypasses the
+  screen, and 42% of non-clinical rehab postings close inside two weeks.
+- **Affirmations in the mirror, smile to release molecules (1.5, 2.6).**
+  Skip. Our morale beats are facts and a saved answer, not mantras.
+- **"Everyone has the same 24 hours, I call BS" (1.3).** Keep this one. It
+  is the most human thing in the course and it matches how we already write.
+
+## What this changes in the recommendations
+
+Nothing in the ranking. The videos confirm the fourteen items in Part 2 and
+add scripts to three of them:
+
+- Item 9 (elevator pitches) gains the warm ask, the informational-interview
+  rules and the bad-DM example.
+- Item 11 (interview and offer mechanics) gains the salary plan A/B, the
+  likeable counter, the last question, the unknown-term move, the nerves
+  line, the eager-not-desperate contrast and the answer-to-a-no.
+- Item 4 (time and calendar) gains her weekly numbers (five to ten
+  applications, five to ten reach-outs, four/three/three hours) as a
+  starting point for ours.
+
+One new item, small: **"You can say no to 'may we contact your current
+employer'"** (4.1). School and medical SLPs both fear this. One line in
+Module 6, with the note that references are rarely called outside
+education and government.
