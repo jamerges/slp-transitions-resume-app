@@ -1,5 +1,7 @@
 # The Transition OS tracker
 
+The people list inside the course (Module 3) is the working copy: it counts your week, tells you who is due, and fills the message templates with each person's name. **Download as a sheet (CSV)** under that list gives you this same People sheet with your rows in it, for Sheets or Notion. The three CSVs here are the blank versions.
+
 Three sheets. Import each CSV as its own tab, or paste them into Notion as
 databases. Everything in row 2 of each file is an example: delete it once you
 have your own.

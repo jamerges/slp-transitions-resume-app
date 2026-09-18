@@ -150,6 +150,7 @@ export const MODULES: Module[] = [
       { id: "3.5", module: 3, title: "Why referrals beat applications", type: "explainer", minutes: 7, summary: "", resources: [R.jobs, R.companies] },
       { id: "3.6", module: 3, title: "Keep two conversations warm", type: "action", minutes: 15, summary: "", resources: [R.tracker, R.workbook1] },
       { id: "3.7", module: 3, title: "Recruiters, and how to follow up", type: "explainer", minutes: 6, summary: "", resources: [R.tracker] },
+      { id: "3.8", module: 3, title: "What to hand the model, and what to keep", type: "explainer", minutes: 8, summary: "", resources: [R.tracker] },
     ],
   },
   {

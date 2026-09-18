@@ -50,11 +50,26 @@ applying-now sweep and the after-you-land note in 3.6; recruiter vetting and
 niche recruiters in 3.7; "ask ten people whether the certificate mattered"
 in 5.1.
 
-Left as deliberate positioning, not gaps: our volume (three messages, two
-warm conversations) against her five to ten a week; our two hours a week
-against her thirty percent; our one-in-four no-reply figure, which is from
-our own corpus. Not adopted: her counts (85% via networking, one in five
-accept, 27x more findable, 500+ connections), which have no source.
+**Volume, revised the same day (James's point: her course predates the
+models).** Three messages tonight (3.3) and two warm conversations (3.6)
+stay as the floor, and 3.6 now adds the trickle: two new messages a week
+while building, five a week once applying, on the argument that a
+personalised message costs ten minutes rather than forty once the research
+and the first draft are handed to a model. The people list counts the week
+against a goal the reader sets. Our one-in-four no-reply figure stays; it is
+from our own corpus. Not adopted: her counts (85% via networking, one in
+five accept, 27x more findable, 500+ connections), which have no source.
+
+**Shipped with it:** the people list in Module 3 is now a working CRM
+(source, stage, log-a-touch with automatic next-touch dates, a due list,
+what-I-learned and who-they-named per person, the four Module 3 scripts
+copied with the person's name filled in, a weekly goal, CSV export matching
+the tracker sheet), and lesson **3.8 "What to hand the model, and what to
+keep"** with eight prompts prefilled with the reader's path and 4.3 numbers
+(research a person, research a company, the interview-me first draft,
+rehearse the call, notes into next steps, posting into a checklist, find the
+rooms, the monthly update), the never-paste rule for client and employer
+material, and the it-will-invent warning.
 
 ## Do when the rows exist
 

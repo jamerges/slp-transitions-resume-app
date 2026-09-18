@@ -31,7 +31,7 @@ skimmable: a reader should get the point from the TL;DR and the headings alone.
 - `{"type":"story","name":"...","was":"...","now":"...","text":"...","href":"..."}` a real person from the site; only the six with published stories (Caitlin Mueller, Lindsey Ison, Bethany Riebock, Jeannette Roberes, Rachel Archambault, Mattie Murrey-Tegels) plus quoted transitioners from research-facts (unnamed).
 - `{"type":"paths","note":"..."}` renders the path cards for the reader's chosen path (or top dials); the note is one line of context.
 - `{"type":"bypath","title":"...","note":"...","items":{"customer-success":"...","liaison-ur":"..."}}` one copyable script per path, keyed by the quiz slug (lib/quiz.ts PATHS). The reader's own path opens first; chips switch. Use it for pitches, headlines, anything that changes wording by path but not by lesson.
-- `{"type":"tool","name":"..."}` mounts an interactive tool built in code. Allowed names are listed per lesson in the brief.
+- `{"type":"tool","name":"..."}` mounts an interactive tool built in code. Allowed names are listed per lesson in the brief. `contact-tracker` is the shared people list (finish = three messages sent); `contact-tracker-warm` is the same list with the 3.6 finish (two conversations warm); `prompt-kit` is the 3.8 prompt set filled with the reader's path and numbers.
 
 ## Rules
 1. Voice: content/writer-kit/voice.md and style.md, plus content/style-guide.md 8a/8b. Curious, first person where James has lived it, second person for the reader. Lead with the point in a warm full sentence. No "it's not X, it's Y". No em-dashes. No stage-setting ("here's the thing"). No corporate verbs. Specific SLP nouns (caseload, IEP, productivity, CF year, grad debt).

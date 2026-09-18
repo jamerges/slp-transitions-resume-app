@@ -2,7 +2,7 @@
 // Interactive tools mounted from lesson JSON via {"type":"tool","name":"..."}.
 // Each tool saves into the lesson's answer slot (or a shared slot) through
 // the same progress store as everything else.
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { Fragment, useEffect, useMemo, useState, type ReactNode } from "react";
 import { PATHS } from "@/lib/quiz";
 import { ENERGY_PATHS } from "@/lib/course";
 import { pathImage } from "@/lib/quiz";
@@ -27,6 +27,8 @@ export function Tool(props: ToolProps) {
     case "pivot-report": return <PivotReport {...props} />;
     case "path-deep-dive": return <PathDeepDive {...props} />;
     case "contact-tracker": return <ContactTracker {...props} />;
+    case "contact-tracker-warm": return <ContactTracker {...props} goal="warm" />;
+    case "prompt-kit": return <PromptKit {...props} />;
     case "translation-pairs": return <TranslationPairs {...props} />;
     case "number-mining": return <NumberMining {...props} />;
     case "suite-link": return <SuiteLink {...props} />;
@@ -199,43 +201,204 @@ function PathDeepDive({ pathSlug, shared }: ToolProps) {
 }
 
 /* --------------------------- contact tracker (2.9/4.7) -------------------------- */
-interface Contact { name: string; role: string; where: string; sent: string; replied: boolean; next: string }
-function ContactTracker({ shared, setShared, finish, done }: ToolProps) {
+/* ---------------- your people: the networking CRM (3.1, 3.3, 3.5, 3.6, 3.7) ---------------- */
+type Source = "cohort" | "rep" | "left" | "alumni" | "warm" | "cold" | "event" | "recruiter";
+type Stage = "to" | "sent" | "replied" | "spoke" | "warm" | "referred" | "closed";
+interface Contact {
+  // The first version's fields, kept so nothing anyone saved is lost.
+  name: string; role: string; where: string; sent: string; replied: boolean; next: string;
+  company?: string; source?: Source; stage?: Stage; link?: string;
+  last?: string; due?: string; learned?: string; suggested?: string;
+  log?: { d: string; what: string }[];
+}
+const SOURCES: Record<Source, string> = { warm: "Someone I know", cohort: "Grad cohort", left: "An SLP who left", rep: "A rep who sells into my building", alumni: "Alumni search", cold: "Cold, found them", event: "Met at an event", recruiter: "Recruiter" };
+const STAGES: Record<Stage, string> = { to: "To message", sent: "Messaged", replied: "Replied", spoke: "Spoke", warm: "Warm", referred: "Referred me", closed: "Closed" };
+/** What logging a touch does: the stage it sets and when the next one is due. */
+const TOUCHES: { key: string; label: string; stage: Stage; days: number | null }[] = [
+  { key: "sent", label: "Sent the first message", stage: "sent", days: 8 },
+  { key: "follow", label: "Sent the one follow-up", stage: "sent", days: null },
+  { key: "replied", label: "They replied", stage: "replied", days: 2 },
+  { key: "spoke", label: "We spoke", stage: "spoke", days: 14 },
+  { key: "update", label: "Sent an update", stage: "warm", days: 30 },
+  { key: "referred", label: "They referred me", stage: "referred", days: 30 },
+  { key: "closed", label: "Let it rest", stage: "closed", days: null },
+];
+const NEXT_BY_STAGE: Record<Stage, string> = { to: "Send the first message", sent: "Follow up once, then let it rest", replied: "Book the fifteen minutes", spoke: "Tell them you did the thing you said you would", warm: "One four-sentence update", referred: "Tell them how it went", closed: "" };
+const today = () => new Date().toISOString().slice(0, 10);
+const addDays = (iso: string, n: number) => { const d = new Date(iso + "T12:00:00"); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); };
+const stageOf = (r: Contact): Stage => r.stage || (r.replied ? "replied" : r.sent ? "sent" : "to");
+const dueOf = (r: Contact): string => r.due !== undefined ? r.due : (!r.stage && r.sent && !r.replied ? addDays(r.sent, 8) : "");
+const IN_CONVERSATION: Stage[] = ["replied", "spoke", "warm", "referred"];
+const WARM: Stage[] = ["spoke", "warm", "referred"];
+
+/** The 3.2 and 3.6 scripts with this person's details filled in. [setting] stays yours to fill. */
+function fillTemplate(kind: "first" | "follow" | "thanks" | "update", r: Contact, title: string) {
+  const name = r.name.replace(/^EXAMPLE:\s*/, "").split(" ")[0] || "[Name]";
+  const role = r.role || "[target title]";
+  const t = title || role;
+  switch (kind) {
+    case "first": return `Hi ${name}, I'm an SLP in [setting] and I'm looking at ${t} roles. I found you because you made the same move${r.company ? ` (${r.role || "your role"} at ${r.company})` : ""}, and I'd rather ask you than read another article about it.\n\nWould you be up for 15 minutes in the next couple of weeks? I mostly want to know how you got the first one and what you'd do differently. No job ask, I promise.\n\nEither way, thank you for putting your path somewhere someone like me could find it.\n\n[Your name]`;
+    case "follow": return `Hi ${name}, floating this back up in case it got buried.\n\nStill would love 15 minutes on how you got into ${t}. If a call is too much, I'd happily take two sentences by message instead: what surprised you most in your first three months?\n\nThank you either way. [Your name]`;
+    case "thanks": return `${name}, thank you for the time. The thing I'm taking away is [one specific sentence they said, in their words].\n\nI'm going to [the one concrete thing you'll do because of it] in the next two weeks, and I'll let you know how it lands.${r.suggested ? ` If ${r.suggested} would be open to the same 15 minutes, I'd be grateful for an introduction whenever it's convenient.` : ""}\n\nThank you again. [Your name]`;
+    case "update": return `Hi ${name}, quick update since we talked. I [built the thing / finished the certificate / had a first interview at X]. Still aiming at ${t}, and [the thing they told you] turned out to be right.\n\nNo ask, just wanted you to know it landed. [Your name]`;
+  }
+}
+
+const CSV_HEAD = ["Name", "Their role", "Company", "Path", "Where I found them", "How I know them", "Date messaged", "Replied?", "Call booked", "What I learned", "Who they suggested next", "Last touch", "Next touch", "Status", "Notes"];
+function toCsv(rows: Contact[], path: string) {
+  const q = (v: unknown) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+  const lines = rows.map((r) => [r.name, r.role, r.company || "", path, r.where, r.source ? SOURCES[r.source] : "", r.sent, IN_CONVERSATION.includes(stageOf(r)) ? "Yes" : "No", "", r.learned || "", r.suggested || "", r.last || r.sent, dueOf(r), STAGES[stageOf(r)], r.link || ""].map(q).join(","));
+  return [CSV_HEAD.join(","), ...lines].join("\n");
+}
+
+const sel: React.CSSProperties = { ...input, padding: "5px 8px", fontSize: 13 };
+const small: React.CSSProperties = { fontSize: 12, fontWeight: 600, color: "var(--accent)", background: "none", border: "1px solid var(--accent-bg)", borderRadius: 6, padding: "3px 8px", cursor: "pointer", fontFamily: font.sans };
+
+/**
+ * One list for everyone the reader is talking to, shared across Module 3.
+ * `goal` decides what the lesson's button asks for: three messages sent (3.3)
+ * or two conversations warm (3.6). Everything saves as it changes.
+ */
+function ContactTracker({ shared, setShared, finish, done, pathSlug, goal = "three" }: ToolProps & { goal?: "three" | "warm" }) {
   const rows: Contact[] = shared.contacts || [];
-  const [draft, setDraft] = useState<Contact>({ name: "", role: "", where: "", sent: new Date().toISOString().slice(0, 10), replied: false, next: "" });
+  const title = pathSlug ? PATHS[pathSlug].label.split(" / ")[0] : "";
+  const weekGoal: number = Number(shared.contactGoal) || 3;
+  const [draft, setDraft] = useState<Contact>({ name: "", role: "", where: "", sent: "", replied: false, next: "", company: "", source: "cold", stage: "to", link: "" });
+  const [open, setOpen] = useState<number | null>(null);
+  const [copied, setCopied] = useState<string>("");
   const save = (next: Contact[]) => setShared("contacts", next);
-  const sentCount = rows.filter((r) => r.sent).length;
+  const patch = (i: number, u: Partial<Contact>) => { const n = [...rows]; n[i] = { ...rows[i], ...u }; save(n); };
+  const t = today();
+  const weekAgo = addDays(t, -7);
+  const sentThisWeek = rows.filter((r) => (r.log || []).some((l) => l.what === "sent" && l.d >= weekAgo) || (!r.log && r.sent >= weekAgo)).length;
+  const sentCount = rows.filter((r) => stageOf(r) !== "to").length;
+  const warmCount = rows.filter((r) => WARM.includes(stageOf(r))).length;
+  const dueRows = rows.map((r, i) => ({ r, i })).filter(({ r }) => { const d = dueOf(r); return d && d <= t && stageOf(r) !== "closed"; });
+  const logTouch = (i: number, key: string) => {
+    const touch = TOUCHES.find((x) => x.key === key); if (!touch) return;
+    const r = rows[i];
+    patch(i, { stage: touch.stage, last: t, due: touch.days === null ? "" : addDays(t, touch.days), sent: key === "sent" && !r.sent ? t : r.sent, replied: r.replied || IN_CONVERSATION.includes(touch.stage), log: [...(r.log || []), { d: t, what: key }] });
+  };
+  const copy = (kind: "first" | "follow" | "thanks" | "update", r: Contact) => {
+    navigator.clipboard?.writeText(fillTemplate(kind, r, title)).then(() => { setCopied(`${r.name}:${kind}`); setTimeout(() => setCopied(""), 1500); });
+  };
+  const exportCsv = () => {
+    const blob = new Blob([toCsv(rows, title)], { type: "text/csv" });
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "transition-os-people.csv"; a.click(); URL.revokeObjectURL(a.href);
+  };
+  const ready = goal === "three" ? sentCount >= 3 : warmCount >= 2;
   return (
     <Panel>
-      <H>People you&rsquo;ve reached out to</H>
-      <Muted>Three messages is the action for this lesson. About one in four gets no answer at all, so three sent is usually two conversations. That is the point.</Muted>
+      <H>Your people</H>
+      <Muted>{goal === "three" ? "Three messages is the action for this lesson. About one in four gets no answer at all, so three sent is usually two conversations." : "Everyone you are talking to, in one place. Log what happened and it tells you who is due and what the next touch is."}</Muted>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, marginBottom: 12 }} className="tos-two-col">
+        {[["Due now", dueRows.length], ["Sent this week", `${sentThisWeek} of ${weekGoal}`], ["In conversation", rows.filter((r) => IN_CONVERSATION.includes(stageOf(r))).length], ["Referred you", rows.filter((r) => stageOf(r) === "referred").length]].map(([l, n]) => (
+          <div key={String(l)} style={{ background: "var(--bg)", borderRadius: 10, padding: "8px 10px", textAlign: "center" }}><div style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 700 }}>{n}</div><div style={{ fontSize: 11.5, color: "var(--muted)" }}>{l}</div></div>
+        ))}
+      </div>
+      <div style={{ display: "flex", gap: 8, alignItems: "center", fontSize: 12.5, color: "var(--muted)", marginBottom: 12, flexWrap: "wrap" }}>
+        <span>Messages a week you are aiming for:</span>
+        <input type="number" min={1} max={20} value={weekGoal} onChange={(e) => setShared("contactGoal", Number(e.target.value) || 1)} style={{ ...sel, width: 60 }} />
+        <span>Two while you are building, five once you are applying.</span>
+      </div>
+      {dueRows.length > 0 && (
+        <Panel tone="soft" style={{ marginBottom: 12, padding: "12px 14px" }}>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 6 }}>Due</div>
+          {dueRows.map(({ r, i }) => (
+            <div key={i} style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap", padding: "6px 0", borderTop: "1px solid var(--border)", fontSize: 14 }}>
+              <b>{r.name}</b><span style={{ color: "var(--muted)" }}>{NEXT_BY_STAGE[stageOf(r)]}</span>
+              <select value="" onChange={(e) => e.target.value && logTouch(i, e.target.value)} style={{ ...sel, width: "auto", marginLeft: "auto" }}><option value="">Log what happened…</option>{TOUCHES.map((x) => <option key={x.key} value={x.key}>{x.label}</option>)}</select>
+            </div>
+          ))}
+        </Panel>
+      )}
       {rows.length > 0 && (
         <div style={{ overflowX: "auto", marginBottom: 12 }}>
           <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13.5 }}>
-            <thead><tr style={{ textAlign: "left", color: "var(--muted)", fontSize: 12 }}><th style={{ padding: "6px 8px" }}>Who</th><th style={{ padding: "6px 8px" }}>Role · where</th><th style={{ padding: "6px 8px" }}>Sent</th><th style={{ padding: "6px 8px" }}>Replied</th><th style={{ padding: "6px 8px" }}>Next</th><th /></tr></thead>
+            <thead><tr style={{ textAlign: "left", color: "var(--muted)", fontSize: 12, whiteSpace: "nowrap" }}><th style={{ padding: "6px 8px" }}>Who</th><th style={{ padding: "6px 8px" }}>Source</th><th style={{ padding: "6px 8px" }}>Stage</th><th style={{ padding: "6px 8px" }}>Next touch</th><th style={{ padding: "6px 8px" }}>Log</th><th /></tr></thead>
             <tbody>{rows.map((r, i) => (
-              <tr key={i} style={{ borderTop: "1px solid var(--border)" }}>
-                <td style={{ padding: "8px" }}><b>{r.name}</b></td><td style={{ padding: "8px" }}>{r.role}{r.where ? ` · ${r.where}` : ""}</td><td style={{ padding: "8px" }}>{r.sent}</td>
-                <td style={{ padding: "8px" }}><input type="checkbox" checked={r.replied} onChange={(e) => { const n = [...rows]; n[i] = { ...r, replied: e.target.checked }; save(n); }} /></td>
-                <td style={{ padding: "8px" }}><input value={r.next} onChange={(e) => { const n = [...rows]; n[i] = { ...r, next: e.target.value }; save(n); }} placeholder="follow up on…" style={{ ...input, padding: "5px 8px", fontSize: 13 }} /></td>
-                <td style={{ padding: "8px" }}><button type="button" onClick={() => save(rows.filter((_, k) => k !== i))} style={{ background: "none", border: "none", color: "var(--light)", cursor: "pointer" }}>×</button></td>
-              </tr>))}</tbody>
+              <Fragment key={i}>
+                <tr style={{ borderTop: "1px solid var(--border)" }}>
+                  <td style={{ padding: "8px" }}><button type="button" onClick={() => setOpen(open === i ? null : i)} style={{ background: "none", border: "none", padding: 0, cursor: "pointer", textAlign: "left", fontFamily: font.sans, fontSize: 13.5, color: "var(--text)" }}><b>{r.name}</b>{open === i ? " ▾" : " ▸"}<div style={{ fontSize: 12, color: "var(--muted)" }}>{r.role}{r.company ? ` · ${r.company}` : r.where ? ` · ${r.where}` : ""}</div></button></td>
+                  <td style={{ padding: "8px" }}><select value={r.source || ""} onChange={(e) => patch(i, { source: e.target.value as Source })} style={sel}><option value="">…</option>{(Object.keys(SOURCES) as Source[]).map((k) => <option key={k} value={k}>{SOURCES[k]}</option>)}</select></td>
+                  <td style={{ padding: "8px" }}><select value={stageOf(r)} onChange={(e) => patch(i, { stage: e.target.value as Stage })} style={sel}>{(Object.keys(STAGES) as Stage[]).map((k) => <option key={k} value={k}>{STAGES[k]}</option>)}</select></td>
+                  <td style={{ padding: "8px" }}><input type="date" value={dueOf(r)} onChange={(e) => patch(i, { due: e.target.value })} style={sel} /></td>
+                  <td style={{ padding: "8px" }}><select value="" onChange={(e) => e.target.value && logTouch(i, e.target.value)} style={sel}><option value="">Log…</option>{TOUCHES.map((x) => <option key={x.key} value={x.key}>{x.label}</option>)}</select></td>
+                  <td style={{ padding: "8px" }}><button type="button" onClick={() => save(rows.filter((_, k) => k !== i))} style={{ background: "none", border: "none", color: "var(--light)", cursor: "pointer" }} aria-label="Remove">×</button></td>
+                </tr>
+                {open === i && (
+                  <tr><td colSpan={6} style={{ padding: "4px 8px 12px", background: "var(--bg)" }}>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 8 }} className="tos-two-col">
+                      <div><label style={{ fontSize: 12, fontWeight: 600 }}>What I learned</label><textarea value={r.learned || ""} onChange={(e) => patch(i, { learned: e.target.value })} rows={3} placeholder="Their words, not yours. The credential their employer required, the part of clinical work that transferred." style={{ ...input, resize: "vertical" }} /></div>
+                      <div><label style={{ fontSize: 12, fontWeight: 600 }}>Who they suggested next</label><input value={r.suggested || ""} onChange={(e) => patch(i, { suggested: e.target.value })} placeholder="A name, and where" style={input} />
+                        <label style={{ fontSize: 12, fontWeight: 600, display: "block", marginTop: 8 }}>Profile link</label><input value={r.link || ""} onChange={(e) => patch(i, { link: e.target.value })} placeholder="linkedin.com/in/…" style={input} /></div>
+                    </div>
+                    <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center", fontSize: 12.5 }}>
+                      <span style={{ color: "var(--muted)" }}>Copy, with their name in it:</span>
+                      {([["first", "First message"], ["follow", "Follow-up"], ["thanks", "Thank-you"], ["update", "Monthly update"]] as const).map(([k, l]) => <button key={k} type="button" onClick={() => copy(k, r)} style={small}>{copied === `${r.name}:${k}` ? "Copied ✓" : l}</button>)}
+                    </div>
+                    {(r.log || []).length > 0 && <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 8 }}>{(r.log || []).map((l, k) => <span key={k}>{l.d} {TOUCHES.find((x) => x.key === l.what)?.label.toLowerCase()}{k < (r.log || []).length - 1 ? " · " : ""}</span>)}</div>}
+                  </td></tr>
+                )}
+              </Fragment>
+            ))}</tbody>
           </table>
         </div>
       )}
-      <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr auto", gap: 8, alignItems: "end" }} className="tos-two-col">
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 8, alignItems: "end" }}>
         <div><label style={{ fontSize: 12, fontWeight: 600 }}>Name</label><input value={draft.name} onChange={(e) => setDraft({ ...draft, name: e.target.value })} style={input} /></div>
-        <div><label style={{ fontSize: 12, fontWeight: 600 }}>Their role</label><input value={draft.role} onChange={(e) => setDraft({ ...draft, role: e.target.value })} style={input} placeholder="CSM at Presence" /></div>
-        <div><label style={{ fontSize: 12, fontWeight: 600 }}>Where you found them</label><input value={draft.where} onChange={(e) => setDraft({ ...draft, where: e.target.value })} style={input} placeholder="LinkedIn" /></div>
-        <Btn onClick={() => { if (!draft.name.trim()) return; save([...rows, draft]); setDraft({ ...draft, name: "", role: "", where: "" }); }}>Add</Btn>
+        <div><label style={{ fontSize: 12, fontWeight: 600 }}>Their role</label><input value={draft.role} onChange={(e) => setDraft({ ...draft, role: e.target.value })} style={input} placeholder="Implementation specialist" /></div>
+        <div><label style={{ fontSize: 12, fontWeight: 600 }}>Company</label><input value={draft.company} onChange={(e) => setDraft({ ...draft, company: e.target.value })} style={input} placeholder="Presence" /></div>
+        <div><label style={{ fontSize: 12, fontWeight: 600, whiteSpace: "nowrap" }}>How I know them</label><select value={draft.source} onChange={(e) => setDraft({ ...draft, source: e.target.value as Source })} style={input}>{(Object.keys(SOURCES) as Source[]).map((k) => <option key={k} value={k}>{SOURCES[k]}</option>)}</select></div>
+        <Btn onClick={() => { if (!draft.name.trim()) return; save([...rows, { ...draft, where: draft.source ? SOURCES[draft.source] : "", stage: "to", due: t }]); setDraft({ ...draft, name: "", role: "", company: "", link: "" }); }}>Add</Btn>
       </div>
-      {finish && (
-        <div style={{ marginTop: 14, display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
-          <Btn onClick={() => finish({ action: true })} disabled={sentCount < 3 || done}>{done ? "Logged ✓" : `I sent ${Math.min(3, sentCount)} of 3`}</Btn>
-          <span style={{ fontSize: 13, color: "var(--muted)" }}>{sentCount >= 3 ? "Three sent. Log it and the badge is yours." : `${3 - sentCount} more to go.`}</span>
-        </div>
-      )}
+      <div style={{ marginTop: 14, display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+        {finish && <Btn onClick={() => finish({ action: true })} disabled={!ready || done}>{done ? "Logged ✓" : goal === "three" ? `I sent ${Math.min(3, sentCount)} of 3` : `${Math.min(2, warmCount)} of 2 conversations warm`}</Btn>}
+        {finish && <span style={{ fontSize: 13, color: "var(--muted)" }}>{goal === "three" ? (ready ? "Three sent. Log it and the badge is yours." : `${3 - sentCount} more to go. Log “Sent the first message” on each.`) : (ready ? "Two warm. Keep the monthly update going." : "Warm means you have spoken and sent at least one update.")}</span>}
+        {rows.length > 0 && <button type="button" onClick={exportCsv} style={{ ...small, marginLeft: "auto" }}>Download as a sheet (CSV)</button>}
+      </div>
     </Panel>
+  );
+}
+
+/* ------------------ prompt kit: what to hand the model (3.8) ------------------ */
+/**
+ * Prompts for ChatGPT or Claude, filled with the reader's own details, each
+ * with a copy button. The model does the research, the first draft and the
+ * rehearsal; the reader keeps the specifics and the send (lesson 4.4's rule).
+ */
+function PromptKit({ shared, setShared, pathSlug }: ToolProps) {
+  const title = pathSlug ? PATHS[pathSlug].label.split(" / ")[0] : "[target title]";
+  const [company, setCompany] = useState<string>(shared.promptKit?.company || "");
+  const [person, setPerson] = useState<string>(shared.promptKit?.person || "");
+  const numbers: string = shared.numbers && Object.values(shared.numbers).some(Boolean) ? numbersAsText(shared.numbers) : "[three bullets from your résumé, each with a number in it]";
+  const co = company.trim() || "[company]";
+  const who = person.trim() || "[their name and title]";
+  const rules = "Write the way a person talks. No greeting like \"I hope this finds you well\", no \"leverage\", \"passionate\", \"spearheaded\" or \"cutting-edge\", no adjective where a number could go, nothing in threes, no em dashes. Keep every specific detail I gave you and invent none.";
+  const prompts: { title: string; when: string; text: string }[] = [
+    { title: "Research a person before you message them", when: "Ten minutes before the first message. Paste their profile text, not a screenshot.", text: `I'm an SLP moving into ${title} roles. Below is the LinkedIn profile of ${who}, who made a similar move. Read it and give me:\n1. Three specific things I could reference that show I actually read it (a job change, a post, a project), each in one line.\n2. One question only they could answer, about how they got the first role.\n3. Which of my experiences below maps most closely to what they do now, and in what words they would describe it.\n\nMy experience:\n${numbers}\n\nProfile:\n[paste here]` },
+    { title: "Research a company in ten minutes", when: "Before messaging anyone there, and before any interview.", text: `I'm an SLP looking at ${title} roles at ${co}. Below is text from their site and a job posting. Tell me, in plain sentences:\n1. What they sell and who pays for it.\n2. What a clinician would notice about the product that a non-clinician would not.\n3. Three questions I could ask an employee that show I understand the business, none of which Google could answer.\n4. Which line of the posting is the real requirement and which is decoration.\nMark anything you are inferring rather than reading. I will verify names and claims myself.\n\n[paste their About page, careers page and the posting]` },
+    { title: "Draft a first message, the interview-me way", when: "After the research. The draft is a starting point; the send is yours.", text: `I want to send a first message to ${who}${company.trim() ? ` at ${co}` : ""} asking for fifteen minutes about how they moved into ${title}. Before you draft anything, ask me five questions about why I'm writing to this person specifically and what I actually want to know. Wait for my answers. Then write the message under 90 words, no job ask, easy to decline, using my answers and nothing else. ${rules}` },
+    { title: "Rehearse the fifteen minutes", when: "The night before a call. Talk out loud; type what you'd say.", text: `Role-play with me. You are ${who}, a ${title} at ${co} who used to be a clinician. I'm an SLP and I have asked you for fifteen minutes about how you got the first role. Play it realistically: you are busy, friendly, and you will get bored if I ask anything I could have Googled. Interrupt me when I do. Start by saying hello and asking what I'm hoping to get out of the call. At the end, tell me the two things I did that made you want to help and the one that made you want to end the call.` },
+    { title: "Turn call notes into next steps", when: "Within an hour of hanging up, before the notes go cold.", text: `Below are my rough notes from a fifteen-minute call with ${who}, who works in ${title}. Give me:\n1. The three facts I learned, in their words where I wrote them down.\n2. The person or company they named that I should follow up with.\n3. The one thing I said I would do, as a task with a date two weeks out.\n4. A thank-you message under 60 words that quotes one specific thing they said. ${rules}\n\nNotes:\n[paste here]` },
+    { title: "Translate a posting into a checklist", when: "Before you apply, and before the hiring-manager note in 3.7.", text: `Here is a job posting for a ${title} role at ${co}, and here are numbers from my clinical work. Make a two-column list: each requirement in the posting, and which of my experiences answers it, using the posting's own words. Then list the requirements I do not meet and, for each, the cheapest honest way to close it before an interview (a named course, a small project, a conversation). Do not soften a gap and do not invent experience I did not give you.\n\nMy numbers:\n${numbers}\n\nPosting:\n[paste here]` },
+    { title: "Find the rooms, then verify them", when: "Once, when you pick a path. Check every name before you rely on it.", text: `List the conferences, LinkedIn groups, Slack or Discord communities and newsletters where people who do ${title} work in health-tech and ed-tech actually gather. For each, say whether it is for practitioners or for job-seekers, and whether a clinician moving in would be welcome. Give me the official name so I can search it; I know you sometimes invent these, so I will verify each one.` },
+    { title: "Rewrite the monthly update", when: "When the four sentences will not come.", text: `I'm sending a short update to ${who}, who gave me fifteen minutes about ${title} work a month ago. Since then: [what you did]. They told me: [the thing they said]. Write four sentences: what I did, that I'm still aiming at ${title}, that their advice turned out to be right, and that there is no ask. ${rules}` },
+  ];
+  return (
+    <div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 14 }} className="tos-two-col">
+        <div><label style={{ fontSize: 12, fontWeight: 600 }}>The company, if there is one</label><input value={company} onChange={(e) => { setCompany(e.target.value); }} onBlur={() => setShared("promptKit", { company, person })} placeholder="Lingraphica" style={input} /></div>
+        <div><label style={{ fontSize: 12, fontWeight: 600 }}>The person, if there is one</label><input value={person} onChange={(e) => { setPerson(e.target.value); }} onBlur={() => setShared("promptKit", { company, person })} placeholder="Dana R., Implementation Specialist" style={input} /></div>
+      </div>
+      <Muted>Filled in with your path{shared.numbers ? " and the numbers you mined in 4.3" : ""}. Paste one into ChatGPT or Claude, in a personal account, never a work one.</Muted>
+      {prompts.map((pr) => (
+        <div key={pr.title} style={{ marginBottom: 6 }}>
+          <div style={{ fontSize: 12.5, color: "var(--muted)", margin: "0 0 4px" }}>{pr.when}</div>
+          <Script title={pr.title} text={pr.text} />
+        </div>
+      ))}
+    </div>
   );
 }
 

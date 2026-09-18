@@ -534,11 +534,15 @@
   },
   {
     "id": "3.6",
-    "tldr": "Two live conversations at any time is enough. Keep them warm with one short update a month, and they turn into referrals without you asking.",
+    "tldr": "Two live conversations at any time, kept warm with one short update a month, and a steady trickle of new messages that the tracker counts for you. Referrals come from that without you asking.",
     "blocks": [
       {
         "type": "p",
         "text": "Most networking advice assumes you want a network. What you want is two or three people who know what you are looking for and would forward you a posting, which is a much smaller job."
+      },
+      {
+        "type": "p",
+        "text": "Smaller does not mean static. Two warm conversations is the floor you keep, and new messages are the trickle that replaces one when it goes quiet. Two a week while you are building, five a week once you are applying, and with the research and the first draft handed to the model (lesson 3.8) each one costs ten minutes rather than forty. The tracker counts your week, so the number is a fact rather than a feeling, and it tells you who is due."
       },
       {
         "type": "h",
@@ -563,7 +567,7 @@
       },
       {
         "type": "tool",
-        "name": "contact-tracker"
+        "name": "contact-tracker-warm"
       },
       {
         "type": "h",
@@ -590,10 +594,11 @@
       "done": "Two warm. That is the network. It does not need to be bigger than this."
     },
     "takeaways": [
-      "Two live conversations is enough, because what you need is a couple of people who would forward you a posting rather than a network.",
+      "Two live conversations is the floor, because what you need is a couple of people who would forward you a posting rather than a network.",
       "One four-sentence update a month keeps a conversation warm.",
       "Silence means a busy month, not a closed door. One follow-up, then let it rest.",
-      "The introduction that works is usually third or fourth hand, which is why two warm beats one perfect."
+      "The introduction that works is usually third or fourth hand, which is why two warm beats one perfect.",
+      "Two new messages a week while you build, five once you apply. The tracker keeps the count and the due dates."
     ],
     "sources": [
       "facts",
@@ -695,6 +700,95 @@
     "sources": [
       "voc",
       "facts"
+    ]
+  },
+  {
+    "id": "3.8",
+    "tldr": "The model is good at the parts of this that are not you: research, first drafts, rehearsal, tidying notes. Hand those over, keep the specifics and the send, and never paste a client or an employer's document into it.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Most of the hours in a search go on work that a model does well and you do slowly: reading a stranger's profile for the one thing worth mentioning, working out what a company sells, turning a page of call notes into three facts and a task, saying the first draft of anything. Lesson 4.4 set the rule for applications, and it holds here: it writes the draft, you write the sentence, and the detail that gets you hired was never in the model to begin with."
+      },
+      {
+        "type": "h",
+        "text": "What to hand over"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Research.** Paste a profile or a careers page and ask what a clinician would notice. Ten minutes becomes two, and the message you send afterwards names something real.",
+          "**The first draft of anything.** A message, a thank-you, an update, a cover-letter paragraph. The first draft is where people stall for a week. Let it stall the model instead, then rewrite in your words.",
+          "**Rehearsal.** It will play the customer success lead who used to be an OT and interrupt you when you ask something you could have searched. Nobody else will rehearse with you at eleven at night.",
+          "**Tidying.** Notes into next steps, a posting into a checklist, a month of activity into four sentences.",
+          "**Finding the rooms.** Which conferences, groups and newsletters your target title actually reads. It will get some of the names wrong, so treat the list as leads to verify, not a source."
+        ]
+      },
+      {
+        "type": "h",
+        "text": "What to keep"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**The specifics.** The caseload that hit 62 in March, the fourteen people you trained through the EMR switch, the parent who said no for four months. The model was not in the room, and generic output erases exactly the thing that makes you the one candidate with a story.",
+          "**The send.** Read every message out loud before it goes. If you would not say a sentence to the person's face at the copier, cut it.",
+          "**The judgement about people.** Who to write to, who to leave alone, whether a reply was warm or polite. That is clinical judgement and you have a decade of it.",
+          "**Anything private.** See below."
+        ]
+      },
+      {
+        "type": "callout",
+        "tone": "warm",
+        "title": "Never paste",
+        "text": "A client's name or anything that could identify one, a session note, a chart, an IEP, an evaluation report, an internal email, your employer's templates or policies, or a screenshot of any of those. Protected health information does not stop being protected because you removed the name. Use a personal account on a personal laptop, the same rule as 3.4, and assume anything you paste is kept."
+      },
+      {
+        "type": "callout",
+        "tone": "warm",
+        "title": "It will invent",
+        "text": "A conference that does not exist, a person's current title, a statistic with a confident decimal, a product the company never made. It is a drafting tool, not a source. Verify every name before you rely on it, and never let a number it produced into a message, a résumé or an interview answer."
+      },
+      {
+        "type": "h",
+        "text": "The prompts, filled in with your details"
+      },
+      {
+        "type": "p",
+        "text": "Each one below carries your path and, if you mined them in 4.3, your numbers. Add the company or the person and copy. Most of them ask the model to interview you first, which is the difference between a draft built from your answers and a draft built from everyone's."
+      },
+      {
+        "type": "tool",
+        "name": "prompt-kit"
+      },
+      {
+        "type": "h",
+        "text": "What this does to the pace"
+      },
+      {
+        "type": "p",
+        "text": "A personalised message used to cost forty minutes: the reading, the staring, the rewrite. With the reading and the first draft handed over it costs about ten, and the limit on how many you send becomes your attention rather than the drafting. Two a week while you are building the artifact, five a week once you are applying. The tracker in 3.6 counts the week and tells you who is due, and that is the whole system: the model does the reading, the tracker does the remembering, you do the talking."
+      },
+      {
+        "type": "steps",
+        "items": [
+          "Pick one name from your people list who is still at \"to message\".",
+          "Run the research prompt on their profile and write down the one thing worth mentioning.",
+          "Run the interview-me prompt, answer its five questions honestly, and take the draft.",
+          "Rewrite it in your words, read it aloud, send it, and log \"Sent the first message\" in the tracker."
+        ]
+      }
+    ],
+    "takeaways": [
+      "Hand the model the research, the first draft, the rehearsal and the tidying. Keep the specifics, the send and the judgement about people.",
+      "Never paste anything that identifies a client, or any document that belongs to your employer. Personal account, personal laptop.",
+      "It invents names and numbers with a straight face. Verify before you rely on it, and never let its numbers into a message or a résumé.",
+      "Ask it to interview you before it drafts. The answers are the material.",
+      "With the drafting handed over, two messages a week while building and five while applying is a real pace, and the tracker keeps the count."
+    ],
+    "sources": [
+      "facts",
+      "forums"
     ]
   }
 ]
