@@ -31,13 +31,14 @@ HTML = f"""<!DOCTYPE html><html><body style="margin:0;padding:0;background:#F7F7
 <p {P}>Careers are windy now (more than ever with the rate of change) &ndash; mine included. I&rsquo;m hoping these give you a compass.</p>
 <p {P}>If you&rsquo;d rather read first: <a href="https://slptransitions.com/youre-allowed-to-want-out/" {A}>You&rsquo;re allowed to want out</a> or <a href="https://slptransitions.com/alternative-careers-speech-pathologists-slps/" {A}>the 20 paths and what they pay</a>.</p>
 <p {P}>Reply with any feedback. I read every one.</p>
-<p {P}>Wishing nothing but the best,<br>James</p>
+<p {P}>Wishing you nothing but the best, {{$name|default(friend)}}.</p>
+<p {P}>James</p>
 <p style="font-size:12px;color:#9CA3AF;margin-top:28px;">You&rsquo;re getting this because you signed up at slptransitions.com. <a href="{{$unsubscribe}}" style="color:#9CA3AF;">Unsubscribe</a>.</p>
 </div></body></html>"""
 
 if __name__ == "__main__":
     group = sys.argv[1] if len(sys.argv) > 1 else TEST_GROUP
-    name = sys.argv[2] if len(sys.argv) > 2 else "2026-09-18 Friday compass v2 (TEST James only)"
+    name = sys.argv[2] if len(sys.argv) > 2 else "2026-09-18 Friday compass v3 (TEST James only)"
     r = api("/campaigns", "POST", {"name": name, "type": "regular", "groups": [group], "emails": [{"subject": SUBJECT, "from_name": FROM_NAME, "from": FROM, "content": HTML}]})
     cid = (r.get("data") or {}).get("id")
     if not cid: print("CREATE FAILED:", json.dumps(r)[:400]); sys.exit(1)

@@ -23,7 +23,8 @@ If you'd rather read first: [You're allowed to want out](https://slptransitions.
 
 Reply with any feedback. I read every one.
 
-Wishing nothing but the best,
+Wishing you nothing but the best, {$name|default(friend)}.
+
 James
 
 ---
