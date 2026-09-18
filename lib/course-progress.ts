@@ -1,7 +1,9 @@
 "use client";
-// Prototype progress store for Transition OS. localStorage only; the real
-// build swaps this for Redis behind a magic-link session. The shape is the
-// contract: keep it stable so the swap is a transport change, not a rewrite.
+// Progress store for Transition OS. localStorage is the working copy for
+// everyone; a buyer (access cookie) also syncs it to Redis through
+// /api/course/progress, keyed by their Stripe session, so the answers and the
+// people list follow them to another browser. Merge rule on load: the newer
+// document wins per key, lists are unioned, XP is the max.
 import { useCallback, useEffect, useRef, useState } from "react";
 import { BADGES, LESSONS, XP_PER_LESSON, XP_PER_ACTION, type BadgeId } from "./course";
 
@@ -13,6 +15,7 @@ export interface Progress {
   badges: BadgeId[];
   streak: { count: number; last: string | null }; // last = YYYY-MM-DD of last action
   answers: Record<string, unknown>;               // per-lesson saved inputs
+  updatedAt?: string;                             // ISO, set on every commit; decides the merge
 }
 
 const KEY = "tos:progress:v1";
@@ -41,6 +44,33 @@ function load(): Progress {
 }
 function save(p: Progress) { try { localStorage.setItem(KEY, JSON.stringify(p)); } catch { /* private mode */ } }
 
+/** Two copies of the same person's progress: the newer one is the base, lists are unioned, nothing earned is lost. */
+function merge(a: Progress, b: Progress): Progress {
+  const newer = (b.updatedAt || "") > (a.updatedAt || "") ? b : a;
+  const older = newer === a ? b : a;
+  const uniq = <T,>(x: T[], y: T[]) => Array.from(new Set([...x, ...y]));
+  const oa = older.answers as Record<string, any>, na = newer.answers as Record<string, any>;
+  const answers: Record<string, unknown> = { ...oa, ...na };
+  if (oa.__shared || na.__shared) answers.__shared = { ...(oa.__shared || {}), ...(na.__shared || {}) };
+  return {
+    ...newer,
+    startedAt: [older.startedAt, newer.startedAt].filter(Boolean).sort()[0] || null,
+    completed: uniq(older.completed, newer.completed),
+    actions: uniq(older.actions, newer.actions),
+    badges: uniq(older.badges, newer.badges),
+    xp: Math.max(older.xp, newer.xp),
+    streak: (older.streak.last || "") > (newer.streak.last || "") ? older.streak : newer.streak,
+    answers,
+  };
+}
+
+const ENDPOINT = "/api/course/progress";
+function push(p: Progress, beacon = false) {
+  const body = JSON.stringify(p);
+  if (beacon && typeof navigator !== "undefined" && navigator.sendBeacon) { navigator.sendBeacon(ENDPOINT, new Blob([body], { type: "application/json" })); return; }
+  fetch(ENDPOINT, { method: "PUT", headers: { "Content-Type": "application/json" }, body, keepalive: true }).catch(() => { /* next commit retries */ });
+}
+
 /** Streak rule: an action today extends it; one missed day is forgiven; two resets. */
 function bumpStreak(s: Progress["streak"]): Progress["streak"] {
   const t = today();
@@ -59,9 +89,33 @@ export function useProgress() {
   // pay XP exactly once. Doing it inside a setState updater double-paid under
   // React Strict Mode, which runs updaters twice in development.
   const ref = useRef<Progress>(EMPTY);
-  useEffect(() => { const loaded = load(); ref.current = loaded; setP(loaded); setReady(true); }, []);
+  // null = not known yet, false = browser only (free visitor, or no store), true = follows the buyer.
+  const [synced, setSynced] = useState<boolean | null>(null);
+  const syncRef = useRef(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const commit = useCallback((next: Progress) => { ref.current = next; setP(next); save(next); }, []);
+  useEffect(() => {
+    const loaded = load(); ref.current = loaded; setP(loaded); setReady(true);
+    let cancelled = false;
+    fetch(ENDPOINT, { cache: "no-store" }).then(async (r) => {
+      if (cancelled || r.status !== 200) { if (!cancelled) setSynced(false); return; }
+      const { progress, store } = await r.json();
+      if (!store) { setSynced(false); return; }
+      syncRef.current = true; setSynced(true);
+      const merged = progress ? merge(ref.current, migrate({ ...EMPTY, ...progress })) : ref.current;
+      ref.current = merged; setP(merged); save(merged);
+      push(merged);
+    }).catch(() => { if (!cancelled) setSynced(false); });
+    const onHide = () => { if (document.visibilityState === "hidden" && syncRef.current) push(ref.current, true); };
+    document.addEventListener("visibilitychange", onHide);
+    return () => { cancelled = true; document.removeEventListener("visibilitychange", onHide); };
+  }, []);
+
+  const commit = useCallback((next: Progress) => {
+    const stamped = { ...next, updatedAt: new Date().toISOString() };
+    ref.current = stamped; setP(stamped); save(stamped);
+    if (syncRef.current) { if (timer.current) clearTimeout(timer.current); timer.current = setTimeout(() => push(ref.current), 1500); }
+  }, []);
 
   const saveAnswer = useCallback((lessonId: string, value: unknown) => {
     commit({ ...ref.current, answers: { ...ref.current.answers, [lessonId]: value } });
@@ -87,5 +141,5 @@ export function useProgress() {
   const reset = useCallback(() => commit(EMPTY), [commit]);
 
   const pct = Math.round((p.completed.length / LESSONS.length) * 100);
-  return { p, ready, pct, complete, saveAnswer, reset };
+  return { p, ready, pct, complete, saveAnswer, reset, synced };
 }

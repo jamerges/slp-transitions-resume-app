@@ -37,7 +37,7 @@ export default function LessonPage({ id, access }: { id: string; access?: { prod
   const next = nextLesson(id);
   const prev = prevLesson(id);
   const content = contentFor(id);
-  const { p, ready, pct, complete, saveAnswer } = useProgress();
+  const { p, ready, pct, complete, saveAnswer, synced } = useProgress();
   const [toast, setToast] = useState<{ xp: number; badges: any[] } | null>(null);
   const done = p.completed.includes(id);
   const idx = mod.lessons.findIndex((l) => l.id === id);
@@ -61,7 +61,7 @@ export default function LessonPage({ id, access }: { id: string; access?: { prod
   const action = content?.action || lesson.action;
 
   return (
-    <CourseShell xp={p.xp} streak={p.streak.count} pct={pct} note={access?.product === "ground" ? "Modules 0 and 1 are yours. The full program opens Modules 2 to 7. Progress is saved in this browser." : undefined}>
+    <CourseShell xp={p.xp} streak={p.streak.count} pct={pct} note={access?.product === "ground" ? `Modules 0 and 1 are yours. The full program opens Modules 2 to 7. ${synced ? "Progress is saved to your purchase." : "Progress is saved in this browser."}` : synced ? "Progress is saved to your purchase, on any device." : undefined}>
       <ReadingBar />
       {toast && <UnlockToast xp={toast.xp} badges={toast.badges} onDone={() => setToast(null)} />}
       <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) 280px", gap: 28 }} className="tos-two-col">
@@ -85,7 +85,7 @@ export default function LessonPage({ id, access }: { id: string; access?: { prod
               saved progress wait for the store to hydrate. */}
           {content ? (
             <>
-              <Blocks content={content} pathSlug={pathSlug} tools={{ shared, setShared, finish, done }} />
+              <Blocks content={content} pathSlug={pathSlug} tools={{ shared, setShared, finish, done, synced }} />
               {ready && action && <ActionCard action={action} done={done} onDo={() => finish({ action: true })} />}
               {ready && !action && !done && <div style={{ marginTop: 24 }}><Btn onClick={() => finish()}>Mark as done</Btn></div>}
               {ready && !action && done && <div style={{ marginTop: 24, color: "var(--accent)", fontWeight: 600, fontSize: 14 }}>✓ Done. It stays ticked.</div>}

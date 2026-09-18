@@ -9,8 +9,8 @@ import { COMPANY_COUNT } from "@/lib/companies";
 
 const NOTE: Record<string, string> = {
   none: "Module 0 is free. Module 1 is $19, credited toward the full program when it opens. Progress is saved in this browser.",
-  ground: "Modules 0 and 1 are yours. The full program opens Modules 2 to 7. Progress is saved in this browser.",
-  os: "Progress is saved in this browser.",
+  ground: "Modules 0 and 1 are yours. The full program opens Modules 2 to 7. Progress is saved to your purchase.",
+  os: "Progress is saved to your purchase, on any device.",
 };
 
 const TYPE_ICON: Record<string, string> = { video: "▶", explainer: "✦", interactive: "⌘", action: "⚡", checkpoint: "◎" };

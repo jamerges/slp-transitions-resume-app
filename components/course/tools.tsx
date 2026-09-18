@@ -11,7 +11,7 @@ import { COMPANIES_DB, COMPANY_COUNT } from "@/lib/companies";
 import { Btn, Panel, Slider, font } from "./ui";
 import { Script } from "./Blocks";
 
-export interface ToolProps { name: string; pathSlug?: string; shared: Record<string, any>; setShared: (key: string, v: any) => void; finish?: (o?: { action?: boolean }) => void; done?: boolean }
+export interface ToolProps { name: string; pathSlug?: string; shared: Record<string, any>; setShared: (key: string, v: any) => void; finish?: (o?: { action?: boolean }) => void; done?: boolean; /** true = saved to the purchase and shown on any device; false = this browser only */ synced?: boolean | null }
 
 const H = ({ children }: { children: ReactNode }) => <h3 style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 700, margin: "0 0 8px" }}>{children}</h3>;
 const Muted = ({ children }: { children: ReactNode }) => <p style={{ fontSize: 13.5, lineHeight: 1.6, color: "var(--muted)", margin: "0 0 12px" }}>{children}</p>;
@@ -259,7 +259,7 @@ const small: React.CSSProperties = { fontSize: 12, fontWeight: 600, color: "var(
  * `goal` decides what the lesson's button asks for: three messages sent (3.3)
  * or two conversations warm (3.6). Everything saves as it changes.
  */
-function ContactTracker({ shared, setShared, finish, done, pathSlug, goal = "three" }: ToolProps & { goal?: "three" | "warm" }) {
+function ContactTracker({ shared, setShared, finish, done, pathSlug, synced, goal = "three" }: ToolProps & { goal?: "three" | "warm" }) {
   const rows: Contact[] = shared.contacts || [];
   const title = pathSlug ? PATHS[pathSlug].label.split(" / ")[0] : "";
   const weekGoal: number = Number(shared.contactGoal) || 3;
@@ -357,6 +357,7 @@ function ContactTracker({ shared, setShared, finish, done, pathSlug, goal = "thr
         {finish && <span style={{ fontSize: 13, color: "var(--muted)" }}>{goal === "three" ? (ready ? "Three sent. Log it and the badge is yours." : `${3 - sentCount} more to go. Log “Sent the first message” on each.`) : (ready ? "Two warm. Keep the monthly update going." : "Warm means you have spoken and sent at least one update.")}</span>}
         {rows.length > 0 && <button type="button" onClick={exportCsv} style={{ ...small, marginLeft: "auto" }}>Download as a sheet (CSV)</button>}
       </div>
+      {synced !== null && <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 8 }}>{synced ? "Saved to your purchase, so this list is here on any device you open the course on." : "Saved in this browser."}</div>}
     </Panel>
   );
 }

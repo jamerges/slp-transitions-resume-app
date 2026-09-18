@@ -125,7 +125,7 @@ function BlockView({ b, n, pathSlug, tools }: { b: Block; n: number; pathSlug?: 
       </div>
     ); }
     case "bypath": return <ByPath title={b.title} note={b.note} items={b.items} pathSlug={pathSlug} />;
-    case "tool": return <div style={{ margin: "4px 0 24px" }}><Tool name={b.name} pathSlug={pathSlug} shared={tools.shared} setShared={tools.setShared} finish={tools.finish} done={tools.done} /></div>;
+    case "tool": return <div style={{ margin: "4px 0 24px" }}><Tool name={b.name} pathSlug={pathSlug} shared={tools.shared} setShared={tools.setShared} finish={tools.finish} done={tools.done} synced={tools.synced} /></div>;
     default: return null;
   }
 }

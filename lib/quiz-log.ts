@@ -63,6 +63,18 @@ export async function markCustomer(email: string): Promise<void> {
 /** Ground buyers, keyed by email, holding what they paid in cents. The full
  *  program's checkout reads this to take that amount off, so nobody pays for
  *  Week 1 twice. No expiry: the credit is good whenever OS launches. */
+/** A buyer's course progress, keyed by Stripe session so it follows them across browsers. No expiry. */
+export async function saveCourseProgress(sid: string, data: object): Promise<boolean> {
+  const r = getRedis(); if (!r) return false;
+  await r.set(`course:progress:${sid}`, JSON.stringify({ ...data, savedAt: Date.now() }));
+  return true;
+}
+export async function loadCourseProgress(sid: string): Promise<{ progress: any | null; store: boolean }> {
+  const r = getRedis(); if (!r) return { progress: null, store: false };
+  const v = await r.get<string | object>(`course:progress:${sid}`);
+  if (!v) return { progress: null, store: true };
+  try { return { progress: typeof v === "string" ? JSON.parse(v) : v, store: true }; } catch { return { progress: null, store: true }; }
+}
 export async function markGroundBuyer(email: string, cents: number, sessionId: string): Promise<void> {
   const r = getRedis(); if (!r) return;
   await r.set(`ground:${email.toLowerCase()}`, JSON.stringify({ cents, sid: sessionId, at: Date.now() }));
