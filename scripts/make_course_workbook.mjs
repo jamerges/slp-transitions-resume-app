@@ -191,17 +191,21 @@ children.push(
 children.push(
   ...h1("What\u2019s in here"),
   contentsTable(MODULE1_ONLY ? [
+    ["Your starting line", "What an hour of your work pays now, and the number the next job has to clear"],
     ["Bad week, or time to go", "Answer the same thing in week 1, 6 and 12 so one bad Tuesday does not decide it"],
     ["Why leaving isn\u2019t a wasted degree", "Why the years and the debt already spent are not a reason to stay"],
     ["Your why, in writing", "What you actually want to leave, so you know what to look for in the next job"],
     ["What you\u2019ll miss", "What you give up by leaving, and which parts you can keep anyway"],
     ["Telling the first person", "Say it out loud to one person, and plan exactly what you\u2019ll say first"],
+    ["Kept private", "Six settings to change before anyone at work can guess, and your staff-room sentence"],
   ] : [
+    ["Your starting line", "What an hour of your work pays now, and the number the next job has to clear"],
     ["Bad week, or time to go", "Answer the same thing in week 1, 6 and 12 so one bad Tuesday does not decide it"],
     ["Why leaving isn\u2019t a wasted degree", "Why the years and the debt already spent are not a reason to stay"],
     ["Your why, in writing", "What you actually want to leave, so you know what to look for in the next job"],
     ["What you\u2019ll miss", "What you give up by leaving, and which parts you can keep anyway"],
     ["Telling the first person", "Say it out loud to one person, and plan exactly what you\u2019ll say first"],
+    ["Kept private", "Six settings to change before anyone at work can guess, and your staff-room sentence"],
     ["Informational interview sheet", "What to ask someone who already left, and how to turn one call into two"],
     ["Interview prep on one page", "Your 45-second intro, and answering \u2018why are you leaving\u2019 without saying burnout"],
     ["Negotiating the offer", "Your opening number and your walk-away floor, decided before the phone rings"],
@@ -212,6 +216,41 @@ children.push(
   noteTable("Do the lesson on screen first. It does the maths, the sorting and the ranking, and it keeps your answers."),
   gap(120),
   noteTable("Write badly. Fragments, half-sentences, a list. If you catch yourself drafting sentences, you have switched into work mode."),
+  pageBreak(),
+);
+
+// ------------------------------------------------- 0. the starting line
+// Lesson 0.2 on screen does the division. This is the page for the numbers
+// it asks for, so the floor is written somewhere a phone cannot lose it.
+children.push(
+  kickerIn("Lesson 0.2 \u00b7 the money page", ACCENT[0].ink),
+  ...h1("Your starting line", "What an hour of your work pays now, and the number the next job has to clear. The lesson does the arithmetic; write the answers here."),
+  h2("What an hour pays now"),
+  ...fields([
+    ["Salary now", "Gross, before tax"],
+    ["Hours in a real week", "Including the evenings and the Sunday notes"],
+    ["Weeks worked a year", "A school year is about 39"],
+    ["Your real hourly rate", "Salary divided by hours times weeks. The lesson shows it, and what the same salary pays at forty hours"],
+  ]),
+  h2("The number the next job has to clear"),
+  ...fields([
+    ["Monthly expenses", "The real month, not the good one"],
+    ["Tax you assume", "Federal, state and the 7.65% payroll share. Your guess, as a percentage"],
+    ["The annual floor", "Expenses times twelve, grossed up for the tax. Below this you decline"],
+    ["The date", "When you want to be somewhere else. A month and a year"],
+  ]),
+  pageBreak(),
+  kickerIn("Lesson 0.2 \u00b7 the trades", ACCENT[0].ink),
+  ...h1("What you would trade to get there", "Tick the ones that are genuinely on the table. The lesson uses these to rule paths in and out."),
+  ...ticks([
+    "Move city or state",
+    "Take a pay dip for the first year",
+    "Go without employer benefits for a while",
+    "Commute again",
+    "Give up remote work",
+    "Work in an office with other people every day",
+  ]),
+  ...ask("The one you ticked that surprised you, and why it is on the table now when it was not a year ago.", 4),
   pageBreak(),
 );
 
@@ -260,14 +299,27 @@ children.push(
   ...ask("What you actually said, and what they said back.", 6, "Fill this in afterwards. People are almost always less surprised than you expect them to be."),
   ...ask("What changed for you in the hour after.", 3),
   pageBreak(),
+
+  kickerIn("Module 1 \u00b7 lesson 7, before you say it", ACCENT[1].ink),
+  ...h1("Kept private", "Six settings and habits from lesson 1.7, so the search stays yours until you decide otherwise. Tick them as you do them."),
+  ...ticks([
+    "LinkedIn: \u201cShare profile updates with your network\u201d is off",
+    "LinkedIn: Open to Work is set to recruiters only, not the banner",
+    "Applications and job alerts go to a personal email, never the work one",
+    "Nobody at your current job is listed as a reference",
+    "You know your contract window or notice period, and the date it falls on",
+    "The one sentence for the staff room is ready: \u201cI\u2019m looking at what else I could do with my SLP background.\u201d",
+  ]),
+  ...ask("That sentence in your own words, the way you would actually say it at the copier.", 3, "If they ask what: \u201cI don\u2019t know yet. I\u2019m finding out.\u201d True, and it ends the conversation on your terms."),
+  pageBreak(),
 );
 
 // --------------------------------------------- 3. carried into a room
 const conversationPage = (n) => [
   kickerIn(`Module 3 \u00b7 sheet ${n} of 2`, ACCENT[3].ink),
   ...h1("Informational interview sheet", "Keep this open while you talk. Their answers, in their words."),
-  ...fields([["Who, and their title now", "How you found them"], ["Date", ""]]),
-  ...ask("How did you get the first one? Walk me through the six months before the offer.", 3),
+  ...fields([["Who, their title now, and the date", "How you found them"]]),
+  ...ask("How did you get the first one? Walk me through the six months before the offer.", 2),
   ...ask("What does a Tuesday actually look like?", 2),
   ...ask("What part of the clinical background turned out to be useful, and what did you drop?", 2),
   ...ask("Who else should I be talking to?", 2, "The question that turns one conversation into two."),
@@ -279,13 +331,13 @@ if (!MODULE1_ONLY) children.push(...conversationPage(1), ...conversationPage(2))
 const interviewPage = (n) => [
   kickerIn(`Module 6 \u00b7 interview ${n} of 2`, ACCENT[6].ink),
   ...h1("Interview prep on one page", "Take this in with you, decided in advance rather than in the room."),
-  ...fields([["Company and role", "Who you are speaking to"], ["Date", ""]]),
+  ...fields([["Company, role and date", "Who you are speaking to"]]),
   h2("Your bridge statement"),
   muted("Where you are going, how you prepared, one accomplishment with a number in it. Forty-five seconds."),
-  ...ask("Write it out, then say it aloud five times before you go in.", 3),
+  ...ask("Write it out, then say it aloud five times before you go in.", 2),
   h2("Three stories, each with a number in it"),
   ...fields([["Story 1", "The number"], ["Story 2", "The number"], ["Story 3", "The number"]]),
-  ...ask("Three questions for them: the first ninety days, what the last person found hard, how the work gets measured.", 3),
+  ...ask("Three questions for them: the first ninety days, what the last person found hard, how the work gets measured.", 2),
   muted("Burnout is a true reason and a bad answer. Answer with where you are going, not what you are leaving."),
   pageBreak(),
 ];

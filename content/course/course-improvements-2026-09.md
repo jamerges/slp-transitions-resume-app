@@ -10,39 +10,51 @@ exist.
 
 ## Do first, cheap
 
-1. **Drop the scripts into the lessons that don't have them.** Eleven
-   sixty-second pitches into 3.2, the eleven headlines into 3.4, the four-move
-   cover letter and its customer-success sample into 4.6, "tell me about
-   yourself" and eager-vs-desperate into 6.1, the five mid-interview lines
-   into 6.3, the contract start-date answer into 6.5. Each is a `script`
-   block. The path-specific ones can key off `shared.path` so a buyer sees
-   their own first.
+1. **Drop the scripts into the lessons that don't have them.** Done
+   2026-09-18: pitches and the bad-message example in 3.2, headlines in 3.4,
+   the hiring-manager note and recruiter comeback in 3.7, the finished cover
+   letter in 4.6, "tell me about yourself" and eager-vs-desperate in 6.1,
+   three why-leaving shapes in 6.2, five mid-interview lines in 6.3, the
+   contract start date in 6.5. Per-path scripts use the new `bypath` block
+   (LESSON_SPEC.md), which opens on the reader's own path.
 
-2. **Regenerate the blank workbook for the new money page.** Lesson 0.2 now
-   saves hourly rate, expenses, the tax slider and the six trades. The blank
-   docx and PDF still show the old floor-and-date page. Update the 0.2 page
-   in `scripts/make_course_workbook.mjs`, then rebuild both editions and both
-   PDFs.
+2. **Regenerate the blank workbook for the new money page.** Done
+   2026-09-18: "Your starting line" and "What you would trade" pages for 0.2,
+   a "Kept private" page for 1.7, both editions and both PDFs rebuilt with
+   `scripts/workbook-render/render.sh`.
 
-3. **A benefits line in "Before you answer any offer" (6.5).** The offer
-   checklist has salary, remote days, PTO and a review date. It has nothing
-   on what a school or hospital package quietly includes: pension vesting
-   dates, employer retirement match, health premium share, CEU and licence
-   renewal reimbursement, summer pay structure. Add them as questions to ask
-   HR, with "check your own plan" and no figures. A person leaving a
-   district two years before vesting should know that before they sign.
+3. **A benefits line in "Before you answer any offer" (6.5).** Done
+   2026-09-18: a "what the package quietly includes" item in 6.5's package
+   list (vesting, match, premium share, CEU and licence reimbursement,
+   parental leave, school-year pay) and an eighth check on the 6.8 offer
+   checklist. Questions to ask HR, no figures.
 
-4. **Per-path proof piece, as a table.** Module 5 argues for one honest
-   artifact over a certificate. It does not say, path by path, what that
-   artifact is. Add a `paths` block: instructional design gets a Rise module
-   built from an in-service; data gets a small dashboard from de-identified
-   caseload data; content gets three published pieces; customer success gets
-   a written onboarding sequence for a product they've used; informatics gets
-   a documented template redesign; liaison and UR get a sample justification
-   letter; sales gets a recorded product walkthrough; PM gets a one-page
-   project brief for something they ran. Each row: what to build, how long,
-   where it goes (LinkedIn, a link on the résumé, or the portfolio line in
-   the skeleton).
+4. **Per-path proof piece.** Already done: lesson 5.2's artifact menu has
+   a brief for every path (what to build, how long, what it proves, where it
+   lives). Nothing to add. Listed here so nobody builds it twice.
+
+## Networking, from the second pass over her course (2026-09-18)
+
+Added the same day, in SLP terms and without her statistics: the who-first
+list (cohort, the reps who sell into your building, the ones who left,
+people who sell you things, pre-grad-school colleagues) and the conference
+section in 3.1 (the exhibit hall, HIMSS/AMIA, ATIA, DevLearn, ISTE, state
+chapters, four tactics, the wrong room); the connection-request and alumni
+scripts and the communities question in 3.2; the seniority and
+skip-the-influencers filters and networking-as-interview-prep in 3.3; the
+broadcast-off warning, the "will take anything" headlines, positive posting
+guidance and two new steps in 3.4, plus four new LinkedIn checklist items;
+the check-for-an-in habit, why a stranger's no is rational, the referral
+bonus, and "what other companies do this" in 3.5; the artifact ask, the
+applying-now sweep and the after-you-land note in 3.6; recruiter vetting and
+niche recruiters in 3.7; "ask ten people whether the certificate mattered"
+in 5.1.
+
+Left as deliberate positioning, not gaps: our volume (three messages, two
+warm conversations) against her five to ten a week; our two hours a week
+against her thirty percent; our one-in-four no-reply figure, which is from
+our own corpus. Not adopted: her counts (85% via networking, one in five
+accept, 27x more findable, 500+ connections), which have no source.
 
 ## Do when the rows exist
 

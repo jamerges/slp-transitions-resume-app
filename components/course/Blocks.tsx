@@ -124,9 +124,26 @@ function BlockView({ b, n, pathSlug, tools }: { b: Block; n: number; pathSlug?: 
         ) : <Panel style={{ padding: 14, fontSize: 14, color: "var(--muted)" }}>Pick a path in your starting line or in lesson 1.4 and this block shows it here. Until then, everything on this page applies to any title.</Panel>}
       </div>
     ); }
+    case "bypath": return <ByPath title={b.title} note={b.note} items={b.items} pathSlug={pathSlug} />;
     case "tool": return <div style={{ margin: "4px 0 24px" }}><Tool name={b.name} pathSlug={pathSlug} shared={tools.shared} setShared={tools.setShared} finish={tools.finish} done={tools.done} /></div>;
     default: return null;
   }
+}
+
+/** A script with a version per path. The reader's path (from 0.2 or the dials) opens first; the chips switch. */
+function ByPath({ title, note, items, pathSlug }: { title?: string; note?: string; items: Record<string, string>; pathSlug?: string }) {
+  const slugs = Object.keys(items).filter((s) => PATHS[s]);
+  const [slug, setSlug] = useState<string>(pathSlug && items[pathSlug] ? pathSlug : slugs[0]);
+  if (!slugs.length) return null;
+  return (
+    <div style={{ margin: "4px 0 20px" }}>
+      {note && <div style={{ fontSize: 13, color: "var(--muted)", marginBottom: 8 }}>{note}</div>}
+      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10 }}>
+        {slugs.map((s) => <button key={s} type="button" onClick={() => setSlug(s)} style={{ padding: "6px 10px", borderRadius: 999, border: `1.5px solid ${s === slug ? "var(--accent)" : "var(--border)"}`, background: s === slug ? "var(--accent-bg-subtle)" : "var(--card)", fontSize: 12.5, cursor: "pointer", fontFamily: font.sans, fontWeight: s === slug ? 600 : 400 }}>{PATHS[s].icon} {PATHS[s].label}</button>)}
+      </div>
+      <Script key={slug} title={title ? `${title} · ${PATHS[slug].label}` : PATHS[slug].label} text={items[slug]} />
+    </div>
+  );
 }
 
 export function Script({ title, text }: { title?: string; text: string }) {

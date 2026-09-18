@@ -30,6 +30,7 @@ skimmable: a reader should get the point from the TL;DR and the headings alone.
 - `{"type":"script","title":"...","text":"..."}` a copyable template (a message, a bridge statement). Use [brackets] for the parts they fill in.
 - `{"type":"story","name":"...","was":"...","now":"...","text":"...","href":"..."}` a real person from the site; only the six with published stories (Caitlin Mueller, Lindsey Ison, Bethany Riebock, Jeannette Roberes, Rachel Archambault, Mattie Murrey-Tegels) plus quoted transitioners from research-facts (unnamed).
 - `{"type":"paths","note":"..."}` renders the path cards for the reader's chosen path (or top dials); the note is one line of context.
+- `{"type":"bypath","title":"...","note":"...","items":{"customer-success":"...","liaison-ur":"..."}}` one copyable script per path, keyed by the quiz slug (lib/quiz.ts PATHS). The reader's own path opens first; chips switch. Use it for pitches, headlines, anything that changes wording by path but not by lesson.
 - `{"type":"tool","name":"..."}` mounts an interactive tool built in code. Allowed names are listed per lesson in the brief.
 
 ## Rules

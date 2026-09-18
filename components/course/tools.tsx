@@ -425,12 +425,16 @@ function Report({ shared, setShared, kind }: ToolProps & { kind: "questions" | "
 
 /* ------------------------------- checklists ------------------------------- */
 const LINKEDIN = [
+  "\"Share profile updates with your network\" is off, before you edit anything",
   "Headline names the target role, not the clinical one (\"Customer Success · former SLP\", not \"CCC-SLP\")",
   "About section opens with your pull sentence from the Module 1 checkpoint",
   "Each clinical job has three translated bullets with a number in each",
   "Skills list contains the words from three real postings for your path",
   "Photo is recent and the banner isn't a stock image of a speech bubble",
   "Open-to-work is set to recruiters only, with the target titles typed in",
+  "The URL is linkedin.com/in/yourname, so it fits on a résumé",
+  "Your résumé is not uploaded as Featured media (your phone number and address would be public)",
+  "You follow five companies from your list and one group for the field",
   "You've sent one connection request to someone who made this move",
 ];
 const OFFER = [
@@ -440,6 +444,7 @@ const OFFER = [
   "Health coverage start date is known, and the gap (if any) is covered",
   "The loan plan is unchanged, or you know how the payment moves",
   "You asked for time to decide and got at least two business days",
+  "You know what vests when (retirement match, pension) and what leaving on your date forfeits, from your own plan documents, not from memory",
   "You said the counter out loud once, to a person, before saying it to them",
 ];
 function Checklist({ shared, setShared, slot, items, title }: ToolProps & { slot: string; items: string[]; title: string }) {

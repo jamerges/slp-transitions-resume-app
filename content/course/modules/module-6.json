@@ -71,6 +71,37 @@
         "text": "One transitioner opens with a version of this: I have been doing customer success my whole career, I just called it patient and family care. Then a metric. It works because it reframes the entire résumé in one sentence and then proves it."
       },
       {
+        "type": "h",
+        "text": "\"Tell me about yourself\", in forty-five seconds"
+      },
+      {
+        "type": "p",
+        "text": "It is the first question in most interviews and the one people wing. Pitch, then pull, then one number. Nothing about what went wrong."
+      },
+      {
+        "type": "script",
+        "title": "The opener",
+        "text": "I've been an SLP for [N] years, mostly in [setting]. The part I've been best at, and the part I want to do all day, is [the two things]. About a year ago I started [the preparation: the course, the module, the conversations], and I applied here because [the specific thing about the role]. The number I'm proudest of is [one accomplishment with a figure]."
+      },
+      {
+        "type": "h",
+        "text": "Eager, not desperate"
+      },
+      {
+        "type": "p",
+        "text": "Both are true feelings and only one of them gets hired. The difference is whether the sentence points at what you're leaving or at what you'd do here."
+      },
+      {
+        "type": "example",
+        "title": "The same wish, two ways",
+        "before": "Honestly I'd take anything that isn't a caseload. I'm so done.",
+        "after": "I learned [the thing] in clinical work, and this is the role where I get to use it all day. It's the right fit because [A], [B] and [C]."
+      },
+      {
+        "type": "p",
+        "text": "Desperate closes with \"when will I hear?\" Eager closes with: \"What's your timeline for the other candidates, and is there anything else I can send you in the meantime?\""
+      },
+      {
         "type": "p",
         "text": "You are being sorted against three doubts, and every one of them has an answer you can build this week."
       }
@@ -133,6 +164,18 @@
         "title": "Preparation, said badly and well",
         "before": "I've been researching the field and I'm a fast learner.",
         "after": "I rebuilt one of my own trainings as a Rise module, and I talked to three people doing this job about what their first month looked like."
+      },
+      {
+        "type": "p",
+        "text": "Three shapes that answer the question without handing over the doubt. If your version contains burnout, paperwork, productivity, caseload size or administration, rewrite that sentence. All true, and all a gift to the doubt."
+      },
+      {
+        "type": "list",
+        "items": [
+          "**The pull.** \"I want to work on the systems that decide how patients get served, rather than absorbing the consequences one session at a time. This role is exactly that.\"",
+          "**The scale.** \"I've helped [N] families one at a time for [N] years. I want the next [N] years to reach more people than I can fit on a caseload, and [role] is how that happens.\"",
+          "**The part you'd keep.** \"The thing I'd keep from clinical work is [teaching clinicians / reading the chart / getting people to use the plan], and in this role that's the whole job instead of a corner of it.\""
+        ]
       },
       {
         "type": "tool",
@@ -202,6 +245,24 @@
       {
         "type": "p",
         "text": "The second answer has an objection, an intervention and an outcome, and a customer success manager hears their own job description in it."
+      },
+      {
+        "type": "h",
+        "text": "Five lines for the middle of the room"
+      },
+      {
+        "type": "p",
+        "text": "The moments that derail people are small and predictable, so have the sentence ready."
+      },
+      {
+        "type": "list",
+        "items": [
+          "**A term you don't know.** \"I'm not familiar with that one. Is it similar to [the closest thing you do know]?\"",
+          "**Nerves showing.** \"Sorry, I'm excited about this role and my nerves are getting ahead of me. Let me start that again.\"",
+          "**A skill you don't have yet.** \"I haven't used [tool] in a job. I've [taken the course / built one thing in it], and I've picked up [the EMR / a documentation system / a scheduling platform] on the job every time I've had to.\"",
+          "**The out-of-left-field question.** Answer it like a person. They are checking whether you are one.",
+          "**The last question, only if you can hear the answer.** \"Is there anything you've seen so far that would make you hesitate to hire me for this?\""
+        ]
       },
       {
         "type": "h",
@@ -383,6 +444,15 @@
         "text": "This is great news, thank you. Could I have until [day] to go through it properly? I want to say yes with my full attention rather than in the first ten minutes."
       },
       {
+        "type": "p",
+        "text": "If you are on a school contract, \"when can you start?\" is a question you answer before the interview, not in it. Decide whether breaking the contract is on the table at all, then say a real date. Hesitation in the room reads as doubt about the role."
+      },
+      {
+        "type": "script",
+        "title": "\"When can you start?\", under a contract",
+        "text": "My contract runs to [date], and I intend to honour it. I can start [the Monday after]. If the role needs someone sooner, I'd want to understand the timeline before I decide anything, because I'd rather tell you a real date than a hopeful one."
+      },
+      {
         "type": "h",
         "text": "The rest of the package"
       },
@@ -396,7 +466,8 @@
           "**Variable pay.** Ask what the target is, how it is measured, and when it pays. A target nobody hit last year is not income.",
           "**Equity, at startups.** Grants typically vest over four years with a one-year cliff, so leaving inside twelve months means it was worth nothing. Ask how many shares, out of how many total.",
           "**Sign-on bonus.** A common tool, though only about fifteen percent of new hires got one in late 2025. It exists mostly for people who ask.",
-          "**PTO, remote days, start date.** All routinely negotiated, and often easier to move than base."
+          "**PTO, remote days, start date.** All routinely negotiated, and often easier to move than base.",
+          "**What the package quietly includes, and what you leave behind.** Ask HR in writing when the retirement match or pension vests and what you forfeit by leaving on your date, the employer's share of the health premium, whether CEUs and licence renewal are reimbursed, parental leave, and how a school-year salary maps onto twelve months. Read your own plan documents before you resign. A district pension two years from vesting is a number that belongs in the decision, and nobody on the hiring side will raise it for you."
         ]
       },
       {
@@ -618,7 +689,7 @@
   },
   {
     "id": "6.8",
-    "tldr": "Run the offer through seven checks before you answer. If it does not hold up, the same seven tell you what to ask for or when to keep going.",
+    "tldr": "Run the offer through eight checks before you answer. If it does not hold up, the same eight tell you what to ask for or when to keep going.",
     "blocks": [
       {
         "type": "p",
@@ -675,11 +746,11 @@
     ],
     "action": {
       "label": "I have an offer",
-      "prompt": "Run the offer through the seven checks above. Ask for anything that is missing, in one message. Then, whichever way you decide, mark it here.",
+      "prompt": "Run the offer through the eight checks above. Ask for anything that is missing, in one message. Then, whichever way you decide, mark it here.",
       "done": "Marked. Whatever you decided, you got to a real offer from a standing start. Tell somebody."
     },
     "takeaways": [
-      "Run every offer through the seven checks before answering, with the version of you who did the runway maths.",
+      "Run every offer through the eight checks before answering, with the version of you who did the runway maths.",
       "Empty boxes are questions for a follow-up call, not reasons to decline.",
       "Declining is a real answer when the number is below your runway or the role has no ladder.",
       "Get everything in writing before resigning, and check the coverage start date against your last day."

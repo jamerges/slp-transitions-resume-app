@@ -21,6 +21,8 @@ export type Block =
   | { type: "script"; title?: string; text: string }
   | { type: "story"; name: string; was: string; now: string; text: string; href?: string }
   | { type: "paths"; note?: string }
+  /** One copyable script per path, keyed by quiz slug; the reader's own path opens first. */
+  | { type: "bypath"; title?: string; note?: string; items: Record<string, string> }
   | { type: "tool"; name: string };
 
 export interface LessonContent {
