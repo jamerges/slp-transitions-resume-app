@@ -40,6 +40,30 @@
       },
       {
         "type": "h",
+        "text": "The question everyone asks and nobody follows up"
+      },
+      {
+        "type": "p",
+        "text": "\"What do you do for work?\" gets asked at every barbecue and answered with a nod. Stop nodding. The person across the table is a free informational interview about a company you have never heard of, and the follow-ups take a minute each."
+      },
+      {
+        "type": "list",
+        "items": [
+          "**The company.** What is it called, and who would I know that competes with it?",
+          "**The structure.** Who do you report to, and does anyone report to you?",
+          "**The clients.** Does the company have customers, and who are they?",
+          "**The role.** What is your title, and has it changed since you started?",
+          "**The tools.** What software is open on your screen most of the day?",
+          "**The output.** What do you actually hand over at the end of a week?",
+          "**The style.** Mostly with other people, or mostly alone?"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Three of those and you know whether the job exists at a company that would want a clinician, which is more than a job posting tells you."
+      },
+      {
+        "type": "h",
         "text": "When they ask what you're looking for"
       },
       {
@@ -63,6 +87,14 @@
           "research-coordinator": "[N] years as an SLP in [setting], and the part of my week that ran most like a study was the part I ran best: consenting families, following the protocol to the letter, keeping the data clean and the follow-ups on schedule. I'm moving into clinical research coordination. If your site or sponsor has a coordinator opening, I'd like to be considered.",
           "leadership": "I've been an SLP in [setting] for [N] years and I already run the parts of the department nobody bills for: the schedule, the coverage, the audits, the new grad who's drowning. I'm looking to move into a clinical manager or program manager role, here or somewhere like here. Who did the last two openings go to, and what did they have that I don't yet?"
         }
+      },
+      {
+        "type": "h",
+        "text": "Start with what is already on your cart"
+      },
+      {
+        "type": "p",
+        "text": "Before any stranger, write down every company whose product you already use at work: the EMR, the AAC vendors, the teletherapy platform, the assessment publishers, the materials catalogue, the district's documentation system, the device rep's employer. Every one of those companies hires people who can explain the clinical side to the people building and selling the thing, and you are already a reference customer. Their employees are your first cold list, and \"I've used your product with [N] clients\" is an opener nobody else applying can write."
       },
       {
         "type": "h",
@@ -152,7 +184,8 @@
       "LinkedIn people search, filtered to a company on your list plus CCC-SLP, finds people who made your exact move.",
       "Save three names before you write a single message.",
       "Your cohort, the reps who sell into your building, and the ones who already left are warmer than any stranger. The exhibit hall is the one part of a conference full of employers rather than competitors.",
-      "Have sixty seconds ready for \"so what are you looking for?\": years, the two things you'd do all day, the title, the ask."
+      "Have sixty seconds ready for \"so what are you looking for?\": years, the two things you'd do all day, the title, the ask.",
+      "The companies whose products are already on your cart are your first cold list, and \"I've used your product with clients\" is an opener nobody else has."
     ],
     "sources": [
       "voc",
@@ -178,7 +211,7 @@
       },
       {
         "type": "p",
-        "text": "Four things make a first message answerable. You name the specific move they made, so it is obvious you are writing to them and not to forty people. You ask for a fixed and small amount of time, you attach no job ask, and you make it easy to decline, which is the part most people leave out and the part that makes a stranger feel safe replying at all."
+        "text": "Five things make a first message answerable. You name the specific move they made, so it is obvious you are writing to them and not to forty people. You ask for a fixed and small amount of time. You attach no job ask. You make it easy to decline, which is the part most people leave out and the part that makes a stranger feel safe replying at all. And you make it easy to say yes: one direct question they could answer in a sentence, plus two time windows or a booking link, so a yes costs them thirty seconds rather than a calendar negotiation."
       },
       {
         "type": "p",
@@ -202,7 +235,11 @@
       {
         "type": "script",
         "title": "The first message (LinkedIn or email, under 90 words)",
-        "text": "Hi [Name], I'm an SLP in [setting] and I'm looking at [target title] roles. I found you because you made the same move, and I'd rather ask you than read another article about it.\n\nWould you be up for 15 minutes in the next couple of weeks? I mostly want to know how you got the first one and what you'd do differently. No job ask, I promise.\n\nEither way, thank you for putting your path somewhere someone like me could find it.\n\n[Your name]"
+        "text": "Hi [Name], I'm an SLP in [setting] and I'm looking at [target title] roles. I found you because you made the same move, and I'd rather ask you than read another article about it.\n\nWould you be up for 15 minutes in the next couple of weeks? I'm free [two windows, e.g. Tuesday after 4 or Thursday lunchtime], or here's a link if that's easier: [booking link]. I mostly want to know how you got the first one and what you'd do differently. No job ask, I promise.\n\nIf a call is too much, one question by message would still help me: [the one thing you most want to know].\n\nEither way, thank you for putting your path somewhere someone like me could find it.\n\n[Your name]"
+      },
+      {
+        "type": "tool",
+        "name": "message-check"
       },
       {
         "type": "p",
@@ -227,11 +264,11 @@
       {
         "type": "script",
         "title": "The thank-you, same day",
-        "text": "[Name], thank you for the time. The thing I'm taking away is [one specific sentence they said, in their words].\n\nI'm going to [the one concrete thing you'll do because of it] in the next two weeks, and I'll let you know how it lands. If [person they mentioned] would be open to the same 15 minutes, I'd be grateful for an introduction whenever it's convenient.\n\nThank you again. [Your name]"
+        "text": "[Name], thank you for the time. The thing I'm taking away is [one specific sentence they said, in their words].\n\nI'm going to [the one concrete thing you'll do because of it] in the next two weeks, and I'll let you know how it lands. If [person they mentioned] would be open to the same 15 minutes, I'd be grateful for an introduction whenever it's convenient.\n\nAnd if there's anything you're working on that a clinician could help with, or anyone you'd like an introduction to, say the word.\n\nThank you again. [Your name]"
       },
       {
         "type": "p",
-        "text": "Send the thank-you the same day, then do the thing you said you would do, and tell them two weeks later that you did it. That second note is what turns a stranger into someone who forwards your résumé to a hiring manager, built out of two emails and one kept promise. Fill your setting, your target title and your name into all three templates tonight, and leave the [Name] blanks empty for the next lesson."
+        "text": "Send the thank-you the same day, then do the thing you said you would do, and tell them two weeks later that you did it. The offer at the end is not decoration: a clinician's read on a product, a name from your own department, a share of something they wrote. Most will say nothing is needed, and the ones who take you up on it are the ones who forward your résumé later. Fill your setting, your target title and your name into all three templates tonight, and leave the [Name] blanks empty for the next lesson."
       }
     ],
     "takeaways": [
@@ -239,7 +276,8 @@
       "The ask is fifteen minutes about their path with no job attached.",
       "A first message works when it names their specific move, asks for a fixed small amount of time, and makes it easy to decline.",
       "Follow up once, seven to ten days later, then stop.",
-      "\"Who else should I be talking to?\" is the question that turns a conversation into an introduction."
+      "\"Who else should I be talking to?\" is the question that turns a conversation into an introduction.",
+      "Make a yes cheap: one question, two time windows, and a one-question fallback if a call is too much."
     ],
     "sources": [
       "facts",

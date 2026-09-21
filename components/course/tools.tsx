@@ -38,6 +38,8 @@ export function Tool(props: ToolProps) {
     case "bridge-builder": return <BridgeBuilder {...props} />;
     case "mock-interview": return <MockInterview {...props} />;
     case "offer-checklist": return <Checklist {...props} slot="offer" items={OFFER} title="Before you say yes" />;
+    case "message-check": return <Checklist {...props} slot="msgcheck" items={MESSAGE} title="Before you send it" />;
+    case "resume-checklist": return <Checklist {...props} slot="resume" items={RESUME} title="The résumé, one pass" />;
     case "time-budget": return <TimeBudget {...props} />;
     case "questions-asked": return <Report {...props} kind="questions" />;
     case "landed": return <Report {...props} kind="landed" />;
@@ -549,9 +551,29 @@ const LINKEDIN = [
   "Photo is recent and the banner isn't a stock image of a speech bubble",
   "Open-to-work is set to recruiters only, with the target titles typed in",
   "The URL is linkedin.com/in/yourname, so it fits on a résumé",
+  "\"Who can see your connections\" is set to Only you while you search",
   "Your résumé is not uploaded as Featured media (your phone number and address would be public)",
   "You follow five companies from your list and one group for the field",
   "You've sent one connection request to someone who made this move",
+];
+/** The 3.2 self-check. Four questions, asked of the message you are about to send. */
+const MESSAGE = [
+  "It names one specific thing about them: the move they made, a post, a project",
+  "It asks one direct question they could answer in a sentence",
+  "A yes costs them under a minute: two time windows or a booking link, and a one-question fallback",
+  "There is no job ask, no r\u00e9sum\u00e9 attached, and nothing Google could have answered",
+  "You would be glad to receive it",
+];
+/** The 4.7 last pass. What a screener checks in the first read. */
+const RESUME = [
+  "The summary leads with the function you are moving into and the years, not with the credential",
+  "Your title stays Speech-Language Pathologist; the translation sits in a function line under it, never in a renamed title",
+  "Every bullet has a number that could be checked: how big, what you did, what changed",
+  "No ICD codes, modalities, billing language or legal-charting phrasing anywhere",
+  "The EMR is listed as a system you have run, beside the ordinary tools: Sheets or Excel, Zoom, whatever project tool you have used",
+  "Three of the posting's own requirement lines appear, in their words, in your top bullets",
+  "Nothing on it would make your stomach move if the interviewer asked you to talk for ten minutes about the day behind it",
+  "One page under ten years, two at most, and the file is named Firstname-Lastname-Role.pdf",
 ];
 const OFFER = [
   "The base sits inside the documented range for the path (or you know why it doesn't)",

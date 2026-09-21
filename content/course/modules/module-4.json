@@ -87,6 +87,16 @@
         "from": "an SLP who became a project manager, r/SLPcareertransitions"
       },
       {
+        "type": "example",
+        "title": "The swap, seen in the wild, and the translation",
+        "before": "Orchestrated daily end-to-end client workflows for premium accounts, maintaining 100% data compliance.",
+        "after": "Ran a caseload of 62 with a plan, a timeline and a quarterly review for each, and finished every note the same day for a year."
+      },
+      {
+        "type": "p",
+        "text": "The first version is what a translation checklist produces when it swaps nouns: it could describe a hotel concierge, and a hiring manager cannot picture a single day of it. The second names the size, the work and the result in words anyone can check, which is the whole of the next section."
+      },
+      {
         "type": "h",
         "text": "Three questions every bullet answers"
       },
@@ -488,6 +498,14 @@
       {
         "type": "p",
         "text": "That ratio is the kindest thing in this lesson, once you stop reading it as a verdict on you. One documented transition took 113 tailored applications to produce 7 interviews and 1 offer, and a data analyst sent more than 500 over six months and is now remote and paid above their SLP salary. At those rates, silence after the first ten applications is the sample being too small to tell you anything. Track the number, aim at a weekly count you can hit while working full time, and let the ratio do what ratios do."
+      },
+      {
+        "type": "h",
+        "text": "The last pass before you attach it"
+      },
+      {
+        "type": "tool",
+        "name": "resume-checklist"
       },
       {
         "type": "tool",
