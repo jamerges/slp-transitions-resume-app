@@ -3,7 +3,8 @@ import { useState } from "react";
 import { PageShell, S, Card } from "@/components/ui";
 import { track } from "@/lib/analytics";
 import ProductMenu from "@/components/ProductMenu";
-import { GROUND_NAME, GROUND_SUB, GROUND_PRICE } from "@/lib/course-tiers";
+import { GROUND_NAME, GROUND_SUB, GROUND_PRICE, GROUND_LIST_PRICE } from "@/lib/course-tiers";
+import { SALE } from "@/lib/pricing";
 import { STAGE_MAP, STAGE_ORDER } from "@/lib/stage-map";
 import type { StageKey } from "@/lib/quiz";
 
@@ -169,7 +170,7 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
         <div style={{ fontSize: 13.5, color: "var(--muted)", margin: "0 0 10px" }}>Already bought it? <a href="/course/find" style={{ color: "var(--accent)", fontWeight: 600 }}>Get your link sent again &rarr;</a></div>
         <Card style={{ border: "1.5px solid var(--accent)" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
-            <div><div style={{ fontSize: 30, fontWeight: 700, fontFamily: "'Playfair Display', Georgia, serif" }}>${GROUND_PRICE}</div><div style={{ fontSize: 13, color: "var(--muted)" }}>once, no subscription</div></div>
+            <div><div style={{ fontSize: 30, fontWeight: 700, fontFamily: "'Playfair Display', Georgia, serif" }}>${GROUND_PRICE}{GROUND_PRICE < GROUND_LIST_PRICE && <s style={{ fontSize: 18, fontWeight: 400, color: "var(--muted)", marginLeft: 8 }}>${GROUND_LIST_PRICE}</s>}</div><div style={{ fontSize: 13, color: "var(--muted)" }}>{GROUND_PRICE < GROUND_LIST_PRICE ? `${SALE.note}, once, no subscription` : "once, no subscription"}</div></div>
             <div style={{ fontSize: 13.5, color: "var(--muted)", maxWidth: 300, lineHeight: 1.55 }}>Credited in full toward the full program when it launches, so you never pay for this twice. 30-day refund by replying to one email.</div>
           </div>
           {live ? (

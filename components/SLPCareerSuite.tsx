@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { priceOf, wasNote } from "@/lib/pricing";
 import { numbersAsText } from "@/components/course/tools";
 import {
   S, Card, CopyButton, Chip, ProgressBar, CoverageTable, focusB, blurB,
@@ -428,8 +429,8 @@ export default function SLPCareerSuite() {
     // in GA. No PII: the payload is product identity only.
     track("begin_checkout", {
       currency: "USD",
-      value: 24,
-      items: [{ item_id: "career_pivot_suite", item_name: "$24 Career Pivot Suite" }],
+      value: priceOf("suite"),
+      items: [{ item_id: "career_pivot_suite", item_name: `$${priceOf("suite")} Career Pivot Suite` }],
     });
     setError(null); setDebugInfo(null); setStep(STEPS.REDIRECTING);
     try {
@@ -476,7 +477,7 @@ export default function SLPCareerSuite() {
         onMouseLeave={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent)")}>
         Start Your Translation →
       </button>
-      <p style={{ fontSize: 13, color: "var(--light)", marginTop: 14 }}>Takes ~3 minutes • Full package $24, one-time</p>
+      <p style={{ fontSize: 13, color: "var(--light)", marginTop: 14 }}>Takes ~3 minutes • Full package ${priceOf("suite")}{wasNote("suite")}, one-time</p>
 
       {/* The product, shown rather than described: two real bullets from the résumé post, before and after. */}
       <img
@@ -508,7 +509,7 @@ export default function SLPCareerSuite() {
 
       <Card style={{ marginTop: 8, textAlign: "left" }}>
         <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>
-          Full package — $24, one-time
+          Full package — ${priceOf("suite")}, one-time{wasNote("suite")}
         </div>
         <div style={{ fontSize: 12, color: "var(--muted)", marginBottom: 10 }}>
           Everything above, plus:
@@ -1114,7 +1115,7 @@ export default function SLPCareerSuite() {
           <button style={{ ...S.btn, padding: "14px 40px", fontSize: 16, marginTop: 20 }} onClick={handlePaywallClick}
             onMouseEnter={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent-light)")}
             onMouseLeave={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent)")}>
-            Get Full Results — $24
+            Get Full Results — ${priceOf("suite")}
           </button>
           <p style={{ fontSize: 13, fontWeight: 600, color: "var(--accent)", marginTop: 10, marginBottom: 2 }}>One-time payment. No subscription, no auto-renewal — ever.</p>
           <p style={{ fontSize: 12, color: "var(--light)", marginTop: 4 }}>Secure checkout via Stripe. Results on screen + emailed to you. Not happy? Email us within 30 days for a full refund.</p>

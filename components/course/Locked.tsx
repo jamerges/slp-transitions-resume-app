@@ -63,7 +63,7 @@ export default function LockedLesson({ moduleN, moduleTitle, lessonTitle, owns }
                 </>
               ) : (
                 <>
-                  <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--muted)", margin: "0 0 18px" }}>This module is in the full Transition OS program, which isn&rsquo;t open yet. Module 1 is open now for $19, and what you pay is credited toward the full program.</p>
+                  <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--muted)", margin: "0 0 18px" }}>This module is in the full Transition OS program, which isn&rsquo;t open yet. Module 1 is open now for ${GROUND_PRICE}, and what you pay is credited toward the full program.</p>
                   <Btn href="/course/ground">See Module 1 →</Btn>
                   <div style={{ marginTop: 14 }}><a href="/course" style={{ fontSize: 13.5, color: "var(--accent)", fontWeight: 600 }}>← Your lessons</a></div>
                 </>

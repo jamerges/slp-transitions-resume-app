@@ -1,5 +1,6 @@
 "use client";
 import { MODULES, BADGES, LESSONS, moduleOf, MODULE_ACCENT, type Lesson } from "@/lib/course";
+import { GROUND_PRICE } from "@/lib/course-tiers";
 import { PATHS } from "@/lib/quiz";
 import { useProgress } from "@/lib/course-progress";
 import { CourseShell, Btn, Panel, font, Ring } from "./ui";
@@ -11,8 +12,8 @@ import SaveMyPlace from "./SaveMyPlace";
 import { track } from "@/lib/analytics";
 
 const NOTE: Record<string, string> = {
-  none: "Module 0 is free. Module 1 is $19, credited toward the full program when it opens. Progress is saved in this browser.",
-  free: "Module 0 is yours and saved to your link. Module 1 is $19, credited toward the full program when it opens.",
+  none: `Module 0 is free. Module 1 is $${GROUND_PRICE}, credited toward the full program when it opens. Progress is saved in this browser.`,
+  free: `Module 0 is yours and saved to your link. Module 1 is $${GROUND_PRICE}, credited toward the full program when it opens.`,
   ground: "Modules 0 and 1 are yours. The full program opens Modules 2 to 7. Progress is saved to your purchase.",
   os: "Progress is saved to your purchase, on any device.",
 };
@@ -51,7 +52,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
           <div style={{ fontSize: 15, lineHeight: 1.6, opacity: 0.92, maxWidth: 560 }}>
             {!ready ? "" : !stage
               ? visitor
-                ? "Twenty free minutes: set your starting line and find out whether it's the workplace, the work, or the season. Then Module 1, for $19, puts your reasons in writing. The rest of the program is on its way, and the $19 is credited toward it."
+                ? `Twenty free minutes: set your starting line and find out whether it's the workplace, the work, or the season. Then Module 1, for $${GROUND_PRICE}, puts your reasons in writing. The rest of the program is on its way, and the $19 is credited toward it.`
                 : "The next ninety days take you from wondering whether you're allowed to leave, to interviewing for jobs outside the clinic. Seven modules, ten minutes to set up."
               : stage.n === 1 ? "Nobody has to know. You can work through this at eleven at night and still be on the schedule Monday morning."
               : stage.n === 2 ? "The kids you got talking are still talking. All twenty paths in Module 2 run on the degree rather than around it."
@@ -114,7 +115,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
             const current = next && next.module === m.n;
             const locked = !m.built || !canOpen(m.n, access);
             const ownsGround = held === "ground" || held === "os";
-            const lockLabel = !m.built ? "Coming next" : m.n === 1 && !ownsGround ? "$19 · Module 1" : ownsGround ? "Opens after Module 1" : "Full program";
+            const lockLabel = !m.built ? "Coming next" : m.n === 1 && !ownsGround ? `$${GROUND_PRICE} · Module 1` : ownsGround ? "Opens after Module 1" : "Full program";
             // Never link a buyer back to the page that sells them what they own.
             const lockHref = m.built && m.n === 1 && !ownsGround ? "/course/ground" : undefined;
             const minsLeft = m.lessons.filter((l) => !p.completed.includes(l.id)).reduce((n, l) => n + l.minutes, 0);
@@ -183,7 +184,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
           {visitor && p.completed.length > 0 && <SaveMyPlace compact />}
           {visitor && (
             <Panel tone="soft" style={{ marginBottom: 14 }}>
-              <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 6 }}>Module 1 · $19</div>
+              <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 6 }}>Module 1 · ${GROUND_PRICE}</div>
               <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 700, lineHeight: 1.2, marginBottom: 8 }}>Before You Start Looking</div>
               <p style={{ fontSize: 13.5, lineHeight: 1.55, margin: "0 0 12px", color: "var(--text)" }}>Seven short lessons that put your reasons in writing: what your degree is worth now, what gave you energy, and what you can&rsquo;t afford to lose, plus the workbook that keeps your answers. Credited toward the full program. 30-day refund.</p>
               <Btn href="/course/ground" outline style={{ width: "100%", textAlign: "center" }}>{"See what's in it →"}</Btn>

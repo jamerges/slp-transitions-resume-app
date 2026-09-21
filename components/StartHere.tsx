@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { wasOf } from "@/lib/pricing";
 import { PageShell, S, Card } from "./ui";
 import { track } from "@/lib/analytics";
 import StageMap from "./StageMap";
@@ -56,7 +57,7 @@ export default function StartHere() {
             <div style={{ fontSize: lead ? 15 : 14, marginTop: 4 }}>{p.answers}</div>
             <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 4 }}>{p.detail}</div>
             <span style={{ display: "inline-block", marginTop: lead ? 14 : 10, padding: lead ? "11px 18px" : "8px 14px", borderRadius: 8, background: "var(--accent)", color: "#fff", fontSize: lead ? 15 : 13.5, fontWeight: 600 }}>
-              {p.button ? <>{p.button}&nbsp;&rarr;</> : <>{p.cta.via} &middot; ${p.price}&nbsp;&rarr;</>}
+              {p.button ? <>{p.button}&nbsp;&rarr;</> : <>{p.cta.via} &middot; ${p.price}{wasOf(k) && <s style={{ opacity: 0.7, fontWeight: 400, marginLeft: 6 }}>${wasOf(k)}</s>}&nbsp;&rarr;</>}
             </span>
           </div>
           {p.thumb && <img src={p.thumb} width={lead ? 60 : 44} height={lead ? 78 : 57} alt="" style={{ width: lead ? 60 : 44, height: lead ? 78 : 57, objectFit: "cover", objectPosition: "top", borderRadius: 3, border: "1px solid var(--border)", flexShrink: 0 }} />}

@@ -3,6 +3,7 @@
 // its lesson, a save callback, and a `finish` callback that marks the lesson
 // (and, for action lessons, the action) complete.
 import { useMemo, useState, type ReactNode, useEffect } from "react";
+import { GROUND_PRICE } from "@/lib/course-tiers";
 import SaveMyPlace from "./SaveMyPlace";
 import { PATHS } from "@/lib/quiz";
 import { DIAL_PROFILES, ENERGY_PATHS, DIALS } from "@/lib/course";
@@ -32,7 +33,7 @@ export function Welcome({ finish, done }: LessonProps) {
     <div>
       <P>Hi. I&rsquo;m James. I was an SLP, and I now work in marketing at a health-tech company. I built this because the advice SLPs get when they want out is usually some version of &ldquo;tough it out&rdquo; or &ldquo;start over,&rdquo; and both are wrong.</P>
       <P>These four lessons are free and take about twenty minutes. You&rsquo;ll see what you really earn per hour, set the number your next job has to clear, pick a date to aim at, work out whether the problem is your workplace, the work itself, or this season, and check three beliefs that keep most SLPs in the building longer than they need to be. No account, no card.</P>
-      <P>After that, Module 1 is $19: seven short lessons that put your reasons in writing, with what your degree is worth now, what gave you energy and what you can&rsquo;t afford to lose, plus the workbook that keeps your answers. The full program comes later, and the $19 is credited toward it.</P>
+      <P>After that, Module 1 is ${GROUND_PRICE}: seven short lessons that put your reasons in writing, with what your degree is worth now, what gave you energy and what you can&rsquo;t afford to lose, plus the workbook that keeps your answers. The full program comes later, and the $19 is credited toward it.</P>
       <P style={{ margin: 0 }}>You won&rsquo;t get cheerleading here, or a promise of six figures by fall. Every number comes from documented SLP transitions and public salary data, and the source sits under every lesson. Most people work through this alongside a full-time caseload, which is how it is built.</P>
     </div>
   );

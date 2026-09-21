@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type CSSProperties, type ReactNode } from "react";
+import SaleBanner from "./SaleBanner";
 
 export const V: Record<string, string> = {
   "--accent": "#2D6A4F",
@@ -178,6 +179,7 @@ export function PageShell({ children, wide = false }: { children: ReactNode; wid
   return (
     <div style={S.root}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+      <SaleBanner />
       <div style={{ ...wrap, padding: "32px 0 20px", borderBottom: "1px solid var(--border)", marginBottom: 28 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
           <a href={SITE} style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center", gap: 10 }}>

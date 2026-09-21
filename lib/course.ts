@@ -3,6 +3,7 @@
 // Later modules are listed so the quest log shows the whole road; their
 // lessons are written after James approves the sample.
 import type { Progress } from "./course-progress";
+import { GROUND_PRICE } from "./course-tiers";
 import { contentIds, summaryFor } from "./course-content";
 import { COMPANY_COUNT } from "./companies";
 
@@ -94,7 +95,7 @@ export const MODULES: Module[] = [
     tagline: "Twenty minutes: what you really earn per hour, the pay your next job has to clear, a date to aim at, and whether it's the workplace, the work, or the season that's wrong.",
     lessons: [
       { id: "0.1", module: 0, title: "Welcome from James", type: "explainer", minutes: 3, component: "Welcome",
-        summary: "Three minutes on what's free, what's $19, and what you'll have by the end of today.", sources: ["facts"] },
+        summary: `Three minutes on what's free, what's $${GROUND_PRICE}, and what you'll have by the end of today.`, sources: ["facts"] },
       { id: "0.2", module: 0, title: "Your starting line", type: "interactive", minutes: 8, resources: [R.workbook1, R.workbookPdf], component: "StartingLine",
         summary: "What you really earn per hour, the salary the next job has to clear, the date you're aiming at, and what you'd trade to get there. Four numbers the rest of the program runs on.",
         action: { label: "Set my target date", prompt: "Pick the date you want to be in a new role. Ninety days from now is the default and it is realistic for the fast paths; the long builds take 6–15 months and the map adjusts.", done: "Target date set." } },

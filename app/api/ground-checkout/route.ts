@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { assertKeyPriceMatch } from "@/lib/stripe-guard";
+import { assertKeyPriceMatch, assertPriceAmount } from "@/lib/stripe-guard";
+import { priceOf } from "@/lib/pricing";
 
 export const runtime = "nodejs";
 
@@ -18,7 +19,7 @@ function getStripe(): Stripe {
     if (!key) throw new Error("STRIPE_SECRET_KEY is not set");
     const price = process.env.STRIPE_GROUND_PRICE_ID;
     if (!price) throw new Error("STRIPE_GROUND_PRICE_ID is not set");
-    assertKeyPriceMatch(key, price, "STRIPE_GROUND_PRICE_ID ($24 Ground)");
+    assertKeyPriceMatch(key, price, "STRIPE_GROUND_PRICE_ID (Module 1)");
     stripe = new Stripe(key, { apiVersion: "2025-02-24.acacia" });
   }
   return stripe;
@@ -31,6 +32,7 @@ export async function POST(req: Request) {
     const metadata: Record<string, string> = { product: "ground" };
     if (stage) metadata.stage = String(stage).slice(0, 20);
     if (path) metadata.path = String(path).slice(0, 40);
+    await assertPriceAmount(getStripe(), process.env.STRIPE_GROUND_PRICE_ID!, priceOf("ground"), "Module 1");
     const session = await getStripe().checkout.sessions.create({
       mode: "payment",
       line_items: [{ price: process.env.STRIPE_GROUND_PRICE_ID!, quantity: 1 }],

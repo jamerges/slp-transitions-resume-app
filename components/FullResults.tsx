@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import { priceOf, wasNote } from "@/lib/pricing";
 import { S, Card, CopyButton, CoverageTable } from "./ui";
 import { getRelevantCompanies, getRelevantStories, COMPANY_COUNT } from "@/lib/companies";
 import { downloadResumeDocx, downloadCoverLetterDocx } from "./exportDocx";
@@ -405,9 +406,9 @@ export default function FullResults({
           <Card style={{ textAlign: "center", border: "1.5px solid var(--accent)" }}>
             <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>Applying somewhere else too?</h3>
             <p style={{ ...S.p, maxWidth: 440, margin: "0 auto 16px" }}>
-              Your r&eacute;sum&eacute; carries over, so you only add the next posting. Free preview first, $24 once.
+              Your r&eacute;sum&eacute; carries over, so you only add the next posting. Free preview first, ${priceOf("suite")} once{wasNote("suite")}.
             </p>
-            <button style={{ ...S.btn, padding: "14px 40px", fontSize: 16 }} onClick={onTranslateAnother}>Try it free &middot; $24 &rarr;</button>
+            <button style={{ ...S.btn, padding: "14px 40px", fontSize: 16 }} onClick={onTranslateAnother}>Try it free &middot; ${priceOf("suite")} &rarr;</button>
             <p style={{ fontSize: 13, marginTop: 14 }}>
               <a href="/jobs" style={{ color: "var(--accent)", fontWeight: 600 }}>See what&rsquo;s posted this week, by path &rarr;</a>
             </p>

@@ -1,6 +1,7 @@
 "use client";
 
 import { S, Card, CopyButton } from "./ui";
+import { priceOf, wasNote } from "@/lib/pricing";
 
 // Every transition moves through the same four stages. Showing all of them —
 // not just the one they're in — is what makes the diagnosis mean something.
@@ -224,10 +225,10 @@ export default function ReportResults({
               : "/";
           }}
         >
-          Try it free &middot; $24 &rarr;
+          Try it free &middot; ${priceOf("suite")} &rarr;
         </button>
         <p style={{ fontSize: 12, color: "var(--light)", marginTop: 8 }}>
-          {sessionId ? "Your resume carries over, so you only add the posting. " : ""}Free preview first, $24 once, no subscription.
+          {sessionId ? "Your resume carries over, so you only add the posting. " : ""}Free preview first, ${priceOf("suite")} once{wasNote("suite")}, no subscription.
         </p>
       </Card>
     </div>

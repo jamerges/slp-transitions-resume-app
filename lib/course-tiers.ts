@@ -1,3 +1,4 @@
+import { priceOf, LIST } from "./pricing";
 /** Pure, importable from client components. Module 0 is free for everyone.
  *  Ground opens Module 1. The full program opens the rest. */
 /** "free" is the Module 0 link: it opens nothing paid but carries a stable session id so progress syncs. */
@@ -17,4 +18,6 @@ export const GROUND_SUB = "You know you want out but not where to start. Get you
 /** One place owns the price. $19 sits between the $9 report and the $24 Suite
  *  so the ladder reads at a glance, and it credits in full toward the program:
  *  its job is deposits, not margin. */
-export const GROUND_PRICE = 19;
+export const GROUND_PRICE = priceOf("ground");
+/** What Module 1 costs when there is no sale. */
+export const GROUND_LIST_PRICE = LIST.ground;

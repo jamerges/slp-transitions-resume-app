@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { priceOf, wasNote } from "@/lib/pricing";
 import { S, Card, ProgressBar, focusB, blurB } from "./ui";
 import { track } from "@/lib/analytics";
 import { QUESTIONS, PATHS, STAGES, pathImage, scoreQuiz, stageFromLabel, type QuizAnswers, type QuizPath } from "@/lib/quiz";
@@ -180,7 +181,7 @@ export default function CareerQuiz({
       if (t) buyReport(t);
       return;
     }
-    if (k === "suite") track("select_item", { items: [{ item_id: "career_pivot_suite", item_name: "$24 Career Pivot Suite", item_category: t?.slug, price: 24, quantity: 1 }], ...base });
+    if (k === "suite") track("select_item", { items: [{ item_id: "career_pivot_suite", item_name: `$${priceOf("suite")} Career Pivot Suite`, item_category: t?.slug, price: priceOf("suite"), quantity: 1 }], ...base });
     else track("select_item", { items: [{ item_id: "ground", item_name: "Before You Start Looking", item_category: t?.slug, price: GROUND_PRICE, quantity: 1 }], ...base });
   };
 
@@ -411,7 +412,7 @@ export default function CareerQuiz({
                   track("select_item", {
                     item_list_id: "quiz_result",
                     item_list_name: "Quiz result",
-                    items: [{ item_id: "career_pivot_suite", item_name: "$24 Career Pivot Suite", item_category: top.slug, price: 24, quantity: 1 }],
+                    items: [{ item_id: "career_pivot_suite", item_name: `$${priceOf("suite")} Career Pivot Suite`, item_category: top.slug, price: priceOf("suite"), quantity: 1 }],
                     placement: "result_top",
                     stage: stageKey || "none",
                   });
@@ -419,10 +420,10 @@ export default function CareerQuiz({
                 }}
                 style={{ ...S.btn, marginTop: 16, padding: "11px 22px", fontSize: 14.5 }}
               >
-                Translate my résumé — $24 →
+                Translate my résumé — ${priceOf("suite")} →
               </button>
               <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>
-                Includes the $9 Pivot Report. Free preview before you pay.
+                Includes the $9 Pivot Report. Free preview before you pay.{wasNote("suite")}
               </div>
             </>
           )}
@@ -573,7 +574,7 @@ export default function CareerQuiz({
                   Already staring at a specific job posting?
                 </strong>
                 <br />
-                The <strong>$24 Career Pivot Suite</strong> rewrites the whole
+                The <strong>${priceOf("suite")} Career Pivot Suite</strong> rewrites the whole
                 application around it — every resume bullet, a cover letter in your
                 voice, your LinkedIn, and the interview answers. It includes this report.
               </p>
@@ -585,16 +586,16 @@ export default function CareerQuiz({
                     item_list_name: "Quiz result upsell",
                     items: [{
                       item_id: "career_pivot_suite",
-                      item_name: "$24 Career Pivot Suite",
+                      item_name: `$${priceOf("suite")} Career Pivot Suite`,
                       item_category: top.slug,
-                      price: 24,
+                      price: priceOf("suite"),
                       quantity: 1,
                     }],
                   })
                 }
                 style={{ ...S.btnOut, fontSize: 14, display: "inline-block", textDecoration: "none" }}
               >
-                See the $24 Suite →
+                See the ${priceOf("suite")} Suite →
               </a>
             </div>
             <div style={{ borderTop: "1px solid var(--border)", marginTop: 18, paddingTop: 14 }}>
@@ -634,14 +635,14 @@ export default function CareerQuiz({
                   track("select_item", {
                     item_list_id: "quiz_result",
                     item_list_name: "Quiz result",
-                    items: [{ item_id: "career_pivot_suite", item_name: "$24 Career Pivot Suite", item_category: top.slug, price: 24, quantity: 1 }],
+                    items: [{ item_id: "career_pivot_suite", item_name: `$${priceOf("suite")} Career Pivot Suite`, item_category: top.slug, price: priceOf("suite"), quantity: 1 }],
                     placement: "result_offer",
                     stage: stageKey || "none",
                   });
                   go(suiteHref(top));
                 }}
               >
-                Translate my résumé — $24 →
+                Translate my résumé — ${priceOf("suite")} →
               </button>
               <p style={{ fontSize: 12, color: "var(--light)", marginTop: 10, lineHeight: 1.6 }}>
                 Free preview before you pay. One-time payment, 30-day refund if it doesn&rsquo;t help.
@@ -676,7 +677,7 @@ export default function CareerQuiz({
           <Card style={{ border: "1.5px solid var(--accent)" }}>
             <h3 style={{ ...S.h3, marginBottom: 4 }}>Before you start looking</h3>
             <div style={{ fontSize: 12.5, color: "var(--muted)", marginBottom: 10 }}>
-              Module 1 of Transition OS, the ninety-day program. ${GROUND_PRICE} once, credited toward the full program later.
+              Module 1 of Transition OS, the ninety-day program. ${GROUND_PRICE} once{wasNote("ground")}, credited toward the full program later.
             </div>
             <p style={{ ...S.p, marginBottom: 14 }}>
               Everything above is a direction. Underneath it is what the next job has to give you, and that is what this

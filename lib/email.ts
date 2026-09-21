@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { priceOf, wasNote } from "./pricing";
 import { STAGES, pathImage, type StageKey } from "@/lib/quiz";
 import { STAGE_MAP, offerForStage, mapUrl } from "@/lib/stage-map";
 import { SUPPORT_EMAIL } from "./contact";
@@ -283,15 +284,15 @@ export function renderQuizResultEmail(input: QuizResultEmailInput): string {
   const cta = offer === "map"
     ? `<div style="padding:22px;background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;margin-top:20px;">
     <div style="font-size:17px;font-weight:700;margin-bottom:8px;">Before you start looking</div>
-    <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">Your result is a direction. <b>Module 1 of Transition OS</b> puts your reasons in writing: what your degree is worth to you now, what actually gave you energy, and what you can't afford to lose. Seven lessons, about forty minutes, and the workbook. $19 once, credited toward the full program later.</div>
+    <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">Your result is a direction. <b>Module 1 of Transition OS</b> puts your reasons in writing: what your degree is worth to you now, what actually gave you energy, and what you can't afford to lose. Seven lessons, about forty minutes, and the workbook. $${priceOf("ground")} once${wasNote("ground")}, credited toward the full program later.</div>
     <div style="text-align:center;">${btn(groundLink, "Start Module 1 &rarr;")}</div>
-    <div style="font-size:13px;line-height:1.7;color:#6B7280;margin-top:14px;">Not the one you need? The <a href="${reportLink}" style="color:#0B6B54;">$9 Pivot Report</a> reads your résumé and names the paths you already qualify for. The <a href="${suiteLink}" style="color:#0B6B54;">$24 Career Pivot Suite</a> rewrites a whole application against one posting.</div>
+    <div style="font-size:13px;line-height:1.7;color:#6B7280;margin-top:14px;">Not the one you need? The <a href="${reportLink}" style="color:#0B6B54;">$9 Pivot Report</a> reads your résumé and names the paths you already qualify for. The <a href="${suiteLink}" style="color:#0B6B54;">$${priceOf("suite")} Career Pivot Suite</a> rewrites a whole application against one posting.</div>
     <div style="font-size:13px;line-height:1.7;color:#6B7280;margin-top:14px;">Rather start from your résumé? The <a href="${reportLink}" style="color:#0B6B54;">$9 Pivot Report</a> reads it against these paths and tells you which ones you already qualify for.</div>
   </div>`
     : offer === "suite"
     ? `<div style="padding:22px;background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;margin-top:20px;">
     <div style="font-size:17px;font-weight:700;margin-bottom:8px;">Your résumé is the bottleneck.</div>
-    <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">You said you're applying and not getting traction. Nine times out of ten the résumé still reads clinical, so a recruiter files it in the wrong pile in about seven seconds. The <b>Career Pivot Suite</b> rewrites every bullet against a real posting, plus the cover letter, your LinkedIn and the interview answers. $24 once, free preview first, and it includes the $9 Pivot Report.</div>
+    <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">You said you're applying and not getting traction. Nine times out of ten the résumé still reads clinical, so a recruiter files it in the wrong pile in about seven seconds. The <b>Career Pivot Suite</b> rewrites every bullet against a real posting, plus the cover letter, your LinkedIn and the interview answers. $${priceOf("suite")}${wasNote("suite")} once, free preview first, and it includes the $9 Pivot Report.</div>
     <div style="text-align:center;">${btn(suiteLink, "Translate my résumé &rarr;")}</div>
   </div>`
     : `<div style="padding:22px;background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;margin-top:20px;">
@@ -465,7 +466,7 @@ export async function sendFreeLinkEmail(input: { to: string; unlockUrl: string; 
   ${lines ? `<ul style="font-size:15px;line-height:1.8;padding-left:20px;">${lines}</ul>` : ""}
   <div style="text-align:center;margin:22px 0;"><a href="${unlockUrl}" style="display:inline-block;padding:14px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Open my lessons &rarr;</a></div>
   <p style="font-size:15px;line-height:1.7;">That link is your login. It works in any browser, on any device, as many times as you like, and everything you answer is saved to it. Keep this email.</p>
-  <p style="font-size:15px;line-height:1.7;">Module 1 puts your reasons in writing, seven lessons and the workbook, for $19. It opens from the same link if you decide to.</p>
+  <p style="font-size:15px;line-height:1.7;">Module 1 puts your reasons in writing, seven lessons and the workbook, for $${priceOf("ground")}${wasNote("ground")}. It opens from the same link if you decide to.</p>
   <p style="font-size:15px;line-height:1.7;">James</p>
   <p style="font-size:12px;color:#9CA3AF;margin-top:26px;">If the button doesn't work, paste this into your browser:<br/><span style="word-break:break-all;">${unlockUrl}</span></p>
 </div></body></html>`;
@@ -586,7 +587,7 @@ export function renderQuizFollowupDay2(input: QuizFollowupDay2Input): { subject:
   const report = `The quiz ranked the paths without ever seeing your resume. The $9 Pivot Report reads the resume and tells you what you already qualify for and what to do first: ${a(link, link)}`;
   const close = `Either way, reply and tell me where you are with it. I read every one of these.`;
   const sheet = `Your map from the result page, if you want it on paper: ${a(mapUrl(stage as StageKey | null, top.slug), "print or save it here")}. It has the one move for your stage and three dated lines for weeks 1, 6 and 12.`;
-  const ground = `If you want the guided version of the decision itself, ${a(`${APP_URL}/course/ground?stage=${stage || ""}&path=${encodeURIComponent(top.slug)}`, "Module 1 of Transition OS")} puts it in writing: what your degree is worth now, what gave you energy, and what you can't afford to lose, with the workbook. Seven lessons, $19 once, credited toward the full program later.`;
+  const ground = `If you want the guided version of the decision itself, ${a(`${APP_URL}/course/ground?stage=${stage || ""}&path=${encodeURIComponent(top.slug)}`, "Module 1 of Transition OS")} puts it in writing: what your degree is worth now, what gave you energy, and what you can't afford to lose, with the workbook. Seven lessons, $${priceOf("ground")} once${wasNote("ground")}, credited toward the full program later.`;
   // The stage question decides what comes first. Stages 1-3 get no pitch:
   // a stage-2 reader greeted with a checkout link stops reading.
   let body: string[];
@@ -611,7 +612,7 @@ export function renderQuizFollowupDay2(input: QuizFollowupDay2Input): { subject:
       break;
     case "action":
       body = [opening, intro,
-        `You said you&rsquo;re applying and not getting traction. Nine times out of ten the resume is the problem. It still reads clinical, so a recruiter files it in the wrong pile in about seven seconds. ${a(`${site}/slp-resume-non-clinical/`, "This is what actually gets interviews")}, and if you want yours translated line by line against a real posting, ${a(`${APP_URL}/?from=quiz&path=${encodeURIComponent(top.roleOption)}`, "the Career Pivot Suite")} does that for $24, with a free preview first, and it includes the $9 report.`,
+        `You said you&rsquo;re applying and not getting traction. Nine times out of ten the resume is the problem. It still reads clinical, so a recruiter files it in the wrong pile in about seven seconds. ${a(`${site}/slp-resume-non-clinical/`, "This is what actually gets interviews")}, and if you want yours translated line by line against a real posting, ${a(`${APP_URL}/?from=quiz&path=${encodeURIComponent(top.roleOption)}`, "the Career Pivot Suite")} does that for $${priceOf("suite")}${wasNote("suite")}, with a free preview first, and it includes the $9 report.`,
         context, sheet, close, `James`];
       break;
     default:
@@ -780,7 +781,7 @@ export async function sendReportEmail(input: {
       ✓ Editable Word docs, and you can refine any section until it sounds like you
     </div>
     <div style="text-align:center;">
-      <a href="${APP_URL}${continueParam}" style="display:inline-block;padding:14px 32px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Get the full package for $24 →</a>
+      <a href="${APP_URL}${continueParam}" style="display:inline-block;padding:14px 32px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Get the full package for $${priceOf("suite")}${wasNote("suite")} →</a>
       <div style="font-size:12px;color:#6B7280;margin-top:10px;">
         ${continueParam ? "Your resume is already saved. Just add the job posting. " : ""}Free preview first. One-time payment, no subscription, 30-day refund.
       </div>

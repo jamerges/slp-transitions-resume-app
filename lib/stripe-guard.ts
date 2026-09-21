@@ -18,3 +18,26 @@ export function assertKeyPriceMatch(secretKey: string, priceId: string, label: s
     );
   }
 }
+
+import type Stripe from "stripe";
+const verified = new Map<string, number>();
+/**
+ * The page shows priceOf(); Stripe charges the price id's unit_amount. They
+ * can drift when a sale flips in code before the env var points at the new
+ * price. This retrieves the price once per process and refuses the checkout
+ * if the two disagree, so a half-done price change fails at the button.
+ */
+export async function assertPriceAmount(stripe: Stripe, priceId: string, dollars: number, label: string): Promise<void> {
+  let cents = verified.get(priceId);
+  if (cents === undefined) {
+    const price = await stripe.prices.retrieve(priceId);
+    cents = price.unit_amount ?? -1;
+    verified.set(priceId, cents);
+  }
+  if (cents !== Math.round(dollars * 100)) {
+    verified.delete(priceId);
+    // The detail goes to the log; the buyer sees a sentence they can act on.
+    console.error(`[price guard] ${label}: Stripe price ${priceId} charges $${(cents / 100).toFixed(2)} but the page shows $${dollars}. Point the env var at a $${dollars} price.`);
+    throw new Error(`The ${label} price is being updated. Try again in a few minutes, and nothing has been charged.`);
+  }
+}

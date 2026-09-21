@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { assertKeyPriceMatch } from "@/lib/stripe-guard";
+import { assertKeyPriceMatch, assertPriceAmount } from "@/lib/stripe-guard";
+import { priceOf } from "@/lib/pricing";
 import Stripe from "stripe";
 import { stashInputs, type StashedInputs } from "@/lib/stash";
 import { randomUUID } from "crypto";
@@ -36,6 +37,7 @@ export async function POST(req: Request) {
       process.env.NEXT_PUBLIC_APP_URL ||
       "https://app.slptransitions.com";
 
+    await assertPriceAmount(getStripe(), PRICE_ID, priceOf("suite"), "Career Pivot Suite");
     const stashKey = randomUUID();
     const { inMetadata, payload } = await stashInputs(stashKey, inputs);
 

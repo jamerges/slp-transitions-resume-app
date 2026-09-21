@@ -1,5 +1,6 @@
 "use client";
 import { S } from "./ui";
+import { priceOf, wasOf, SALE } from "@/lib/pricing";
 import { GROUND_NAME, GROUND_PRICE } from "@/lib/course-tiers";
 
 /**
@@ -24,18 +25,18 @@ export const PRODUCTS: Record<ProductKey, { name: string; price: number; answers
     thumb: "/marketing/workbook-cover.png",
     cta: { direct: "Start here", via: "Start here" },
     button: "Find clarity, free",
-    detail: "Twenty free minutes: know the number your next job has to clear, and whether it's your workplace, the work, or the season that's wrong. Module 1 is $19 after that: your reasons in writing, with the workbook.",
+    detail: `Twenty free minutes: know the number your next job has to clear, and whether it's your workplace, the work, or the season that's wrong. Module 1 is $${GROUND_PRICE} after that: your reasons in writing, with the workbook.`,
   },
   report: {
     name: "Pivot Report",
-    price: 9,
+    price: priceOf("report"),
     answers: "Ready to pick a path?",
     cta: { direct: "Get the report", via: "Take the quiz" },
     detail: "Upload your résumé and get three paths you already qualify for, plus what to do in the first 30 days.",
   },
   suite: {
     name: "Career Pivot Suite",
-    price: 24,
+    price: priceOf("suite"),
     answers: "Ready to start applying?",
     cta: { direct: "Try it free", via: "Try it free" },
     detail: "Paste one job posting. Get every bullet, the cover letter, your LinkedIn and the interview answers rewritten for it.",
@@ -65,9 +66,9 @@ export default function ProductMenu({
             <div style={{ flexGrow: 1, minWidth: 0 }}>
               <div style={{ fontSize: 15, fontWeight: 700, color: "var(--text)" }}>{p.name}</div>
               <div style={{ fontSize: 13.5, color: "var(--text)", marginTop: 3 }}>{p.answers}</div>
-              <div style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 3 }}>{p.detail}</div>
+              <div style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 3 }}>{p.detail}{wasOf(k) && <> <b style={{ color: "var(--accent)" }}>${p.price} {SALE.note}.</b></>}</div>
               <span style={{ display: "inline-block", marginTop: 10, padding: "8px 14px", borderRadius: 8, background: "var(--accent)", color: "#fff", fontSize: 13.5, fontWeight: 600 }}>
-                {p.button ? <>{p.button}&nbsp;&rarr;</> : <>{href ? p.cta.via : p.cta.direct} &middot; ${p.price}&nbsp;&rarr;</>}
+                {p.button ? <>{p.button}&nbsp;&rarr;</> : <>{href ? p.cta.via : p.cta.direct} &middot; ${p.price}{wasOf(k) && <s style={{ opacity: 0.7, fontWeight: 400, marginLeft: 6 }}>${wasOf(k)}</s>}&nbsp;&rarr;</>}
               </span>
             </div>
             {p.thumb && <img src={p.thumb} width={44} height={57} alt="" style={{ width: 44, height: 57, objectFit: "cover", objectPosition: "top", borderRadius: 3, border: "1px solid var(--border)", flexShrink: 0 }} />}

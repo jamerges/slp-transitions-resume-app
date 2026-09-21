@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { assertKeyPriceMatch } from "@/lib/stripe-guard";
+import { assertKeyPriceMatch, assertPriceAmount } from "@/lib/stripe-guard";
+import { priceOf } from "@/lib/pricing";
 import { assertReadableResume } from "@/lib/anthropic";
 import Stripe from "stripe";
 import { stashInputs } from "@/lib/stash";
@@ -45,6 +46,7 @@ export async function POST(req: Request) {
       process.env.NEXT_PUBLIC_APP_URL ||
       "https://app.slptransitions.com";
 
+    await assertPriceAmount(getStripe(), REPORT_PRICE_ID, priceOf("report"), "Pivot Report");
     const stashKey = randomUUID();
     // Explore inputs are always > 450 chars (resume text), so this goes to Redis.
     const { inMetadata, payload } = await stashInputs(stashKey, inputs as any);
