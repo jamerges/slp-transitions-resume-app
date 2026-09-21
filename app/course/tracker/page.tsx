@@ -9,6 +9,6 @@ export default async function Page() {
   // Same gate as Module 3, where the lists start: a Ground owner sees the
   // "not open yet" page rather than a sales page for something they own.
   const access = await getCourseAccess();
-  if (!canOpen(3, access)) return <LockedLesson moduleN={3} moduleTitle="Connect" lessonTitle="Your people and applications" owns={access?.product ?? null} />;
+  if (!canOpen(3, access) && access?.product !== "ground") return <LockedLesson moduleN={3} moduleTitle="Connect" lessonTitle="Your people and applications" owns={access?.product ?? null} />;
   return <Lists />;
 }

@@ -73,6 +73,8 @@ const R = {
   // /api/course/workbook, which picks the edition from the access cookie.
   workbook1: { label: "Your workbook (with your answers)", href: "/course/workbook", kind: "worksheet" as const },
   workbookPdf: { label: "Blank copy to write in (PDF)", href: "/api/course/workbook?f=pdf", kind: "worksheet" as const },
+  translationSheet: { label: "The translation pass, one printable page", href: "/api/course/workbook?f=translation", kind: "pdf" as const },
+  peopleSheet: { label: "Who to talk to first, one printable page", href: "/api/course/workbook?f=people", kind: "pdf" as const },
   sunkSheet: { label: "Sunk-cost calculator (this lesson, saved to your map)", href: "#", kind: "tool" as const },
   fears: { label: "5 hidden fears stopping SLPs from making a career change", href: "https://slptransitions.com/5-hidden-fears-stopping-slps-from-making-a-career-change-and-how-to-overcome-them/", kind: "link" as const },
   stages: { label: "You're allowed to want out: the five stages", href: "https://slptransitions.com/youre-allowed-to-want-out/", kind: "link" as const },
@@ -144,7 +146,7 @@ export const MODULES: Module[] = [
     n: 3, slug: "connect", title: "Connect", phase: "Connect", week: "Weeks 3\u20135", built: false,
     tagline: "Find the people already doing the job, and learn what to say to them.",
     lessons: [
-      { id: "3.1", module: 3, title: "Where to find people in your target field", type: "explainer", minutes: 9, summary: "", resources: [R.lists, R.companies] },
+      { id: "3.1", module: 3, title: "Where to find people in your target field", type: "explainer", minutes: 9, summary: "", resources: [R.peopleSheet, R.lists, R.companies] },
       { id: "3.2", module: 3, title: "Messages that get answered", type: "explainer", minutes: 9, summary: "", resources: [R.workbook1] },
       { id: "3.3", module: 3, title: "Reach out to three people", type: "action", minutes: 20, summary: "", resources: [R.tracker, R.workbook1] },
       { id: "3.4", module: 3, title: "LinkedIn: what recruiters check", type: "explainer", minutes: 8, summary: "", resources: [R.linkedinPost] },
@@ -159,12 +161,12 @@ export const MODULES: Module[] = [
     tagline: "Rewrite your r\u00e9sum\u00e9 and cover letter so a hiring manager can see what you already do.",
     lessons: [
       { id: "4.1", module: 4, title: "How your r\u00e9sum\u00e9 actually gets screened", type: "explainer", minutes: 5, summary: "", resources: [R.resumePost] },
-      { id: "4.2", module: 4, title: "Translating clinical work into business language", type: "explainer", minutes: 10, summary: "", resources: [R.resumePost, R.workbook1] },
+      { id: "4.2", module: 4, title: "Translating clinical work into business language", type: "explainer", minutes: 10, summary: "", resources: [R.translationSheet, R.resumePost, R.workbook1] },
       { id: "4.3", module: 4, title: "Numbers you already have", type: "interactive", minutes: 8, summary: "", resources: [R.workbook1] },
       { id: "4.4", module: 4, title: "Why AI-written applications get rejected", type: "explainer", minutes: 6, summary: "", resources: [R.coverPost] },
       { id: "4.5", module: 4, title: "Build your r\u00e9sum\u00e9 in the Suite", type: "interactive", minutes: 15, summary: "", resources: [R.suite, R.resumePost] },
       { id: "4.6", module: 4, title: "Writing a cover letter worth reading", type: "explainer", minutes: 6, summary: "", resources: [R.coverPost] },
-      { id: "4.7", module: 4, title: "Send one application properly", type: "action", minutes: 30, summary: "", resources: [R.tracker, R.jobs] },
+      { id: "4.7", module: 4, title: "Send one application properly", type: "action", minutes: 30, summary: "", resources: [R.translationSheet, R.lists, R.jobs] },
     ],
   },
   {

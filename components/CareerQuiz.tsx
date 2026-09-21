@@ -8,7 +8,7 @@ import { QUESTIONS, PATHS, STAGES, pathImage, scoreQuiz, stageFromLabel, type Qu
 import StageMap from "./StageMap";
 import { offerForStage, mapUrl } from "@/lib/stage-map";
 import ProductMenu, { type ProductKey } from "./ProductMenu";
-import { GROUND_PRICE } from "@/lib/course-tiers";
+import { GROUND_PRICE, GROUND_NAME } from "@/lib/course-tiers";
 
 /** CSS-only "product shot" for the $9 Pivot Report, so the thing being sold
  *  looks like an object rather than a paragraph.
@@ -182,7 +182,7 @@ export default function CareerQuiz({
       return;
     }
     if (k === "suite") track("select_item", { items: [{ item_id: "career_pivot_suite", item_name: `$${priceOf("suite")} Career Pivot Suite`, item_category: t?.slug, price: priceOf("suite"), quantity: 1 }], ...base });
-    else track("select_item", { items: [{ item_id: "ground", item_name: "Before You Start Looking", item_category: t?.slug, price: GROUND_PRICE, quantity: 1 }], ...base });
+    else track("select_item", { items: [{ item_id: "ground", item_name: GROUND_NAME, item_category: t?.slug, price: GROUND_PRICE, quantity: 1 }], ...base });
   };
 
   // Straight from the result to Stripe. Asking for a resume first was the
@@ -675,23 +675,23 @@ export default function CareerQuiz({
         )}
         {offer === "map" && (
           <Card style={{ border: "1.5px solid var(--accent)" }}>
-            <h3 style={{ ...S.h3, marginBottom: 4 }}>Before you start looking</h3>
+            <h3 style={{ ...S.h3, marginBottom: 4 }}>{GROUND_NAME}</h3>
             <div style={{ fontSize: 12.5, color: "var(--muted)", marginBottom: 10 }}>
-              Module 1 of Transition OS, the ninety-day program. ${GROUND_PRICE} once{wasNote("ground")}, credited toward the full program later.
+              The first month of Transition OS, the ninety-day program. ${GROUND_PRICE} once{wasNote("ground")}, credited toward the full program later.
             </div>
             <p style={{ ...S.p, marginBottom: 14 }}>
               Everything above is a direction. Underneath it is what the next job has to give you, and that is what this
               puts in writing: what your degree is worth to you now, what actually gave you energy, and the four things you
-              can&rsquo;t afford to lose. Seven lessons, about forty minutes, with a workbook that fills in with your answers as you go.
+              can&rsquo;t afford to lose. Then the people who already made the move, with the message that gets answered, and the r&eacute;sum&eacute; pass. Twelve lessons across the first month, with a workbook that fills in with your answers as you go.
             </p>
             <a
               href={`/course/ground?stage=${stageKey || ""}&path=${encodeURIComponent(top.slug)}`}
               target={embedded ? "_blank" : undefined}
               rel="noopener"
-              onClick={() => track("select_item", { item_list_id: "quiz_result", item_list_name: "Quiz result", items: [{ item_id: "ground", item_name: "Before You Start Looking", item_category: top.slug, price: GROUND_PRICE, quantity: 1 }], placement: "result_after_map", stage: stageKey || "none" })}
+              onClick={() => track("select_item", { item_list_id: "quiz_result", item_list_name: "Quiz result", items: [{ item_id: "ground", item_name: GROUND_NAME, item_category: top.slug, price: GROUND_PRICE, quantity: 1 }], placement: "result_after_map", stage: stageKey || "none" })}
               style={{ ...S.btn, display: "inline-block", textDecoration: "none" }}
             >
-              Start Module 1 — ${GROUND_PRICE} →
+              Get the kit — ${GROUND_PRICE} →
             </a>
             <p style={{ fontSize: 13, lineHeight: 1.65, color: "var(--muted)", margin: "14px 0 0" }}>
               Rather start from your résumé? The{" "}

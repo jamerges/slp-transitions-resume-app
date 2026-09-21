@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { GROUND_NAME, GROUND_PRICE } from "@/lib/course-tiers";
 import Stripe from "stripe";
 import { claimOnce } from "@/lib/stash";
 import { signAccess, unlockUrl, ACCESS_COOKIE, cookieOptions } from "@/lib/course-access";
@@ -49,7 +50,7 @@ export async function POST(req: Request) {
     if (email) {
       markCustomer(email).catch(() => {});
       markGroundBuyer(email, session.amount_total ?? 2400, session.id).catch(() => {});
-      upsertSubscriber({ email, groups: [CUSTOMER_GROUPS.ground], fields: { customer_product: "$19 Before You Start Looking (Module 1 + workbook)" } }).catch(() => {});
+      upsertSubscriber({ email, groups: [CUSTOMER_GROUPS.ground], fields: { customer_product: `$${GROUND_PRICE} ${GROUND_NAME}` } }).catch(() => {});
     }
 
     const res = NextResponse.json({ ok: true, unlockUrl: link, email, emailSent });

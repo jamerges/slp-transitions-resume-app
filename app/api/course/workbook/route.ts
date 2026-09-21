@@ -20,6 +20,8 @@ const FILES = {
   ground: "transition-os-workbook-module1",
   os: "transition-os-workbook",
 } as const;
+/** The two kit sheets (2026-09-21), the same for both paid tiers. */
+const SHEETS: Record<string, string> = { translation: "kit-translation-pass", people: "kit-who-first" };
 
 export async function GET(req: Request) {
   const access = await getCourseAccess();
@@ -30,8 +32,9 @@ export async function GET(req: Request) {
     );
   }
   const url = new URL(req.url);
-  const ext = url.searchParams.get("f") === "docx" ? "docx" : "pdf";
-  const base = FILES[access.product as "ground" | "os"];
+  const f = url.searchParams.get("f") || "pdf";
+  const ext = f === "docx" ? "docx" : "pdf";
+  const base = SHEETS[f] || FILES[access.product as "ground" | "os"];
   try {
     const buf = await readFile(path.join(process.cwd(), "content/course/workbook", `${base}.${ext}`));
     return new NextResponse(new Uint8Array(buf), {

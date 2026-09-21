@@ -2,8 +2,8 @@ import GroundBuy from "@/components/course/GroundBuy";
 import { GROUND_PRICE } from "@/lib/course-tiers";
 import { getCourseAccess } from "@/lib/course-access";
 export const metadata = {
-  title: "Before You Start Looking | SLP Transitions",
-  description: `Module 1 of Transition OS plus the companion workbook: your reasons for leaving in writing, and what you're protecting when you go. Seven lessons, four tools, $${GROUND_PRICE} once.`,
+  title: "Getting Started for SLPs | SLP Transitions",
+  description: `The first month of Transition OS in one kit: your reasons in writing, the people who already made the move, and the r\u00e9sum\u00e9 pass. Twelve lessons, the workbook, $${GROUND_PRICE} once.`,
   robots: { index: false, follow: true },
 };
 export default async function GroundPage({ searchParams }: { searchParams: Promise<{ stage?: string; path?: string; canceled?: string; link?: string; live?: string }> }) {

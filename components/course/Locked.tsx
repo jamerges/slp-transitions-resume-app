@@ -3,7 +3,7 @@ import { CourseShell, Panel, Btn, font } from "./ui";
 import { useProgress } from "@/lib/course-progress";
 import { useState } from "react";
 import { track } from "@/lib/analytics";
-import { GROUND_NAME, GROUND_PRICE } from "@/lib/course-tiers";
+import { GROUND_NAME, GROUND_PRICE, KIT_LESSONS } from "@/lib/course-tiers";
 
 /** The upsell where it belongs: on the first locked lesson, one click to
  *  Stripe, no detour back to the sales page. Email is collected at checkout. */
@@ -33,9 +33,10 @@ function GroundCheckout() {
 
 /** What a visitor sees on a lesson they don't hold. Module 1 sells Ground;
  *  the rest point at the full program. */
-export default function LockedLesson({ moduleN, moduleTitle, lessonTitle, owns }: { moduleN: number; moduleTitle: string; lessonTitle: string; owns?: "free" | "ground" | "os" | null }) {
+export default function LockedLesson({ moduleN, moduleTitle, lessonTitle, lessonId, owns }: { moduleN: number; moduleTitle: string; lessonTitle: string; lessonId?: string; owns?: "free" | "ground" | "os" | null }) {
   const { p, pct } = useProgress();
-  const ground = moduleN === 1 && owns !== "ground";
+  // In the kit: Module 1, or one of the five people and r\u00e9sum\u00e9 lessons. A kit owner never sees this branch.
+  const ground = (moduleN === 1 || (!!lessonId && KIT_LESSONS.includes(lessonId))) && owns !== "ground";
   return (
     <CourseShell xp={p.xp} pct={pct}>
       <div style={{ maxWidth: 640, margin: "30px auto" }}>
@@ -44,7 +45,7 @@ export default function LockedLesson({ moduleN, moduleTitle, lessonTitle, owns }
           <h1 style={{ fontFamily: font.serif, fontSize: 28, margin: "8px 0 10px" }}>{lessonTitle}</h1>
           {ground ? (
             <>
-              <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--muted)", margin: "0 0 6px" }}>This lesson is in <strong>Before You Start Looking</strong>, Module 1 plus the workbook: your reasons for leaving in writing, and what you&rsquo;re protecting when you go.</p>
+              <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--muted)", margin: "0 0 6px" }}>This lesson is in <strong>{GROUND_NAME}</strong>, the first month in one kit: your reasons in writing, the people who already made the move, and the r&eacute;sum&eacute; pass, with the workbook.</p>
               <p style={{ fontSize: 14, lineHeight: 1.6, color: "var(--muted)", margin: "0 0 18px" }}>${GROUND_PRICE} once, credited toward the full program later. 30-day refund by replying to one email.</p>
               <GroundCheckout />
               <div style={{ marginTop: 14 }}><a href="/course/ground" style={{ fontSize: 13.5, color: "var(--accent)", fontWeight: 600 }}>See what&rsquo;s in it &rarr;</a></div>
@@ -55,7 +56,7 @@ export default function LockedLesson({ moduleN, moduleTitle, lessonTitle, owns }
               {owns === "ground" ? (
                 <>
                   <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--muted)", margin: "0 0 18px" }}>
-                    This one is in the rest of the program, which isn&rsquo;t open yet. You already have Module 1, and what you
+                    This one is in the rest of the program, which isn&rsquo;t open yet. You already have the Getting Started kit, and what you
                     paid is credited toward the full program when it opens. I&rsquo;ll email you the day it does.
                   </p>
                   <Btn href="/course">← Back to your lessons</Btn>

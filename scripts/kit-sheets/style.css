@@ -1,0 +1,18 @@
+@page{size:8.5in 11in;margin:0.55in 0.7in}
+html,body{margin:0;font-family:"DM Sans",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;color:#1B1B1E;font-size:10.2pt;line-height:1.38;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.kicker{font-size:8pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2D6A4F}
+h1{font-family:"Playfair Display",Georgia,serif;font-size:21pt;margin:2px 0 2px;line-height:1.15}
+.sub{color:#6B7280;margin:0 0 8px;font-size:10pt}
+h2{font-size:10.5pt;margin:6px 0 3px;font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:9.3pt}
+th,td{text-align:left;vertical-align:top;padding:2px 6px;border-top:1px solid #E5E7EB}
+th{font-size:8.5pt;letter-spacing:.06em;text-transform:uppercase;color:#6B7280;border-top:none}
+td.before{color:#6B7280;width:44%}
+.tick{list-style:none;padding:0;margin:0}
+.tick li{padding:3px 0 3px 22px;position:relative;border-top:1px solid #F0F0EE;font-size:9.6pt}
+.tick li:before{content:"";position:absolute;left:2px;top:7px;width:11px;height:11px;border:1.5px solid #2D6A4F;border-radius:2px}
+.note{background:#F0FAF3;border-left:3px solid #2D6A4F;padding:6px 10px;margin:6px 0;font-size:9.6pt}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.script{border:1px solid #E5E7EB;border-radius:6px;padding:6px 10px;font-size:9.4pt;white-space:pre-wrap;background:#FAFAF9}
+.foot{margin-top:14px;font-size:8.5pt;color:#9CA3AF;display:flex;justify-content:space-between}
+.lines td{height:15px;border-top:1px solid #D1D5DB}

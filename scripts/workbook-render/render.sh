@@ -15,3 +15,8 @@ for ed in transition-os-workbook-module1 transition-os-workbook; do
   "$CHROME" --headless --disable-gpu --no-pdf-header-footer --print-to-pdf="$PWD/content/course/workbook/$ed.pdf" "file://$T/$ed.html" 2>/dev/null
   echo "pdf: content/course/workbook/$ed.pdf"
 done
+# The two kit sheets (2026-09-21): static HTML in scripts/kit-sheets, printed the same way.
+for f in kit-translation-pass kit-who-first; do
+  "$CHROME" --headless --disable-gpu --no-pdf-header-footer --print-to-pdf="$PWD/content/course/workbook/$f.pdf" "file://$PWD/scripts/kit-sheets/$f.html" 2>/dev/null
+  echo "pdf: content/course/workbook/$f.pdf"
+done

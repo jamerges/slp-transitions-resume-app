@@ -5,16 +5,16 @@ import { PATHS } from "@/lib/quiz";
 import { useProgress } from "@/lib/course-progress";
 import { CourseShell, Btn, Panel, font, Ring } from "./ui";
 import { STAGE_META, StageRoad, JourneyMap } from "./scenes";
-import { canOpen, type CourseProduct } from "@/lib/course-tiers";
+import { canOpen, canOpenLesson, GROUND_NAME, type CourseProduct } from "@/lib/course-tiers";
 import { COMPANY_COUNT } from "@/lib/companies";
 import ProductMenu from "@/components/ProductMenu";
 import SaveMyPlace from "./SaveMyPlace";
 import { track } from "@/lib/analytics";
 
 const NOTE: Record<string, string> = {
-  none: `Module 0 is free. Module 1 is $${GROUND_PRICE}, credited toward the full program when it opens. Progress is saved in this browser.`,
-  free: `Module 0 is yours and saved to your link. Module 1 is $${GROUND_PRICE}, credited toward the full program when it opens.`,
-  ground: "Modules 0 and 1 are yours. The full program opens Modules 2 to 7. Progress is saved to your purchase.",
+  none: `Module 0 is free. The Getting Started kit is $${GROUND_PRICE}, credited toward the full program when it opens. Progress is saved in this browser.`,
+  free: `Module 0 is yours and saved to your link. The Getting Started kit is $${GROUND_PRICE}, credited toward the full program when it opens.`,
+  ground: "Your kit is open: Module 1, the first three people lessons and the two r\u00e9sum\u00e9 lessons. The rest opens with the full program. Progress is saved to your purchase.",
   os: "Progress is saved to your purchase, on any device.",
 };
 
@@ -32,12 +32,13 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
   const path = start.path ? PATHS[start.path] : undefined;
   const topDials: string[] = A["1.5"]?.top || [];
   const verdict = A["0.3"]?.verdict;
-  const next: Lesson | undefined = LESSONS.find((l) => moduleOf(l).built && canOpen(moduleOf(l).n, access) && !p.completed.includes(l.id));
+  const next: Lesson | undefined = LESSONS.find((l) => moduleOf(l).built && canOpenLesson(l.id, moduleOf(l).n, access) && !p.completed.includes(l.id));
   const days = daysUntil(start.date);
   // A visitor sees three things: the free module, the $19 module, and one
   // "coming soon" card for the rest. Buyers get the whole map.
   const visitor = held === "none" || held === "free";
-  const shown = visitor ? MODULES.filter((m) => m.n <= 1) : MODULES;
+  // A visitor sees the free module and the three modules the kit reaches into; buyers get the whole map.
+  const shown = visitor ? MODULES.filter((m) => [0, 1, 3, 4].includes(m.n)) : MODULES;
   const m0 = MODULES[0];
 
   return (
@@ -52,7 +53,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
           <div style={{ fontSize: 15, lineHeight: 1.6, opacity: 0.92, maxWidth: 560 }}>
             {!ready ? "" : !stage
               ? visitor
-                ? `Twenty free minutes: set your starting line and find out whether it's the workplace, the work, or the season. Then Module 1, for $${GROUND_PRICE}, puts your reasons in writing. The rest of the program is on its way, and the $19 is credited toward it.`
+                ? `Twenty free minutes: set your starting line and find out whether it's the workplace, the work, or the season. Then the kit, for $${GROUND_PRICE}, puts your reasons in writing, gets you to the people who already made the move, and translates the résumé.`
                 : "The next ninety days take you from wondering whether you're allowed to leave, to interviewing for jobs outside the clinic. Seven modules, ten minutes to set up."
               : stage.n === 1 ? "Nobody has to know. You can work through this at eleven at night and still be on the schedule Monday morning."
               : stage.n === 2 ? "The kids you got talking are still talking. All twenty paths in Module 2 run on the degree rather than around it."
@@ -113,12 +114,14 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
             const doneN = m.lessons.filter((l) => p.completed.includes(l.id)).length;
             const mpct = Math.round((doneN / m.lessons.length) * 100);
             const current = next && next.module === m.n;
-            const locked = !m.built || !canOpen(m.n, access);
+            const openIds = m.lessons.filter((l) => canOpenLesson(l.id, m.n, access)).map((l) => l.id);
+            const locked = !m.built || openIds.length === 0;
+            const partial = !locked && openIds.length < m.lessons.length;
             const ownsGround = held === "ground" || held === "os";
-            const lockLabel = !m.built ? "Coming next" : m.n === 1 && !ownsGround ? `$${GROUND_PRICE} · Module 1` : ownsGround ? "Opens after Module 1" : "Full program";
+            const lockLabel = !m.built ? "Coming next" : !ownsGround ? `$${GROUND_PRICE} · in the kit` : "Full program · coming soon";
             // Never link a buyer back to the page that sells them what they own.
-            const lockHref = m.built && m.n === 1 && !ownsGround ? "/course/ground" : undefined;
-            const minsLeft = m.lessons.filter((l) => !p.completed.includes(l.id)).reduce((n, l) => n + l.minutes, 0);
+            const lockHref = m.built && !ownsGround ? "/course/ground" : undefined;
+            const minsLeft = m.lessons.filter((l) => openIds.includes(l.id) && !p.completed.includes(l.id)).reduce((n, l) => n + l.minutes, 0);
             return (
               <div key={m.n} style={{ display: "grid", gridTemplateColumns: "40px 1fr", gap: 12, marginBottom: 6 }}>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -137,13 +140,14 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
                     </div>
                   </div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 12 }}>
-                    {m.lessons.map((l) => { const d = p.completed.includes(l.id); const isNext = next?.id === l.id; return (
-                      <a key={l.id} href={locked ? undefined : `/course/${m.slug}/${l.id}`} title={`${l.title} · ${l.minutes} min`}
+                    {m.lessons.map((l) => { const d = p.completed.includes(l.id); const isNext = next?.id === l.id; const open = openIds.includes(l.id); return (
+                      <a key={l.id} href={open ? `/course/${m.slug}/${l.id}` : undefined} title={`${l.title} · ${l.minutes} min${open ? "" : " · full program"}`}
                         style={{ fontSize: 12, padding: "5px 10px", borderRadius: 999, textDecoration: "none", border: `1px solid ${d || isNext ? "var(--accent)" : "var(--border)"}`, background: d ? "var(--accent)" : isNext ? "var(--accent-bg-subtle)" : "var(--card)", color: d ? "#fff" : isNext ? "var(--accent)" : locked ? "var(--light)" : "var(--text)", fontWeight: d || isNext ? 600 : 400, cursor: locked ? "default" : "pointer", display: "inline-flex", alignItems: "center", gap: 5 }}>
                         <span aria-hidden style={{ opacity: d ? 1 : 0.7 }}>{d ? "✓" : TYPE_ICON[l.type]}</span>
-                        {l.title.length > 30 ? l.title.slice(0, 28) + "…" : l.title}
+                        {l.title.length > 30 ? l.title.slice(0, 28) + "…" : l.title}{!open && !locked && <span aria-hidden style={{ opacity: 0.6 }}> 🔒</span>}
                       </a>); })}
                   </div>
+                  {partial && <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 10 }}>{openIds.length} of {m.lessons.length} lessons are in your kit; the rest open with the full program.</div>}
                   {!locked && minsLeft > 0 && <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 10 }}>{doneN > 0 ? `${doneN} of ${m.lessons.length} done · ` : ""}about {minsLeft} min left</div>}
                   {!locked && minsLeft === 0 && <div style={{ fontSize: 12.5, color: "var(--accent)", fontWeight: 600, marginTop: 10 }}>Module complete.</div>}
                 </Panel>
@@ -159,7 +163,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10, flexWrap: "wrap" }}>
                   <div style={{ minWidth: 0 }}>
                     <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--light)" }}>Full program · Weeks 2–12</div>
-                    <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 700, margin: "2px 0" }}>Explore, Connect, Translate, Test, Leap</div>
+                    <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 700, margin: "2px 0" }}>The rest of the program</div>
                     <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.5, maxWidth: "56ch" }}>Twenty paths with real pay and timelines, the people to talk to, your résumé rewritten, one piece of proof, and the interviews. What you pay for Module 1 is credited toward it.</div>
                   </div>
                   <span style={{ fontSize: 12, color: "var(--light)", background: "#F3F4F6", padding: "4px 10px", borderRadius: 999, flexShrink: 0 }}>Coming soon</span>
@@ -184,9 +188,9 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
           {visitor && p.completed.length > 0 && <SaveMyPlace compact />}
           {visitor && (
             <Panel tone="soft" style={{ marginBottom: 14 }}>
-              <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 6 }}>Module 1 · ${GROUND_PRICE}</div>
-              <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 700, lineHeight: 1.2, marginBottom: 8 }}>Before You Start Looking</div>
-              <p style={{ fontSize: 13.5, lineHeight: 1.55, margin: "0 0 12px", color: "var(--text)" }}>Seven short lessons that put your reasons in writing: what your degree is worth now, what gave you energy, and what you can&rsquo;t afford to lose, plus the workbook that keeps your answers. Credited toward the full program. 30-day refund.</p>
+              <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 6 }}>The first month · ${GROUND_PRICE}</div>
+              <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 700, lineHeight: 1.2, marginBottom: 8 }}>{GROUND_NAME}</div>
+              <p style={{ fontSize: 13.5, lineHeight: 1.55, margin: "0 0 12px", color: "var(--text)" }}>Twelve lessons across the first month: your reasons in writing, the people who already made the move, and the r&eacute;sum&eacute; pass, with the workbook and two printable sheets.</p>
               <Btn href="/course/ground" outline style={{ width: "100%", textAlign: "center" }}>{"See what's in it →"}</Btn>
               <div style={{ fontSize: 13, marginTop: 12, lineHeight: 1.5 }}>Already bought it? <a href="/course/find" style={{ color: "var(--accent)", fontWeight: 600 }}>Get your link sent again &rarr;</a></div>
             </Panel>

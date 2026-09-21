@@ -25,7 +25,7 @@ export const PRODUCTS: Record<ProductKey, { name: string; price: number; answers
     thumb: "/marketing/workbook-cover.png",
     cta: { direct: "Start here", via: "Start here" },
     button: "Start free",
-    detail: "Twenty free minutes: know the number your next job has to clear, and whether it's your workplace, the work, or the season that's wrong. Then Module 1 puts your reasons in writing, with the workbook.",
+    detail: "Twenty free minutes: know the number your next job has to clear, and whether it's your workplace, the work, or the season that's wrong. Then the first month in one kit: your reasons in writing, the people who already made the move, and the r\u00e9sum\u00e9 pass, with the workbook.",
   },
   report: {
     name: "Pivot Report",
