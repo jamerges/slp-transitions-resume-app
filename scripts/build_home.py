@@ -277,11 +277,27 @@ def esc(s):
 
 
 
+SALE_BANNER = (
+    'Sale: find clarity on your next steps with real career paths '
+    '<span style="opacity:.85;font-weight:400;">&middot; every tool $9, for a limited time</span> &rarr;',
+    "https://app.slptransitions.com/products",
+)
+
+
 def build():
     p = []
     a = p.append
 
     a('<div class="slp-home">')
+
+    # ---- sale strip (2026-09-21). One flag; set SALE_BANNER = None to remove
+    # it and re-run. Same words and link as components/SaleBanner.tsx in the
+    # app, so the two sites show one sale. The Kadence "Sale banner" element
+    # (3656) is the site-wide version and sits in draft until it renders.
+    if SALE_BANNER:
+        a('<a class="slp-sale" href="{}" style="display:block;background:#0B6B54;color:#fff;text-align:center;'
+          'padding:10px 16px;font-size:15px;line-height:1.4;text-decoration:none;font-weight:600;">{}</a>'
+          .format(SALE_BANNER[1], SALE_BANNER[0]))
 
     # ---- hero
     a('<section class="slp-hero"><div class="slp-wrap"><div class="slp-hero-grid"><div>')
