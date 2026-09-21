@@ -24,8 +24,8 @@ export const PRODUCTS: Record<ProductKey, { name: string; price: number; answers
     answers: "Want out, but don't know where to start?",
     thumb: "/marketing/workbook-cover.png",
     cta: { direct: "Start here", via: "Start here" },
-    button: "Find clarity, free",
-    detail: `Twenty free minutes: know the number your next job has to clear, and whether it's your workplace, the work, or the season that's wrong. Module 1 is $${GROUND_PRICE} after that: your reasons in writing, with the workbook.`,
+    button: "Start free",
+    detail: "Twenty free minutes: know the number your next job has to clear, and whether it's your workplace, the work, or the season that's wrong. Then Module 1 puts your reasons in writing, with the workbook.",
   },
   report: {
     name: "Pivot Report",
@@ -66,7 +66,7 @@ export default function ProductMenu({
             <div style={{ flexGrow: 1, minWidth: 0 }}>
               <div style={{ fontSize: 15, fontWeight: 700, color: "var(--text)" }}>{p.name}</div>
               <div style={{ fontSize: 13.5, color: "var(--text)", marginTop: 3 }}>{p.answers}</div>
-              <div style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 3 }}>{p.detail}{wasOf(k) && <> <b style={{ color: "var(--accent)" }}>${p.price} {SALE.note}.</b></>}</div>
+              <div style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 3 }}>{p.detail}{!p.button && wasOf(k) && <> <b style={{ color: "var(--accent)" }}>${p.price} {SALE.note}.</b></>}</div>
               <span style={{ display: "inline-block", marginTop: 10, padding: "8px 14px", borderRadius: 8, background: "var(--accent)", color: "#fff", fontSize: 13.5, fontWeight: 600 }}>
                 {p.button ? <>{p.button}&nbsp;&rarr;</> : <>{href ? p.cta.via : p.cta.direct} &middot; ${p.price}{wasOf(k) && <s style={{ opacity: 0.7, fontWeight: 400, marginLeft: 6 }}>${wasOf(k)}</s>}&nbsp;&rarr;</>}
               </span>

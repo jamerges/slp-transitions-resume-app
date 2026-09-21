@@ -23,7 +23,6 @@ export default function ProductsPage() {
           onPick={(k) => track("select_item", { item_list_id: "products_page", item_list_name: "Products page", items: [{ item_id: k, item_name: PRODUCTS[k].name, price: PRODUCTS[k].price, quantity: 1 }], placement: "products_page" })}
           hrefFor={(k) => HREF[k]}
         />
-        <p style={{ ...S.p, fontSize: 14, color: "var(--muted)", marginTop: 18 }}>Not sure which? The free <a href="/course" style={{ color: "var(--accent)", fontWeight: 600 }}>Module 0</a> takes twenty minutes and tells you whether it is the workplace, the work, or the season. Or <a href="/quiz" style={{ color: "var(--accent)", fontWeight: 600 }}>take the quiz</a> and the result picks for you.</p>
       </div>
     </PageShell>
   );
