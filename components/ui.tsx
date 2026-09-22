@@ -164,8 +164,8 @@ const NAV = [
   // Mirrors the WordPress primary menu (29). Keep the two in step or the site
   // and the app disagree about what exists. Jobs & companies is one item: /jobs
   // carries the companies banner.
-  { label: "Course", href: "/course" },
   { label: "Career Quiz", href: "/quiz" },
+  { label: "Course", href: "/course" },
   { label: "Jobs & companies", href: "/jobs" },
   { label: "Articles", href: `${SITE}/` },
   { label: "About", href: `${SITE}/about/` },

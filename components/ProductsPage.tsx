@@ -18,7 +18,7 @@ export default function ProductsPage() {
         <p style={{ ...S.p, fontSize: 17, marginBottom: 6 }}>Find clarity on your next steps with real career paths: twenty documented ones, with what each pays and how long the move takes.</p>
         {SALE.on && <p style={{ ...S.p, color: "var(--muted)", marginBottom: 22 }}>Usually ${LIST.report}, ${LIST.ground} and ${LIST.suite}. One payment each, no subscription, and a thirty-day refund by replying to one email.</p>}
         <ProductMenu
-          order={["ground", "report", "suite"]}
+          order={["report", "suite", "ground"]}
           heading="Pick the one that matches where you are"
           onPick={(k) => track("select_item", { item_list_id: "products_page", item_list_name: "Products page", items: [{ item_id: k, item_name: PRODUCTS[k].name, price: PRODUCTS[k].price, quantity: 1 }], placement: "products_page" })}
           hrefFor={(k) => HREF[k]}

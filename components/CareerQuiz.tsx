@@ -155,13 +155,12 @@ export default function CareerQuiz({
   // detour and the Suite is the thing. No stage (a preset ?path= visit) keeps
   // the report, the historical default.
   const stageKey = stageFromLabel((answers.stage || [])[0]);
-  // Panic is the largest stage (45 of 135 on 2026-09-11) and the result page
-  // led it to the $9 report, which needs a résumé the reader rarely has on a
-  // phone: that is where the post-payment stall comes from. On a phone, lead
-  // panic with the map and the $19 instead; desktop keeps the report, where
-  // the résumé is collected before payment. `offer` rides on every GA event,
-  // so the two arms compare as stage=panic, offer=map vs offer=report.
-  const offer = stageKey === "panic" && !isDesktop ? "map" : offerForStage(stageKey);
+  // 2026-09-15 to 09-22 a phone override sent panic to the course instead of the
+  // report. Sales stopped: the report and the Suite were the only products that
+  // sold, and panic (the largest stage) was their buyer. The report leads panic
+  // on every device again; phone buyers who stall get the stalled-report
+  // reminders. `offer` still rides on every GA event.
+  const offer = offerForStage(stageKey);
   const suiteHref = (top: QuizPath) => `/?from=quiz&path=${encodeURIComponent(top.roleOption)}`;
   // The menu under each offer. The stage question is a good guess, not a
   // verdict, so all three products stay one click away with their price and
@@ -600,7 +599,7 @@ export default function CareerQuiz({
             </div>
             <div style={{ borderTop: "1px solid var(--border)", marginTop: 18, paddingTop: 14 }}>
               <ProductMenu
-            order={["ground", "suite"]} onPick={pickProduct} hrefFor={hrefForProduct} />
+            order={["suite", "ground"]} onPick={pickProduct} hrefFor={hrefForProduct} />
             </div>
           </Card>
         )}
@@ -669,7 +668,7 @@ export default function CareerQuiz({
             </div>
             <div style={{ borderTop: "1px solid var(--border)", marginTop: 18, paddingTop: 14 }}>
               <ProductMenu
-            order={["ground", "report"]} onPick={pickProduct} hrefFor={hrefForProduct} />
+            order={["report", "ground"]} onPick={pickProduct} hrefFor={hrefForProduct} />
             </div>
           </Card>
         )}
