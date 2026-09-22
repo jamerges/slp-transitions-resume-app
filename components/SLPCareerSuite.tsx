@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useReducedMotion } from "./course/ui";
 import { priceOf, wasNote } from "@/lib/pricing";
 import { numbersAsText } from "@/components/course/tools";
 import {
@@ -121,6 +122,7 @@ function DeliverablesGraphic() {
 }
 
 export default function SLPCareerSuite() {
+  const reducedMotion = useReducedMotion();
   const [step, setStep] = useState<Step>(STEPS.WELCOME);
   const [inputMode, setInputMode] = useState<"upload" | "paste">("upload");
   const [resumeText, setResumeText] = useState("");
@@ -479,14 +481,32 @@ export default function SLPCareerSuite() {
       </button>
       <p style={{ fontSize: 13, color: "var(--light)", marginTop: 14 }}>Takes ~3 minutes • Full package ${priceOf("suite")}{wasNote("suite")}, one-time</p>
 
-      {/* The product, shown rather than described: two real bullets from the résumé post, before and after. */}
-      <img
-        src="/marketing/resume-before-after-hero.png"
-        width={1200}
-        height={560}
-        alt="Two résumé bullets before and after translation. Managed caseload of 55 students becomes managed a portfolio of 55 concurrent clients, running each engagement through assessment, goal-setting, delivery and documented outcome review."
-        style={{ display: "block", width: "100%", maxWidth: 640, height: "auto", margin: "32px auto 0", borderRadius: 12, border: "1px solid var(--border)", boxShadow: "0 8px 30px rgba(27,27,30,0.08)" }}
-      />
+      {/* The product, shown rather than described. A 24-second motion cut of the before/after (Remotion,
+          ~/Desktop/slp-transitions-video, ResumeTranslated-Wide), muted and looping; readers who ask for
+          reduced motion get the still before/after instead. */}
+      {reducedMotion ? (
+        <img
+          src="/marketing/resume-before-after-hero.png"
+          width={1200}
+          height={560}
+          alt="Two résumé bullets before and after translation. Managed caseload of 55 students becomes managed a portfolio of 55 concurrent clients, running each engagement through assessment, goal-setting, delivery and documented outcome review."
+          style={{ display: "block", width: "100%", maxWidth: 640, height: "auto", margin: "32px auto 0", borderRadius: 12, border: "1px solid var(--border)", boxShadow: "0 8px 30px rgba(27,27,30,0.08)" }}
+        />
+      ) : (
+        <video
+          src="/marketing/resume-translated-wide.mp4"
+          poster="/marketing/resume-translated-wide-poster.jpg"
+          width={1920}
+          height={1080}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label="A clinical résumé bullet rewritten, line by line, into the language a hiring manager reads."
+          style={{ display: "block", width: "100%", maxWidth: 640, height: "auto", margin: "32px auto 0", borderRadius: 12, border: "1px solid var(--border)", boxShadow: "0 8px 30px rgba(27,27,30,0.08)", background: "#FAFAF9" }}
+        />
+      )}
 
       <Card style={{ marginTop: 36, textAlign: "left" }} highlight>
         <div style={{ fontSize: 14, fontWeight: 700, color: "var(--accent)", marginBottom: 4 }}>
