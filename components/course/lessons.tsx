@@ -379,6 +379,8 @@ export function EnergyAudit({ answer, save, finish, done }: LessonProps) {
   const [e, setE] = useState<EnergyState>(answer?.energy || {});
   const [custom, setCustom] = useState<string[]>(answer?.custom || []);
   const [draft, setDraft] = useState("");
+  // The outside view: what two people said you are good at, in their words.
+  const [outside, setOutside] = useState<string>(answer?.outside || "");
   const tasks = [...SLP_TASKS, ...custom];
   const ups = tasks.filter((t) => e[t] === "up");
   const downs = tasks.filter((t) => e[t] === "down");
@@ -394,11 +396,11 @@ export function EnergyAudit({ answer, save, finish, done }: LessonProps) {
 
   // Auto-save: what you mark is what is kept, with no extra button.
   useEffect(() => {
-    if (ups.length === 0) return;
-    save({ energy: e, custom, energyPaths: ranked });
-    if (!done) finish();
+    if (ups.length === 0 && !outside.trim()) return;
+    save({ energy: e, custom, energyPaths: ranked, outside });
+    if (ups.length > 0 && !done) finish();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [e, custom, ranked]);
+  }, [e, custom, ranked, outside]);
 
   return (
     <div>
@@ -455,6 +457,19 @@ export function EnergyAudit({ answer, save, finish, done }: LessonProps) {
           </Panel>
         </div>
       )}
+
+      <Panel style={{ marginTop: 14 }}>
+        <H>Ask two people</H>
+        <Muted>
+          Your strengths are the things you do without noticing, which is why you cannot see them from inside. Ask two people who
+          have watched you work, one colleague and one who is not an SLP, what you are good at that seems easy for you. Write what
+          they said, in their words. It becomes the second sentence of your pitch in lesson 3.1.
+        </Muted>
+        <textarea value={outside} onChange={(ev) => setOutside(ev.target.value)} rows={3}
+          placeholder={"“You’re the one who explains it so the family actually does it.” “You always end up running the meeting.”"}
+          style={{ width: "100%", padding: "10px 12px", fontSize: 14.5, border: "1px solid var(--border)", borderRadius: 8, fontFamily: font.sans, resize: "vertical", lineHeight: 1.5 }} />
+        {outside.trim() && <div style={{ fontSize: 13, color: "var(--accent)", fontWeight: 600, marginTop: 6 }}>Saved. It is on your workbook page too.</div>}
+      </Panel>
 
       {ranked.length > 0 && (
         <Panel className="tos-rise" style={{ marginTop: 14 }}>

@@ -5,6 +5,10 @@
     "blocks": [
       {
         "type": "p",
+        "text": "You already network every day. You meet a stranger, build rapport in ten minutes, gather background, plan the next steps and write it up, and you do it with a four-year-old, a nurse and a grandmother before lunch. Networking is that skill pointed at a different person. The only thing you lack is the people."
+      },
+      {
+        "type": "p",
         "text": "Everyone you could call right now works in speech. That is not a personal failing, it is what twelve years inside one profession does to a contact list, and it is the reason the advice to just network lands so badly. You are not short of social skills. You are short of people who work somewhere else."
       },
       {
@@ -73,7 +77,7 @@
       {
         "type": "bypath",
         "title": "Sixty seconds, out loud",
-        "note": "Your path opens first. The chips show the others.",
+        "note": "Your path opens first. The chips show the others. The second sentence, the two things you'd do all day, is where what people said you were good at in lesson 1.4 belongs.",
         "items": {
           "liaison-ur": "I've spent [N] years as a medical SLP, most of it in [acute / inpatient rehab / SNF], where half my week was case conferences, discharge planning and explaining to families and physicians why a patient did or didn't qualify for the next level of care. I'm moving into clinical liaison work, where that's the whole job. If you know a rehab facility or home health agency that's adding a liaison, I'd like to hear about it.\n\nFor utilization review instead:\n\n[N] years as an SLP, and the part I'm good at is the part most people hate: reading the chart, matching what was done against what the payer will cover, and writing the justification that survives an audit. I'm moving into utilization review. If you know a health plan or a UR vendor that hires therapists into reviewer roles, I'd welcome an introduction.",
           "customer-success": "I'm an SLP with [N] years in [setting]. The part of the job I'd keep is onboarding: getting a family or a teacher to actually use the device or the plan after I leave the room. I'm moving into customer success at a health-tech or teletherapy company, where that's the work all day. If your team is hiring an implementation or onboarding specialist, I'd like to talk.",

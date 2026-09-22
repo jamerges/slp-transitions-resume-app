@@ -121,6 +121,10 @@ export default function MyWorkbook() {
                   {took.length ? took.map((t) => <div key={t} style={{ fontSize: 14, lineHeight: 1.6 }}>· {t}</div>) : <Line n={4} />}
                 </div>
               </div>
+              <div style={{ marginTop: 14 }}>
+                <div style={{ fontSize: 12.5, fontWeight: 600, color: "var(--muted)", marginBottom: 4 }}>What two people said you are good at, in their words</div>
+                {energy.outside ? <div style={{ fontSize: 15, lineHeight: 1.6, whiteSpace: "pre-wrap" }}>{energy.outside}</div> : <Line n={3} />}
+              </div>
             </Section>
 
             <Section n={5} title="What you can’t afford to lose" sub="From lesson 1.5.">
