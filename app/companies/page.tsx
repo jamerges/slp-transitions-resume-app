@@ -16,6 +16,7 @@ export const metadata = {
 export default function CompaniesPage() {
   const total = COMPANIES_DB.length;
   const speech = COMPANIES_DB.filter((c) => c.categories.includes("SLP-Adjacent")).length;
+  const onTime = COMPANIES_DB.filter((c) => c.source === "time-2026").length;
 
   return (
     <PageShell wide>
@@ -28,7 +29,8 @@ export default function CompaniesPage() {
       <p style={{ ...S.p, fontSize: 13.5, marginBottom: 28 }}>
         Every card links straight to the company. This is a starting list, not a job
         board &mdash; we don&rsquo;t track live openings, so go to each company&rsquo;s careers page
-        for what&rsquo;s actually posted today.
+        for what&rsquo;s actually posted today. {onTime} of them appear on{" "}
+        <a href="https://time.com/article/2026/09/16/worlds-top-healthtech-companies-2026/" target="_blank" rel="noreferrer" style={{ color: "var(--accent)" }}>TIME&rsquo;s World&rsquo;s Top HealthTech Companies of 2026</a>.
       </p>
 
       <CompaniesDirectory companies={COMPANIES_DB} />
