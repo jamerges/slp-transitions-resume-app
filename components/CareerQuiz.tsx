@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useReducedMotion } from "./course/ui";
 import { priceOf, wasNote } from "@/lib/pricing";
 import { S, Card, ProgressBar, focusB, blurB } from "./ui";
 import { track } from "@/lib/analytics";
@@ -126,6 +127,7 @@ export default function CareerQuiz({
   // Traffic from the old Typeform arrives with ?path=slug and skips straight to a result.
   const preset = initialPath ? PATHS[initialPath] : undefined;
   const [idx, setIdx] = useState(0);
+  const reducedMotion = useReducedMotion();
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [result, setResult] = useState<{ top: QuizPath; runnerUp: QuizPath | null } | null>(
     preset ? { top: preset, runnerUp: null } : null
@@ -832,6 +834,23 @@ export default function CareerQuiz({
         <p style={{ fontSize: 13, color: "var(--light)", textAlign: "center", marginTop: 2 }}>
           {isLast ? "Pick one to see your result." : "Pick the closest one — there's no wrong answer."}
         </p>
+      )}
+
+      {/* First screen only, below the question so it never delays a start: the five
+          stages in 37 seconds (Remotion StageJourney-Homepage), for the reader who
+          hesitates before answering. Reduced motion gets the still. */}
+      {showIntro && idx === 0 && (
+        <div style={{ marginTop: 34, textAlign: "center" }}>
+          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 10 }}>Not sure where you are? The five stages, in 37 seconds</div>
+          {reducedMotion ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src="/marketing/stage-journey-poster.jpg" width={1280} height={720} alt="I haven't told anyone. I search at 11pm, clear the history, and show up Monday as the person who says everything is fine." style={{ display: "block", width: "100%", height: "auto", borderRadius: 12, border: "1px solid var(--border)" }} />
+          ) : (
+            <video src="/marketing/stage-journey.mp4" poster="/marketing/stage-journey-poster.jpg" width={1920} height={1080} autoPlay muted loop playsInline preload="metadata"
+              aria-label="The five stages SLPs go through before leaving clinical work, from private doubt to action, and which tool fits each."
+              style={{ display: "block", width: "100%", height: "auto", borderRadius: 12, border: "1px solid var(--border)", background: "#FAFAF9" }} />
+          )}
+        </div>
       )}
 
       {idx > 0 && (
