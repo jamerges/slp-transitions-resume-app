@@ -380,13 +380,13 @@ export async function sendResumeLinkEmail(input: {
   <p style="font-size:13px;color:#2D6A4F;font-weight:600;letter-spacing:0.04em;margin:0 0 6px;">✓ PAYMENT CONFIRMED</p>
   <h1 style="font-size:24px;line-height:1.3;margin:0 0 14px;">Your Pivot Report is ready to build</h1>
   <p style="font-size:15px;line-height:1.7;">
-    Thanks for picking this up. One thing left: add your resume, and we'll build the report around your actual experience.
+    Thanks for picking this up. One thing left: add your résumé, and we'll build the report around your actual experience.
   </p>
   <p style="font-size:15px;line-height:1.7;">
-    It takes about a minute, and it's much easier from a computer. If you bought this on your phone, open this link when you're back at your desk.
+    It takes about a minute. No résumé file on your phone? Copy the Experience section of your LinkedIn profile and paste that in. It's enough to build from, so you can do it right now.
   </p>
   <p style="text-align:center;margin:26px 0;">
-    <a href="${link}" style="display:inline-block;padding:14px 32px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Add my resume →</a>
+    <a href="${link}" style="display:inline-block;padding:14px 32px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Add my résumé →</a>
   </p>
   <p style="font-size:13px;line-height:1.7;color:#6B7280;">
     This link is good for 7 days. If it expires or anything goes sideways, reply to this email with your receipt and I'll build it for you by hand.
@@ -518,17 +518,17 @@ export async function sendReportReminderEmail(input: {
   const opening = nudge === 2
     ? `<h1 style="font-size:22px;line-height:1.3;margin:0 0 14px;">Still want your Pivot Report?</h1>
   <p style="font-size:15px;line-height:1.7;">
-    You paid for it five days ago and it is still unbuilt, because it needs your resume and nobody has one on their phone. This is the last time I will nudge you about it.
+    You paid for it five days ago and it is still unbuilt, because it needs your résumé. This is the last time I will nudge you about it.
   </p>
   <p style="font-size:15px;line-height:1.7;">
-    Open this on a computer and paste or upload your resume. About a minute:
+    You can do it from your phone: copy the Experience section of your LinkedIn profile and paste it in. About a minute:
   </p>`
     : `<h1 style="font-size:22px;line-height:1.3;margin:0 0 14px;">Your Pivot Report is still waiting</h1>
   <p style="font-size:15px;line-height:1.7;">
-    You picked up the $9 Pivot Report yesterday and it never got built. It needs your resume first, and that step is easy to lose on a phone.
+    You picked up the $${priceOf("report")} Pivot Report yesterday and it never got built. It needs your résumé first, and that step is easy to lose on a phone.
   </p>
   <p style="font-size:15px;line-height:1.7;">
-    Nothing has expired. Open this from a computer, add your resume, and it takes about a minute:
+    Nothing has expired. No file on your phone? Paste the Experience section of your LinkedIn profile instead. It takes about a minute:
   </p>`;
   const html = `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#F7F7F5;">
 <div style="max-width:600px;margin:0 auto;padding:32px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#1F2937;background:#fff;">

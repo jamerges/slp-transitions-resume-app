@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { STAGE_OPTIONS } from "@/lib/companies";
 import { assertKeyPriceMatch, assertPriceAmount } from "@/lib/stripe-guard";
 import { priceOf } from "@/lib/pricing";
 import { assertReadableResume } from "@/lib/anthropic";
@@ -6,6 +7,12 @@ import Stripe from "stripe";
 import { stashInputs } from "@/lib/stash";
 import type { ExploreInput } from "@/lib/prompts";
 import { randomUUID } from "crypto";
+
+// Quiz stage (how it feels) → intake stage (what they've done). A best guess the
+// buyer can change on /report; "panic" has usually only read, not talked.
+const QUIZ_TO_INTAKE_STAGE: Record<string, string> = {
+  private: "thinking", guilt: "thinking", permission: "reading", panic: "reading", action: "applying",
+};
 
 export const runtime = "nodejs";
 
@@ -26,7 +33,7 @@ const REPORT_PRICE_ID =
 export async function POST(req: Request) {
   try {
     // `email` and `returnTo` ride along from the quiz; the wizard sends neither.
-    const inputs = (await req.json()) as ExploreInput & { email?: string; returnTo?: string };
+    const inputs = (await req.json()) as ExploreInput & { email?: string; returnTo?: string; quizStage?: string };
     if (!inputs.goals) {
       return NextResponse.json({ error: "Missing required inputs" }, { status: 400 });
     }
@@ -48,6 +55,14 @@ export async function POST(req: Request) {
       "https://app.slptransitions.com";
 
     await assertPriceAmount(getStripe(), REPORT_PRICE_ID, priceOf("report"), "Pivot Report");
+    // The quiz already asked where the buyer is. Carry it through so the
+    // post-payment intake opens with that answer picked instead of asking again.
+    if (inputs.quizStage && inputs.goals && !inputs.goals.transitionStage) {
+      const id = QUIZ_TO_INTAKE_STAGE[inputs.quizStage];
+      const opt = STAGE_OPTIONS.find((o) => o.id === id);
+      if (opt) inputs.goals.transitionStage = opt.label;
+    }
+    delete inputs.quizStage;
     const stashKey = randomUUID();
     // Explore inputs are always > 450 chars (resume text), so this goes to Redis.
     const { inMetadata, payload } = await stashInputs(stashKey, inputs as any);

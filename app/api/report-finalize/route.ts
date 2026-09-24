@@ -72,6 +72,7 @@ export async function POST(req: Request) {
         needsIntake: true,
         email: buyerEmail,
         targetRole: inputs.goals?.targetRoles?.[0] || "",
+        transitionStage: inputs.goals?.transitionStage || "",
       });
     }
 

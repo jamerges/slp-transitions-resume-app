@@ -16,7 +16,7 @@ const LOADING_MSGS = [
   "Payment confirmed. Reading your story...",
   "Mapping your experience to realistic paths...",
   "Building your 30-day starter plan...",
-  "Still working — a thorough report takes a little longer. Hang tight...",
+  "Still working. A thorough report takes a little longer, so hang tight...",
 ];
 
 async function parseFile(file: File): Promise<{ text: string; error?: string }> {
@@ -46,7 +46,10 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
   const [stage, setStage] = useState("");
   const [whyLeaving, setWhyLeaving] = useState("");
   const [intakeError, setIntakeError] = useState("");
+  const [fileError, setFileError] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  // True when the stage came pre-picked from the buyer's quiz answer.
+  const [stageFromQuiz, setStageFromQuiz] = useState(false);
 
   useEffect(() => {
     const i = setInterval(() => {
@@ -73,6 +76,11 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
     });
     const data = await resp.json();
     if (resp.ok && data.needsIntake) {
+      const known = STAGE_OPTIONS.find((o) => o.label === data.transitionStage);
+      if (known) {
+        setStage((cur) => cur || known.label);
+        setStageFromQuiz(true);
+      }
       setState({ status: "intake", email: data.email || "", targetRole: data.targetRole || "" });
       return;
     }
@@ -84,7 +92,7 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
       status: "error",
       reason:
         data?.error ||
-        "Something went wrong generating your report. Refresh this page to retry — your payment is confirmed.",
+        "Something went wrong generating your report. Your payment is confirmed, so refresh this page to try again.",
     });
   }
 
@@ -105,18 +113,18 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
       setState({
         status: "error",
         reason:
-          "Something went wrong displaying your report. Refresh this page to retry — your payment is confirmed.",
+          "Something went wrong displaying your report. Your payment is confirmed, so refresh this page to try again.",
       })
     );
   }, [sessionId]);
 
   async function handleFile(file: File) {
     setParsing(true);
-    setIntakeError("");
+    setFileError("");
     const { text, error } = await parseFile(file);
     setParsing(false);
     if (error) {
-      setIntakeError(error);
+      setFileError(error);
       return;
     }
     setFileName(file.name);
@@ -124,7 +132,15 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
   }
 
   async function submitIntake() {
-    if (resumeText.trim().length < 50 || !stage || submitting) return;
+    if (submitting) return;
+    const missing = [
+      resumeText.trim().length < 50 ? "your résumé or LinkedIn text" : "",
+      !stage ? "where you are so far" : "",
+    ].filter(Boolean);
+    if (missing.length) {
+      setIntakeError(`Add ${missing.join(" and ")}, then build it.`);
+      return;
+    }
     setSubmitting(true);
     setIntakeError("");
     try {
@@ -135,14 +151,14 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
       });
       const data = await resp.json();
       if (!resp.ok) {
-        setIntakeError(data.error || "Could not save your resume. Please try again.");
+        setIntakeError(data.error || "Could not save your résumé. Please try again.");
         setSubmitting(false);
         return;
       }
       setState({ status: "loading", message: LOADING_MSGS[0] });
       await finalize();
     } catch {
-      setIntakeError("Could not save your resume. Please try again.");
+      setIntakeError("Could not save your résumé. Please try again.");
     }
     setSubmitting(false);
   }
@@ -172,40 +188,39 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
   }
 
   if (state.status === "intake") {
-    const ready = resumeText.trim().length >= 50 && !!stage;
+    const tooShort = resumeText.trim().length > 0 && resumeText.trim().length < 50;
     return (
       <div style={S.wrap}>
         <div style={{ textAlign: "center", marginBottom: 18 }}>
           <span style={S.tag}>✓ Payment confirmed</span>
           <h1 style={{ ...S.h1, fontSize: 28, marginTop: 12 }}>
-            You're in. Now let's make it yours.
+            You&rsquo;re in. Now let&rsquo;s make it yours.
           </h1>
           <p style={{ ...S.p, maxWidth: 480, margin: "8px auto 0" }}>
-            Add your resume and answer one question — that's what turns this from a
-            general guide into a report about <em>your</em> experience.
+            Add your résumé and the report reads your actual experience rather than a quiz score.
             {state.targetRole ? ` We'll build it around ${state.targetRole}.` : ""}
           </p>
         </div>
 
-        {/* No resume handy right now? The purchase is already safe — say so
-            plainly so nobody feels trapped on a phone without their file. */}
+        {/* Six of the first eight buyers stalled right here, most of them on a
+            phone with no résumé file. The LinkedIn Experience section is on
+            every phone and is enough to build from, so offer that first and
+            the emailed link second. */}
         <Card style={{ background: "var(--accent-bg-subtle)", borderColor: "var(--accent)" }}>
-          <div style={{ fontSize: 13, lineHeight: 1.6 }}>
-            <strong>Don't have your resume handy?</strong> No rush — your purchase is
-            saved for 7 days. Bookmark this page or find the link in your receipt
-            email{state.email ? ` (sent to ${state.email})` : ""}, and come back from
-            your computer whenever it's convenient.
+          <div style={{ fontSize: 13.5, lineHeight: 1.65 }}>
+            <strong>On your phone, with no résumé file?</strong>{" "}Open your LinkedIn profile, copy the
+            Experience section and paste it below. That&rsquo;s enough to build it now.
+            <div style={{ marginTop: 6, color: "var(--muted)" }}>
+              Rather do it from a computer? We emailed you this page{state.email ? ` at ${state.email}` : ""}, and the link works for 7 days.
+            </div>
           </div>
         </Card>
 
-        {intakeError && (
-          <Card style={{ background: "var(--warn-bg)", borderColor: "var(--warn)" }}>
-            <div style={{ fontSize: 14 }}>{intakeError}</div>
-          </Card>
-        )}
-
         <div style={{ marginTop: 20, marginBottom: 22 }}>
-          <label style={{ ...S.label, fontSize: 15 }}>Your resume</label>
+          <label htmlFor="intake-resume" style={{ ...S.label, fontSize: 15, marginBottom: 2 }}>Your résumé</label>
+          <div style={{ fontSize: 12.5, color: "var(--muted)", marginBottom: 8 }}>
+            A file, or the text of your résumé or LinkedIn Experience section.
+          </div>
           <label
             style={{
               display: "block",
@@ -231,32 +246,54 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
             {parsing
               ? "Reading your file…"
               : fileName
-                ? `✓ ${fileName} — click to replace`
-                : "Upload a PDF, Word doc, or text file"}
+                ? `✓ ${fileName} · choose another`
+                : "Upload a PDF or Word file"}
           </label>
-          <div style={{ fontSize: 12, color: "var(--light)", marginBottom: 6 }}>
-            Or paste the text directly:
+          {fileError && (
+            <div role="alert" style={{ fontSize: 12.5, color: "var(--err)", marginBottom: 8 }}>{fileError}</div>
+          )}
+          <div style={{ fontSize: 12.5, color: "var(--muted)", marginBottom: 6 }}>
+            Or paste the text:
           </div>
           <textarea
+            id="intake-resume"
             style={{ ...S.textarea, minHeight: 140 }}
-            placeholder="Paste your resume here…"
+            placeholder="Paste here. No file? A few sentences about your last job work too: where you worked, what you did and anything you ran or built."
             value={resumeText}
             onChange={(e) => {
               setResumeText(e.target.value);
               setFileName("");
+              if (intakeError) setIntakeError("");
             }}
           />
+          {tooShort && (
+            <div style={{ fontSize: 12.5, color: "var(--warn)", marginTop: 6 }}>
+              Add a little more: a few sentences about where you worked and what you did.
+            </div>
+          )}
         </div>
 
-        <div style={{ marginBottom: 22 }}>
-          <label style={{ ...S.label, fontSize: 15 }}>Where are you in this so far?</label>
+        <div role="radiogroup" aria-labelledby="intake-stage-label" style={{ marginBottom: 22 }}>
+          <div id="intake-stage-label" style={{ ...S.label, fontSize: 15, marginBottom: stageFromQuiz ? 2 : 6 }}>Where are you in this so far?</div>
+          {stageFromQuiz && (
+            <div style={{ fontSize: 12.5, color: "var(--muted)", marginBottom: 8 }}>
+              Picked from your quiz answer. Change it if it&rsquo;s off.
+            </div>
+          )}
           {STAGE_OPTIONS.map((s) => {
             const sel = stage === s.label;
             return (
-              <div
+              <button
+                type="button"
+                role="radio"
+                aria-checked={sel}
                 key={s.id}
-                onClick={() => setStage(s.label)}
+                onClick={() => { setStage(s.label); if (intakeError) setIntakeError(""); }}
                 style={{
+                  display: "block",
+                  width: "100%",
+                  textAlign: "left",
+                  fontFamily: "inherit",
                   padding: "12px 14px",
                   border: `1.5px solid ${sel ? "var(--accent)" : "var(--border)"}`,
                   background: sel ? "var(--accent-bg-subtle)" : "var(--card)",
@@ -271,33 +308,39 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
               >
                 {sel && "✓ "}
                 {s.label}
-              </div>
+              </button>
             );
           })}
         </div>
 
         <div style={{ marginBottom: 24 }}>
-          <label style={S.label}>
+          <label htmlFor="intake-why" style={S.label}>
             Why are you transitioning?{" "}
-            <span style={{ fontWeight: 400, color: "var(--light)" }}>(optional)</span>
+            <span style={{ fontWeight: 400, color: "var(--muted)" }}>(optional)</span>
           </label>
           <textarea
+            id="intake-why"
             style={{ ...S.textarea, minHeight: 60 }}
-            placeholder="Be honest — this never appears anywhere, it just shapes the advice."
+            placeholder="Be honest. It never appears in the report; it only shapes the advice."
             value={whyLeaving}
             onChange={(e) => setWhyLeaving(e.target.value)}
           />
         </div>
 
+        {intakeError && (
+          <div role="alert" style={{ fontSize: 14, color: "var(--err)", marginBottom: 10, textAlign: "center" }}>
+            {intakeError}
+          </div>
+        )}
         <button
-          style={{ ...S.btn, width: "100%", padding: "15px", fontSize: 16, opacity: ready && !submitting ? 1 : 0.5 }}
-          disabled={!ready || submitting}
+          style={{ ...S.btn, width: "100%", padding: "15px", fontSize: 16, opacity: submitting ? 0.6 : 1 }}
+          disabled={submitting}
           onClick={submitIntake}
         >
           {submitting ? "Building…" : "Build my Pivot Report →"}
         </button>
-        <p style={{ fontSize: 12, color: "var(--light)", textAlign: "center", marginTop: 8, marginBottom: 32 }}>
-          Takes 30–60 seconds. We'll also email you a copy.
+        <p style={{ fontSize: 12.5, color: "var(--muted)", textAlign: "center", marginTop: 8, marginBottom: 32 }}>
+          Takes 30–60 seconds. We&rsquo;ll also email you a copy.
         </p>
       </div>
     );

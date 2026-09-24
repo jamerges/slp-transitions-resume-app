@@ -65,7 +65,7 @@ function TransitionArc({ current }: { current?: string }) {
         );
       })}
       <p style={{ fontSize: 12, color: "var(--light)", marginTop: 8, lineHeight: 1.6 }}>
-        Most people try to skip ahead to Leap — polishing a resume before they know what they're aiming at. Working your actual stage is faster.
+        Most people try to skip ahead to Leap, polishing a résumé before they know what they're aiming at. Working your actual stage is faster.
       </p>
     </div>
   );
@@ -98,6 +98,16 @@ export default function ReportResults({
         <p style={{ fontSize: 17, lineHeight: 1.7, fontWeight: 500, textAlign: "center", maxWidth: 560, margin: "0 auto 24px" }}>
           {r.headline}
         </p>
+      )}
+
+      {/* The one action first. The first moves used to sit inside path card 1,
+          halfway down; a buyer skimming on a phone left without one. */}
+      {r.topRoles?.[0]?.firstMove && (
+        <Card style={{ border: "1.5px solid var(--accent)" }}>
+          <div style={{ fontSize: 12, fontWeight: 600, color: "var(--accent)", letterSpacing: "0.04em", marginBottom: 4 }}>START HERE THIS WEEK</div>
+          <p style={{ fontSize: 15.5, lineHeight: 1.65, margin: 0 }}>{r.topRoles[0].firstMove}</p>
+          <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 6 }}>Your first move toward {r.topRoles[0].role}. The rest of the plan is below.</div>
+        </Card>
       )}
 
       {r.readinessProfile && (
@@ -156,7 +166,7 @@ export default function ReportResults({
           <h3 style={{ ...S.h3, marginBottom: 12 }}>Your 30-day starter plan</h3>
           {r.thirtyDayPlan.map((w: any, i: number) => (
             <div key={i} style={{ marginBottom: 14 }}>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "var(--accent)", letterSpacing: "0.04em", textTransform: "uppercase" }}>{w.week} — {w.theme}</div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: "var(--accent)", letterSpacing: "0.04em", textTransform: "uppercase" }}>{w.week} · {w.theme}</div>
               {w.actions?.map((a: string, j: number) => (
                 <div key={j} style={{ fontSize: 13, color: "var(--muted)", padding: "3px 0 3px 14px", lineHeight: 1.6 }}>→ {a}</div>
               ))}

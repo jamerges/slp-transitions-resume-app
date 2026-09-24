@@ -38,8 +38,13 @@ export async function POST(req: Request) {
     }
     try {
       assertReadableResume(resumeText);
-    } catch (e: any) {
-      return NextResponse.json({ error: e.message }, { status: 422 });
+    } catch {
+      // The shared message talks about files and a "Paste Text" tab; on this
+      // page the usual cause is a terse typed note, so say what works instead.
+      return NextResponse.json(
+        { error: "We couldn't read that as a résumé. Paste the full text, or write a few sentences about your last job: where you worked, what you did and anything you ran or built." },
+        { status: 422 }
+      );
     }
 
     // Never let an unpaid session write inputs — this endpoint is the door to a

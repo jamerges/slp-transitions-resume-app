@@ -253,6 +253,7 @@ export default function CareerQuiz({
           jobDesc: "",
           email,
           returnTo: "quiz",
+          quizStage: stageKey || undefined,
           goals: {
             targetRoles: [top.roleOption],
             targetIndustries: [],
