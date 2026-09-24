@@ -10,7 +10,8 @@ const nextConfig = {
     return [
       // The quiz is embedded as an iframe on slptransitions.com/career-quiz/,
       // replacing the old Typeform embed. Everything else stays unframeable.
-      ...["/quiz/embed"].map((source) => ({
+      // The story form is embedded the same way on /share-your-story/.
+      ...["/quiz/embed", "/share/embed"].map((source) => ({
         source,
         headers: [
           {

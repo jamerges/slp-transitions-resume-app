@@ -829,3 +829,82 @@ export async function sendOpsAlert(input: {
     html: `<div style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;line-height:1.7;color:#1F2937">${body}</div>`,
   });
 }
+
+/**
+ * A transitioner's "share your story" submission, to the ops inbox. Every
+ * answer is in the body so James can read it on a phone; the private link
+ * returns the same thing as JSON, photo included, which is what a draft is
+ * built from. The résumé and photo ride along as attachments.
+ */
+export async function sendStorySubmission(input: {
+  story: import("./story").StorySubmission;
+  privateUrl: string;
+  attachments: { filename: string; content: Buffer }[];
+}): Promise<void> {
+  const { story: s, privateUrl, attachments } = input;
+  const { PROMPTS, creditName } = await import("./story");
+  const to = process.env.OPS_ALERT_EMAIL || "jamoberges@gmail.com";
+  const row = (k: string, v: unknown) =>
+    v === undefined || v === null || v === "" || (Array.isArray(v) && !v.length)
+      ? ""
+      : `<tr><td style="padding:4px 12px 4px 0;color:#6B7280;vertical-align:top;white-space:nowrap">${esc(k)}</td><td style="padding:4px 0">${esc(Array.isArray(v) ? v.join(", ") : v)}</td></tr>`;
+  const answers = PROMPTS.filter((p) => (s.answers[p.id] || "").trim())
+    .map((p) => `<h3 style="font-size:15px;margin:22px 0 6px">${esc(p.label)}</h3><p style="margin:0;white-space:pre-wrap">${esc(s.answers[p.id])}</p>`)
+    .join("");
+  const bullets = s.bullets.filter((b) => b.before || b.after)
+    .map((b) => `<p style="margin:10px 0 0"><b>Before:</b> ${esc(b.before)}<br/><b>After:</b> ${esc(b.after)}</p>`).join("");
+  const html = `<div style="max-width:640px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#1F2937">
+  <p style="font-size:13px;color:#2D6A4F;font-weight:600;letter-spacing:0.04em;margin:0 0 4px">NEW TRANSITION STORY</p>
+  <h1 style="font-size:22px;margin:0 0 4px">${esc(creditName(s))}: SLP → ${esc(s.jobTitle)}${s.company ? ` at ${esc(s.company)}` : ""}</h1>
+  <p style="margin:0 0 16px;color:#6B7280">To publish: tell Claude "draft the story from ${esc(s.firstName)}" (id ${esc(s.id)}). Nothing goes live until you approve it, and ${esc(s.firstName)} was told they'd see the draft first.</p>
+  <table style="font-size:14px;border-collapse:collapse">
+    ${row("Name", [s.firstName, s.lastName].filter(Boolean).join(" "))}
+    ${row("Email", s.email)}
+    ${row("Credit as", s.credit)}
+    ${row("LinkedIn", s.linkedin)}
+    ${row("Settings", s.settings)}
+    ${row("Years as an SLP", s.years)}
+    ${row("New role", s.jobTitle)}
+    ${row("Company", s.company ? `${s.company}${s.nameCompany ? "" : " (don't name it)"}` : "")}
+    ${row("Started", s.started)}
+    ${row("Setup", s.setup)}
+    ${row("Search took", s.searchLength)}
+    ${row("Applications", s.applications)}
+    ${row("Interviews", s.interviews)}
+    ${row("How it came", s.howFound)}
+    ${row("Pay vs clinical", s.pay ? `${s.pay}${s.payRange ? `, ${s.payRange}` : ""}${s.payPublic ? " (OK to publish)" : " (private)"}` : "")}
+    ${row("Follow-up call", s.followUp ? "Yes, open to it" : "")}
+    ${row("Résumé", s.resumeFileName ? `${s.resumeFileName} (attached, never published)` : "")}
+    ${row("Photo", s.photo ? "Attached" : "None")}
+  </table>
+  ${answers}
+  ${bullets ? `<h3 style="font-size:15px;margin:22px 0 6px">Résumé bullets</h3>${bullets}` : ""}
+  <p style="margin:26px 0 0;font-size:13px;color:#6B7280">Private link (the whole submission as JSON, photo included): <a href="${privateUrl}">${esc(privateUrl)}</a></p>
+</div>`;
+  await getResend().emails.send({
+    from: FROM_ADDRESS,
+    to,
+    replyTo: s.email,
+    subject: `Story submission: ${creditName(s)}, SLP → ${s.jobTitle}`,
+    html,
+    attachments,
+  });
+}
+
+/** The thank-you to the person who shared. From James, no pitch, no list signup. */
+export async function sendStoryThanks(input: { to: string; firstName: string }): Promise<void> {
+  const html = `<div style="max-width:560px;margin:0 auto;padding:24px 20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#1F2937">
+<p style="margin:0 0 16px">Hi ${esc(input.firstName || "there")},</p>
+<p style="margin:0 0 16px">Thank you for sharing your story. I read every one myself.</p>
+<p style="margin:0 0 16px">Here's what happens next: I'll shape your answers into an article and email you the draft. Nothing goes on slptransitions.com until you've seen it and said yes. If you want to add or take anything out before then, just reply to this email.</p>
+<p style="margin:0 0 4px">Congratulations on the new job.</p>
+<p style="margin:0">James</p>
+</div>`;
+  await getResend().emails.send({
+    from: FROM_ADDRESS,
+    to: input.to,
+    replyTo: REPLY_TO,
+    subject: "Thanks for sharing your story",
+    html,
+  });
+}
