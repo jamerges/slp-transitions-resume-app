@@ -25,7 +25,8 @@ const REPORT_PRICE_ID =
 
 export async function POST(req: Request) {
   try {
-    const inputs = (await req.json()) as ExploreInput;
+    // `email` and `returnTo` ride along from the quiz; the wizard sends neither.
+    const inputs = (await req.json()) as ExploreInput & { email?: string; returnTo?: string };
     if (!inputs.goals) {
       return NextResponse.json({ error: "Missing required inputs" }, { status: 400 });
     }
@@ -59,16 +60,22 @@ export async function POST(req: Request) {
       metadata.payload = payload;
     }
 
-    // Email is collected by Stripe Checkout itself (explore users haven't
-    // given us one) — report-finalize reads session.customer_details.email.
+    // report-finalize reads session.customer_details.email. Quiz buyers already
+    // typed their address at the result gate, so prefill it rather than asking
+    // twice; wizard buyers type it on Stripe's page.
+    const email = typeof inputs.email === "string" ? inputs.email.trim() : "";
+    const fromQuiz = inputs.returnTo === "quiz";
     const session = await getStripe().checkout.sessions.create({
       mode: "payment",
       line_items: [{ price: REPORT_PRICE_ID, quantity: 1 }],
+      ...(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? { customer_email: email } : {}),
       success_url: `${origin}/report?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/?canceled=1`,
+      // Back out of Stripe to the result, not the Suite: /quiz restores it.
+      cancel_url: fromQuiz ? `${origin}/quiz?canceled=1` : `${origin}/?canceled=1`,
       metadata,
       payment_intent_data: { metadata },
       allow_promotion_codes: true,
+      custom_text: { submit: { message: "One-time payment, no subscription. 30-day refund if it doesn't help." } },
     });
 
     return NextResponse.json({ url: session.url });

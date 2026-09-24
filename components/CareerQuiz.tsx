@@ -11,6 +11,10 @@ import { offerForStage, mapUrl } from "@/lib/stage-map";
 import ProductMenu, { type ProductKey } from "./ProductMenu";
 import { GROUND_PRICE, GROUND_NAME } from "@/lib/course-tiers";
 
+const SAVE_KEY = "slp:quiz:result:v1";
+const REPORT_PRICE = priceOf("report");
+const validEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.trim());
+
 /** CSS-only "product shot" for the $9 Pivot Report, so the thing being sold
  *  looks like an object rather than a paragraph.
  *
@@ -111,10 +115,13 @@ export default function CareerQuiz({
   initialPath,
   embedded,
   showIntro,
+  companyCount,
 }: {
   initialPath?: string;
   embedded?: boolean;
   showIntro?: boolean;
+  /** COMPANY_COUNT, passed from the server page so the client bundle skips the company DB. */
+  companyCount?: number;
 }) {
   // Inside the WordPress iframe, links must break out to the top window.
   const go = (url: string) => {
@@ -150,6 +157,46 @@ export default function CareerQuiz({
     } catch { /* leave false */ }
   }, []);
   const [buyError, setBuyError] = useState("");
+  const [gateError, setGateError] = useState("");
+  // Backing out of Stripe used to throw the result away: browser Back reloaded
+  // the quiz at question 1 and Stripe's own back arrow went to the Suite. The
+  // result now lives in sessionStorage (this tab only) and the report checkout
+  // cancels to /quiz?canceled=1, which reopens it.
+  const [canceled, setCanceled] = useState(false);
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("canceled") === "1") {
+        setCanceled(true);
+        params.delete("canceled");
+        const qs = params.toString();
+        window.history.replaceState(null, "", window.location.pathname + (qs ? `?${qs}` : ""));
+      }
+      if (preset) return;
+      const saved = JSON.parse(sessionStorage.getItem(SAVE_KEY) || "null");
+      const top = saved && PATHS[saved.top];
+      if (!top) return;
+      setAnswers((a) => ({ ...a, stage: Array.isArray(saved.stage) ? saved.stage : [] }));
+      setEmail(typeof saved.email === "string" ? saved.email : "");
+      setName(typeof saved.name === "string" ? saved.name : "");
+      setResult({ top, runnerUp: (saved.runnerUp && PATHS[saved.runnerUp]) || null });
+    } catch { /* storage blocked: the quiz still works, it just can't come back */ }
+  }, []);
+  // A browser that keeps the page frozen in its back/forward cache brings it
+  // back exactly as it left: button disabled on "Opening checkout…". Unfreeze.
+  useEffect(() => {
+    const onShow = (e: PageTransitionEvent) => { if (e.persisted) setBuying(false); };
+    window.addEventListener("pageshow", onShow);
+    return () => window.removeEventListener("pageshow", onShow);
+  }, []);
+  useEffect(() => {
+    if (!result || preset) return;
+    try {
+      sessionStorage.setItem(SAVE_KEY, JSON.stringify({
+        top: result.top.slug, runnerUp: result.runnerUp?.slug || null, stage: answers.stage || [], email, name,
+      }));
+    } catch { /* ignore */ }
+  }, [result]);
 
   // The stage question decides what this page leads with. Stages 1 to 3 get
   // the map and no pitch; stage 4 arrived asking "what else could I do", which
@@ -205,6 +252,7 @@ export default function CareerQuiz({
           jobTitle: "",
           jobDesc: "",
           email,
+          returnTo: "quiz",
           goals: {
             targetRoles: [top.roleOption],
             targetIndustries: [],
@@ -269,7 +317,12 @@ export default function CareerQuiz({
   };
 
   const revealResult = async () => {
-    if (!pending || !email.includes("@") || sending) return;
+    if (!pending || sending) return;
+    if (!validEmail(email)) {
+      setGateError("Add the email address you want your result sent to.");
+      return;
+    }
+    setGateError("");
     setSending(true);
     try {
       const resp = await fetch("/api/quiz-result", {
@@ -302,13 +355,15 @@ export default function CareerQuiz({
           <span style={S.tag}>Answers in</span>
           <h2 style={{ ...S.h2, marginTop: 14 }}>Your result is ready.</h2>
           <p style={{ ...S.p, maxWidth: 470, margin: "0 auto 4px" }}>
-            Tell us where to send it and we'll show it to you right here — plus you'll get our database of
-            <strong> 100+ ed-tech and health-tech companies</strong> that hire former clinicians.
+            Tell us where to send it and we'll show it to you here. You'll also get our list of
+            <strong> {companyCount ? `${companyCount} ` : ""}health and ed-tech companies</strong> that value clinical skills.
           </p>
         </div>
         <Card>
-          <label style={S.label}>First name</label>
+          <label htmlFor="quiz-gate-name" style={S.label}>First name</label>
           <input
+            id="quiz-gate-name"
+            autoComplete="given-name"
             style={{ ...S.input, marginBottom: 14 }}
             placeholder="Jane"
             value={name}
@@ -317,24 +372,34 @@ export default function CareerQuiz({
             onFocus={focusB}
             onBlur={blurB}
           />
-          <label style={S.label}>Email</label>
+          <label htmlFor="quiz-gate-email" style={S.label}>Email</label>
           <input
+            id="quiz-gate-email"
+            autoComplete="email"
+            inputMode="email"
+            aria-invalid={!!gateError}
+            aria-describedby={gateError ? "quiz-gate-error" : undefined}
             style={{ ...S.input, marginBottom: 6 }}
             type="email"
             placeholder="you@email.com"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => { setEmail(e.target.value); if (gateError) setGateError(""); }}
             onKeyDown={(e) => { if (e.key === "Enter") revealResult(); }}
             onFocus={focusB}
             onBlur={blurB}
           />
-          <p style={{ fontSize: 12, color: "var(--light)", marginBottom: 16, lineHeight: 1.6 }}>
-            Plus the occasional note with real SLP transition stories. Unsubscribe any time — we don't share
-            your address with anyone.
+          {gateError && (
+            <div id="quiz-gate-error" role="alert" style={{ fontSize: 13, color: "var(--err)", marginBottom: 8 }}>
+              {gateError}
+            </div>
+          )}
+          <p style={{ fontSize: 12, color: "var(--muted)", marginBottom: 16, lineHeight: 1.6 }}>
+            Plus the occasional note with real SLP transition stories. Unsubscribe any time, and we never share
+            your address.
           </p>
           <button
-            style={{ ...S.btn, width: "100%", padding: "14px", fontSize: 16, opacity: email.includes("@") && !sending ? 1 : 0.5 }}
-            disabled={!email.includes("@") || sending}
+            style={{ ...S.btn, width: "100%", padding: "14px", fontSize: 16, opacity: sending ? 0.6 : 1 }}
+            disabled={sending}
             onClick={revealResult}
           >
             {sending ? "Sending…" : "Show me my result →"}
@@ -349,6 +414,11 @@ export default function CareerQuiz({
     const opener = stageKey ? STAGES[stageKey].opener : null;
     return (
       <div style={S.wrap}>
+        {canceled && (
+          <Card>
+            <div style={{ fontSize: 14, color: "var(--muted)" }}>Checkout closed. Nothing was charged, and your result is still here.</div>
+          </Card>
+        )}
         <div style={{ textAlign: "center", marginBottom: 20 }}>
           <span style={S.tag}>Your result</span>
           {opener && (
@@ -356,8 +426,9 @@ export default function CareerQuiz({
               {opener}
             </p>
           )}
-          {/* The card carries the label, range and timeline, so the heading
-              is for screen readers and the text below is kept for copy-paste. */}
+          {/* The card carries the label. Its pay line shrinks to about 8px on a
+              phone, so the range and timeline are repeated as real text below it:
+              they are what the reader came for. */}
           <img
             src={pathImage(top.slug)}
             alt=""
@@ -377,6 +448,10 @@ export default function CareerQuiz({
           <h1 style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0 0 0 0)" }}>
             {top.label}: {top.range}, typically {top.timeline}
           </h1>
+          <p aria-hidden="true" style={{ margin: "6px auto 0", maxWidth: 520, fontSize: 18, lineHeight: 1.45, fontWeight: 700, color: "var(--text)" }}>
+            {top.range}
+            <span style={{ display: "block", fontSize: 14.5, fontWeight: 400, color: "var(--muted)" }}>typically {top.timeline}</span>
+          </p>
           {/* What sits under the card depends on the stage. Cold readers were
               consuming six blocks of free content and leaving before the offer
               (result→Buy fell from 7% to 2% while volume held), so stage 4
@@ -397,9 +472,9 @@ export default function CareerQuiz({
                   buyReport(top);
                 }}
                 disabled={buying}
-                style={{ ...S.btn, marginTop: 16, padding: "11px 22px", fontSize: 14.5, opacity: buying ? 0.7 : 1 }}
+                style={{ ...S.btn, marginTop: 16, padding: "13px 24px", minHeight: 46, fontSize: 15, opacity: buying ? 0.7 : 1 }}
               >
-                {buying ? "Opening checkout…" : "Get my Pivot Report — $9 →"}
+                {buying ? "Opening checkout…" : `Get my Pivot Report · $${REPORT_PRICE} →`}
               </button>
               <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>
                 Which of the twenty paths your résumé already qualifies you for. 30-day refund, no questions.
@@ -419,12 +494,12 @@ export default function CareerQuiz({
                   });
                   go(suiteHref(top));
                 }}
-                style={{ ...S.btn, marginTop: 16, padding: "11px 22px", fontSize: 14.5 }}
+                style={{ ...S.btn, marginTop: 16, padding: "13px 24px", minHeight: 46, fontSize: 15 }}
               >
-                Translate my résumé — ${priceOf("suite")} →
+                Translate my résumé · ${priceOf("suite")} →
               </button>
               <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>
-                Includes the $9 Pivot Report. Free preview before you pay.{wasNote("suite")}
+                Includes the ${REPORT_PRICE} Pivot Report. Free preview before you pay.{wasNote("suite")}
               </div>
             </>
           )}
@@ -474,7 +549,7 @@ export default function CareerQuiz({
               <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>This is the general version.</h3>
               <p style={{ ...S.p, maxWidth: 470, margin: "0 auto 18px" }}>
                 Everything above is what we'd tell any SLP who scored like you. Your{" "}
-                <strong>Pivot Report</strong> is built from your actual resume — what
+                <strong>Pivot Report</strong> is built from your actual résumé: what
                 to do first, and what you specifically already qualify for.
               </p>
             </div>
@@ -491,9 +566,9 @@ export default function CareerQuiz({
                 "Your readiness profile and the stage you're actually in",
                 "A week-by-week 30-day plan sized for someone working full-time",
                 "3 LinkedIn outreach scripts written in your voice, ready to send",
-                "Your 3 best-fit roles, chosen from your real experience — not a quiz score",
+                "Your 3 best-fit roles, chosen from your real experience rather than a quiz score",
                 "Which of your clinical work already reads as qualified, in their words",
-                "The honest caveats — timelines and tradeoffs for your situation",
+                "Honest timelines and tradeoffs for your situation",
               ].map((line) => (
                 <div key={line} style={{ display: "flex", gap: 9, alignItems: "flex-start", marginBottom: 9, fontSize: 14, lineHeight: 1.6 }}>
                   <span style={{ color: "var(--accent)", fontWeight: 700, flexShrink: 0 }}>✓</span>
@@ -512,18 +587,18 @@ export default function CareerQuiz({
               {isDesktop && (
                 <div style={{ textAlign: "left", margin: "0 auto 18px", maxWidth: 470 }}>
                   <label style={{ ...S.label, marginBottom: 4 }}>
-                    Paste your resume now <span style={{ color: "var(--muted)", fontWeight: 400 }}>(optional)</span>
+                    Paste your résumé now <span style={{ color: "var(--muted)", fontWeight: 400 }}>(optional)</span>
                   </label>
                   <textarea
                     value={resumeText}
                     onChange={(e) => setResumeText(e.target.value)}
-                    placeholder="Paste the text of your resume here and the report starts building the moment you pay. Skip it and we'll ask after checkout."
+                    placeholder="Paste the text of your résumé here and the report starts building the moment you pay. Skip it and we'll ask after checkout."
                     rows={5}
                     style={{ ...S.textarea, minHeight: 110, fontSize: 14 }}
                   />
                   {resumeText.trim().length > 0 && resumeText.trim().length < 50 && (
                     <div style={{ fontSize: 12.5, color: "var(--warn)", marginTop: 6 }}>
-                      That looks too short to be a resume — paste the whole thing, or leave it blank for now.
+                      That looks too short to be a résumé. Paste the whole thing, or leave it blank for now.
                     </div>
                   )}
                 </div>
@@ -547,61 +622,20 @@ export default function CareerQuiz({
                   buyReport(top);
                 }}
               >
-                {buying ? "Opening checkout…" : "Get my Pivot Report — $9 →"}
+                {buying ? "Opening checkout…" : `Get my Pivot Report · $${REPORT_PRICE} →`}
               </button>
-              <p style={{ fontSize: 12, color: "var(--light)", marginTop: 10, lineHeight: 1.6 }}>
-                One-time payment, no subscription ever. 30-day refund if it doesn't help.
+              <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 10, lineHeight: 1.6 }}>
+                One-time payment, no subscription ever. 30-day refund if it doesn&rsquo;t help.
                 <br />
-                You'll add your resume right after checkout — no need to find it now.
+                No job posting needed.{isDesktop ? " " : " You add your résumé right after checkout, so there's no need to find it now."}
               </p>
             </div>
 
-            {/* The $24 suite rewrites an application against ONE posting, so it only
-                helps someone who already has that posting in hand — which most quiz
-                takers don't. Offering it as an equal button would dead-end them at
-                the job-posting step. Kept as a labelled second door instead: it
-                routes the minority who are further along, and the larger number
-                sitting next to $9 does the anchoring either way. */}
-            <div
-              style={{
-                borderTop: "1px solid var(--line, #E5E7EB)",
-                marginTop: 22,
-                paddingTop: 16,
-                textAlign: "center",
-              }}
-            >
-              <p style={{ fontSize: 13, lineHeight: 1.65, color: "var(--muted)", margin: "0 0 10px" }}>
-                <strong style={{ color: "var(--fg, inherit)" }}>
-                  Already staring at a specific job posting?
-                </strong>
-                <br />
-                The <strong>${priceOf("suite")} Career Pivot Suite</strong> rewrites the whole
-                application around it — every resume bullet, a cover letter in your
-                voice, your LinkedIn, and the interview answers. It includes this report.
-              </p>
-              <a
-                href={`/?from=quiz&path=${encodeURIComponent(top.roleOption)}`}
-                onClick={() =>
-                  track("select_item", {
-                    item_list_id: "quiz_result",
-                    item_list_name: "Quiz result upsell",
-                    items: [{
-                      item_id: "career_pivot_suite",
-                      item_name: `$${priceOf("suite")} Career Pivot Suite`,
-                      item_category: top.slug,
-                      price: priceOf("suite"),
-                      quantity: 1,
-                    }],
-                  })
-                }
-                style={{ ...S.btnOut, fontSize: 14, display: "inline-block", textDecoration: "none" }}
-              >
-                See the ${priceOf("suite")} Suite →
-              </a>
-            </div>
+            {/* The Suite used to be pitched twice in this card: a "staring at a posting?"
+                block and again in the menu. One mention, in the menu, with its question. */}
             <div style={{ borderTop: "1px solid var(--border)", marginTop: 18, paddingTop: 14 }}>
               <ProductMenu
-            order={["suite", "ground"]} onPick={pickProduct} hrefFor={hrefForProduct} />
+            order={["suite", "ground"]} onPick={pickProduct} hrefFor={hrefForProduct} quiet />
             </div>
           </Card>
         )}
@@ -621,7 +655,7 @@ export default function CareerQuiz({
                 "A cover letter in your voice, with the one paragraph nobody else could paste",
                 "Your LinkedIn headline and About, matched to the résumé",
                 "Answers to the three questions every career changer gets asked",
-                "The $9 Pivot Report, included",
+                `The $${REPORT_PRICE} Pivot Report, included`,
               ].map((line) => (
                 <div key={line} style={{ display: "flex", gap: 9, alignItems: "flex-start", marginBottom: 9, fontSize: 14, lineHeight: 1.6 }}>
                   <span style={{ color: "var(--accent)", fontWeight: 700, flexShrink: 0 }}>✓</span>
@@ -643,7 +677,7 @@ export default function CareerQuiz({
                   go(suiteHref(top));
                 }}
               >
-                Translate my résumé — ${priceOf("suite")} →
+                Translate my résumé · ${priceOf("suite")} →
               </button>
               <p style={{ fontSize: 12, color: "var(--light)", marginTop: 10, lineHeight: 1.6 }}>
                 Free preview before you pay. One-time payment, 30-day refund if it doesn&rsquo;t help.
@@ -664,13 +698,13 @@ export default function CareerQuiz({
                   }}
                   style={{ background: "none", border: "none", padding: 0, color: "var(--accent)", fontWeight: 600, cursor: "pointer", fontFamily: "inherit", fontSize: 13 }}
                 >
-                  {buying ? "Opening checkout…" : "Get just the Pivot Report, $9 →"}
+                  {buying ? "Opening checkout…" : `Get just the Pivot Report, $${REPORT_PRICE} →`}
                 </button>
               </p>
             </div>
             <div style={{ borderTop: "1px solid var(--border)", marginTop: 18, paddingTop: 14 }}>
               <ProductMenu
-            order={["report", "ground"]} onPick={pickProduct} hrefFor={hrefForProduct} />
+            order={["report", "ground"]} onPick={pickProduct} hrefFor={hrefForProduct} quiet />
             </div>
           </Card>
         )}
@@ -692,7 +726,7 @@ export default function CareerQuiz({
               onClick={() => track("select_item", { item_list_id: "quiz_result", item_list_name: "Quiz result", items: [{ item_id: "ground", item_name: GROUND_NAME, item_category: top.slug, price: GROUND_PRICE, quantity: 1 }], placement: "result_after_map", stage: stageKey || "none" })}
               style={{ ...S.btn, display: "inline-block", textDecoration: "none" }}
             >
-              Get the kit — ${GROUND_PRICE} →
+              Get the kit · ${GROUND_PRICE} →
             </a>
             <p style={{ fontSize: 13, lineHeight: 1.65, color: "var(--muted)", margin: "14px 0 0" }}>
               Rather start from your résumé? The{" "}
@@ -705,14 +739,14 @@ export default function CareerQuiz({
                 }}
                 style={{ background: "none", border: "none", padding: 0, color: "var(--accent)", fontWeight: 600, cursor: "pointer", fontFamily: "inherit", fontSize: 13 }}
               >
-                {buying ? "opening checkout…" : "$9 Pivot Report"}
+                {buying ? "opening checkout…" : `$${REPORT_PRICE} Pivot Report`}
               </button>{" "}
               reads it against these paths and tells you which ones you already qualify for.
             </p>
             {buyError && <div style={{ fontSize: 13, color: "var(--warn)", marginTop: 10 }}>{buyError}</div>}
             <div style={{ borderTop: "1px solid var(--border)", marginTop: 18, paddingTop: 14 }}>
               <ProductMenu
-            order={["report", "suite"]} onPick={pickProduct} hrefFor={hrefForProduct} />
+            order={["report", "suite"]} onPick={pickProduct} hrefFor={hrefForProduct} quiet />
             </div>
           </Card>
         )}
@@ -720,7 +754,7 @@ export default function CareerQuiz({
         {emailed && (
           <Card>
             <div style={{ fontSize: 14, color: "var(--accent)" }}>
-              ✓ A copy is on its way to {email} — check your inbox (and spam, just in case).
+              ✓ A copy is on its way to {email}. Check your inbox, and spam just in case.
             </div>
           </Card>
         )}
@@ -728,7 +762,10 @@ export default function CareerQuiz({
         <div style={{ textAlign: "center", marginTop: 12, marginBottom: 32 }}>
           <button
             style={{ ...S.btnOut, fontSize: 13 }}
-            onClick={() => { setResult(null); setIdx(0); setAnswers({}); }}
+            onClick={() => {
+              try { sessionStorage.removeItem(SAVE_KEY); } catch { /* ignore */ }
+              setResult(null); setPending(null); setCanceled(false); setIdx(0); setAnswers({});
+            }}
           >
             ← Retake the quiz
           </button>
@@ -745,7 +782,7 @@ export default function CareerQuiz({
         <div style={{ textAlign: "center", marginBottom: 24 }}>
           <h1 style={{ ...S.h1, fontSize: 30 }}>Which direction actually fits you?</h1>
           <p style={{ ...S.p, maxWidth: 520, margin: "0 auto" }}>
-            Nine questions, about two minutes. Built from documented SLP transitions — so you'll get real
+            Nine questions, about two minutes. Built from documented SLP transitions, so you'll get real
             salary ranges, real timelines, and the honest catch for whichever path comes up.
           </p>
         </div>
@@ -824,7 +861,7 @@ export default function CareerQuiz({
               ? `Continue with ${selected.length} selected →`
               : isLast
               ? "See my result →"
-              : "None of these yet — continue →"}
+              : "None of these yet, continue →"}
           </button>
           <p style={{ fontSize: 13, color: "var(--light)", textAlign: "center", marginTop: 10 }}>
             Select as many as apply, then continue.
@@ -832,7 +869,7 @@ export default function CareerQuiz({
         </>
       ) : (
         <p style={{ fontSize: 13, color: "var(--light)", textAlign: "center", marginTop: 2 }}>
-          {isLast ? "Pick one to see your result." : "Pick the closest one — there's no wrong answer."}
+          {isLast ? "Pick one to see your result." : "Pick the closest one. There's no wrong answer."}
         </p>
       )}
 

@@ -59,6 +59,7 @@ export async function POST(req: Request) {
       metadata,
       payment_intent_data: { metadata },
       allow_promotion_codes: true,
+      custom_text: { submit: { message: "One-time payment, no subscription. 30-day refund if it doesn't help." } },
     });
 
     return NextResponse.json({ url: session.url });

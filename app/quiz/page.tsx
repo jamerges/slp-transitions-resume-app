@@ -1,5 +1,6 @@
 import { PageShell, S } from "@/components/ui";
 import CareerQuiz from "@/components/CareerQuiz";
+import { COMPANY_COUNT } from "@/lib/companies";
 
 export const metadata = {
   title: "Which non-clinical career fits you? | SLP Transitions",
@@ -24,7 +25,7 @@ export default async function QuizPage({
     <PageShell>
       {/* The intro lives inside CareerQuiz so it disappears once there's a
           result — by then they've taken the quiz and just want the answer. */}
-      <CareerQuiz initialPath={initialPath} showIntro={!initialPath} />
+      <CareerQuiz initialPath={initialPath} showIntro={!initialPath} companyCount={COMPANY_COUNT} />
     </PageShell>
   );
 }

@@ -145,7 +145,7 @@ export const PATHS: Record<string, QuizPath> = {
     label: "Rehab Management / Leadership",
     roleOption: "Operations",
     range: "$82,000–$139,000",
-    timeline: "often an internal move, months not years",
+    timeline: "months, often as an internal move",
     why: "You already run the parts of a department nobody bills for: schedules, coverage, audits, the new grad who is drowning. Management pays you for that instead of treating it as unpaid time.",
     entryDoor: "Clinical manager, rehab program manager or lead SLP, at your current employer or a competitor (Encompass Health, Select Medical, Lifepoint, Sanford, Reliant). Director of Rehab comes after a manager stint.",
     firstMove: "Ask your director who the last two manager openings went to and what those people had that you don't yet. Then go get that one thing.",

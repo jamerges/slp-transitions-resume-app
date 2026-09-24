@@ -1,5 +1,6 @@
 import { S } from "@/components/ui";
 import CareerQuiz from "@/components/CareerQuiz";
+import { COMPANY_COUNT } from "@/lib/companies";
 import EmbedAutoHeight from "@/components/EmbedAutoHeight";
 
 // Chrome-free version of the quiz for embedding on slptransitions.com.
@@ -23,7 +24,7 @@ export default async function QuizEmbed({
       />
       <EmbedAutoHeight messageKey="slpQuizHeight" />
       <div style={{ paddingTop: 8, paddingBottom: 24 }}>
-        <CareerQuiz initialPath={path?.toLowerCase() || undefined} embedded />
+        <CareerQuiz initialPath={path?.toLowerCase() || undefined} embedded companyCount={COMPANY_COUNT} />
       </div>
     </div>
   );

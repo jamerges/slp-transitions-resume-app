@@ -22,6 +22,11 @@ const STEPS = {
 } as const;
 type Step = (typeof STEPS)[keyof typeof STEPS];
 
+// Backing out of Stripe used to land on the welcome step with the résumé, the
+// posting and the free preview gone. The wizard saves itself to sessionStorage
+// (this tab only) right before the redirect and restores on /?canceled=1.
+const DRAFT_KEY = "slp:suite:draft:v1";
+
 // Files are parsed server-side (unpdf / mammoth). The old browser-side PDF
 // regex hack produced binary garbage that the model then refused to work with.
 async function parseFile(file: File): Promise<{ text: string; error?: string }> {
@@ -170,6 +175,58 @@ export default function SLPCareerSuite() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const writingFileRef = useRef<HTMLInputElement>(null);
   const topRef = useRef<HTMLDivElement>(null);
+  const [canceledNote, setCanceledNote] = useState<null | "restored" | "plain">(null);
+
+  const saveDraft = (returnStep: Step) => {
+    try {
+      sessionStorage.setItem(DRAFT_KEY, JSON.stringify({
+        returnStep, resumeText, fileName, goals, jobTitle, jobDesc, jobUrl, email,
+        writingSample, preview, exploreResults, reportIntent,
+      }));
+    } catch { /* storage full or blocked: checkout still proceeds */ }
+  };
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    // Stripe's back link carries ?canceled=1; the browser's Back button
+    // reloads the page instead (production sends no-store), so treat a
+    // back_forward load with a saved draft the same way.
+    let navType = "";
+    try { navType = (performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined)?.type || ""; } catch { /* old browser */ }
+    const fromStripe = params.get("canceled") === "1";
+    if (!fromStripe && navType !== "back_forward") return;
+    if (fromStripe) window.history.replaceState({}, "", window.location.pathname);
+    try {
+      const d = JSON.parse(sessionStorage.getItem(DRAFT_KEY) || "null");
+      if (d && typeof d.resumeText === "string" && d.resumeText) {
+        setResumeText(d.resumeText);
+        setFileName(d.fileName || "your résumé");
+        if (d.goals) setGoals(d.goals);
+        setJobTitle(d.jobTitle || ""); setJobDesc(d.jobDesc || ""); setJobUrl(d.jobUrl || "");
+        setEmail(d.email || ""); setWritingSample(d.writingSample || "");
+        if (d.preview) setPreview(d.preview);
+        if (d.exploreResults) setExploreResults(d.exploreResults);
+        setReportIntent(!!d.reportIntent);
+        setStep(d.returnStep);
+        setCanceledNote("restored");
+        return;
+      }
+    } catch { /* fall through to the plain note */ }
+    if (fromStripe) setCanceledNote("plain");
+  }, []);
+
+  // Frozen in the back/forward cache, the page would come back on the
+  // "Redirecting" screen. Return to the step checkout started from.
+  useEffect(() => {
+    const onShow = (e: PageTransitionEvent) => {
+      if (!e.persisted) return;
+      let back: Step = STEPS.PREVIEW;
+      try { back = JSON.parse(sessionStorage.getItem(DRAFT_KEY) || "null")?.returnStep ?? back; } catch { /* ignore */ }
+      setStep((s) => (s === STEPS.REDIRECTING ? back : s));
+    };
+    window.addEventListener("pageshow", onShow);
+    return () => window.removeEventListener("pageshow", onShow);
+  }, []);
 
   const isExploreMode = goals.targetRoles.length === 1 && goals.targetRoles[0] === NOT_SURE_OPTION;
 
@@ -417,6 +474,7 @@ export default function SLPCareerSuite() {
       if (!resp.ok || !data.url) {
         throw new Error(data.error || `Checkout API ${resp.status}`);
       }
+      saveDraft(reportIntent ? STEPS.REPORT_INTAKE : STEPS.EXPLORE_RESULTS);
       window.location.href = data.url;
     } catch (err: any) {
       console.error(err);
@@ -447,6 +505,7 @@ export default function SLPCareerSuite() {
       if (!resp.ok || !data.url) {
         throw new Error(data.error || `Checkout API ${resp.status}`);
       }
+      saveDraft(STEPS.PREVIEW);
       window.location.href = data.url;
     } catch (err: any) {
       console.error(err);
@@ -1162,6 +1221,15 @@ export default function SLPCareerSuite() {
   return (
     <>
       <div ref={topRef} />
+      {canceledNote && step !== STEPS.REDIRECTING && (
+        <div style={{ ...S.wrap, marginTop: 16 }}>
+          <Card>
+            <div style={{ fontSize: 14, color: "var(--muted)" }}>
+              Checkout closed. Nothing was charged{canceledNote === "restored" ? ", and everything you added is still here." : "."}
+            </div>
+          </Card>
+        </div>
+      )}
       {step === STEPS.WELCOME && renderWelcome()}
       {step === STEPS.RESUME && renderResume()}
       {step === STEPS.GOALS && renderGoals()}

@@ -48,12 +48,15 @@ export default function ProductMenu({
   onPick,
   hrefFor,
   heading = "The other two, and what each one answers",
+  quiet = false,
 }: {
   /** Which to list, in order: the ones NOT already sold by the card above. */
   order: ProductKey[];
   onPick: (k: ProductKey) => void;
   hrefFor: (k: ProductKey) => string | undefined;
   heading?: string;
+  /** Outline buttons: use when the menu sits under a lead offer, so the page keeps one filled button. */
+  quiet?: boolean;
 }) {
   return (
     <div style={{ marginTop: 4 }}>
@@ -67,7 +70,7 @@ export default function ProductMenu({
               <div style={{ fontSize: 15, fontWeight: 700, color: "var(--text)" }}>{p.name}</div>
               <div style={{ fontSize: 13.5, color: "var(--text)", marginTop: 3 }}>{p.answers}</div>
               <div style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 3 }}>{p.detail}{!p.button && wasOf(k) && <> <b style={{ color: "var(--accent)" }}>${p.price} {SALE.note}.</b></>}</div>
-              <span style={{ display: "inline-block", marginTop: 10, padding: "8px 14px", borderRadius: 8, background: "var(--accent)", color: "#fff", fontSize: 13.5, fontWeight: 600 }}>
+              <span style={{ display: "inline-block", marginTop: 10, padding: "8px 14px", borderRadius: 8, fontSize: 13.5, fontWeight: 600, ...(quiet ? { border: "1.5px solid var(--accent)", color: "var(--accent)", background: "transparent" } : { background: "var(--accent)", color: "#fff" }) }}>
                 {p.button ? <>{p.button}&nbsp;&rarr;</> : <>{href ? p.cta.via : p.cta.direct} &middot; ${p.price}{wasOf(k) && <s style={{ opacity: 0.7, fontWeight: 400, marginLeft: 6 }}>${wasOf(k)}</s>}&nbsp;&rarr;</>}
               </span>
             </div>
