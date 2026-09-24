@@ -564,7 +564,7 @@ export default function CareerQuiz({
                   them; leading with stage and a dated plan answers the question
                   they actually have, which is what to do on Monday. */}
               {[
-                "Your readiness profile and the stage you're actually in",
+                "The stage you're actually in, and what to do first because of it",
                 "A week-by-week 30-day plan sized for someone working full-time",
                 "3 LinkedIn outreach scripts written in your voice, ready to send",
                 "Your 3 best-fit roles, chosen from your real experience rather than a quiz score",

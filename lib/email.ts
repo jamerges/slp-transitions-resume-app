@@ -67,7 +67,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
       <div style="padding:12px 14px;background:#FEF3C7;border-radius:8px;margin-bottom:10px;">
         <div style="font-size:14px;font-weight:600;margin-bottom:6px;">${esc(g.gap)}</div>
         ${(g.actionSteps || []).map((s: string) => `<div style="font-size:13px;color:#6B7280;padding-left:12px;">→ ${esc(s)}</div>`).join("")}
-        ${g.timeframe ? `<div style="font-size:12px;color:#9CA3AF;margin-top:6px;">⏱ ${esc(g.timeframe)}</div>` : ""}
+        ${g.timeframe ? `<div style="font-size:12px;color:#6B7280;margin-top:6px;">⏱ ${esc(g.timeframe)}</div>` : ""}
       </div>`
     )
     .join("");
@@ -78,7 +78,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
       <div style="padding:12px 14px;background:#F0FAF3;border-radius:8px;margin-bottom:10px;">
         <div style="font-size:14px;font-weight:600;margin-bottom:4px;">${esc(a.artifact)}</div>
         <div style="font-size:13px;color:#6B7280;line-height:1.6;">${esc(a.why)}</div>
-        <div style="font-size:12px;color:#9CA3AF;margin-top:6px;">${a.timeEstimate ? `⏱ ${esc(a.timeEstimate)}` : ""}${a.timeEstimate && a.cost ? " &nbsp;·&nbsp; " : ""}${a.cost ? `💰 ${esc(a.cost)}` : ""}</div>
+        <div style="font-size:12px;color:#6B7280;margin-top:6px;">${a.timeEstimate ? `⏱ ${esc(a.timeEstimate)}` : ""}${a.timeEstimate && a.cost ? " &nbsp;·&nbsp; " : ""}${a.cost ? `💰 ${esc(a.cost)}` : ""}</div>
       </div>`
     )
     .join("");
@@ -155,7 +155,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
   ${
     r.professionalSummary
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
-          <h2 style="font-size:16px;margin:0 0 10px;">Professional Summary</h2>
+          <h2 style="font-size:16px;margin:0 0 10px;">Professional summary</h2>
           <div style="font-size:14px;line-height:1.7;padding:12px 16px;background:#F0FAF3;border-left:3px solid #2D6A4F;border-radius:6px;">${esc(r.professionalSummary)}</div>
         </div>`
       : ""
@@ -164,8 +164,8 @@ function renderResultsHTML(jobTitle: string, r: any): string {
   ${
     bullets
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
-          <h2 style="font-size:16px;margin:0 0 6px;">Translated Experience</h2>
-          <p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">Original (left) → Rewritten for hiring managers (right)</p>
+          <h2 style="font-size:16px;margin:0 0 6px;">Your experience, rewritten</h2>
+          <p style="font-size:12px;color:#6B7280;margin:0 0 12px;">Original (left) → Rewritten for hiring managers (right)</p>
           <table cellpadding="0" cellspacing="6" style="width:100%;border-collapse:separate;">${bullets}</table>
         </div>`
       : ""
@@ -174,7 +174,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
   ${
     skills
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
-          <h2 style="font-size:16px;margin:0 0 6px;">Skills: paste into your resume</h2><p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">Use this exact wording in your resume's Skills section. Screening software and recruiters match on these terms.</p>
+          <h2 style="font-size:16px;margin:0 0 6px;">Skills to paste into your résumé</h2><p style="font-size:12px;color:#6B7280;margin:0 0 12px;">Use this exact wording in your resume's Skills section. Screening software and recruiters match on these terms.</p>
           ${skills}
         </div>`
       : ""
@@ -183,7 +183,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
   ${
     r.coverLetter
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
-          <h2 style="font-size:16px;margin:0 0 12px;">Tailored Cover Letter</h2>
+          <h2 style="font-size:16px;margin:0 0 12px;">Your cover letter</h2>
           <div style="font-size:14px;line-height:1.75;padding:16px 20px;background:#FEFEFE;border:1px solid #E5E7EB;border-radius:8px;">${nl2br(r.coverLetter)}</div>
         </div>`
       : ""
@@ -192,8 +192,8 @@ function renderResultsHTML(jobTitle: string, r: any): string {
   ${
     gaps
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
-          <h2 style="font-size:16px;margin:0 0 6px;">Gap Analysis</h2>
-          <p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">Honest assessment + action plan.</p>
+          <h2 style="font-size:16px;margin:0 0 6px;">What the job wants that you don't show yet</h2>
+          <p style="font-size:12px;color:#6B7280;margin:0 0 12px;">Honest assessment + action plan.</p>
           ${gaps}
         </div>`
       : ""
@@ -202,8 +202,8 @@ function renderResultsHTML(jobTitle: string, r: any): string {
   ${
     artifacts
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
-          <h2 style="font-size:16px;margin:0 0 6px;">Build Your Proof</h2>
-          <p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">Career changers get hired on what they can show. Each item below is something to build.</p>
+          <h2 style="font-size:16px;margin:0 0 6px;">One thing to build that proves you can do it</h2>
+          <p style="font-size:12px;color:#6B7280;margin:0 0 12px;">Career changers get hired on what they can show. Each item below is something to build.</p>
           ${artifacts}
         </div>`
       : ""
@@ -212,7 +212,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
   ${
     interviews
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
-          <h2 style="font-size:16px;margin:0 0 12px;">Interview Bridge Statements</h2>
+          <h2 style="font-size:16px;margin:0 0 12px;">Answering &ldquo;why are you leaving clinical work?&rdquo;</h2>
           ${interviews}
         </div>`
       : ""
@@ -221,8 +221,8 @@ function renderResultsHTML(jobTitle: string, r: any): string {
   ${
     knockouts
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
-          <h2 style="font-size:16px;margin:0 0 6px;">Application Screening Questions</h2>
-          <p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">The form questions that silently filter career changers out, and how to answer them.</p>
+          <h2 style="font-size:16px;margin:0 0 6px;">Answers for the application questions</h2>
+          <p style="font-size:12px;color:#6B7280;margin:0 0 12px;">The form questions that silently filter career changers out, and how to answer them.</p>
           ${knockouts}
         </div>`
       : ""
@@ -231,8 +231,8 @@ function renderResultsHTML(jobTitle: string, r: any): string {
   ${
     roadmap
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
-          <h2 style="font-size:16px;margin:0 0 6px;">Your 90-Day Transition Plan</h2>
-          <p style="font-size:12px;color:#9CA3AF;margin:0 0 12px;">Real transitions take months. This is the sequence.</p>
+          <h2 style="font-size:16px;margin:0 0 6px;">Your 90-day plan</h2>
+          <p style="font-size:12px;color:#6B7280;margin:0 0 12px;">Real transitions take months. This is the sequence.</p>
           ${roadmap}
         </div>`
       : ""
@@ -243,7 +243,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
     <a href="${APP_URL}" style="display:inline-block;padding:12px 28px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:15px;font-weight:600;">Open SLP Transitions →</a>
   </div>
 
-  <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:32px;">
+  <p style="font-size:11px;color:#6B7280;text-align:center;margin-top:32px;">
     SLP Transitions • Your degree isn't a prison. Your skills can translate outside of clinical work.
   </p>
 </div>
@@ -298,7 +298,7 @@ export function renderQuizResultEmail(input: QuizResultEmailInput): string {
     : `<div style="padding:22px;background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;margin-top:20px;">
     <div style="font-size:17px;font-weight:700;margin-bottom:8px;">Which of the twenty is actually open to you?</div>
     <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">
-      This result came from nine questions. The <b>Pivot Report</b> reads your real résumé and tells you which paths your specific experience already qualifies you for: your readiness profile, the stage you're actually in, your top three paths with entry doors, and a week-by-week 30-day plan. $9, once.
+      This result came from nine questions. The <b>Pivot Report</b> reads your real résumé and tells you which paths your specific experience already qualifies you for: the stage you're actually in, your top three paths with the first job title to apply for in each, and a week-by-week 30-day plan. ${priceOf("report")}, once.
     </div>
     <div style="text-align:center;">${btn(reportLink, "Get my Pivot Report &rarr;")}</div>
   </div>`;
@@ -344,7 +344,7 @@ export function renderQuizResultEmail(input: QuizResultEmailInput): string {
     I'll also send you the occasional note with real SLP transition stories and what actually worked. If that's not useful, unsubscribe any time. No hard feelings.
   </p>
   <p style="font-size:14px;line-height:1.7;">James</p>
-  <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:28px;">
+  <p style="font-size:11px;color:#6B7280;text-align:center;margin-top:28px;">
     SLP Transitions • Your degree isn't a prison. Your skills can translate outside of clinical work.
   </p>
 </div>
@@ -392,7 +392,7 @@ export async function sendResumeLinkEmail(input: {
     This link is good for 7 days. If it expires or anything goes sideways, reply to this email with your receipt and I'll build it for you by hand.
   </p>
   <p style="font-size:14px;line-height:1.7;">James</p>
-  <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:28px;">
+  <p style="font-size:11px;color:#6B7280;text-align:center;margin-top:28px;">
     SLP Transitions • Your degree isn't a prison. Your skills can translate outside of clinical work.
   </p>
 </div>
@@ -427,7 +427,7 @@ export async function sendGroundAccessEmail(input: { to: string; unlockUrl: stri
   <p style="font-size:15px;line-height:1.7;">What you paid today is credited toward the full program when it launches, so you won't pay for it twice.</p>
   <p style="font-size:15px;line-height:1.7;">If it doesn't help, reply within 30 days and I'll refund it. No form.</p>
   <p style="font-size:15px;line-height:1.7;">James</p>
-  <p style="font-size:12px;color:#9CA3AF;margin-top:26px;">If the button doesn't work, paste this into your browser:<br/><span style="word-break:break-all;">${unlockUrl}</span></p>
+  <p style="font-size:12px;color:#6B7280;margin-top:26px;">If the button doesn't work, paste this into your browser:<br/><span style="word-break:break-all;">${unlockUrl}</span></p>
 </div></body></html>`;
   await getResend().emails.send({ from: FROM_ADDRESS, to, replyTo: REPLY_TO, subject: "Your Transition OS login link", html });
 }
@@ -444,7 +444,7 @@ export async function sendCourseLinkEmail(input: { to: string; unlockUrl: string
   <p style="font-size:15px;line-height:1.7;">This link is your login. It works in any browser, on any device, as many times as you like, and your answers and your people list are saved to your purchase, so they will be there when it opens.</p>
   <p style="font-size:15px;line-height:1.7;">If you didn't ask for this, ignore it. Nothing changes until the link is opened.</p>
   <p style="font-size:15px;line-height:1.7;">James</p>
-  <p style="font-size:12px;color:#9CA3AF;margin-top:26px;">If the button doesn't work, paste this into your browser:<br/><span style="word-break:break-all;">${unlockUrl}</span></p>
+  <p style="font-size:12px;color:#6B7280;margin-top:26px;">If the button doesn't work, paste this into your browser:<br/><span style="word-break:break-all;">${unlockUrl}</span></p>
 </div></body></html>`;
   await getResend().emails.send({ from: FROM_ADDRESS, to, replyTo: REPLY_TO, subject: "Your Transition OS link", html });
 }
@@ -468,7 +468,7 @@ export async function sendFreeLinkEmail(input: { to: string; unlockUrl: string; 
   <p style="font-size:15px;line-height:1.7;">That link is your login. It works in any browser, on any device, as many times as you like, and everything you answer is saved to it. Keep this email.</p>
   <p style="font-size:15px;line-height:1.7;">Getting Started for SLPs is the first month in one kit, your reasons in writing, the people who already made the move and the r\u00e9sum\u00e9 pass, for $${priceOf("ground")}${wasNote("ground")}. It opens from the same link if you decide to.</p>
   <p style="font-size:15px;line-height:1.7;">James</p>
-  <p style="font-size:12px;color:#9CA3AF;margin-top:26px;">If the button doesn't work, paste this into your browser:<br/><span style="word-break:break-all;">${unlockUrl}</span></p>
+  <p style="font-size:12px;color:#6B7280;margin-top:26px;">If the button doesn't work, paste this into your browser:<br/><span style="word-break:break-all;">${unlockUrl}</span></p>
 </div></body></html>`;
   await getResend().emails.send({ from: FROM_ADDRESS, to, replyTo: REPLY_TO, subject: "Your starting line, and your Transition OS link", html });
 }
@@ -540,7 +540,7 @@ export async function sendReportReminderEmail(input: {
     If anything goes sideways, reply to this email and I&rsquo;ll build it for you by hand. And if you&rsquo;ve changed your mind, reply and say so. The 30-day refund is real.
   </p>
   <p style="font-size:14px;line-height:1.7;">James</p>
-  <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:28px;">
+  <p style="font-size:11px;color:#6B7280;text-align:center;margin-top:28px;">
     SLP Transitions &bull; Your degree isn&rsquo;t a prison. Your skills can translate outside of clinical work.
   </p>
 </div>
@@ -565,7 +565,7 @@ const REPLY_TO = SUPPORT_EMAIL;
 const plainWrap = (paras: string[], unsub: string) =>
   `<div style="max-width:560px;margin:0 auto;padding:24px 20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#1F2937;">
 ${paras.map((t) => `<p style="margin:0 0 16px;">${t}</p>`).join("\n")}
-<p style="margin:28px 0 0;font-size:12px;color:#9CA3AF;">You took the career quiz at slptransitions.com. <a href="${unsub}" style="color:#9CA3AF;">Stop these emails</a>.</p>
+<p style="margin:28px 0 0;font-size:12px;color:#6B7280;">You took the career quiz at slptransitions.com. <a href="${unsub}" style="color:#6B7280;">Stop these emails</a>.</p>
 </div>`;
 
 export interface QuizFollowupDay2Input {
@@ -787,7 +787,7 @@ export async function sendReportEmail(input: {
       </div>
     </div>
   </div>
-  <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:32px;">SLP Transitions • Your degree isn't a prison. Your skills can translate outside of clinical work.</p>
+  <p style="font-size:11px;color:#6B7280;text-align:center;margin-top:32px;">SLP Transitions • Your degree isn't a prison. Your skills can translate outside of clinical work.</p>
 </div>
 </body></html>`;
 

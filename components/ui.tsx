@@ -10,7 +10,7 @@ export const V: Record<string, string> = {
   "--accent-bg-subtle": "#F0FAF3",
   "--text": "#1B1B1E",
   "--muted": "#6B7280",
-  "--light": "#9CA3AF",
+  "--light": "#6B7280",
   "--bg": "#FAFAF9",
   "--card": "#FFFFFF",
   "--border": "#E5E7EB",
@@ -94,11 +94,15 @@ export function Chip({
   selected: boolean;
   onClick: () => void;
 }) {
+  // A real button (was a clickable span): reachable by Tab, toggled by Enter
+  // or Space, and announced as pressed or not by a screen reader.
   return (
-    <span
+    <button
+      type="button"
+      aria-pressed={selected}
       onClick={onClick}
       style={{
-        display: "inline-block", padding: "7px 16px", fontSize: 13,
+        display: "inline-block", padding: "7px 16px", fontSize: 13, fontFamily: "inherit", lineHeight: 1.4,
         fontWeight: selected ? 600 : 400, borderRadius: 20,
         border: selected ? "1.5px solid var(--accent)" : "1px solid var(--border)",
         background: selected ? "var(--accent-bg-subtle)" : "var(--card)",
@@ -107,7 +111,7 @@ export function Chip({
       }}
     >
       {label}
-    </span>
+    </button>
   );
 }
 
@@ -167,7 +171,7 @@ const NAV = [
   { label: "Career Quiz", href: "/quiz" },
   { label: "Course", href: "/course" },
   { label: "Jobs & companies", href: "/jobs" },
-  { label: "Articles", href: `${SITE}/` },
+  { label: "Blog", href: `${SITE}/blog/` },
   { label: "About", href: `${SITE}/about/` },
   { label: "Contact", href: `${SITE}/contact-us/` },
 ];

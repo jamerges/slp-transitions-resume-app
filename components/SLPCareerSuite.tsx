@@ -611,9 +611,9 @@ export default function SLPCareerSuite() {
             named for what each helps with, scan in the order a buyer uses them. */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: "12px 22px" }}>
           {[
-            { head: "Your résumé", items: ["Every bullet rewritten, not just 3", "Professional summary and ATS skills section", "Word doc downloads", "Rewrite any section on request, up to 10 times"] },
+            { head: "Your résumé", items: ["Every bullet rewritten, not just 3", "Summary and skills section in the posting's own words", "Word doc downloads", "Rewrite any section on request, up to 10 times"] },
             { head: "Your application", items: ["Cover letter in your voice", "Screening-question answers", "LinkedIn headline and About section", `${COMPANY_COUNT} health and ed-tech companies that value clinical skills`] },
-            { head: "Interviews and after", items: ["30-second elevator pitch", "Interview bridge statements", "Gap analysis and proof-artifact plan", "Your 90-day transition plan"] },
+            { head: "Interviews and after", items: ["30-second elevator pitch", "Your answer to \"why are you leaving clinical work?\"", "What the job wants that you don't show yet, and how to close it", "Your 90-day transition plan"] },
           ].map((g) => (
             <div key={g.head}>
               <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 4 }}>{g.head}</div>
@@ -645,7 +645,7 @@ export default function SLPCareerSuite() {
           <strong style={{ color: "var(--accent)" }}>"Not sure yet — help me explore"</strong> on the next screen for free role matches from your résumé.
         </div>
         <div style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.6 }}>
-          From either one you can add the <strong>Pivot Report</strong> (${priceOf("report")}): your readiness profile, which stage you&rsquo;re in, your top 3 paths with entry doors, and a 30-day plan.
+          From either one you can add the <strong>Pivot Report</strong> (${priceOf("report")}): the stage you&rsquo;re actually in, the three paths your résumé already fits, the first job title to apply for in each, and a 30-day plan.
         </div>
       </Card>
     </div>
@@ -807,9 +807,10 @@ export default function SLPCareerSuite() {
             {WORK_PREFERENCES.map((p) => {
               const sel = goals.workPreferences.includes(p.id);
               return (
-                <div key={p.id} onClick={() => {
+                <button type="button" aria-pressed={sel} key={p.id} onClick={() => {
                   setGoals((prev) => ({ ...prev, workPreferences: sel ? prev.workPreferences.filter((x) => x !== p.id) : [...prev.workPreferences, p.id] }));
                 }} style={{
+                  display: "block", width: "100%", textAlign: "left", fontFamily: "inherit",
                   padding: "10px 12px", border: `1.5px solid ${sel ? "var(--accent)" : "var(--border)"}`,
                   background: sel ? "#fff" : "var(--card)", borderRadius: 8, cursor: "pointer", transition: "all 0.15s",
                 }}>
@@ -817,7 +818,7 @@ export default function SLPCareerSuite() {
                     {sel && "✓ "}{p.label}
                   </div>
                   <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 2 }}>{p.desc}</div>
-                </div>
+                </button>
               );
             })}
           </div>
@@ -830,14 +831,15 @@ export default function SLPCareerSuite() {
             {STAGE_OPTIONS.map((s) => {
               const sel = goals.transitionStage === s.label;
               return (
-                <div key={s.id} onClick={() => setGoals((prev) => ({ ...prev, transitionStage: s.label }))} style={{
+                <button type="button" aria-pressed={sel} key={s.id} onClick={() => setGoals((prev) => ({ ...prev, transitionStage: s.label }))} style={{
+                  display: "block", width: "100%", textAlign: "left", fontFamily: "inherit",
                   padding: "11px 14px", border: `1.5px solid ${sel ? "var(--accent)" : "var(--border)"}`,
                   background: sel ? "#fff" : "var(--card)", borderRadius: 8, cursor: "pointer",
                   marginBottom: 8, fontSize: 14, lineHeight: 1.5,
                   color: sel ? "var(--accent)" : "var(--text)", fontWeight: sel ? 600 : 400,
                 }}>
                   {sel && "✓ "}{s.label}
-                </div>
+                </button>
               );
             })}
           </div>
@@ -1010,14 +1012,15 @@ export default function SLPCareerSuite() {
         {STAGE_OPTIONS.map((s) => {
           const sel = goals.transitionStage === s.label;
           return (
-            <div key={s.id} onClick={() => setGoals((prev) => ({ ...prev, transitionStage: s.label }))} style={{
+            <button type="button" aria-pressed={sel} key={s.id} onClick={() => setGoals((prev) => ({ ...prev, transitionStage: s.label }))} style={{
+              display: "block", width: "100%", textAlign: "left", fontFamily: "inherit",
               padding: "12px 14px", border: `1.5px solid ${sel ? "var(--accent)" : "var(--border)"}`,
               background: sel ? "var(--accent-bg-subtle)" : "var(--card)", borderRadius: 8, cursor: "pointer",
               marginBottom: 8, fontSize: 14, lineHeight: 1.5,
               color: sel ? "var(--accent)" : "var(--text)", fontWeight: sel ? 600 : 400,
             }}>
               {sel && "✓ "}{s.label}
-            </div>
+            </button>
           );
         })}
       </div>
@@ -1122,7 +1125,7 @@ export default function SLPCareerSuite() {
         <Card style={{ textAlign: "center", border: "1.5px solid var(--accent)", background: "linear-gradient(135deg, var(--accent-bg-subtle) 0%, #fff 100%)" }}>
           <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>Want the full picture?</h3>
           <p style={{ ...S.p, maxWidth: 460, margin: "0 auto 6px" }}>
-            This was the overview. Your <strong>Pivot Report</strong> goes deeper: your transition-readiness profile, exactly which phase you're in (and what to ignore for now), your top 3 paths with realistic entry doors, and a week-by-week 30-day starter plan — personal to your resume and answers, emailed to keep.
+            This was the overview. Your <strong>Pivot Report</strong> goes deeper: which stage you&rsquo;re in and what to ignore for now, your top 3 paths with the first job title to apply for in each, and a week-by-week 30-day plan, built from your résumé and answers and emailed to keep.
           </p>
           <button style={{ ...S.btn, padding: "14px 40px", fontSize: 16, marginTop: 10 }} onClick={handleReportClick}
             onMouseEnter={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent-light)")}
@@ -1230,7 +1233,7 @@ export default function SLPCareerSuite() {
 
         <Card style={{ textAlign: "center", border: "1.5px solid var(--accent)", background: "linear-gradient(135deg, var(--accent-bg-subtle) 0%, #fff 100%)" }}>
           <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>Get the full translation package</h3>
-          <p style={{ ...S.p, maxWidth: 440, margin: "0 auto 16px" }}>Every bullet rewritten, the cover letter, gap analysis, interview prep and your LinkedIn, all for this exact role.</p>
+          <p style={{ ...S.p, maxWidth: 440, margin: "0 auto 16px" }}>Every bullet rewritten, the cover letter, what the job wants that you don&rsquo;t show yet, interview prep and your LinkedIn, all for this exact role.</p>
           {/* Left-aligned: a centred checklist has a ragged left edge the eye can't scan down. */}
           <div style={{ display: "inline-block", textAlign: "left", maxWidth: 440 }}>
             {fullVersionIncludes?.map((item: string, i: number) => (

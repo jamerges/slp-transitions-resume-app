@@ -8,7 +8,9 @@
   --accent-bg-subtle: #F0FAF3;
   --text: #1B1B1E;
   --muted: #6B7280;
-  --light: #9CA3AF;
+  /* Was #9CA3AF (2.4:1 on --bg, fails WCAG AA for the small print it styles: refund lines,
+     field hints, footers). Now the --muted grey (4.6:1); small print stays smaller instead. */
+  --light: #6B7280;
   --bg: #FAFAF9;
   --card: #FFFFFF;
   --border: #E5E7EB;

@@ -18,7 +18,7 @@ export default function Lists() {
   return (
     <CourseShell xp={p.xp} pct={pct} note={synced ? "Saved to your purchase, on any device." : undefined}>
       <div style={{ maxWidth: 860, margin: "0 auto", padding: "8px 0 40px" }}>
-        <a href="/course" style={{ fontSize: 13, color: "var(--muted)", textDecoration: "none" }}>&larr; Quest log</a>
+        <a href="/course" style={{ fontSize: 13, color: "var(--muted)", textDecoration: "none" }}>&larr; All lessons</a>
         <h1 style={{ fontFamily: font.serif, fontSize: 32, fontWeight: 700, margin: "10px 0 6px" }}>Your people and applications</h1>
         <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "var(--muted)", maxWidth: "62ch", margin: "0 0 22px" }}>The two lists that run the search. Lessons 3.3, 3.6 and 4.7 write to the same ones, so log things wherever you are and they show up here.</p>
         {ready && (

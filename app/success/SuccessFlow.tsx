@@ -15,7 +15,7 @@ const LOADING_MSGS = [
   "Payment confirmed. Generating your full package...",
   "Rewriting every bullet for hiring managers...",
   "Drafting your cover letter and interview prep...",
-  "Building your gap analysis and LinkedIn headline...",
+  "Finding what the job wants that you don't show yet...",
   "Still working — thorough results take a little longer. Hang tight...",
 ];
 

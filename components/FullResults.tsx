@@ -157,7 +157,14 @@ export default function FullResults({
           <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
             {copyText && open && <CopyButton text={copyText} />}
             {refineKey && open && refine(refineKey)}
-            <span style={{ fontSize: 18, color: "var(--muted)", transform: open ? "rotate(0)" : "rotate(-90deg)", transition: "transform 0.2s" }}>▾</span>
+            {/* The header row toggles on click; this arrow is the keyboard and screen-reader way in. */}
+            <button
+              type="button"
+              aria-expanded={open}
+              aria-label={`${open ? "Collapse" : "Expand"} ${typeof title === "string" ? title : "section"}`}
+              onClick={(e) => { e.stopPropagation(); toggleSection(id); }}
+              style={{ background: "none", border: "none", padding: "4px 6px", cursor: "pointer", fontSize: 18, lineHeight: 1, color: "var(--muted)", transform: open ? "rotate(0)" : "rotate(-90deg)", transition: "transform 0.2s", fontFamily: "inherit" }}
+            >▾</button>
           </div>
         </div>
         {open && <div style={{ marginTop: 16 }}>{children}</div>}
@@ -230,17 +237,17 @@ export default function FullResults({
       )}
 
       {requirementsCoverage?.length > 0 && (
-        <Section title="Requirements Coverage" id="coverage">
+        <Section title="How your résumé covers the posting" id="coverage">
           <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 8 }}>The job's top requirements checked against your resume — with a move for every gap.</p>
           <CoverageTable items={requirementsCoverage} />
         </Section>
       )}
 
-      <Section title="Professional Summary" id="summary" copyText={professionalSummary} refineKey="professionalSummary">
+      <Section title="Professional summary" id="summary" copyText={professionalSummary} refineKey="professionalSummary">
         <div style={{ fontSize: 15, lineHeight: 1.7, padding: "12px 16px", background: "var(--accent-bg-subtle)", borderRadius: 8, borderLeft: "3px solid var(--accent)" }}>{professionalSummary}</div>
       </Section>
 
-      <Section title="Translated Experience" id="bullets" copyText={translatedBullets?.map((b: any) => `• ${b.translated}`).join("\n")} refineKey="translatedBullets">
+      <Section title="Your experience, rewritten" id="bullets" copyText={translatedBullets?.map((b: any) => `• ${b.translated}`).join("\n")} refineKey="translatedBullets">
         <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12 }}>Every bullet rewritten for this role.</p>
         {translatedBullets?.map((b: any, i: number) => (
           <div key={i} style={{ marginBottom: 14 }}>
@@ -255,7 +262,7 @@ export default function FullResults({
         ))}
       </Section>
 
-      <Section title="Skills — paste into your resume" id="skills" copyText={skillsSection ? Object.entries(skillsSection).map(([c, s]: any) => `${c}: ${(s as string[]).join(", ")}`).join("\n") : ""}>
+      <Section title="Skills to paste into your résumé" id="skills" copyText={skillsSection ? Object.entries(skillsSection).map(([c, s]: any) => `${c}: ${(s as string[]).join(", ")}`).join("\n") : ""}>
         <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12, lineHeight: 1.6 }}>
           Add these to the Skills section of your resume, using this exact wording — the software that screens applications (and the recruiters searching it) match on these terms. Only keep ones that are true for you.
         </p>
@@ -271,7 +278,7 @@ export default function FullResults({
         ))}
       </Section>
 
-      <Section title="Gap Analysis" id="gaps">
+      <Section title="What the job wants that you don't show yet" id="gaps">
         <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12 }}>Honest assessment + action plan.</p>
         {gapAnalysis?.map((g: any, i: number) => (
           <div key={i} style={{ padding: "14px 16px", background: g.priority === "high" ? "var(--warn-bg)" : g.priority === "medium" ? "#FEF9EF" : "#F0F9FF", borderRadius: 8, marginBottom: 10 }}>
@@ -286,7 +293,7 @@ export default function FullResults({
       </Section>
 
       {proofArtifacts?.length > 0 && (
-        <Section title="Build Your Proof" id="artifacts">
+        <Section title="One thing to build that proves you can do it" id="artifacts">
           <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12 }}>Career changers get hired on evidence, not claims. These artifacts prove you're serious about this field:</p>
           {proofArtifacts.map((a: any, i: number) => (
             <div key={i} style={{ padding: "14px 16px", background: "var(--accent-bg-subtle)", borderRadius: 8, marginBottom: 10 }}>
@@ -301,12 +308,12 @@ export default function FullResults({
         </Section>
       )}
 
-      <Section title="Tailored Cover Letter" id="cover" copyText={coverLetter} refineKey="coverLetter">
+      <Section title="Your cover letter" id="cover" copyText={coverLetter} refineKey="coverLetter">
         <div style={{ fontSize: 14, lineHeight: 1.75, padding: "16px 20px", background: "#FEFEFE", border: "1px solid var(--border)", borderRadius: 8, whiteSpace: "pre-wrap" }}>{coverLetter}</div>
       </Section>
 
       {knockoutAnswers?.length > 0 && (
-        <Section title="Application Screening Questions" id="knockouts">
+        <Section title="Answers for the application questions" id="knockouts">
           <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12 }}>The form questions that silently filter career changers out — and how to answer them for this job:</p>
           {knockoutAnswers.map((k: any, i: number) => (
             <div key={i} style={{ marginBottom: 14 }}>
@@ -317,7 +324,7 @@ export default function FullResults({
         </Section>
       )}
 
-      <Section title="Interview Bridge Statements" id="interview" copyText={talkingPoints?.map((t: any) => `Q: ${t.question}\nA: ${t.bridgeStatement}`).join("\n\n")}>
+      <Section title={`Answering "why are you leaving clinical work?"`} id="interview" copyText={talkingPoints?.map((t: any) => `Q: ${t.question}\nA: ${t.bridgeStatement}`).join("\n\n")}>
         {talkingPoints?.map((tp: any, i: number) => (
           <div key={i} style={{ marginBottom: 16 }}>
             <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 6 }}>Q: {tp.question}</div>
@@ -327,7 +334,7 @@ export default function FullResults({
       </Section>
 
       {ninetyDayPlan?.length > 0 && (
-        <Section title="Your 90-Day Transition Plan" id="roadmap">
+        <Section title="Your 90-day plan" id="roadmap">
           <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 14 }}>Your application campaign for this role — week by week. Referrals and proof beat mass applications.</p>
           <div style={{ position: "relative", paddingLeft: 22 }}>
             <div style={{ position: "absolute", left: 7, top: 6, bottom: 6, width: 2, background: "var(--accent-bg)" }} />
@@ -348,7 +355,7 @@ export default function FullResults({
       )}
 
       {companies.length > 0 && (
-        <Section title="Companies Known to Hire Former SLPs" id="companies">
+        <Section title="Companies that value clinical skills" id="companies">
           <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12 }}>From our curated database of {COMPANY_COUNT} ed-tech and health-tech companies that value clinical skills, sorted by best match for your background. We don't track live vacancies — tap <strong>See open roles</strong> to jump to that company's careers page.</p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
             {companies.map((c, i) => {
@@ -389,7 +396,7 @@ export default function FullResults({
       )}
 
       {stories.length > 0 && (
-        <Section title="SLPs Who Made Similar Transitions" id="stories">
+        <Section title="SLPs who made a similar move" id="stories">
           {stories.map((s, i) => (
             <div key={i} style={{ padding: "12px 14px", background: i % 2 === 0 ? "var(--accent-bg-subtle)" : "#F9FAFB", borderRadius: 8, marginBottom: 8 }}>
               <div style={{ fontSize: 14, fontWeight: 600 }}>{s.name}: {s.from} → {s.to}</div>
