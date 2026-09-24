@@ -321,7 +321,7 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
           <textarea
             id="intake-why"
             style={{ ...S.textarea, minHeight: 60 }}
-            placeholder="Be honest. It never appears in the report; it only shapes the advice."
+            placeholder="Be honest. It never appears in the report and only shapes the advice."
             value={whyLeaving}
             onChange={(e) => setWhyLeaving(e.target.value)}
           />

@@ -2,14 +2,14 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useReducedMotion } from "./course/ui";
-import { priceOf, wasNote } from "@/lib/pricing";
+import { priceOf, wasNote, wasOf } from "@/lib/pricing";
 import { numbersAsText } from "@/components/course/tools";
 import {
   S, Card, CopyButton, Chip, ProgressBar, CoverageTable, focusB, blurB,
 } from "./ui";
 import {
   ROLE_OPTIONS, INDUSTRY_OPTIONS, NOT_SURE_OPTION, WORK_PREFERENCES, STAGE_OPTIONS,
-  getRelevantStories,
+  getRelevantStories, COMPANY_COUNT,
 } from "@/lib/companies";
 import type { UserGoals } from "@/lib/prompts";
 import { track } from "@/lib/analytics";
@@ -176,6 +176,8 @@ export default function SLPCareerSuite() {
   const writingFileRef = useRef<HTMLInputElement>(null);
   const topRef = useRef<HTMLDivElement>(null);
   const [canceledNote, setCanceledNote] = useState<null | "restored" | "plain">(null);
+  // Optional goal fields sit behind one link so the step reads as one decision.
+  const [showGoalExtras, setShowGoalExtras] = useState(false);
 
   const saveDraft = (returnStep: Step) => {
     try {
@@ -254,7 +256,14 @@ export default function SLPCareerSuite() {
     }
   }, [loading, isExploreMode]);
 
-  useEffect(() => { topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }); }, [step]);
+  // Scroll to the top of each new step, but not on first load: on a phone that
+  // jump pushed the sale banner and the site header off-screen before the
+  // reader had seen the page.
+  const firstStepRender = useRef(true);
+  useEffect(() => {
+    if (firstStepRender.current) { firstStepRender.current = false; return; }
+    topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [step]);
 
   // Returning paid customers arrive as /?continue=<stripe_session_id>. Pull their
   // resume and answers back from the server so they never re-enter anything —
@@ -484,13 +493,14 @@ export default function SLPCareerSuite() {
     }
   };
 
-  const handlePaywallClick = async () => {
+  const handlePaywallClick = async (placement: "preview_top" | "paywall" = "paywall") => {
     // The $24 flow had no begin_checkout at all, so its funnel was invisible
     // in GA. No PII: the payload is product identity only.
     track("begin_checkout", {
       currency: "USD",
       value: priceOf("suite"),
       items: [{ item_id: "career_pivot_suite", item_name: `$${priceOf("suite")} Career Pivot Suite` }],
+      placement,
     });
     setError(null); setDebugInfo(null); setStep(STEPS.REDIRECTING);
     try {
@@ -530,15 +540,15 @@ export default function SLPCareerSuite() {
 
   const renderWelcome = () => (
     <div style={{ ...S.wrap, textAlign: "center", padding: "48px 0 20px" }}>
-      <span style={S.tag}>Free Preview • No Account Required</span>
-      <h1 style={{ ...S.h1, fontSize: 36, marginTop: 16 }}>Your SLP resume, translated<br />into a career you actually want.</h1>
-      <p style={{ ...S.p, maxWidth: 520, margin: "0 auto 28px", fontSize: 16 }}>Upload your resume and a job description. We'll show you exactly how your clinical experience maps to non-clinical roles, in language hiring managers understand.</p>
+      <span style={S.tag}>Free preview · No account</span>
+      <h1 style={{ ...S.h1, fontSize: 36, marginTop: 16 }}>Your SLP résumé, translated<br />into a career you actually want.</h1>
+      <p style={{ ...S.p, maxWidth: 520, margin: "0 auto 28px", fontSize: 16 }}>Upload your résumé and one job posting. See exactly how your clinical experience maps to that role, in the words a hiring manager reads.</p>
       <button style={S.btn} onClick={() => setStep(STEPS.RESUME)}
         onMouseEnter={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent-light)")}
         onMouseLeave={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent)")}>
-        Start Your Translation →
+        Start your translation →
       </button>
-      <p style={{ fontSize: 13, color: "var(--light)", marginTop: 14 }}>Takes ~3 minutes • Full package ${priceOf("suite")}{wasNote("suite")}, one-time</p>
+      <p style={{ fontSize: 13, color: "var(--muted)", marginTop: 14 }}>About 3 minutes · Full package ${priceOf("suite")} once{wasNote("suite")}</p>
 
       {/* The product, shown rather than described. A 24-second motion cut of the before/after (Remotion,
           ~/Desktop/slp-transitions-video, ResumeTranslated-Wide), muted and looping; readers who ask for
@@ -588,49 +598,54 @@ export default function SLPCareerSuite() {
 
       <Card style={{ marginTop: 8, textAlign: "left" }}>
         <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>
-          Full package — ${priceOf("suite")}, one-time{wasNote("suite")}
+          Full package · ${priceOf("suite")} once{wasNote("suite")}
         </div>
         <div style={{ fontSize: 12, color: "var(--muted)", marginBottom: 10 }}>
           Everything above, plus:
         </div>
         <DeliverablesGraphic />
         <div style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", margin: "10px 0 16px" }}>
-          What lands in your inbox: rewritten resume content, a cover letter, and a 90-day plan — the resume and letter as Word docs you keep.
+          What lands in your inbox: rewritten résumé content, a cover letter and a 90-day plan, with the résumé and letter as Word docs you keep.
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px 20px" }}>
+        {/* Twelve checkmarks in one grid read as a wall. Three groups of four,
+            named for what each helps with, scan in the order a buyer uses them. */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: "12px 22px" }}>
           {[
-            "Every bullet rewritten, not just 3",
-            "Professional summary + ATS skills section",
-            "Tailored cover letter in your voice",
-            "30-second elevator pitch",
-            "LinkedIn headline + About section",
-            "Gap analysis + proof-artifact plan",
-            "Application screening-question answers",
-            "Interview bridge statements",
-            "Your 90-day transition plan",
-            "Companies that hire former SLPs",
-            "Word doc downloads (resume content + cover letter)",
-            "Rewrite the summary, bullets, cover letter, pitch or LinkedIn on request (up to 10 times)",
-          ].map((t, i) => (
-            <div key={i} style={{ fontSize: 14, display: "flex", gap: 8, padding: "3px 0" }}>
-              <span style={{ color: "var(--accent)", flexShrink: 0 }}>✓</span>
-              <span>{t}</span>
+            { head: "Your résumé", items: ["Every bullet rewritten, not just 3", "Professional summary and ATS skills section", "Word doc downloads", "Rewrite any section on request, up to 10 times"] },
+            { head: "Your application", items: ["Cover letter in your voice", "Screening-question answers", "LinkedIn headline and About section", `${COMPANY_COUNT} health and ed-tech companies that value clinical skills`] },
+            { head: "Interviews and after", items: ["30-second elevator pitch", "Interview bridge statements", "Gap analysis and proof-artifact plan", "Your 90-day transition plan"] },
+          ].map((g) => (
+            <div key={g.head}>
+              <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 4 }}>{g.head}</div>
+              {g.items.map((t) => (
+                <div key={t} style={{ fontSize: 14, display: "flex", gap: 8, padding: "3px 0", lineHeight: 1.45 }}>
+                  <span style={{ color: "var(--accent)", flexShrink: 0 }}>✓</span>
+                  <span>{t}</span>
+                </div>
+              ))}
             </div>
           ))}
         </div>
         <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 10, lineHeight: 1.6 }}>
-          The Word docs give you your rewritten content to drop into your own resume layout — we don't reformat your whole resume file.
+          The Word docs hold your rewritten content to drop into your own résumé layout. We don&rsquo;t reformat your whole file.
         </div>
       </Card>
+
+      {/* The page used to end on a card with no button: a reader who scrolled
+          through the package to decide had to scroll back up to start. */}
+      <div style={{ margin: "22px 0 8px" }}>
+        <button style={S.btn} onClick={() => setStep(STEPS.RESUME)}>Start your translation →</button>
+        <p style={{ fontSize: 13, color: "var(--muted)", marginTop: 10 }}>Free preview first. You pay only if you want the full package.</p>
+      </div>
 
       <Card style={{ marginTop: 8, textAlign: "left" }}>
         <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 6 }}>Not sure what role you want yet?</div>
         <div style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.65, marginBottom: 10 }}>
-          Two options that don't need a job posting. Take the <a href="/quiz" style={{ color: "var(--accent)", fontWeight: 600 }}>2-minute career quiz</a> for a direction with real salary ranges — or start here and select{" "}
-          <strong style={{ color: "var(--accent)" }}>"Not sure yet — help me explore"</strong> on the next screen to get free role matches based on your resume.
+          Two options that don&rsquo;t need a job posting. Take the <a href="/quiz" style={{ color: "var(--accent)", fontWeight: 600 }}>2-minute career quiz</a> for a direction with real salary ranges, or start here and pick{" "}
+          <strong style={{ color: "var(--accent)" }}>"Not sure yet — help me explore"</strong> on the next screen for free role matches from your résumé.
         </div>
         <div style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.6 }}>
-          From either one you can add the <strong>Pivot Report</strong> ($9) — your readiness profile, which stage you're in, your top 3 paths with entry doors, and a 30-day plan.
+          From either one you can add the <strong>Pivot Report</strong> (${priceOf("report")}): your readiness profile, which stage you&rsquo;re in, your top 3 paths with entry doors, and a 30-day plan.
         </div>
       </Card>
     </div>
@@ -711,9 +726,13 @@ export default function SLPCareerSuite() {
         <button style={S.btnOut} onClick={() => setStep(STEPS.WELCOME)}>← Back</button>
         <button style={{ ...S.btn, opacity: resumeText.length < 50 || parsing ? 0.4 : 1 }} disabled={resumeText.length < 50 || parsing} onClick={() => setStep(reportIntent ? STEPS.REPORT_INTAKE : STEPS.GOALS)}>Continue →</button>
       </div>
+      {resumeText.length < 50 && !parsing && (
+        <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>Upload or paste your résumé to continue.</p>
+      )}
     </div>
   );
 
+  const goalExtrasOpen = showGoalExtras || !!goals.topSkills || !!goals.whyLeaving || (goals.targetIndustries || []).length > 0;
   const renderGoals = () => (
     <div style={S.wrap}>
       <ProgressBar step={2} total={isExploreMode ? 3 : 4} />
@@ -746,9 +765,9 @@ export default function SLPCareerSuite() {
             }} />
           ))}
         </div>
-        {!isExploreMode && (
+        {!isExploreMode && goalExtrasOpen && (
           <div style={{ marginTop: 18 }}>
-            <label style={S.label}>Any industry preference? <span style={{ fontWeight: 400, color: "var(--light)" }}>(optional — most of these roles exist in every industry)</span></label>
+            <label style={S.label}>Any industry preference? <span style={{ fontWeight: 400, color: "var(--muted)" }}>(optional, since most of these roles exist in every industry)</span></label>
             <div style={{ display: "flex", flexWrap: "wrap" }}>
               {INDUSTRY_OPTIONS.map((ind) => {
                 const sel = (goals.targetIndustries || []).includes(ind);
@@ -783,7 +802,7 @@ export default function SLPCareerSuite() {
       {isExploreMode && (
         <div style={{ marginBottom: 24, padding: 20, background: "var(--accent-bg-subtle)", borderRadius: 12, border: "1px solid var(--accent-bg)" }}>
           <label style={{ ...S.label, color: "var(--accent)", fontSize: 15, marginBottom: 4 }}>What aspects of your work do you actually enjoy?</label>
-          <p style={{ fontSize: 13, color: "var(--muted)", marginBottom: 12, marginTop: 0 }}>Pick at least 3. Be honest — this is what we'll use to suggest roles that fit you.</p>
+          <p style={{ fontSize: 13, color: "var(--muted)", marginBottom: 12, marginTop: 0 }}>Pick at least 3. Be honest, because this is what we use to suggest roles that fit you.</p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
             {WORK_PREFERENCES.map((p) => {
               const sel = goals.workPreferences.includes(p.id);
@@ -806,7 +825,7 @@ export default function SLPCareerSuite() {
           <div style={{ marginTop: 20 }}>
             <label style={{ ...S.label, color: "var(--accent)", fontSize: 15, marginBottom: 4 }}>Where are you in this so far?</label>
             <p style={{ fontSize: 13, color: "var(--muted)", marginBottom: 12, marginTop: 0 }}>
-              There's no wrong answer — this tells us which advice is useful to you right now and which would just be noise.
+              There&rsquo;s no wrong answer. It tells us which advice is useful to you right now and which would just be noise.
             </p>
             {STAGE_OPTIONS.map((s) => {
               const sel = goals.transitionStage === s.label;
@@ -825,15 +844,22 @@ export default function SLPCareerSuite() {
         </div>
       )}
 
+      {!goalExtrasOpen && (
+        <button type="button" onClick={() => setShowGoalExtras(true)} style={{ background: "none", border: "none", padding: 0, marginBottom: 22, color: "var(--accent)", fontWeight: 600, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}>
+          + Add {isExploreMode ? "" : "an industry, "}skills or your reason for leaving (optional)
+        </button>
+      )}
+      {goalExtrasOpen && (<>
       <div style={{ marginBottom: 20 }}>
-        <label style={S.label}>Skills to highlight <span style={{ fontWeight: 400, color: "var(--light)" }}>(optional)</span></label>
+        <label style={S.label}>Skills to highlight <span style={{ fontWeight: 400, color: "var(--muted)" }}>(optional)</span></label>
         <textarea style={{ ...S.textarea, minHeight: 70 }} placeholder="data analysis, project management, training..." value={goals.topSkills} onChange={(e) => setGoals((p) => ({ ...p, topSkills: e.target.value }))} onFocus={focusB} onBlur={blurB} />
       </div>
 
       <div style={{ marginBottom: 24 }}>
-        <label style={S.label}>Why are you transitioning? <span style={{ fontWeight: 400, color: "var(--light)" }}>(optional)</span></label>
-        <textarea style={{ ...S.textarea, minHeight: 60 }} placeholder="Burnout? Curiosity? Want autonomy? Be honest — this never appears in your documents, it just helps us frame your story." value={goals.whyLeaving} onChange={(e) => setGoals((p) => ({ ...p, whyLeaving: e.target.value }))} onFocus={focusB} onBlur={blurB} />
+        <label style={S.label}>Why are you transitioning? <span style={{ fontWeight: 400, color: "var(--muted)" }}>(optional)</span></label>
+        <textarea style={{ ...S.textarea, minHeight: 60 }} placeholder="Burnout? Curiosity? Want autonomy? Be honest. It never appears in your documents and only shapes how we frame your story." value={goals.whyLeaving} onChange={(e) => setGoals((p) => ({ ...p, whyLeaving: e.target.value }))} onFocus={focusB} onBlur={blurB} />
       </div>
+      </>)}
 
       <div style={{ display: "flex", gap: 12 }}>
         <button style={S.btnOut} onClick={() => setStep(STEPS.RESUME)}>← Back</button>
@@ -843,6 +869,9 @@ export default function SLPCareerSuite() {
           <button style={{ ...S.btn, opacity: goals.targetRoles.length === 0 ? 0.4 : 1 }} disabled={goals.targetRoles.length === 0} onClick={() => setStep(STEPS.JOB)}>Continue →</button>
         )}
       </div>
+      {(isExploreMode ? goals.workPreferences.length < 3 : goals.targetRoles.length === 0) && (
+        <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>{isExploreMode ? "Pick at least 3 things you enjoy to continue." : "Pick at least one kind of work to continue."}</p>
+      )}
     </div>
   );
 
@@ -934,6 +963,9 @@ export default function SLPCareerSuite() {
         <button style={S.btnOut} onClick={() => setStep(STEPS.GOALS)}>← Back</button>
         <button style={{ ...S.btn, opacity: (jobDesc.length < 50 || !jobTitle) ? 0.4 : 1 }} disabled={jobDesc.length < 50 || !jobTitle} onClick={() => setStep(STEPS.EMAIL)}>Continue →</button>
       </div>
+      {(jobDesc.length < 50 || !jobTitle) && (
+        <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>Add the job title and paste the description to continue.</p>
+      )}
     </div>
   );
 
@@ -1124,7 +1156,7 @@ export default function SLPCareerSuite() {
     return (
       <div style={S.wrap}>
         <div style={{ textAlign: "center", marginBottom: 28 }}>
-          <span style={S.tag}>Free Preview</span>
+          <span style={S.tag}>Free preview</span>
           <h2 style={{ ...S.h2, marginTop: 12 }}>Your SLP → {jobTitle} Translation</h2>
         </div>
 
@@ -1138,10 +1170,23 @@ export default function SLPCareerSuite() {
           </div>
         </Card>
 
+        {/* The only buy button used to sit ~2,000px down, under the whole
+            preview. The score is the moment of value, so offer it here too
+            (GA placement preview_top vs paywall). */}
+        <div style={{ textAlign: "center", margin: "0 0 22px" }}>
+          <button style={{ ...S.btn, padding: "13px 24px", minHeight: 46, fontSize: 15 }} onClick={() => handlePaywallClick("preview_top")}>
+            Rewrite every bullet for this job · ${priceOf("suite")} →
+          </button>
+          <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>
+            Plus the cover letter, your LinkedIn and the interview answers. One payment, 30-day refund.
+            {wasOf("suite") ? ` $${priceOf("suite")} for a limited time, usually $${wasOf("suite")}.` : ""}
+          </div>
+        </div>
+
         {requirementsCoverage?.length > 0 && (
           <Card>
             <h3 style={{ ...S.h3, marginBottom: 4 }}>How your score breaks down</h3>
-            <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 8 }}>The job's top requirements, checked against your resume:</p>
+            <p style={{ fontSize: 13, color: "var(--muted)", marginBottom: 8 }}>The job&rsquo;s top requirements, checked against your résumé:</p>
             <CoverageTable items={requirementsCoverage} />
           </Card>
         )}
@@ -1185,19 +1230,27 @@ export default function SLPCareerSuite() {
 
         <Card style={{ textAlign: "center", border: "1.5px solid var(--accent)", background: "linear-gradient(135deg, var(--accent-bg-subtle) 0%, #fff 100%)" }}>
           <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>Get the full translation package</h3>
-          <p style={{ ...S.p, maxWidth: 440, margin: "0 auto 16px" }}>Every bullet rewritten, cover letter, gap analysis, interview prep, LinkedIn headline, and companies hiring — all for this exact role.</p>
-          {fullVersionIncludes?.map((item: string, i: number) => (
-            <div key={i} style={{ fontSize: 14, padding: "3px 0", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, color: "var(--text)" }}>
-              <span style={{ color: "var(--accent)" }}>✓</span> {item}
-            </div>
-          ))}
-          <button style={{ ...S.btn, padding: "14px 40px", fontSize: 16, marginTop: 20 }} onClick={handlePaywallClick}
-            onMouseEnter={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent-light)")}
-            onMouseLeave={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent)")}>
-            Get Full Results — ${priceOf("suite")}
-          </button>
-          <p style={{ fontSize: 13, fontWeight: 600, color: "var(--accent)", marginTop: 10, marginBottom: 2 }}>One-time payment. No subscription, no auto-renewal — ever.</p>
-          <p style={{ fontSize: 12, color: "var(--light)", marginTop: 4 }}>Secure checkout via Stripe. Results on screen + emailed to you. Not happy? Email us within 30 days for a full refund.</p>
+          <p style={{ ...S.p, maxWidth: 440, margin: "0 auto 16px" }}>Every bullet rewritten, the cover letter, gap analysis, interview prep and your LinkedIn, all for this exact role.</p>
+          {/* Left-aligned: a centred checklist has a ragged left edge the eye can't scan down. */}
+          <div style={{ display: "inline-block", textAlign: "left", maxWidth: 440 }}>
+            {fullVersionIncludes?.map((item: string, i: number) => (
+              <div key={i} style={{ fontSize: 14, padding: "3px 0", display: "flex", alignItems: "flex-start", gap: 8, color: "var(--text)", lineHeight: 1.5 }}>
+                <span style={{ color: "var(--accent)", flexShrink: 0 }}>✓</span> <span>{item}</span>
+              </div>
+            ))}
+          </div>
+          <div>
+            <button style={{ ...S.btn, padding: "14px 40px", fontSize: 16, marginTop: 20 }} onClick={() => handlePaywallClick("paywall")}
+              onMouseEnter={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent-light)")}
+              onMouseLeave={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent)")}>
+              Get the full package · ${priceOf("suite")} →
+            </button>
+          </div>
+          <p style={{ fontSize: 13, fontWeight: 600, color: "var(--accent)", marginTop: 10, marginBottom: 2 }}>
+            One-time payment. No subscription, no auto-renewal, ever.
+            {wasOf("suite") ? ` $${priceOf("suite")} for a limited time, usually $${wasOf("suite")}.` : ""}
+          </p>
+          <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 4 }}>Secure checkout via Stripe. Results on screen and emailed to you. Not happy? Email us within 30 days for a full refund.</p>
         </Card>
 
         <div style={{ textAlign: "center", marginTop: 12 }}>

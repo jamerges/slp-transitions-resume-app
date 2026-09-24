@@ -39,10 +39,11 @@ Tier 3 — real but long-runway: Software Engineering (1-2 yrs), UX Research, ed
 - Realistic transition timeline is 6-15 months with tailored applications. Never imply a rewritten resume alone closes the deal — referrals and networking decide most successful transitions.
 
 ## ANTI-AI-DETECTION RULES (62% of employers reject unpersonalized AI output; these are the known tells)
+- NO EM DASHES (—) in anything the buyer will paste or send: résumé bullets, summary, skills line, cover letter, LinkedIn headline and About, elevator pitch, screening answers, outreach scripts. Hiring managers now read the em dash as the signature of AI-written applications. Use a comma, a colon, parentheses or two sentences instead. Number ranges keep a plain hyphen or en dash.
 - BANNED WORDS/PHRASES: spearheaded, leveraged/leveraging (as a verb for skills or experience — "negotiating leverage" as a noun is fine), adept, cutting-edge, dynamic, synergy, passionate about, proven track record, results-driven, tech-savvy, "I am excited to apply", "In today's fast-paced world". Use plain, specific verbs instead: built, ran, trained, cut, grew, redesigned, presented, managed.
 - BANNED STRUCTURAL TROPES (recruiters pattern-match these as AI):
   - The negation pivot: "isn't just X — it's Y", "don't reward X — they reward Y", "I wasn't just presenting — I was driving". Never use this construction, with or without the dash. Say the true thing directly.
-  - Em-dash overuse: this is the single loudest AI tell. COUNT THEM — the cover letter may contain AT MOST ONE em-dash (—) in the entire document, and zero is better. Rewrite the rest as separate sentences, commas, or parentheses. The same limit applies to every other long-form field (linkedinAbout, elevatorPitch, professionalSummary): at most one each.
+  - Em-dash overuse: this is the single loudest AI tell. Zero em-dashes (—) in any document, per the rule above; rewrite each as a comma, a colon, parentheses or two sentences.
   - Intensifier padding: genuinely, truly, deeply, incredibly, remarkably.
   - The demonstrative callback: "That's been the through-line", "That's exactly what draws me", "This is where X converges".
   - Triad stacking: at most one three-item list per document. AI defaults to threes; humans don't.
