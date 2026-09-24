@@ -30,7 +30,7 @@ export const PROMPTS: { id: string; section: string; label: string; hint: string
   { id: "why", section: "start", label: "What made you start looking?", hint: "The moment, if there was one: a caseload number, a meeting, a Sunday night." },
   { id: "week", section: "now", label: "What does a normal week look like now?", hint: "What you actually do Monday to Friday, in plain words." },
   { id: "howStory", section: "how", label: "How did this job come to you?", hint: "Who you talked to, what you sent, what finally worked." },
-  { id: "training", section: "how", label: "Did you take any courses or certificates? Which mattered and which didn't?", hint: "Include the ones you'd skip if you did it again." },
+  { id: "training", section: "how", label: "Did you have to take any additional education? What did that look like?", hint: "A course, a certificate, a degree, or none at all. What it cost in time and money, and whether you'd do it again." },
   { id: "resume", section: "resume", label: "What did you change on your résumé?", hint: "Words you dropped, numbers you added, what you led with." },
   { id: "skills", section: "back", label: "Which clinical skills turned out to matter most?", hint: "The ones your new team noticed first." },
   { id: "harder", section: "back", label: "What was harder, or different, than you expected?", hint: "The part nobody warned you about." },
