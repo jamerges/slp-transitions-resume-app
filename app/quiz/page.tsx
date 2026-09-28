@@ -16,7 +16,7 @@ export const metadata = {
 export default async function QuizPage({
   searchParams,
 }: {
-  searchParams: Promise<{ path?: string; result?: string }>;
+  searchParams: Promise<{ path?: string; result?: string; done?: string }>;
 }) {
   const params = await searchParams;
   const initialPath = (params.path || params.result || "").toLowerCase() || undefined;
@@ -25,7 +25,7 @@ export default async function QuizPage({
     <PageShell>
       {/* The intro lives inside CareerQuiz so it disappears once there's a
           result — by then they've taken the quiz and just want the answer. */}
-      <CareerQuiz initialPath={initialPath} showIntro={!initialPath} companyCount={COMPANY_COUNT} />
+      <CareerQuiz initialPath={initialPath} initialDone={params.done} showIntro={!initialPath} companyCount={COMPANY_COUNT} />
     </PageShell>
   );
 }
