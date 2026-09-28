@@ -298,12 +298,14 @@ export const COMPANIES_DB: Company[] = [
 /** The count every surface quotes. Derived, so it cannot drift from the list again. */
 export const COMPANY_COUNT = COMPANIES_DB.length;
 
+// Real people only: both have interviews on slptransitions.com. Three
+// anonymous entries ("Former SLP", "Career Changer", "Transitioner") with
+// polished quotes nobody could trace were removed 2026-09-28 (James): an
+// unsourced quote in the free preview is an invented testimonial. Add a story
+// only with the person's permission and a link to where they said it.
 export const TRANSITION_STORIES: TransitionStory[] = [
   { name: "Emily H.", from: "Pediatric School SLP", to: "Research Coordinator", setting: "Pediatric neuroscience lab", quote: "I didn't need a new degree. I just needed to show them I already had the skills.", tags: ["Research", "Clinical Research", "Program Management"] },
   { name: "Jon", from: "SLP with Clinical Doctorate", to: "Entertainment Industry PA", setting: "Entertainment law firm", quote: "If you are not happy where you are, move. You are not a tree.", tags: ["Career Change", "Non-traditional", "Quality of Life"] },
-  { name: "Former SLP", from: "Medical SLP", to: "EdTech Product Manager", setting: "K-12 EdTech company", quote: "Every IEP meeting was stakeholder management. I just didn't know what to call it.", tags: ["EdTech", "Product Management", "Instructional Design"] },
-  { name: "Career Changer", from: "School-based SLP", to: "UX Researcher", setting: "Health tech startup", quote: "I literally interviewed people for a living — turns out that's a job in tech too.", tags: ["UX Research", "HealthTech", "User Research"] },
-  { name: "Transitioner", from: "SNF SLP", to: "Customer Success Manager", setting: "SaaS company", quote: "Managing 50 patients with complex needs? That's a client portfolio. Same skills, better hours.", tags: ["Customer Success", "HealthTech", "SaaS"] },
 ];
 
 // What you'd DO. Ordered roughly by how often SLPs actually land these.
