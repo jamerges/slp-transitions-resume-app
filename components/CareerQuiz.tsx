@@ -5,7 +5,7 @@ import { useReducedMotion } from "./course/ui";
 import { priceOf, wasNote } from "@/lib/pricing";
 import { S, Card, ProgressBar, focusB, blurB } from "./ui";
 import { track } from "@/lib/analytics";
-import { QUESTIONS, PATHS, STAGES, pathImage, scoreQuiz, stageFromLabel, type QuizAnswers, type QuizPath } from "@/lib/quiz";
+import { QUESTIONS, PATHS, STAGES, encodeQuizAnswers, pathImage, scoreQuiz, stageFromLabel, type QuizAnswers, type QuizPath } from "@/lib/quiz";
 import StageMap from "./StageMap";
 import { offerForStage, mapUrl } from "@/lib/stage-map";
 import ProductMenu, { type ProductKey } from "./ProductMenu";
@@ -176,7 +176,9 @@ export default function CareerQuiz({
       const saved = JSON.parse(sessionStorage.getItem(SAVE_KEY) || "null");
       const top = saved && PATHS[saved.top];
       if (!top) return;
-      setAnswers((a) => ({ ...a, stage: Array.isArray(saved.stage) ? saved.stage : [] }));
+      // The full answer set comes back too: the report is built from it.
+      const savedAnswers = saved.answers && typeof saved.answers === "object" ? saved.answers : {};
+      setAnswers((a) => ({ ...a, ...savedAnswers, stage: Array.isArray(saved.stage) ? saved.stage : [] }));
       setEmail(typeof saved.email === "string" ? saved.email : "");
       setName(typeof saved.name === "string" ? saved.name : "");
       setResult({ top, runnerUp: (saved.runnerUp && PATHS[saved.runnerUp]) || null });
@@ -193,7 +195,7 @@ export default function CareerQuiz({
     if (!result || preset) return;
     try {
       sessionStorage.setItem(SAVE_KEY, JSON.stringify({
-        top: result.top.slug, runnerUp: result.runnerUp?.slug || null, stage: answers.stage || [], email, name,
+        top: result.top.slug, runnerUp: result.runnerUp?.slug || null, stage: answers.stage || [], answers, email, name,
       }));
     } catch { /* ignore */ }
   }, [result]);
@@ -254,6 +256,8 @@ export default function CareerQuiz({
           email,
           returnTo: "quiz",
           quizStage: stageKey || undefined,
+          // What the report is built from when there's no résumé (most buyers).
+          quiz: { a: encodeQuizAnswers(answers), top: top.slug, ru: result?.runnerUp?.slug || null, st: stageKey || null },
           goals: {
             targetRoles: [top.roleOption],
             targetIndustries: [],
@@ -478,7 +482,7 @@ export default function CareerQuiz({
                 {buying ? "Opening checkout…" : `Get my Pivot Report · $${REPORT_PRICE} →`}
               </button>
               <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>
-                Which of the twenty paths your résumé already qualifies you for. 30-day refund, no questions.
+                Your three paths, the first job title in each and a 30-day plan, built from the answers you just gave. It opens the moment you pay. 30-day refund, no questions.
               </div>
             </>
           )}
@@ -549,9 +553,10 @@ export default function CareerQuiz({
             <div style={{ textAlign: "center" }}>
               <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>This is the general version.</h3>
               <p style={{ ...S.p, maxWidth: 470, margin: "0 auto 18px" }}>
-                Everything above is what we'd tell any SLP who scored like you. Your{" "}
-                <strong>Pivot Report</strong> is built from your actual résumé: what
-                to do first, and what you specifically already qualify for.
+                Everything above is what we&rsquo;d tell any SLP who landed on this path. Your{" "}
+                <strong>Pivot Report</strong> is written from your quiz answers: what you&rsquo;ve done,
+                how much time and money you can spare, and where you are right now. It opens the
+                moment you pay. Add your résumé afterwards and we rebuild it around your experience, free.
               </p>
             </div>
 
@@ -566,9 +571,9 @@ export default function CareerQuiz({
               {[
                 "The stage you're actually in, and what to do first because of it",
                 "A week-by-week 30-day plan sized for someone working full-time",
-                "3 LinkedIn outreach scripts written in your voice, ready to send",
-                "Your 3 best-fit roles, chosen from your real experience rather than a quiz score",
-                "Which of your clinical work already reads as qualified, in their words",
+                "3 LinkedIn messages to people who already made the move, written for you",
+                "Your 3 best-fit paths, with the first job title to apply for in each",
+                "What the work you've already done proves to an employer",
                 "Honest timelines and tradeoffs for your situation",
               ].map((line) => (
                 <div key={line} style={{ display: "flex", gap: 9, alignItems: "flex-start", marginBottom: 9, fontSize: 14, lineHeight: 1.6 }}>
@@ -593,7 +598,7 @@ export default function CareerQuiz({
                   <textarea
                     value={resumeText}
                     onChange={(e) => setResumeText(e.target.value)}
-                    placeholder="Paste the text of your résumé here and the report starts building the moment you pay. Skip it and we'll ask after checkout."
+                    placeholder="Paste your résumé and the report is built around your experience. Skip it and it's built from your answers; you can add the résumé afterwards."
                     rows={5}
                     style={{ ...S.textarea, minHeight: 110, fontSize: 14 }}
                   />
@@ -628,7 +633,7 @@ export default function CareerQuiz({
               <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 10, lineHeight: 1.6 }}>
                 One-time payment, no subscription ever. 30-day refund if it doesn&rsquo;t help.
                 <br />
-                No job posting needed.{isDesktop ? " " : " You add your résumé right after checkout, so there's no need to find it now."}
+                No job posting or résumé needed. Your report opens the moment you pay.
               </p>
             </div>
 
@@ -729,7 +734,7 @@ export default function CareerQuiz({
               Get the kit · ${GROUND_PRICE} →
             </a>
             <p style={{ fontSize: 13, lineHeight: 1.65, color: "var(--muted)", margin: "14px 0 0" }}>
-              Rather start from your résumé? The{" "}
+              Want something written for you? The{" "}
               <button
                 type="button"
                 disabled={buying}
@@ -741,7 +746,7 @@ export default function CareerQuiz({
               >
                 {buying ? "opening checkout…" : `$${REPORT_PRICE} Pivot Report`}
               </button>{" "}
-              reads it against these paths and tells you which ones you already qualify for.
+              turns your answers into three paths, the first job title in each and a 30-day plan, on screen the moment you pay.
             </p>
             {buyError && <div style={{ fontSize: 13, color: "var(--warn)", marginTop: 10 }}>{buyError}</div>}
             <div style={{ borderTop: "1px solid var(--border)", marginTop: 18, paddingTop: 14 }}>

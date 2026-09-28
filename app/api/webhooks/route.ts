@@ -102,7 +102,9 @@ async function fulfil(session: Stripe.Checkout.Session): Promise<void> {
 
     const hasResume = !!inputs?.resumeText && inputs.resumeText.trim().length >= 50;
 
-    if (!hasResume) {
+    // The $9 report no longer waits on a résumé: report-finalize builds the
+    // quiz edition from the answers carried through checkout (2026-09-28).
+    if (!hasResume && product !== "report") {
       // Pay-first path: the resume arrives on /report. Send the way back from
       // here rather than trusting the browser to have loaded that page at all.
       if (email && (await claimOnce(`resume_link:${sessionId}`))) {
@@ -138,7 +140,8 @@ async function fulfil(session: Stripe.Checkout.Session): Promise<void> {
       await sendOpsAlert({ subject: `Sale: $${amount} — awaiting resume`, lines: note });
       return;
     }
-    note.push(`status: delivered by webhook (email sent: ${body?.emailSent === true})`);
+    const edition = body?.report?.edition ? `, ${body.report.edition} edition` : "";
+    note.push(`status: delivered by webhook (email sent: ${body?.emailSent === true}${edition})`);
     await sendOpsAlert({ subject: `Sale: $${amount} (delivered)`, lines: note });
   } catch (err: any) {
     console.error("[stripe-webhook] fulfilment error", err);

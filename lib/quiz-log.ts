@@ -43,6 +43,22 @@ export async function completionsBetween(fromMs: number, toMs: number): Promise<
   return out;
 }
 
+/** The newest completion for an address: what a buyer's report falls back on
+ *  when their checkout inputs have expired. Scans newest first. */
+export async function latestCompletionFor(email: string): Promise<Completion | null> {
+  const r = getRedis(); if (!r) return null;
+  const want = email.trim().toLowerCase();
+  if (!want) return null;
+  const rows = (await r.zrange(KEY, 0, -1, { rev: true, withScores: true })) as (string | number)[];
+  for (let i = 0; i + 1 < rows.length; i += 2) {
+    try {
+      const m = typeof rows[i] === "string" ? JSON.parse(String(rows[i])) : (rows[i] as any);
+      if (m?.e === want) return { email: m.e, slug: m.s, name: m.n || undefined, stage: m.st || undefined, ts: Number(rows[i + 1]) };
+    } catch { /* skip malformed */ }
+  }
+  return null;
+}
+
 export async function isUnsubscribed(email: string): Promise<boolean> {
   const r = getRedis(); if (!r) return false;
   return !!(await r.get(`unsub:${email.toLowerCase()}`));

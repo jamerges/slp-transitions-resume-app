@@ -194,7 +194,7 @@ export function PageShell({ children, wide = false }: { children: ReactNode; wid
               <div style={{ fontSize: 13, color: "var(--muted)" }}>Career Pivot Suite</div>
             </div>
           </a>
-          <nav style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
+          <nav className="no-print" style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
             {NAV.map((n) => (
               <a
                 key={n.label}

@@ -52,3 +52,9 @@ button { font-family: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .slp-sheet-in { animation: none; opacity: 1; transform: none; }
 }
+
+/* "Save as PDF" on the report: keep the report, drop the page chrome. */
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff !important; }
+}

@@ -8,12 +8,12 @@ import { SUPPORT_EMAIL } from "@/lib/contact";
 
 type FetchState =
   | { status: "loading"; message: string }
-  | { status: "intake"; email: string; targetRole: string }
+  | { status: "intake"; email: string; targetRole: string; upgradeFrom?: any }
   | { status: "ready"; data: any }
   | { status: "error"; reason: string };
 
 const LOADING_MSGS = [
-  "Payment confirmed. Reading your story...",
+  "Payment confirmed. Reading your answers...",
   "Mapping your experience to realistic paths...",
   "Building your 30-day starter plan...",
   "Still working. A thorough report takes a little longer, so hang tight...",
@@ -50,6 +50,8 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
   const [submitting, setSubmitting] = useState(false);
   // True when the stage came pre-picked from the buyer's quiz answer.
   const [stageFromQuiz, setStageFromQuiz] = useState(false);
+  // Set when the rebuild from a résumé failed; they keep the quiz edition.
+  const [upgradeNote, setUpgradeNote] = useState("");
 
   useEffect(() => {
     const i = setInterval(() => {
@@ -85,6 +87,15 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
       return;
     }
     if (resp.ok && data.report) {
+      if (data.upgradeFailed) {
+        setUpgradeNote("We couldn't rebuild it from your résumé just now, so here is your report as it was. Try adding it again in a few minutes.");
+      }
+      // The report email's "Add my résumé" button lands here with ?add=resume.
+      const wantsAdd = typeof window !== "undefined" && new URLSearchParams(window.location.search).get("add") === "resume";
+      if (wantsAdd && data.report.edition === "quiz" && !data.upgradeFailed) {
+        openUpgrade(data);
+        return;
+      }
       setState({ status: "ready", data });
       return;
     }
@@ -117,6 +128,18 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
       })
     );
   }, [sessionId]);
+
+  function openUpgrade(data: any) {
+    const known = STAGE_OPTIONS.find((o) => o.label === data.transitionStage);
+    if (known) { setStage((cur) => cur || known.label); setStageFromQuiz(true); }
+    setState({ status: "intake", email: data.email || "", targetRole: "", upgradeFrom: data });
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("add");
+      window.history.replaceState(null, "", url.toString());
+      window.scrollTo(0, 0);
+    } catch { /* ignore */ }
+  }
 
   async function handleFile(file: File) {
     setParsing(true);
@@ -191,16 +214,34 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
     const tooShort = resumeText.trim().length > 0 && resumeText.trim().length < 50;
     return (
       <div style={S.wrap}>
-        <div style={{ textAlign: "center", marginBottom: 18 }}>
-          <span style={S.tag}>✓ Payment confirmed</span>
-          <h1 style={{ ...S.h1, fontSize: 28, marginTop: 12 }}>
-            You&rsquo;re in. Now let&rsquo;s make it yours.
-          </h1>
-          <p style={{ ...S.p, maxWidth: 480, margin: "8px auto 0" }}>
-            Add your résumé and the report reads your actual experience rather than a quiz score.
-            {state.targetRole ? ` We'll build it around ${state.targetRole}.` : ""}
-          </p>
-        </div>
+        {state.upgradeFrom ? (
+          <div style={{ textAlign: "center", marginBottom: 18 }}>
+            <h1 style={{ ...S.h1, fontSize: 28, marginTop: 12 }}>
+              Rebuild your report around your experience
+            </h1>
+            <p style={{ ...S.p, maxWidth: 480, margin: "8px auto 0" }}>
+              Your report is built from your quiz answers. Your résumé tells it what you&rsquo;ve actually done, so the paths, the reasons and the messages get specific. Free, once.
+            </p>
+            <button
+              type="button"
+              onClick={() => setState({ status: "ready", data: state.upgradeFrom })}
+              style={{ background: "none", border: "none", color: "var(--accent)", fontFamily: "inherit", fontSize: 14, cursor: "pointer", marginTop: 8, textDecoration: "underline" }}
+            >
+              ← Back to my report
+            </button>
+          </div>
+        ) : (
+          <div style={{ textAlign: "center", marginBottom: 18 }}>
+            <span style={S.tag}>✓ Payment confirmed</span>
+            <h1 style={{ ...S.h1, fontSize: 28, marginTop: 12 }}>
+              You&rsquo;re in. Now let&rsquo;s make it yours.
+            </h1>
+            <p style={{ ...S.p, maxWidth: 480, margin: "8px auto 0" }}>
+              Add your résumé and the report reads your actual experience rather than a quiz score.
+              {state.targetRole ? ` We'll build it around ${state.targetRole}.` : ""}
+            </p>
+          </div>
+        )}
 
         {/* Six of the first eight buyers stalled right here, most of them on a
             phone with no résumé file. The LinkedIn Experience section is on
@@ -211,7 +252,9 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
             <strong>On your phone, with no résumé file?</strong>{" "}Open your LinkedIn profile, copy the
             Experience section and paste it below. That&rsquo;s enough to build it now.
             <div style={{ marginTop: 6, color: "var(--muted)" }}>
-              Rather do it from a computer? We emailed you this page{state.email ? ` at ${state.email}` : ""}, and the link works for 7 days.
+              {state.upgradeFrom
+                ? "Rather do it from a computer? The \"Add my résumé\" button in your report email opens this page."
+                : `Rather do it from a computer? We emailed you this page${state.email ? ` at ${state.email}` : ""}, and the link works for 7 days.`}
             </div>
           </div>
         </Card>
@@ -337,7 +380,7 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
           disabled={submitting}
           onClick={submitIntake}
         >
-          {submitting ? "Building…" : "Build my Pivot Report →"}
+          {submitting ? "Building…" : state.upgradeFrom ? "Rebuild my report →" : "Build my Pivot Report →"}
         </button>
         <p style={{ fontSize: 12.5, color: "var(--muted)", textAlign: "center", marginTop: 8, marginBottom: 32 }}>
           Takes 30–60 seconds. We&rsquo;ll also email you a copy.
@@ -357,12 +400,34 @@ export default function ReportFlow({ sessionId }: { sessionId?: string }) {
     );
   }
 
+  const data = state.data;
   return (
-    <ReportResults
-      report={state.data.report}
-      email={state.data.email}
-      emailSent={state.data.emailSent}
-      sessionId={sessionId}
-    />
+    <>
+      {data.report?.edition === "quiz" && (
+        <div className="no-print" style={{ ...S.wrap, paddingBottom: 0 }}>
+          <Card style={{ background: "var(--accent-bg-subtle)", borderColor: "var(--accent)", marginBottom: 0 }}>
+            <div style={{ fontSize: 14, lineHeight: 1.65 }}>
+              {upgradeNote ? (
+                <div role="alert" style={{ color: "var(--err)", marginBottom: 8 }}>{upgradeNote}</div>
+              ) : null}
+              <strong>Built from your quiz answers.</strong>{" "}Add your résumé or your LinkedIn Experience section and we&rsquo;ll rebuild it around the work you&rsquo;ve actually done, free, once.
+            </div>
+            <button
+              type="button"
+              style={{ ...S.btn, marginTop: 12, padding: "11px 18px", fontSize: 14 }}
+              onClick={() => { setUpgradeNote(""); openUpgrade(data); }}
+            >
+              Add my résumé
+            </button>
+          </Card>
+        </div>
+      )}
+      <ReportResults
+        report={data.report}
+        email={data.email}
+        emailSent={data.emailSent}
+        sessionId={sessionId}
+      />
+    </>
   );
 }

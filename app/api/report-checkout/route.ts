@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { STAGE_OPTIONS } from "@/lib/companies";
+import { intakeStageLabel, sanitizeQuizSnapshot } from "@/lib/report-quiz";
 import { assertKeyPriceMatch, assertPriceAmount } from "@/lib/stripe-guard";
 import { priceOf } from "@/lib/pricing";
 import { assertReadableResume } from "@/lib/anthropic";
@@ -7,12 +7,6 @@ import Stripe from "stripe";
 import { stashInputs } from "@/lib/stash";
 import type { ExploreInput } from "@/lib/prompts";
 import { randomUUID } from "crypto";
-
-// Quiz stage (how it feels) → intake stage (what they've done). A best guess the
-// buyer can change on /report; "panic" has usually only read, not talked.
-const QUIZ_TO_INTAKE_STAGE: Record<string, string> = {
-  private: "thinking", guilt: "thinking", permission: "reading", panic: "reading", action: "applying",
-};
 
 export const runtime = "nodejs";
 
@@ -33,7 +27,7 @@ const REPORT_PRICE_ID =
 export async function POST(req: Request) {
   try {
     // `email` and `returnTo` ride along from the quiz; the wizard sends neither.
-    const inputs = (await req.json()) as ExploreInput & { email?: string; returnTo?: string; quizStage?: string };
+    const inputs = (await req.json()) as ExploreInput & { email?: string; returnTo?: string; quizStage?: string; quiz?: unknown };
     if (!inputs.goals) {
       return NextResponse.json({ error: "Missing required inputs" }, { status: 400 });
     }
@@ -57,12 +51,25 @@ export async function POST(req: Request) {
     await assertPriceAmount(getStripe(), REPORT_PRICE_ID, priceOf("report"), "Pivot Report");
     // The quiz already asked where the buyer is. Carry it through so the
     // post-payment intake opens with that answer picked instead of asking again.
-    if (inputs.quizStage && inputs.goals && !inputs.goals.transitionStage) {
-      const id = QUIZ_TO_INTAKE_STAGE[inputs.quizStage];
-      const opt = STAGE_OPTIONS.find((o) => o.id === id);
-      if (opt) inputs.goals.transitionStage = opt.label;
+    // The quiz answers themselves, so the report can be built the moment
+    // payment clears instead of waiting on a résumé (report-finalize).
+    const quiz = sanitizeQuizSnapshot(inputs.quiz);
+    if (quiz) inputs.quiz = quiz;
+    else delete inputs.quiz;
+    // With the snapshot aboard, report-finalize derives the stage itself, so
+    // leave the long label out: a quiz payload then fits Stripe metadata and
+    // checkout still works if Redis is down.
+    if (!quiz && inputs.quizStage && inputs.goals && !inputs.goals.transitionStage) {
+      inputs.goals.transitionStage = intakeStageLabel(inputs.quizStage);
     }
     delete inputs.quizStage;
+    const fromQuiz = inputs.returnTo === "quiz";
+    delete inputs.returnTo;
+    if (quiz && !inputs.resumeText) {
+      const g: any = inputs.goals;
+      for (const k of Object.keys(g)) if (g[k] === "" || (Array.isArray(g[k]) && !g[k].length)) delete g[k];
+      for (const k of ["resumeText", "jobTitle", "jobDesc"] as const) if (!(inputs as any)[k]) delete (inputs as any)[k];
+    }
     const stashKey = randomUUID();
     // Explore inputs are always > 450 chars (resume text), so this goes to Redis.
     const { inMetadata, payload } = await stashInputs(stashKey, inputs as any);
@@ -79,7 +86,6 @@ export async function POST(req: Request) {
     // typed their address at the result gate, so prefill it rather than asking
     // twice; wizard buyers type it on Stripe's page.
     const email = typeof inputs.email === "string" ? inputs.email.trim() : "";
-    const fromQuiz = inputs.returnTo === "quiz";
     const session = await getStripe().checkout.sessions.create({
       mode: "payment",
       line_items: [{ price: REPORT_PRICE_ID, quantity: 1 }],

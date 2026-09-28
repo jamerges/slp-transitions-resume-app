@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 import { priceOf, wasNote } from "./pricing";
-import { STAGES, pathImage, type StageKey } from "@/lib/quiz";
+import { PATHS, STAGES, pathImage, type StageKey } from "@/lib/quiz";
 import { STAGE_MAP, offerForStage, mapUrl } from "@/lib/stage-map";
 import { SUPPORT_EMAIL } from "./contact";
 
@@ -663,7 +663,11 @@ export async function sendReportEmail(input: {
   const { to, report: r, sessionId } = input;
   // Carry their resume forward so the $24 upsell is one paste, not a re-entry.
   const topRoleLabel = r?.topRoles?.[0]?.role || "";
-  const continueParam = sessionId
+  // The quiz edition has no résumé to carry, so it starts the Suite with the path picked.
+  const quizRoleOption = Object.values(PATHS).find((p) => p.label === topRoleLabel)?.roleOption || "";
+  const continueParam = r?.edition === "quiz"
+    ? `/?from=quiz${quizRoleOption ? `&path=${encodeURIComponent(quizRoleOption)}` : ""}`
+    : sessionId
     ? `/?continue=${encodeURIComponent(sessionId)}${topRoleLabel ? `&path=${encodeURIComponent(topRoleLabel)}` : ""}`
     : "";
   const sec = (title: string, body: string) =>
@@ -699,6 +703,14 @@ export async function sendReportEmail(input: {
     <div style="font-size:20px;font-weight:700;color:#2D6A4F;font-family:Georgia,serif;">SLP Transitions</div>
     <div style="font-size:13px;color:#6B7280;">Your Pivot Report</div>
   </div>
+  ${
+    r.edition === "quiz" && sessionId
+      ? `<div style="background:#F0FAF3;border:1px solid #B7E4C7;border-radius:10px;padding:14px 16px;margin-bottom:20px;font-size:14px;line-height:1.6;">
+          This report is built from your quiz answers. Add your résumé or your LinkedIn Experience section and we'll rebuild it around the work you've actually done, free, once.
+          <div style="margin-top:10px;"><a href="${APP_URL}/report?session_id=${encodeURIComponent(sessionId)}&amp;add=resume" style="display:inline-block;background:#0B6B54;color:#fff;text-decoration:none;font-weight:600;padding:10px 16px;border-radius:8px;">Add my résumé</a></div>
+        </div>`
+      : ""
+  }
   ${r.headline ? `<p style="font-size:16px;line-height:1.7;font-weight:500;">${esc(r.headline)}</p>` : ""}
   ${
     r.readinessProfile
@@ -783,7 +795,7 @@ export async function sendReportEmail(input: {
     <div style="text-align:center;">
       <a href="${APP_URL}${continueParam}" style="display:inline-block;padding:14px 32px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Get the full package for $${priceOf("suite")}${wasNote("suite")} →</a>
       <div style="font-size:12px;color:#6B7280;margin-top:10px;">
-        ${continueParam ? "Your resume is already saved. Just add the job posting. " : ""}Free preview first. One-time payment, no subscription, 30-day refund.
+        ${continueParam && r?.edition !== "quiz" ? "Your résumé is already saved. Just add the job posting. " : ""}Free preview first. One-time payment, no subscription, 30-day refund.
       </div>
     </div>
   </div>

@@ -340,3 +340,30 @@ export function scoreQuiz(answers: QuizAnswers): { top: QuizPath; runnerUp: Quiz
   const runnerUp = ranked[1] && ranked[1][1] > 0 ? PATHS[ranked[1][0]] : null;
   return { top, runnerUp };
 }
+
+/**
+ * The quiz answers as they ride through the $9 checkout: option indexes per
+ * question, so the whole set fits in a few dozen characters. The report built
+ * from them (lib/report-quiz.ts) decodes them back into the reader's own words.
+ */
+export interface QuizSnapshot {
+  /** question id → chosen option indexes */
+  a?: Record<string, number[]>;
+  /** top path slug */
+  top: string;
+  /** runner-up path slug */
+  ru?: string | null;
+  /** stage key (private | guilt | permission | panic | action) */
+  st?: string | null;
+}
+
+export function encodeQuizAnswers(answers: QuizAnswers): Record<string, number[]> {
+  const out: Record<string, number[]> = {};
+  for (const q of QUESTIONS) {
+    const idx = (answers[q.id] || [])
+      .map((label) => q.options.findIndex((o) => o.label === label))
+      .filter((i) => i >= 0);
+    if (idx.length) out[q.id] = idx;
+  }
+  return out;
+}

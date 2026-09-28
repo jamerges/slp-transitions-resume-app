@@ -1,5 +1,6 @@
 import { Redis } from "@upstash/redis";
 import type { UserGoals } from "./prompts";
+import type { QuizSnapshot } from "./quiz";
 import { SUPPORT_EMAIL } from "./contact";
 
 export interface StashedInputs {
@@ -9,6 +10,7 @@ export interface StashedInputs {
   goals: UserGoals;
   email: string;
   writingSample?: string;
+  quiz?: QuizSnapshot;
 }
 
 // Stripe caps each individual metadata VALUE at 500 characters — not the
@@ -126,10 +128,33 @@ export async function rateLimit(
   }
 }
 
-export async function stashResult(sessionId: string, result: any): Promise<void> {
+export async function stashResult(sessionId: string, result: any, ttlSeconds: number = TTL_SECONDS): Promise<void> {
   const r = getRedis();
   if (!r) return;
-  await r.set(`result:${sessionId}`, JSON.stringify(result), { ex: TTL_SECONDS });
+  await r.set(`result:${sessionId}`, JSON.stringify(result), { ex: ttlSeconds });
+}
+
+/**
+ * Like claimOnce, but fails OPEN: with no Redis it returns true. For locks
+ * whose failure mode must be "do it anyway" (build and email a paid report),
+ * never "silently skip".
+ */
+export async function claimOrProceed(key: string, ttlSeconds: number = TTL_SECONDS): Promise<boolean> {
+  const r = getRedis();
+  if (!r) return true;
+  try {
+    const res = await r.set(`once:${key}`, "1", { nx: true, ex: ttlSeconds });
+    return res === "OK";
+  } catch {
+    return true;
+  }
+}
+
+/** Undo a claimOnce, so a failed generation doesn't lock out the retry. */
+export async function releaseOnce(key: string): Promise<void> {
+  const r = getRedis();
+  if (!r) return;
+  await r.del(`once:${key}`);
 }
 
 export async function retrieveResult(sessionId: string): Promise<any | null> {

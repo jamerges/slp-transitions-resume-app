@@ -1,6 +1,7 @@
 "use client";
 
 import { S, Card, CopyButton } from "./ui";
+import { PATHS } from "@/lib/quiz";
 import { priceOf, wasNote } from "@/lib/pricing";
 
 // Every transition moves through the same four stages. Showing all of them —
@@ -92,6 +93,15 @@ export default function ReportResults({
             ✓ A copy is in your inbox ({email})
           </p>
         )}
+        {/* Most buyers read this on a phone; a saved PDF outlives the tab. */}
+        <button
+          type="button"
+          className="no-print"
+          onClick={() => window.print()}
+          style={{ background: "none", border: "none", color: "var(--accent)", fontFamily: "inherit", fontSize: 13, cursor: "pointer", marginTop: 4, textDecoration: "underline" }}
+        >
+          Save as PDF
+        </button>
       </div>
 
       {r.headline && (
@@ -222,7 +232,7 @@ export default function ReportResults({
       <Card style={{ textAlign: "center", border: "1.5px solid var(--accent)", background: "linear-gradient(135deg, var(--accent-bg-subtle) 0%, #fff 100%)" }}>
         <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>Ready to start applying?</h3>
         <p style={{ ...S.p, maxWidth: 440, margin: "0 auto 16px" }}>
-          Find one real job posting. The Career Pivot Suite rewrites every bullet, the cover letter, your LinkedIn and the interview answers for it, and your r&eacute;sum&eacute; carries over from here.
+          Find one real job posting. The Career Pivot Suite rewrites every bullet, the cover letter, your LinkedIn and the interview answers for it{r.edition === "quiz" ? "" : <>, and your r&eacute;sum&eacute; carries over from here</>}.
         </p>
         <button
           style={{ ...S.btn, padding: "14px 40px", fontSize: 16 }}
@@ -230,6 +240,13 @@ export default function ReportResults({
             // Carry their resume AND their top path forward, so they land on the
             // job-posting step rather than re-picking a target role.
             const top = r.topRoles?.[0]?.role || "";
+            // The quiz edition has no résumé to carry, so start the Suite
+            // fresh with the path picked rather than on an empty posting step.
+            if (r.edition === "quiz") {
+              const opt = Object.values(PATHS).find((p) => p.label === top)?.roleOption || "";
+              window.location.href = `/?from=quiz${opt ? `&path=${encodeURIComponent(opt)}` : ""}`;
+              return;
+            }
             window.location.href = sessionId
               ? `/?continue=${encodeURIComponent(sessionId)}${top ? `&path=${encodeURIComponent(top)}` : ""}`
               : "/";
@@ -238,7 +255,7 @@ export default function ReportResults({
           Try it free &middot; ${priceOf("suite")} &rarr;
         </button>
         <p style={{ fontSize: 12, color: "var(--light)", marginTop: 8 }}>
-          {sessionId ? "Your resume carries over, so you only add the posting. " : ""}Free preview first, ${priceOf("suite")} once{wasNote("suite")}, no subscription.
+          {sessionId && r.edition !== "quiz" ? "Your résumé carries over, so you only add the posting. " : ""}Free preview first, ${priceOf("suite")} once{wasNote("suite")}, no subscription.
         </p>
       </Card>
     </div>

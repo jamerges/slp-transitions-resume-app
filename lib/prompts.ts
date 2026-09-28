@@ -1,3 +1,6 @@
+import { PATHS, STAGES, type QuizSnapshot, type StageKey } from "./quiz";
+import { quizAnswerLines } from "./report-quiz";
+
 export interface UserGoals {
   targetRoles: string[];
   /** Optional — added after launch, so older stashed sessions may omit it. */
@@ -52,6 +55,8 @@ export interface ExploreInput {
   goals: UserGoals;
   /** Absent for quiz buyers, who never see the preference step. */
   workPreferenceLabels?: string[];
+  /** Quiz buyers: their answers, top path and stage, for the quiz edition. */
+  quiz?: QuizSnapshot;
 }
 
 export function buildPreviewPrompt(input: PreviewInput): string {
@@ -240,24 +245,72 @@ ${resumeText}
 
 ${INFER_NOTE}${(goals.targetIndustries || []).length ? `\nIndustries they're drawn to: ${(goals.targetIndustries || []).join(", ")}` : ""}${roles.filter((r) => !r.startsWith("Not sure")).length ? `\nRoles they've considered: ${roles.join(", ")}` : ""}${prefs.length ? `\nWork aspects they enjoy: ${prefs.join(", ")}` : ""}${goals.topSkills ? `\nSkills they want to highlight: ${goals.topSkills}` : ""}${goals.whyLeaving ? `\nWhy they want to transition: ${goals.whyLeaving}` : ""}
 
-TRANSITION READINESS PROFILES (assign exactly one, based on their inputs):
+${reportBody(goals)}`;
+}
+
+/**
+ * The quiz edition of the Pivot Report: same JSON as buildReportPrompt, built
+ * from the quiz answers alone. Salary ranges and timelines come from PATHS
+ * (content/research-facts.md), never from the model.
+ */
+export function buildQuizReportPrompt(input: ExploreInput, snap: QuizSnapshot): string {
+  const { goals } = input;
+  const top = PATHS[snap.top];
+  const ru = snap.ru ? PATHS[snap.ru] : null;
+  const answers = quizAnswerLines(snap);
+  const stage = snap.st && STAGES[snap.st as StageKey] ? STAGES[snap.st as StageKey].label : "";
+  const phase = snap.st === "action" ? "Leap" : "Ground";
+  const stageLine = stage
+    ? `STAGE: their answer to "Which of these sounds most like right now?" was "${stage}". Place them in ${phase}. In "basedOn" and at the start of "diagnosis", refer to that answer in their words; never describe it as anything they did not pick.`
+    : goals.transitionStage
+    ? "" // an older checkout stored the intake label; reportBody's own mapping reads it
+    : `STAGE: they did not answer the stage question. Say so plainly in the diagnosis and place them in Ground.`;
+  const facts = Object.values(PATHS)
+    .map((p) => `- ${p.label}: ${p.range}; typically ${p.timeline}. Entry door: ${p.entryDoor} Honest catch: ${p.caveat}`)
+    .join("\n");
+  return `An SLP just bought a Pivot Report straight from the SLP Transitions career quiz. This is the QUIZ EDITION: it is built only from their quiz answers, because they have not shared a résumé. It is a paid product, so it must feel personal and worth the money. Use their own answers everywhere, and never invent facts about them.
+
+Today is ${today()}.
+
+WHAT YOU KNOW, AND IT IS ALL YOU KNOW:
+${answers.length ? answers.join("\n") : `(Only their result survived: the individual answers were not stored.${stage ? ` Their stage answer: "${stage}".` : ""} You know NOTHING else about them: not their energy, time, income needs, preferences or experience. Do not describe any of those. Write "whyYou" about why SLPs in general do well on the path, and say in the diagnosis that adding their résumé will make it specific.)`}
+Their scored top path: ${top.label}.${ru ? ` Runner-up: ${ru.label}.` : ""}
+
+HARD RULES FOR THIS EDITION:
+- You have NOT seen their résumé. Never state or guess their years of experience, clinical setting, employer, caseload, population, extra credentials or achievements. Speak from what they picked ("you told us you've trained colleagues").
+- If they picked "Not yet. My experience is mostly direct treatment", be honest and kind about it: name what treatment work already proves to an employer and what they will need to show on top.
+- Their income and time answers set the pace. "Running on empty" gets a plan sized for one or two hours a week. "Match or beat my SLP pay from day one" means you flag any path whose range may start below that.
+- Never mention a quiz score, points or an algorithm. Say "your answers".
+- NUMBERS: the only figures you may use are the ranges and timelines in PATH FACTS, prices named inside PATH FACTS, and the outreach hit rate given below. No other statistics, percentages, reply rates, application counts or dollar amounts, anywhere, including honestTruths.
+- No em dashes (—) anywhere. Use a comma, a colon or a full stop.
+
+PATH FACTS (documented ranges from SLP Transitions research; use these, never your own figures):
+${facts}
+
+HOW TO CHOOSE topRoles: the first is their top path (${top.label}). The second is ${ru ? `the runner-up (${ru.label})` : "the best-fitting other path"}. The third is the best-fitting remaining path from PATH FACTS, preferring one that respects their income and time answers. For each: "role" is the path name as listed; "salaryRange" is the listed range, copied exactly; "timeline" is the listed timeline, copied exactly; "entryPath" builds on the listed entry door and names the first job title to apply for; "firstMove" is one thing they can do this week in under an hour.
+
+${reportBody(goals, true, stageLine)}`;
+}
+
+function reportBody(goals: UserGoals, quiz = false, stageLine = ""): string {
+  return `TRANSITION READINESS PROFILES (assign exactly one, based on their inputs):
 - "The Depleted Expert": running on empty, needs recovery-paced plan; strength is deep competence they can't currently see
 - "The Quiet Researcher": has been reading/lurking for months, needs permission to act; strength is they already know more than they think
 - "The Restless Builder": energy and ideas but scattered focus, needs one target; strength is momentum
 - "The Ready Leaper": clear-eyed and prepared, needs tactics not therapy; strength is decisiveness
 
-STAGE (do NOT guess — they told you): they reported "${goals.transitionStage || "not specified"}".
-Map it exactly: "Just thinking about it"/"Reading and researching" → Ground. "Talked with people who've made the jump" → Explore. "Taken a course, built something, or tried a project" → Test. "Applying and/or interviewing now" → Leap. If not specified, say so plainly in the diagnosis and place them in Ground.
+${stageLine || `STAGE (do NOT guess — they told you): they reported "${goals.transitionStage || "not specified"}".
+Map it exactly: "Just thinking about it"/"Reading and researching" → Ground. "Talked with people who've made the jump" → Explore. "Taken a course, built something, or tried a project" → Test. "Applying and/or interviewing now" → Leap. If not specified, say so plainly in the diagnosis and place them in Ground.`}
 What each stage means: Ground = getting clear on direction and what you already have. Explore = researching real roles and talking to people in them. Test = running small experiments to build proof. Leap = applying, interviewing, negotiating.
-The "diagnosis" field MUST open by naming the evidence — reference what they actually told you (e.g. "You've had conversations but haven't built anything to point at yet, which puts you at the end of Explore"). Never assert a stage without tying it to their own answer. If their resume or answers suggest they're further along than they reported, say that too.
+The "diagnosis" field MUST open by naming the evidence — reference what they actually told you (e.g. "You've had conversations but haven't built anything to point at yet, which puts you at the end of Explore"). Never assert a stage without tying it to their own answer. ${quiz ? "If their other answers suggest they're further along than they reported, say that too." : "If their resume or answers suggest they're further along than they reported, say that too."}
 
 Return ONLY this JSON:
 {
-  "headline": "One warm, specific sentence naming what you see in their situation — their years, their setting, their direction",
+  "headline": "${quiz ? "One warm, specific sentence naming what you see in their answers: what they have done, what they want, what they can spare" : "One warm, specific sentence naming what you see in their situation — their years, their setting, their direction"}",
   "readinessProfile": {"profile": "one of the four names", "meaning": "2-3 sentences on what this profile means for THEM specifically", "watchOutFor": "the trap this profile falls into", "superpower": "the strength this profile underrates"},
   "phase": {"name": "Ground|Explore|Test|Leap", "basedOn": "one short clause naming the specific answer this is based on, e.g. 'you've had conversations but haven't tested a direction yet'", "diagnosis": "2 sentences opening with that evidence, then what it means for them", "focusNow": "the ONE thing to focus on in this stage", "notYet": "what to explicitly NOT worry about yet"},
   "topRoles": [
-    {"role": "specific role title", "whyYou": "2-3 sentences tying THEIR resume specifics to this role", "salaryRange": "realistic range", "timeline": "realistic months range", "entryPath": "the realistic entry door (entry roles, certs that matter, certs that don't)", "firstMove": "one concrete action this week"}
+    {"role": "specific role title", "whyYou": "${quiz ? "2-3 sentences tying THEIR quiz answers to this role, quoting or closely paraphrasing what they picked" : "2-3 sentences tying THEIR resume specifics to this role"}", "salaryRange": "realistic range", "timeline": "realistic months range", "entryPath": "the realistic entry door (entry roles, certs that matter, certs that don't)", "firstMove": "one concrete action this week"}
   ],
   "thirtyDayPlan": [
     {"week": "Week 1", "theme": "short theme", "actions": ["2-3 concrete actions, sized for someone working full-time"]}
@@ -266,7 +319,7 @@ Return ONLY this JSON:
     "why": "1-2 sentences on why outreach beats applying cold, with the honest hit rate (roughly 1 in 4 never reply; the majority do, and silence is normal rather than rejection)",
     "whoToMessage": ["2-3 specific kinds of people THIS person should message, given their background — e.g. 'SLPs who now have your target title (search LinkedIn for \\"CCC-SLP\\" + the title)'"],
     "messages": [
-      {"scenario": "e.g. Cold message to a stranger who made this exact move", "template": "A short, sendable LinkedIn message under 90 words, written in first person AS THIS PERSON with their real specifics filled in (their setting, their years, their target role). No [brackets] except where a name genuinely varies, like [Name]. It must sound like a human wrote it at their kitchen table, not a recruiter."}
+      {"scenario": "e.g. Cold message to a stranger who made this exact move", "template": "A short, sendable LinkedIn message under 90 words, ${quiz ? "written in first person AS THIS PERSON; you do not know their setting, years or employer, so use [your setting] and [X years] as the only brackets besides [Name]" : "written in first person AS THIS PERSON with their real specifics filled in (their setting, their years, their target role)"}. No [brackets] except where a name genuinely varies, like [Name]. It must sound like a human wrote it at their kitchen table, not a recruiter."}
     ],
     "followUp": "One sentence on when and how to follow up once, without being annoying"
   },
@@ -274,7 +327,7 @@ Return ONLY this JSON:
   "closing": "2-3 warm sentences. Permission-granting, not hype. Reference something specific from their story."
 }
 
-Provide exactly 3 topRoles (ordered by fit-times-realism, grounded in where SLPs actually land per your role knowledge — use real salary/timeline data), 4 thirtyDayPlan weeks, and exactly 3 outreach.messages covering: (1) a cold message to a stranger who made this move, (2) a message to a dormant contact/former colleague, and (3) a follow-up after a good conversation that asks for a referral without asking for a job. If their "why" mentions burnout or exhaustion, honor it in the diagnosis with compassion but keep all forward-looking language pull-framed. Valid JSON only.`;
+${quiz ? "Provide exactly 3 topRoles, chosen and ordered as the PATH FACTS section says" : "Provide exactly 3 topRoles (ordered by fit-times-realism, grounded in where SLPs actually land per your role knowledge — use real salary/timeline data)"}, 4 thirtyDayPlan weeks, and exactly 3 outreach.messages covering: (1) a cold message to a stranger who made this move, (2) a message to a dormant contact/former colleague, and (3) a follow-up after a good conversation that asks for a referral without asking for a job. If their "why" mentions burnout or exhaustion, honor it in the diagnosis with compassion but keep all forward-looking language pull-framed. Valid JSON only.`;
 }
 
 export function buildExplorePrompt(input: ExploreInput): string {

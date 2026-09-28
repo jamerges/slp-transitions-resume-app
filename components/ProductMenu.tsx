@@ -32,7 +32,7 @@ export const PRODUCTS: Record<ProductKey, { name: string; price: number; answers
     price: priceOf("report"),
     answers: "Ready to pick a path?",
     cta: { direct: "Get the report", via: "Take the quiz" },
-    detail: "Upload your résumé and get three paths you already qualify for, plus what to do in the first 30 days.",
+    detail: "Three paths that fit your quiz answers, the first job title in each and your first 30 days. It opens the moment you pay; add your résumé later and we rebuild it free.",
   },
   suite: {
     name: "Career Pivot Suite",

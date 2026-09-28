@@ -1,22 +1,27 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { claimOnce, retrieveInputs, retrieveResult } from "@/lib/stash";
-import { sendReportReminderEmail, sendOpsAlert } from "@/lib/email";
+import { retrieveResult } from "@/lib/stash";
+import { sendOpsAlert } from "@/lib/email";
 
 /**
- * Daily sweep for $9 buyers who paid but never added a resume.
+ * Daily safety net for $9 buyers whose report never got built.
  *
- * Why this exists: on 2026-09-03 a replay showed four of the first six Pivot
- * Report buyers had stalled at the resume step. They got one link on purchase
- * day and then nothing. This sends exactly one reminder, 48 hours or more
- * after payment, to anyone still stalled within the last 14 days.
+ * History: from 2026-09-03 this sent "add your résumé" reminders, because a
+ * pay-first buyer got nothing until they uploaded one. Six of the first eight
+ * never did, and none of the six September buyers received a report even
+ * after two reminders each. Since 2026-09-28 report-finalize builds a quiz
+ * edition the moment payment clears, so this now delivers instead of nagging:
+ * any paid report session from the instant era with no stored result gets
+ * built and emailed. Sessions from before then are the hand-rescue list
+ * (content/master-plan.md, Phase 1) and are left alone here, so a personal
+ * note from James isn't pre-empted by a machine one.
  *
  * Invoked by Vercel Cron (see vercel.json). Vercel sends
  * `Authorization: Bearer $CRON_SECRET` when that env var is set; the route
  * refuses to run without it so it cannot be triggered from outside.
  */
 export const runtime = "nodejs";
-export const maxDuration = 60;
+export const maxDuration = 300;
 
 let stripe: Stripe | null = null;
 function getStripe(): Stripe {
@@ -29,6 +34,9 @@ function getStripe(): Stripe {
 }
 
 const DAY = 86_400;
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://app.slptransitions.com";
+/** First checkout that could get the quiz edition. */
+const INSTANT_SINCE = Date.parse("2026-09-28T00:00:00Z") / 1000;
 
 export async function GET(req: Request) {
   const secret = process.env.CRON_SECRET;
@@ -40,56 +48,48 @@ export async function GET(req: Request) {
   }
 
   const now = Math.floor(Date.now() / 1000);
-  const sessions = await getStripe().checkout.sessions.list({
-    created: { gte: now - 14 * DAY, lte: now - 1 * DAY },
+  // Paginate: a busy fortnight can pass 100 sessions, and anything past the
+  // first page would silently go unchecked.
+  const sessions: Stripe.Checkout.Session[] = [];
+  for await (const s of getStripe().checkout.sessions.list({
+    created: { gte: Math.max(now - 14 * DAY, INSTANT_SINCE), lte: now - 3600 },
     status: "complete",
     limit: 100,
-  });
-
-  const reminded: string[] = [];
-  const skipped = { notReport: 0, delivered: 0, hasResume: 0, alreadyReminded: 0, noEmail: 0 };
-
-  for (const s of sessions.data) {
-    if (s.payment_status !== "paid" || s.metadata?.product !== "pivot_report") {
-      skipped.notReport++;
-      continue;
-    }
-    const email = s.customer_details?.email || s.customer_email || "";
-    if (!email) { skipped.noEmail++; continue; }
-
-    const cached = await retrieveResult(s.id);
-    if (cached?.report) { skipped.delivered++; continue; }
-
-    const inputs = (await retrieveInputs(
-      s.metadata?.stash_key || s.id,
-      s.metadata?.payload || null
-    )) as { resumeText?: string } | null;
-    if (inputs?.resumeText && inputs.resumeText.trim().length >= 50) {
-      skipped.hasResume++;
-      continue;
-    }
-
-    // First nudge once the payment is a day old; a second, shorter one at day
-    // five for anyone the first did not move. Each fires once per session.
-    // (The first ran at 48h until 2026-09-15; the key name keeps old claims valid.)
-    const age = now - s.created;
-    if (age >= 5 * DAY && (await claimOnce(`reminder5d:${s.id}`, 30 * DAY))) {
-      await sendReportReminderEmail({ to: email, sessionId: s.id, nudge: 2 });
-      reminded.push(`${email} (second nudge)`);
-      continue;
-    }
-    if (!(await claimOnce(`reminder48:${s.id}`, 30 * DAY))) { skipped.alreadyReminded++; continue; }
-
-    await sendReportReminderEmail({ to: email, sessionId: s.id, nudge: 1 });
-    reminded.push(email);
+  })) {
+    sessions.push(s);
+    if (sessions.length >= 1000) break;
   }
 
-  if (reminded.length) {
+  const todo: Stripe.Checkout.Session[] = [];
+  let delivered = 0;
+  for (const s of sessions) {
+    if (s.payment_status !== "paid" || s.metadata?.product !== "pivot_report") continue;
+    if ((await retrieveResult(s.id))?.report) { delivered++; continue; }
+    todo.push(s);
+  }
+
+  const results = await Promise.allSettled(
+    todo.map(async (s) => {
+      const resp = await fetch(`${APP_URL}/api/report-finalize`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId: s.id }),
+      });
+      const body = await resp.json().catch(() => ({}));
+      const who = s.customer_details?.email || s.customer_email || "(no email)";
+      if (!resp.ok || !body?.report) throw new Error(`${who} ${s.id}: ${resp.status} ${String(body?.error || (body?.needsIntake ? "nothing to build from" : "")).slice(0, 160)}`);
+      return `${who}: built and emailed (${body.report.edition || "?"} edition)`;
+    })
+  );
+  const ok = results.flatMap((r) => (r.status === "fulfilled" ? [r.value] : []));
+  const failed = results.flatMap((r) => (r.status === "rejected" ? [String(r.reason?.message || r.reason)] : []));
+
+  if (ok.length || failed.length) {
     await sendOpsAlert({
-      subject: `Stalled-report reminders sent: ${reminded.length}`,
-      lines: reminded.map((e) => `reminded: ${e}`),
+      subject: failed.length ? `⚠️ Report safety net: ${failed.length} still not delivered` : `Report safety net delivered ${ok.length}`,
+      lines: [...ok, ...failed.map((f) => `FAILED ${f}`)],
     }).catch(() => {});
   }
 
-  return NextResponse.json({ scanned: sessions.data.length, reminded: reminded.length, skipped });
+  return NextResponse.json({ scanned: sessions.length, alreadyDelivered: delivered, built: ok.length, failed: failed.length });
 }
