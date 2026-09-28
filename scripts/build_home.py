@@ -44,7 +44,7 @@ SITE = "https://slptransitions.com"
 STORIES = [
     dict(img="caitlin-mueller-avatar-v1.jpg", name="Caitlin Mueller",
          was="School-based SLP", now="Marketing Manager at an AAC device maker",
-         line="She went sideways first \u2014 clinical consultant at the company \u2014 then into marketing, where knowing the clinical side is the qualification.",
+         line="She took a clinical consultant job at the company first, then moved into marketing, where knowing the clinical side is the qualification.",
          href=f"{SITE}/clinical-consultant-and-marketing/"),
     dict(img="lindsey-ison-avatar-v1.jpg", name="Lindsey Ison",
          was="SLP", now="Enablement Consultant at a tech firm",
@@ -278,8 +278,8 @@ def esc(s):
 
 
 SALE_BANNER = (
-    'Sale: find clarity on your next steps with real career paths '
-    '<span style="opacity:.85;font-weight:400;">&middot; every tool $9, for a limited time</span> &rarr;',
+    'Every tool is $9 until Oct 5 '
+    '<span style="opacity:.85;font-weight:400;">&middot; the Pivot Report, the Career Pivot Suite and the Getting Started kit</span> &rarr;',
     "https://app.slptransitions.com/products",
 )
 
@@ -317,8 +317,9 @@ def build():
     # first nav item.
     a(f'<div class="slp-actions"><a class="slp-btn slp-btn-primary" href="{QUIZ}">Find my career path →</a>'
       f'<a class="slp-btn slp-btn-ghost" href="{APP}">Translate my resume</a></div>')
-    a('<p class="slp-trust"><b>Free</b> · <b>2 minutes</b> · built from '
-      f'<a href="{SITE}/ed-health-tech-jobs/" style="border-bottom:1px solid currentColor">{COMPANY_COUNT} companies</a> that hire former SLPs</p>')
+    # The companies count used to sit here too ("built from 260 companies"),
+    # which isn't how the quiz works and repeated the first proof card.
+    a('<p class="slp-trust"><b>Free</b> · <b>2 minutes</b> · nine questions</p>')
     a('</div>')
 
     # Right column. The three process cards said the same thing as the Guides
@@ -330,9 +331,12 @@ def build():
     # documented, not a ceiling, and the salary top is the top of the
     # *employed* ranges - working for yourself has no equivalent number.
     # The companies figure stays exact because it is an exact count of the list.
-    for n, l in [(str(COMPANY_COUNT), "companies that hire former SLPs"),
+    # James's wording for the list (2026-09-12): companies that value clinical
+    # skills, never "hire former SLPs". The + on $154k is the founder case:
+    # the documented employed ranges top out there, working for yourself doesn't.
+    for n, l in [(str(COMPANY_COUNT), "health and ed-tech companies that value clinical skills"),
                  ("20", "non-clinical paths documented"),
-                 ("$154k+", "top of the documented salary ranges")]:
+                 ("$154k+", "top documented salary, and founders can go past it")]:
         a(f'<article class="slp-proof-card slp-rv"><span class="slp-proof-n">{n}</span>'
           f'<span class="slp-proof-l">{l}</span></article>')
     a('</div></div></div></section>')
@@ -340,7 +344,9 @@ def build():
     # ---- career paths
     # One box pointing at the pillar article, not six cards. The homepage
     # stopped being a comparison table when the article already is one.
-    a('<section class="slp-sec" id="career-paths"><div class="slp-wrap">')
+    # Tight top: the hero already ends in padding, and the two stacked left a
+    # dead band above this box on desktop.
+    a('<section class="slp-sec" id="career-paths" style="padding-top:0"><div class="slp-wrap">')
     a('<a class="slp-pillar slp-rv" href="'
       f'{SITE}/alternative-careers-speech-pathologists-slps/">'
       '<div class="slp-pillar-body">'
@@ -373,20 +379,28 @@ def build():
     # ---- resources
     a('<section class="slp-sec" id="resources"><div class="slp-wrap">')
     a('<div class="slp-sec-intro"><div><p class="slp-kicker">Guides</p>'
-      + '<h2>Find resources whether you&rsquo;re exploring or already applying.</h2></div>'
+      + '<h2>Three reads, in the order most SLPs need them.</h2></div>'
       + '</div>')
     a('<div class="slp-res">')
     for r in RESOURCES:
         a(f'<a class="slp-rv" href="{r["href"]}"><span class="step">{esc(r["step"])}</span>'
           f'<b>{esc(r["title"])}</b><p>{esc(r["copy"])}</p>'
-          f'<span class="arrow">↗</span></a>')
+          f'<span class="arrow">→</span></a>')
     a('</div>')
     a(f'<p style="margin-top:1.8rem"><a class="slp-quiet" href="{SITE}/blog/">Browse every article →</a></p>')
     # companies list gets its own CTA here rather than crowding the final one
     a(f'<div class="slp-band"><div><h3>Know where to look first.</h3>'
-      f'<p>{COMPANY_COUNT} ed-tech, health-tech and speech companies that hire former SLPs, searchable and free.</p></div>'
+      f'<p>{COMPANY_COUNT} health, ed-tech and speech companies that value clinical skills, searchable and free.</p></div>'
       f'<a class="slp-btn slp-btn-ghost" href="{SITE}/ed-health-tech-jobs/">Browse the companies list →</a></div>')
     a('</div></section>')
+
+    # ---- who runs this. A stranger had no way to tell; only documented facts
+    # (CLAUDE.md, email identity) and a link to the About page.
+    a('<div class="slp-wrap"><p class="slp-byline" style="font-size:.98rem;line-height:1.6;color:var(--slate);'
+      'max-width:46em;margin:0 0 clamp(28px,4vw,44px)">'
+      'Built by <b style="color:var(--forest-dark)">James Berges</b>, a former SLP who now works as a content strategist '
+      'at a mental-health-tech company and hosts the Xceptional Leaders podcast. '
+      f'<a class="slp-quiet" href="{SITE}/about/">More about James &rarr;</a></p></div>')
 
     # ---- final cta
     a('<div class="slp-wrap"><section class="slp-final">')

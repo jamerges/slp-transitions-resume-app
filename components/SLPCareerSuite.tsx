@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useReducedMotion } from "./course/ui";
-import { priceOf, wasNote, wasOf } from "@/lib/pricing";
+import { SALE, priceOf, wasNote, wasOf } from "@/lib/pricing";
 import { numbersAsText } from "@/components/course/tools";
 import {
   S, Card, CopyButton, Chip, ProgressBar, CoverageTable, focusB, blurB,
@@ -1182,7 +1182,7 @@ export default function SLPCareerSuite() {
           </button>
           <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>
             Plus the cover letter, your LinkedIn and the interview answers. One payment, 30-day refund.
-            {wasOf("suite") ? ` $${priceOf("suite")} for a limited time, usually $${wasOf("suite")}.` : ""}
+            {wasOf("suite") ? ` $${priceOf("suite")} ${SALE.note}, usually $${wasOf("suite")}.` : ""}
           </div>
         </div>
 
@@ -1251,7 +1251,7 @@ export default function SLPCareerSuite() {
           </div>
           <p style={{ fontSize: 13, fontWeight: 600, color: "var(--accent)", marginTop: 10, marginBottom: 2 }}>
             One-time payment. No subscription, no auto-renewal, ever.
-            {wasOf("suite") ? ` $${priceOf("suite")} for a limited time, usually $${wasOf("suite")}.` : ""}
+            {wasOf("suite") ? ` $${priceOf("suite")} ${SALE.note}, usually $${wasOf("suite")}.` : ""}
           </p>
           <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 4 }}>Secure checkout via Stripe. Results on screen and emailed to you. Not happy? Email us within 30 days for a full refund.</p>
         </Card>

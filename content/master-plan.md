@@ -87,7 +87,7 @@ This is the only priority until it is done.
 4. **Keep offer claims true (Claude).** Build a one-page list of what each product actually delivers, from the output schemas and checkout metadata, and remove any claim the output doesn't support. (Found 2026-09-27: the quiz result said the Suite "includes the $9 Pivot Report". It doesn't, and the claim is gone.)
 5. **Change the pitch to match (Claude, with `product-copy`).** The result page, the result email and the day-2 follow-up promise the instant report: what they get, now, from the answers they just gave, with the résumé as an optional upgrade. One change at a time: the pitch ships in the same deploy as the instant report, and nothing else on the result page changes that week.
 6. **Rescue the stranded buyers (Claude drafts, James sends).** About 10 people paid $9 in August and September and never got a report. For each, generate a quiz edition from their stored quiz completion (`quiz:completions` in Redis holds email, slug and stage). Draft a personal Gmail note from James: sorry, here it is, no action needed, and reply if you want the résumé version. These are the first people who could love this business or bad-mouth it. Also add a line saying they can have a refund if they'd rather.
-7. **Put an end date on the sale (James decides, Claude ships).** Recommended: the sale ends Sunday 2026-10-05. The quiz result, /products, the banner and the WP strip all say "ends Oct 5". Then flip `SALE.on = false`, point the env vars back at the list-price ids, redeploy, and set the WP `SALE_BANNER` to `None`. The report stays at $9 (it is $9 at list). A "limited time" sale with no end is the fake discount product-copy bans.
+7. **Put an end date on the sale (James decides, Claude ships).** Recommended: the sale ends Monday 2026-10-05 (the sale's last day). The quiz result, /products, the banner and the WP strip all say "ends Oct 5". Then flip `SALE.on = false`, point the env vars back at the list-price ids, redeploy, and set the WP `SALE_BANNER` to `None`. The report stays at $9 (it is $9 at list). A "limited time" sale with no end is the fake discount product-copy bans.
 8. **James's 15-minute fixes that cost trust every day they wait:**
    - SiteGround → Email → Forwarders: make `james@slptransitions.com` forward to Gmail. Every buyer reply and every story-form reply goes there today, and on 2026-09-14 nothing sent there had reached Gmail in 90 days.
    - MailerLite → Forms → Pop-ups: turn off the pop-up.
@@ -193,7 +193,7 @@ These stay parked: the employer layer and job board, the B2B hiring partners, SL
 
 ## 10. Decisions James owns (answer these once, then log them above)
 
-1. The sale end date. Decided 2026-09-28: Sunday 2026-10-05.
+1. The sale end date. Decided 2026-09-28: Monday 2026-10-05 (the sale's last day).
 2. Rescue the ~10 stranded report buyers with a personal note and their report. Decided 2026-09-28: yes.
 3. After the sale, the Suite goes back to $24. Decided 2026-09-28; $29-with-report stays a later experiment.
 4. ~~The cohort~~ Decided 2026-09-28: no group call yet. Phase 4 is parked.
