@@ -25,30 +25,6 @@ def company_count() -> int:
     return n
 COMPANY_COUNT = company_count()
 
-# Question one and the sample result come straight from lib/quiz.ts: the hero
-# posts option indexes to /quiz?done=, so the order here must be the app's.
-def _quiz_src() -> str:
-    return open(os.path.join(os.path.dirname(__file__), "..", "lib", "quiz.ts"), encoding="utf-8").read()
-
-def q1_options() -> list:
-    src = _quiz_src()
-    i = src.index('id: "done"')
-    block = src[i:src.index("],", src.index("options: [", i))]
-    labels = re.findall(r'\{ label: "([^"]+)"', block)
-    assert len(labels) >= 6, labels
-    return labels
-
-def path_fields(slug: str) -> dict:
-    src = _quiz_src()
-    i = src.index(f'"{slug}": {{')
-    block = src[i:src.index("\n  },", i)]
-    out = {k: re.search(k + r': "((?:[^"\\]|\\.)*)"', block).group(1).replace('\\"', '"')
-           for k in ("label", "range", "timeline", "firstMove")}
-    return out
-
-Q1 = q1_options()
-SAMPLE = path_fields("customer-success")
-
 # Tags on every quiz link, so GA can say which door gets used.
 def utm(content: str) -> str:
     return f"utm_source=slptransitions&utm_medium=home&utm_content={content}"
@@ -183,10 +159,14 @@ CSS = """
 
 /* hero */
 .slp-hero{padding:clamp(36px,4.5vw,64px) 0 clamp(40px,5vw,64px)}
-.slp-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  grid-template-areas:"copy q" "result q";gap:clamp(24px,3vw,40px) clamp(32px,5vw,72px);align-items:start}
-.slp-hero-copy{grid-area:copy}.slp-hero-q{grid-area:q}.slp-hero-result{grid-area:result}
-.slp-hero-q .slp-q1{margin-top:0}
+.slp-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;
+  gap:clamp(32px,5vw,72px);align-items:center}
+.slp-video{position:relative;margin:0;width:clamp(230px,22vw,290px);aspect-ratio:9/16;border-radius:28px;overflow:hidden;
+  background:#1B1B1E;border:6px solid #fff;box-shadow:0 22px 50px rgba(10,61,49,.18)}
+.slp-video video{display:block;width:100%;height:100%;object-fit:cover}
+.slp-home .slp-sound{position:absolute;right:10px;top:10px;border:0;border-radius:999px;background:rgba(255,255,255,.92);
+  color:var(--forest-dark)!important;font:600 .78rem/1 'DM Sans',system-ui,sans-serif!important;text-transform:none!important;
+  letter-spacing:normal!important;padding:.5rem .75rem;cursor:pointer;box-shadow:none}
 .slp-hero h1{font-size:clamp(2.3rem,4.6vw,3.6rem);line-height:1.04;color:var(--forest-dark)}
 .slp-lede{font-size:clamp(1rem,1.5vw,1.18rem);line-height:1.6;color:var(--slate);
   margin-top:1rem;max-width:34em}
@@ -201,42 +181,6 @@ CSS = """
 .slp-home button.slp-btn-primary:hover{background:var(--forest-dark);transform:translateY(-2px)}
 /* Kadence styles <button> with uppercase, letter-spaced text; this one should read like the others */
 .slp-home button.slp-btn{text-transform:none!important;letter-spacing:normal!important;font-size:1rem!important;line-height:1.2;box-shadow:none}
-/* question one, asked in the hero */
-.slp-q1{background:var(--paper);border:1px solid var(--line);border-radius:16px;
-  padding:clamp(16px,2.2vw,24px);margin-top:1.6rem}
-.slp-q1 fieldset{border:0;margin:0;padding:0;min-width:0}
-.slp-q1-top{display:flex;justify-content:space-between;gap:1rem;font-size:.74rem;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--brand);margin-bottom:.55rem}
-.slp-q1-top span:last-child{color:var(--slate);font-weight:600;letter-spacing:.04em;text-transform:none;font-size:.82rem}
-.slp-q1 legend{font-family:'Fraunces',Georgia,serif;font-size:1.3rem;line-height:1.25;color:var(--forest-dark);padding:0}
-.slp-q1-help{font-size:.86rem;color:var(--slate);margin-top:.3rem!important}
-.slp-chips{display:flex;flex-wrap:wrap;gap:7px;margin:.8rem 0 1rem}
-.slp-chip{position:relative;margin:0}
-.slp-chip input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
-.slp-chip span{display:inline-block;padding:.45rem .75rem;border:1.5px solid var(--line);border-radius:10px;
-  background:#fff;font-size:.88rem;line-height:1.35;color:var(--forest-dark);cursor:pointer;
-  transition:border-color .15s ease,background .15s ease}
-.slp-chip span:hover{border-color:var(--sage)}
-.slp-chip input:checked+span{border-color:var(--forest);background:var(--mint);font-weight:600}
-.slp-chip input:checked+span::before{content:"\\2713\\00a0";color:var(--forest)}
-.slp-chip input:focus-visible+span{outline:2px solid var(--forest);outline-offset:2px}
-.slp-q1 .slp-btn{width:100%}
-.slp-side{font-size:.92rem;color:var(--slate);margin-top:1rem!important}
-.slp-side a{color:var(--forest)!important;font-weight:700;border-bottom:1px solid currentColor}
-/* what a result looks like */
-.slp-result-tag{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:.6rem!important}
-.slp-result-card{background:#FAFAF7;border:1px solid var(--line);border-radius:18px;padding:clamp(22px,3vw,36px);
-  box-shadow:0 14px 34px rgba(10,61,49,.08)}
-.slp-result-card .k{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--forest);margin-bottom:.7rem!important}
-.slp-result-card h3{font-size:clamp(1.6rem,2.8vw,2.3rem);line-height:1.08;color:#1B1B1E}
-.slp-result-card hr{width:44px;height:3px;border:0;background:var(--forest);margin:1rem 0 .8rem}
-.slp-result-card .meta{color:var(--slate);font-size:1rem}
-.slp-result-card .move{margin-top:1.1rem!important;padding:.8rem 1rem;background:var(--mint);border-radius:10px;
-  font-size:.9rem;line-height:1.5;color:var(--forest-dark)}
-.slp-result-card .move b{display:block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);margin-bottom:.2rem}
-.slp-stats{list-style:none;margin:1rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.slp-stats li{font-size:.78rem;line-height:1.35;color:var(--slate);margin:0}
-.slp-stats b{display:block;font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:1.45rem;color:var(--forest);line-height:1.1}
 /* pay chart */
 .slp-compare{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:clamp(22px,3.4vw,44px)}
 .slp-compare h2{font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.12;margin:0 0 .45rem;color:var(--forest-dark)}
@@ -259,6 +203,8 @@ CSS = """
 .slp-trust{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-top:1.4rem;
   font-size:.9rem;color:var(--slate)}
 .slp-trust b{color:var(--forest);font-weight:600}
+.slp-side{font-size:.92rem;color:var(--slate);margin-top:.9rem!important}
+.slp-side a{color:var(--forest)!important;font-weight:700;border-bottom:1px solid currentColor}
 
 /* pathway */
 .slp-proof{display:grid;gap:12px}
@@ -341,7 +287,9 @@ CSS = """
   padding-bottom:.25rem}
 
 @media (max-width:1000px){
-  .slp-hero-grid{grid-template-columns:1fr;grid-template-areas:"copy" "q" "result"}
+  .slp-hero-grid{grid-template-columns:1fr}
+  .slp-hero-media{display:flex;justify-content:center}
+  .slp-video{width:min(240px,64vw)}
   .slp-sec-intro{grid-template-columns:1fr;align-items:start;gap:1.1rem}
   .slp-story-grid{grid-template-columns:1fr 1fr}
   .slp-story-grid > a:last-child{grid-column:1/-1}
@@ -355,9 +303,6 @@ CSS = """
   .slp-row{grid-template-columns:1fr auto;gap:.3rem .8rem}
   .slp-row .slp-track{grid-column:1/-1;grid-row:2}
   .slp-axis{grid-template-columns:1fr}.slp-axis > span{display:none}
-  .slp-stats{grid-template-columns:1fr;gap:6px}
-  .slp-stats li{display:flex;align-items:baseline;gap:.6rem}
-  .slp-stats b{display:inline;font-size:1.2rem}
   .slp-story-grid{grid-template-columns:1fr}
   .slp-story-grid > a:last-child{grid-column:auto}
   .slp-actions{flex-direction:column;align-items:stretch}
@@ -405,67 +350,39 @@ def build():
           .format(SALE_BANNER[1], SALE_BANNER[0]))
 
     # ---- hero
-    # Three blocks in a grid: the copy, question one and a sample result. On a
-    # wide screen question one takes the right column, so its button sits
-    # high; on a phone it comes straight after the headline and the sample
-    # result follows it.
+    # 2026-09-28 (second pass): question one, a sample result and three numbers
+    # in the hero read as too busy (James). Back to one message and one button,
+    # with the hype video on the right doing the showing.
     a('<section class="slp-hero"><div class="slp-wrap"><div class="slp-hero-grid"><div class="slp-hero-copy">')
     a('<h1>Your SLP skills can take you somewhere new.</h1>')
     # The subhead carries the validation the headline doesn't: permission first
-    # (voice-of-customer §5.1, validate the push before selling the pull), then
-    # the practical promise. "Want out" is the reader's own phrase, and naming
-    # no reason avoids telling anyone whose reason is different that this page
-    # isn't for them.
+    # (voice-of-customer §5.1), then the practical promise. "Want out" is the
+    # reader's own phrase.
     a('<p class="slp-lede">You&rsquo;re allowed to want out. See the paths, what they pay, '
       'and how long each move takes.</p>')
-    a('</div><div class="slp-hero-q">')
-    # Two doors: the quiz (free, the proven email source, and the front door
-    # for anyone still deciding) and the résumé tool for the few who already
-    # have a posting in hand. A third "Start here" button sat between them
-    # 2026-09-14/15 and was cut: three CTAs competed, and a label that says
-    # "start here" outranks the green button beside it. /start stays as the
-    # first nav item.
-    # Question one of the quiz, asked right here (2026-09-28). Starting inside
-    # the question beats a button, and the answers ride to /quiz?done= so the
-    # quiz opens on question two. A plain GET form: works with no JavaScript,
-    # and each ticked box arrives as its own done= value, which the app accepts.
-    chips = "".join(
-        f'<label class="slp-chip"><input type="checkbox" name="done" value="{i}"><span>{esc(l)}</span></label>'
-        for i, l in enumerate(Q1))
-    a(f'<form class="slp-q1" action="{QUIZ}" method="get">'
-      '<input type="hidden" name="utm_source" value="slptransitions">'
-      '<input type="hidden" name="utm_medium" value="home">'
-      '<input type="hidden" name="utm_content" value="home_hero_q1">'
-      '<p class="slp-q1-top"><span>Question 1 of 9</span><span>Free, about 2 minutes</span></p>'
-      '<fieldset><legend>Which of these have you actually done?</legend>'
-      '<p class="slp-q1-help">Pick everything that applies. It matters more than what you enjoy.</p>'
-      f'<div class="slp-chips">{chips}</div></fieldset>'
-      '<button type="submit" class="slp-btn slp-btn-primary">Next question →</button>'
-      '</form>')
-    # The one side door: someone holding a job posting doesn't need the quiz.
-    # Text, not a button, so the quiz stays the only filled green thing.
+    # One filled button, and it means the quiz. The Suite is a text link for
+    # the few who already hold a posting.
+    a(f'<div class="slp-actions"><a class="slp-btn slp-btn-primary" href="{QUIZ}?{utm("home_hero")}">Find my career path &rarr;</a></div>')
+    a('<p class="slp-trust"><b>Free</b> &middot; <b>2 minutes</b> &middot; nine questions</p>')
     a(f'<p class="slp-side">Have a job posting already? <a href="{APP}?{utm("home_hero_suite")}">'
       'Translate your r&eacute;sum&eacute; for it &rarr;</a></p>')
-    a('</div>')  # .slp-hero-q
-
-    # Right column: show what the quiz gives you instead of describing it. A
-    # real result, drawn from PATHS in lib/quiz.ts, then the proof numbers.
-    # The + on $154k is the founder case (James, 2026-09-28): the documented
-    # employed ranges top out there, working for yourself doesn't. Companies
-    # wording is James's (2026-09-12): companies that value clinical skills.
-    a('<div class="slp-hero-result slp-rv">'
-      '<p class="slp-result-tag">What a result looks like</p>'
-      '<div class="slp-result-card">'
-      '<p class="k">Your closest path</p>'
-      f'<h3>{esc(SAMPLE["label"])}</h3><hr>'
-      f'<p class="meta">{esc(SAMPLE["range"])} &middot; typically {esc(SAMPLE["timeline"])}</p>'
-      f'<p class="move"><b>Your first move this week</b>{esc(SAMPLE["firstMove"])}</p>'
-      '</div>'
-      '<ul class="slp-stats">'
-      f'<li><b>{COMPANY_COUNT}</b>health and ed-tech companies that value clinical skills</li>'
-      '<li><b>20</b>non-clinical paths documented</li>'
-      '<li><b>$154k+</b>top documented salary, and founders can go past it</li>'
-      '</ul></div>')
+    a('</div>')
+    # The 32-second hype video (~/Desktop/slp-transitions-video, HyperFrames),
+    # re-encoded to 540x960 at 1.2MB. Muted autoplay is the only autoplay
+    # browsers allow; the button turns sound on (text only: WordPress swaps
+    # emoji for large images). Reduced-motion readers get
+    # the poster and press play themselves.
+    a('<div class="slp-hero-media"><figure class="slp-video">'
+      f'<video src="{SITE}/wp-content/uploads/2026/09/slp-hype-540.mp4" poster="{SITE}/wp-content/uploads/2026/09/slp-hype-poster.jpg" '
+      'width="540" height="960" autoplay muted loop playsinline preload="none" '
+      'aria-label="32-second video: you&rsquo;re allowed to want out, three paths and what they pay, and the free quiz"></video>'
+      '<button type="button" class="slp-sound" aria-pressed="false">Sound on</button>'
+      '</figure></div>')
+    a('<script>(function(){var f=document.querySelector(".slp-video");if(!f)return;var v=f.querySelector("video"),b=f.querySelector(".slp-sound");'
+      'var calm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;'
+      'if(calm){v.removeAttribute("autoplay");v.pause();}'
+      'b.addEventListener("click",function(){v.muted=!v.muted;if(v.paused)v.play();b.setAttribute("aria-pressed",String(!v.muted));'
+      'b.textContent=v.muted?"Sound on":"Sound off";});})();</script>')
     a('</div></div></section>')  # grid, wrap, section
 
     # ---- career paths
