@@ -500,7 +500,7 @@ export default function CareerQuiz({
                 Translate my résumé · ${priceOf("suite")} →
               </button>
               <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>
-                Includes the ${REPORT_PRICE} Pivot Report. Free preview before you pay.{wasNote("suite")}
+                Free preview before you pay.{wasNote("suite")}
               </div>
             </>
           )}
@@ -656,7 +656,6 @@ export default function CareerQuiz({
                 "A cover letter in your voice, with the one paragraph nobody else could paste",
                 "Your LinkedIn headline and About, matched to the résumé",
                 "Answers to the three questions every career changer gets asked",
-                `The $${REPORT_PRICE} Pivot Report, included`,
               ].map((line) => (
                 <div key={line} style={{ display: "flex", gap: 9, alignItems: "flex-start", marginBottom: 9, fontSize: 14, lineHeight: 1.6 }}>
                   <span style={{ color: "var(--accent)", fontWeight: 700, flexShrink: 0 }}>✓</span>

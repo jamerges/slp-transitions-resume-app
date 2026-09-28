@@ -391,7 +391,7 @@ def build():
     # ---- final cta
     a('<div class="slp-wrap"><section class="slp-final">')
     a('<div><h2>Two minutes can make the next six months clearer.</h2>'
-      '<p>Answer eight questions. You get your best-fit path, a realistic salary range, '
+      '<p>Answer nine questions. You get your best-fit path, a realistic salary range, '
       'an honest timeline, and one thing to do this week.</p></div>')
     a(f'<div class="slp-final-actions"><a class="slp-btn slp-btn-primary" href="{QUIZ}">Find my career path →</a></div>')
     a('</section></div>')

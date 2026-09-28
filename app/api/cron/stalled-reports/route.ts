@@ -73,12 +73,12 @@ export async function GET(req: Request) {
     // five for anyone the first did not move. Each fires once per session.
     // (The first ran at 48h until 2026-09-15; the key name keeps old claims valid.)
     const age = now - s.created;
-    if (age >= 5 * DAY && (await claimOnce(`reminder5d:${s.id}`))) {
+    if (age >= 5 * DAY && (await claimOnce(`reminder5d:${s.id}`, 30 * DAY))) {
       await sendReportReminderEmail({ to: email, sessionId: s.id, nudge: 2 });
       reminded.push(`${email} (second nudge)`);
       continue;
     }
-    if (!(await claimOnce(`reminder48:${s.id}`))) { skipped.alreadyReminded++; continue; }
+    if (!(await claimOnce(`reminder48:${s.id}`, 30 * DAY))) { skipped.alreadyReminded++; continue; }
 
     await sendReportReminderEmail({ to: email, sessionId: s.id, nudge: 1 });
     reminded.push(email);

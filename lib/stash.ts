@@ -93,10 +93,14 @@ export async function updateInputs(
  * email). Returns false when Redis is unavailable, so a missing cache degrades
  * to not-sending rather than sending on every reload.
  */
-export async function claimOnce(key: string): Promise<boolean> {
+// The latch must outlive whatever scans for it. With the 7-day default, the
+// stalled-report cron (which scans 14 days back) found expired latches and sent
+// the first reminder a second time (seen 2026-09-24/25), so callers that scan
+// further back pass a longer ttl.
+export async function claimOnce(key: string, ttlSeconds: number = TTL_SECONDS): Promise<boolean> {
   const r = getRedis();
   if (!r) return false;
-  const res = await r.set(`once:${key}`, "1", { nx: true, ex: TTL_SECONDS });
+  const res = await r.set(`once:${key}`, "1", { nx: true, ex: ttlSeconds });
   return res === "OK";
 }
 
