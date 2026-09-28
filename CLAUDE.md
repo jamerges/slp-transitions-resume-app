@@ -5,6 +5,8 @@ Live at **https://app.slptransitions.com** (also slp-transitions-resume-app.verc
 Marketing/WordPress site: **slptransitions.com** (SiteGround; Kadence theme; separate from this repo).
 Owner: James Berges (jamoberges@gmail.com) — SLP → growth marketer; hosts the Xceptional Leaders podcast.
 
+**Operating plan: `content/master-plan.md` (2026-09-27). Read it before choosing what to work on: it sets the order (instant $9 report first), the weekly rhythm, the metrics and the rules.**
+
 ## The product ladder (strategy: content/product-strategy.md)
 1. Free career quiz → `/quiz` (email-gated result, tags MailerLite with `quiz_result`)
 2. **$9 Pivot Report** — quiz result → **Stripe** → `/report` collects the resume *after* payment. Pay-first is deliberate: the pre-payment resume upload was the funnel's biggest drop (people take the quiz on a phone, nowhere near their resume). `report-finalize` returns `needsIntake` for a paid session with no resume, and emails a link back so a phone buyer can finish from a laptop.
