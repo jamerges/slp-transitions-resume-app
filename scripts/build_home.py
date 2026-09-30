@@ -327,11 +327,7 @@ def esc(s):
 
 
 
-SALE_BANNER = (
-    'Every tool is $9 until Oct 5 '
-    '<span style="opacity:.85;font-weight:400;">&middot; the Pivot Report, the Career Pivot Suite and the Getting Started kit</span> &rarr;',
-    "https://app.slptransitions.com/products",
-)
+SALE_BANNER = None  # the $9 sale ended 2026-10-06
 
 
 def build():
