@@ -28,7 +28,13 @@ export async function GET() {
     try {
       const p = await stripe.prices.retrieve(id);
       const charges = (p.unit_amount ?? 0) / 100;
-      out[k] = { id, charges, shows: priceOf(k), active: p.active, ok: charges === priceOf(k) && p.active };
+      // The product's other active one-time prices, so switching the env var to
+      // a different amount (a sale starting or ending) needs no dashboard.
+      const product = typeof p.product === "string" ? p.product : p.product.id;
+      const others = (await stripe.prices.list({ product, active: true, limit: 20 })).data
+        .filter((o) => o.type === "one_time")
+        .map((o) => ({ id: o.id, amount: (o.unit_amount ?? 0) / 100 }));
+      out[k] = { id, charges, shows: priceOf(k), active: p.active, ok: charges === priceOf(k) && p.active, product, others };
     } catch (e: any) {
       out[k] = { id, ok: false, reason: e?.message?.slice(0, 120) || "lookup failed" };
     }
