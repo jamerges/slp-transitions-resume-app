@@ -15,7 +15,7 @@ export const LIST: Record<PricedProduct, number> = { report: 9, suite: 24, groun
 // The sale ends when the day ends on Oct 5 (James, 2026-09-28). Nothing flips
 // by itself: turning it off also needs the Stripe env vars back on list-price
 // ids, or assertPriceAmount refuses every Suite and kit checkout.
-export const SALE = { on: true, price: 9, note: "until Oct 5" } as const;
+export const SALE = { on: false, price: 9, note: "until Oct 5" } as const;  // ended 2026-10-06 06:00
 
 export const priceOf = (k: PricedProduct): number => (SALE.on ? Math.min(SALE.price, LIST[k]) : LIST[k]);
 /** The struck-through price, or null when nothing is reduced. */
