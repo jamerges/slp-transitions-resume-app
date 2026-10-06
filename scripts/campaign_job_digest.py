@@ -63,7 +63,7 @@ def create(name, subject, groups, content):
 if __name__ == "__main__":
     date = sys.argv[1]
     count, content = build(open(f"content/job-digest-{date}.md").read())
-    subject = f"{count} new jobs for SLPs this week"
+    subject = f"{count} new non-clinical jobs for SLPs this week"
     if "--no-test" not in sys.argv:
         tid = create(f"{date} Job digest (TEST James only)", subject, [TEST_GROUP], content)
         s = api(f"/campaigns/{tid}/schedule", "POST", {"delivery": "instant"})
