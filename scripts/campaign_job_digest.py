@@ -28,6 +28,37 @@ P = 'style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#1F2937;"'
 A = 'style="color:#0B6B54;"'
 ROW = re.compile(r"^- \*\*(.+?)\*\* · \[(.+?)\]\((\S+?)\) — (.*?)( ●)?$")
 
+# Prices come from lib/pricing.ts, the one price source; never type one here.
+_PRICING = open("lib/pricing.ts").read()
+_LIST = {k: int(v) for k, v in re.findall(r"(\w+): (\d+)", re.search(r"LIST[^{]*\{([^}]*)\}", _PRICING).group(1))}
+_SALE = re.search(r"SALE = \{ on: (\w+), price: (\d+)", _PRICING)
+def price_of(k):
+    return min(int(_SALE.group(2)), _LIST[k]) if _SALE.group(1) == "true" else _LIST[k]
+
+def utm(url, content):
+    return f"{url}{'&' if '?' in url else '?'}utm_source=mailerlite&utm_medium=email&utm_campaign=job_digest&utm_content={content}"
+
+def resources_box():
+    rows = [
+        ("Not sure you want to leave yet?",
+         "The first four lessons of the course are free and take about twenty minutes. You finish knowing the salary your next job has to clear and whether it's the workplace, the fit or the season.",
+         "Start free", utm("https://app.slptransitions.com/course", "box_course")),
+        ("Ready to pick a path?",
+         "The Pivot Report gives you three paths that fit your quiz answers, the first job title to apply for in each and your first 30 days.",
+         f"Get the report · ${price_of('report')}", utm("https://app.slptransitions.com/?from=quiz&goal=report&path={$quiz_result}", "box_report")),
+        ("Found a posting you want?",
+         "Paste it into the Career Pivot Suite and get every résumé bullet, the cover letter, your LinkedIn and the interview answers rewritten for that job.",
+         f"Try it free · ${price_of('suite')} for the full package", utm("https://app.slptransitions.com/", "box_suite")),
+    ]
+    cells = "".join(
+        f'<p style="margin:{0 if i == 0 else 18}px 0 4px;font-size:15px;font-weight:700;color:#0A3D31;">{q}</p>'
+        f'<p style="margin:0 0 6px;font-size:15px;line-height:1.55;color:#1F2937;">{d}</p>'
+        f'<p style="margin:0;font-size:15px;"><a href="{html.escape(u)}" style="color:#0B6B54;font-weight:600;">{b} &rarr;</a></p>'
+        for i, (q, d, b, u) in enumerate(rows))
+    return (f'<div style="margin:28px 0;padding:20px 22px;border:1px solid #CFE7DF;border-radius:10px;background:#F1F8F5;">'
+            f'<p style="margin:0 0 14px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#0B6B54;">Other ways I can help</p>'
+            f'{cells}</div>')
+
 def build(md):
     count = int(re.search(r"_(\d+) roles worth a look", md).group(1))
     body = md.split("## A few from each path", 1)[1].split("\n---", 1)[0]
@@ -49,6 +80,7 @@ def build(md):
 <p {P}>Here are this week's new openings that fit the paths from the quiz, pulled from the job boards of health and ed-tech companies that value clinical skills. I check each one for a licence you'd need and don't hold.</p>
 {"".join(parts)}
 <p style="margin:24px 0 16px;font-size:16px;line-height:1.6;color:#1F2937;">Every open role, updated weekly: <a href="https://app.slptransitions.com/jobs" {A}>app.slptransitions.com/jobs</a></p>
+{resources_box()}
 <p {P}>If one of these is the one, reply and tell me. I read every reply.</p>
 <p {P}>James</p>
 <p style="font-size:12px;color:#6B7280;margin-top:28px;">You're getting this because you took the career quiz at slptransitions.com. <a href="{{$unsubscribe}}" style="color:#6B7280;">Unsubscribe</a>.</p>
