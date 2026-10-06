@@ -146,15 +146,30 @@ export async function callClaude(opts: {
   maxTokens: number;
 }): Promise<any> {
   const anthropic = getAnthropic();
-  const msg = await anthropic.messages.create({
-    model: ANTHROPIC_MODEL,
-    max_tokens: opts.maxTokens,
-    system: SLP_SYSTEM_PROMPT,
-    messages: [{ role: "user", content: opts.userPrompt }],
-  });
-  const text = msg.content
-    .map((b) => (b.type === "text" ? b.text : ""))
-    .join("");
-  if (!text) throw new Error("Empty response. Stop reason: " + msg.stop_reason);
-  return parseJSONResponse(text);
+  const once = async (maxTokens: number) => {
+    const msg = await anthropic.messages.create({
+      model: ANTHROPIC_MODEL,
+      max_tokens: maxTokens,
+      system: SLP_SYSTEM_PROMPT,
+      messages: [{ role: "user", content: opts.userPrompt }],
+    });
+    const text = msg.content
+      .map((b) => (b.type === "text" ? b.text : ""))
+      .join("");
+    if (!text) throw new Error("Empty response. Stop reason: " + msg.stop_reason);
+    return { text, stop: msg.stop_reason };
+  };
+  // A long résumé can run the answer past max_tokens (2026-09-29: a 20-year
+  // résumé cut the Suite's materials JSON off mid-bullet, and no repair can
+  // close a string inside nested arrays). Ask once more with twice the room
+  // when the answer was cut off or will not parse, rather than failing a sale.
+  const roomier = Math.min(opts.maxTokens * 2, 16000);
+  let first = await once(opts.maxTokens);
+  if (first.stop === "max_tokens") first = await once(roomier);
+  try {
+    return parseJSONResponse(first.text);
+  } catch (err) {
+    console.error("[callClaude] unparseable answer, retrying once", (err as Error).message.slice(0, 120));
+    return parseJSONResponse((await once(roomier)).text);
+  }
 }

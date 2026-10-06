@@ -79,6 +79,8 @@ async function fulfil(session: Stripe.Checkout.Session): Promise<void> {
   const email = session.customer_details?.email || session.customer_email || "";
   const product = session.metadata?.product === "pivot_report" ? "report" : "suite";
   const amount = ((session.amount_total ?? 0) / 100).toFixed(2);
+  // The Suite delivers on /success, the report on /report.
+  const recoverUrl = `${APP_URL}/${product === "report" ? "report" : "success"}?session_id=${sessionId}`;
   const note: string[] = [
     `product: ${product === "report" ? "$9 Pivot Report" : "$24 Career Pivot Suite"}`,
     `amount: $${amount}`,
@@ -113,7 +115,7 @@ async function fulfil(session: Stripe.Checkout.Session): Promise<void> {
       } else {
         note.push("status: awaiting resume — link already sent by the browser path");
       }
-      note.push(`recover: ${APP_URL}/report?session_id=${sessionId}`);
+      note.push(`recover: ${recoverUrl}`);
       await sendOpsAlert({ subject: `Sale: $${amount} — awaiting resume`, lines: note });
       return;
     }
@@ -131,7 +133,7 @@ async function fulfil(session: Stripe.Checkout.Session): Promise<void> {
     if (!resp.ok) {
       note.push(`status: FULFILMENT FAILED (${resp.status})`);
       note.push(`error: ${String(body?.error || "").slice(0, 300)}`);
-      note.push(`recover: ${APP_URL}/report?session_id=${sessionId}`);
+      note.push(`recover: ${recoverUrl}`);
       await sendOpsAlert({ subject: `⚠️ PAID BUT NOT DELIVERED — $${amount}`, lines: note });
       return;
     }
@@ -146,7 +148,7 @@ async function fulfil(session: Stripe.Checkout.Session): Promise<void> {
   } catch (err: any) {
     console.error("[stripe-webhook] fulfilment error", err);
     note.push(`status: FULFILMENT THREW — ${String(err?.message || err).slice(0, 300)}`);
-    note.push(`recover: ${APP_URL}/report?session_id=${sessionId}`);
+    note.push(`recover: ${recoverUrl}`);
     // A failed alert must not mask the original failure in the logs.
     await sendOpsAlert({
       subject: `⚠️ PAID BUT NOT DELIVERED — $${amount}`,

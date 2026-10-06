@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { callClaude } from "@/lib/anthropic";
 import { buildFullPromptParts } from "@/lib/prompts";
-import { retrieveInputs, retrieveResult, stashResult } from "@/lib/stash";
+import { claimOrProceed, releaseOnce, retrieveInputs, retrieveResult, stashResult } from "@/lib/stash";
 import { sendFullResultsEmail } from "@/lib/email";
 import { upsertSubscriber, CUSTOMER_GROUPS } from "@/lib/mailerlite";
 import { markCustomer } from "@/lib/quiz-log";
@@ -58,6 +58,23 @@ export async function POST(req: Request) {
       );
     }
 
+    // The browser and the Stripe webhook both call this within seconds of
+    // payment. Until 2026-10-06 each built its own package: one could fail
+    // while the other succeeded (Sep 29), or both succeed and the buyer got two
+    // emails. One builds; the other waits for the stored result.
+    const lock = `gen:suite:${sessionId}`;
+    if (!(await claimOrProceed(lock, 600))) {
+      for (let waited = 0; waited < 270; waited += 5) {
+        await new Promise((r) => setTimeout(r, 5000));
+        const done = await retrieveResult(sessionId);
+        if (done?.results) return NextResponse.json(done);
+      }
+      return NextResponse.json(
+        { error: "Your package is still being built. Refresh this page in a minute." },
+        { status: 503 }
+      );
+    }
+
     let results: any;
     let generationError: string | null = null;
     try {
@@ -71,8 +88,9 @@ export async function POST(req: Request) {
         writingSample: inputs.writingSample,
       });
       const [materialsResult, guidanceResult] = await Promise.all([
-        callClaude({ userPrompt: materials, maxTokens: 6000 }),
-        callClaude({ userPrompt: guidance, maxTokens: 7000 }),
+        // Materials rewrites every résumé bullet, so a long career needs room.
+        callClaude({ userPrompt: materials, maxTokens: 10000 }),
+        callClaude({ userPrompt: guidance, maxTokens: 8000 }),
       ]);
       results = { ...materialsResult, ...guidanceResult };
       if (!results.professionalSummary || !results.translatedBullets) {
@@ -81,6 +99,7 @@ export async function POST(req: Request) {
     } catch (err: any) {
       console.error("[/api/finalize] generation failed", err);
       generationError = err?.message || "Generation failed";
+      await releaseOnce(lock).catch(() => {});   // let a refresh or the webhook try again
     }
 
     // $24 buyers -> Customers group, so acquisition sends can exclude them.
@@ -119,7 +138,8 @@ export async function POST(req: Request) {
         emailSent,
         emailError,
       };
-      stashResult(sessionId, payload).catch((e) =>
+      // Kept 60 days like the report: buyers come back to refine and re-read.
+      await stashResult(sessionId, payload, 60 * 86_400).catch((e) =>
         console.error("[/api/finalize] result cache failed", e)
       );
       return NextResponse.json(payload);
