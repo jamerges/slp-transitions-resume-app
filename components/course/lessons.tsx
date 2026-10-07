@@ -35,8 +35,18 @@ export function Welcome({ finish, done }: LessonProps) {
       <P>These four lessons are free and take about twenty minutes. You&rsquo;ll see what you really earn per hour, set the number your next job has to clear, pick a date to aim at, work out whether the problem is your workplace, the work itself, or this season, and check three beliefs that keep most SLPs in the building longer than they need to be. No account, no card.</P>
       <P>After that, Getting Started for SLPs is ${GROUND_PRICE}: the first month in one kit. Your reasons in writing, with what your degree is worth now, what gave you energy and what you can&rsquo;t afford to lose; the people who already made the move, with the message that gets answered; and the r&eacute;sum&eacute; pass. Twelve lessons, the workbook that keeps your answers, and two printable sheets. The full program, the rest of the ninety days, comes later, and what you pay now comes off it.</P>
       <P style={{ margin: 0 }}>You won&rsquo;t get cheerleading here, or a promise of six figures by fall. Every number comes from documented SLP transitions and public salary data, and the source sits under every lesson. Most people work through this alongside a full-time caseload, which is how it is built.</P>
+      <MarkDone done={done} finish={finish} />
     </div>
   );
+}
+
+/** For reading lessons with nothing to fill in. Every lesson needs some way to
+ *  call finish(): 0.1 and 1.6 had none from 2026-09-18 to 2026-10-07, and
+ *  buyers wrote in because they could never tick. Same look as LessonPage's. */
+function MarkDone({ done, finish }: { done: boolean; finish: LessonProps["finish"] }) {
+  return done
+    ? <div style={{ marginTop: 24, color: "var(--accent)", fontWeight: 600, fontSize: 14 }}>✓ Done. It stays ticked.</div>
+    : <div style={{ marginTop: 24 }}><Btn onClick={() => finish()}>Mark as done</Btn></div>;
 }
 
 /* --------------------------- 0.2 Starting line --------------------------- */
@@ -588,9 +598,7 @@ export function Identity({ finish, done }: LessonProps) {
           </a>
         ))}
       </div>
-      {done
-        ? <div style={{ marginTop: 24, color: "var(--accent)", fontWeight: 600, fontSize: 14 }}>✓ Done. It stays ticked.</div>
-        : <div style={{ marginTop: 24 }}><Btn onClick={() => finish()}>Mark as done</Btn></div>}
+      <MarkDone done={done} finish={finish} />
     </div>
   );
 }
