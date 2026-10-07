@@ -290,7 +290,14 @@ export function SunkCost({ answer, save, finish, done }: LessonProps) {
   const num = (v: number, set: (n: number) => void, step = 1000) => (
     <input type="number" value={v} step={step} onChange={(e) => set(Number(e.target.value) || 0)} style={{ width: "100%", padding: "9px 12px", fontSize: 15, border: "1px solid var(--border)", borderRadius: 8, fontFamily: font.sans }} />
   );
-  const submit = () => { save({ years, debt, salary, path, months, dip, stay10, move10 }); if (!done) finish(); };
+  // Auto-save, like 1.4 and 1.5: the numbers on screen are the ones kept.
+  // (A 2026-09-18 pass removed this lesson's Save button and left nothing to
+  // finish it, so it could never show as done.)
+  useEffect(() => {
+    save({ years, debt, salary, path, months, dip, stay10, move10 });
+    if (!done) finish();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [years, debt, salary, path, months, dip]);
   return (
     <div>
       <P>There are two kinds of numbers in this decision: the ones you&rsquo;ve already spent, which stay the same whether you go or stay, and the ones still on the table. Putting them in separate columns is most of the work, and it&rsquo;s the part the guilt doesn&rsquo;t want you to do.</P>
@@ -581,6 +588,9 @@ export function Identity({ finish, done }: LessonProps) {
           </a>
         ))}
       </div>
+      {done
+        ? <div style={{ marginTop: 24, color: "var(--accent)", fontWeight: 600, fontSize: 14 }}>✓ Done. It stays ticked.</div>
+        : <div style={{ marginTop: 24 }}><Btn onClick={() => finish()}>Mark as done</Btn></div>}
     </div>
   );
 }
@@ -758,7 +768,7 @@ export function Checkpoint1({ answer, save, finish, done, all }: LessonProps & {
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10, marginBottom: 14 }} className="tos-two-col">
         <Stat label="Stage" value={stage ? STAGE_META.find((s) => s.key === stage)?.name || "Set" : "Not set"} ok={!!stage} href="/course/ground/1.1" />
-        <Stat label="Verdict" value={verdict ? VERDICTS[verdict].title : "Not set"} ok={!!verdict} href="/course/ground/1.2" />
+        <Stat label="Verdict" value={verdict ? VERDICTS[verdict].title : "Not set"} ok={!!verdict} href="/course/start/0.3" />
         <Stat label="Top paths" value={top.length ? top.map((s) => PATHS[s]?.label).join(", ") : "Not set"} ok={top.length > 0} href="/course/ground/1.5" />
       </div>
 
@@ -776,7 +786,11 @@ export function Checkpoint1({ answer, save, finish, done, all }: LessonProps & {
       </Panel>
 
       {!done ? (
-        <Btn onClick={() => { save({ pushes, pulls, why }); finish({ action: true }); }} disabled={why.trim().length < 12 || push} style={{ marginTop: 16 }}>Finish Module 1</Btn>
+        <div style={{ marginTop: 16, display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+          <Btn onClick={() => { save({ pushes, pulls, why }); finish({ action: true }); }} disabled={why.trim().length < 12 || push}>Finish Module 1</Btn>
+          {why.trim().length < 12 && <span style={{ fontSize: 13, color: "var(--muted)" }}>Write your sentence above to finish.</span>}
+          {push && <span style={{ fontSize: 13, color: "var(--muted)" }}>Rewrite the sentence as where you&rsquo;re going to finish.</span>}
+        </div>
       ) : (
         <Panel tone="soft" style={{ marginTop: 16 }}>
           <H>That&rsquo;s Module 1.</H>
