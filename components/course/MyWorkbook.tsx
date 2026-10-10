@@ -79,7 +79,7 @@ export default function MyWorkbook() {
             <div style={{ background: "var(--accent)", color: "#fff", padding: "22px 26px", marginBottom: 24 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", paddingBottom: 12, borderBottom: "1px solid var(--accent-light)" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent-bg)" }}>Workbook</div>
-                <div style={{ fontSize: 11, letterSpacing: "0.08em", color: "#A7D3BC" }}>{new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</div>
+                <div style={{ fontSize: 11, letterSpacing: "0.08em", color: "#B3C4B1" }}>{new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</div>
               </div>
               <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 34, fontWeight: 700, margin: "20px 0 0", letterSpacing: "-0.02em" }}>Transition OS</h1>
               <div style={{ width: 54, height: 3, background: "var(--accent-bg)", margin: "14px 0 0" }} />

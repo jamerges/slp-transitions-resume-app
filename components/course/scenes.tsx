@@ -137,7 +137,7 @@ export function JourneyMap({ stops, current }: { stops: { n: number; title: stri
             <circle cx={x} cy={y} r={r} fill={complete ? "#fff" : here ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.18)"}
               stroke="rgba(255,255,255,0.85)" strokeWidth={complete || here ? 0 : 2} />
             <text x={x} y={y + 1} textAnchor="middle" dominantBaseline="middle" fontFamily={font.sans}
-              fontSize={here ? 14 : 12} fontWeight={700} fill={complete || here ? "#0A3D31" : "rgba(255,255,255,0.9)"}>
+              fontSize={here ? 14 : 12} fontWeight={700} fill={complete || here ? "#002F15" : "rgba(255,255,255,0.9)"}>
               {complete ? "✓" : s.n}
             </text>
             <text x={x} y={y + (i % 2 === 0 ? -30 : 40)} textAnchor="middle" fontFamily={font.sans}

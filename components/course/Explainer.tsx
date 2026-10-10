@@ -29,7 +29,7 @@ export function Explainer({ scenes, onFinished, title }: { scenes: Scene[]; onFi
 
   return (
     <div style={{ border: "1px solid var(--border)", borderRadius: 16, overflow: "hidden", background: "var(--card)", boxShadow: "0 6px 24px rgba(10,61,49,0.08)" }}>
-      <div style={{ position: "relative", aspectRatio: "16 / 9", background: "linear-gradient(160deg, #FAFAF9 0%, #F0FAF3 100%)", overflow: "hidden" }}>
+      <div style={{ position: "relative", aspectRatio: "16 / 9", background: "linear-gradient(160deg, #F7F6EE 0%, #E5E7D9 100%)", overflow: "hidden" }}>
         <div key={scenes[i].id} style={{ position: "absolute", inset: 0, padding: "clamp(14px, 4vw, 40px)", display: "flex", flexDirection: "column", justifyContent: "center" }}>
           {scenes[i].render()}
         </div>

@@ -47,7 +47,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
       (b: any) => `
         <tr>
           <td style="padding:8px 12px;background:#F9FAFB;border-left:3px solid #E5E7EB;font-size:13px;color:#6B7280;width:50%;vertical-align:top;">${esc(b.original)}</td>
-          <td style="padding:8px 12px;background:#F0FAF3;border-left:3px solid #2D6A4F;font-size:13px;color:#1B1B1E;width:50%;vertical-align:top;font-weight:500;">${esc(b.translated)}</td>
+          <td style="padding:8px 12px;background:#E5E7D9;border-left:3px solid #004820;font-size:13px;color:#1B1B1E;width:50%;vertical-align:top;font-weight:500;">${esc(b.translated)}</td>
         </tr>`
     )
     .join("");
@@ -56,7 +56,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
     ? Object.entries(r.skillsSection)
         .map(
           ([cat, s]: any) =>
-            `<div style="margin-bottom:10px;"><div style="font-size:13px;font-weight:600;color:#2D6A4F;margin-bottom:4px;">${esc(cat)}</div><div style="font-size:13px;color:#1B1B1E;">${(s as string[]).map(esc).join(" · ")}</div></div>`
+            `<div style="margin-bottom:10px;"><div style="font-size:13px;font-weight:600;color:#004820;margin-bottom:4px;">${esc(cat)}</div><div style="font-size:13px;color:#1B1B1E;">${(s as string[]).map(esc).join(" · ")}</div></div>`
         )
         .join("")
     : "";
@@ -75,7 +75,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
   const artifacts = (r.proofArtifacts || [])
     .map(
       (a: any) => `
-      <div style="padding:12px 14px;background:#F0FAF3;border-radius:8px;margin-bottom:10px;">
+      <div style="padding:12px 14px;background:#E5E7D9;border-radius:8px;margin-bottom:10px;">
         <div style="font-size:14px;font-weight:600;margin-bottom:4px;">${esc(a.artifact)}</div>
         <div style="font-size:13px;color:#6B7280;line-height:1.6;">${esc(a.why)}</div>
         <div style="font-size:12px;color:#6B7280;margin-top:6px;">${a.timeEstimate ? `⏱ ${esc(a.timeEstimate)}` : ""}${a.timeEstimate && a.cost ? " &nbsp;·&nbsp; " : ""}${a.cost ? `💰 ${esc(a.cost)}` : ""}</div>
@@ -97,7 +97,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
     .map(
       (p: any) => `
       <div style="margin-bottom:14px;">
-        <div style="font-size:12px;font-weight:700;color:#2D6A4F;letter-spacing:0.04em;text-transform:uppercase;">${esc(p.phase)}</div>
+        <div style="font-size:12px;font-weight:700;color:#004820;letter-spacing:0.04em;text-transform:uppercase;">${esc(p.phase)}</div>
         <div style="font-size:14px;font-weight:600;margin:2px 0 4px;">${esc(p.focus)}</div>
         ${(p.actions || []).map((a: string) => `<div style="font-size:13px;color:#6B7280;padding:2px 0 2px 14px;line-height:1.6;">→ ${esc(a)}</div>`).join("")}
       </div>`
@@ -109,7 +109,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
       (t: any) => `
       <div style="margin-bottom:14px;">
         <div style="font-size:14px;font-weight:600;margin-bottom:6px;">Q: ${esc(t.question)}</div>
-        <div style="font-size:13px;color:#1B1B1E;padding:10px 14px;background:#F0FAF3;border-left:3px solid #2D6A4F;border-radius:6px;">${esc(t.bridgeStatement)}</div>
+        <div style="font-size:13px;color:#1B1B1E;padding:10px 14px;background:#E5E7D9;border-left:3px solid #004820;border-radius:6px;">${esc(t.bridgeStatement)}</div>
       </div>`
     )
     .join("");
@@ -119,7 +119,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
 <div style="max-width:680px;margin:0 auto;padding:32px 20px;">
 
   <div style="text-align:center;margin-bottom:28px;">
-    <div style="font-size:20px;font-weight:700;color:#2D6A4F;font-family:Georgia,serif;">SLP Transitions</div>
+    <div style="font-size:20px;font-weight:700;color:#004820;font-family:Georgia,serif;">SLP Transitions</div>
     <div style="font-size:13px;color:#6B7280;">Career Pivot Suite</div>
   </div>
 
@@ -128,8 +128,8 @@ function renderResultsHTML(jobTitle: string, r: any): string {
 
   ${
     r.elevatorPitch
-      ? `<div style="background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;padding:20px;margin-bottom:16px;">
-          <div style="font-size:11px;font-weight:600;color:#2D6A4F;letter-spacing:0.04em;margin-bottom:6px;">YOUR 30-SECOND PITCH</div>
+      ? `<div style="background:#E5E7D9;border:1px solid #DCE1D2;border-radius:12px;padding:20px;margin-bottom:16px;">
+          <div style="font-size:11px;font-weight:600;color:#004820;letter-spacing:0.04em;margin-bottom:6px;">YOUR 30-SECOND PITCH</div>
           <div style="font-size:15px;line-height:1.7;">${esc(r.elevatorPitch)}</div>
         </div>`
       : ""
@@ -138,12 +138,12 @@ function renderResultsHTML(jobTitle: string, r: any): string {
   ${
     r.linkedinHeadline
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
-          <div style="font-size:11px;font-weight:600;color:#2D6A4F;letter-spacing:0.04em;margin-bottom:4px;">LINKEDIN HEADLINE</div>
+          <div style="font-size:11px;font-weight:600;color:#004820;letter-spacing:0.04em;margin-bottom:4px;">LINKEDIN HEADLINE</div>
           <div style="font-size:15px;font-weight:500;">${esc(r.linkedinHeadline)}</div>
           ${
             r.linkedinAbout
               ? `<div style="border-top:1px solid #E5E7EB;margin-top:12px;padding-top:12px;">
-                  <div style="font-size:11px;font-weight:600;color:#2D6A4F;letter-spacing:0.04em;margin-bottom:6px;">LINKEDIN ABOUT SECTION</div>
+                  <div style="font-size:11px;font-weight:600;color:#004820;letter-spacing:0.04em;margin-bottom:6px;">LINKEDIN ABOUT SECTION</div>
                   <div style="font-size:14px;line-height:1.7;">${nl2br(r.linkedinAbout)}</div>
                 </div>`
               : ""
@@ -156,7 +156,7 @@ function renderResultsHTML(jobTitle: string, r: any): string {
     r.professionalSummary
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:16px;">
           <h2 style="font-size:16px;margin:0 0 10px;">Professional summary</h2>
-          <div style="font-size:14px;line-height:1.7;padding:12px 16px;background:#F0FAF3;border-left:3px solid #2D6A4F;border-radius:6px;">${esc(r.professionalSummary)}</div>
+          <div style="font-size:14px;line-height:1.7;padding:12px 16px;background:#E5E7D9;border-left:3px solid #004820;border-radius:6px;">${esc(r.professionalSummary)}</div>
         </div>`
       : ""
   }
@@ -238,9 +238,9 @@ function renderResultsHTML(jobTitle: string, r: any): string {
       : ""
   }
 
-  <div style="text-align:center;padding:24px;background:#F0FAF3;border-radius:12px;margin-top:24px;">
+  <div style="text-align:center;padding:24px;background:#E5E7D9;border-radius:12px;margin-top:24px;">
     <div style="font-size:15px;font-weight:600;margin-bottom:8px;">Translating for another role?</div>
-    <a href="${APP_URL}" style="display:inline-block;padding:12px 28px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:15px;font-weight:600;">Open SLP Transitions →</a>
+    <a href="${APP_URL}" style="display:inline-block;padding:12px 28px;background:#004820;color:#fff;text-decoration:none;border-radius:8px;font-size:15px;font-weight:600;">Open SLP Transitions →</a>
   </div>
 
   <p style="font-size:11px;color:#6B7280;text-align:center;margin-top:32px;">
@@ -266,72 +266,72 @@ export function renderQuizResultEmail(input: QuizResultEmailInput): string {
   const suiteLink = `${APP_URL}/?from=quiz${top.roleOption ? `&path=${encodeURIComponent(top.roleOption)}` : ""}`;
   const reportLink = `${APP_URL}/quiz?path=${encodeURIComponent(top.slug || "")}`;
   const sheet = mapUrl(stage, top.slug || "", APP_URL);
-  const btn = (href: string, text: string) => `<a href="${href}" style="display:inline-block;padding:13px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:15px;font-weight:600;">${text}</a>`;
+  const btn = (href: string, text: string) => `<a href="${href}" style="display:inline-block;padding:13px 30px;background:#004820;color:#fff;text-decoration:none;border-radius:8px;font-size:15px;font-weight:600;">${text}</a>`;
   const map = stage ? (() => {
     const m = STAGE_MAP[stage];
     const href = stage === "action" ? suiteLink : m.move.href;
     return `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin:20px 0 14px;">
-    <div style="font-size:11px;font-weight:600;color:#2D6A4F;letter-spacing:0.05em;">YOUR MAP &middot; STAGE ${m.n} OF 5 &middot; ${esc(m.name.toUpperCase())}</div>
+    <div style="font-size:11px;font-weight:600;color:#004820;letter-spacing:0.05em;">YOUR MAP &middot; STAGE ${m.n} OF 5 &middot; ${esc(m.name.toUpperCase())}</div>
     <div style="font-size:14px;line-height:1.7;color:#6B7280;margin-top:6px;">${esc(m.here)}</div>
-    <div style="font-size:14px;line-height:1.65;background:#F0FAF3;border-left:3px solid #2D6A4F;border-radius:6px;padding:10px 14px;margin-top:12px;"><b>The one move: ${esc(m.move.label)}.</b> ${esc(m.move.detail)}${href && m.move.cta ? ` <a href="${href}" style="color:#0B6B54;font-weight:600;">${esc(m.move.cta)} &rarr;</a>` : ""}</div>
+    <div style="font-size:14px;line-height:1.65;background:#E5E7D9;border-left:3px solid #004820;border-radius:6px;padding:10px 14px;margin-top:12px;"><b>The one move: ${esc(m.move.label)}.</b> ${esc(m.move.detail)}${href && m.move.cta ? ` <a href="${href}" style="color:#004820;font-weight:600;">${esc(m.move.cta)} &rarr;</a>` : ""}</div>
     <div style="font-size:13px;line-height:1.6;color:#6B7280;margin-top:10px;"><b style="color:#1B1B1E;">Next, when you're there: ${esc(m.next.name)}.</b> ${esc(m.next.line)}</div>
-    <div style="text-align:center;margin-top:14px;"><a href="${sheet}" style="display:inline-block;padding:10px 20px;border:1.5px solid #2D6A4F;color:#2D6A4F;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Print or save your map &rarr;</a></div>
+    <div style="text-align:center;margin-top:14px;"><a href="${sheet}" style="display:inline-block;padding:10px 20px;border:1.5px solid #004820;color:#004820;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">Print or save your map &rarr;</a></div>
   </div>`;
   })() : "";
   // Stages 1 to 3 get no pitch: a checkout button under a stage-2 reader's
   // result is the point at which she stops reading. Stage 5 skips the report.
   const groundLink = `${APP_URL}/course/ground?stage=${stage || ""}&path=${encodeURIComponent(top.slug || "")}`;
   const cta = offer === "map"
-    ? `<div style="padding:22px;background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;margin-top:20px;">
+    ? `<div style="padding:22px;background:#E5E7D9;border:1px solid #DCE1D2;border-radius:12px;margin-top:20px;">
     <div style="font-size:17px;font-weight:700;margin-bottom:8px;">Before you start looking</div>
     <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">Your result is a direction. <b>Getting Started for SLPs</b> is the first month of Transition OS in one kit: your reasons in writing, the people who already made the move, and the r\u00e9sum\u00e9 pass. Twelve lessons and the workbook. $${priceOf("ground")} once${wasNote("ground")}, credited toward the full program later.</div>
     <div style="text-align:center;">${btn(groundLink, "Start Module 1 &rarr;")}</div>
-    <div style="font-size:13px;line-height:1.7;color:#6B7280;margin-top:14px;">Not the one you need? The <a href="${reportLink}" style="color:#0B6B54;">$9 Pivot Report</a> reads your résumé and names the paths you already qualify for. The <a href="${suiteLink}" style="color:#0B6B54;">$${priceOf("suite")} Career Pivot Suite</a> rewrites a whole application against one posting.</div>
-    <div style="font-size:13px;line-height:1.7;color:#6B7280;margin-top:14px;">Rather start from your résumé? The <a href="${reportLink}" style="color:#0B6B54;">$9 Pivot Report</a> reads it against these paths and tells you which ones you already qualify for.</div>
+    <div style="font-size:13px;line-height:1.7;color:#6B7280;margin-top:14px;">Not the one you need? The <a href="${reportLink}" style="color:#004820;">$9 Pivot Report</a> reads your résumé and names the paths you already qualify for. The <a href="${suiteLink}" style="color:#004820;">$${priceOf("suite")} Career Pivot Suite</a> rewrites a whole application against one posting.</div>
+    <div style="font-size:13px;line-height:1.7;color:#6B7280;margin-top:14px;">Rather start from your résumé? The <a href="${reportLink}" style="color:#004820;">$9 Pivot Report</a> reads it against these paths and tells you which ones you already qualify for.</div>
   </div>`
     : offer === "suite"
-    ? `<div style="padding:22px;background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;margin-top:20px;">
+    ? `<div style="padding:22px;background:#E5E7D9;border:1px solid #DCE1D2;border-radius:12px;margin-top:20px;">
     <div style="font-size:17px;font-weight:700;margin-bottom:8px;">Your résumé is the bottleneck.</div>
     <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">You said you're applying and not getting traction. Nine times out of ten the résumé still reads clinical, so a recruiter files it in the wrong pile in about seven seconds. The <b>Career Pivot Suite</b> rewrites every bullet against a real posting, plus the cover letter, your LinkedIn and the interview answers. $${priceOf("suite")}${wasNote("suite")} once, free preview first, and it includes the $9 Pivot Report.</div>
     <div style="text-align:center;">${btn(suiteLink, "Translate my résumé &rarr;")}</div>
   </div>`
-    : `<div style="padding:22px;background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;margin-top:20px;">
+    : `<div style="padding:22px;background:#E5E7D9;border:1px solid #DCE1D2;border-radius:12px;margin-top:20px;">
     <div style="font-size:17px;font-weight:700;margin-bottom:8px;">Which of the twenty is actually open to you?</div>
     <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">
       This result came from nine questions. The <b>Pivot Report</b> reads your real résumé and tells you which paths your specific experience already qualifies you for: the stage you're actually in, your top three paths with the first job title to apply for in each, and a week-by-week 30-day plan. ${priceOf("report")}, once.
     </div>
     <div style="text-align:center;">${btn(reportLink, "Get my Pivot Report &rarr;")}</div>
   </div>`;
-  const card = top.slug ? `<img src="${APP_URL}${pathImage(top.slug)}" alt="${esc(top.label)}" width="600" style="width:100%;max-width:600px;height:auto;display:block;border-radius:12px;border:1px solid #D8F3DC;margin:0 auto 16px;" />` : "";
+  const card = top.slug ? `<img src="${APP_URL}${pathImage(top.slug)}" alt="${esc(top.label)}" width="600" style="width:100%;max-width:600px;height:auto;display:block;border-radius:12px;border:1px solid #DCE1D2;margin:0 auto 16px;" />` : "";
   const html = `<!doctype html>
 <html><body style="margin:0;padding:0;background:#FAFAF9;font-family:-apple-system,'DM Sans',sans-serif;color:#1B1B1E;">
 <div style="max-width:640px;margin:0 auto;padding:32px 20px;">
   <div style="text-align:center;margin-bottom:24px;">
-    <div style="font-size:20px;font-weight:700;color:#2D6A4F;font-family:Georgia,serif;">SLP Transitions</div>
+    <div style="font-size:20px;font-weight:700;color:#004820;font-family:Georgia,serif;">SLP Transitions</div>
   </div>
   <p style="font-size:15px;line-height:1.7;">${hi}</p>
   <p style="font-size:15px;line-height:1.7;">Here's your quiz result, saved so you don't lose it.</p>
-  ${opener ? `<p style="font-size:16px;line-height:1.7;color:#0B6B54;">${esc(opener)}</p>` : ""}
+  ${opener ? `<p style="font-size:16px;line-height:1.7;color:#004820;">${esc(opener)}</p>` : ""}
   ${card}
 
-  <div style="background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;padding:22px;margin:20px 0;">
-    <div style="font-size:11px;font-weight:600;color:#2D6A4F;letter-spacing:0.05em;">YOUR DIRECTION</div>
+  <div style="background:#E5E7D9;border:1px solid #DCE1D2;border-radius:12px;padding:22px;margin:20px 0;">
+    <div style="font-size:11px;font-weight:600;color:#004820;letter-spacing:0.05em;">YOUR DIRECTION</div>
     <div style="font-size:24px;font-weight:700;font-family:Georgia,serif;margin:6px 0 4px;">${esc(top.label)}</div>
-    <div style="font-size:14px;color:#2D6A4F;font-weight:600;margin-bottom:12px;">${esc(top.range)} · typically ${esc(top.timeline)}</div>
+    <div style="font-size:14px;color:#004820;font-weight:600;margin-bottom:12px;">${esc(top.range)} · typically ${esc(top.timeline)}</div>
     <div style="font-size:14px;line-height:1.75;">${esc(top.why)}</div>
   </div>
   ${map}
   <div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-bottom:14px;">
     <h2 style="font-size:15px;margin:0 0 8px;">How people actually get in</h2>
     <div style="font-size:14px;color:#6B7280;line-height:1.7;">${esc(top.entryDoor)}</div>
-    <div style="font-size:14px;line-height:1.65;background:#F0FAF3;border-left:3px solid #2D6A4F;border-radius:6px;padding:10px 14px;margin-top:12px;"><b>Your first move this week:</b> ${esc(top.firstMove)}</div>
+    <div style="font-size:14px;line-height:1.65;background:#E5E7D9;border-left:3px solid #004820;border-radius:6px;padding:10px 14px;margin-top:12px;"><b>Your first move this week:</b> ${esc(top.firstMove)}</div>
     <div style="font-size:14px;line-height:1.65;background:#FEF3C7;border-radius:6px;padding:10px 14px;margin-top:8px;"><b>The caveat:</b> ${esc(top.caveat)}</div>
   </div>
 
   ${
     runnerUp
       ? `<div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 20px;margin-bottom:14px;">
-          <div style="font-size:11px;font-weight:600;color:#2D6A4F;letter-spacing:0.05em;">ALSO WORTH A LOOK</div>
+          <div style="font-size:11px;font-weight:600;color:#004820;letter-spacing:0.05em;">ALSO WORTH A LOOK</div>
           <div style="font-size:16px;font-weight:600;margin-top:4px;">${esc(runnerUp.label)}</div>
           <div style="font-size:13px;color:#6B7280;">${esc(runnerUp.range)} · ${esc(runnerUp.timeline)}</div>
         </div>`
@@ -377,7 +377,7 @@ export async function sendResumeLinkEmail(input: {
   const link = `${APP_URL}/report?session_id=${encodeURIComponent(sessionId)}`;
   const html = `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#F7F7F5;">
 <div style="max-width:600px;margin:0 auto;padding:32px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#1F2937;background:#fff;">
-  <p style="font-size:13px;color:#2D6A4F;font-weight:600;letter-spacing:0.04em;margin:0 0 6px;">✓ PAYMENT CONFIRMED</p>
+  <p style="font-size:13px;color:#004820;font-weight:600;letter-spacing:0.04em;margin:0 0 6px;">✓ PAYMENT CONFIRMED</p>
   <h1 style="font-size:24px;line-height:1.3;margin:0 0 14px;">Your Pivot Report is ready to build</h1>
   <p style="font-size:15px;line-height:1.7;">
     Thanks for picking this up. One thing left: add your résumé, and we'll build the report around your actual experience.
@@ -386,7 +386,7 @@ export async function sendResumeLinkEmail(input: {
     It takes about a minute. No résumé file on your phone? Copy the Experience section of your LinkedIn profile and paste that in. It's enough to build from, so you can do it right now.
   </p>
   <p style="text-align:center;margin:26px 0;">
-    <a href="${link}" style="display:inline-block;padding:14px 32px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Add my résumé →</a>
+    <a href="${link}" style="display:inline-block;padding:14px 32px;background:#004820;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Add my résumé →</a>
   </p>
   <p style="font-size:13px;line-height:1.7;color:#6B7280;">
     This link is good for 7 days. If it expires or anything goes sideways, reply to this email with your receipt and I'll build it for you by hand.
@@ -419,11 +419,11 @@ export async function sendGroundAccessEmail(input: { to: string; unlockUrl: stri
   const html = `<!doctype html>
 <html><body style="margin:0;padding:0;background:#FAFAF9;font-family:-apple-system,'DM Sans',sans-serif;color:#1B1B1E;">
 <div style="max-width:560px;margin:0 auto;padding:32px 20px;">
-  <div style="text-align:center;margin-bottom:22px;"><div style="font-size:20px;font-weight:700;color:#2D6A4F;font-family:Georgia,serif;">SLP Transitions</div></div>
+  <div style="text-align:center;margin-bottom:22px;"><div style="font-size:20px;font-weight:700;color:#004820;font-family:Georgia,serif;">SLP Transitions</div></div>
   <p style="font-size:16px;line-height:1.7;">Thanks. Here's your way into Getting Started for SLPs.</p>
-  <div style="text-align:center;margin:22px 0;"><a href="${unlockUrl}" style="display:inline-block;padding:14px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Open my lessons &rarr;</a></div>
+  <div style="text-align:center;margin:22px 0;"><a href="${unlockUrl}" style="display:inline-block;padding:14px 30px;background:#004820;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Open my lessons &rarr;</a></div>
   <p style="font-size:15px;line-height:1.7;">That link is your login. It works in any browser, on any device, as many times as you like, so keep this email. Your progress is saved to your purchase, so it is there on any device you open this link on. If you haven't done the free fifteen-minute setup yet, it comes first.</p>
-  <p style="font-size:15px;line-height:1.7;">Twelve lessons across the first month, and every one ends with something to actually do. Your <a href="${APP_URL}/course/workbook" style="color:#0B6B54;">workbook</a> fills in as you go and prints to PDF whenever you want it on paper.</p>
+  <p style="font-size:15px;line-height:1.7;">Twelve lessons across the first month, and every one ends with something to actually do. Your <a href="${APP_URL}/course/workbook" style="color:#004820;">workbook</a> fills in as you go and prints to PDF whenever you want it on paper.</p>
   <p style="font-size:15px;line-height:1.7;">What you paid today is credited toward the full program when it launches, so you won't pay for it twice.</p>
   <p style="font-size:15px;line-height:1.7;">If it doesn't help, reply within 30 days and I'll refund it. No form.</p>
   <p style="font-size:15px;line-height:1.7;">James</p>
@@ -438,9 +438,9 @@ export async function sendCourseLinkEmail(input: { to: string; unlockUrl: string
   const html = `<!doctype html>
 <html><body style="margin:0;padding:0;background:#FAFAF9;font-family:-apple-system,'DM Sans',sans-serif;color:#1B1B1E;">
 <div style="max-width:560px;margin:0 auto;padding:32px 20px;">
-  <div style="text-align:center;margin-bottom:22px;"><div style="font-size:20px;font-weight:700;color:#2D6A4F;font-family:Georgia,serif;">SLP Transitions</div></div>
+  <div style="text-align:center;margin-bottom:22px;"><div style="font-size:20px;font-weight:700;color:#004820;font-family:Georgia,serif;">SLP Transitions</div></div>
   <p style="font-size:16px;line-height:1.7;">Here's your way back into Transition OS.</p>
-  <div style="text-align:center;margin:22px 0;"><a href="${unlockUrl}" style="display:inline-block;padding:14px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Open my lessons &rarr;</a></div>
+  <div style="text-align:center;margin:22px 0;"><a href="${unlockUrl}" style="display:inline-block;padding:14px 30px;background:#004820;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Open my lessons &rarr;</a></div>
   <p style="font-size:15px;line-height:1.7;">This link is your login. It works in any browser, on any device, as many times as you like, and your answers and your people list are saved to your purchase, so they will be there when it opens.</p>
   <p style="font-size:15px;line-height:1.7;">If you didn't ask for this, ignore it. Nothing changes until the link is opened.</p>
   <p style="font-size:15px;line-height:1.7;">James</p>
@@ -461,10 +461,10 @@ export async function sendFreeLinkEmail(input: { to: string; unlockUrl: string; 
   const html = `<!doctype html>
 <html><body style="margin:0;padding:0;background:#FAFAF9;font-family:-apple-system,'DM Sans',sans-serif;color:#1B1B1E;">
 <div style="max-width:560px;margin:0 auto;padding:32px 20px;">
-  <div style="text-align:center;margin-bottom:22px;"><div style="font-size:20px;font-weight:700;color:#2D6A4F;font-family:Georgia,serif;">SLP Transitions</div></div>
+  <div style="text-align:center;margin-bottom:22px;"><div style="font-size:20px;font-weight:700;color:#004820;font-family:Georgia,serif;">SLP Transitions</div></div>
   <p style="font-size:16px;line-height:1.7;">Here's your starting line, and the way back to it.</p>
   ${lines ? `<ul style="font-size:15px;line-height:1.8;padding-left:20px;">${lines}</ul>` : ""}
-  <div style="text-align:center;margin:22px 0;"><a href="${unlockUrl}" style="display:inline-block;padding:14px 30px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Open my lessons &rarr;</a></div>
+  <div style="text-align:center;margin:22px 0;"><a href="${unlockUrl}" style="display:inline-block;padding:14px 30px;background:#004820;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Open my lessons &rarr;</a></div>
   <p style="font-size:15px;line-height:1.7;">That link is your login. It works in any browser, on any device, as many times as you like, and everything you answer is saved to it. Keep this email.</p>
   <p style="font-size:15px;line-height:1.7;">Getting Started for SLPs is the first month in one kit, your reasons in writing, the people who already made the move and the r\u00e9sum\u00e9 pass, for $${priceOf("ground")}${wasNote("ground")}. It opens from the same link if you decide to.</p>
   <p style="font-size:15px;line-height:1.7;">James</p>
@@ -482,15 +482,15 @@ export function renderModule1SummaryEmail(summary: Record<string, string>): stri
   const html = `<!doctype html>
 <html><body style="margin:0;padding:0;background:#FAFAF9;font-family:-apple-system,'DM Sans',sans-serif;color:#1B1B1E;">
 <div style="max-width:620px;margin:0 auto;padding:32px 20px;">
-  <div style="text-align:center;margin-bottom:22px;"><div style="font-size:20px;font-weight:700;color:#2D6A4F;font-family:Georgia,serif;">SLP Transitions</div></div>
+  <div style="text-align:center;margin-bottom:22px;"><div style="font-size:20px;font-weight:700;color:#004820;font-family:Georgia,serif;">SLP Transitions</div></div>
   <p style="font-size:16px;line-height:1.7;">You finished Module 1. Here is what you worked out, so it is somewhere other than one browser.</p>
   <table style="width:100%;border-collapse:collapse;margin:18px 0;">${rows}</table>
-  <div style="background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;padding:20px;margin-top:18px;">
+  <div style="background:#E5E7D9;border:1px solid #DCE1D2;border-radius:12px;padding:20px;margin-top:18px;">
     <div style="font-size:15px;font-weight:700;margin-bottom:8px;">Everything that came with it</div>
     <div style="font-size:14px;line-height:1.9;">
-      &bull; <a href="${APP_URL}/course/workbook" style="color:#0B6B54;">Your workbook</a>, with these answers filled in, ready to print<br/>
-      &bull; <a href="${APP_URL}/api/course/workbook?f=pdf" style="color:#0B6B54;">A blank copy</a> to write on by hand<br/>
-      &bull; <a href="${APP_URL}/course" style="color:#0B6B54;">Your lessons</a>, to change any answer whenever you want
+      &bull; <a href="${APP_URL}/course/workbook" style="color:#004820;">Your workbook</a>, with these answers filled in, ready to print<br/>
+      &bull; <a href="${APP_URL}/api/course/workbook?f=pdf" style="color:#004820;">A blank copy</a> to write on by hand<br/>
+      &bull; <a href="${APP_URL}/course" style="color:#004820;">Your lessons</a>, to change any answer whenever you want
     </div>
   </div>
   <p style="font-size:15px;line-height:1.7;margin-top:20px;">The rest of the program isn&rsquo;t open yet. What you paid is credited toward it when it is, and I&rsquo;ll write to you the day that happens. Nothing else to do.</p>
@@ -534,7 +534,7 @@ export async function sendReportReminderEmail(input: {
 <div style="max-width:600px;margin:0 auto;padding:32px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#1F2937;background:#fff;">
   ${opening}
   <p style="text-align:center;margin:26px 0;">
-    <a href="${link}" style="display:inline-block;padding:14px 32px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Finish my report &rarr;</a>
+    <a href="${link}" style="display:inline-block;padding:14px 32px;background:#004820;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Finish my report &rarr;</a>
   </p>
   <p style="font-size:13px;line-height:1.7;color:#6B7280;">
     If anything goes sideways, reply to this email and I&rsquo;ll build it for you by hand. And if you&rsquo;ve changed your mind, reply and say so. The 30-day refund is real.
@@ -580,7 +580,7 @@ export function renderQuizFollowupDay2(input: QuizFollowupDay2Input): { subject:
   const first = (name || "").trim().split(/\s+/)[0] || "there";
   const link = `${APP_URL}/?from=quiz&goal=report&path=${encodeURIComponent(top.roleOption)}`;
   const site = "https://slptransitions.com";
-  const a = (href: string, text: string) => `<a href="${href}" style="color:#0B6B54;">${text}</a>`;
+  const a = (href: string, text: string) => `<a href="${href}" style="color:#004820;">${text}</a>`;
   const opening = `Hi ${esc(first)},`;
   const intro = `James here, from SLP Transitions. Your quiz came back <strong>${esc(top.label)}</strong> two days ago. Two days is when a result gets bookmarked or forgotten, so this is the nudge.`;
   const context = `For context, that path runs ${esc(top.range)}, and the typical move takes ${esc(top.timeline)}. ${esc(top.caveat)}`;
@@ -676,12 +676,12 @@ export async function sendReportEmail(input: {
   const roles = (r.topRoles || [])
     .map(
       (t: any) => `
-      <div style="padding:14px 16px;background:#F0FAF3;border-radius:8px;margin-bottom:10px;">
+      <div style="padding:14px 16px;background:#E5E7D9;border-radius:8px;margin-bottom:10px;">
         <div style="font-size:15px;font-weight:600;">${esc(t.role)}</div>
         <div style="font-size:13px;color:#1B1B1E;margin-top:4px;line-height:1.6;">${esc(t.whyYou)}</div>
         <div style="font-size:12px;color:#6B7280;margin-top:6px;">💰 ${esc(t.salaryRange)} &nbsp;·&nbsp; ⏱ ${esc(t.timeline)}</div>
         <div style="font-size:13px;color:#6B7280;margin-top:6px;"><b>Entry path:</b> ${esc(t.entryPath)}</div>
-        <div style="font-size:13px;color:#2D6A4F;margin-top:4px;"><b>First move:</b> ${esc(t.firstMove)}</div>
+        <div style="font-size:13px;color:#004820;margin-top:4px;"><b>First move:</b> ${esc(t.firstMove)}</div>
       </div>`
     )
     .join("");
@@ -690,7 +690,7 @@ export async function sendReportEmail(input: {
     .map(
       (w: any) => `
       <div style="margin-bottom:12px;">
-        <div style="font-size:12px;font-weight:700;color:#2D6A4F;text-transform:uppercase;">${esc(w.week)}: ${esc(w.theme)}</div>
+        <div style="font-size:12px;font-weight:700;color:#004820;text-transform:uppercase;">${esc(w.week)}: ${esc(w.theme)}</div>
         ${(w.actions || []).map((a: string) => `<div style="font-size:13px;color:#6B7280;padding:2px 0 2px 14px;line-height:1.6;">→ ${esc(a)}</div>`).join("")}
       </div>`
     )
@@ -700,14 +700,14 @@ export async function sendReportEmail(input: {
 <html><body style="margin:0;padding:0;background:#FAFAF9;font-family:-apple-system,'DM Sans',sans-serif;color:#1B1B1E;">
 <div style="max-width:680px;margin:0 auto;padding:32px 20px;">
   <div style="text-align:center;margin-bottom:28px;">
-    <div style="font-size:20px;font-weight:700;color:#2D6A4F;font-family:Georgia,serif;">SLP Transitions</div>
+    <div style="font-size:20px;font-weight:700;color:#004820;font-family:Georgia,serif;">SLP Transitions</div>
     <div style="font-size:13px;color:#6B7280;">Your Pivot Report</div>
   </div>
   ${
     r.edition === "quiz" && sessionId
-      ? `<div style="background:#F0FAF3;border:1px solid #B7E4C7;border-radius:10px;padding:14px 16px;margin-bottom:20px;font-size:14px;line-height:1.6;">
+      ? `<div style="background:#E5E7D9;border:1px solid #B3C4B1;border-radius:10px;padding:14px 16px;margin-bottom:20px;font-size:14px;line-height:1.6;">
           This report is built from your quiz answers. Add your résumé or your LinkedIn Experience section and we'll rebuild it around the work you've actually done, free, once.
-          <div style="margin-top:10px;"><a href="${APP_URL}/report?session_id=${encodeURIComponent(sessionId)}&amp;add=resume" style="display:inline-block;background:#0B6B54;color:#fff;text-decoration:none;font-weight:600;padding:10px 16px;border-radius:8px;">Add my résumé</a></div>
+          <div style="margin-top:10px;"><a href="${APP_URL}/report?session_id=${encodeURIComponent(sessionId)}&amp;add=resume" style="display:inline-block;background:#004820;color:#fff;text-decoration:none;font-weight:600;padding:10px 16px;border-radius:8px;">Add my résumé</a></div>
         </div>`
       : ""
   }
@@ -718,7 +718,7 @@ export async function sendReportEmail(input: {
           `Your profile: ${esc(r.readinessProfile.profile)}`,
           `<div style="font-size:14px;line-height:1.7;">${esc(r.readinessProfile.meaning)}</div>
            <div style="font-size:13px;color:#92400E;background:#FEF3C7;border-radius:6px;padding:8px 12px;margin-top:10px;"><b>Watch out for:</b> ${esc(r.readinessProfile.watchOutFor)}</div>
-           <div style="font-size:13px;color:#065F46;background:#D1FAE5;border-radius:6px;padding:8px 12px;margin-top:8px;"><b>Your underrated strength:</b> ${esc(r.readinessProfile.superpower)}</div>`
+           <div style="font-size:13px;color:#004820;background:#DCE1D2;border-radius:6px;padding:8px 12px;margin-top:8px;"><b>Your underrated strength:</b> ${esc(r.readinessProfile.superpower)}</div>`
         )
       : ""
   }
@@ -735,8 +735,8 @@ export async function sendReportEmail(input: {
           const steps = arc
             .map(([n, blurb], i) => {
               const cur = i === idx;
-              return `<div style="padding:8px 12px;border-radius:6px;margin-bottom:5px;border:1px solid ${cur ? "#2D6A4F" : "#E5E7EB"};background:${cur ? "#F0FAF3" : "#fff"};opacity:${idx > -1 && i < idx ? "0.6" : "1"};">
-                <span style="font-size:13px;font-weight:${cur ? 700 : 600};color:${cur ? "#2D6A4F" : "#1B1B1E"};">${i + 1}. ${esc(n)}${cur ? " ← you are here" : ""}</span>
+              return `<div style="padding:8px 12px;border-radius:6px;margin-bottom:5px;border:1px solid ${cur ? "#004820" : "#E5E7EB"};background:${cur ? "#E5E7D9" : "#fff"};opacity:${idx > -1 && i < idx ? "0.6" : "1"};">
+                <span style="font-size:13px;font-weight:${cur ? 700 : 600};color:${cur ? "#004820" : "#1B1B1E"};">${i + 1}. ${esc(n)}${cur ? " ← you are here" : ""}</span>
                 <div style="font-size:12px;color:#6B7280;margin-top:2px;">${esc(blurb)}</div>
               </div>`;
             })
@@ -779,7 +779,7 @@ export async function sendReportEmail(input: {
       : ""
   }
   ${r.closing ? `<p style="font-size:14px;line-height:1.75;font-style:italic;">${nl2br(r.closing)}</p>` : ""}
-  <div style="padding:24px;background:#F0FAF3;border:1px solid #D8F3DC;border-radius:12px;margin-top:24px;">
+  <div style="padding:24px;background:#E5E7D9;border:1px solid #DCE1D2;border-radius:12px;margin-top:24px;">
     <div style="font-size:18px;font-weight:700;margin-bottom:8px;text-align:center;">Next: turn this into an application</div>
     <div style="font-size:14px;color:#1B1B1E;line-height:1.7;margin-bottom:14px;">
       When you find a posting for ${esc(topRoleLabel || "one of these roles")}, the <b>Career Pivot Suite</b> rewrites your actual resume for that specific job:
@@ -793,7 +793,7 @@ export async function sendReportEmail(input: {
       ✓ Editable Word docs, and you can refine any section until it sounds like you
     </div>
     <div style="text-align:center;">
-      <a href="${APP_URL}${continueParam}" style="display:inline-block;padding:14px 32px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Get the full package for $${priceOf("suite")}${wasNote("suite")} →</a>
+      <a href="${APP_URL}${continueParam}" style="display:inline-block;padding:14px 32px;background:#004820;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">Get the full package for $${priceOf("suite")}${wasNote("suite")} →</a>
       <div style="font-size:12px;color:#6B7280;margin-top:10px;">
         ${continueParam && r?.edition !== "quiz" ? "Your résumé is already saved. Just add the job posting. " : ""}Free preview first. One-time payment, no subscription, 30-day refund.
       </div>
@@ -866,7 +866,7 @@ export async function sendStorySubmission(input: {
   const bullets = s.bullets.filter((b) => b.before || b.after)
     .map((b) => `<p style="margin:10px 0 0"><b>Before:</b> ${esc(b.before)}<br/><b>After:</b> ${esc(b.after)}</p>`).join("");
   const html = `<div style="max-width:640px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#1F2937">
-  <p style="font-size:13px;color:#2D6A4F;font-weight:600;letter-spacing:0.04em;margin:0 0 4px">NEW TRANSITION STORY</p>
+  <p style="font-size:13px;color:#004820;font-weight:600;letter-spacing:0.04em;margin:0 0 4px">NEW TRANSITION STORY</p>
   <h1 style="font-size:22px;margin:0 0 4px">${esc(creditName(s))}: SLP → ${esc(s.jobTitle)}${s.company ? ` at ${esc(s.company)}` : ""}</h1>
   <p style="margin:0 0 16px;color:#6B7280">To publish: tell Claude "draft the story from ${esc(s.firstName)}" (id ${esc(s.id)}). Nothing goes live until you approve it, and ${esc(s.firstName)} was told they'd see the draft first.</p>
   <table style="font-size:14px;border-collapse:collapse">

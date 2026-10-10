@@ -1077,7 +1077,7 @@ export default function SLPCareerSuite() {
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6, flexWrap: "wrap", gap: 8 }}>
                 <div style={{ fontSize: 16, fontWeight: 600 }}>{r.role}</div>
                 <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                  <span style={{ fontSize: 12, fontWeight: 600, padding: "3px 10px", borderRadius: 12, background: r.transitionDifficulty === "Easy" ? "#D1FAE5" : r.transitionDifficulty === "Moderate" ? "#FEF3C7" : "#FEE2E2", color: r.transitionDifficulty === "Easy" ? "#065F46" : r.transitionDifficulty === "Moderate" ? "#92400E" : "#991B1B" }}>{r.transitionDifficulty}</span>
+                  <span style={{ fontSize: 12, fontWeight: 600, padding: "3px 10px", borderRadius: 12, background: r.transitionDifficulty === "Easy" ? "#DCE1D2" : r.transitionDifficulty === "Moderate" ? "#FEF3C7" : "#FEE2E2", color: r.transitionDifficulty === "Easy" ? "#004820" : r.transitionDifficulty === "Moderate" ? "#92400E" : "#991B1B" }}>{r.transitionDifficulty}</span>
                   <span style={{ fontSize: 18, fontWeight: 700, color: "var(--accent)" }}>{r.matchScore}%</span>
                 </div>
               </div>

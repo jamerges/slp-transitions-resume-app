@@ -2,18 +2,19 @@
    server renderer drops custom properties from inline styles, which silently
    killed every border and button colour on server-rendered pages. */
 :root {
-  --accent: #2D6A4F;
-  --accent-light: #40916C;
-  --accent-bg: #D8F3DC;
-  --accent-bg-subtle: #F0FAF3;
+  /* Palette since 2026-10-09: forest #004820 on cream #EFEEE1 (James's pick). */
+  --accent: #004820;
+  --accent-light: #266341;
+  --accent-bg: #DCE1D2;
+  --accent-bg-subtle: #E5E7D9;
   --text: #1B1B1E;
-  --muted: #6B7280;
-  /* Was #9CA3AF (2.4:1 on --bg, fails WCAG AA for the small print it styles: refund lines,
-     field hints, footers). Now the --muted grey (4.6:1); small print stays smaller instead. */
-  --light: #6B7280;
-  --bg: #FAFAF9;
+  --muted: #5B6157;
+  /* Was #9CA3AF (2.4:1, failed WCAG AA for the small print it styles: refund lines,
+     field hints, footers). Now the --muted grey, 5.5:1 on the cream --bg. */
+  --light: #5B6157;
+  --bg: #EFEEE1;
   --card: #FFFFFF;
-  --border: #E5E7EB;
+  --border: #DAD8C6;
   --warn: #DC6803;
   --warn-bg: #FEF3C7;
   --err: #DC2626;
@@ -23,7 +24,7 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {
-  background: #FAFAF9;
+  background: #EFEEE1;
   color: #1B1B1E;
   font-family: -apple-system, BlinkMacSystemFont, 'DM Sans', 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -45,7 +45,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
     <CourseShell xp={p.xp} pct={pct} note={NOTE[held]}>
       {/* ---------------- hero: the map ---------------- */}
       <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) 320px", gap: 22, alignItems: "stretch" }} className="tos-two-col">
-        <Panel style={{ background: "linear-gradient(160deg, #0A3D31 0%, #0B6B54 100%)", color: "#fff", border: "none", padding: "clamp(20px, 4vw, 32px)" }}>
+        <Panel style={{ background: "linear-gradient(160deg, #002F15 0%, #004820 100%)", color: "#fff", border: "none", padding: "clamp(20px, 4vw, 32px)" }}>
           <div style={{ fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", opacity: 0.8 }}>Transition OS</div>
           <h1 style={{ fontFamily: font.serif, fontSize: "clamp(26px, 4vw, 38px)", fontWeight: 700, lineHeight: 1.12, margin: "6px 0 10px" }}>
             Your SLP skills transfer.

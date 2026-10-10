@@ -128,7 +128,7 @@ export default function ReportResults({
           <div style={{ fontSize: 13, background: "var(--warn-bg)", borderRadius: 8, padding: "10px 14px", marginBottom: 8, lineHeight: 1.6 }}>
             <strong>Watch out for:</strong> {r.readinessProfile.watchOutFor}
           </div>
-          <div style={{ fontSize: 13, background: "#D1FAE5", borderRadius: 8, padding: "10px 14px", lineHeight: 1.6 }}>
+          <div style={{ fontSize: 13, background: "#DCE1D2", borderRadius: 8, padding: "10px 14px", lineHeight: 1.6 }}>
             <strong>Your underrated strength:</strong> {r.readinessProfile.superpower}
           </div>
         </Card>

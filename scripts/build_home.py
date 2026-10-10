@@ -143,9 +143,10 @@ CSS = """
 <style id="slp-home-2026">
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600;700&display=swap');
 
-.slp-home{--cream:#F6F8F4;--paper:#FFFFFF;--forest:#0B6B54;--forest-dark:#0A3D31;
-  --brand:#0BA183;--mint:#DDF3EA;--sage:#8FC6B2;--amber:#E6A83A;--line:#DCE5DE;
-  --slate:#53655C;
+/* Palette since 2026-10-09: forest #004820 on cream #EFEEE1 (James's pick). */
+.slp-home{--cream:#EFEEE1;--paper:#FFFFFF;--forest:#004820;--forest-dark:#002F15;
+  --brand:#266341;--mint:#DCE1D2;--sage:#B3C4B1;--amber:#E6A83A;--line:#DAD8C6;
+  --slate:#555B52;
   font-family:'DM Sans',system-ui,sans-serif;color:var(--forest-dark);
   background:var(--cream);margin:0 calc(50% - 50vw);width:100vw;overflow-x:hidden}
 .slp-home *,.slp-home *::before,.slp-home *::after{box-sizing:border-box}
@@ -162,7 +163,7 @@ CSS = """
 .slp-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;
   gap:clamp(32px,5vw,72px);align-items:center}
 .slp-video{position:relative;margin:0;width:clamp(230px,22vw,290px);aspect-ratio:9/16;border-radius:28px;overflow:hidden;
-  background:#1B1B1E;border:6px solid #fff;box-shadow:0 22px 50px rgba(10,61,49,.18)}
+  background:#1B1B1E;border:6px solid #fff;box-shadow:0 22px 50px rgba(0,47,21,.18)}
 .slp-video video{display:block;width:100%;height:100%;object-fit:cover}
 .slp-home .slp-sound{position:absolute;right:10px;top:10px;border:0;border-radius:999px;background:rgba(255,255,255,.92);
   color:var(--forest-dark)!important;font:600 .78rem/1 'DM Sans',system-ui,sans-serif!important;text-transform:none!important;
@@ -191,11 +192,11 @@ CSS = """
 .slp-row{display:grid;grid-template-columns:13rem minmax(0,1fr) 7.5rem;gap:1rem;align-items:center;font-size:.9rem}
 .slp-row .n{color:var(--forest-dark);font-weight:600}
 .slp-row .v{color:var(--slate);font-variant-numeric:tabular-nums;text-align:right}
-.slp-track{position:relative;height:12px;border-radius:6px;background:#EEF2EE}
+.slp-track{position:relative;height:12px;border-radius:6px;background:#E2E3D3}
 .slp-track span{position:absolute;top:0;bottom:0;border-radius:6px}
 .slp-axis{display:grid;grid-template-columns:13rem minmax(0,1fr) 7.5rem;gap:1rem;margin-top:.4rem;font-size:.74rem;color:var(--slate)}
 .slp-axis div{display:flex;justify-content:space-between}
-.t1{background:var(--forest)}.t2{background:var(--brand)}.t3{background:var(--sage)}
+.t1{background:var(--forest)}.t2{background:#6E9578}.t3{background:var(--sage)}
 .slp-compare .slp-quiet{display:inline-block;margin-top:1.3rem}
 .slp-home a.slp-btn-primary:hover{background:var(--forest-dark);transform:translateY(-2px)}
 .slp-home a.slp-btn-ghost{border:1.5px solid var(--forest);color:var(--forest)!important}
@@ -216,7 +217,7 @@ CSS = """
   gap:clamp(16px,3vw,40px);background:var(--paper);border:1px solid var(--line);
   border-radius:20px;padding:clamp(24px,3.4vw,44px);text-decoration:none;color:inherit;
   transition:transform .18s ease,box-shadow .18s ease}
-.slp-pillar:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(10,61,49,.09)}
+.slp-pillar:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,47,21,.09)}
 .slp-pillar-body{flex:1 1 22em;min-width:0}
 .slp-pillar-body h2{font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.12;margin:0 0 .55rem;
   color:var(--forest-dark)}
@@ -240,9 +241,9 @@ CSS = """
 /* stories */
 .slp-stories{background:var(--forest-dark);color:var(--paper)}
 .slp-stories h2{color:var(--paper)}
-.slp-stories .slp-sec-intro p{color:#BDD0C7}
+.slp-stories .slp-sec-intro p{color:#D6DAC9}
 .slp-story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.slp-story{background:#F9F5EB;border-radius:16px;padding:1.6rem;display:flex;flex-direction:column;
+.slp-story{background:#F7F6EE;border-radius:16px;padding:1.6rem;display:flex;flex-direction:column;
   transition:transform .18s ease}
 .slp-story:hover{transform:translateY(-4px)}
 .slp-story-top{display:flex;align-items:center;gap:.85rem}
@@ -264,7 +265,7 @@ CSS = """
 .slp-res{border-top:1px solid var(--line)}
 .slp-res a{display:grid;grid-template-columns:.6fr 1.1fr 1.3fr auto;gap:2rem;align-items:center;
   padding:1.5rem .25rem;border-bottom:1px solid var(--line);transition:background .18s ease,padding .18s ease}
-.slp-res a:hover{background:rgba(227,241,232,.6);padding-left:1rem;padding-right:1rem}
+.slp-res a:hover{background:rgba(220,225,210,.6);padding-left:1rem;padding-right:1rem}
 .slp-res .step{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
 .slp-res b{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:1.3rem;color:var(--forest-dark)}
 .slp-res p{font-size:.9rem;line-height:1.55;color:var(--slate)}
@@ -341,7 +342,7 @@ def build():
     # app, so the two sites show one sale. The Kadence "Sale banner" element
     # (3656) is the site-wide version and sits in draft until it renders.
     if SALE_BANNER:
-        a('<a class="slp-sale" href="{}" style="display:block;background:#0B6B54;color:#fff;text-align:center;'
+        a('<a class="slp-sale" href="{}" style="display:block;background:#004820;color:#fff;text-align:center;'
           'padding:10px 16px;font-size:15px;line-height:1.4;text-decoration:none;font-weight:600;">{}</a>'
           .format(SALE_BANNER[1], SALE_BANNER[0]))
 
@@ -410,7 +411,7 @@ def build():
 
     # ---- stories
     a('<section class="slp-sec slp-stories" id="real-stories"><div class="slp-wrap">')
-    a('<div class="slp-sec-intro"><div><p class="slp-kicker" style="color:#7FD6BC">Real transitions</p>'
+    a('<div class="slp-sec-intro"><div><p class="slp-kicker" style="color:#C9D6C3">Real transitions</p>'
       '<h2>See where other SLPs actually landed.</h2></div></div>')
     a('<div class="slp-story-grid" data-stagger>')
     for s in STORIES:

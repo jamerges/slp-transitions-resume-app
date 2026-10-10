@@ -615,7 +615,7 @@ export default function CareerQuiz({
             {buyError && (
               <div style={{ fontSize: 13, color: "var(--warn)", textAlign: "center", marginTop: 10 }}>{buyError}</div>
             )}
-            <div style={{ borderTop: "1px solid var(--line, #E5E7EB)", marginTop: 22, paddingTop: 16, textAlign: "center" }}>
+            <div style={{ borderTop: "1px solid var(--border)", marginTop: 22, paddingTop: 16, textAlign: "center" }}>
               <p style={{ fontSize: 13, lineHeight: 1.65, color: "var(--muted)", margin: 0 }}>
                 No posting in hand yet?{" "}
                 <button

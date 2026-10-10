@@ -4,16 +4,16 @@ import { useState, type CSSProperties, type ReactNode } from "react";
 import SaleBanner from "./SaleBanner";
 
 export const V: Record<string, string> = {
-  "--accent": "#2D6A4F",
-  "--accent-light": "#40916C",
-  "--accent-bg": "#D8F3DC",
-  "--accent-bg-subtle": "#F0FAF3",
+  "--accent": "#004820",
+  "--accent-light": "#266341",
+  "--accent-bg": "#DCE1D2",
+  "--accent-bg-subtle": "#E5E7D9",
   "--text": "#1B1B1E",
-  "--muted": "#6B7280",
-  "--light": "#6B7280",
-  "--bg": "#FAFAF9",
+  "--muted": "#5B6157",
+  "--light": "#5B6157",
+  "--bg": "#EFEEE1",
   "--card": "#FFFFFF",
-  "--border": "#E5E7EB",
+  "--border": "#DAD8C6",
   "--warn": "#DC6803",
   "--warn-bg": "#FEF3C7",
   "--err": "#DC2626",
@@ -131,7 +131,7 @@ export function ProgressBar({ step, total }: { step: number; total: number }) {
 }
 
 const COVERAGE_STYLES: Record<string, { icon: string; bg: string; color: string; label: string }> = {
-  covered: { icon: "✓", bg: "#D1FAE5", color: "#065F46", label: "Covered" },
+  covered: { icon: "✓", bg: "#DCE1D2", color: "#004820", label: "Covered" },
   partial: { icon: "◐", bg: "#FEF3C7", color: "#92400E", label: "Partial" },
   missing: { icon: "○", bg: "#FEE2E2", color: "#991B1B", label: "Gap" },
 };

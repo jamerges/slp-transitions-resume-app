@@ -26,8 +26,8 @@ CATS_NAV = [("Guides", "guides"), ("Real Transitions", "real-transitions"),
 CSS = """
 <style id="slp-blog-2026">
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600;700&display=swap');
-.slp-blog{--bg:#F6F8F4;--paper:#FFFFFF;--forest:#0B6B54;--forest-dark:#0A3D31;
-  --brand:#0BA183;--line:#DCE5DE;--slate:#53655C;
+.slp-blog{--bg:#EFEEE1;--paper:#FFFFFF;--forest:#004820;--forest-dark:#002F15;
+  --brand:#266341;--line:#DAD8C6;--slate:#555B52;
   font-family:'DM Sans',system-ui,sans-serif;color:var(--forest-dark);
   background:var(--bg);margin:0 calc(50% - 50vw);width:100vw}
 .slp-blog *,.slp-blog *::before,.slp-blog *::after{box-sizing:border-box}

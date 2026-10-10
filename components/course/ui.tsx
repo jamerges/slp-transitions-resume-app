@@ -84,7 +84,7 @@ export function UnlockToast({ xp, badges, onDone }: { xp: number; badges: BadgeI
         {defs.length > 0 && (
           <div className="tos-confetti" aria-hidden style={{ position: "absolute", inset: 0 }}>
             {Array.from({ length: 18 }).map((_, i) => (
-              <span key={i} style={{ left: `${(i * 53) % 100}%`, background: ["#2D6A4F", "#40916C", "#D8F3DC", "#DC6803", "#FEF3C7"][i % 5], animationDelay: `${(i % 6) * 90}ms` }} />
+              <span key={i} style={{ left: `${(i * 53) % 100}%`, background: ["#004820", "#266341", "#DCE1D2", "#DC6803", "#FEF3C7"][i % 5], animationDelay: `${(i % 6) * 90}ms` }} />
             ))}
           </div>
         )}
