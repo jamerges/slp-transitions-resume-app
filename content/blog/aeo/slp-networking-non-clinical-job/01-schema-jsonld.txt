@@ -1,0 +1,233 @@
+=== YOAST FREE (what this site runs): paste ONLY the FAQPage block ===
+Yoast already prints Article and BreadcrumbList for every post, so adding them again duplicates them.
+03-faq-embed.html already carries the FAQPage <script>, so if you paste that file you are done.
+
+=== FULL GRAPH, for a plugin with a custom schema field (Yoast Premium / RankMath Pro / AIOSEO Pro) ===
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How SLPs Network Into a Non-Clinical Job (Without Asking Anyone for One)",
+      "description": "Referrals decide most SLP career changes. Who to message first, what to say, how to follow up, and how one fifteen-minute call turns into the next one.",
+      "image": "https://slptransitions.com/wp-content/uploads/2026/10/slp-networking-non-clinical-job-header.png",
+      "author": {
+        "@type": "Person",
+        "name": "James Berges",
+        "url": "https://slptransitions.com/about/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "SLP Transitions",
+        "url": "https://slptransitions.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://slptransitions.com/wp-content/uploads/2021/09/cropped-Paper-Airplane-Company-Logo-2.png"
+        }
+      },
+      "datePublished": "2026-10-16",
+      "dateModified": "2026-10-16",
+      "url": "https://slptransitions.com/slp-networking-non-clinical-job/",
+      "keywords": [
+        "SLP networking non-clinical job",
+        "informational interview SLP",
+        "LinkedIn message career change",
+        "how to get a referral career change",
+        "networking for clinicians",
+        "SLP career change networking"
+      ],
+      "articleSection": "Guides",
+      "inLanguage": "en-US",
+      "wordCount": 2271,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://slptransitions.com/slp-networking-non-clinical-job/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do SLPs really need to network to leave clinical work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For most, yes. In the documented SLP transitions, referrals decide most successful moves, and applying through job boards without one is the pattern that stalls. You can get hired without a referral, but expect it to take far more applications."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I say in a LinkedIn message to someone who left speech therapy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Name the move they made, ask for fifteen minutes about how they got their first role, and say clearly that you're not asking for a job. Keep it under 90 words and end with one question they could answer in a sentence."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many networking messages should I send a week?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Two new messages a week is a steady pace while you're exploring, and around five once you're actively applying. A few researched messages do more than a pile of copied ones. A fixed thirty minutes a day helps, or one day a week set aside just for networking."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I ask for a referral in my first message?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Ask about their path first. Referrals usually come at the end of a real conversation, often offered rather than asked for. Once you've talked, \"would you be open to me sending you the posting if one opens?\" is an easy way to ask."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I don't know what job I want yet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Network anyway, and name the two titles you're weighing: \"I'm looking at clinical liaison and customer success, and I'm trying to work out which.\" That gives people something to remember you by. \"Anything outside the clinic\" doesn't."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://slptransitions.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Guides",
+          "item": "https://slptransitions.com/category/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How SLPs Network Into a Non-Clinical Job (Without Asking Anyone for One)",
+          "item": "https://slptransitions.com/slp-networking-non-clinical-job/"
+        }
+      ]
+    }
+  ]
+}
+
+=== FALLBACK: <script> tags for a Custom HTML block at the top of the post ===
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How SLPs Network Into a Non-Clinical Job (Without Asking Anyone for One)",
+  "description": "Referrals decide most SLP career changes. Who to message first, what to say, how to follow up, and how one fifteen-minute call turns into the next one.",
+  "image": "https://slptransitions.com/wp-content/uploads/2026/10/slp-networking-non-clinical-job-header.png",
+  "author": {
+    "@type": "Person",
+    "name": "James Berges",
+    "url": "https://slptransitions.com/about/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SLP Transitions",
+    "url": "https://slptransitions.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://slptransitions.com/wp-content/uploads/2021/09/cropped-Paper-Airplane-Company-Logo-2.png"
+    }
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "url": "https://slptransitions.com/slp-networking-non-clinical-job/",
+  "keywords": [
+    "SLP networking non-clinical job",
+    "informational interview SLP",
+    "LinkedIn message career change",
+    "how to get a referral career change",
+    "networking for clinicians",
+    "SLP career change networking"
+  ],
+  "articleSection": "Guides",
+  "inLanguage": "en-US",
+  "wordCount": 2271,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://slptransitions.com/slp-networking-non-clinical-job/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do SLPs really need to network to leave clinical work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most, yes. In the documented SLP transitions, referrals decide most successful moves, and applying through job boards without one is the pattern that stalls. You can get hired without a referral, but expect it to take far more applications."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I say in a LinkedIn message to someone who left speech therapy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Name the move they made, ask for fifteen minutes about how they got their first role, and say clearly that you're not asking for a job. Keep it under 90 words and end with one question they could answer in a sentence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many networking messages should I send a week?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Two new messages a week is a steady pace while you're exploring, and around five once you're actively applying. A few researched messages do more than a pile of copied ones. A fixed thirty minutes a day helps, or one day a week set aside just for networking."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I ask for a referral in my first message?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Ask about their path first. Referrals usually come at the end of a real conversation, often offered rather than asked for. Once you've talked, \"would you be open to me sending you the posting if one opens?\" is an easy way to ask."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I don't know what job I want yet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Network anyway, and name the two titles you're weighing: \"I'm looking at clinical liaison and customer success, and I'm trying to work out which.\" That gives people something to remember you by. \"Anything outside the clinic\" doesn't."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://slptransitions.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://slptransitions.com/category/guides/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How SLPs Network Into a Non-Clinical Job (Without Asking Anyone for One)",
+      "item": "https://slptransitions.com/slp-networking-non-clinical-job/"
+    }
+  ]
+}
+</script>
