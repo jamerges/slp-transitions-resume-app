@@ -27,7 +27,7 @@ You also don't need to know which job you want before you start. Half of what th
 
 A message with no ask in it. I saw that Osmind had just raised its Series B, and I wrote to one of their recruiters to say congratulations. That was the whole message. It started the conversation that became my job.
 
-It didn't come from nowhere. Before that, I joined Slack and Facebook groups for UX and content strategy, the two fields I was looking at. I looked for SLPs in those groups who had already made the move and messaged them, because a former SLP's path was closer to mine than anyone else's in the role. And I entered a no-code hackathon, where I built an Alexa skill called Smooth Speaking: a prototype for bringing in leads for SLPs who treat stuttering. It gave me something to point to that wasn't a caseload.
+It didn't come from nowhere. Before that, I joined Slack and Facebook groups for UX and content strategy, the two fields I was looking at. I looked for SLPs in those groups who had already made the move and messaged them, because a former SLP's path was closer to mine than anyone else's in the role. And I entered a no-code hackathon, where I built an Alexa skill called Smooth Speaking: a prototype for bringing in leads for SLPs who treat stuttering. It gave me something to point to that wasn't a caseload. I also built up a portfolio of marketing and content work, including copywriting and email marketing for SLP influencers and SLP businesses, before I moved into marketing full time. Today I'm a marketing manager at Osmind.
 
 The congratulations note worked for reasons that show up in the research. People appreciate being contacted far more than the sender expects, and the gap is widest when the message is a surprise and comes from someone they don't know well ([Liu et al., 2023](https://pubmed.ncbi.nlm.nih.gov/35816566/)). People who give compliments also underestimate how good the other person will feel, and overestimate how awkward it will be ([Boothby and Bohns, 2021](https://ecommons.cornell.edu/entities/publication/0698c45d-1d7b-474b-87d5-ed8c784e6172)). A funding round is a good reason to write, too, because a company that just raised money is about to hire.
 
@@ -130,6 +130,8 @@ Contact a recruiter when there's a live posting you match on most of the require
 ## Should you build something to show people?
 
 If you can, yes. A small project gives a stranger a reason to talk to you and gives you something to point to that isn't a caseload. My hackathon Alexa skill did that for me. One SLP who became a data analyst had a five-project portfolio by the time she was interviewing.
+
+The easiest first clients may be in your own field. Before I went into marketing full time, I did copywriting and email marketing for SLP influencers and SLP businesses. They need people who understand their audience, and you already do. Each project gives you a real result to show, and the people you work with become references from outside a clinic.
 
 It doesn't have to be technical. A sample training module for an instructional design role, a mock onboarding plan for customer success, or a one-page patient education redesign all count. Send it to someone you've already spoken to and ask what a hiring manager would say about it. That's a small, flattering ask, and it puts your work in front of the person most likely to pass it on.
 

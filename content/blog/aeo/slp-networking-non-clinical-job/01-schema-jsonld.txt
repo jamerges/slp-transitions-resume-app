@@ -38,7 +38,7 @@ Yoast already prints Article and BreadcrumbList for every post, so adding them a
       ],
       "articleSection": "Guides",
       "inLanguage": "en-US",
-      "wordCount": 2325,
+      "wordCount": 2422,
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://slptransitions.com/slp-networking-non-clinical-job/"
@@ -150,7 +150,7 @@ Yoast already prints Article and BreadcrumbList for every post, so adding them a
   ],
   "articleSection": "Guides",
   "inLanguage": "en-US",
-  "wordCount": 2325,
+  "wordCount": 2422,
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://slptransitions.com/slp-networking-non-clinical-job/"

@@ -72,11 +72,11 @@ SLIDES = [
 <div class="q">&ldquo;If a role opens on your team, would you be open to me sending you the posting?&rdquo;</div>
 <p class="sub">The first hands you the next name. The second is a referral ask in its least awkward form.</p>"""),
     # 8 James's own no-ask message (his words, 2026-10-16; the exact text he sent isn't known, so it isn't quoted)
-    ("dark", f"""<div class="kicker">What got me hired</div>
-<h2 class="light">A congratulations note. No ask.</h2>
+    ("cream", f"""<div class="kicker on-cream">What got me hired</div>
+<h2>A congratulations note. No ask.</h2>
 <p class="story">When Osmind raised its Series B, I messaged one of their recruiters to say congrats. That was the whole message. It started the conversation that became my job.</p>
-<div class="byline"><img src="{PHOTO}" alt=""><div><b>James Berges</b><span>Former SLP, now at Osmind</span></div></div>
-<p class="sub small-light">People appreciate being contacted more than senders expect, especially out of the blue.</p>"""),
+<div class="byline"><img src="{PHOTO}" alt=""><div><b>James Berges</b><span>Former SLP, now a marketing manager at Osmind</span></div></div>
+<p class="body small">People appreciate being contacted more than senders expect, especially out of the blue.</p>"""),
     # 9 CTA
     ("cream", """<h2>The full guide covers who to message first, when to follow up, and when to ask for a referral.</h2>
 <div class="cta">How SLPs network into a non-clinical job</div>
@@ -117,11 +117,12 @@ ol.num li::before{{content:counter(n);position:absolute;left:0;top:2px;width:52p
 .q{{font-family:'Fraunces',serif;font-weight:500;font-size:58px;line-height:1.2;margin:44px 0 0;padding-left:34px;border-left:6px solid #C9D6C3}}
 .cta{{background:{FOREST};color:{CREAM};font-family:'Fraunces',serif;font-weight:600;font-size:48px;line-height:1.2;padding:40px 44px;border-radius:24px}}
 .light{{color:{CREAM}}}
-.story{{font-size:40px;line-height:1.45;color:{CREAM}}}
+.story{{font-size:40px;line-height:1.45}}
+.on-cream{{color:{FOREST};margin-bottom:24px}}
 .byline{{display:flex;align-items:center;gap:24px;margin-top:48px}}
-.byline img{{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid #C9D6C3}}
-.byline b{{display:block;font-size:34px;color:{CREAM}}}
-.byline span{{font-size:28px;color:#D6DAC9}}
+.byline img{{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid {TINT}}}
+.byline b{{display:block;font-size:34px}}
+.byline span{{font-size:28px;color:{MUTED}}}
 .small-light{{font-size:28px;margin-top:44px}}
 .foot{{position:absolute;left:96px;right:96px;top:56px;display:flex;justify-content:space-between;font-size:24px;font-weight:700;letter-spacing:.06em;opacity:.7}}
 /* header */
