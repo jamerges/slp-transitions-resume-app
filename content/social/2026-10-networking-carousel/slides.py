@@ -24,7 +24,8 @@ GOOD = ("Hi Sam, I'm an SLP in a school district looking at implementation roles
         "Would you have fifteen minutes in the next couple of weeks? I mostly want to know how you got the first one. "
         "No job ask, I promise.")
 
-FOOT = '<div class="foot"><span>SLP Transitions</span><span>{n} / 8</span></div>'
+FOOT = '<div class="foot"><span>SLP Transitions</span><span>{n} / {total}</span></div>'
+PHOTO = "file://" + os.path.join(HERE, "james.jpg")
 
 
 def bubble(text, tone):
@@ -70,7 +71,13 @@ SLIDES = [
 <div class="q">&ldquo;Is there anyone else you'd talk to if you were me?&rdquo;</div>
 <div class="q">&ldquo;If a role opens on your team, would you be open to me sending you the posting?&rdquo;</div>
 <p class="sub">The first hands you the next name. The second is a referral ask in its least awkward form.</p>"""),
-    # 8 CTA
+    # 8 James's own no-ask message (his words, 2026-10-16; the exact text he sent isn't known, so it isn't quoted)
+    ("dark", f"""<div class="kicker">What got me hired</div>
+<h2 class="light">A congratulations note. No ask.</h2>
+<p class="story">When Osmind raised its Series B, I messaged one of their recruiters to say congrats. That was the whole message. It started the conversation that became my job.</p>
+<div class="byline"><img src="{PHOTO}" alt=""><div><b>James Berges</b><span>Former SLP, now at Osmind</span></div></div>
+<p class="sub small-light">People appreciate being contacted more than senders expect, especially out of the blue.</p>"""),
+    # 9 CTA
     ("cream", """<h2>The full guide covers who to message first, when to follow up, and when to ask for a referral.</h2>
 <div class="cta">How SLPs network into a non-clinical job</div>
 <p class="body">Free on slptransitions.com. Link in bio.</p>
@@ -109,6 +116,13 @@ ol.num li::before{{content:counter(n);position:absolute;left:0;top:2px;width:52p
 .small{{font-size:30px;color:{MUTED};margin-top:20px}}
 .q{{font-family:'Fraunces',serif;font-weight:500;font-size:58px;line-height:1.2;margin:44px 0 0;padding-left:34px;border-left:6px solid #C9D6C3}}
 .cta{{background:{FOREST};color:{CREAM};font-family:'Fraunces',serif;font-weight:600;font-size:48px;line-height:1.2;padding:40px 44px;border-radius:24px}}
+.light{{color:{CREAM}}}
+.story{{font-size:40px;line-height:1.45;color:{CREAM}}}
+.byline{{display:flex;align-items:center;gap:24px;margin-top:48px}}
+.byline img{{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid #C9D6C3}}
+.byline b{{display:block;font-size:34px;color:{CREAM}}}
+.byline span{{font-size:28px;color:#D6DAC9}}
+.small-light{{font-size:28px;margin-top:44px}}
 .foot{{position:absolute;left:96px;right:96px;top:56px;display:flex;justify-content:space-between;font-size:24px;font-weight:700;letter-spacing:.06em;opacity:.7}}
 /* header */
 .hdr{{width:1200px;height:630px;background:{DARK};color:{CREAM};padding:70px 80px;font-family:'DM Sans',sans-serif;display:flex;flex-direction:column;justify-content:center}}
@@ -130,7 +144,7 @@ def render(markup, path, w, h):
 if __name__ == "__main__":
     for i, (tone, inner) in enumerate(SLIDES, 1):
         assert "—" not in inner
-        render(f'<div class="s {tone}">{FOOT.format(n=i)}{inner}</div>', os.path.join(HERE, f"slide-{i}.png"), 1080, 1350)
+        render(f'<div class="s {tone}">{FOOT.format(n=i, total=len(SLIDES))}{inner}</div>', os.path.join(HERE, f"slide-{i}.png"), 1080, 1350)
     render("""<div class="hdr"><div class="kicker">SLP Transitions · Guide</div>
 <h1>How SLPs network into a non-clinical job</h1><p class="sub">Who to message first, what to say, and how one conversation leads to the next.</p></div>""",
            os.path.join(HERE, "header.png"), 1200, 630)
