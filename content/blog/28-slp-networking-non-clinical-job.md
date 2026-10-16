@@ -17,45 +17,51 @@ secondaryKeywords:
 
 # How SLPs Network Into a Non-Clinical Job (Without Asking Anyone for One)
 
-**The short answer:** Most SLPs who land a non-clinical job get there through a person, not a job board. Start with people you know who work outside speech, then former SLPs at companies you'd like. Ask each for fifteen minutes about their path, with no job attached, and end by asking who else you should talk to.
+**The short answer:** Most SLPs who land a non-clinical job get there through a person, not a job board. Start with people you half-know, then former SLPs at companies you'd like. Ask each for fifteen minutes about their path, with no job attached, and end by asking who else you should talk to.
 
 You already do the hard part of networking every day. You meet a stranger, build rapport in ten minutes, gather a history, plan next steps and write it up, and you do it with a four-year-old, a nurse and a grandmother before lunch. The one thing you're missing is the people. Twelve years inside one profession leaves a contact list full of SLPs, and an SLP can't refer you into customer success.
 
-You also don't need to know which job you want before you start. Half of what these conversations teach you is what you don't want, and every one of those rules out a path faster than reading about it would.
+You also don't need to know which job you want before you start. Half of what these conversations teach you is what you don't want, and each one rules out a path faster than reading about it would.
+
+## What got me hired at Osmind?
+
+A message with no ask in it. I saw that Osmind had just raised its Series B, and I wrote to one of their recruiters to say congratulations. That was the whole message. It started the conversation that became my job.
+
+It didn't come from nowhere. Before that, I joined Slack and Facebook groups for UX and content strategy, the two fields I was looking at. I looked for SLPs in those groups who had already made the move and messaged them, because a former SLP's path was closer to mine than anyone else's in the role. And I entered a no-code hackathon, where I built an Alexa skill called Smooth Speaking: a prototype for bringing in leads for SLPs who treat stuttering. It gave me something to point to that wasn't a caseload.
+
+The congratulations note worked for reasons that show up in the research. People appreciate being contacted far more than the sender expects, and the gap is widest when the message is a surprise and comes from someone they don't know well ([Liu et al., 2023](https://pubmed.ncbi.nlm.nih.gov/35816566/)). People who give compliments also underestimate how good the other person will feel, and overestimate how awkward it will be ([Boothby and Bohns, 2021](https://ecommons.cornell.edu/entities/publication/0698c45d-1d7b-474b-87d5-ed8c784e6172)). A funding round is a good reason to write, too, because a company that just raised money is about to hire.
 
 ## Why does networking matter more than applying?
 
-Because applications without a referral are what fails. Across the documented SLP transitions we track, referrals decide most of the successful moves, and generic applications through Indeed and LinkedIn are the pattern that stalls. One SLP sent 113 tailored applications over eleven months for 7 interviews and 1 offer. Another sent more than 500 over six months before landing a fully remote analyst job that pays $20,000 more than her SLP salary.
+Because applications without a referral are what fails most often. Across the documented SLP transitions we track, referrals decide most of the successful moves. One SLP sent 113 tailored applications over eleven months for 7 interviews and 1 offer. Another sent more than 500 over six months before landing a fully remote analyst job that pays $20,000 more than her SLP salary.
 
 Both got there. The volume was the price of doing it without anyone inside.
 
-A referral changes which pile your résumé lands in. Someone at the company who has spoken with you can say "she seemed serious, take a look," and that's often what gets a career-changer read when the screen would have filtered them out for the wrong job titles.
+Economists who studied hiring data from nine large companies found that referred applicants were more likely to be hired and more likely to accept the offer than other applicants with similar skills, and they stayed longer once hired ([Burks et al., 2015](https://www.iza.org/publications/dp/7382)). For a career-changer, a referral is often what gets a résumé read at all when the screen would have filtered it out for the wrong job titles.
 
 ## Who should an SLP network with first?
 
-The people who already know you and work somewhere else. Make that list before you write to a single stranger:
+People you half-know. The largest study of this, run on 20 million LinkedIn members over five years, found that moderately weak ties produced the most job moves: people you share a few connections with, rather than your closest friends or total strangers ([Rajkumar et al., 2022](https://digitaleconomy.stanford.edu/publication/a-causal-test-of-the-strength-of-weak-ties)). Old contacts count too. People who got back in touch with someone they hadn't spoken to in years got advice as useful as their current contacts gave, plus the trust of the old relationship ([Levin, Walter and Murnighan, 2011](https://ideas.repec.org/a/inm/ororsc/v22y2011i4p923-939.html)).
+
+For an SLP, that list looks like this:
 
 - **Your grad cohort.** SLP programs are small and cohorts stay findable. Five years out, some of your classmates are in health tech, ed tech, device companies and pharma. Search your program's name on LinkedIn and read where people went.
 - **The reps who walk into your building.** The AAC device rep, the EMR trainer who ran your go-live, the ed-tech rep who sold your district its screening platform. They work at exactly the kind of company you're looking at, and they already know you.
 - **The ones who already left.** The CF you supervised who never came back, the colleague who went to a vendor. They're the warmest cold message you'll ever send.
+- **The non-clinical teams at your own employer.** One SLP in our research moved into an Epic clinical analyst job inside the same hospital system. Informatics, quality, education and IT may sit one building away from your caseload.
 - **Everyone outside speech.** A partner's colleagues, the college friend in tech, the neighbor who sells software, anyone you worked with before grad school.
 
 Then look at the companies behind the tools you use every week: your documentation software, your AAC devices, your teletherapy platform, the screener your district bought. Every one of them employs people, and some of those people used to be clinicians.
 
 [[MIDPOST]]
 
-## How do you find former SLPs on LinkedIn?
+## Where do former SLPs gather online?
 
-Search two phrases together, each in quotation marks: `"speech-language pathologist" "customer success"`. LinkedIn returns profiles that mention both. Swap the second phrase for the title you're curious about, like "implementation", "clinical liaison" or "instructional design".
+In the communities for the job you want, more than in SLP groups. The people who already made your move hang out where their new field does. When I was looking, that meant Slack and Facebook groups for UX and content strategy. For you it might be an instructional design Slack, a customer success community, or a health-tech operations group.
 
-Or start from a company. Open its LinkedIn page, click **People**, and scan for CCC-SLP or a speech background in people's histories. A former SLP doing the job you want, at a company you'd work for, is the best first message you can write.
+Join two, read for a week, then search each group's members and posts for "SLP" or "speech". The ones who answer will usually remember being where you are. r/SLPcareertransitions on Reddit is the other place to look, because the people posting their exits there often invite questions.
 
-Two more things on that company page are worth a look:
-
-- **The "Pages people also viewed" panel** lists similar companies. One teletherapy company you know leads to five you'd never heard of.
-- **Where the employees live.** If nearly everyone is in one city, the company probably isn't remote, whatever the job post says.
-
-Follow every company you're curious about, too. Their posts, webinars and openings start showing up in your feed without you searching for them.
+LinkedIn works as a search engine for the same people. Search two phrases together, each in quotation marks, like `"speech-language pathologist" "customer success"`, and swap the second phrase for the title you're curious about. Or open a company's LinkedIn page, click **People**, and look for CCC-SLP or a speech background in people's histories. The "Pages people also viewed" panel on that company page leads you to similar companies you haven't heard of.
 
 ## What should your first message say?
 
@@ -75,32 +81,23 @@ Five things make a message answerable:
 4. **It's easy to decline,** which is what makes a stranger feel safe replying.
 5. **It's easy to say yes to:** one question they could answer in a sentence, or two time windows.
 
-A connection request and a networking message are two different jobs. The connection note has one goal, getting them to click accept, so keep it under 200 characters: "Hi [Name], I'm an SLP looking at [title] roles and saw you made that move from [their old setting]. Would love to connect." The real message, with your one question, comes after they accept.
+Length matters more than polish. In one analysis of millions of emails, messages of 50 to 125 words with one to three questions got the most replies ([Boomerang](https://blog.boomerangapp.com/2016/02/7-tips-for-getting-more-responses-to-your-emails-with-data/)). That was email rather than LinkedIn, but the rule carries over: short, with a question at the end.
 
-You can connect with people you've never met. Accepting your request doesn't mean they're vouching for you, and it puts their network one step closer to yours.
+And ask for advice without apologizing for it. People who are asked a thoughtful question rate the person asking as more competent, as long as the question is a real one and goes to someone who can answer it ([Brooks, Gino and Schweitzer, 2015](https://ideas.repec.org/a/inm/ormnsc/v61y2015i6p1421-1435.html)). Don't ask anything Google could answer. Ask what only they know.
 
-Don't ask anything Google could answer, like what their company does. Ask what only they know.
-
-Use ChatGPT or Claude to tidy a draft if you like, but write the first version yourself. A pasted, generic message reads as one, and the people you're writing to get a lot of them.
+**About connection requests:** a free LinkedIn account gets only a handful of personalized connection notes a month, and each note is capped at 200 characters. Save those notes for the people you most want to reach, like "Hi [Name], I'm an SLP looking at [title] roles and saw you made that move. Would love to connect." For everyone else, connect without a note and send your real message once they accept.
 
 ## What if they don't reply?
 
-Follow up. Outside healthcare it's expected, not rude, and plenty of people only reply to the second message. Expect roughly one in four or five asks to go unanswered even so. Silence usually means a busy month, not a closed door.
+Send one follow-up about a week later, then let it rest. Expect roughly one in four or five asks to go unanswered. Silence usually means a busy month, not a closed door.
 
-Send up to two follow-ups: one about four days after the first message, and one about ten days after. Then move on to the next person. Don't paste the original again. Make each one easier to answer than the last:
+Keep the follow-up to two lines and make the question smaller: "Hi [Name], circling back on this. Even one line on what helped you most in the switch would mean a lot."
 
-- **First follow-up:** "Hi [Name], circling back on this. Even one line on what helped you most in the switch would mean a lot."
-- **Second follow-up:** offer a guess they can confirm. "I've heard most implementation teams live in Salesforce and Asana. Is that true where you are?" Saying yes takes them five seconds.
-
-If someone accepted your connection request but never answered the message, that's normal too. On LinkedIn, accepting requests and reading messages happen in two different places, and lots of people do one without the other. A short nudge in the message thread usually reaches them.
-
-LinkedIn also lets you send voice notes of up to a minute from the phone app. Some people answer those faster than typing, and they make it obvious a human sent them.
-
-Many former SLPs remember sending these exact messages, which makes them likelier than most strangers to answer yours.
+Keep sending, because people agree far more often than askers predict. In a set of experiments, people underestimated by as much as half how likely others were to say yes to a direct request ([Flynn and Lake, 2008](https://gsb.stanford.edu/insights/francis-flynn-if-you-want-something-ask-it)).
 
 ## What do you ask in an informational interview?
 
-Keep it to the fifteen minutes you asked for, and come with questions you couldn't answer from their profile:
+Keep it to the fifteen minutes you asked for, and bring questions you couldn't answer from their profile:
 
 - What does a normal week look like in this job?
 - What surprised you in the first six months?
@@ -114,43 +111,27 @@ Then save the two questions that do the most work for the last two minutes:
 
 The first question is where a network comes from: one conversation hands you the next name. The second is a referral ask in its least awkward form, a yes-or-no about something that hasn't happened yet. It also gives you permission to come back.
 
-Before you hang up, ask what you can do for them. "Is there anything I can keep an eye out for?" is enough. Then send a thank-you the same day that mentions one specific thing they said. Offering to buy them a coffee, in person or by sending one, is a nice gesture but never required.
-
-Write down every name they give you, and who suggested it.
+Send a thank-you within a day that names one specific thing they said. In one experiment, people who were thanked for their help were about twice as likely to help again, 66% against 32% ([Grant and Gino, 2010](https://www.gsb.stanford.edu/insights/frank-flynn-gratitude-gift-keeps-giving)). Write down every name they give you, and who suggested it.
 
 ## When should you ask for a referral?
 
 Almost never in a first message. Referrals come at the end of a conversation that already happened, and they're usually offered rather than requested. A stranger's "no" to a referral is rational: referring you puts their own name behind someone they've never spoken to. After a real conversation, it's a different bet.
 
-Referrals come in two kinds:
-- **An informal referral** is a colleague telling the hiring team "I talked to her, she might be worth a look."
-- **A formal referral** goes through the company's referral system with the employee's name attached. That one costs them something if you turn out to be a bad hire, so it only comes from someone who's spoken with you.
+Start before there's a posting, too. Plenty of roles get filled before they're advertised, when a manager asks the team "do you know anyone?" You want your name to be the one that comes up, which means talking to people at the companies you like before they're hiring.
 
-Either one helps. Neither comes from a cold message.
+When a role you want does go live, apply within 48 hours, and the same day, message someone doing that job at the company. Say you applied, say the one thing that made you want the role, and ask one question. Several SLPs who made the move said this mattered more than any certificate.
 
-If someone offered earlier and then the role you discussed gets posted, it's fine to remind them: "You mentioned you'd be open to referring me if a [title] role opened up. It's posted now. Here's my résumé if that's still on the table."
+## Are recruiters worth contacting?
 
-Don't wait for a posting to start. Plenty of roles get filled before they're ever advertised, when a manager asks their team "do you know anyone?" You want your name to be the one that comes up, which means talking to people at the companies you like before they're hiring.
+The right ones are. Most SLPs distrust recruiters, and clinical staffing agencies earned that. An in-house recruiter at a company you want is doing a different job: they're paid when a role gets filled, so a candidate who clearly fits is useful to them. One SLP who taught herself to code was found by a recruiter on LinkedIn, which is a reason to keep your profile pointed at the job you want.
 
-When a role you want does go live, the best message goes to someone doing that job at the company, sent the same day you apply. Say you applied, say the one thing that made you want the role, and ask one question.
+Contact a recruiter when there's a live posting you match on most of the requirements, and put the job title in your first line. A "keep me in mind" note with no role attached gives them nothing to do. Or wish them well on something real, like a funding round, a launch or a new role, and leave it there. That's what worked for me.
 
-## Are recruiters worth networking with?
+## Should you build something to show people?
 
-Less than people doing the job. Third-party recruiters juggle roles at many companies and rarely know what a clinician brings, so you end up explaining your own value to someone who can't pass it on. In-house recruiters and hiring managers matter once a role is posted, but they're buried in applications. A former SLP on the team is the person most likely to read your message and tell you what the job is really like.
+If you can, yes. A small project gives a stranger a reason to talk to you and gives you something to point to that isn't a caseload. My hackathon Alexa skill did that for me. One SLP who became a data analyst had a five-project portfolio by the time she was interviewing.
 
-## Where can SLPs network outside LinkedIn?
-
-Anywhere people from your target field gather. The ones that work best:
-
-- **ASHA Convention and your state association's convention.** Talk to the speakers who've moved into non-clinical work, then walk the exhibit hall. Every booth is a company that sells to SLPs, and the people staffing it can tell you what their company hires for.
-- **Your alumni groups,** for both undergrad and grad school.
-- **Company webinars and events.** LinkedIn has an Events search, and companies you follow announce theirs there.
-- **Meetup and Eventbrite,** searched by your city and the field you're curious about, like health tech or instructional design.
-- **Local professional groups:** startup and innovation hubs, your chamber of commerce, young professionals' groups. Not everyone has to be a clinician. A room of people who work in business is the point.
-
-Before an event, decide why you're going (meeting people at two specific companies, say, or just listening) and practice a two-sentence introduction: who you are, and the title you're exploring. The LinkedIn app has a QR code under the search bar, so someone can scan it and connect on the spot instead of trying to spell your name.
-
-You can also let people find you. Comment on posts from companies and people in your target field, and write the occasional post about what you're learning. Your feed fills with the right people, and some of them start the conversation for you.
+It doesn't have to be technical. A sample training module for an instructional design role, a mock onboarding plan for customer success, or a one-page patient education redesign all count. Send it to someone you've already spoken to and ask what a hiring manager would say about it. That's a small, flattering ask, and it puts your work in front of the person most likely to pass it on.
 
 ## How do you keep a networking contact warm?
 
@@ -160,16 +141,14 @@ Send one short update a month to the two or three people most likely to help:
 
 Four sentences, ninety seconds. The last line matters most, because remembering what they told you is what separates a relationship from a mailing list.
 
-Not everyone needs a monthly note. Most contacts are acquaintances, and a message every few months is plenty. Reach out when you have a reason: an article they'd like, a podcast episode on their topic, an answer to something they were stuck on, or a check-in after the trip they mentioned. Keep a line of notes on each person so you remember what to ask.
-
 You don't need a big network. You need two or three people who know what you're looking for and would forward you a posting. In the documented transitions, the introduction that works often comes third or fourth hand, from someone who wasn't obviously connected to the role at all. That's why two warm conversations beat chasing one perfect contact.
 
 ## What to take from this
 
 - **The gap is your contact list.** You build rapport for a living, but everyone you know works in speech.
-- **Start warm.** Your grad cohort, the reps in your building, and the people who already left come before any stranger.
+- **Start with people you half-know.** Your grad cohort, the reps in your building and the people who already left beat close friends and strangers.
 - **Ask for fifteen minutes, not a job.** Name their move, ask one question, make it easy to say no.
-- **Follow up twice, then move on.** About four days after, then about ten, each easier to answer than the last.
+- **A message with no ask can be the one that works.** Congratulate people on real news and leave it there.
 - **End every conversation with "who else should I talk to?"** That's how one conversation becomes five.
 
 Not sure which job title to put in that first message? The free career quiz gives you one in two minutes, with what it pays and how long the move usually takes.
@@ -180,10 +159,10 @@ Not sure which job title to put in that first message? The free career quiz give
 For most, yes. In the documented SLP transitions, referrals decide most successful moves, and applying through job boards without one is the pattern that stalls. You can get hired without a referral, but expect it to take far more applications.
 
 **What should I say in a LinkedIn message to someone who left speech therapy?**
-Name the move they made, ask for fifteen minutes about how they got their first role, and say clearly that you're not asking for a job. Keep it under 90 words and end with one question they could answer in a sentence.
+Name the move they made, ask for fifteen minutes about how they got their first role, and say clearly that you're not asking for a job. Keep it between about 50 and 125 words and end with one question they could answer in a sentence.
 
 **How many networking messages should I send a week?**
-Two new messages a week is a steady pace while you're exploring, and around five once you're actively applying. A few researched messages do more than a pile of copied ones. A fixed thirty minutes a day helps, or one day a week set aside just for networking.
+Two new messages a week is a steady pace while you're exploring, and around five once you're actively applying. A few researched messages do more than a pile of copied ones.
 
 **Should I ask for a referral in my first message?**
 No. Ask about their path first. Referrals usually come at the end of a real conversation, often offered rather than asked for. Once you've talked, "would you be open to me sending you the posting if one opens?" is an easy way to ask.

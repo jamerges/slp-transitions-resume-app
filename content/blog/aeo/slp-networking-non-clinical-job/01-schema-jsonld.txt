@@ -38,7 +38,7 @@ Yoast already prints Article and BreadcrumbList for every post, so adding them a
       ],
       "articleSection": "Guides",
       "inLanguage": "en-US",
-      "wordCount": 2271,
+      "wordCount": 2325,
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://slptransitions.com/slp-networking-non-clinical-job/"
@@ -60,7 +60,7 @@ Yoast already prints Article and BreadcrumbList for every post, so adding them a
           "name": "What should I say in a LinkedIn message to someone who left speech therapy?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Name the move they made, ask for fifteen minutes about how they got their first role, and say clearly that you're not asking for a job. Keep it under 90 words and end with one question they could answer in a sentence."
+            "text": "Name the move they made, ask for fifteen minutes about how they got their first role, and say clearly that you're not asking for a job. Keep it between about 50 and 125 words and end with one question they could answer in a sentence."
           }
         },
         {
@@ -68,7 +68,7 @@ Yoast already prints Article and BreadcrumbList for every post, so adding them a
           "name": "How many networking messages should I send a week?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Two new messages a week is a steady pace while you're exploring, and around five once you're actively applying. A few researched messages do more than a pile of copied ones. A fixed thirty minutes a day helps, or one day a week set aside just for networking."
+            "text": "Two new messages a week is a steady pace while you're exploring, and around five once you're actively applying. A few researched messages do more than a pile of copied ones."
           }
         },
         {
@@ -150,7 +150,7 @@ Yoast already prints Article and BreadcrumbList for every post, so adding them a
   ],
   "articleSection": "Guides",
   "inLanguage": "en-US",
-  "wordCount": 2271,
+  "wordCount": 2325,
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://slptransitions.com/slp-networking-non-clinical-job/"
@@ -175,7 +175,7 @@ Yoast already prints Article and BreadcrumbList for every post, so adding them a
       "name": "What should I say in a LinkedIn message to someone who left speech therapy?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Name the move they made, ask for fifteen minutes about how they got their first role, and say clearly that you're not asking for a job. Keep it under 90 words and end with one question they could answer in a sentence."
+        "text": "Name the move they made, ask for fifteen minutes about how they got their first role, and say clearly that you're not asking for a job. Keep it between about 50 and 125 words and end with one question they could answer in a sentence."
       }
     },
     {
@@ -183,7 +183,7 @@ Yoast already prints Article and BreadcrumbList for every post, so adding them a
       "name": "How many networking messages should I send a week?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Two new messages a week is a steady pace while you're exploring, and around five once you're actively applying. A few researched messages do more than a pile of copied ones. A fixed thirty minutes a day helps, or one day a week set aside just for networking."
+        "text": "Two new messages a week is a steady pace while you're exploring, and around five once you're actively applying. A few researched messages do more than a pile of copied ones."
       }
     },
     {
