@@ -1,0 +1,233 @@
+=== YOAST FREE (what this site runs): paste ONLY the FAQPage block ===
+Yoast already prints Article and BreadcrumbList for every post, so adding them again duplicates them.
+03-faq-embed.html already carries the FAQPage <script>, so if you paste that file you are done.
+
+=== FULL GRAPH, for a plugin with a custom schema field (Yoast Premium / RankMath Pro / AIOSEO Pro) ===
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Leaving SLP as a New Grad or During Your CF",
+      "description": "Hating your CF doesn't mean you picked the wrong field. When to finish it, when to switch placements, what happens to your CCC, and which jobs new grads get.",
+      "image": "https://slptransitions.com/wp-content/uploads/2026/10/leaving-slp-new-grad-cf-header.png",
+      "author": {
+        "@type": "Person",
+        "name": "James Berges",
+        "url": "https://slptransitions.com/about/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "SLP Transitions",
+        "url": "https://slptransitions.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://slptransitions.com/wp-content/uploads/2021/09/cropped-Paper-Airplane-Company-Logo-2.png"
+        }
+      },
+      "datePublished": "2026-10-18",
+      "dateModified": "2026-10-18",
+      "url": "https://slptransitions.com/leaving-slp-new-grad-cf/",
+      "keywords": [
+        "leaving SLP during CF",
+        "quit CF year SLP",
+        "new grad SLP career change",
+        "should I finish my CF",
+        "non-clinical jobs for new grad SLPs",
+        "leaving speech therapy after grad school"
+      ],
+      "articleSection": "Guides",
+      "inLanguage": "en-US",
+      "wordCount": 870,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://slptransitions.com/leaving-slp-new-grad-cf/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I quit my CF and still become an SLP later?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, but you'll need to complete a CF to earn the CCC. ASHA requires at least 36 weeks and 1,260 hours, finished within 48 months of when the fellowship started. Check with ASHA about how earlier hours count if you stop and restart."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it a mistake to leave SLP right after grad school?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily, but finishing the CF first usually costs less than a year and keeps the option to return. If the problem is your placement rather than the work, switching CF sites is often the better first step."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What non-clinical jobs can a new grad SLP get?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Customer success, implementation, sales, marketing, recruiting, HR and operations roles are the usual entry points. Roles built on clinical judgment, like utilization review or clinical liaison, often want a few years of clinical experience."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I do my CF part-time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. ASHA allows the CF to be completed part-time, as long as you work at least 5 hours a week and meet the 1,260-hour minimum within 48 months of starting."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens to my CCC if I leave the field?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To keep it, you pay ASHA's annual fees and complete 30 professional development hours every three years. If it lapses, ASHA allows reinstatement with 10 to 30 hours depending on how long it's been, plus a fee."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://slptransitions.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Guides",
+          "item": "https://slptransitions.com/category/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Leaving SLP as a New Grad or During Your CF",
+          "item": "https://slptransitions.com/leaving-slp-new-grad-cf/"
+        }
+      ]
+    }
+  ]
+}
+
+=== FALLBACK: <script> tags for a Custom HTML block at the top of the post ===
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Leaving SLP as a New Grad or During Your CF",
+  "description": "Hating your CF doesn't mean you picked the wrong field. When to finish it, when to switch placements, what happens to your CCC, and which jobs new grads get.",
+  "image": "https://slptransitions.com/wp-content/uploads/2026/10/leaving-slp-new-grad-cf-header.png",
+  "author": {
+    "@type": "Person",
+    "name": "James Berges",
+    "url": "https://slptransitions.com/about/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SLP Transitions",
+    "url": "https://slptransitions.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://slptransitions.com/wp-content/uploads/2021/09/cropped-Paper-Airplane-Company-Logo-2.png"
+    }
+  },
+  "datePublished": "2026-10-18",
+  "dateModified": "2026-10-18",
+  "url": "https://slptransitions.com/leaving-slp-new-grad-cf/",
+  "keywords": [
+    "leaving SLP during CF",
+    "quit CF year SLP",
+    "new grad SLP career change",
+    "should I finish my CF",
+    "non-clinical jobs for new grad SLPs",
+    "leaving speech therapy after grad school"
+  ],
+  "articleSection": "Guides",
+  "inLanguage": "en-US",
+  "wordCount": 870,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://slptransitions.com/leaving-slp-new-grad-cf/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I quit my CF and still become an SLP later?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but you'll need to complete a CF to earn the CCC. ASHA requires at least 36 weeks and 1,260 hours, finished within 48 months of when the fellowship started. Check with ASHA about how earlier hours count if you stop and restart."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it a mistake to leave SLP right after grad school?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not necessarily, but finishing the CF first usually costs less than a year and keeps the option to return. If the problem is your placement rather than the work, switching CF sites is often the better first step."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What non-clinical jobs can a new grad SLP get?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Customer success, implementation, sales, marketing, recruiting, HR and operations roles are the usual entry points. Roles built on clinical judgment, like utilization review or clinical liaison, often want a few years of clinical experience."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I do my CF part-time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. ASHA allows the CF to be completed part-time, as long as you work at least 5 hours a week and meet the 1,260-hour minimum within 48 months of starting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to my CCC if I leave the field?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To keep it, you pay ASHA's annual fees and complete 30 professional development hours every three years. If it lapses, ASHA allows reinstatement with 10 to 30 hours depending on how long it's been, plus a fee."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://slptransitions.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://slptransitions.com/category/guides/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Leaving SLP as a New Grad or During Your CF",
+      "item": "https://slptransitions.com/leaving-slp-new-grad-cf/"
+    }
+  ]
+}
+</script>
