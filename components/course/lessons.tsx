@@ -598,6 +598,11 @@ export function Identity({ finish, done }: LessonProps) {
           </a>
         ))}
       </div>
+      <Panel style={{ marginTop: 14 }}>
+        <H>The people you&rsquo;re leaving</H>
+        <P>For a lot of SLPs the hardest part is the kids on the caseload, or the patient who asks for you by name. One school SLP wrote that leaving mid-year meant they would be &ldquo;abandoning my students.&rdquo; That pull comes from caring about them, and it deserves a plan rather than a verdict.</P>
+        <P style={{ margin: 0 }}>ASHA counts it as abandonment only when you stop services without arranging other care, and its ethics guidance says you don&rsquo;t have to stay until a replacement is hired. Reasonable notice, finished reports and a handoff for each client is how you leave well. <a href="https://www.asha.org/practice/ethics/client-abandonment/" target="_blank" rel="noreferrer">Read ASHA&rsquo;s guidance</a>.</P>
+      </Panel>
       <MarkDone done={done} finish={finish} />
     </div>
   );

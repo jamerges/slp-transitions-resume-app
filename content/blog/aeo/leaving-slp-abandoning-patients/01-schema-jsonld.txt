@@ -1,0 +1,233 @@
+=== YOAST FREE (what this site runs): paste ONLY the FAQPage block ===
+Yoast already prints Article and BreadcrumbList for every post, so adding them again duplicates them.
+03-faq-embed.html already carries the FAQPage <script>, so if you paste that file you are done.
+
+=== FULL GRAPH, for a plugin with a custom schema field (Yoast Premium / RankMath Pro / AIOSEO Pro) ===
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Am I Abandoning My Patients If I Leave SLP?",
+      "description": "Leaving with notice and a real handoff isn't abandonment, by ASHA's own definition. What the guilt is telling you, and how to leave your caseload well.",
+      "image": "https://slptransitions.com/wp-content/uploads/2026/10/leaving-slp-abandoning-patients-header.png",
+      "author": {
+        "@type": "Person",
+        "name": "James Berges",
+        "url": "https://slptransitions.com/about/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "SLP Transitions",
+        "url": "https://slptransitions.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://slptransitions.com/wp-content/uploads/2021/09/cropped-Paper-Airplane-Company-Logo-2.png"
+        }
+      },
+      "datePublished": "2026-10-18",
+      "dateModified": "2026-10-18",
+      "url": "https://slptransitions.com/leaving-slp-abandoning-patients/",
+      "keywords": [
+        "guilt leaving SLP job",
+        "leaving SLP job mid year",
+        "SLP client abandonment ASHA",
+        "guilt leaving speech therapy",
+        "how to resign as an SLP",
+        "leaving my caseload"
+      ],
+      "articleSection": "Mindset",
+      "inLanguage": "en-US",
+      "wordCount": 968,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://slptransitions.com/leaving-slp-abandoning-patients/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is it unethical to leave an SLP job mid-year?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not in itself. ASHA's ethics guidance says leaving for a career move isn't unethical, as long as you protect continuity of care with reasonable notice and a real handoff. Check your contract too, since many school contracts set a resignation window."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I have to stay until my employer hires a replacement?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. ASHA's guidance on client abandonment says clinicians aren't required to remain until a replacement is found. Your obligation is reasonable notice and a good-faith effort to transition your clients."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much notice should an SLP give?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There's no single number. ASHA says adequate notice depends on your caseload, your duties, state law and what continuity of care requires. Follow your contract, and give as much as you reasonably can."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I take my therapy materials and records when I leave?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not without your employer's consent. ASHA's guidance says not to remove or withhold records, protocols or materials without the administrator's agreement, even with good intentions. Materials you bought yourself are a question for your employer and contract."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it selfish to leave speech therapy when there's a shortage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The shortage is a staffing problem that employers address through hiring, caseloads and pay, and the field is projected to add about 13,300 openings a year. Leaving with a full handoff is the responsible way to go."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://slptransitions.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Mindset",
+          "item": "https://slptransitions.com/category/mindset/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Am I Abandoning My Patients If I Leave SLP?",
+          "item": "https://slptransitions.com/leaving-slp-abandoning-patients/"
+        }
+      ]
+    }
+  ]
+}
+
+=== FALLBACK: <script> tags for a Custom HTML block at the top of the post ===
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Am I Abandoning My Patients If I Leave SLP?",
+  "description": "Leaving with notice and a real handoff isn't abandonment, by ASHA's own definition. What the guilt is telling you, and how to leave your caseload well.",
+  "image": "https://slptransitions.com/wp-content/uploads/2026/10/leaving-slp-abandoning-patients-header.png",
+  "author": {
+    "@type": "Person",
+    "name": "James Berges",
+    "url": "https://slptransitions.com/about/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SLP Transitions",
+    "url": "https://slptransitions.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://slptransitions.com/wp-content/uploads/2021/09/cropped-Paper-Airplane-Company-Logo-2.png"
+    }
+  },
+  "datePublished": "2026-10-18",
+  "dateModified": "2026-10-18",
+  "url": "https://slptransitions.com/leaving-slp-abandoning-patients/",
+  "keywords": [
+    "guilt leaving SLP job",
+    "leaving SLP job mid year",
+    "SLP client abandonment ASHA",
+    "guilt leaving speech therapy",
+    "how to resign as an SLP",
+    "leaving my caseload"
+  ],
+  "articleSection": "Mindset",
+  "inLanguage": "en-US",
+  "wordCount": 968,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://slptransitions.com/leaving-slp-abandoning-patients/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is it unethical to leave an SLP job mid-year?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not in itself. ASHA's ethics guidance says leaving for a career move isn't unethical, as long as you protect continuity of care with reasonable notice and a real handoff. Check your contract too, since many school contracts set a resignation window."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have to stay until my employer hires a replacement?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. ASHA's guidance on client abandonment says clinicians aren't required to remain until a replacement is found. Your obligation is reasonable notice and a good-faith effort to transition your clients."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much notice should an SLP give?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There's no single number. ASHA says adequate notice depends on your caseload, your duties, state law and what continuity of care requires. Follow your contract, and give as much as you reasonably can."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I take my therapy materials and records when I leave?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not without your employer's consent. ASHA's guidance says not to remove or withhold records, protocols or materials without the administrator's agreement, even with good intentions. Materials you bought yourself are a question for your employer and contract."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it selfish to leave speech therapy when there's a shortage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The shortage is a staffing problem that employers address through hiring, caseloads and pay, and the field is projected to add about 13,300 openings a year. Leaving with a full handoff is the responsible way to go."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://slptransitions.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Mindset",
+      "item": "https://slptransitions.com/category/mindset/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Am I Abandoning My Patients If I Leave SLP?",
+      "item": "https://slptransitions.com/leaving-slp-abandoning-patients/"
+    }
+  ]
+}
+</script>

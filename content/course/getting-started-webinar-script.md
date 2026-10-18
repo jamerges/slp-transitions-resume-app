@@ -1,27 +1,35 @@
 # Getting Started, for SLPs: webinar script
 
-About twenty-five minutes at a natural pace. Talking head over slides,
+About thirty minutes at a natural pace. Talking head over slides,
 one take, evening is fine. Slide cues are in brackets; say the words, not
 the cues. Every number here is from research-facts.md; where a figure
 depends on the viewer's path, the script sends them to their quiz result
 rather than guessing.
 
-Biography used: James is a former SLP, now a copywriter and content
-strategist at a mental-health-tech company, and hosts the Xceptional Leaders
-podcast. Nothing else about him is claimed.
+Biography used (confirmed by James, 2026-10-16): former SLP, now a marketing
+manager at Osmind, a mental-health-tech company; hosts the Xceptional Leaders
+podcast; joined UX and content-strategy Slack and Facebook groups and messaged
+SLPs who had already moved; built an Alexa skill, Smooth Speaking, at a no-code
+hackathon; did copywriting and email marketing for SLP influencers and
+businesses before going full time; got the Osmind conversation started by
+congratulating a recruiter on the Series B. Nothing else about him is claimed.
+
+If this runs live (a CEU session, or a joint one), the stage question becomes a
+poll and the two "pause and write" prompts become chat prompts. Read a few
+answers aloud; they're the best voice-of-customer data we'll get.
 
 ---
 
 [Slide: title. "Getting started, for SLPs." Your name. No tagline.]
 
-Hi. I'm James. I was a speech-language pathologist, and now I write for a
-mental-health-tech company. I'm recording this in the evening, so if it's a
+Hi. I'm James. I was a speech-language pathologist, and now I'm a marketing
+manager at Osmind, a mental-health-tech company. I'm recording this in the evening, so if it's a
 Saturday morning where you are, ignore the lamp.
 
 You're here for one of three reasons. You want out and haven't said it to
 anyone. You've said it and don't know what else you could do. Or you know
 what you want and you're applying and nothing is coming back. This is
-twenty-five minutes for all three, and at the end you'll have one number,
+thirty minutes for all three, and at the end you'll have one number,
 one verdict and one thing to do this week. Not a plan for the year. One
 thing.
 
@@ -55,6 +63,25 @@ Stage five, action. You know what you want. You're applying, and the
 applications go into a hole.
 
 Pick yours. It changes what you should do next, and I'll come back to it.
+
+[Slide: "Pause and write." Two blanks.]
+
+Before we go on, grab a pen. Finish two sentences. The part of this job I'd
+keep, whatever I do next, is blank. The part I'd never do again is blank.
+Thirty seconds. The first one tells you what to look for. The second is a
+non-negotiable, and you'll want it in writing before you read a single job
+posting.
+
+[Slide: "The people you'd leave."]
+
+If you're in stage two, there's a good chance the guilt has a face. The kids on
+your caseload, the patient who asks for you by name. So here's what ASHA
+actually says, because almost nobody reads it. Its ethics guidance on client
+abandonment says abandonment is stopping services without arranging other
+care. Leaving for a career move isn't unethical in itself, and you're not
+required to stay until they hire your replacement. What counts is the effort
+you put into the handoff: notice, finished reports, a plan for each client.
+The guilt is real. It mostly tells you how much you cared.
 
 [Slide: "It's the workplace, the work, or the season."]
 
@@ -189,6 +216,16 @@ ask. Make it easy to say yes: one direct question, two time windows. Expect
 some silence; it's a full inbox, not a verdict. Three messages is usually
 two conversations.
 
+[Slide: "The message that got me hired."]
+
+Here's mine. Before Osmind, I joined Slack and Facebook groups for UX and
+content strategy, the fields I was looking at, and I messaged SLPs in them who
+had already made the move. Then I saw that Osmind had raised its Series B, and I
+wrote to one of their recruiters to say congratulations. That was the whole
+message. It started the conversation that became my job. A note with no ask in
+it is the easiest message you'll ever send, and people like getting them more
+than you'd expect.
+
 [Slide: "The résumé, last."]
 
 Now, and only now, the résumé.
@@ -218,6 +255,12 @@ own progress data rebuilt in a spreadsheet with one chart, a one-page
 onboarding plan for a product you know. Two ninety-minute sessions. It goes
 on LinkedIn, in the résumé, and into every interview as a story.
 
+Mine was an Alexa skill called Smooth Speaking, built at a no-code hackathon: a
+prototype for bringing in leads for SLPs who treat stuttering. And before I
+went into marketing full time, I wrote copy and emails for SLP influencers and
+SLP businesses. Your own field is full of small businesses that need someone
+who understands their audience. You already do.
+
 [Slide: "What to do this week," by stage.]
 
 So, back to your stage. One thing each.
@@ -240,7 +283,8 @@ person inside each one.
 Everything I've said is in the course. Module 0 is free and needs no
 account: the verdict, the money page, twenty minutes. The kit after that
 holds your reasons, the people lessons with the message templates, the
-translation pass, and a workbook that fills in with your answers. It's $9.
+translation pass, and a workbook that fills in with your answers. It's $19.
+[Check `lib/pricing.ts` before recording: say whatever priceOf("ground") is.]
 The quiz, the companies list and the open roles page are free and always
 will be.
 

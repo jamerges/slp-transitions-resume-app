@@ -69,3 +69,38 @@ Ideas, formats and public frameworks only. **Never use** her nine archetypes, th
 ## What this means for the Rinki partnership question
 
 Her draw on a CEU platform is real (1,500 registered), but that audience is SpeechPathology.com's, not her own list (about 500). If a joint session happens, the platform carries the reach. So the strongest version is a CEU session, through a platform, built on our numbers and her frameworks, with registrant emails shared by consent.
+
+## Her angles and frameworks to revisit (2026-10-18, James asked for the full list)
+
+Two of these are her own named IP (the nine archetypes and the 7R roadmap). Revisit them to understand what they do for a reader, then build our own equivalent in our own words; never reuse the names, the categories or the order. The borrowed frameworks are public and fine to use with credit to the original authors, not to her.
+
+### Her own frameworks
+
+1. **Nine SLP career archetypes:** clinical specialist, researcher, educator, leader, entrepreneur, innovator, advocate, connector, multi-hyphenate. A "which one are you?" identity sort by what energizes you, before any job title. **Why it works:** it gives a stage-1 to 3 reader a flattering, low-stakes first answer. **Our version:** we already sort by energy and dials (lessons 1.4 and 1.5) and the quiz names a path. What we lack is the short, shareable identity result; a one-line "you're drawn to ___ work" sentence on the quiz result could do that job.
+2. **The 7R roadmap:** reflect, reframe, research, reach out, reimagine, risk-take, renew. A process map with a mnemonic. **Why it works:** it's memorable and it says "this is a sequence, not a leap". **Notice:** our course's eight modules (Ground, Explore, Connect, Translate, Test, Leap, After) already cover the same arc. Ours has no mnemonic. Don't make one up to compete; lead with the stops and what each one produces.
+
+### Borrowed frameworks she uses (public; credit the originals)
+
+3. **Ikigai:** what you love, what you're good at, what the world needs, what you can be paid for. Popular, and widely misattributed; if used, present it as a reflection prompt, not science.
+4. **The squiggly career** (Helen Tupper and Sarah Ellis, *The Squiggly Career*, 2020): careers move sideways and back, and the through-line shows up looking back. **Use:** permission for non-linear paths, and "what's your through-line?" as a prompt for the About section and the bridge statement.
+5. **Designing Your Life** (Bill Burnett and Dave Evans, 2016): empathize, define, ideate, prototype, test. The book also has "prototype conversations" and "odyssey plans" (three alternative five-year lives), which she didn't cover and which suit our Explore module.
+6. **Portfolio careers:** several part-time roles at once, framed as a deliberate design rather than a failure to commit. Connects to our unwritten part-time and fractional article.
+
+### Angles worth revisiting
+
+7. **"Expanding, not escaping."** Her spine: you don't have to reject the clinical identity to add another. She lists six forms (deepen, expand, merge, pivot, reinvent, grow). **For us:** it's the gentlest possible frame for stage-1 to 3 readers and the "you're making the shortage worse" crowd. Our brand is more direct ("you're allowed to want out"); use her angle for the hybrid and part-time pieces, not the main voice.
+8. **The permission slip.** An opening slide that says "you're in the right place if…" with five reasons (curious, want flexibility, more impact, more income, a new season of life). A good format for the top of the five-stages article or the webinar.
+9. **Career design as a plan of care.** Hypothesis, goals, collect data, adjust weekly. The most SLP-native metaphor in the talk, and it's an observation anyone could make. We can use it in our own words: "you'd never write a five-year plan of care on day one."
+10. **Lead with your clinical expertise.** You won't out-PM a 20-year product manager, but they can't learn what a caseload is. Positions the license as the edge rather than the baggage. Fits our "keep your title" résumé rule.
+11. **"Spray and pray."** Her name for mass-applying without direction. Our 113-applications and 500-applications numbers prove the cost; the phrase is common enough to use.
+12. **Seasons of life.** Motherhood, caregiving, a partner's job loss, as legitimate reasons on their own. Matches our "bad season" verdict lesson; her version is warmer and validates without diagnosing.
+13. **The through-line.** Looking back, connect the moves with one sentence about what stayed constant. A strong prompt for the LinkedIn About section and the "why are you leaving?" answer.
+14. **Different rooms, different identities.** She's a clinician at ASHA, a founder at a startup meetup, a consultant in health-tech rooms (her neurosurgeon-who-DJs anecdote). An angle for the identity lesson (1.6): you can introduce yourself differently in each room without lying.
+15. **Four barriers:** "I'm just a clinician", "I don't have a ___ background", "am I abandoning my patients?", "I don't know where to begin". All four are in our forum research too. We now answer the third (lesson 1.6, the abandonment article). The second deserves a short piece: what actually gets taught on the job.
+16. **AI as a career brainstorming partner.** Feed it your non-negotiables and ask for ten titles to explore. Our lesson 3.8 already covers the safer version (what to hand the model and what to keep).
+17. **The visibility gap.** SLPs get passed over for rehab director, innovation and C-suite roles despite being qualified. An angle for the leadership and rehab-management path page.
+18. **Advancing the profession.** Framing a move out as putting SLPs in rooms where they're missing (health tech, policy, product). Answers the guilt with a mission. Use sparingly; it can sound grand.
+19. **New grads and late movers.** New grads should aim at entry roles (customer success, sales, marketing, associate PM, ops, research assistant); nobody is too old. Both are unwritten articles for us.
+20. **Volunteering as a test.** State associations and ASHA committees as low-risk experiments that also build a network. A good addition to our build-something section.
+21. **Independent consulting.** Health-tech consulting as a path, and a community of women who left corporate careers to consult on their own hours. We don't have consulting or fractional work as a path; worth a look once we have a documented SLP example.
+22. **Where she publishes.** ASHA's career portal (the 7R piece), the ASHA Leader, thenonclinicalpt.com (the archetypes), and CEU platforms. Those are distribution channels, and ASHA's own outlets give her credibility we don't have yet. A pitch to the ASHA Leader or the career portal is worth trying.
