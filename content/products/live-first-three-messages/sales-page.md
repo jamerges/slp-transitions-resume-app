@@ -73,7 +73,7 @@ The message that got me hired had no ask in it. When Osmind raised its Series B,
 ## Questions
 
 **What if I don't know what job I want yet?**
-Bring two titles you're weighing. Messages to people in both are how you find out which one fits. If you have no idea, take the free career quiz first; it takes two minutes and names a path.
+Bring two titles you're weighing. Messages to people in both are how you find out which one fits. If you have no idea, take the free career quiz first. It takes two minutes and names a path.
 
 **Do I have to be on camera or share my messages?**
 No. Camera is optional, and sharing a draft is only for volunteers.
