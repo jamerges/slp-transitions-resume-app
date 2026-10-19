@@ -25,6 +25,13 @@ interface FullResultsEmailInput {
   to: string;
   jobTitle: string;
   results: any;
+  sessionId?: string;
+}
+
+/** One line in every results email: there's no account, the link keeps working, the email is the copy. */
+function keepLine(link?: string): string {
+  const page = link ? `<a href="${link}" style="color:#004820;">Your results page</a>` : "Your results page";
+  return `<p style="font-size:13px;color:#555B52;line-height:1.6;margin:0 0 22px;">No login needed. ${page} stays open for a year, and this email is your copy to keep. Lost the link? <a href="${APP_URL}/results/find" style="color:#004820;">Get it sent again</a>.</p>`;
 }
 
 function esc(s: unknown): string {
@@ -41,7 +48,7 @@ function nl2br(s: unknown): string {
   return esc(s).replace(/\n/g, "<br/>");
 }
 
-function renderResultsHTML(jobTitle: string, r: any): string {
+function renderResultsHTML(jobTitle: string, r: any, sessionId?: string): string {
   const bullets = (r.translatedBullets || [])
     .map(
       (b: any) => `
@@ -124,7 +131,8 @@ function renderResultsHTML(jobTitle: string, r: any): string {
   </div>
 
   <h1 style="font-family:Georgia,serif;font-size:26px;font-weight:700;margin:0 0 8px;">Your Complete Translation: ${esc(jobTitle)}</h1>
-  <p style="font-size:14px;color:#6B7280;margin:0 0 24px;">Everything below is yours to copy into your resume, cover letter, and LinkedIn.</p>
+  <p style="font-size:14px;color:#6B7280;margin:0 0 12px;">Everything below is yours to copy into your resume, cover letter, and LinkedIn.</p>
+  ${keepLine(sessionId ? `${APP_URL}/success?session_id=${encodeURIComponent(sessionId)}` : undefined)}
 
   ${
     r.elevatorPitch
@@ -432,6 +440,27 @@ export async function sendGroundAccessEmail(input: { to: string; unlockUrl: stri
   await getResend().emails.send({ from: FROM_ADDRESS, to, replyTo: REPLY_TO, subject: "Your Transition OS login link", html });
 }
 
+export type ResultLink = { label: string; url: string };
+
+/** Results links again, for a Suite or report buyer who lost the email. Sent from /api/results/find-link. */
+export async function sendResultsLinkEmail(input: { to: string; links: ResultLink[] }): Promise<void> {
+  const { to, links } = input;
+  const rows = links
+    .map((l) => `<div style="margin:0 0 12px;"><a href="${l.url}" style="display:inline-block;padding:12px 22px;background:#004820;color:#fff;text-decoration:none;border-radius:8px;font-size:15px;font-weight:600;">${esc(l.label)} &rarr;</a></div>`)
+    .join("");
+  const html = `<!doctype html>
+<html><body style="margin:0;padding:0;background:#FAFAF9;font-family:-apple-system,'DM Sans',sans-serif;color:#1B1B1E;">
+<div style="max-width:560px;margin:0 auto;padding:32px 20px;">
+  <div style="text-align:center;margin-bottom:22px;"><div style="font-size:20px;font-weight:700;color:#004820;font-family:Georgia,serif;">SLP Transitions</div></div>
+  <p style="font-size:16px;line-height:1.7;">Here's your way back to your results.</p>
+  ${rows}
+  <p style="font-size:15px;line-height:1.7;">No login needed. Each link works in any browser, on any device, for a year from your purchase. Bookmark the page once it opens.</p>
+  <p style="font-size:15px;line-height:1.7;">If you didn't ask for this, ignore it.</p>
+  <p style="font-size:15px;line-height:1.7;">James</p>
+</div></body></html>`;
+  await getResend().emails.send({ from: FROM_ADDRESS, to, replyTo: REPLY_TO, subject: "Your SLP Transitions results", html });
+}
+
 /** The same link again, for a buyer on a new device or with a cleared browser. Sent from /api/course/find-link. */
 export async function sendCourseLinkEmail(input: { to: string; unlockUrl: string }): Promise<void> {
   const { to, unlockUrl } = input;
@@ -703,6 +732,7 @@ export async function sendReportEmail(input: {
     <div style="font-size:20px;font-weight:700;color:#004820;font-family:Georgia,serif;">SLP Transitions</div>
     <div style="font-size:13px;color:#6B7280;">Your Pivot Report</div>
   </div>
+  ${keepLine(sessionId ? `${APP_URL}/report?session_id=${encodeURIComponent(sessionId)}` : undefined)}
   ${
     r.edition === "quiz" && sessionId
       ? `<div style="background:#E5E7D9;border:1px solid #B3C4B1;border-radius:10px;padding:14px 16px;margin-bottom:20px;font-size:14px;line-height:1.6;">
@@ -812,8 +842,8 @@ export async function sendReportEmail(input: {
 }
 
 export async function sendFullResultsEmail(input: FullResultsEmailInput): Promise<void> {
-  const { to, jobTitle, results } = input;
-  const html = renderResultsHTML(jobTitle, results);
+  const { to, jobTitle, results, sessionId } = input;
+  const html = renderResultsHTML(jobTitle, results, sessionId);
   await getResend().emails.send({
     from: FROM_ADDRESS,
     to,

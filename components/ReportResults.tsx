@@ -93,6 +93,9 @@ export default function ReportResults({
             ✓ A copy is in your inbox ({email})
           </p>
         )}
+        <p className="no-print" style={{ fontSize: 13, color: "var(--muted)", marginTop: 6, lineHeight: 1.6 }}>
+          No login needed. Bookmark this page: it stays open for a year. Lost the link? <a href="/results/find" style={{ color: "var(--accent)", fontWeight: 600 }}>Get it sent again</a>.
+        </p>
         {/* Most buyers read this on a phone; a saved PDF outlives the tab. */}
         <button
           type="button"

@@ -178,6 +178,9 @@ export default function FullResults({
         <span style={{ ...S.tag, background: "var(--accent)", color: "#fff" }}>Full Results</span>
         <h2 style={{ ...S.h2, marginTop: 12 }}>Your Complete Translation: {jobTitle}</h2>
         {writingSample && <p style={{ fontSize: 13, color: "var(--accent)", marginTop: 4 }}>✓ Cover letter calibrated to your voice</p>}
+        <p className="no-print" style={{ fontSize: 13, color: "var(--muted)", marginTop: 8, lineHeight: 1.6 }}>
+          No login needed. Bookmark this page: it stays open for a year, and your whole package is in your email too. Lost the link? <a href="/results/find" style={{ color: "var(--accent)", fontWeight: 600 }}>Get it sent again</a>.
+        </p>
       </div>
 
       <Card style={{ display: "flex", flexWrap: "wrap", gap: 10, alignItems: "center", justifyContent: "space-between" }}>

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { callClaude } from "@/lib/anthropic";
 import { buildReportPrompt, buildQuizReportPrompt, type ExploreInput } from "@/lib/prompts";
-import { claimOrProceed, releaseOnce, retrieveInputs, retrieveResult, stashResult } from "@/lib/stash";
+import { claimOrProceed, releaseOnce, retrieveInputs, retrieveResult, stashResult, RESULT_TTL_SECONDS } from "@/lib/stash";
 import { sendReportEmail } from "@/lib/email";
 import { upsertSubscriber, CUSTOMER_GROUPS, QUIZ_PATH_GROUPS } from "@/lib/mailerlite";
 import { latestCompletionFor, markCustomer } from "@/lib/quiz-log";
@@ -17,7 +17,7 @@ export const maxDuration = 300;
 const DAY = 86_400;
 // The report is the thing they paid for; keep it reachable from the emailed
 // link well past the 7-day input window. It holds no résumé text.
-const RESULT_TTL = 60 * DAY;
+const RESULT_TTL = RESULT_TTL_SECONDS;
 
 let stripe: Stripe | null = null;
 function getStripe(): Stripe {

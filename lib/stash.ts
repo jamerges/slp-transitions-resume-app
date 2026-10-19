@@ -21,6 +21,9 @@ const STRIPE_METADATA_VALUE_LIMIT = 450;
 // inputs need to outlive a single sitting. 7 days covers "come back this week"
 // without holding resume text indefinitely.
 const TTL_SECONDS = 60 * 60 * 24 * 7;
+/** How long a paid result (Suite package, Pivot Report) stays openable at its link. Copy on the
+ *  results pages and in both results emails says "a year"; change both together. */
+export const RESULT_TTL_SECONDS = 60 * 60 * 24 * 365;
 
 let redis: Redis | null = null;
 function getRedis(): Redis | null {

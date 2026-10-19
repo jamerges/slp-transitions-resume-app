@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { callClaude } from "@/lib/anthropic";
 import { buildFullPromptParts } from "@/lib/prompts";
-import { claimOrProceed, releaseOnce, retrieveInputs, retrieveResult, stashResult } from "@/lib/stash";
+import { claimOrProceed, releaseOnce, retrieveInputs, retrieveResult, stashResult, RESULT_TTL_SECONDS } from "@/lib/stash";
 import { sendFullResultsEmail } from "@/lib/email";
 import { upsertSubscriber, CUSTOMER_GROUPS } from "@/lib/mailerlite";
 import { markCustomer } from "@/lib/quiz-log";
@@ -120,6 +120,7 @@ export async function POST(req: Request) {
           to: inputs.email,
           jobTitle: inputs.jobTitle,
           results,
+          sessionId,
         });
         emailSent = true;
       } catch (err: any) {
@@ -139,7 +140,7 @@ export async function POST(req: Request) {
         emailError,
       };
       // Kept 60 days like the report: buyers come back to refine and re-read.
-      await stashResult(sessionId, payload, 60 * 86_400).catch((e) =>
+      await stashResult(sessionId, payload, RESULT_TTL_SECONDS).catch((e) =>
         console.error("[/api/finalize] result cache failed", e)
       );
       return NextResponse.json(payload);
