@@ -1,0 +1,26 @@
+{
+ "quiz_3352": {
+  "content": "<!-- wp:html -->\n<div id=\"slp-quiz-wrap\" style=\"max-width:720px;margin:0 auto;\">\n  <iframe\n    id=\"slp-quiz\"\n    src=\"https://app.slptransitions.com/quiz/embed\"\n    title=\"SLP non-clinical career quiz\"\n    loading=\"lazy\"\n    style=\"width:100%;border:0;height:760px;display:block;overflow:hidden;\"\n    scrolling=\"no\"\n  ></iframe>\n\n  <noscript>\n    <p style=\"text-align:center;\">\n      <a href=\"https://app.slptransitions.com/quiz\" style=\"display:inline-block;padding:14px 28px;background:#2D6A4F;color:#fff;text-decoration:none;border-radius:8px;font-weight:600;\">\n        Take the career quiz \u2192\n      </a>\n    </p>\n  </noscript>\n</div>\n\n<script>\n(function () {\n  var f = document.getElementById('slp-quiz');\n  if (!f) return;\n  window.addEventListener('message', function (e) {\n    if (e.origin !== 'https://app.slptransitions.com') return;\n    var h = e.data && e.data.slpQuizHeight;\n    if (typeof h === 'number' && h > 200 && h < 8000) {\n      f.style.height = h + 'px';\n    }\n  });\n})();\n</script>\n<!-- /wp:html -->",
+  "meta": {
+   "_acf_changed": false,
+   "_kad_blocks_custom_css": "",
+   "_kad_blocks_head_custom_js": "",
+   "_kad_blocks_body_custom_js": "",
+   "_kad_blocks_footer_custom_js": "",
+   "_monsterinsights_skip_tracking": false,
+   "_kadence_starter_templates_imported_post": false,
+   "_kad_post_transparent": "",
+   "_kad_post_title": "",
+   "_kad_post_layout": "",
+   "_kad_post_sidebar_id": "",
+   "_kad_post_content_style": "",
+   "_kad_post_vertical_padding": "",
+   "_kad_post_feature": "",
+   "_kad_post_feature_position": "",
+   "_kad_post_header": false,
+   "_kad_post_footer": false,
+   "footnotes": ""
+  }
+ },
+ "home_2729_meta": {}
+}
