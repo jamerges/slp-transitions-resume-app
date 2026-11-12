@@ -34,6 +34,19 @@ Half of all quiz takers were being shown a product that has sold three times eve
 8. **The free course link overwrote the quiz stage in MailerLite** with the lesson-0.3 verdict ("fit", "workplace"), which breaks stage-based sends. Removed.
 9. A semicolon out of the Pivot Report's menu copy.
 
+### Done on 2026-11-11, second pass (the Suite, walked on a phone)
+
+10. **The Suite promised an email it never sent.** The last step asks "Where should we send your results?" and the address only went to the mailing list. Anyone who ran a free preview and closed the tab lost it, and nobody could come back to buy. The preview is now emailed (score, the three rewritten bullets, the two actions) with a link that reopens it with the résumé and posting in place, for 7 days. Tested on production end to end, as far as the live $24 checkout page.
+11. **A rewrite cut a buyer's year of access to a week.** The page and the email say results stay open for a year. Using "rewrite this section" re-saved the package with a 7-day expiry. Fixed. Buyers who used a rewrite between Oct 18 and Nov 11 may have lost their page after a week; their results email still holds the content.
+12. **The preview read like a report about someone else.** It called the reader by first name in the third person, used em dashes, and one run invented "six stakeholder groups". It now says "you", and may not add a count or an outcome the résumé doesn't state. Em dashes are removed in code from the preview, the explore results, the paid package and rewrites.
+13. **The email step is honest and checks the address.** It says the preview is emailed and that the address joins the list, rejects a mistyped address before checkout does, and says what's missing instead of showing a dead button.
+14. **Résumé step on a phone.** It said "drop your resume here, or click to browse". It now says "Choose your résumé file" and offers the LinkedIn route: copy the Experience section and paste it. An expired link's error message was being set and never shown, and now shows.
+15. **Job step.** A link to the open roles for anyone who arrives without a posting.
+16. **Plain words on the preview and the paid page.** "Interview bridge statements" and "Requirements gap plan" became the welcome page's wording, headings went to sentence case, two report buttons had the price typed in, the buy button's arrow no longer wraps onto its own line, and nine em dashes came out of the paid results page.
+17. **The app's header on a phone** went from two rows of links to one, so every page opens about 80px higher.
+
+Still open from this pass: the rewritten bullets sometimes add a soft outcome the résumé didn't state ("standardizing workflow"). A test set (item H) is the way to hold that line.
+
 ### Yours (I can't do these, or shouldn't without you)
 
 A. **Publish the four finished articles and send the networking email.** Distribution is the ceiling; every spike in quiz takers came from a post, a share or an email. Drafts 3730, 3734, 3737, 3739.
@@ -50,5 +63,5 @@ H. **Upgrade the model that writes the reports and packages, with a test set fir
 I. **A reminder for a checkout someone started and left.** One plain email the next day with a link back to their result.
 J. **A lower price for a second Suite run** (a second target role). One buyer has already asked.
 K. **Guilt and private-doubt stages: lead with the free twenty minutes**, not the $19 sales page. Nobody at those stages has bought the kit.
-L. **The app's header on a phone** takes two rows of navigation before any content, on every page including the result.
-M. **Audit the rest:** the Suite's free preview and paywall, the report page, the Suite results page.
+L. **A note the day after a free Suite preview that wasn't bought.** The preview is saved now, so one plain email with the link back is possible. Same question as item I: it is an email nobody asked for.
+M. **Audit the rest:** the report page and the Suite results page as a buyer sees them (their copy was scanned; nobody has walked them on a phone), course lessons and articles.
