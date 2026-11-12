@@ -172,8 +172,10 @@ const NAV = [
   { label: "Course", href: "/course" },
   { label: "Jobs & companies", href: "/jobs" },
   { label: "Blog", href: `${SITE}/blog/` },
-  { label: "About", href: `${SITE}/about/` },
-  { label: "Contact", href: `${SITE}/contact-us/` },
+  // `wide` items drop out of the header on a phone and appear in the footer
+  // instead, so the four that matter fit on one row (see .slp-nav in globals.css).
+  { label: "About", href: `${SITE}/about/`, wide: true },
+  { label: "Contact", href: `${SITE}/contact-us/`, wide: true },
 ];
 
 // `wide` widens the content column for grid-heavy pages (the companies
@@ -184,21 +186,25 @@ export function PageShell({ children, wide = false }: { children: ReactNode; wid
     <div style={S.root}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
       <SaleBanner />
-      <div style={{ ...wrap, padding: "32px 0 20px", borderBottom: "1px solid var(--border)", marginBottom: 28 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
+      {/* Spacing and the phone layout live in globals.css (.slp-head, .slp-nav):
+          inline styles can't carry a media query, and until 2026-11-11 a phone
+          spent 190px on the logo and two rows of links before any content. */}
+      <div className="slp-head" style={wrap}>
+        <div className="slp-head-row">
           <a href={SITE} style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center", gap: 10 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo-icon.png" alt="" width={34} height={34} style={{ display: "block" }} />
             <div>
               <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 20, fontWeight: 700, color: "var(--accent)", lineHeight: 1.15 }}>SLP Transitions</div>
-              <div style={{ fontSize: 13, color: "var(--muted)" }}>Career Pivot Suite</div>
+              <div className="slp-head-sub" style={{ fontSize: 13, color: "var(--muted)" }}>Career Pivot Suite</div>
             </div>
           </a>
-          <nav className="no-print" style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
+          <nav className="no-print slp-nav">
             {NAV.map((n) => (
               <a
                 key={n.label}
                 href={n.href}
+                className={n.wide ? "slp-nav-wide" : undefined}
                 style={{ fontSize: 14, color: "var(--muted)", textDecoration: "none", whiteSpace: "nowrap" }}
               >
                 {n.label}
@@ -220,6 +226,12 @@ export function PageShell({ children, wide = false }: { children: ReactNode; wid
         </div>
         <p style={{ fontSize: 12, color: "var(--light)", margin: 0 }}>
           Your degree isn't a prison. Your skills can translate outside of clinical work.
+        </p>
+        {/* Phone only: the two links the header drops at that width. */}
+        <p className="no-print slp-foot-links">
+          {NAV.filter((n) => n.wide).map((n) => (
+            <a key={n.label} href={n.href} style={{ color: "var(--muted)" }}>{n.label}</a>
+          ))}
         </p>
       </div>
     </div>

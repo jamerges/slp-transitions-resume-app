@@ -54,6 +54,29 @@ button { font-family: inherit; }
   .slp-sheet-in { animation: none; opacity: 1; transform: none; }
 }
 
+/* ---------------------------------------------------------------------------
+   App header (PageShell in components/ui.tsx).
+
+   On a phone the header is one compact block: logo, then four links on one
+   row. About and Contact move to the footer at that width. Before 2026-11-11
+   the six links wrapped to two rows under a 32px top pad, so every page,
+   including the quiz result and both buy pages, opened 190px down.
+--------------------------------------------------------------------------- */
+.slp-head { padding: 32px 0 20px; border-bottom: 1px solid var(--border); margin-bottom: 28px; }
+.slp-head-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.slp-nav { display: flex; gap: 18px; flex-wrap: wrap; }
+.slp-foot-links { display: none; }
+@media (max-width: 640px) {
+  .slp-head { padding: 14px 0 12px; margin-bottom: 18px; }
+  .slp-head-row { gap: 8px; }
+  .slp-head-sub { display: none; }
+  .slp-nav { width: 100%; flex-wrap: nowrap; gap: 0; justify-content: space-between; overflow-x: auto; }
+  /* 44px tall so each link is a comfortable tap target on its own row. */
+  .slp-nav a { padding: 12px 0; }
+  .slp-nav-wide { display: none; }
+  .slp-foot-links { display: flex; justify-content: center; gap: 20px; margin: 12px 0 0; font-size: 13px; }
+}
+
 /* "Save as PDF" on the report: keep the report, drop the page chrome. */
 @media print {
   .no-print { display: none !important; }
