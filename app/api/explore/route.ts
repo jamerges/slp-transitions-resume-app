@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { callClaude, assertReadableResume } from "@/lib/anthropic";
+import { dashless } from "@/lib/report-quiz";
 import { buildExplorePrompt, type ExploreInput } from "@/lib/prompts";
 
 export const runtime = "nodejs";
@@ -20,7 +21,7 @@ export async function POST(req: Request) {
       userPrompt: buildExplorePrompt(body),
       maxTokens: 4000,
     });
-    return NextResponse.json(result);
+    return NextResponse.json(dashless(result));
   } catch (err: any) {
     console.error("[/api/explore]", err);
     return NextResponse.json(

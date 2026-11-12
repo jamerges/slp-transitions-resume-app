@@ -8,7 +8,7 @@ import {
   S, Card, CopyButton, Chip, ProgressBar, CoverageTable, focusB, blurB,
 } from "./ui";
 import {
-  ROLE_OPTIONS, INDUSTRY_OPTIONS, NOT_SURE_OPTION, WORK_PREFERENCES, STAGE_OPTIONS,
+  ROLE_OPTIONS, INDUSTRY_OPTIONS, NOT_SURE_OPTION, NOT_SURE_LABEL, WORK_PREFERENCES, STAGE_OPTIONS,
   getRelevantStories, COMPANY_COUNT,
 } from "@/lib/companies";
 import type { UserGoals } from "@/lib/prompts";
@@ -26,6 +26,25 @@ type Step = (typeof STEPS)[keyof typeof STEPS];
 // posting and the free preview gone. The wizard saves itself to sessionStorage
 // (this tab only) right before the redirect and restores on /?canceled=1.
 const DRAFT_KEY = "slp:suite:draft:v1";
+const EMAIL_OK = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+// What the paid package adds, in the welcome page's words. The model used to
+// echo this list back inside every preview, jargon included.
+const FULL_INCLUDES = [
+  "Every résumé bullet rewritten for this job",
+  "A cover letter in your voice",
+  "What the job wants that you don’t show yet, and how to close it",
+  "Screening-question answers",
+  "Your answer to “why are you leaving clinical work?”",
+  "LinkedIn headline and About section",
+  "Your 90-day transition plan",
+  "Word documents you can edit",
+  "Rewrite any section until it sounds like you",
+];
+// Previews saved before 2026-11-11 carry title-case levels.
+const levelLabel = (v: unknown) => {
+  const t = String(v || "").replace(/\s*—\s*/g, ", ");
+  return t ? t.charAt(0) + t.slice(1).toLowerCase() : "";
+};
 
 // Files are parsed server-side (unpdf / mammoth). The old browser-side PDF
 // regex hack produced binary garbage that the model then refused to work with.
@@ -176,6 +195,8 @@ export default function SLPCareerSuite() {
   const writingFileRef = useRef<HTMLInputElement>(null);
   const topRef = useRef<HTMLDivElement>(null);
   const [canceledNote, setCanceledNote] = useState<null | "restored" | "plain">(null);
+  // The preview was emailed (this run), or reopened from that email's link.
+  const [previewNote, setPreviewNote] = useState<null | "emailed" | "returned">(null);
   // Optional goal fields sit behind one link so the step reads as one decision.
   const [showGoalExtras, setShowGoalExtras] = useState(false);
 
@@ -293,6 +314,36 @@ export default function SLPCareerSuite() {
       }
     }
 
+    // /?preview=<id> is the link in the free preview's email: reopen it with the
+    // résumé, the posting and the answers in place, ready to buy or re-run.
+    const previewId = params.get("preview");
+    if (previewId) {
+      setRehydrating(true);
+      (async () => {
+        try {
+          const resp = await fetch(`/api/preview-saved?k=${encodeURIComponent(previewId)}`);
+          const data = await resp.json();
+          if (!resp.ok || !data.preview || !data.inputs?.resumeText) throw new Error("expired");
+          const i = data.inputs;
+          setResumeText(i.resumeText);
+          setFileName("your saved résumé");
+          if (i.goals) setGoals((g) => ({ ...g, ...i.goals }));
+          setJobTitle(i.jobTitle || ""); setJobDesc(i.jobDesc || "");
+          setEmail(i.email || ""); setWritingSample(i.writingSample || "");
+          setPreview(data.preview);
+          setPreviewNote("returned");
+          setStep(STEPS.PREVIEW);
+        } catch {
+          setError("That preview link has expired (they last 7 days). Add your résumé and the posting again and a new preview takes about a minute.");
+          setStep(STEPS.RESUME);
+        } finally {
+          setRehydrating(false);
+          window.history.replaceState({}, "", window.location.pathname);
+        }
+      })();
+      return;
+    }
+
     if (!continueId) return;
     setRehydrating(true);
     (async () => {
@@ -329,7 +380,7 @@ export default function SLPCareerSuite() {
       } catch {
         // Inputs expired (6h cache) — fall back to a normal start.
         setError(
-          "We couldn't find your saved resume — saved results expire after 7 days. Please add it again; it only takes a moment."
+          "We couldn't find your saved résumé (it's kept for 7 days). Add it again and carry on from there."
         );
         setStep(STEPS.RESUME);
       } finally {
@@ -391,7 +442,7 @@ export default function SLPCareerSuite() {
       if (!resp.ok || !data.text) throw new Error(data.error || "Could not read that link.");
       setJobDesc(data.text);
       if (data.title && !jobTitle) setJobTitle(data.title);
-      setJobFetchNote({ ok: true, msg: `✓ Pulled ${data.words} words. Give it a quick scan below — trim anything that isn't the job description.` });
+      setJobFetchNote({ ok: true, msg: `✓ Pulled ${data.words} words. Give it a quick scan below and trim anything that isn't the job description.` });
     } catch (err: any) {
       setJobFetchNote({ ok: false, msg: err.message });
     } finally {
@@ -430,7 +481,7 @@ export default function SLPCareerSuite() {
         throw new Error(
           errBody.error ||
             (resp.status === 504
-              ? "That took longer than expected. Please try again — it usually works on the second attempt."
+              ? "That took longer than expected. Try again: it usually works the second time."
               : `API ${resp.status}`)
         );
       }
@@ -451,7 +502,7 @@ export default function SLPCareerSuite() {
       const resp = await fetch("/api/preview", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ resumeText, jobTitle, jobDesc, goals }),
+        body: JSON.stringify({ resumeText, jobTitle, jobDesc, goals, email: email.trim(), writingSample }),
       });
       if (!resp.ok) {
         const errBody = await resp.json().catch(() => ({}));
@@ -459,6 +510,7 @@ export default function SLPCareerSuite() {
       }
       const parsed = await resp.json();
       setPreview(parsed);
+      setPreviewNote(parsed.emailed ? "emailed" : null);
       setStep(STEPS.PREVIEW);
     } catch (err: any) {
       console.error(err);
@@ -642,7 +694,7 @@ export default function SLPCareerSuite() {
         <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 6 }}>Not sure what role you want yet?</div>
         <div style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.65, marginBottom: 10 }}>
           Two options that don&rsquo;t need a job posting. Take the <a href="/quiz" style={{ color: "var(--accent)", fontWeight: 600 }}>2-minute career quiz</a> for a direction with real salary ranges, or start here and pick{" "}
-          <strong style={{ color: "var(--accent)" }}>"Not sure yet — help me explore"</strong> on the next screen for free role matches from your résumé.
+          <strong style={{ color: "var(--accent)" }}>&ldquo;{NOT_SURE_LABEL}&rdquo;</strong> on the next screen for free role matches from your résumé.
         </div>
         <div style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.6 }}>
           From either one you can add the <strong>Pivot Report</strong> (${priceOf("report")}): the stage you&rsquo;re actually in, the three paths your résumé already fits, the first job title to apply for in each, and a 30-day plan.
@@ -660,11 +712,12 @@ export default function SLPCareerSuite() {
             ✓ Carried over from your quiz: {carriedFromQuiz}
           </div>
           <div style={{ fontSize: 13, color: "var(--muted)", marginTop: 4, lineHeight: 1.6 }}>
-            We'll target that. Add your resume and we'll show you how your experience already maps to it — you can change the target on the next screen if you'd rather.
+            We'll target that. Add your résumé and we'll show you how your experience already maps to it. You can change the target on the next screen.
           </div>
         </Card>
       )}
-      <h2 style={S.h2}>Let's start with your resume.</h2>
+      <h2 style={S.h2}>Let's start with your résumé.</h2>
+      <ErrorBanner />
       <p style={S.p}>PDF, Word, or paste it in.</p>
 
       <div style={{ display: "flex", gap: 0, marginBottom: 20, borderBottom: "1px solid var(--border)" }}>
@@ -675,7 +728,7 @@ export default function SLPCareerSuite() {
             background: "none", border: "none", cursor: "pointer",
             borderBottom: inputMode === mode ? "2px solid var(--accent)" : "2px solid transparent",
             fontFamily: "'DM Sans', sans-serif",
-          }}>{mode === "upload" ? "📎 Upload File" : "📋 Paste Text"}</button>
+          }}>{mode === "upload" ? "📎 Upload file" : "📋 Paste text"}</button>
         ))}
       </div>
 
@@ -689,28 +742,36 @@ export default function SLPCareerSuite() {
           {parsing ? (
             <div>
               <div style={{ fontSize: 32, marginBottom: 8 }}>📄</div>
-              <div style={{ fontSize: 15, fontWeight: 500 }}>Reading your resume…</div>
+              <div style={{ fontSize: 15, fontWeight: 500 }}>Reading your résumé…</div>
             </div>
           ) : fileName ? (
             <div>
               <div style={{ fontSize: 32, marginBottom: 8 }}>📄</div>
               <div style={{ fontSize: 15, fontWeight: 600 }}>{fileName}</div>
               <div style={{ fontSize: 13, color: resumeText.length > 100 ? "var(--accent)" : "var(--warn)", marginTop: 4 }}>
-                {resumeText.length > 100 ? `✓ ${resumeText.split(/\s+/).length} words extracted` : "⚠ Limited text — try Paste Text"}
+                {resumeText.length > 100 ? `✓ ${resumeText.split(/\s+/).length} words extracted` : "⚠ We couldn't read much of that file. Try Paste text."}
               </div>
               <button onClick={(e) => { e.stopPropagation(); setFileName(""); setResumeText(""); }} style={{ marginTop: 8, fontSize: 13, color: "var(--muted)", background: "none", border: "none", cursor: "pointer", textDecoration: "underline", fontFamily: "'DM Sans', sans-serif" }}>Remove</button>
             </div>
           ) : (
             <div>
               <div style={{ fontSize: 32, marginBottom: 8 }}>📎</div>
-              <div style={{ fontSize: 15, fontWeight: 500 }}>Drop your resume here, or click to browse</div>
-              <div style={{ fontSize: 13, color: "var(--light)", marginTop: 6 }}>PDF, DOCX, or TXT • Max 5MB</div>
+              <div style={{ fontSize: 15, fontWeight: 500 }}>Choose your résumé file</div>
+              <div style={{ fontSize: 13, color: "var(--light)", marginTop: 6 }}>or drag it here · PDF, DOCX or TXT, up to 5MB</div>
             </div>
           )}
         </div>
       ) : (
         <textarea style={{ ...S.textarea, minHeight: 200 }} value={resumeText} onChange={(e) => setResumeText(e.target.value)}
-          placeholder={"Paste your full resume here..."} onFocus={focusB} onBlur={blurB} />
+          placeholder={"Paste your full résumé here, or the Experience section of your LinkedIn profile."} onFocus={focusB} onBlur={blurB} />
+      )}
+
+      {/* Most people on a phone have no résumé file on it. Same route the report intake offers. */}
+      {inputMode === "upload" && !fileName && !parsing && (
+        <p style={{ fontSize: 13, color: "var(--muted)", marginBottom: 12 }}>
+          No résumé on this device? Copy the Experience section of your LinkedIn profile and{" "}
+          <button type="button" onClick={() => setInputMode("paste")} style={{ background: "none", border: "none", padding: 0, font: "inherit", color: "var(--accent)", fontWeight: 600, textDecoration: "underline", cursor: "pointer" }}>paste it here</button>.
+        </p>
       )}
 
       {fileError && <div style={{ fontSize: 13, color: "var(--err)", marginBottom: 12 }}>{fileError}</div>}
@@ -724,7 +785,7 @@ export default function SLPCareerSuite() {
 
       <div style={{ display: "flex", gap: 12 }}>
         <button style={S.btnOut} onClick={() => setStep(STEPS.WELCOME)}>← Back</button>
-        <button style={{ ...S.btn, opacity: resumeText.length < 50 || parsing ? 0.4 : 1 }} disabled={resumeText.length < 50 || parsing} onClick={() => setStep(reportIntent ? STEPS.REPORT_INTAKE : STEPS.GOALS)}>Continue →</button>
+        <button style={{ ...S.btn, opacity: resumeText.length < 50 || parsing ? 0.4 : 1 }} disabled={resumeText.length < 50 || parsing} onClick={() => { setError(null); setStep(reportIntent ? STEPS.REPORT_INTAKE : STEPS.GOALS); }}>Continue →</button>
       </div>
       {resumeText.length < 50 && !parsing && (
         <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>Upload or paste your résumé to continue.</p>
@@ -746,7 +807,7 @@ export default function SLPCareerSuite() {
             ✓ Pre-selected from your quiz: {carriedFromQuiz}
           </div>
           <div style={{ fontSize: 13, color: "var(--muted)", marginTop: 4, lineHeight: 1.6 }}>
-            Nothing to re-answer — just hit Continue. Add or change anything below if your thinking has moved on.
+            Nothing to re-answer. Hit Continue, or change anything below if your thinking has moved on.
           </div>
         </Card>
       )}
@@ -790,7 +851,7 @@ export default function SLPCareerSuite() {
         )}
 
         <div style={{ marginTop: 18, padding: "12px 14px", background: isExploreMode ? "var(--accent-bg-subtle)" : "var(--bg)", borderRadius: 8, border: `1px solid ${isExploreMode ? "var(--accent)" : "var(--border)"}` }}>
-          <Chip label={NOT_SURE_OPTION} selected={isExploreMode} onClick={() => {
+          <Chip label={NOT_SURE_LABEL} selected={isExploreMode} onClick={() => {
             setGoals((p) => ({ ...p, targetRoles: isExploreMode ? [] : [NOT_SURE_OPTION] }));
           }} />
           <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 4 }}>
@@ -882,6 +943,10 @@ export default function SLPCareerSuite() {
       <ProgressBar step={3} total={4} />
       <h2 style={S.h2}>Paste the job you're targeting.</h2>
       <p style={S.p}>The more specific, the better the translation.</p>
+      <p style={{ fontSize: 13.5, color: "var(--muted)", margin: "-8px 0 18px" }}>
+        No posting picked yet?{" "}
+        <a href="/jobs" target="_blank" rel="noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>Browse open roles at companies that value clinical skills</a>, then come back to this tab.
+      </p>
 
       <ErrorBanner />
 
@@ -930,7 +995,7 @@ export default function SLPCareerSuite() {
             {showWritingSample ? "▾" : "▸"} Recommended: add a writing sample so it sounds like you, not AI
           </div>
           <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 4 }}>
-            Hiring managers increasingly reject applications that read as AI-written. Paste any old cover letter, email, or article and we'll match your actual voice — it makes a real difference.
+            Hiring managers increasingly reject applications that read as AI-written. Paste an old cover letter, email or article and your cover letter comes back in your own voice.
           </div>
         </button>
 
@@ -974,16 +1039,23 @@ export default function SLPCareerSuite() {
   const renderEmail = () => (
     <div style={S.wrap}>
       <ProgressBar step={4} total={4} />
-      <h2 style={S.h2}>Where should we send your results?</h2>
-      <p style={S.p}>We'll send your results here so you don't lose them.</p>
+      <h2 style={S.h2}>Where should we send your preview?</h2>
+      <p style={S.p}>We'll email it with a link back, so you can pick it up later or on another device.</p>
       <div style={{ marginBottom: 24 }}>
-        <label style={S.label}>Email address</label>
-        <input style={S.input} type="email" placeholder="you@email.com" value={email} onChange={(e) => setEmail(e.target.value)} onFocus={focusB} onBlur={blurB} />
+        <label style={S.label} htmlFor="suite-email">Email address</label>
+        <input id="suite-email" style={S.input} type="email" inputMode="email" autoComplete="email" placeholder="you@email.com" value={email} onChange={(e) => setEmail(e.target.value)} onFocus={focusB} onBlur={blurB}
+          onKeyDown={(e) => { if (e.key === "Enter" && EMAIL_OK.test(email.trim())) generatePreview(); }} />
+        <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>
+          You'll also get our emails about leaving clinical work. One click unsubscribes.
+        </p>
       </div>
-      <div style={{ display: "flex", gap: 12, marginBottom: 16 }}>
+      <div style={{ display: "flex", gap: 12, marginBottom: 8 }}>
         <button style={S.btnOut} onClick={() => setStep(STEPS.JOB)}>← Back</button>
-        <button style={{ ...S.btn, opacity: !email.includes("@") ? 0.4 : 1 }} disabled={!email.includes("@")} onClick={generatePreview}>Generate My Free Preview →</button>
+        <button style={{ ...S.btn, opacity: !EMAIL_OK.test(email.trim()) ? 0.4 : 1 }} disabled={!EMAIL_OK.test(email.trim())} onClick={generatePreview}>Generate my free preview →</button>
       </div>
+      {!EMAIL_OK.test(email.trim()) && (
+        <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 0, marginBottom: 16 }}>Enter your email to continue.</p>
+      )}
     </div>
   );
 
@@ -993,7 +1065,7 @@ export default function SLPCareerSuite() {
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
       <h2 style={{ ...S.h2, marginBottom: 12 }}>{isExploreMode ? "Building your career exploration..." : "Translating your experience..."}</h2>
       <p style={{ ...S.p, maxWidth: 400, margin: "0 auto" }}>{loadMsg}</p>
-      <p style={{ fontSize: 12, color: "var(--light)", marginTop: 16 }}>This takes 30-60 seconds. Don't close this window.</p>
+      <p style={{ fontSize: 12, color: "var(--light)", marginTop: 16 }}>This takes 30 to 60 seconds. Keep this tab open.</p>
     </div>
   );
 
@@ -1002,7 +1074,7 @@ export default function SLPCareerSuite() {
       <ProgressBar step={2} total={2} />
       <h2 style={S.h2}>Last step before your report.</h2>
       <p style={S.p}>
-        Two quick things so the report meets you where you actually are — then straight to checkout.
+        Two quick things so the report meets you where you are, then straight to checkout.
       </p>
 
       <ErrorBanner />
@@ -1027,7 +1099,7 @@ export default function SLPCareerSuite() {
 
       <div style={{ marginBottom: 24 }}>
         <label style={S.label}>Why are you transitioning? <span style={{ fontWeight: 400, color: "var(--light)" }}>(optional)</span></label>
-        <textarea style={{ ...S.textarea, minHeight: 60 }} placeholder="Be honest — this never appears anywhere, it just shapes the advice." value={goals.whyLeaving} onChange={(e) => setGoals((p) => ({ ...p, whyLeaving: e.target.value }))} onFocus={focusB} onBlur={blurB} />
+        <textarea style={{ ...S.textarea, minHeight: 60 }} placeholder="Be honest. This never appears anywhere, it only shapes the advice." value={goals.whyLeaving} onChange={(e) => setGoals((p) => ({ ...p, whyLeaving: e.target.value }))} onFocus={focusB} onBlur={blurB} />
       </div>
 
       <button
@@ -1037,7 +1109,7 @@ export default function SLPCareerSuite() {
         onMouseEnter={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent-light)")}
         onMouseLeave={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent)")}
       >
-        Get my Pivot Report — $9 →
+        Get my Pivot Report · ${priceOf("report")}{"\u00a0"}→
       </button>
       <p style={{ fontSize: 12, color: "var(--light)", textAlign: "center", marginTop: 8 }}>
         One-time payment via Stripe. Emailed to you + shown right here. 30-day refund if it doesn't help.
@@ -1061,8 +1133,8 @@ export default function SLPCareerSuite() {
     return (
       <div style={S.wrap}>
         <div style={{ textAlign: "center", marginBottom: 28 }}>
-          <span style={S.tag}>Career Exploration Report</span>
-          <h2 style={{ ...S.h2, marginTop: 12 }}>Your Personalized Path Forward</h2>
+          <span style={S.tag}>Career exploration</span>
+          <h2 style={{ ...S.h2, marginTop: 12 }}>Where your experience points</h2>
         </div>
 
         <Card highlight>
@@ -1071,7 +1143,7 @@ export default function SLPCareerSuite() {
         </Card>
 
         <Card>
-          <h3 style={{ ...S.h3, marginBottom: 16 }}>Top Role Matches for You</h3>
+          <h3 style={{ ...S.h3, marginBottom: 16 }}>Roles that fit you best</h3>
           {topRoleMatches?.map((r: any, i: number) => (
             <div key={i} style={{ padding: 16, marginBottom: 12, border: "1px solid var(--border)", borderRadius: 8 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6, flexWrap: "wrap", gap: 8 }}>
@@ -1091,7 +1163,7 @@ export default function SLPCareerSuite() {
         </Card>
 
         <Card>
-          <h3 style={{ ...S.h3, marginBottom: 12 }}>Your Transferable Strengths</h3>
+          <h3 style={{ ...S.h3, marginBottom: 12 }}>What you already have</h3>
           <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12 }}>What you already have that the market wants:</p>
           {transferableStrengths?.map((s: any, i: number) => (
             <div key={i} style={{ padding: "12px 14px", background: "var(--accent-bg-subtle)", borderRadius: 8, marginBottom: 8 }}>
@@ -1103,7 +1175,7 @@ export default function SLPCareerSuite() {
         </Card>
 
         <Card>
-          <h3 style={{ ...S.h3, marginBottom: 12 }}>🎯 Try This Week</h3>
+          <h3 style={{ ...S.h3, marginBottom: 12 }}>Try this week</h3>
           {exploratoryActions?.map((a: any, i: number) => (
             <div key={i} style={{ padding: "10px 0 10px 14px", borderLeft: "2px solid var(--accent)", marginBottom: 8 }}>
               <div style={{ fontSize: 14, fontWeight: 600 }}>{a.action} <span style={{ fontSize: 12, fontWeight: 400, color: "var(--light)" }}>· {a.timeNeeded}</span></div>
@@ -1113,7 +1185,7 @@ export default function SLPCareerSuite() {
         </Card>
 
         <Card>
-          <h3 style={{ ...S.h3, marginBottom: 12 }}>Honest Questions to Sit With</h3>
+          <h3 style={{ ...S.h3, marginBottom: 12 }}>Honest questions to sit with</h3>
           <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12 }}>Before you commit to a direction:</p>
           {warningQuestions?.map((q: string, i: number) => (
             <div key={i} style={{ fontSize: 14, padding: "10px 14px", background: "var(--warn-bg)", borderRadius: 8, marginBottom: 8, color: "var(--text)", lineHeight: 1.6 }}>
@@ -1130,7 +1202,7 @@ export default function SLPCareerSuite() {
           <button style={{ ...S.btn, padding: "14px 40px", fontSize: 16, marginTop: 10 }} onClick={handleReportClick}
             onMouseEnter={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent-light)")}
             onMouseLeave={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent)")}>
-            Get My Pivot Report — $9
+            Get my Pivot Report · ${priceOf("report")}{"\u00a0"}→
           </button>
           <p style={{ fontSize: 12, color: "var(--light)", marginTop: 8 }}>One-time payment. No subscription, ever. 30-day refund if it doesn't help.</p>
         </Card>
@@ -1141,7 +1213,7 @@ export default function SLPCareerSuite() {
             setGoals((p) => ({ ...p, targetRoles: [], targetIndustries: [], workPreferences: [] }));
             setExploreResults(null);
             setStep(STEPS.GOALS);
-          }}>Translate for a Specific Role →</button>
+          }}>Translate for a specific role →</button>
         </Card>
 
         <div style={{ textAlign: "center", marginTop: 12 }}>
@@ -1153,14 +1225,14 @@ export default function SLPCareerSuite() {
 
   const renderPreview = () => {
     if (!preview) return null;
-    const { matchScore, matchLevel, snapshot, requirementsCoverage, translatedBullets, quickWins, fullVersionIncludes } = preview;
+    const { matchScore, matchLevel, snapshot, requirementsCoverage, translatedBullets, quickWins } = preview;
     const stories = getRelevantStories({ targetRoles: goals.targetRoles, jobTitle });
 
     return (
       <div style={S.wrap}>
         <div style={{ textAlign: "center", marginBottom: 28 }}>
           <span style={S.tag}>Free preview</span>
-          <h2 style={{ ...S.h2, marginTop: 12 }}>Your SLP → {jobTitle} Translation</h2>
+          <h2 style={{ ...S.h2, marginTop: 12 }}>Your SLP → {jobTitle} translation</h2>
         </div>
 
         <ErrorBanner />
@@ -1168,17 +1240,25 @@ export default function SLPCareerSuite() {
         <Card highlight>
           <div style={{ textAlign: "center" }}>
             <div style={{ fontSize: 56, fontWeight: 700, color: "var(--accent)", fontFamily: "'Playfair Display', Georgia, serif", lineHeight: 1 }}>{matchScore}%</div>
-            <div style={{ fontSize: 15, fontWeight: 600, color: "var(--accent)", marginBottom: 6 }}>{matchLevel}</div>
-            <p style={{ fontSize: 14, color: "var(--muted)", margin: 0, lineHeight: 1.6 }}>{snapshot}</p>
+            <div style={{ fontSize: 15, fontWeight: 600, color: "var(--accent)", marginBottom: 10 }}>{levelLabel(matchLevel)}</div>
+            {/* Left-aligned: nine centred lines on a phone have no edge to read down. */}
+            <p style={{ fontSize: 14.5, color: "var(--text)", margin: 0, lineHeight: 1.6, textAlign: "left" }}>{snapshot}</p>
           </div>
         </Card>
+        {previewNote && (
+          <p style={{ fontSize: 13, color: "var(--muted)", textAlign: "center", margin: "-6px 0 16px" }}>
+            {previewNote === "emailed"
+              ? `We emailed this preview to ${email.trim()} with a link back to it.`
+              : "Opened from your email. Your résumé and the posting are still in place."}
+          </p>
+        )}
 
         {/* The only buy button used to sit ~2,000px down, under the whole
             preview. The score is the moment of value, so offer it here too
             (GA placement preview_top vs paywall). */}
         <div style={{ textAlign: "center", margin: "0 0 22px" }}>
           <button style={{ ...S.btn, padding: "13px 24px", minHeight: 46, fontSize: 15 }} onClick={() => handlePaywallClick("preview_top")}>
-            Rewrite every bullet for this job · ${priceOf("suite")} →
+            Rewrite every bullet for this job · ${priceOf("suite")}{"\u00a0"}→
           </button>
           <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>
             Plus the cover letter, your LinkedIn and the interview answers. One payment, 30-day refund.
@@ -1196,7 +1276,7 @@ export default function SLPCareerSuite() {
 
         <Card>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-            <h3 style={{ ...S.h3, margin: 0 }}>Sample Bullet Translations</h3>
+            <h3 style={{ ...S.h3, margin: 0 }}>{translatedBullets?.length === 3 ? "Three of your bullets, rewritten" : "Your bullets, rewritten"}</h3>
             <CopyButton text={translatedBullets?.map((b: any) => b.translated).join("\n\n")} label="Copy all" />
           </div>
           {translatedBullets?.map((b: any, i: number) => (
@@ -1212,7 +1292,7 @@ export default function SLPCareerSuite() {
 
         {quickWins?.length > 0 && (
           <Card>
-            <h3 style={{ ...S.h3, marginBottom: 10 }}>🎯 Do This Week</h3>
+            <h3 style={{ ...S.h3, marginBottom: 10 }}>{quickWins.length === 2 ? "Two things to do this week" : "To do this week"}</h3>
             {quickWins.map((w: string, i: number) => (
               <div key={i} style={{ fontSize: 14, color: "var(--text)", padding: "6px 0 6px 12px", borderLeft: "2px solid var(--accent)", marginBottom: 8, lineHeight: 1.6 }}>{w}</div>
             ))}
@@ -1236,17 +1316,17 @@ export default function SLPCareerSuite() {
           <p style={{ ...S.p, maxWidth: 440, margin: "0 auto 16px" }}>Every bullet rewritten, the cover letter, what the job wants that you don&rsquo;t show yet, interview prep and your LinkedIn, all for this exact role.</p>
           {/* Left-aligned: a centred checklist has a ragged left edge the eye can't scan down. */}
           <div style={{ display: "inline-block", textAlign: "left", maxWidth: 440 }}>
-            {fullVersionIncludes?.map((item: string, i: number) => (
+            {FULL_INCLUDES.map((item, i) => (
               <div key={i} style={{ fontSize: 14, padding: "3px 0", display: "flex", alignItems: "flex-start", gap: 8, color: "var(--text)", lineHeight: 1.5 }}>
                 <span style={{ color: "var(--accent)", flexShrink: 0 }}>✓</span> <span>{item}</span>
               </div>
             ))}
           </div>
           <div>
-            <button style={{ ...S.btn, padding: "14px 40px", fontSize: 16, marginTop: 20 }} onClick={() => handlePaywallClick("paywall")}
+            <button style={{ ...S.btn, padding: "14px 22px", fontSize: 16, marginTop: 20 }} onClick={() => handlePaywallClick("paywall")}
               onMouseEnter={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent-light)")}
               onMouseLeave={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent)")}>
-              Get the full package · ${priceOf("suite")} →
+              Get the full package · ${priceOf("suite")}{"\u00a0"}→
             </button>
           </div>
           <p style={{ fontSize: 13, fontWeight: 600, color: "var(--accent)", marginTop: 10, marginBottom: 2 }}>
@@ -1268,7 +1348,7 @@ export default function SLPCareerSuite() {
       <div style={{ ...S.wrap, textAlign: "center", padding: "80px 0" }}>
         <div style={{ width: 48, height: 48, border: "3px solid var(--border)", borderTopColor: "var(--accent)", borderRadius: "50%", margin: "0 auto 24px", animation: "spin 0.8s linear infinite" }} />
         <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-        <h2 style={{ ...S.h2, marginBottom: 12 }}>Welcome back — loading your resume…</h2>
+        <h2 style={{ ...S.h2, marginBottom: 12 }}>Welcome back. Loading your résumé…</h2>
         <p style={{ ...S.p, maxWidth: 420, margin: "0 auto" }}>You won't have to enter it again.</p>
       </div>
     );

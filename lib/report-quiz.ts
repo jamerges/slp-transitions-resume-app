@@ -68,7 +68,10 @@ function pathForRole(role: string) {
     || all.find((p) => want.startsWith(squash(p.label)) || want.startsWith(squash(p.roleOption)))
     || null;
 }
-function dashless(v: any): any {
+/** Em dashes out of every string in a generated object. Also used on the Suite's
+ *  free preview, the explore results and the paid package (2026-11-11): the
+ *  prompt bans them and the model still writes a few. */
+export function dashless(v: any): any {
   if (typeof v === "string") return v.replace(/\s*—\s*/g, ", ").replace(/, ,/g, ",");
   if (Array.isArray(v)) return v.map(dashless);
   if (v && typeof v === "object") return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, dashless(x)]));

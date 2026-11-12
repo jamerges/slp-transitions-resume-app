@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { callClaude } from "@/lib/anthropic";
-import { retrieveInputs, retrieveResult, stashResult } from "@/lib/stash";
+import { retrieveInputs, retrieveResult, stashResult, RESULT_TTL_SECONDS } from "@/lib/stash";
+import { dashless } from "@/lib/report-quiz";
 import { SUPPORT_EMAIL } from "@/lib/contact";
 
 export const runtime = "nodejs";
@@ -110,9 +111,9 @@ Return ONLY this JSON: ${spec}`,
       maxTokens: 3000,
     });
 
-    const newValue = result[section];
+    const newValue = dashless(result[section]);
     if (newValue == null) {
-      return NextResponse.json({ error: "Refine failed — please try again" }, { status: 502 });
+      return NextResponse.json({ error: "That rewrite didn't come back. Try it again." }, { status: 502 });
     }
 
     const updated = {
@@ -120,7 +121,9 @@ Return ONLY this JSON: ${spec}`,
       results: { ...cached.results, [section]: newValue },
       refineCount: refineCount + 1,
     };
-    stashResult(sessionId, updated).catch((e) =>
+    // Without the ttl this fell back to 7 days, so one rewrite cut a buyer's
+    // year of access (promised on the page and in the email) to a week.
+    stashResult(sessionId, updated, RESULT_TTL_SECONDS).catch((e) =>
       console.error("[/api/refine] cache update failed", e)
     );
 

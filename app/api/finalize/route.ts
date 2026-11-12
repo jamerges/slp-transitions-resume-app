@@ -4,6 +4,7 @@ import { callClaude } from "@/lib/anthropic";
 import { buildFullPromptParts } from "@/lib/prompts";
 import { claimOrProceed, releaseOnce, retrieveInputs, retrieveResult, stashResult, RESULT_TTL_SECONDS } from "@/lib/stash";
 import { sendFullResultsEmail } from "@/lib/email";
+import { dashless } from "@/lib/report-quiz";
 import { upsertSubscriber, CUSTOMER_GROUPS } from "@/lib/mailerlite";
 import { markCustomer } from "@/lib/quiz-log";
 import { SUPPORT_EMAIL } from "@/lib/contact";
@@ -92,7 +93,9 @@ export async function POST(req: Request) {
         callClaude({ userPrompt: materials, maxTokens: 10000 }),
         callClaude({ userPrompt: guidance, maxTokens: 8000 }),
       ]);
-      results = { ...materialsResult, ...guidanceResult };
+      // The prompt bans em dashes in anything the buyer sends, and a few still
+      // get through. Same last pass the Pivot Report gets (tidyReport).
+      results = dashless({ ...materialsResult, ...guidanceResult });
       if (!results.professionalSummary || !results.translatedBullets) {
         throw new Error("Generated response missing required fields");
       }

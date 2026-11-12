@@ -324,7 +324,10 @@ export const INDUSTRY_OPTIONS = [
   "Speech & AAC companies", "Hospitals / Health systems", "Open to any",
 ];
 
+// The stored value: saved goals and the explore check compare against it, so it
+// keeps its original text. Show NOT_SURE_LABEL to people instead.
 export const NOT_SURE_OPTION = "Not sure yet — help me explore";
+export const NOT_SURE_LABEL = "Not sure yet, help me explore";
 
 export const SETTING_OPTIONS = [
   "School-based (PreK-12)", "Hospital / Acute Care", "Outpatient Clinic",

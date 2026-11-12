@@ -160,6 +160,33 @@ export async function releaseOnce(key: string): Promise<void> {
   await r.del(`once:${key}`);
 }
 
+/** A free Suite preview and the inputs it was built from, kept so the emailed
+ *  link can reopen it on another device. Same 7 days as checkout inputs: this
+ *  is résumé text from someone who hasn't bought, so it isn't held longer. The
+ *  email says "7 days"; change both together. */
+export interface SavedPreview { inputs: StashedInputs; preview: any; at: number }
+export const PREVIEW_TTL_DAYS = 7;
+
+/** False when Redis is missing or the write fails, so the caller can leave the link out. */
+export async function stashPreview(id: string, data: SavedPreview): Promise<boolean> {
+  const r = getRedis();
+  if (!r) return false;
+  try {
+    await r.set(`preview:${id}`, JSON.stringify(data), { ex: PREVIEW_TTL_DAYS * 24 * 60 * 60 });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export async function retrievePreview(id: string): Promise<SavedPreview | null> {
+  const r = getRedis();
+  if (!r) return null;
+  const raw = await r.get<string>(`preview:${id}`);
+  if (!raw) return null;
+  return typeof raw === "string" ? JSON.parse(raw) : (raw as unknown as SavedPreview);
+}
+
 export async function retrieveResult(sessionId: string): Promise<any | null> {
   const r = getRedis();
   if (!r) return null;

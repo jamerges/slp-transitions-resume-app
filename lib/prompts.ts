@@ -76,10 +76,16 @@ ${INFER_NOTE}
 SCORING METHOD (do this first, internally):
 1. Extract the 6-8 most important requirements from the job description (required skills, experience, credentials — weight must-haves over nice-to-haves).
 2. For each, judge from the resume: "covered" (clear evidence), "partial" (adjacent/transferable evidence), or "missing" (no evidence).
-3. matchScore = round(100 * (covered + 0.5*partial) / total requirements). matchLevel: 75+ = "Strong Match", 55-74 = "Good Match", below 55 = "Stretch — But Doable".
+3. matchScore = round(100 * (covered + 0.5*partial) / total requirements). matchLevel: 75+ = "Strong match", 55-74 = "Good match", below 55 = "A stretch, but doable".
 
 Return this exact JSON only:
-{"matchScore":NUMBER,"matchLevel":"Strong Match|Good Match|Stretch — But Doable","snapshot":"2 sentences","requirementsCoverage":[{"requirement":"short requirement from the JD","status":"covered|partial|missing","evidence":"one short phrase: where the resume shows it, or what's absent"}],"translatedBullets":[{"original":"...","translated":"..."},{"original":"...","translated":"..."},{"original":"...","translated":"..."}],"quickWins":["action 1","action 2"],"fullVersionIncludes":["Every resume bullet rewritten","Tailored cover letter in your voice","Requirements gap plan with real action steps","Application screening-question answers","Interview bridge statements","LinkedIn headline + About section","Your 90-day transition plan","Editable Word doc downloads","Refine any section until it sounds like you"]}
+{"matchScore":NUMBER,"matchLevel":"Strong match|Good match|A stretch, but doable","snapshot":"2 sentences","requirementsCoverage":[{"requirement":"short requirement from the JD","status":"covered|partial|missing","evidence":"one short phrase: where the resume shows it, or what's absent"}],"translatedBullets":[{"original":"...","translated":"..."},{"original":"...","translated":"..."},{"original":"...","translated":"..."}],"quickWins":["action 1","action 2"]}
+
+RULES FOR THIS PREVIEW (the candidate reads it on screen and in an email):
+- snapshot and every evidence phrase speak to the candidate as "you" and "your". Never use their name and never write about them in the third person.
+- translatedBullets: pick the three bullets that matter most for this job. Each rewrite uses only facts and numbers that are in the original bullet or elsewhere in the resume. Never add a count, a percentage, a dollar figure or an outcome the resume does not state (no "reducing documentation time", no "six stakeholder groups" unless the resume says so). A difference between two of their own numbers is fine.
+- quickWins: two actions they can do this week for this job. No invented durations, prices or statistics. Name a real, free or low-cost resource only if you are sure it exists.
+- No em dashes anywhere. Use a comma, a colon or a full stop.
 
 Include all 6-8 requirements in requirementsCoverage, ordered most important first.`;
 }

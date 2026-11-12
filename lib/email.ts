@@ -460,6 +460,68 @@ export async function sendResultsLinkEmail(input: { to: string; links: ResultLin
   await getResend().emails.send({ from: FROM_ADDRESS, to, replyTo: REPLY_TO, subject: "Your SLP Transitions results", html });
 }
 
+export interface PreviewEmailInput {
+  to: string;
+  jobTitle: string;
+  preview: any;
+  /** Reopens the preview with the résumé and posting in place. Null when it couldn't be saved. */
+  link: string | null;
+}
+
+/** The Suite's free preview, by email. The wizard's last step asks "Where should
+ *  we send your results?", so this is the email that answers it, and the way back
+ *  for someone who ran it on a phone. Returns HTML without sending, for dev preview. */
+export function renderPreviewEmail(input: PreviewEmailInput): { subject: string; html: string } {
+  const { jobTitle, preview, link } = input;
+  const score = Number(preview?.matchScore);
+  const hasScore = Number.isFinite(score) && score > 0;
+  const bullets: any[] = Array.isArray(preview?.translatedBullets) ? preview.translatedBullets.slice(0, 3) : [];
+  const wins: string[] = Array.isArray(preview?.quickWins) ? preview.quickWins.slice(0, 3) : [];
+  const open = link || APP_URL;
+  const button = (label: string) =>
+    `<div style="text-align:center;margin:22px 0;"><a href="${open}" style="display:inline-block;padding:14px 30px;background:#004820;color:#fff;text-decoration:none;border-radius:8px;font-size:16px;font-weight:600;">${label}&nbsp;&rarr;</a></div>`;
+  const bulletRows = bullets
+    .map(
+      (b) => `<div style="margin:0 0 16px;">
+    <div style="font-size:12px;font-weight:700;letter-spacing:.04em;color:#5B6157;margin-bottom:3px;">BEFORE</div>
+    <div style="font-size:14px;line-height:1.6;color:#5B6157;padding:8px 12px;border-left:3px solid #DAD8C6;background:#F6F5EC;margin-bottom:8px;">${esc(b?.original)}</div>
+    <div style="font-size:12px;font-weight:700;letter-spacing:.04em;color:#004820;margin-bottom:3px;">AFTER</div>
+    <div style="font-size:15px;line-height:1.6;padding:8px 12px;border-left:3px solid #004820;background:#E5E7D9;">${esc(b?.translated)}</div>
+  </div>`
+    )
+    .join("");
+  const winRows = wins.map((w) => `<li style="margin:0 0 8px;">${esc(w)}</li>`).join("");
+  const html = `<!doctype html>
+<html><body style="margin:0;padding:0;background:#FAFAF9;font-family:-apple-system,'DM Sans',sans-serif;color:#1B1B1E;">
+<div style="max-width:560px;margin:0 auto;padding:32px 20px;">
+  <div style="text-align:center;margin-bottom:22px;"><div style="font-size:20px;font-weight:700;color:#004820;font-family:Georgia,serif;">SLP Transitions</div></div>
+  <p style="font-size:16px;line-height:1.7;">Here's the free preview you ran for <b>${esc(jobTitle)}</b>.</p>
+  ${hasScore ? `<div style="text-align:center;padding:18px 16px;border:1px solid #DAD8C6;border-radius:12px;background:#fff;margin:0 0 16px;">
+    <div style="font-size:44px;font-weight:700;color:#004820;font-family:Georgia,serif;line-height:1;">${score}%</div>
+    <div style="font-size:14px;font-weight:600;color:#004820;margin-top:4px;">${esc(preview?.matchLevel)}</div>
+  </div>` : ""}
+  ${preview?.snapshot ? `<p style="font-size:15px;line-height:1.7;">${esc(preview.snapshot)}</p>` : ""}
+  ${link ? button("Open your preview") : ""}
+  ${link ? `<p style="font-size:13px;color:#555B52;line-height:1.6;margin:0 0 22px;text-align:center;">It opens with your résumé and the posting already in place, on any device, for 7 days.</p>` : ""}
+  ${bulletRows ? `<h2 style="font-size:17px;margin:26px 0 12px;">${bullets.length === 3 ? "Three of your bullets, rewritten" : "Your bullets, rewritten"}</h2>${bulletRows}` : ""}
+  ${winRows ? `<h2 style="font-size:17px;margin:26px 0 10px;">${wins.length === 2 ? "Two things to do this week" : "To do this week"}</h2><ul style="font-size:15px;line-height:1.65;padding-left:20px;margin:0 0 8px;">${winRows}</ul>` : ""}
+  <p style="font-size:15px;line-height:1.7;margin-top:24px;">The full package rewrites every bullet for this job and adds the cover letter, your LinkedIn headline and About, and your answer to &quot;why are you leaving clinical work?&quot;. $${priceOf("suite")} once${wasNote("suite")}, with a 30-day refund.</p>
+  ${link ? button("Get the full package") : ""}
+  <p style="font-size:15px;line-height:1.7;">If you didn't ask for this, ignore it.</p>
+  <p style="font-size:15px;line-height:1.7;">James</p>
+  ${link ? `<p style="font-size:12px;color:#6B7280;margin-top:26px;">If the button doesn't work, paste this into your browser:<br/><span style="word-break:break-all;">${link}</span></p>` : ""}
+</div></body></html>`;
+  const subject = hasScore
+    ? `Your free preview: ${score}% match for ${jobTitle}`
+    : `Your free preview for ${jobTitle}`;
+  return { subject, html };
+}
+
+export async function sendPreviewEmail(input: PreviewEmailInput): Promise<void> {
+  const { subject, html } = renderPreviewEmail(input);
+  await getResend().emails.send({ from: FROM_ADDRESS, to: input.to, replyTo: REPLY_TO, subject, html });
+}
+
 /** The same link again, for a buyer on a new device or with a cleared browser. Sent from /api/course/find-link. */
 export async function sendCourseLinkEmail(input: { to: string; unlockUrl: string }): Promise<void> {
   const { to, unlockUrl } = input;
