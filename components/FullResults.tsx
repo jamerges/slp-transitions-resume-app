@@ -83,7 +83,7 @@ function RefineControl({
         </button>
         <button onClick={() => { setOpen(false); setErr(""); }} disabled={busy} style={{ ...S.btnOut, padding: "8px 12px", fontSize: 13 }}>✕</button>
       </div>
-      {busy && <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 6 }}>Rewriting with your request — usually 10-20 seconds…</div>}
+      {busy && <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 6 }}>Rewriting with your request. This usually takes 10 to 20 seconds…</div>}
       {err && <div style={{ fontSize: 12, color: "var(--err)", marginTop: 6 }}>{err}</div>}
     </div>
   );
@@ -186,7 +186,7 @@ export default function FullResults({
       <Card style={{ display: "flex", flexWrap: "wrap", gap: 10, alignItems: "center", justifyContent: "space-between" }}>
         <div>
           <div style={{ fontSize: 14, fontWeight: 600 }}>Download as Word documents</div>
-          <div style={{ fontSize: 12, color: "var(--muted)" }}>Editable .docx files — paste into your own resume format or send as-is.</div>
+          <div style={{ fontSize: 12, color: "var(--muted)" }}>Word files you can edit. Paste them into your own résumé layout or send them as they are.</div>
         </div>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           <button style={{ ...S.btnOut, fontSize: 13, padding: "8px 16px" }} onClick={() => downloadResumeDocx(merged, jobTitle)}>⬇ Resume content</button>
@@ -233,7 +233,7 @@ export default function FullResults({
                   {refine("linkedinAbout")}
                 </div>
               </div>
-              <div style={{ fontSize: 12, color: "var(--light)", marginTop: 8 }}>Recruiters screen LinkedIn before every interview — paste both of these in before you start applying.</div>
+              <div style={{ fontSize: 12, color: "var(--light)", marginTop: 8 }}>Recruiters check LinkedIn before every interview, so paste both of these in before you start applying.</div>
             </div>
           )}
         </Card>
@@ -241,7 +241,7 @@ export default function FullResults({
 
       {requirementsCoverage?.length > 0 && (
         <Section title="How your résumé covers the posting" id="coverage">
-          <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 8 }}>The job's top requirements checked against your resume — with a move for every gap.</p>
+          <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 8 }}>The job's top requirements checked against your résumé, with a move for every gap.</p>
           <CoverageTable items={requirementsCoverage} />
         </Section>
       )}
@@ -267,7 +267,7 @@ export default function FullResults({
 
       <Section title="Skills to paste into your résumé" id="skills" copyText={skillsSection ? Object.entries(skillsSection).map(([c, s]: any) => `${c}: ${(s as string[]).join(", ")}`).join("\n") : ""}>
         <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12, lineHeight: 1.6 }}>
-          Add these to the Skills section of your resume, using this exact wording — the software that screens applications (and the recruiters searching it) match on these terms. Only keep ones that are true for you.
+          Add these to the Skills section of your resume, using this exact wording. The software that screens applications, and the recruiters searching it, match on these terms. Only keep ones that are true for you.
         </p>
         {skillsSection && Object.entries(skillsSection).map(([cat, skills]: any) => (
           <div key={cat} style={{ marginBottom: 12 }}>
@@ -317,7 +317,7 @@ export default function FullResults({
 
       {knockoutAnswers?.length > 0 && (
         <Section title="Answers for the application questions" id="knockouts">
-          <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12 }}>The form questions that silently filter career changers out — and how to answer them for this job:</p>
+          <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12 }}>The form questions that quietly filter career changers out, and how to answer them for this job:</p>
           {knockoutAnswers.map((k: any, i: number) => (
             <div key={i} style={{ marginBottom: 14 }}>
               <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 6 }}>“{k.question}”</div>
@@ -338,7 +338,7 @@ export default function FullResults({
 
       {ninetyDayPlan?.length > 0 && (
         <Section title="Your 90-day plan" id="roadmap">
-          <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 14 }}>Your application campaign for this role — week by week. Referrals and proof beat mass applications.</p>
+          <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 14 }}>Your plan for this role, week by week. Referrals and proof beat mass applications.</p>
           <div style={{ position: "relative", paddingLeft: 22 }}>
             <div style={{ position: "absolute", left: 7, top: 6, bottom: 6, width: 2, background: "var(--accent-bg)" }} />
             {ninetyDayPlan.map((p: any, i: number) => (
@@ -359,7 +359,7 @@ export default function FullResults({
 
       {companies.length > 0 && (
         <Section title="Companies that value clinical skills" id="companies">
-          <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12 }}>From our curated database of {COMPANY_COUNT} ed-tech and health-tech companies that value clinical skills, sorted by best match for your background. We don't track live vacancies — tap <strong>See open roles</strong> to jump to that company's careers page.</p>
+          <p style={{ fontSize: 13, color: "var(--light)", marginBottom: 12 }}>From our curated database of {COMPANY_COUNT} ed-tech and health-tech companies that value clinical skills, sorted by best match for your background. We don't track live vacancies. Tap <strong>See open roles</strong> to jump to that company's careers page.</p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
             {companies.map((c, i) => {
               // We don't store per-company careers URLs (paths vary: /careers,
@@ -393,7 +393,7 @@ export default function FullResults({
             })}
           </div>
           <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 12, padding: "10px 14px", background: "#F9FAFB", borderRadius: 6 }}>
-            💡 <strong>Pro tip:</strong> "See open roles" takes you to the company's careers page (top search result). If nothing fits today, follow them on LinkedIn — and reference your translated bullets above when you apply.
+            💡 <strong>Pro tip:</strong> "See open roles" takes you to the company's careers page (top search result). If nothing fits today, follow them on LinkedIn, and use your rewritten bullets above when you apply.
           </div>
         </Section>
       )}
