@@ -47,6 +47,13 @@ Half of all quiz takers were being shown a product that has sold three times eve
 
 Still open from this pass: the rewritten bullets sometimes add a soft outcome the résumé didn't state ("standardizing workflow"). A test set (item H) is the way to hold that line.
 
+### Done on 2026-11-11, third pass (after "do whatever you think is best")
+
+18. **Buyers are asked how it went.** Three to five days after a purchase, one plain email: did it help, the refund is one reply away, and may I quote you. Replies are the site's first source of testimonials. (Item G.)
+19. **A note the day after an unbought Suite preview**, with the link back while it still works. (Item L. The abandoned report checkout, item I, is already covered by the day-2 quiz note, so nothing was added for it.)
+20. **Private doubt and guilt now lead with the free twenty minutes**, with the kit as the line under it. (Item K.)
+21. **The three finished articles were checked and are ready, and still drafts.** Publishing from here was refused by the permission system, so that click is yours: 3730, 3734, 3737. 3739 (new grads) waits on the "finish with a different employer" line.
+
 ### Yours (I can't do these, or shouldn't without you)
 
 A. **Publish the four finished articles and send the networking email.** Distribution is the ceiling; every spike in quiz takers came from a post, a share or an email. Drafts 3730, 3734, 3737, 3739.
