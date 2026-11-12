@@ -1,6 +1,20 @@
 import Anthropic from "@anthropic-ai/sdk";
 
-export const ANTHROPIC_MODEL = "claude-sonnet-4-6";
+// One model for every generation in the app. ANTHROPIC_MODEL_ID overrides it
+// per environment, so a model can be tried (or rolled back) without a deploy
+// of code. Sonnet 4.6 until 2026-11-11; content/audits/model-eval-2026-11.md has the
+// comparison that moved it (set ANTHROPIC_MODEL_ID=claude-sonnet-4-6 to go back).
+export const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL_ID || "claude-opus-5-5";
+
+export type Effort = "low" | "medium" | "high";
+// On these models thinking is always on and counts toward max_tokens, so the
+// request needs room for it, and effort (not a thinking switch) sets how much
+// it thinks. Their default effort is "medium".
+const ALWAYS_THINKS = (model: string) => /^claude-(opus|sonnet|haiku|fable)-5/.test(model);
+const DEFAULT_EFFORT: Effort = (process.env.ANTHROPIC_EFFORT as Effort) || "low";
+const THINKING_ROOM = 8000;
+
+export interface CallMeta { model: string; ms: number; inputTokens: number; outputTokens: number; stop: string | null; attempts: number }
 
 export const SLP_SYSTEM_PROMPT = `You are an expert career transition coach specializing in helping Speech-Language Pathologists (SLPs) pivot to non-clinical careers. You combine deep clinical knowledge with current (2025-2026) hiring expertise. Your advice is grounded in what actually gets SLPs hired — documented transition outcomes, recruiter behavior, and modern ATS reality — not generic resume-tool folklore.
 
@@ -144,15 +158,45 @@ export function parseJSONResponse(text: string): any {
 export async function callClaude(opts: {
   userPrompt: string;
   maxTokens: number;
+  /** Evaluation only: run this call on another model or effort. */
+  model?: string;
+  effort?: Effort;
+  /** Evaluation only: receives timing and token counts. */
+  onMeta?: (m: CallMeta) => void;
 }): Promise<any> {
   const anthropic = getAnthropic();
+  const model = opts.model || ANTHROPIC_MODEL;
+  const thinks = ALWAYS_THINKS(model);
+  const meta: CallMeta = { model, ms: 0, inputTokens: 0, outputTokens: 0, stop: null, attempts: 0 };
+  const started = Date.now();
   const once = async (maxTokens: number) => {
-    const msg = await anthropic.messages.create({
-      model: ANTHROPIC_MODEL,
-      max_tokens: maxTokens,
+    meta.attempts++;
+    // Streamed, then collected: a long answer on one idle connection is what
+    // gets dropped, and a stream keeps bytes moving for the whole generation.
+    const body: any = {
+      model,
+      max_tokens: thinks ? maxTokens + THINKING_ROOM : maxTokens,
       system: SLP_SYSTEM_PROMPT,
       messages: [{ role: "user", content: opts.userPrompt }],
-    });
+    };
+    // The installed SDK (0.32) predates output_config; it passes the field
+    // through untouched, which is all that is needed here.
+    if (thinks) body.output_config = { effort: opts.effort || DEFAULT_EFFORT };
+    // If a safety classifier declines, the API reruns the request on the model
+    // Anthropic recommends for that category, inside the same call (beta).
+    const fallback = /^claude-(opus|sonnet)-5-5/.test(model);
+    if (fallback) body.fallbacks = "default";
+    const msg = await anthropic.messages
+      .stream(body, fallback ? { headers: { "anthropic-beta": "server-side-fallback-2026-07-01" } } : undefined)
+      .finalMessage();
+    meta.inputTokens += msg.usage?.input_tokens || 0;
+    meta.outputTokens += msg.usage?.output_tokens || 0;
+    meta.stop = msg.stop_reason;
+    // A safety classifier can decline with HTTP 200. Say so plainly instead of
+    // failing later on an empty answer.
+    if ((msg.stop_reason as string) === "refusal") {
+      throw new Error("The model declined this request. Nothing was wrong with your résumé; try again, and email us if it happens twice.");
+    }
     const text = msg.content
       .map((b) => (b.type === "text" ? b.text : ""))
       .join("");
@@ -164,12 +208,17 @@ export async function callClaude(opts: {
   // close a string inside nested arrays). Ask once more with twice the room
   // when the answer was cut off or will not parse, rather than failing a sale.
   const roomier = Math.min(opts.maxTokens * 2, 16000);
-  let first = await once(opts.maxTokens);
-  if (first.stop === "max_tokens") first = await once(roomier);
   try {
-    return parseJSONResponse(first.text);
-  } catch (err) {
-    console.error("[callClaude] unparseable answer, retrying once", (err as Error).message.slice(0, 120));
-    return parseJSONResponse((await once(roomier)).text);
+    let first = await once(opts.maxTokens);
+    if (first.stop === "max_tokens") first = await once(roomier);
+    try {
+      return parseJSONResponse(first.text);
+    } catch (err) {
+      console.error("[callClaude] unparseable answer, retrying once", (err as Error).message.slice(0, 120));
+      return parseJSONResponse((await once(roomier)).text);
+    }
+  } finally {
+    meta.ms = Date.now() - started;
+    opts.onMeta?.(meta);
   }
 }

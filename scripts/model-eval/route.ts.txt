@@ -1,0 +1,32 @@
+import { NextResponse } from "next/server";
+import { callClaude, type CallMeta, type Effort } from "@/lib/anthropic";
+import { buildPreviewPrompt, buildFullPromptParts, buildQuizReportPrompt } from "@/lib/prompts";
+
+// TEMPORARY dev-only model evaluation harness. Delete before committing.
+export const maxDuration = 300;
+
+export async function POST(req: Request) {
+  if (process.env.NODE_ENV !== "development") return NextResponse.json({}, { status: 404 });
+  const { kind, input, model, effort } = (await req.json()) as { kind: "preview" | "full" | "report"; input: any; model: string; effort?: Effort };
+  const metas: CallMeta[] = [];
+  const onMeta = (m: CallMeta) => metas.push(m);
+  const t0 = Date.now();
+  try {
+    let result: any;
+    if (kind === "report") {
+      result = await callClaude({ userPrompt: buildQuizReportPrompt(input, input.quiz), maxTokens: 6000, model, effort, onMeta });
+    } else if (kind === "preview") {
+      result = await callClaude({ userPrompt: buildPreviewPrompt(input), maxTokens: 3000, model, effort, onMeta });
+    } else {
+      const { materials, guidance } = buildFullPromptParts(input);
+      const [a, b] = await Promise.all([
+        callClaude({ userPrompt: materials, maxTokens: 10000, model, effort, onMeta }),
+        callClaude({ userPrompt: guidance, maxTokens: 8000, model, effort, onMeta }),
+      ]);
+      result = { ...a, ...b };
+    }
+    return NextResponse.json({ ok: true, wallMs: Date.now() - t0, metas, result });
+  } catch (e: any) {
+    return NextResponse.json({ ok: false, wallMs: Date.now() - t0, metas, error: String(e?.message || e).slice(0, 500) });
+  }
+}
