@@ -291,10 +291,10 @@ export function renderQuizResultEmail(input: QuizResultEmailInput): string {
   const groundLink = `${APP_URL}/course/ground?stage=${stage || ""}&path=${encodeURIComponent(top.slug || "")}`;
   const cta = offer === "map"
     ? `<div style="padding:22px;background:#E5E7D9;border:1px solid #DCE1D2;border-radius:12px;margin-top:20px;">
-    <div style="font-size:17px;font-weight:700;margin-bottom:8px;">Before you start looking</div>
-    <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">Your result is a direction. <b>Getting Started for SLPs</b> is the first month of Transition OS in one kit: your reasons in writing, the people who already made the move, and the r\u00e9sum\u00e9 pass. Twelve lessons and the workbook. $${priceOf("ground")} once${wasNote("ground")}, credited toward the full program later.</div>
-    <div style="text-align:center;">${btn(groundLink, "Start Module 1 &rarr;")}</div>
-    <div style="font-size:13px;line-height:1.7;color:#6B7280;margin-top:14px;">Not the one you need? The <a href="${reportLink}" style="color:#004820;">$9 Pivot Report</a> turns your quiz answers into three paths and a 30-day plan, with no résumé needed. The <a href="${suiteLink}" style="color:#004820;">$${priceOf("suite")} Career Pivot Suite</a> rewrites a whole application against one posting.</div>
+    <div style="font-size:17px;font-weight:700;margin-bottom:8px;">Start with the free twenty minutes</div>
+    <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">Your result is a direction. Before you pick one, get three things in writing: the number your next job has to clear, a date to aim at, and whether the problem is this workplace, the fit, or a bad season. Four short lessons, free, no r\u00e9sum\u00e9 needed.</div>
+    <div style="text-align:center;">${btn(`${APP_URL}/course/start/0.1`, "Start free &rarr;")}</div>
+    <div style="font-size:13px;line-height:1.7;color:#6B7280;margin-top:14px;">When you want to keep going, the <a href="${groundLink}" style="color:#004820;">Getting Started for SLPs kit</a> is $${priceOf("ground")} once${wasNote("ground")}. The <a href="${reportLink}" style="color:#004820;">$${priceOf("report")} Pivot Report</a> turns your quiz answers into three paths and a 30-day plan, with no r\u00e9sum\u00e9 needed. The <a href="${suiteLink}" style="color:#004820;">$${priceOf("suite")} Career Pivot Suite</a> rewrites a whole application against one posting.</div>
   </div>`
     : offer === "suite"
     ? `<div style="padding:22px;background:#E5E7D9;border:1px solid #DCE1D2;border-radius:12px;margin-top:20px;">
@@ -652,10 +652,10 @@ export async function sendReportReminderEmail(input: {
  * question and pitches nothing. Every one carries a signed opt-out link.
  */
 const REPLY_TO = SUPPORT_EMAIL;
-const plainWrap = (paras: string[], unsub: string) =>
+const plainWrap = (paras: string[], unsub: string, why: string = "You took the career quiz at slptransitions.com.") =>
   `<div style="max-width:560px;margin:0 auto;padding:24px 20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#1F2937;">
 ${paras.map((t) => `<p style="margin:0 0 16px;">${t}</p>`).join("\n")}
-<p style="margin:28px 0 0;font-size:12px;color:#6B7280;">You took the career quiz at slptransitions.com. <a href="${unsub}" style="color:#6B7280;">Stop these emails</a>.</p>
+<p style="margin:28px 0 0;font-size:12px;color:#6B7280;">${why} <a href="${unsub}" style="color:#6B7280;">Stop these emails</a>.</p>
 </div>`;
 
 export interface QuizFollowupDay2Input {
@@ -745,6 +745,46 @@ export async function sendQuizFollowupDay6(input: {
     subject: "Quick question",
     html,
   });
+}
+
+/** A few days after a purchase: one question, a reminder that the refund is real, and
+ *  permission to quote. The site has no testimonials because nobody was ever asked.
+ *  Sent by lib/buyer-followups.ts, once per address. */
+export function renderBuyerFeedbackEmail(input: { name?: string; product: string; unsubUrl: string }): { subject: string; html: string } {
+  const first = (input.name || "").trim().split(/\s+/)[0] || "there";
+  const html = plainWrap([
+    `Hi ${esc(first)},`,
+    `You bought the <strong>${esc(input.product)}</strong> a few days ago. Did it help?`,
+    `Reply with one line: what was useful, what was missing, or what you did next. I answer each one myself.`,
+    `If it missed, say so. The 30-day refund is one reply away.`,
+    `And if you&rsquo;d be fine with me quoting your reply on the site, first name only, tell me that too.`,
+    `James`,
+  ], input.unsubUrl, "You bought this at slptransitions.com.");
+  return { subject: `Did the ${input.product} help?`, html };
+}
+
+export async function sendBuyerFeedbackEmail(input: { to: string; name?: string; product: string; unsubUrl: string }): Promise<void> {
+  const { subject, html } = renderBuyerFeedbackEmail(input);
+  await getResend().emails.send({ from: FROM_ADDRESS, to: input.to, replyTo: REPLY_TO, subject, html });
+}
+
+/** The day after a free Suite preview that wasn't bought: the link back, while it still works. */
+export function renderPreviewFollowupEmail(input: { jobTitle: string; score: number; link: string; until: string; unsubUrl: string }): { subject: string; html: string } {
+  const { jobTitle, score, link, until, unsubUrl } = input;
+  const html = plainWrap([
+    `Hi there,`,
+    `Yesterday you ran a free preview for <strong>${esc(jobTitle)}</strong>${score > 0 ? `, and the match came out at ${score}%` : ""}.`,
+    `It&rsquo;s still open, with your r&eacute;sum&eacute; and the posting in place: <a href="${link}" style="color:#004820;font-weight:600;">open your preview</a>. The link works until ${esc(until)}.`,
+    `The full package rewrites every bullet for that job and adds the cover letter, your LinkedIn headline and About, and your answer to &ldquo;why are you leaving clinical work?&rdquo;. $${priceOf("suite")} once${wasNote("suite")}, with a 30-day refund.`,
+    `If the preview got something wrong, reply and tell me what. I answer each one myself.`,
+    `James`,
+  ], unsubUrl, "You ran a free preview at slptransitions.com.");
+  return { subject: `Your ${jobTitle} preview is still open`, html };
+}
+
+export async function sendPreviewFollowupEmail(input: { to: string; jobTitle: string; score: number; link: string; until: string; unsubUrl: string }): Promise<void> {
+  const { subject, html } = renderPreviewFollowupEmail(input);
+  await getResend().emails.send({ from: FROM_ADDRESS, to: input.to, replyTo: REPLY_TO, subject, html });
 }
 
 export async function sendReportEmail(input: {

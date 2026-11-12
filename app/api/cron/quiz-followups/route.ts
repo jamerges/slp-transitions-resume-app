@@ -3,6 +3,7 @@ import { PATHS } from "@/lib/quiz";
 import { completionsBetween, isCustomer, isUnsubscribed, unsubUrl } from "@/lib/quiz-log";
 import { claimOnce } from "@/lib/stash";
 import { sendQuizFollowupDay2, sendQuizFollowupDay6, sendOpsAlert } from "@/lib/email";
+import { runBuyerFollowups } from "@/lib/buyer-followups";
 
 /**
  * Daily. Two personal follow-ups after a quiz result: day 2 (the first move,
@@ -11,7 +12,7 @@ import { sendQuizFollowupDay2, sendQuizFollowupDay6, sendOpsAlert } from "@/lib/
  * only considers completions we recorded ourselves. Gated on CRON_SECRET.
  */
 export const runtime = "nodejs";
-export const maxDuration = 60;
+export const maxDuration = 180;
 
 const DAY = 86_400_000;
 
@@ -52,5 +53,8 @@ export async function GET(req: Request) {
       lines: [...sent.day2.map((e) => `day2: ${e}`), ...sent.day6.map((e) => `day6: ${e}`)],
     }).catch(() => {});
   }
-  return NextResponse.json({ sent, skipped });
+  // The buyer notes (feedback after a purchase, the day after an unbought
+  // preview) share this daily run. Their failures never fail the quiz notes.
+  const buyers = await runBuyerFollowups().catch((e) => ({ error: String(e?.message || e) }));
+  return NextResponse.json({ sent, skipped, buyers });
 }

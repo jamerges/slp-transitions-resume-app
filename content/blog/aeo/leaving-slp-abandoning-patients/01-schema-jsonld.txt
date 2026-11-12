@@ -25,8 +25,8 @@ Yoast already prints Article and BreadcrumbList for every post, so adding them a
           "url": "https://slptransitions.com/wp-content/uploads/2021/09/cropped-Paper-Airplane-Company-Logo-2.png"
         }
       },
-      "datePublished": "2026-10-18",
-      "dateModified": "2026-10-18",
+      "datePublished": "2026-11-11",
+      "dateModified": "2026-11-11",
       "url": "https://slptransitions.com/leaving-slp-abandoning-patients/",
       "keywords": [
         "guilt leaving SLP job",
@@ -38,7 +38,7 @@ Yoast already prints Article and BreadcrumbList for every post, so adding them a
       ],
       "articleSection": "Mindset",
       "inLanguage": "en-US",
-      "wordCount": 968,
+      "wordCount": 969,
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://slptransitions.com/leaving-slp-abandoning-patients/"
@@ -137,8 +137,8 @@ Yoast already prints Article and BreadcrumbList for every post, so adding them a
       "url": "https://slptransitions.com/wp-content/uploads/2021/09/cropped-Paper-Airplane-Company-Logo-2.png"
     }
   },
-  "datePublished": "2026-10-18",
-  "dateModified": "2026-10-18",
+  "datePublished": "2026-11-11",
+  "dateModified": "2026-11-11",
   "url": "https://slptransitions.com/leaving-slp-abandoning-patients/",
   "keywords": [
     "guilt leaving SLP job",
@@ -150,7 +150,7 @@ Yoast already prints Article and BreadcrumbList for every post, so adding them a
   ],
   "articleSection": "Mindset",
   "inLanguage": "en-US",
-  "wordCount": 968,
+  "wordCount": 969,
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://slptransitions.com/leaving-slp-abandoning-patients/"

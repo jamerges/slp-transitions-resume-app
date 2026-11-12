@@ -173,10 +173,34 @@ export async function stashPreview(id: string, data: SavedPreview): Promise<bool
   if (!r) return false;
   try {
     await r.set(`preview:${id}`, JSON.stringify(data), { ex: PREVIEW_TTL_DAYS * 24 * 60 * 60 });
+    // The index the next-day note reads (lib/buyer-followups.ts). No résumé text in it.
+    await r.zadd(PREVIEW_INDEX, {
+      score: data.at,
+      member: JSON.stringify({ id, e: data.inputs.email.toLowerCase(), t: data.inputs.jobTitle, s: Number(data.preview?.matchScore) || 0 }),
+    }).catch(() => {});
     return true;
   } catch {
     return false;
   }
+}
+
+const PREVIEW_INDEX = "previews:index";
+export interface PreviewRef { id: string; email: string; jobTitle: string; score: number; at: number }
+
+/** Saved previews made in [fromMs, toMs], and a trim of index rows older than the previews themselves. */
+export async function previewsBetween(fromMs: number, toMs: number): Promise<PreviewRef[]> {
+  const r = getRedis();
+  if (!r) return [];
+  await r.zremrangebyscore(PREVIEW_INDEX, 0, Date.now() - (PREVIEW_TTL_DAYS + 1) * 86_400_000).catch(() => {});
+  const rows = (await r.zrange(PREVIEW_INDEX, fromMs, toMs, { byScore: true, withScores: true })) as (string | number | object)[];
+  const out: PreviewRef[] = [];
+  for (let i = 0; i + 1 < rows.length; i += 2) {
+    try {
+      const m: any = typeof rows[i] === "string" ? JSON.parse(rows[i] as string) : rows[i];
+      if (m?.id && m?.e) out.push({ id: m.id, email: m.e, jobTitle: m.t || "", score: Number(m.s) || 0, at: Number(rows[i + 1]) });
+    } catch { /* skip malformed */ }
+  }
+  return out;
 }
 
 export async function retrievePreview(id: string): Promise<SavedPreview | null> {

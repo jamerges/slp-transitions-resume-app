@@ -62,7 +62,7 @@ Some of the weight also comes from the workplace. "This job is about relationshi
 
 Do the handoff properly. In practice:
 
-1. **Check your timing.** School contracts often have a resignation window or a letter-of-intent date; medical settings usually have a notice period. The end of a semester or school year is the gentlest point for students.
+1. **Check your timing.** School contracts often have a resignation window or a letter-of-intent date, and medical settings usually have a notice period. The end of a semester or school year is the gentlest point for students.
 2. **Give notice early,** to your employer first, then to families and clients in the way your employer agrees to.
 3. **Finish every report, note and bill** before your last day.
 4. **Write a handoff for each client** inside your employer's system: current goals, what works, what doesn't, and anything the next clinician should know in the first week.

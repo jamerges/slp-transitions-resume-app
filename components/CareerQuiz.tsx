@@ -646,25 +646,40 @@ export default function CareerQuiz({
         )}
         {offer === "map" && (
           <Card style={{ border: "1.5px solid var(--accent)" }}>
-            <h3 style={{ ...S.h3, marginBottom: 4 }}>{GROUND_NAME}</h3>
+            {/* Private doubt and guilt. Until 2026-11-11 this card led with the $19 kit
+                and nobody at these stages bought it (0 of 59 since Sep 28, 0 of 239 ever).
+                The free module is the lead now and the kit is the line under it. */}
+            <h3 style={{ ...S.h3, marginBottom: 4 }}>Start with the free twenty minutes</h3>
             <div style={{ fontSize: 12.5, color: "var(--muted)", marginBottom: 10 }}>
-              The first month of Transition OS, the ninety-day program. ${GROUND_PRICE} once{wasNote("ground")}, credited toward the full program later.
+              Four short lessons. No card and no r&eacute;sum&eacute; needed.
             </div>
             <p style={{ ...S.p, marginBottom: 14 }}>
-              Everything above is a direction. Underneath it is what the next job has to give you, and that is what this
-              puts in writing: what your degree is worth to you now, what actually gave you energy, and the four things you
-              can&rsquo;t afford to lose. Then the people who already made the move, with the message that gets answered, and the r&eacute;sum&eacute; pass. Twelve lessons across the first month, with a workbook that fills in with your answers as you go.
+              Everything above is a direction. Before you pick one, get three things in writing: the number your next job
+              has to clear, a date to aim at, and whether the problem is this workplace, the fit, or a bad season.
             </p>
             <a
-              href={`/course/ground?stage=${stageKey || ""}&path=${encodeURIComponent(top.slug)}`}
+              href="/course/start/0.1"
               target={embedded ? "_blank" : undefined}
               rel="noopener"
-              onClick={() => track("select_item", { item_list_id: "quiz_result", item_list_name: "Quiz result", items: [{ item_id: "ground", item_name: GROUND_NAME, item_category: top.slug, price: GROUND_PRICE, quantity: 1 }], placement: "result_after_map", stage: stageKey || "none" })}
+              onClick={() => track("select_item", { item_list_id: "quiz_result", item_list_name: "Quiz result", items: [{ item_id: "course_free", item_name: "Module 0 (free)", item_category: top.slug, price: 0, quantity: 1 }], placement: "result_after_map", stage: stageKey || "none" })}
               style={{ ...S.btn, display: "inline-block", textDecoration: "none" }}
             >
-              Get the kit · ${GROUND_PRICE} →
+              Start free{"\u00a0"}→
             </a>
             <p style={{ fontSize: 13, lineHeight: 1.65, color: "var(--muted)", margin: "14px 0 0" }}>
+              When you want to keep going, the{" "}
+              <a
+                href={`/course/ground?stage=${stageKey || ""}&path=${encodeURIComponent(top.slug)}`}
+                target={embedded ? "_blank" : undefined}
+                rel="noopener"
+                onClick={() => track("select_item", { item_list_id: "quiz_result", item_list_name: "Quiz result", items: [{ item_id: "ground", item_name: GROUND_NAME, item_category: top.slug, price: GROUND_PRICE, quantity: 1 }], placement: "result_after_map", stage: stageKey || "none" })}
+                style={{ color: "var(--accent)", fontWeight: 600 }}
+              >
+                {GROUND_NAME} kit
+              </a>{" "}
+              is ${GROUND_PRICE} once{wasNote("ground")}: your reasons in writing, the people who already made the move, and the r&eacute;sum&eacute; pass.
+            </p>
+            <p style={{ fontSize: 13, lineHeight: 1.65, color: "var(--muted)", margin: "8px 0 0" }}>
               Want something written for you? The{" "}
               <button
                 type="button"
