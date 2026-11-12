@@ -811,15 +811,25 @@ export function Checkpoint1({ answer, save, finish, done, all }: LessonProps & {
             You have a verdict, the four things you are protecting, and one sentence about where you are going.
             Everything after this runs on that sentence.
           </P>
+          {/* The kit holds five more lessons after Module 1 (KIT_LESSONS). Until
+              2026-11-11 this panel ended on "the rest isn't open yet" and never
+              mentioned them, so a buyer could finish here and stop. */}
+          <P style={{ marginBottom: 10 }}>
+            Five lessons are still waiting in your kit: three on finding and messaging people who already made the move,
+            and two on your r&eacute;sum&eacute;.
+          </P>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 12 }}>
-            <Btn href="/course/workbook">Your workbook, with your answers →</Btn>
-            <Btn href="/course" outline>← Your lessons</Btn>
+            <Btn href="/course/connect/3.1">Next: find the people who made the move →</Btn>
+            <Btn href="/course/workbook" outline>Your workbook, with your answers →</Btn>
           </div>
+          <P style={{ fontSize: 14, marginBottom: 12 }}>
+            No target field yet? <a href="/quiz" style={{ color: "var(--accent)", fontWeight: 600 }}>The career quiz</a> names one in two minutes, and the people lessons work best with one in mind.
+          </P>
           <Muted style={{ margin: 0 }}>
             {sent === "ok" ? "A copy is on its way to your inbox, so your answers live somewhere other than this browser."
               : sent === "skip" ? "Your answers are saved in this browser and on your workbook page."
               : "Sending a copy to your inbox\u2026"}
-            {" "}The rest of the program isn&rsquo;t open yet. What you paid is credited toward it, and you&rsquo;ll get an email the day it opens.
+            {" "}Modules 2, 5, 6 and 7 aren&rsquo;t open yet. What you paid is credited toward them, and you&rsquo;ll get an email the day they open.
           </Muted>
         </Panel>
       )}

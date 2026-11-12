@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { PATHS, STAGES, type StageKey } from "@/lib/quiz";
+import { sanitizeQuizSnapshot } from "@/lib/report-quiz";
 import { sendQuizResultEmail } from "@/lib/email";
 import { upsertSubscriber, QUIZ_PATH_GROUPS } from "@/lib/mailerlite";
 import { recordQuizCompletion } from "@/lib/quiz-log";
@@ -9,12 +10,13 @@ export const maxDuration = 30;
 
 export async function POST(req: Request) {
   try {
-    const { email, name, topSlug, runnerUpSlug, stage: rawStage } = (await req.json()) as {
+    const { email, name, topSlug, runnerUpSlug, stage: rawStage, answers: rawAnswers } = (await req.json()) as {
       email?: string;
       name?: string;
       topSlug?: string;
       runnerUpSlug?: string;
       stage?: string | null;
+      answers?: Record<string, number[]>;
     };
     const stage: StageKey | null = rawStage && rawStage in STAGES ? (rawStage as StageKey) : null;
     if (!email || !email.includes("@")) {
@@ -35,7 +37,8 @@ export async function POST(req: Request) {
     });
 
     // Our own timestamp for the follow-up cron. Never blocks the result.
-    recordQuizCompletion(email, top.slug, name, stage).catch((e) =>
+    const answers = sanitizeQuizSnapshot({ a: rawAnswers, top: top.slug })?.a;
+    recordQuizCompletion(email, top.slug, name, stage, answers, runnerUp?.slug).catch((e) =>
       console.error("[/api/quiz-result] completion log failed", e)
     );
 

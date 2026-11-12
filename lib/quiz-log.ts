@@ -20,12 +20,24 @@ function getRedis(): Redis | null {
 }
 
 const KEY = "quiz:completions";
-export interface Completion { email: string; slug: string; name?: string; stage?: string; ts: number }
+export interface Completion { email: string; slug: string; name?: string; stage?: string; ts: number;
+  /** question id → chosen option indexes (since 2026-11-11), and the runner-up slug */
+  answers?: Record<string, number[]>; runnerUp?: string }
 
-export async function recordQuizCompletion(email: string, slug: string, name?: string, stage?: string | null): Promise<void> {
+export async function recordQuizCompletion(
+  email: string, slug: string, name?: string, stage?: string | null,
+  answers?: Record<string, number[]>, runnerUp?: string | null,
+): Promise<void> {
   const r = getRedis(); if (!r) return;
   const ts = Date.now();
-  const member = JSON.stringify({ e: email.toLowerCase(), s: slug, n: name || "", ...(stage ? { st: stage } : {}) });
+  // The answers are option indexes, never free text. They ride along so a
+  // report bought later (the day-2 email, another device) is still written
+  // from what this person said, not from the path alone.
+  const hasAnswers = answers && Object.keys(answers).length > 0;
+  const member = JSON.stringify({
+    e: email.toLowerCase(), s: slug, n: name || "",
+    ...(stage ? { st: stage } : {}), ...(hasAnswers ? { a: answers } : {}), ...(runnerUp ? { ru: runnerUp } : {}),
+  });
   await r.zadd(KEY, { score: ts, member });
 }
 
@@ -53,7 +65,7 @@ export async function latestCompletionFor(email: string): Promise<Completion | n
   for (let i = 0; i + 1 < rows.length; i += 2) {
     try {
       const m = typeof rows[i] === "string" ? JSON.parse(String(rows[i])) : (rows[i] as any);
-      if (m?.e === want) return { email: m.e, slug: m.s, name: m.n || undefined, stage: m.st || undefined, ts: Number(rows[i + 1]) };
+      if (m?.e === want) return { email: m.e, slug: m.s, name: m.n || undefined, stage: m.st || undefined, ts: Number(rows[i + 1]), answers: m.a || undefined, runnerUp: m.ru || undefined };
     } catch { /* skip malformed */ }
   }
   return null;

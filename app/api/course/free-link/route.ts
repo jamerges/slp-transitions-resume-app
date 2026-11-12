@@ -38,7 +38,7 @@ export async function POST(req: Request) {
 
   try { await sendFreeLinkEmail({ to: email, unlockUrl: link, summary }); }
   catch (err) { console.error("[/api/course/free-link] email", err); return NextResponse.json({ error: "Could not send the email. Try again in a minute." }, { status: 502 }); }
-  upsertSubscriber({ email, groups: [COURSE_GROUPS.free], fields: summary.verdict ? { stage: summary.verdict } : undefined }).catch(() => { /* logged inside */ });
+  upsertSubscriber({ email, groups: [COURSE_GROUPS.free], fields: undefined /* the verdict used to be written to `stage`, which is the quiz stage and drives segmentation */ }).catch(() => { /* logged inside */ });
 
   const res = NextResponse.json({ ok: true });
   res.cookies.set(ACCESS_COOKIE, token, cookieOptions);

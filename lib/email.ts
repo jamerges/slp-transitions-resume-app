@@ -294,8 +294,7 @@ export function renderQuizResultEmail(input: QuizResultEmailInput): string {
     <div style="font-size:17px;font-weight:700;margin-bottom:8px;">Before you start looking</div>
     <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">Your result is a direction. <b>Getting Started for SLPs</b> is the first month of Transition OS in one kit: your reasons in writing, the people who already made the move, and the r\u00e9sum\u00e9 pass. Twelve lessons and the workbook. $${priceOf("ground")} once${wasNote("ground")}, credited toward the full program later.</div>
     <div style="text-align:center;">${btn(groundLink, "Start Module 1 &rarr;")}</div>
-    <div style="font-size:13px;line-height:1.7;color:#6B7280;margin-top:14px;">Not the one you need? The <a href="${reportLink}" style="color:#004820;">$9 Pivot Report</a> reads your résumé and names the paths you already qualify for. The <a href="${suiteLink}" style="color:#004820;">$${priceOf("suite")} Career Pivot Suite</a> rewrites a whole application against one posting.</div>
-    <div style="font-size:13px;line-height:1.7;color:#6B7280;margin-top:14px;">Rather start from your résumé? The <a href="${reportLink}" style="color:#004820;">$9 Pivot Report</a> reads it against these paths and tells you which ones you already qualify for.</div>
+    <div style="font-size:13px;line-height:1.7;color:#6B7280;margin-top:14px;">Not the one you need? The <a href="${reportLink}" style="color:#004820;">$9 Pivot Report</a> turns your quiz answers into three paths and a 30-day plan, with no résumé needed. The <a href="${suiteLink}" style="color:#004820;">$${priceOf("suite")} Career Pivot Suite</a> rewrites a whole application against one posting.</div>
   </div>`
     : offer === "suite"
     ? `<div style="padding:22px;background:#E5E7D9;border:1px solid #DCE1D2;border-radius:12px;margin-top:20px;">
@@ -306,7 +305,7 @@ export function renderQuizResultEmail(input: QuizResultEmailInput): string {
     : `<div style="padding:22px;background:#E5E7D9;border:1px solid #DCE1D2;border-radius:12px;margin-top:20px;">
     <div style="font-size:17px;font-weight:700;margin-bottom:8px;">Which of the twenty is actually open to you?</div>
     <div style="font-size:14px;line-height:1.7;color:#1B1B1E;margin-bottom:14px;">
-      This result came from nine questions. The <b>Pivot Report</b> reads your real résumé and tells you which paths your specific experience already qualifies you for: the stage you're actually in, your top three paths with the first job title to apply for in each, and a week-by-week 30-day plan. ${priceOf("report")}, once.
+      Your result names one path. The <b>Pivot Report</b> is written from the nine answers you gave: the stage you're actually in, your top three paths with the first job title to apply for in each, and a week-by-week 30-day plan. No résumé needed, and it opens the moment you pay. $${priceOf("report")}, once.
     </div>
     <div style="text-align:center;">${btn(reportLink, "Get my Pivot Report &rarr;")}</div>
   </div>`;
@@ -607,13 +606,15 @@ export interface QuizFollowupDay2Input {
 export function renderQuizFollowupDay2(input: QuizFollowupDay2Input): { subject: string; html: string } {
   const { name, top, unsubUrl, stage } = input;
   const first = (name || "").trim().split(/\s+/)[0] || "there";
-  const link = `${APP_URL}/?from=quiz&goal=report&path=${encodeURIComponent(top.roleOption)}`;
+  // The result page with this path preset, where the report is one button and
+  // builds at once. (Until 2026-11-11 this pointed at the résumé-first flow.)
+  const link = `${APP_URL}/quiz?path=${encodeURIComponent(top.slug)}`;
   const site = "https://slptransitions.com";
   const a = (href: string, text: string) => `<a href="${href}" style="color:#004820;">${text}</a>`;
   const opening = `Hi ${esc(first)},`;
   const intro = `James here, from SLP Transitions. Your quiz came back <strong>${esc(top.label)}</strong> two days ago. Two days is when a result gets bookmarked or forgotten, so this is the nudge.`;
   const context = `For context, that path runs ${esc(top.range)}, and the typical move takes ${esc(top.timeline)}. ${esc(top.caveat)}`;
-  const report = `The quiz ranked the paths without ever seeing your resume. The $9 Pivot Report reads the resume and tells you what you already qualify for and what to do first: ${a(link, link)}`;
+  const report = `If you want it written for you: the $${priceOf("report")} Pivot Report turns your quiz answers into three paths, the first job title in each and a 30-day plan. No resume needed, and it opens the moment you pay: ${a(link, link)}`;
   const close = `Either way, reply and tell me where you are with it. I read every one of these.`;
   const sheet = `Your map from the result page, if you want it on paper: ${a(mapUrl(stage as StageKey | null, top.slug), "print or save it here")}. It has the one move for your stage and three dated lines for weeks 1, 6 and 12.`;
   const ground = `If you want the guided version of the decision itself, ${a(`${APP_URL}/course/ground?stage=${stage || ""}&path=${encodeURIComponent(top.slug)}`, "Getting Started for SLPs")} puts it in writing: what your degree is worth now, what gave you energy, and what you can't afford to lose, then gets you to the people who already made the move and through the r\u00e9sum\u00e9 pass. Twelve lessons with the workbook, $${priceOf("ground")} once${wasNote("ground")}, credited toward the full program later.`;
@@ -637,7 +638,7 @@ export function renderQuizFollowupDay2(input: QuizFollowupDay2Input): { subject:
       body = [opening, intro,
         `You said you keep reading exit stories and wondering if it&rsquo;s really possible. It is, including for people without a coding side-hustle or a spouse with a big salary. ${a(`${site}/slp-to-software-engineer-jeannette-roberes/`, "Jeannette")} was a working SLP who taught herself. ${a(`${site}/slp-to-consultant-rachel-archambault/`, "Rachel")} built a consulting practice from one training she was already giving. ${a(`${site}/reinventing-yourself-mattie-murrey-tegels/`, "Mattie")} did it in her fifties.`,
         `Your own result, when you want it: ${esc(top.label)}, ${esc(top.range)}, typically ${esc(top.timeline)}. The first move is small: ${esc(top.firstMove)}`,
-        sheet, ground, close, `James`];
+        report, sheet, close, `James`];
       break;
     case "action":
       body = [opening, intro,

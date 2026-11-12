@@ -262,6 +262,9 @@ export default function CareerQuiz({
           topSlug: pending.top.slug,
           runnerUpSlug: pending.runnerUp?.slug || null,
           stage: stageFromLabel((answers.stage || [])[0]),
+          // Kept with the completion so a report bought later from the email
+          // link, or on another device, is still built from these answers.
+          answers: encodeQuizAnswers(answers),
         }),
       });
       const data = await resp.json().catch(() => ({}));
@@ -384,8 +387,9 @@ export default function CareerQuiz({
               consuming six blocks of free content and leaving before the offer
               (result→Buy fell from 7% to 2% while volume held), so stage 4
               keeps the compact $9 button here. Stage 5 gets the Suite instead:
-              they have the résumé, the report would be a detour. Stages 1 to 3
-              get nothing here at all; their map is the next card down. */}
+              they have the résumé, the report would be a detour. Stages 1 and 2
+              get nothing here; stage 3 joined the report on 2026-11-11 (see
+              offerForStage for the numbers). */}
           {offer === "report" && (
             <>
               <button
@@ -433,6 +437,24 @@ export default function CareerQuiz({
           )}
         </div>
 
+        {/* Order since 2026-11-11: the reader took a quiz to get a path, so why it
+            fits and the first move come before the stage map. On a phone the map
+            used to push this two screens down. */}
+        {/* One card, one colour. This used to be four cards with a green
+            action box and an amber caveat box before the reader reached any
+            offer, which buried the decision under a magazine article. */}
+        <Card>
+          <p style={{ fontSize: 15, lineHeight: 1.75, margin: "0 0 14px" }}>{top.why}</p>
+          <p style={{ fontSize: 15, lineHeight: 1.7, margin: "0 0 14px" }}>
+            <strong>Start here this week.</strong> {top.firstMove}
+          </p>
+          <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--muted)", margin: "0 0 10px" }}>{top.entryDoor}</p>
+          <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--muted)", margin: 0 }}>
+            <strong style={{ color: "var(--text)" }}>The honest caveat:</strong> {top.caveat}
+            {runnerUp && <> Your runner-up is {runnerUp.label}, {runnerUp.range}, typically {runnerUp.timeline}.</>}
+          </p>
+        </Card>
+
         {/* The map: where you are, the belief holding you there, the one move,
             and what the next stage looks like. Shown to every stage, because a
             stage-5 reader still benefits from seeing there is a stage after
@@ -455,28 +477,13 @@ export default function CareerQuiz({
           </Card>
         )}
 
-        {/* One card, one colour. This used to be four cards with a green
-            action box and an amber caveat box before the reader reached any
-            offer, which buried the decision under a magazine article. */}
-        <Card>
-          <p style={{ fontSize: 15, lineHeight: 1.75, margin: "0 0 14px" }}>{top.why}</p>
-          <p style={{ fontSize: 15, lineHeight: 1.7, margin: "0 0 14px" }}>
-            <strong>Start here this week.</strong> {top.firstMove}
-          </p>
-          <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--muted)", margin: "0 0 10px" }}>{top.entryDoor}</p>
-          <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--muted)", margin: 0 }}>
-            <strong style={{ color: "var(--text)" }}>The honest caveat:</strong> {top.caveat}
-            {runnerUp && <> Your runner-up is {runnerUp.label}, {runnerUp.range}, typically {runnerUp.timeline}.</>}
-          </p>
-        </Card>
-
         {offer === "report" && (
           <Card style={{ border: "1.5px solid var(--accent)", background: "linear-gradient(135deg, var(--accent-bg-subtle) 0%, #fff 100%)" }}>
             <div style={{ textAlign: "center" }}>
               <h3 style={{ ...S.h2, fontSize: 22, marginBottom: 8 }}>This is the general version.</h3>
               <p style={{ ...S.p, maxWidth: 470, margin: "0 auto 18px" }}>
                 Everything above is what we&rsquo;d tell any SLP who landed on this path. Your{" "}
-                <strong>Pivot Report</strong> is written from your quiz answers: what you&rsquo;ve done,
+                <strong>Pivot Report</strong>{" "}is written from your quiz answers: what you&rsquo;ve done,
                 how much time and money you can spare, and where you are right now. It opens the
                 moment you pay. Add your résumé afterwards and we rebuild it around your experience, free.
               </p>

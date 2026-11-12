@@ -109,15 +109,22 @@ export const STAGE_MAP: Record<StageKey, StageInfo> = {
 export const STAGE_ORDER: StageKey[] = ["private", "guilt", "permission", "panic", "action"];
 
 /** Which product, if any, the result page and emails lead with for a stage.
- *  Stages 1 to 3 get the map and no pitch; a stage-2 reader greeted with a
- *  checkout button stops reading. Stage 4 arrived asking "what else could I
+ *  Stages 1 and 2 get the map and no checkout button up top; a stage-2 reader
+ *  greeted with one stops reading. Stage 4 arrived asking "what else could I
  *  do", which is what the report answers. Stage 5 already has a résumé, so the
- *  report is a detour and the Suite is the thing. */
+ *  report is a detour and the Suite is the thing.
+ *
+ *  Stage 3 (permission) moved from the map to the report on 2026-11-11. It was
+ *  kept off the report while the report needed a résumé; since 2026-09-28 it
+ *  builds from the quiz answers. MailerLite, by stage: panic 464 takers / 11
+ *  report buyers (161 / 8 since Sep 28); private + guilt + permission 445
+ *  takers / 1 buyer, and 0 of 115 since Sep 28 with the $19 kit in the lead.
+ *  To undo, return "map" for permission again. */
 export type StageOffer = "map" | "report" | "suite";
 export function offerForStage(stage: StageKey | null | undefined): StageOffer {
   if (!stage) return "report";
   if (stage === "action") return "suite";
-  if (stage === "panic") return "report";
+  if (stage === "panic" || stage === "permission") return "report";
   return "map";
 }
 

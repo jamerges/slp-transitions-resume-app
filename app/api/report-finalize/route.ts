@@ -6,7 +6,7 @@ import { claimOrProceed, releaseOnce, retrieveInputs, retrieveResult, stashResul
 import { sendReportEmail } from "@/lib/email";
 import { upsertSubscriber, CUSTOMER_GROUPS, QUIZ_PATH_GROUPS } from "@/lib/mailerlite";
 import { latestCompletionFor, markCustomer } from "@/lib/quiz-log";
-import { intakeStageLabel, slugForRoleOption, tidyReport } from "@/lib/report-quiz";
+import { intakeStageLabel, sanitizeQuizSnapshot, slugForRoleOption, tidyReport } from "@/lib/report-quiz";
 import { PATHS, type QuizSnapshot } from "@/lib/quiz";
 import { SUPPORT_EMAIL } from "@/lib/contact";
 
@@ -76,16 +76,28 @@ export async function POST(req: Request) {
       const slug = slugForRoleOption(inputs?.goals?.targetRoles?.[0]);
       if (slug) snap = { top: slug };
     }
-    // Older checkouts carried the path but not the stage key; the buyer's own
-    // quiz completion usually has it.
-    if (!hasResume(inputs) && snap && !snap.st && !inputs?.goals?.transitionStage && email) {
+    // A checkout can arrive without the answers: older sessions carried only
+    // the path, and a buyer who comes back from the result email or the day-2
+    // note (a `?path=` link, often on another device) never re-takes the quiz.
+    // Their own completion has the stage and, since 2026-11-11, the answers.
+    const hasAnswers = !!snap?.a && Object.keys(snap.a).length > 0;
+    if (!hasResume(inputs) && snap && email && (!hasAnswers || (!snap.st && !inputs?.goals?.transitionStage))) {
       const c = await latestCompletionFor(email).catch(() => null);
-      if (c?.stage) snap = { ...snap, st: c.stage };
+      if (c) {
+        const sameQuiz = c.slug === snap.top;
+        const merged = sanitizeQuizSnapshot({
+          a: hasAnswers ? snap.a : sameQuiz ? c.answers : undefined,
+          top: snap.top,
+          ru: snap.ru || (sameQuiz ? c.runnerUp : null),
+          st: snap.st || c.stage || null,
+        });
+        if (merged) snap = merged;
+      }
     }
     if (!hasResume(inputs) && !snap && email) {
       const c = await latestCompletionFor(email).catch(() => null);
       if (c && PATHS[c.slug]) {
-        snap = { top: c.slug, st: c.stage || null };
+        snap = sanitizeQuizSnapshot({ a: c.answers, top: c.slug, ru: c.runnerUp, st: c.stage }) || { top: c.slug, st: c.stage || null };
         inputs = inputs || {
           resumeText: "",
           goals: {
