@@ -8,6 +8,7 @@ import type { CourseProduct } from "@/lib/course-tiers";
 import { Blocks } from "./Blocks";
 import * as L from "./lessons";
 import SaveMyPlace from "./SaveMyPlace";
+import { VIDEOS, type LessonVideo } from "@/lib/course-videos";
 
 // Modules 0 and 1 are hand-built React lessons (the calculators and the
 // animated explainers). Modules 2 onward are authored as JSON and rendered by
@@ -59,6 +60,7 @@ export default function LessonPage({ id, access }: { id: string; access?: { prod
   }, [answers, saveAnswer]);
 
   const Comp = lesson.component ? COMPONENTS[lesson.component] : null;
+  const video = VIDEOS[id];
   const action = content?.action || lesson.action;
 
   return (
@@ -81,12 +83,13 @@ export default function LessonPage({ id, access }: { id: string; access?: { prod
               would just repeat it. */}
           {!content && <p style={{ fontSize: 16, color: "var(--muted)", lineHeight: 1.6, margin: "0 0 22px" }}>{lesson.summary}</p>}
           {content && <div style={{ height: 10 }} />}
+          {video && <Video v={video} title={lesson.title} />}
 
           {/* Authored prose renders straight away; only the parts that depend on
               saved progress wait for the store to hydrate. */}
           {content ? (
             <>
-              <Blocks content={content} pathSlug={pathSlug} tools={{ shared, setShared, finish, done, synced }} />
+              <Blocks content={content} pathSlug={pathSlug} tools={{ shared, setShared, finish, done, synced }} hasVideo={!!video} />
               {ready && action && <ActionCard action={action} done={done} onDo={() => finish({ action: true })} />}
               {ready && !action && !done && <div style={{ marginTop: 24 }}><Btn onClick={() => finish()}>Mark as done</Btn></div>}
               {ready && !action && done && <div style={{ marginTop: 24, color: "var(--accent)", fontWeight: 600, fontSize: 14 }}>✓ Done. It stays ticked.</div>}
@@ -147,6 +150,18 @@ export default function LessonPage({ id, access }: { id: string; access?: { prod
         </aside>
       </div>
     </CourseShell>
+  );
+}
+
+/** The lesson's video: a direct .mp4 plays in the page, anything else is an embed. */
+function Video({ v, title }: { v: LessonVideo; title: string }) {
+  const frame = { width: "100%", aspectRatio: "16 / 9", border: 0, borderRadius: 14, background: "#000", display: "block" } as const;
+  return (
+    <div style={{ margin: "0 0 22px" }}>
+      {/\.(mp4|webm|mov)(\?|$)/i.test(v.src)
+        ? <video controls playsInline preload="metadata" poster={v.poster} src={v.src} style={frame} />
+        : <iframe src={v.src} title={title} loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowFullScreen style={frame} />}
+    </div>
   );
 }
 

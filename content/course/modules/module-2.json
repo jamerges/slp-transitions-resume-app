@@ -77,7 +77,7 @@
   },
   {
     "id": "2.1",
-    "tldr": "Twenty paths, sorted by how long they take instead of how interesting they sound. Four are open to the license you already hold, four want six to twelve months, three are real builds. Pick the tier your runway can carry.",
+    "tldr": "Twenty paths, sorted by how long they take instead of how interesting they sound: the four your license already opens, the four clusters where most SLPs land, and the builds that take a year or more. Pick the tier your runway can carry.",
     "blocks": [
       {
         "type": "p",
@@ -138,25 +138,11 @@
           "Tap every card in that tier and read the catch before you read the salary.",
           "Star the two you would still be curious about on a Wednesday in February."
         ]
-      }
-    ],
-    "takeaways": [
-      "The map is sorted by runway, so you can compare a three-week move with a two-year build without pretending they are the same decision.",
-      "Documented transitions took six to fifteen months, with some running to two and a half years.",
-      "Read every band against the SLP median of $97,870, because that is the number your budget is built on.",
-      "Clinical research coordination is the one path where a pay cut is the expected outcome, and it works as a first step rather than a destination.",
-      "Teletherapy can buy you hours while you search, and the platforms themselves hire for non-clinical roles."
-    ],
-    "sources": [
-      "facts",
-      "forums",
-      "bls"
-    ]
-  },
-  {
-    "id": "2.2",
-    "tldr": "Four jobs hire you on the license you already hold: clinical liaison, utilization review, clinical educator at a device company, and case management. Bands run from $54,000 to $135,000, entry takes weeks rather than months, and each one has a catch worth knowing before you spend an evening applying.",
-    "blocks": [
+      },
+      {
+        "type": "h",
+        "text": "Four jobs your license already qualifies you for"
+      },
       {
         "type": "p",
         "text": "These four are the shortest distance between your current badge and a non-clinical paycheck: no bootcamp, no portfolio, no certificate, no year of evenings. Clinical liaison gets called the number one non-clinical title for rehab professionals, and the reason is unglamorous. The job requires a clinician and you are one."
@@ -218,28 +204,9 @@
         ]
       },
       {
-        "type": "ask",
-        "label": "Which of the four you'd take a call about",
-        "prompt": "Which of these four would you take a call about this month, and which catch could you live with?",
-        "lines": 3
-      }
-    ],
-    "takeaways": [
-      "Four jobs treat your clinical license as the whole qualification: liaison, utilization review, clinical educator and case management.",
-      "Liaison pays $84,000 to $135,000 at Encompass Health, Select Medical and Lifepoint, and part of it is relationship selling.",
-      "Utilization review is remote-heavy and fast to enter, and the job often means being the person who says no.",
-      "Clinical educator roles at Tobii Dynavox, PRC-Saltillo, Lingraphica and Passy-Muir run $78,000 to $116,000, and travel is the variable to check first.",
-      "Read the license line on case management postings, because many inpatient rehab roles require an RN."
-    ],
-    "sources": [
-      "facts",
-      "forums"
-    ]
-  },
-  {
-    "id": "2.3",
-    "tldr": "Four clusters produce most of the documented SLP outcomes: customer success and implementation, project management, healthcare data, and content and marketing. The numbers those people reported were $115,000 to $120,000, a doubled salary, $20,000 more base, and one raise after five years of clinical work.",
-    "blocks": [
+        "type": "h",
+        "text": "Where SLPs actually land"
+      },
       {
         "type": "p",
         "text": "When I look at where SLPs have actually landed, rather than where career articles say they could, the same four clusters keep coming back. The data analyst below sent more than five hundred applications over six months before an offer came, and she is the success story."
@@ -305,28 +272,9 @@
         ]
       },
       {
-        "type": "ask",
-        "label": "The cluster whose bad day you could live with",
-        "prompt": "Which cluster's bad day could you live with? Write the entry title you would search for.",
-        "lines": 3
-      }
-    ],
-    "takeaways": [
-      "Customer success and implementation has the best effort-to-odds ratio, and at speech-tech companies your license is the credential.",
-      "Project management holds the most six-figure outcomes in the file, and certificates only work alongside translated experience.",
-      "Healthcare data pays well and grinds hard: one documented offer took 500 applications over six months.",
-      "Content and marketing runs $80,000 to $141,000, and freelance is a real on-ramp that started at one $200 article.",
-      "In all four clusters, apply to the title one rung below the one you want."
-    ],
-    "sources": [
-      "facts",
-      "forums"
-    ]
-  },
-  {
-    "id": "2.4",
-    "tldr": "Five paths pay above clinical work and cost you a year of evenings: clinical informatics, instructional design, UX research, software engineering and conversation design. What each one costs in months, and what the SLPs who finished were earning at the end.",
-    "blocks": [
+        "type": "h",
+        "text": "Paths that take a year or more"
+      },
       {
         "type": "p",
         "text": "Everything in this lesson costs time you do not currently have. You would be doing it after the last note is written, at five or eight hours a week, for six months to two years, while still carrying a caseload. People do it anyway for the ceiling, and BLS puts the SLP median at $97,870, well below the top of this tier."
@@ -388,16 +336,16 @@
       },
       {
         "type": "ask",
-        "label": "A twelve-month path, and the hours you could give it",
-        "prompt": "If you took one of these, which would it be, and how many hours could you give it in a bad week?",
+        "label": "The path you'd take a call about",
+        "prompt": "Which path would you take a call about this month, and what catch comes with it?",
         "lines": 3
       }
     ],
     "takeaways": [
-      "This tier buys a higher ceiling with evenings, and the honest unit of cost is months rather than dollars.",
-      "Clinical informatics pays $97,800 to $154,000, and the documented move was internal: superuser to analyst at the same hospital system.",
-      "Instructional design is decided by a portfolio of three to five Storyline or Rise samples, and spec work counts.",
-      "Software engineering took one to two years for both documented SLPs, ending at $93,000 and $96,000.",
+      "The map is sorted by runway, so you can compare a three-week move with a two-year build without pretending they are the same decision.",
+      "Four jobs treat your clinical license as the whole qualification: liaison, utilization review, clinical educator and case management.",
+      "Customer success and implementation has the best effort-to-odds ratio, and at speech-tech companies your license is the credential.",
+      "In all four clusters, apply to the title one rung below the one you want.",
       "Before you commit, multiply your worst-week hours by the months, and compare that against the runway you set in Module 0."
     ],
     "sources": [

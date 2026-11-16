@@ -82,8 +82,68 @@
   },
   {
     "id": "7.2",
-    "tldr": "Clinical work runs flat for thirty years. The job you took to get out has a rung above it, and the second moves we can document paid +$10k and then +$15k. Here is what the ladder looks like from inside, and when to take the next step.",
+    "tldr": "Three clinical habits make you good in the first ninety days, and two will hold you back. Bank one visible win by day sixty. After that, the job you took to get out has a rung above it, and the second moves we can document paid +$10k and then +$15k.",
     "blocks": [
+      {
+        "type": "p",
+        "text": "You will get the offer, and then the strange part starts: being new at something after years of being competent. Clinicians arrive with a specific mix of unusual strengths and one or two habits that quietly cost them."
+      },
+      {
+        "type": "h",
+        "text": "What travels well"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Documentation.** You write things down as a reflex, in a way that most teams do not. Within a month you will be the person whose notes everyone asks for.",
+          "**Reading a room.** Years of IEP meetings taught you to spot the person who has not spoken and the one who has already decided. That skill is rare and highly paid.",
+          "**Working without supervision.** You have managed your own caseload, calendar and priorities for years. Most new hires need more direction than you will."
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "It was a huge mentality shift for me because most roles don't completely throw you into the deep end, like I was as an SLP.",
+        "from": "a transitioned SLP, r/SLPcareertransitions"
+      },
+      {
+        "type": "h",
+        "text": "What to unlearn"
+      },
+      {
+        "type": "p",
+        "text": "Both habits come from being the expert in the room for years. The first is over-explaining: in therapy thoroughness is care, but in a business meeting a three-minute answer to a one-minute question reads as uncertainty. Say the conclusion, then stop."
+      },
+      {
+        "type": "p",
+        "text": "The second is waiting to be told, because clinical work runs on referrals, assignments and required timelines. Most non-clinical roles expect you to notice the gap and fill it, and in your first month the fastest way to look senior is to bring a problem nobody assigned you, with a proposal attached."
+      },
+      {
+        "type": "h",
+        "text": "The first ninety days, roughly"
+      },
+      {
+        "type": "steps",
+        "items": [
+          "**Weeks one to two: ask, do not perform.** Meet everyone your work touches and ask each of them what would make their month easier. Write it all down.",
+          "**Weeks three to six: find the small broken thing.** Every team has a process everyone complains about and nobody owns. Pick one, fix it, tell somebody.",
+          "**Weeks seven to twelve: bank the visible win.** Something with a before and after that your manager can repeat to their manager. This is what your first review is made of.",
+          "**Throughout: keep a file.** Every number, every thank-you, every problem you solved. In six months you will need it for a review, and in two years for the next job."
+        ]
+      },
+      {
+        "type": "callout",
+        "tone": "soft",
+        "title": "On imposter feelings",
+        "text": "They arrive around week three, when the novelty fades and you notice everyone else knows the acronyms. Two things are true at once: you are genuinely behind on the domain, and you were hired for judgement that takes years to build. The acronyms take about a month."
+      },
+      {
+        "type": "p",
+        "text": "You will also, at some point in the first year, miss a patient or a student. That means you cared about the work, which is the same thing that made you good at it and is now making you good at this."
+      },
+      {
+        "type": "h",
+        "text": "A year in: what changes"
+      },
       {
         "type": "p",
         "text": "In clinical work the tenth year looks like the first. Same caseload, same productivity target, an annual review that changes nothing, and a raise one transitioner measured in cents: \"in my 5 years in healthcare I was given a .35 cent raise.\" Someone on r/SLPcareertransitions put it plainly: non-clinical jobs have a ladder, and SLP has \"only lateral moves for the next 30 years.\" Around the one-year mark in your new role, the ladder starts to matter more than the job you took to get out."
@@ -166,16 +226,16 @@
       },
       {
         "type": "ask",
-        "label": "The rung above yours",
-        "prompt": "Write the title of the rung above yours, and the one requirement you have no evidence for yet.",
+        "label": "Your visible win by day sixty",
+        "prompt": "In the job you're aiming at, what visible win could you bank by day sixty?",
         "lines": 3
       }
     ],
     "takeaways": [
-      "Clinical work offers lateral moves. The job you took to get out has a rung above it.",
+      "Documentation, reading a room and working unsupervised are three habits that make clinicians strong in a first non-clinical job.",
+      "Over-explaining and waiting to be assigned work are the two habits to drop.",
+      "Bank a visible win by day sixty and keep a file of numbers and thank-yous from day one.",
       "The second moves we can document paid +$10k and then +$15k, and the study-coordinator pay cut worked as a springboard.",
-      "Rehab management is a real ladder that starts as an internal promotion and costs on-call accountability and census pressure.",
-      "Give the first role a year unless it fails the bad-workplace test. The documented second move came at eighteen months.",
       "Move when the posting for the next rung reads like your current week, and stay put if the reason is quiet or a title."
     ],
     "sources": [
@@ -185,7 +245,7 @@
   },
   {
     "id": "7.3",
-    "tldr": "When you sent three messages in Module 2, the number we gave you was that about one in four of those asks never gets an answer. Someone is sending that message now. Ten minutes from you answers the question I can't: whether this is real for someone like them.",
+    "tldr": "When you sent three messages in Module 3, the number we gave you was that about one in four of those asks never gets an answer. Someone is sending that message now. Ten minutes from you answers the question I can't: whether this is real for someone like them.",
     "blocks": [
       {
         "type": "p",

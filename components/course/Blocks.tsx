@@ -5,7 +5,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { PATHS } from "@/lib/quiz";
 import { pathImage } from "@/lib/quiz";
-import type { Block, LessonContent } from "@/lib/course-content";
+import { wordCount, type Block, type LessonContent } from "@/lib/course-content";
 import { Panel, font } from "./ui";
 import { Tool } from "./tools";
 
@@ -29,10 +29,10 @@ export function Tldr({ text }: { text: string }) {
   );
 }
 
-export function Takeaways({ items }: { items: string[] }) {
+export function Takeaways({ items, title = "Take with you", first = false }: { items: string[]; title?: string; first?: boolean }) {
   return (
-    <Panel tone="soft" style={{ marginTop: 28 }}>
-      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 10 }}>Take with you</div>
+    <Panel tone="soft" style={first ? { marginBottom: 24 } : { marginTop: 28 }}>
+      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 10 }}>{title}</div>
       {items.map((t, i) => (
         <div key={i} className="tos-rise" style={{ animationDelay: `${i * 70}ms`, display: "flex", gap: 10, alignItems: "flex-start", fontSize: 15, lineHeight: 1.55, marginBottom: 8 }}>
           <span aria-hidden style={{ color: "var(--accent)", fontWeight: 700, marginTop: 1 }}>✓</span><span><Inline text={t} /></span>
@@ -42,13 +42,66 @@ export function Takeaways({ items }: { items: string[] }) {
   );
 }
 
-export function Blocks({ content, pathSlug, tools }: { content: LessonContent; pathSlug?: string; tools: Record<string, any> }) {
+// The short version keeps what the reader does or copies (tools, written answers,
+// scripts, steps, before-and-after pairs, numbers, the warnings) and drops the
+// prose, which the lesson's video carries. A heading stays only when something
+// under it stays.
+const WORKING = new Set(["tool", "ask", "script", "bypath", "steps", "numbers", "example", "paths"]);
+const stays = (b: Block) => WORKING.has(b.type) || (b.type === "callout" && b.tone === "warm");
+function shortVersion(blocks: Block[]): Block[] {
+  const out: Block[] = [];
+  let heading: Block | null = null;
+  for (const b of blocks) {
+    if (b.type === "h") { heading = b; continue; }
+    if (!stays(b)) continue;
+    if (heading) { out.push(heading); heading = null; }
+    out.push(b);
+  }
+  return out;
+}
+
+const VIEW_KEY = "tos:lesson-view";
+type View = "short" | "full";
+
+/** A lesson with a video opens short; one without opens in full. Whatever the
+ *  reader picks is remembered for every lesson after it. */
+function useLessonView(hasVideo: boolean): [View, (v: View) => void] {
+  const [view, setView] = useState<View>(hasVideo ? "short" : "full");
+  useEffect(() => {
+    try { const v = localStorage.getItem(VIEW_KEY); if (v === "short" || v === "full") setView(v); } catch { /* private mode */ }
+  }, []);
+  const pick = (v: View) => { setView(v); try { localStorage.setItem(VIEW_KEY, v); } catch { /* private mode */ } };
+  return [view, pick];
+}
+
+export function Blocks({ content, pathSlug, tools, hasVideo = false }: { content: LessonContent; pathSlug?: string; tools: Record<string, any>; hasVideo?: boolean }) {
+  const [view, setView] = useLessonView(hasVideo);
+  const blocks = view === "short" ? shortVersion(content.blocks) : content.blocks;
+  const readMin = Math.max(1, Math.round(wordCount(content) / 200));
   let h = 0;
+  const tab = (v: View, label: string) => (
+    <button type="button" aria-pressed={view === v} onClick={() => setView(v)}
+      style={{ padding: "8px 14px", fontSize: 13.5, fontWeight: 600, fontFamily: font.sans, cursor: "pointer", border: "none", borderRadius: 999,
+        background: view === v ? "var(--accent)" : "transparent", color: view === v ? "#fff" : "var(--muted)" }}>{label}</button>
+  );
   return (
     <div>
       <Tldr text={content.tldr} />
-      {content.blocks.map((b, i) => <BlockView key={i} b={b} n={b.type === "h" ? ++h : h} pathSlug={pathSlug} tools={tools} lessonId={content.id} />)}
-      <Takeaways items={content.takeaways} />
+      <div role="group" aria-label="How much of the lesson to show" style={{ display: "inline-flex", gap: 2, padding: 3, margin: "-8px 0 22px", background: "var(--card)", border: "1px solid var(--border)", borderRadius: 999 }}>
+        {tab("short", "Short version")}
+        {tab("full", `Full lesson · ${readMin} min read`)}
+      </div>
+      {view === "short" && <Takeaways items={content.takeaways} title="The short version" first />}
+      {blocks.map((b, i) => <BlockView key={`${view}-${i}`} b={b} n={b.type === "h" ? ++h : h} pathSlug={pathSlug} tools={tools} lessonId={content.id} />)}
+      {view === "full" && <Takeaways items={content.takeaways} />}
+      {view === "short" && (
+        <div style={{ marginTop: 6 }}>
+          <button type="button" onClick={() => { setView("full"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+            style={{ background: "none", border: "none", padding: 0, fontFamily: font.sans, fontSize: 14.5, fontWeight: 600, color: "var(--accent)", textDecoration: "underline", cursor: "pointer" }}>
+            Read the full lesson ({readMin} min)
+          </button>
+        </div>
+      )}
     </div>
   );
 }

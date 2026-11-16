@@ -36,6 +36,10 @@ export interface Module {
   built: boolean;        // false = titles only, shown locked
 }
 
+/** Lessons merged into another on 2026-11-15 (48 lessons became 37). Old links
+ *  redirect to the lesson that absorbed them, and saved progress follows. */
+export const MERGED_INTO: Record<string, string> = {"2.2": "2.1", "2.3": "2.1", "2.4": "2.1", "3.7": "3.4", "3.5": "3.6", "4.4": "4.1", "5.1": "5.2", "5.4": "5.5", "6.3": "6.1", "6.8": "6.5", "6.7": "7.2"};
+
 export const XP_PER_LESSON = 20;
 export const XP_PER_ACTION = 40;
 
@@ -65,7 +69,7 @@ export const BADGES: BadgeDef[] = [
   { id: "proof-artifact", label: "Something you built", blurb: "You made a real thing. A certificate cannot compete with it.", xp: 100, icon: "🧩", when: (p) => p.actions.includes("5.2") },
   { id: "application-1", label: "Application 1", blurb: "Sent within 48 hours of the job going up.", xp: 60, icon: "📨", when: (p) => p.actions.includes("4.7") },
   { id: "interview-1", label: "Interview 1", blurb: "You explained the career change without flinching.", xp: 100, icon: "🎙️", when: (p) => p.actions.includes("6.4") },
-  { id: "offer", label: "Offer", blurb: "A job outside the clinic, in writing.", xp: 300, icon: "🏆", when: (p) => p.actions.includes("6.8") },
+  { id: "offer", label: "Offer", blurb: "A job outside the clinic, in writing.", xp: 300, icon: "🏆", when: (p) => p.actions.includes("6.5") },
 ];
 
 const R = {
@@ -134,10 +138,7 @@ export const MODULES: Module[] = [
     tagline: "Twenty real paths with what each one pays and how long it takes.",
     lessons: [
       { id: "2.0", module: 2, title: "How much time this takes, and when", type: "interactive", minutes: 7, summary: "", resources: [R.tracker, R.workbook1] },
-      { id: "2.1", module: 2, title: "The map: twenty paths by timeline", type: "explainer", minutes: 9, summary: "", resources: [R.paths] },
-      { id: "2.2", module: 2, title: "Four jobs your licence already qualifies you for", type: "explainer", minutes: 8, summary: "Liaison, utilization review, clinical educator, case management.", resources: [R.jobs, R.companies] },
-      { id: "2.3", module: 2, title: "Where SLPs actually land", type: "explainer", minutes: 9, summary: "Customer success, project management, data, content.", resources: [R.paths, R.companies] },
-      { id: "2.4", module: 2, title: "Careers that take 12 months or more", type: "explainer", minutes: 7, summary: "Informatics, instructional design, UX, software, conversation design.", resources: [R.paths] },
+      { id: "2.1", module: 2, title: "Twenty paths, sorted by how long they take", type: "explainer", minutes: 28, summary: "", resources: [R.paths, R.jobs, R.companies] },
       { id: "2.5", module: 2, title: "Epic, MSL and UX research: what they really require", type: "explainer", minutes: 6, summary: "Three claims that cost SLPs money, and the real route behind each one.", resources: [R.paths] },
       { id: "2.6", module: 2, title: "Try paths against your r\u00e9sum\u00e9", type: "interactive", minutes: 8, summary: "", resources: [R.suite] },
     ],
@@ -149,10 +150,8 @@ export const MODULES: Module[] = [
       { id: "3.1", module: 3, title: "Where to find people in your target field", type: "explainer", minutes: 9, summary: "", resources: [R.peopleSheet, R.lists, R.companies] },
       { id: "3.2", module: 3, title: "Messages that get answered", type: "explainer", minutes: 9, summary: "", resources: [R.workbook1] },
       { id: "3.3", module: 3, title: "Reach out to three people", type: "action", minutes: 20, summary: "", resources: [R.tracker, R.workbook1] },
-      { id: "3.4", module: 3, title: "LinkedIn: what recruiters check", type: "explainer", minutes: 8, summary: "", resources: [R.linkedinPost] },
-      { id: "3.5", module: 3, title: "Why referrals beat applications", type: "explainer", minutes: 7, summary: "", resources: [R.lists, R.jobs, R.companies] },
-      { id: "3.6", module: 3, title: "Keep two conversations warm", type: "action", minutes: 15, summary: "", resources: [R.tracker, R.workbook1] },
-      { id: "3.7", module: 3, title: "Recruiters, and how to follow up", type: "explainer", minutes: 6, summary: "", resources: [R.lists] },
+      { id: "3.4", module: 3, title: "LinkedIn, and the recruiters who search it", type: "explainer", minutes: 13, summary: "", resources: [R.linkedinPost, R.lists] },
+      { id: "3.6", module: 3, title: "Keep two conversations warm", type: "action", minutes: 20, summary: "", resources: [R.tracker, R.lists, R.jobs, R.workbook1] },
       { id: "3.8", module: 3, title: "What to hand the model, and what to keep", type: "explainer", minutes: 8, summary: "", resources: [R.lists] },
     ],
   },
@@ -160,10 +159,9 @@ export const MODULES: Module[] = [
     n: 4, slug: "translate", title: "Translate", phase: "Translate", week: "Weeks 5\u20137", built: false,
     tagline: "Rewrite your r\u00e9sum\u00e9 and cover letter so a hiring manager can see what you already do.",
     lessons: [
-      { id: "4.1", module: 4, title: "How your r\u00e9sum\u00e9 actually gets screened", type: "explainer", minutes: 5, summary: "", resources: [R.resumePost] },
+      { id: "4.1", module: 4, title: "How your r\u00e9sum\u00e9 gets screened, and why AI-written ones get rejected", type: "explainer", minutes: 10, summary: "", resources: [R.resumePost, R.coverPost] },
       { id: "4.2", module: 4, title: "Translating clinical work into business language", type: "explainer", minutes: 10, summary: "", resources: [R.translationSheet, R.resumePost, R.workbook1] },
       { id: "4.3", module: 4, title: "Numbers you already have", type: "interactive", minutes: 8, summary: "", resources: [R.workbook1] },
-      { id: "4.4", module: 4, title: "Why AI-written applications get rejected", type: "explainer", minutes: 6, summary: "", resources: [R.coverPost] },
       { id: "4.5", module: 4, title: "Build your r\u00e9sum\u00e9 in the Suite", type: "interactive", minutes: 15, summary: "", resources: [R.suite, R.resumePost] },
       { id: "4.6", module: 4, title: "Writing a cover letter worth reading", type: "explainer", minutes: 6, summary: "", resources: [R.coverPost] },
       { id: "4.7", module: 4, title: "Send one application properly", type: "action", minutes: 30, summary: "", resources: [R.translationSheet, R.lists, R.jobs] },
@@ -173,24 +171,19 @@ export const MODULES: Module[] = [
     n: 5, slug: "test", title: "Test", phase: "Test", week: "Weeks 7\u20139", built: false,
     tagline: "Build one piece of proof, and work out the money before you move.",
     lessons: [
-      { id: "5.1", module: 5, title: "Do certificates actually help?", type: "explainer", minutes: 6, summary: "", resources: [R.paths] },
-      { id: "5.2", module: 5, title: "Pick one thing and make it in a week", type: "action", minutes: 120, summary: "", resources: [R.workbook1] },
-      { id: "5.4", module: 5, title: "Keeping the paycheck while you leave", type: "explainer", minutes: 7, summary: "", resources: [R.jobs] },
-      { id: "5.5", module: 5, title: "Student loans, pay cuts and health insurance", type: "interactive", minutes: 9, summary: "", resources: [R.workbook1] },
+      { id: "5.2", module: 5, title: "Pick one thing and make it in a week", type: "action", minutes: 120, summary: "", resources: [R.workbook1, R.paths] },
+      { id: "5.5", module: 5, title: "Money while you leave: paycheck, loans and insurance", type: "interactive", minutes: 15, summary: "", resources: [R.workbook1, R.jobs] },
     ],
   },
   {
     n: 6, slug: "leap", title: "Leap", phase: "Leap", week: "Weeks 9\u201312", built: false,
     tagline: "Interviews, the three questions every career changer gets, and how to handle the offer.",
     lessons: [
-      { id: "6.1", module: 6, title: "How career changers get screened", type: "explainer", minutes: 7, summary: "", resources: [R.workbook1] },
+      { id: "6.1", module: 6, title: "How career changers get screened, and the six questions", type: "interactive", minutes: 14, summary: "", resources: [R.workbook1] },
       { id: "6.2", module: 6, title: "Explaining why you're changing careers", type: "interactive", minutes: 9, summary: "", resources: [R.workbook1] },
-      { id: "6.3", module: 6, title: "Screening questions that filter you out", type: "interactive", minutes: 8, summary: "", resources: [R.workbook1] },
       { id: "6.4", module: 6, title: "The mock interview", type: "interactive", minutes: 15, summary: "", resources: [R.suite] },
-      { id: "6.5", module: 6, title: "Salary and the offer", type: "explainer", minutes: 8, summary: "", resources: [R.paths, R.workbook1, R.workbookPdf] },
+      { id: "6.5", module: 6, title: "Salary, the offer, and whether to accept", type: "action", minutes: 13, summary: "", resources: [R.paths, R.workbook1, R.workbookPdf] },
       { id: "6.6", module: 6, title: "What a real job search takes", type: "explainer", minutes: 6, summary: "", resources: [R.lists, R.tracker, R.jobs] },
-      { id: "6.7", module: 6, title: "The first 90 days", type: "explainer", minutes: 7, summary: "", resources: [R.workbook1] },
-      { id: "6.8", module: 6, title: "Accept, or keep going", type: "action", minutes: 5, summary: "", resources: [R.workbook1] },
     ],
   },
   {
@@ -198,7 +191,7 @@ export const MODULES: Module[] = [
     tagline: "What to do once you're in, and how to help the next person out.",
     lessons: [
       { id: "7.1", module: 7, title: "Tell your story", type: "action", minutes: 15, summary: "", resources: [R.storyForm] },
-      { id: "7.2", module: 7, title: "A year in: what changes", type: "explainer", minutes: 4, summary: "", resources: [R.paths] },
+      { id: "7.2", module: 7, title: "The first ninety days, and the year after", type: "explainer", minutes: 10, summary: "", resources: [R.paths, R.workbook1] },
       { id: "7.3", module: 7, title: "Answer one message from someone starting out", type: "action", minutes: 10, summary: "", resources: [R.storyForm] },
     ],
   },

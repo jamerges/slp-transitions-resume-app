@@ -390,7 +390,7 @@ function TranslationPairs({ shared, setShared }: ToolProps) {
         </div>
         <div style={{ marginTop: 10, display: "flex", gap: 12, alignItems: "center" }}>
           <Btn onClick={() => setShared("translation", { mine, out })} disabled={!out.trim()}>Save this pair</Btn>
-          {shared.translation?.out && <span style={{ fontSize: 13, color: "var(--accent)", fontWeight: 600 }}>✓ Saved. It goes into the Suite in lesson 3.5.</span>}
+          {shared.translation?.out && <span style={{ fontSize: 13, color: "var(--accent)", fontWeight: 600 }}>✓ Saved. It goes into the Suite in lesson 4.5.</span>}
         </div>
       </Panel>
     </div>

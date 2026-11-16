@@ -1,7 +1,7 @@
 [
   {
-    "id": "5.1",
-    "tldr": "Certificates open a door only when they sit next to translated experience and something you made. One thing you built beats three things you paid for.",
+    "id": "5.2",
+    "tldr": "Certificates open a door only when they sit next to translated experience and something you made. Every path has one artifact that proves you can do the job, built from work you have already done: pick yours, give it two ninety-minute sessions this week, and put it where a stranger can find it.",
     "blocks": [
       {
         "type": "p",
@@ -64,27 +64,9 @@
         "text": "Something small, real and specific to the path you chose in Module 2, built in a weekend rather than a semester. It has to come out of work you have already done, because that is the part nobody else applying can copy."
       },
       {
-        "type": "ask",
-        "label": "What you've already made that someone could look at",
-        "prompt": "What have you already made at work that someone outside the building could look at? Name one thing.",
-        "lines": 3
-      }
-    ],
-    "takeaways": [
-      "A certificate works when it sits next to translated experience and evidence you have done some of the work.",
-      "Project management, healthcare data and clinical informatics are the three paths where a credential genuinely helps.",
-      "Epic certification cannot be bought and needs employer sponsorship. CAHIMS is the self-serve alternative.",
-      "In instructional design and UX, a portfolio beats a certificate, and one honest piece beats six polished ones."
-    ],
-    "sources": [
-      "facts",
-      "forums"
-    ]
-  },
-  {
-    "id": "5.2",
-    "tldr": "Every path has one artifact that proves you can do the job, built from work you have already done. Pick yours, give it two ninety-minute sessions this week, and put it where a stranger can find it.",
-    "blocks": [
+        "type": "h",
+        "text": "Pick your one thing"
+      },
       {
         "type": "p",
         "text": "An artifact is one thing, made in a few hours, that a hiring manager can look at and think: this person has already been doing a version of my job."
@@ -162,27 +144,26 @@
         "text": "Once this exists you have an answer to what have you done to prepare, a link on your LinkedIn, something concrete to send after an informational interview, and a story for the interview question about proof. One weekend, four uses."
       }
     ],
-    "takeaways": [
-      "An artifact is one thing built from your real work that a stranger can read in two minutes.",
-      "It should be the target role's actual work product, not a description of your interest in the role.",
-      "Change or remove identifying details and check your employer's policy before publishing anything.",
-      "Two ninety-minute sessions with two days between them, plus twenty minutes for the process note.",
-      "Draft it badly first. The obvious fix arrives away from the desk.",
-      "One artifact answers the preparation question, fills a LinkedIn link, follows up an informational interview, and becomes an interview story."
-    ],
-    "sources": [
-      "facts",
-      "forums"
-    ],
     "action": {
       "label": "I made it",
       "prompt": "Pick your path's brief above and give it two sessions this week: ninety minutes to draft badly, ninety minutes to finish, twenty for the process note. Then paste the link.",
       "done": "Made. That is the thing most applicants do not have, and it took you a weekend."
-    }
+    },
+    "takeaways": [
+      "A certificate works when it sits next to translated experience and evidence you have done some of the work.",
+      "Project management, healthcare data and clinical informatics are the three paths where a credential genuinely helps.",
+      "An artifact is one thing built from your real work that a stranger can read in two minutes.",
+      "It should be the target role's actual work product, not a description of your interest in the role.",
+      "Two ninety-minute sessions with two days between them, plus twenty minutes for the process note."
+    ],
+    "sources": [
+      "facts",
+      "forums"
+    ]
   },
   {
-    "id": "5.4",
-    "tldr": "You do not have to quit to start. Part-time, PRN, contract and telepractice each buy you hours at a different price, and telehealth is a bridge rather than an exit.",
+    "id": "5.5",
+    "tldr": "You do not have to quit to start: part-time, PRN, contract and telepractice each buy you hours at a different price. Loan forgiveness is a payment count that leaving pauses rather than destroys. Work out three numbers before you change anything: payments left, coverage cost, and months of runway.",
     "blocks": [
       {
         "type": "p",
@@ -233,27 +214,9 @@
         "text": "You can also change nothing: keep the job, keep the hours, and accept that the search takes longer because you are doing it in the margins. For a single earner or someone chasing forgiveness that is often the right call, and the cost is months rather than the outcome."
       },
       {
-        "type": "ask",
-        "label": "How you'd buy hours, and what it costs",
-        "prompt": "Which fits your year: part-time, PRN, contract, telepractice, or changing nothing? Write what it would cost you.",
-        "lines": 3
-      }
-    ],
-    "takeaways": [
-      "Most documented transitions happen alongside a paycheck over six to fifteen months.",
-      "Dropping to four days buys a continuous day, which is worth more than five scattered evenings.",
-      "Telepractice frees time and its platforms hire former clinicians, but it is still clinical work and often pays less per hour.",
-      "Changing nothing is a legitimate choice, and what it costs you is months rather than the outcome."
-    ],
-    "sources": [
-      "facts",
-      "forums"
-    ]
-  },
-  {
-    "id": "5.5",
-    "tldr": "Loan forgiveness is a payment count, not a life sentence, and leaving pauses it rather than destroying it. Work out three numbers before you change anything: payments left, coverage cost, and months of runway.",
-    "blocks": [
+        "type": "h",
+        "text": "Student loans, pay cuts and health insurance"
+      },
       {
         "type": "p",
         "text": "This is the lesson nobody wrote, which is strange, because it is the question that comes up most. People stay in jobs that are hurting them for a loan balance, a payment count and a health plan, and no career advice ever addresses any of the three."
@@ -439,16 +402,16 @@
       "done": "Saved. You now know the three numbers that were making the decision for you."
     },
     "takeaways": [
+      "Most documented transitions happen alongside a paycheck over six to fifteen months.",
+      "Dropping to four days buys a continuous day, which is worth more than five scattered evenings.",
       "PSLF needs 120 qualifying payments and they do not have to be consecutive, so leaving pauses the count rather than erasing it.",
-      "The employer qualifies, not the job title: nonprofit health systems, universities and state agencies employ people in these non-clinical roles.",
       "You must be in qualifying employment at your 120th payment and when you apply, so do not resign at 118.",
-      "COBRA runs about 18 months at up to 102% of the full premium, and the marketplace is often cheaper if your income actually drops.",
-      "Once certification lapses beyond twelve months, reinstatement needs a Praxis score under five years old, so treat the C's as a fishing licence you decide about on purpose."
+      "COBRA runs about 18 months at up to 102% of the full premium, and the marketplace is often cheaper if your income actually drops."
     ],
     "sources": [
-      "money",
       "facts",
-      "forums"
+      "forums",
+      "money"
     ]
   }
 ]

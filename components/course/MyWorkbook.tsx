@@ -79,11 +79,11 @@ export default function MyWorkbook({ product }: { product?: CourseProduct }) {
   const bridge = SH.bridge?.prep || SH.bridge?.win ? SH.bridge : null;
   const has = (ids: string[]) => ids.some((id) => note(id));
   const later = [
-    hours > 0 || has(["2.2", "2.3", "2.4", "2.5"]),
+    hours > 0 || has(["2.1", "2.5"]),
     people.length > 0 || !!SH.linkedin,
-    numbers.length > 0 || !!SH.translation?.out || apps.length > 0 || has(["4.1", "4.4"]),
-    !!artifact || !!run || has(["5.1", "5.4"]),
-    !!bridge || !!SH.offer || has(["6.3", "6.7"]),
+    numbers.length > 0 || !!SH.translation?.out || apps.length > 0 || has(["4.1"]),
+    !!artifact || !!run,
+    !!bridge || !!SH.offer || has(["6.1"]),
     has(["7.2"]),
   ];
   // The full program prints every page. A kit shows the later pages its lessons have written to.
@@ -199,7 +199,7 @@ export default function MyWorkbook({ product }: { product?: CourseProduct }) {
               <Section n={8} title="Your hours, and the paths you’re weighing" sub="From Module 2.">
                 <Field label="Hours a week you gave the search" value={hours > 0 ? `${hours} hours a week` : null} />
                 <Field label="The path you’re aiming at" value={pathSlug && PATHS[pathSlug] ? `${PATHS[pathSlug].label} · ${PATHS[pathSlug].range} · typically ${PATHS[pathSlug].timeline}` : null} />
-                <Ask id="2.2" /><Ask id="2.3" /><Ask id="2.4" /><Ask id="2.5" />
+                <Ask id="2.1" /><Ask id="2.5" />
               </Section>
             )}
 
@@ -235,7 +235,7 @@ export default function MyWorkbook({ product }: { product?: CourseProduct }) {
                 ) : <Field label="Numbers you already have: caseload, evaluations a year, people you trained" lines={3} />}
                 <Field label="One bullet, before" value={SH.translation?.mine || null} lines={2} />
                 <Field label="The same bullet, translated" value={SH.translation?.out || null} lines={2} />
-                <Ask id="4.1" /><Ask id="4.4" />
+                <Ask id="4.1" />
                 <Field label="The résumé, one pass" value={ticked(SH.resume)} />
                 {apps.length ? (
                   <div style={{ marginBottom: 14 }}>
@@ -252,9 +252,7 @@ export default function MyWorkbook({ product }: { product?: CourseProduct }) {
 
             {show(3) && (
               <Section n={11} title="Your proof, and your runway" sub="From Module 5.">
-                <Ask id="5.1" />
                 <Field label="The thing you made, and where it lives" value={artifact ? `${PATHS[artifact.slug]?.label ? PATHS[artifact.slug].label + ": " : ""}${artifact.link}` : null} lines={2} />
-                <Ask id="5.4" />
                 <Field label="Your runway" value={run ? `${money(run.savings)} saved against a gap of ${money(gap)} a month${gap > 0 ? `: about ${Math.floor(run.savings / gap)} months` : ""}` : null} lines={2} />
               </Section>
             )}
@@ -263,14 +261,14 @@ export default function MyWorkbook({ product }: { product?: CourseProduct }) {
               <Section n={12} title="The interview, and the offer" sub="From Module 6.">
                 <Field label="What you did to prepare for the move" value={bridge?.prep || null} lines={2} />
                 <Field label="Your proof, with a number in it" value={bridge?.win || null} lines={2} />
-                <Ask id="6.3" /><Ask id="6.7" />
+                <Ask id="6.1" />
                 <Field label="Before you say yes" value={ticked(SH.offer)} />
                 <Field label="Your opening number, and the floor you won’t go under" lines={2} />
               </Section>
             )}
 
             {show(5) && (
-              <Section n={13} title="A year in" sub="From Module 7.">
+              <Section n={13} title="Your first ninety days, and after" sub="From Module 7.">
                 <Ask id="7.2" />
               </Section>
             )}

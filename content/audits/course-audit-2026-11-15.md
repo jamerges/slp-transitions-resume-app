@@ -62,3 +62,13 @@ Claude, once the decisions are made:
 - The twelve weekly emails and the eight video scripts.
 - Lesson 3.1 cut to length, and real stories placed in lessons as interviews are cleared.
 - The visitor dashboard's "Coming soon" card turned into the pre-order card.
+
+## Decided and done later the same day
+
+James accepted the recommendation with two changes: video carries the lessons, and the paid pre-order waits until he has filmed and added more interviews to the site.
+
+- **48 lessons became 37.** Nine merges, none touching Modules 0 and 1 or the five kit lessons. Old links redirect and saved progress follows.
+- **Every lesson has a video slot and a short version.** With a video, a lesson opens as the video, the key points and the things to do, with the full text one tap away. Without one it opens in full, as before.
+- **Scripts for all 37 lessons and the pre-order page** are in `content/course/video-scripts.md`. Batch 1, nine videos and about twelve minutes of footage, is the pre-order video, the welcome, and the first lesson of each module.
+
+Still to do before pre-orders open: film batch 1, put interviews on the site and into lessons, then the sales page, the checkout and the twelve weekly emails.

@@ -1,7 +1,7 @@
 [
   {
     "id": "6.1",
-    "tldr": "Career changers get rejected for three specific reasons, and none of them is that you can't do the job. Once you know what the three are, most interview prep becomes obvious.",
+    "tldr": "Career changers get rejected for three specific reasons, and none of them is that you can't do the job. Six questions do most of the screening, and each has a shape of answer that works and a common answer that quietly disqualifies you.",
     "blocks": [
       {
         "type": "p",
@@ -104,13 +104,97 @@
       {
         "type": "p",
         "text": "You are being sorted against three doubts, and every one of them has an answer you can build this week."
+      },
+      {
+        "type": "h",
+        "text": "Six questions that do most of the screening"
+      },
+      {
+        "type": "p",
+        "text": "Interviews feel unpredictable, but the questions a career changer gets are not. Six of them do most of the work, and they show up in phone screens, on application forms, and in the first ten minutes with a hiring manager."
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Why are you leaving clinical work?** Works: one sentence of pull, one of the evidence you have prepared. Sinks: any sentence that starts with what you are escaping. They hear a retention risk.",
+          "**You don't have experience in this role. Why should we consider you?** Works: two accomplishments mapped onto the role's first-ninety-days problems, with numbers. \"I've been doing customer success my whole career; I called it family care. Sixty-two accounts, quarterly reviews, ninety percent retention.\" Sinks: a list of soft skills. \"Communication\" is not an answer.",
+          "**What do you know about our product or company?** Works: one specific thing you found by using it or talking to a customer, and one question it raised. Sinks: reciting the About page.",
+          "**Where do you see yourself in three years?** Works: inside this function, with a bigger scope, still using the clinical lens, and the next title named honestly. Sinks: a \"back in clinical\" joke, or a title from a different department.",
+          "**What's your salary expectation?** Works: the documented range for the path, anchored at the middle, with a line about the whole package (lesson 6.5). Sinks: naming your clinical salary first.",
+          "**Tell me about a time you handled a difficult stakeholder.** Works: a parent or administrator story told with the business nouns: the objection, what you changed, the outcome. Sinks: a story where the resolution is that you were right."
+        ]
+      },
+      {
+        "type": "h",
+        "text": "The pattern underneath"
+      },
+      {
+        "type": "p",
+        "text": "Every good answer above uses the vocabulary of the role rather than of the clinic, and contains at least one number that could be checked."
+      },
+      {
+        "type": "p",
+        "text": "The weak ones reach for a quality instead of an event: communication skills, detail-oriented, works well under pressure, passionate about helping people. Those describe about ninety percent of applicants and prove nothing about any of them."
+      },
+      {
+        "type": "example",
+        "title": "A behavioural answer, twice",
+        "before": "I'm great with difficult parents. I always stay calm and find common ground.",
+        "after": "A parent refused an AAC trial for four months because she thought it would stop her son talking. I brought her the research, then a two-week trial with a defined stop point. She agreed to the trial and requested the device herself at week three."
+      },
+      {
+        "type": "p",
+        "text": "The second answer has an objection, an intervention and an outcome, and a customer success manager hears their own job description in it."
+      },
+      {
+        "type": "h",
+        "text": "Five lines for the middle of the room"
+      },
+      {
+        "type": "p",
+        "text": "The moments that derail people are small and predictable, so have the sentence ready."
+      },
+      {
+        "type": "list",
+        "items": [
+          "**A term you don't know.** \"I'm not familiar with that one. Is it similar to [the closest thing you do know]?\"",
+          "**Nerves showing.** \"Sorry, I'm excited about this role and my nerves are getting ahead of me. Let me start that again.\"",
+          "**A skill you don't have yet.** \"I haven't used [tool] in a job. I've [taken the course / built one thing in it], and I've picked up [the EMR / a documentation system / a scheduling platform] on the job every time I've had to.\"",
+          "**The out-of-left-field question.** Answer it like a person. They are checking whether you are one.",
+          "**The last question, only if you can hear the answer.** \"Is there anything you've seen so far that would make you hesitate to hire me for this?\""
+        ]
+      },
+      {
+        "type": "h",
+        "text": "The written screen"
+      },
+      {
+        "type": "p",
+        "text": "Application forms are where a lot of career changers quietly lose, because the knockout questions filter more people than résumé parsing does: years of experience in the field, do you have X certification, are you authorised to work without sponsorship. Answer them honestly, and where a form gives you a text box, use it to bridge rather than to apologise."
+      },
+      {
+        "type": "callout",
+        "tone": "warm",
+        "title": "On identical answers",
+        "text": "One hiring manager reported that 35 percent of applicants gave word-for-word identical answers to her screening questions, because they had all asked the same tool the same way. A screening box is the cheapest place in the whole process to sound like a person."
+      },
+      {
+        "type": "p",
+        "text": "Pick the two questions above you would fumble today, write your answers longhand, then cut them by half. Short and specific beats complete every time."
+      },
+      {
+        "type": "ask",
+        "label": "The two questions you'd fumble, answered",
+        "prompt": "Write the two questions you would fumble today, and answer each in two sentences.",
+        "lines": 6
       }
     ],
     "takeaways": [
       "Career changers get screened out for three reasons: retention doubt, jargon that cannot be mapped, and no proof of investment.",
-      "Your pull sentence answers retention doubt, your translated bullets answer the jargon problem, and one artifact answers the proof problem.",
       "Every good answer has the same shape: where you are going, how you prepared, one accomplishment with a number.",
-      "Burnout is a true reason and a bad answer. It confirms the doubt they already have."
+      "Burnout is a true reason and a bad answer. It confirms the doubt they already have.",
+      "Weak answers name a quality. Strong answers describe an event with a number in it.",
+      "Application knockout questions filter more people than résumé parsing does."
     ],
     "sources": [
       "facts",
@@ -213,101 +297,6 @@
     ]
   },
   {
-    "id": "6.3",
-    "tldr": "Six questions do most of the screening for career changers. Each one has a shape of answer that works and a common answer that quietly disqualifies you.",
-    "blocks": [
-      {
-        "type": "p",
-        "text": "Interviews feel unpredictable, but the questions a career changer gets are not. Six of them do most of the work, and they show up in phone screens, on application forms, and in the first ten minutes with a hiring manager."
-      },
-      {
-        "type": "list",
-        "items": [
-          "**Why are you leaving clinical work?** Works: one sentence of pull, one of the evidence you have prepared. Sinks: any sentence that starts with what you are escaping. They hear a retention risk.",
-          "**You don't have experience in this role. Why should we consider you?** Works: two accomplishments mapped onto the role's first-ninety-days problems, with numbers. \"I've been doing customer success my whole career; I called it family care. Sixty-two accounts, quarterly reviews, ninety percent retention.\" Sinks: a list of soft skills. \"Communication\" is not an answer.",
-          "**What do you know about our product or company?** Works: one specific thing you found by using it or talking to a customer, and one question it raised. Sinks: reciting the About page.",
-          "**Where do you see yourself in three years?** Works: inside this function, with a bigger scope, still using the clinical lens, and the next title named honestly. Sinks: a \"back in clinical\" joke, or a title from a different department.",
-          "**What's your salary expectation?** Works: the documented range for the path, anchored at the middle, with a line about the whole package (lesson 6.5). Sinks: naming your clinical salary first.",
-          "**Tell me about a time you handled a difficult stakeholder.** Works: a parent or administrator story told with the business nouns: the objection, what you changed, the outcome. Sinks: a story where the resolution is that you were right."
-        ]
-      },
-      {
-        "type": "h",
-        "text": "The pattern underneath"
-      },
-      {
-        "type": "p",
-        "text": "Every good answer above uses the vocabulary of the role rather than of the clinic, and contains at least one number that could be checked."
-      },
-      {
-        "type": "p",
-        "text": "The weak ones reach for a quality instead of an event: communication skills, detail-oriented, works well under pressure, passionate about helping people. Those describe about ninety percent of applicants and prove nothing about any of them."
-      },
-      {
-        "type": "example",
-        "title": "A behavioural answer, twice",
-        "before": "I'm great with difficult parents. I always stay calm and find common ground.",
-        "after": "A parent refused an AAC trial for four months because she thought it would stop her son talking. I brought her the research, then a two-week trial with a defined stop point. She agreed to the trial and requested the device herself at week three."
-      },
-      {
-        "type": "p",
-        "text": "The second answer has an objection, an intervention and an outcome, and a customer success manager hears their own job description in it."
-      },
-      {
-        "type": "h",
-        "text": "Five lines for the middle of the room"
-      },
-      {
-        "type": "p",
-        "text": "The moments that derail people are small and predictable, so have the sentence ready."
-      },
-      {
-        "type": "list",
-        "items": [
-          "**A term you don't know.** \"I'm not familiar with that one. Is it similar to [the closest thing you do know]?\"",
-          "**Nerves showing.** \"Sorry, I'm excited about this role and my nerves are getting ahead of me. Let me start that again.\"",
-          "**A skill you don't have yet.** \"I haven't used [tool] in a job. I've [taken the course / built one thing in it], and I've picked up [the EMR / a documentation system / a scheduling platform] on the job every time I've had to.\"",
-          "**The out-of-left-field question.** Answer it like a person. They are checking whether you are one.",
-          "**The last question, only if you can hear the answer.** \"Is there anything you've seen so far that would make you hesitate to hire me for this?\""
-        ]
-      },
-      {
-        "type": "h",
-        "text": "The written screen"
-      },
-      {
-        "type": "p",
-        "text": "Application forms are where a lot of career changers quietly lose, because the knockout questions filter more people than résumé parsing does: years of experience in the field, do you have X certification, are you authorised to work without sponsorship. Answer them honestly, and where a form gives you a text box, use it to bridge rather than to apologise."
-      },
-      {
-        "type": "callout",
-        "tone": "warm",
-        "title": "On identical answers",
-        "text": "One hiring manager reported that 35 percent of applicants gave word-for-word identical answers to her screening questions, because they had all asked the same tool the same way. A screening box is the cheapest place in the whole process to sound like a person."
-      },
-      {
-        "type": "p",
-        "text": "Pick the two questions above you would fumble today, write your answers longhand, then cut them by half. Short and specific beats complete every time."
-      },
-      {
-        "type": "ask",
-        "label": "The two questions you'd fumble, answered",
-        "prompt": "Write the two questions you would fumble today, and answer each in two sentences.",
-        "lines": 6
-      }
-    ],
-    "takeaways": [
-      "Six questions do most of the screening for career changers, and each has a recognisable good shape.",
-      "Weak answers name a quality. Strong answers describe an event with a number in it.",
-      "Behavioural answers need an objection, what you did, and the outcome.",
-      "Application knockout questions filter more people than résumé parsing does."
-    ],
-    "sources": [
-      "facts",
-      "forums"
-    ]
-  },
-  {
     "id": "6.4",
     "tldr": "Practise the five questions with a coach that knows your path and your own pull sentence. It tells you what landed, what read as escaping rather than moving toward, and where a number was missing.",
     "blocks": [
@@ -384,7 +373,7 @@
   },
   {
     "id": "6.5",
-    "tldr": "About thirty percent of people negotiate, most who ask get something, and offers are almost never withdrawn for asking. Anchor on the documented range for your path rather than on your clinical salary.",
+    "tldr": "About thirty percent of people negotiate, most who ask get something, and offers are almost never withdrawn for asking. Anchor on the documented range for your path, then run the offer through eight checks before you answer.",
     "blocks": [
       {
         "type": "p",
@@ -500,14 +489,75 @@
         "tone": "soft",
         "title": "Before you answer any offer",
         "text": "Say the counter out loud once, to a person, before you say it to them. The sentence that feels outrageous in your head almost always sounds reasonable in the air."
+      },
+      {
+        "type": "h",
+        "text": "Accept, or keep going"
+      },
+      {
+        "type": "p",
+        "text": "An offer arrives with a deadline attached and a warm feeling that makes it hard to think, so the checklist below hands the decision to the version of you who did Modules 1 and 4."
+      },
+      {
+        "type": "tool",
+        "name": "offer-checklist"
+      },
+      {
+        "type": "h",
+        "text": "If several boxes stay empty"
+      },
+      {
+        "type": "p",
+        "text": "Empty boxes are a list of what to ask on the follow-up call, and asking is normal: most employers expect a counter, and hiring managers report fewer than two withdrawn offers across about twenty-seven they have made."
+      },
+      {
+        "type": "p",
+        "text": "There are three answers and only one of them is a yes: accept, counter and then accept, or decline and keep going. Declining is real when the number sits below your runway, the role has no ladder, or the interview showed you a manager you did not believe, and it costs a few weeks to save a year."
+      },
+      {
+        "type": "h",
+        "text": "When you accept"
+      },
+      {
+        "type": "steps",
+        "items": [
+          "Get it in writing before you resign anything. Base, title, start date, remote arrangement, variable pay terms.",
+          "Check the health coverage start date against your last day, and bridge the gap deliberately if there is one.",
+          "Give notice the way you would want it given to you, and do not use the resignation to explain the profession to anyone.",
+          "Tell the people who helped you. The person who answered your message in Module 2 will want to know it worked."
+        ]
+      },
+      {
+        "type": "callout",
+        "tone": "soft",
+        "title": "If it is a no, for now",
+        "text": "A declined offer means the process works. You got to an offer, which means the résumé, the statement and the artifact are all doing their jobs. Log it in the tracker and keep the pace."
+      },
+      {
+        "type": "script",
+        "title": "Answering a no from a company you liked",
+        "text": "Thank you for letting me know, and for the time your team gave me. I enjoyed the conversations about [specific thing], and I'd still like to work with you. If a similar role opens in the next few months, I'd welcome the chance to be considered, and I'll keep an eye on the careers page.\n\n[Your name]"
+      },
+      {
+        "type": "p",
+        "text": "Send that within a day. A no on one role is often a maybe on the next one, and the people who interviewed you are the warmest contacts you have at that company. Log it in the tracker and keep the pace."
+      },
+      {
+        "type": "p",
+        "text": "When you do accept, come back and mark it here. It is the last box in ninety days of work that started with you not telling anyone."
       }
     ],
+    "action": {
+      "label": "I have an offer",
+      "prompt": "Run the offer through the eight checks above. Ask for anything that is missing, in one message. Then, whichever way you decide, mark it here.",
+      "done": "Marked. Whatever you decided, you got to a real offer from a standing start. Tell somebody."
+    },
     "takeaways": [
       "About thirty percent of people negotiate, and two thirds or more of those who ask get something.",
-      "Offers are almost never withdrawn for negotiating, and most employers expect a counter.",
       "Anchor on the documented range for the path, not on your clinical salary.",
-      "In customer success most of the pay is base. In sales roughly half is variable, so ask how the target gets measured.",
-      "A below-range first offer can still be right if the role has a ladder and you put a date on it."
+      "A below-range first offer can still be right if the role has a ladder and you put a date on it.",
+      "Empty boxes are questions for a follow-up call, not reasons to decline.",
+      "Get everything in writing before resigning, and check the coverage start date against your last day."
     ],
     "sources": [
       "facts",
@@ -573,7 +623,7 @@
         "type": "list",
         "items": [
           "**Applications but no screens.** The résumé is still reading clinical, or you are applying outside your documented range. Back to Module 4.",
-          "**Screens but no interviews.** The bridge statement is doing the wrong work, usually push instead of pull. Lesson 5.2.",
+          "**Screens but no interviews.** The bridge statement is doing the wrong work, usually push instead of pull. Lesson 6.2.",
           "**Interviews but no offers.** Usually the proof problem. One artifact fixes more of this than another certificate will.",
           "**Nothing at all for four weeks.** Volume, not quality. Fifteen tailored applications a month is a real pace, and three is not."
         ]
@@ -622,157 +672,6 @@
       "Postings now average around 242 applicants, so a day-one application beats a perfect day-nine one.",
       "Track applications, screens, interviews and offers, because the ratio between them tells you which stage is broken.",
       "Rejection at this stage is a volume statistic, and the maths only works if you keep feeding it."
-    ],
-    "sources": [
-      "facts",
-      "forums"
-    ]
-  },
-  {
-    "id": "6.7",
-    "tldr": "Three clinical habits make you good in the first ninety days, and two will hold you back. Bank one visible win by day sixty and the rest takes care of itself.",
-    "blocks": [
-      {
-        "type": "p",
-        "text": "You will get the offer, and then the strange part starts: being new at something after years of being competent. Clinicians arrive with a specific mix of unusual strengths and one or two habits that quietly cost them."
-      },
-      {
-        "type": "h",
-        "text": "What travels well"
-      },
-      {
-        "type": "list",
-        "items": [
-          "**Documentation.** You write things down as a reflex, in a way that most teams do not. Within a month you will be the person whose notes everyone asks for.",
-          "**Reading a room.** Years of IEP meetings taught you to spot the person who has not spoken and the one who has already decided. That skill is rare and highly paid.",
-          "**Working without supervision.** You have managed your own caseload, calendar and priorities for years. Most new hires need more direction than you will."
-        ]
-      },
-      {
-        "type": "quote",
-        "text": "It was a huge mentality shift for me because most roles don't completely throw you into the deep end, like I was as an SLP.",
-        "from": "a transitioned SLP, r/SLPcareertransitions"
-      },
-      {
-        "type": "h",
-        "text": "What to unlearn"
-      },
-      {
-        "type": "p",
-        "text": "Both habits come from being the expert in the room for years. The first is over-explaining: in therapy thoroughness is care, but in a business meeting a three-minute answer to a one-minute question reads as uncertainty. Say the conclusion, then stop."
-      },
-      {
-        "type": "p",
-        "text": "The second is waiting to be told, because clinical work runs on referrals, assignments and required timelines. Most non-clinical roles expect you to notice the gap and fill it, and in your first month the fastest way to look senior is to bring a problem nobody assigned you, with a proposal attached."
-      },
-      {
-        "type": "h",
-        "text": "The first ninety days, roughly"
-      },
-      {
-        "type": "steps",
-        "items": [
-          "**Weeks one to two: ask, do not perform.** Meet everyone your work touches and ask each of them what would make their month easier. Write it all down.",
-          "**Weeks three to six: find the small broken thing.** Every team has a process everyone complains about and nobody owns. Pick one, fix it, tell somebody.",
-          "**Weeks seven to twelve: bank the visible win.** Something with a before and after that your manager can repeat to their manager. This is what your first review is made of.",
-          "**Throughout: keep a file.** Every number, every thank-you, every problem you solved. In six months you will need it for a review, and in two years for the next job."
-        ]
-      },
-      {
-        "type": "callout",
-        "tone": "soft",
-        "title": "On imposter feelings",
-        "text": "They arrive around week three, when the novelty fades and you notice everyone else knows the acronyms. Two things are true at once: you are genuinely behind on the domain, and you were hired for judgement that takes years to build. The acronyms take about a month."
-      },
-      {
-        "type": "p",
-        "text": "You will also, at some point in the first year, miss a patient or a student. That means you cared about the work, which is the same thing that made you good at it and is now making you good at this."
-      },
-      {
-        "type": "ask",
-        "label": "Your visible win by day sixty",
-        "prompt": "In the job you're aiming at, what visible win could you bank by day sixty?",
-        "lines": 3
-      }
-    ],
-    "takeaways": [
-      "Documentation, reading a room and working unsupervised are three habits that make clinicians strong in a first non-clinical job.",
-      "Over-explaining and waiting to be assigned work are the two habits to drop.",
-      "Ask everyone what would make their month easier in the first two weeks, then fix one small broken thing.",
-      "Bank a visible win by day sixty and keep a file of numbers and thank-yous from day one."
-    ],
-    "sources": [
-      "facts",
-      "forums"
-    ]
-  },
-  {
-    "id": "6.8",
-    "tldr": "Run the offer through eight checks before you answer. If it does not hold up, the same eight tell you what to ask for or when to keep going.",
-    "blocks": [
-      {
-        "type": "p",
-        "text": "An offer arrives with a deadline attached and a warm feeling that makes it hard to think, so the checklist below hands the decision to the version of you who did Modules 1 and 4."
-      },
-      {
-        "type": "tool",
-        "name": "offer-checklist"
-      },
-      {
-        "type": "h",
-        "text": "If several boxes stay empty"
-      },
-      {
-        "type": "p",
-        "text": "Empty boxes are a list of what to ask on the follow-up call, and asking is normal: most employers expect a counter, and hiring managers report fewer than two withdrawn offers across about twenty-seven they have made."
-      },
-      {
-        "type": "p",
-        "text": "There are three answers and only one of them is a yes: accept, counter and then accept, or decline and keep going. Declining is real when the number sits below your runway, the role has no ladder, or the interview showed you a manager you did not believe, and it costs a few weeks to save a year."
-      },
-      {
-        "type": "h",
-        "text": "When you accept"
-      },
-      {
-        "type": "steps",
-        "items": [
-          "Get it in writing before you resign anything. Base, title, start date, remote arrangement, variable pay terms.",
-          "Check the health coverage start date against your last day, and bridge the gap deliberately if there is one.",
-          "Give notice the way you would want it given to you, and do not use the resignation to explain the profession to anyone.",
-          "Tell the people who helped you. The person who answered your message in Module 2 will want to know it worked."
-        ]
-      },
-      {
-        "type": "callout",
-        "tone": "soft",
-        "title": "If it is a no, for now",
-        "text": "A declined offer means the process works. You got to an offer, which means the résumé, the statement and the artifact are all doing their jobs. Log it in the tracker and keep the pace."
-      },
-      {
-        "type": "script",
-        "title": "Answering a no from a company you liked",
-        "text": "Thank you for letting me know, and for the time your team gave me. I enjoyed the conversations about [specific thing], and I'd still like to work with you. If a similar role opens in the next few months, I'd welcome the chance to be considered, and I'll keep an eye on the careers page.\n\n[Your name]"
-      },
-      {
-        "type": "p",
-        "text": "Send that within a day. A no on one role is often a maybe on the next one, and the people who interviewed you are the warmest contacts you have at that company. Log it in the tracker and keep the pace."
-      },
-      {
-        "type": "p",
-        "text": "When you do accept, come back and mark it here. It is the last box in ninety days of work that started with you not telling anyone."
-      }
-    ],
-    "action": {
-      "label": "I have an offer",
-      "prompt": "Run the offer through the eight checks above. Ask for anything that is missing, in one message. Then, whichever way you decide, mark it here.",
-      "done": "Marked. Whatever you decided, you got to a real offer from a standing start. Tell somebody."
-    },
-    "takeaways": [
-      "Run every offer through the eight checks before answering, with the version of you who did the runway maths.",
-      "Empty boxes are questions for a follow-up call, not reasons to decline.",
-      "Declining is a real answer when the number is below your runway or the role has no ladder.",
-      "Get everything in writing before resigning, and check the coverage start date against your last day."
     ],
     "sources": [
       "facts",

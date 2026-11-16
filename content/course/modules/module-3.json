@@ -369,7 +369,7 @@
   },
   {
     "id": "3.4",
-    "tldr": "Recruiters look you up before they call, and they find you in the first place by searching the words in the job they are filling. A clinical profile behind a translated résumé does two kinds of damage: it contradicts you, and it leaves you invisible to the search.",
+    "tldr": "Recruiters look you up before they call, and they find you in the first place by searching the words in the job they are filling. An in-house recruiter at a company you want is worth a message when a role is live: follow up once at eight days, then stop.",
     "blocks": [
       {
         "type": "p",
@@ -466,189 +466,11 @@
       {
         "type": "tool",
         "name": "linkedin-checklist"
-      }
-    ],
-    "takeaways": [
-      "Your profile does two jobs: it corroborates the résumé, and it is how recruiters find you in the first place.",
-      "Headline, About, titles and pinned skills are the fields recruiters search, so the target-role vocabulary has to live in them.",
-      "Headline first, then the skills reorder, then About, then the top three bullets per role.",
-      "Search your own target title in a private window to see whether you are findable, then find three people who have already made the move.",
-      "Translate the history and never delete or relabel it. At speech-tech companies the clinical credential is the asset."
-    ],
-    "sources": [
-      "facts",
-      "forums"
-    ]
-  },
-  {
-    "id": "3.5",
-    "tldr": "One documented search took over 500 applications without referrals. The people who moved faster had someone on the inside, and getting one is a twenty-minute task you have already practised.",
-    "blocks": [
-      {
-        "type": "p",
-        "text": "You can be the best of two hundred and forty-two strangers, or you can be the person somebody already mentioned. The second is not fair, and it is how most of these moves actually happened."
-      },
-      {
-        "type": "numbers",
-        "items": [
-          {
-            "value": "500+",
-            "label": "applications over six months, one documented analyst transition"
-          },
-          {
-            "value": "~242",
-            "label": "applicants per opening on average, up 111% since 2022"
-          },
-          {
-            "value": "1 in 4",
-            "label": "roughly, how many of these messages get no answer at all"
-          },
-          {
-            "value": "48 hrs",
-            "label": "the window where an application still gets seen"
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "text": "That 500 number belongs to somebody who got there, landed a fully remote role and now earns twenty thousand more than she did as an SLP. The volume was the tax she paid for having no referrals."
       },
       {
         "type": "h",
-        "text": "Three habits that do most of the work"
+        "text": "Recruiters, and how to follow up"
       },
-      {
-        "type": "steps",
-        "items": [
-          "**Apply inside 48 hours.** Postings get most of their real attention in the first day or two. A tailored application on day one beats a perfect one on day nine.",
-          "**Check for an in before you hit submit.** Search the company on LinkedIn for anyone from your program, anyone with CCC-SLP in their history, anyone you have ever met. If one exists, message them first and apply second. If none exists, apply anyway and note it in the tracker.",
-          "**Message one person at the company, the same day.** Not the recruiter. Someone doing the job you applied for, ideally a former clinician. Say you applied, say the one specific thing that made you want the role, ask one question.",
-          "**Turn every conversation into a name.** At the end of any informational interview, ask who else they would talk to if they were you. That question is where a network comes from."
-        ]
-      },
-      {
-        "type": "p",
-        "text": "You already wrote the message in lesson 3.2, so this is a twenty-minute task rather than a new skill."
-      },
-      {
-        "type": "h",
-        "text": "What to ask for, and when"
-      },
-      {
-        "type": "p",
-        "text": "Do not ask for a referral in a first message. Ask for twenty minutes about their work, because referrals come at the end of a conversation that already happened, and they are usually offered rather than requested."
-      },
-      {
-        "type": "p",
-        "text": "A stranger's no to a referral is rational, and knowing why makes the ask less personal. Referring you means putting their own name behind your work, sight unseen, and most people will not do that for someone they spoke to once. After a real conversation it is a different bet, and at many companies a referral that gets hired pays the referrer a bonus, so a loose acquaintance saying \"I've talked to her, she seemed serious\" costs them nothing and might pay. That is also why a referral works when you sit under the posted requirements: it is how a résumé gets read after the screen would have dropped it."
-      },
-      {
-        "type": "script",
-        "title": "After a good conversation",
-        "text": "This was genuinely useful, thank you. Two things before I let you go. Is there anyone else you'd talk to if you were me? And if a [role] opens on your team, would you be open to me sending you the posting?"
-      },
-      {
-        "type": "p",
-        "text": "That second question is the referral ask in the least awkward form I have found: a yes or no about a hypothetical, easy to agree to, and it gives you permission to come back. One more, near the end: what other companies do work like yours? Three names from someone inside is a better list than an hour of searching."
-      },
-      {
-        "type": "p",
-        "text": "Every name from these conversations goes on your people and applications page, with the person they suggested next in its own column. That column is where a network comes from."
-      },
-      {
-        "type": "callout",
-        "tone": "soft",
-        "title": "Why this works better for us than for most",
-        "text": "Former SLPs are unusually willing to answer other SLPs, which is part of why the response rate is as high as it is. The exit threads are full of people offering to talk, and the ones who made it out tend to remember who answered them. You are not cold-messaging strangers. You are messaging people who were you two years ago."
-      }
-    ],
-    "takeaways": [
-      "Applications without referrals is the expensive route: one documented search took over 500.",
-      "Apply inside 48 hours and message someone doing the job the same day.",
-      "Never ask for a referral in a first message. Ask for twenty minutes, then ask who else you should talk to."
-    ],
-    "sources": [
-      "facts",
-      "forums"
-    ]
-  },
-  {
-    "id": "3.6",
-    "tldr": "Two live conversations at any time, kept warm with one short update a month, and a steady trickle of new messages that the tracker counts for you. Referrals come from that without you asking.",
-    "blocks": [
-      {
-        "type": "p",
-        "text": "Most networking advice assumes you want a network. What you want is two or three people who know what you are looking for and would forward you a posting, which is a much smaller job."
-      },
-      {
-        "type": "p",
-        "text": "Smaller does not mean static. Two warm conversations is the floor you keep, and new messages are the trickle that replaces one when it goes quiet. Two a week while you are building, five a week once you are applying, and with the research and the first draft handed to the model (lesson 3.8) each one costs ten minutes rather than forty. The tracker counts your week, so the number is a fact rather than a feeling, and it tells you who is due."
-      },
-      {
-        "type": "h",
-        "text": "The maintenance is smaller than you think"
-      },
-      {
-        "type": "p",
-        "text": "One message a month, per person, with one job: remind them you exist and show that you did something since last time."
-      },
-      {
-        "type": "script",
-        "title": "The monthly update",
-        "text": "Hi [name], quick update since we talked. I [built the thing / finished the certificate / had a first interview at X]. Still aiming at [role type]. If anything crosses your desk I'd love to hear about it. Hope [specific thing they mentioned] went well."
-      },
-      {
-        "type": "p",
-        "text": "That is four sentences and ninety seconds. The last one matters most, because remembering the thing they told you is what separates a relationship from a mailing list."
-      },
-      {
-        "type": "p",
-        "text": "Twice, the update becomes an ask. When the artifact from Module 5 exists, send it: \"would you look at this and tell me what a hiring manager would say?\" is a small, flattering job, and it puts your work in front of the person most likely to pass it on. And the week you switch from building to applying, one message to everyone you have spoken to: I'm applying now, for [title], and if you hear of one I'd be grateful for a nudge. That is the message referrals actually come from."
-      },
-      {
-        "type": "tool",
-        "name": "contact-tracker-warm"
-      },
-      {
-        "type": "h",
-        "text": "When somebody goes quiet"
-      },
-      {
-        "type": "p",
-        "text": "They are busy, and it is not about you. Send one follow-up after two weeks, then let it rest, and come back in six months with something new to say."
-      },
-      {
-        "type": "p",
-        "text": "And it does not stop when you land. A note twice a year to the people who helped keeps them from becoming strangers again, and it is your insurance if the new job turns out to be the wrong one."
-      },
-      {
-        "type": "callout",
-        "tone": "soft",
-        "title": "The thing that surprises people",
-        "text": "The conversation that produces the job is usually not the one you expected. In the documented transitions, the useful introduction tends to come third or fourth hand, from someone who was not obviously connected to the role at all. Which is an argument for keeping two warm rather than chasing the perfect one."
-      }
-    ],
-    "action": {
-      "label": "Two are warm",
-      "prompt": "Pick the two most promising people from your tracker and send each of them a monthly update this week. Four sentences, ninety seconds, ending with a question about something they told you.",
-      "done": "Two warm. That is the network. It does not need to be bigger than this."
-    },
-    "takeaways": [
-      "Two live conversations is the floor, because what you need is a couple of people who would forward you a posting rather than a network.",
-      "One four-sentence update a month keeps a conversation warm.",
-      "Silence means a busy month, not a closed door. One follow-up, then let it rest.",
-      "The introduction that works is usually third or fourth hand, which is why two warm beats one perfect.",
-      "Two new messages a week while you build, five once you apply. The tracker keeps the count and the due dates."
-    ],
-    "sources": [
-      "facts",
-      "forums"
-    ]
-  },
-  {
-    "id": "3.7",
-    "tldr": "Most SLPs distrust recruiters, and clinical staffing agencies earned that. An in-house recruiter at a company you want is a different job: they get paid when a req closes, so a candidate who fits one is useful to them. Message when a role is live, follow up once at eight days, then stop.",
-    "blocks": [
       {
         "type": "p",
         "text": "The word recruiter means something specific and unpleasant to most SLPs, and the threads are blunt about it."
@@ -731,15 +553,170 @@
       }
     ],
     "takeaways": [
-      "Clinical staffing agencies earned the distrust. In-house recruiters at your target companies are a different job with a different incentive.",
+      "Your profile does two jobs: it corroborates the résumé, and it is how recruiters find you in the first place.",
+      "Headline, About, titles and pinned skills are the fields recruiters search, so the target-role vocabulary has to live in them.",
+      "Translate the history and never delete or relabel it. At speech-tech companies the clinical credential is the asset.",
       "Only message about a live req. A cold keep me in mind note gives them nothing to act on.",
-      "Lead with the target title, and name the clinical background as the asset it is at any company selling into healthcare or schools.",
-      "One follow-up at eight days, and it has to add something new. There is no second follow-up.",
-      "Frozen reqs cause most of the silence, so read it as timing rather than a verdict."
+      "One follow-up at eight days, and it has to add something new. There is no second follow-up."
     ],
     "sources": [
-      "voc",
-      "facts"
+      "facts",
+      "forums",
+      "voc"
+    ]
+  },
+  {
+    "id": "3.6",
+    "tldr": "One documented search took over 500 applications without referrals, and the people who moved faster had someone on the inside. Keep two conversations warm with one short update a month, and referrals come without you asking.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "You can be the best of two hundred and forty-two strangers, or you can be the person somebody already mentioned. The second is not fair, and it is how most of these moves actually happened."
+      },
+      {
+        "type": "numbers",
+        "items": [
+          {
+            "value": "500+",
+            "label": "applications over six months, one documented analyst transition"
+          },
+          {
+            "value": "~242",
+            "label": "applicants per opening on average, up 111% since 2022"
+          },
+          {
+            "value": "1 in 4",
+            "label": "roughly, how many of these messages get no answer at all"
+          },
+          {
+            "value": "48 hrs",
+            "label": "the window where an application still gets seen"
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "text": "That 500 number belongs to somebody who got there, landed a fully remote role and now earns twenty thousand more than she did as an SLP. The volume was the tax she paid for having no referrals."
+      },
+      {
+        "type": "h",
+        "text": "Three habits that do most of the work"
+      },
+      {
+        "type": "steps",
+        "items": [
+          "**Apply inside 48 hours.** Postings get most of their real attention in the first day or two. A tailored application on day one beats a perfect one on day nine.",
+          "**Check for an in before you hit submit.** Search the company on LinkedIn for anyone from your program, anyone with CCC-SLP in their history, anyone you have ever met. If one exists, message them first and apply second. If none exists, apply anyway and note it in the tracker.",
+          "**Message one person at the company, the same day.** Not the recruiter. Someone doing the job you applied for, ideally a former clinician. Say you applied, say the one specific thing that made you want the role, ask one question.",
+          "**Turn every conversation into a name.** At the end of any informational interview, ask who else they would talk to if they were you. That question is where a network comes from."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You already wrote the message in lesson 3.2, so this is a twenty-minute task rather than a new skill."
+      },
+      {
+        "type": "h",
+        "text": "What to ask for, and when"
+      },
+      {
+        "type": "p",
+        "text": "Do not ask for a referral in a first message. Ask for twenty minutes about their work, because referrals come at the end of a conversation that already happened, and they are usually offered rather than requested."
+      },
+      {
+        "type": "p",
+        "text": "A stranger's no to a referral is rational, and knowing why makes the ask less personal. Referring you means putting their own name behind your work, sight unseen, and most people will not do that for someone they spoke to once. After a real conversation it is a different bet, and at many companies a referral that gets hired pays the referrer a bonus, so a loose acquaintance saying \"I've talked to her, she seemed serious\" costs them nothing and might pay. That is also why a referral works when you sit under the posted requirements: it is how a résumé gets read after the screen would have dropped it."
+      },
+      {
+        "type": "script",
+        "title": "After a good conversation",
+        "text": "This was genuinely useful, thank you. Two things before I let you go. Is there anyone else you'd talk to if you were me? And if a [role] opens on your team, would you be open to me sending you the posting?"
+      },
+      {
+        "type": "p",
+        "text": "That second question is the referral ask in the least awkward form I have found: a yes or no about a hypothetical, easy to agree to, and it gives you permission to come back. One more, near the end: what other companies do work like yours? Three names from someone inside is a better list than an hour of searching."
+      },
+      {
+        "type": "p",
+        "text": "Every name from these conversations goes on your people and applications page, with the person they suggested next in its own column. That column is where a network comes from."
+      },
+      {
+        "type": "callout",
+        "tone": "soft",
+        "title": "Why this works better for us than for most",
+        "text": "Former SLPs are unusually willing to answer other SLPs, which is part of why the response rate is as high as it is. The exit threads are full of people offering to talk, and the ones who made it out tend to remember who answered them. You are not cold-messaging strangers. You are messaging people who were you two years ago."
+      },
+      {
+        "type": "h",
+        "text": "Keep two conversations warm"
+      },
+      {
+        "type": "p",
+        "text": "Most networking advice assumes you want a network. What you want is two or three people who know what you are looking for and would forward you a posting, which is a much smaller job."
+      },
+      {
+        "type": "p",
+        "text": "Smaller does not mean static. Two warm conversations is the floor you keep, and new messages are the trickle that replaces one when it goes quiet. Two a week while you are building, five a week once you are applying, and with the research and the first draft handed to the model (lesson 3.8) each one costs ten minutes rather than forty. The tracker counts your week, so the number is a fact rather than a feeling, and it tells you who is due."
+      },
+      {
+        "type": "h",
+        "text": "The maintenance is smaller than you think"
+      },
+      {
+        "type": "p",
+        "text": "One message a month, per person, with one job: remind them you exist and show that you did something since last time."
+      },
+      {
+        "type": "script",
+        "title": "The monthly update",
+        "text": "Hi [name], quick update since we talked. I [built the thing / finished the certificate / had a first interview at X]. Still aiming at [role type]. If anything crosses your desk I'd love to hear about it. Hope [specific thing they mentioned] went well."
+      },
+      {
+        "type": "p",
+        "text": "That is four sentences and ninety seconds. The last one matters most, because remembering the thing they told you is what separates a relationship from a mailing list."
+      },
+      {
+        "type": "p",
+        "text": "Twice, the update becomes an ask. When the artifact from Module 5 exists, send it: \"would you look at this and tell me what a hiring manager would say?\" is a small, flattering job, and it puts your work in front of the person most likely to pass it on. And the week you switch from building to applying, one message to everyone you have spoken to: I'm applying now, for [title], and if you hear of one I'd be grateful for a nudge. That is the message referrals actually come from."
+      },
+      {
+        "type": "tool",
+        "name": "contact-tracker-warm"
+      },
+      {
+        "type": "h",
+        "text": "When somebody goes quiet"
+      },
+      {
+        "type": "p",
+        "text": "They are busy, and it is not about you. Send one follow-up after two weeks, then let it rest, and come back in six months with something new to say."
+      },
+      {
+        "type": "p",
+        "text": "And it does not stop when you land. A note twice a year to the people who helped keeps them from becoming strangers again, and it is your insurance if the new job turns out to be the wrong one."
+      },
+      {
+        "type": "callout",
+        "tone": "soft",
+        "title": "The thing that surprises people",
+        "text": "The conversation that produces the job is usually not the one you expected. In the documented transitions, the useful introduction tends to come third or fourth hand, from someone who was not obviously connected to the role at all. Which is an argument for keeping two warm rather than chasing the perfect one."
+      }
+    ],
+    "action": {
+      "label": "Two are warm",
+      "prompt": "Pick the two most promising people from your tracker and send each of them a monthly update this week. Four sentences, ninety seconds, ending with a question about something they told you.",
+      "done": "Two warm. That is the network. It does not need to be bigger than this."
+    },
+    "takeaways": [
+      "Applications without referrals is the expensive route: one documented search took over 500.",
+      "Apply inside 48 hours and message someone doing the job the same day.",
+      "Never ask for a referral in a first message. Ask for twenty minutes, then ask who else you should talk to.",
+      "Two live conversations is the floor, because what you need is a couple of people who would forward you a posting rather than a network.",
+      "One four-sentence update a month keeps a conversation warm."
+    ],
+    "sources": [
+      "facts",
+      "forums"
     ]
   },
   {

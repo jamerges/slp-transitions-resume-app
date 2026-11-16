@@ -5,7 +5,7 @@
 // people list follow them to another browser. Merge rule on load: the newer
 // document wins per key, lists are unioned, XP is the max.
 import { useCallback, useEffect, useRef, useState } from "react";
-import { BADGES, LESSONS, XP_PER_LESSON, XP_PER_ACTION, type BadgeId } from "./course";
+import { BADGES, LESSONS, XP_PER_LESSON, XP_PER_ACTION, type BadgeId, MERGED_INTO } from "./course";
 
 export interface Progress {
   startedAt: string | null;
@@ -44,10 +44,18 @@ function migrate(p: Progress): Progress {
 // counting toward the percentage.
 const KNOWN = new Set(LESSONS.map((l) => l.id));
 function tidy(p: Progress): Progress {
-  const ren = (id: string) => (id === "5.3" ? "5.2" : id);
+  // 5.3 merged into 5.2 in September; MERGED_INTO holds the November merges.
+  const ren = (id: string) => (id === "5.3" ? "5.2" : MERGED_INTO[id] || id);
   const keep = (ids: string[]) => Array.from(new Set(ids.map(ren))).filter((id) => KNOWN.has(id));
   const a = p.answers as Record<string, any>;
-  const answers = "5.3" in a && !("5.2" in a) ? { ...a, "5.2": a["5.3"] } : a;
+  let answers: Record<string, any> = "5.3" in a && !("5.2" in a) ? { ...a, "5.2": a["5.3"] } : a;
+  // Written answers are keyed by lesson id: carry one across where the survivor has none.
+  const notes: Record<string, string> | undefined = answers.__shared?.notes;
+  if (notes && Object.keys(notes).some((k) => MERGED_INTO[k])) {
+    const next: Record<string, string> = {};
+    for (const [k, v] of Object.entries(notes)) { const to = MERGED_INTO[k] || k; if (!(to in next) || !MERGED_INTO[k]) next[to] = v; }
+    answers = { ...answers, __shared: { ...answers.__shared, notes: next } };
+  }
   return { ...p, completed: keep(p.completed), actions: keep(p.actions), answers };
 }
 function load(): Progress {

@@ -1,7 +1,7 @@
 [
   {
     "id": "4.1",
-    "tldr": "A recruiter spends about 7.4 seconds deciding whether you are a maybe or a no, and the software everybody blames is not the thing rejecting you. Four specific doubts do that, and the top third of page one is where three of them get answered.",
+    "tldr": "A recruiter spends about 7.4 seconds deciding whether you are a maybe or a no, and the software everybody blames is not the thing rejecting you. Four specific doubts do that, and an application that reads as AI-written adds another: 62 percent of employers say they reject AI-generated materials that lack personalization.",
     "blocks": [
       {
         "type": "p",
@@ -60,18 +60,75 @@
         ]
       },
       {
+        "type": "h",
+        "text": "Why AI-written applications get rejected"
+      },
+      {
+        "type": "p",
+        "text": "Somebody counted. A hiring manager reviewing a batch of applications found that 35 percent of candidates had submitted identical answers to the same question. Word for word, from people who had never met and who each presumably felt they had written something. Picture the moment they noticed the second one, then the fifth, then the fortieth."
+      },
+      {
+        "type": "p",
+        "text": "62 percent of employers say they reject AI-generated application materials that lack personalization, and 33.5 percent of hiring managers say they can spot AI writing in under 20 seconds. That is about how long your first paragraph lives. For a career changer a generic letter is fatal, because you are the one candidate whose application had actual explaining to do."
+      },
+      {
+        "type": "h",
+        "text": "The tell-words, and the shapes"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Adept, leverage, spearheaded, cutting-edge, results-driven. The words are harmless in themselves. A recruiter has read them two hundred times this week, in that order, with no number attached to any of them.",
+          "Adjectives sitting where a number belongs. \"Significantly improved outcomes\" is what a sentence says when nobody checked the tracker.",
+          "Everything arriving in threes: three adjectives, three-item lists, three parallel clauses in every paragraph. This is my own read rather than a documented finding, but once you notice the rhythm you cannot unnotice it, and neither can the person reading forty letters.",
+          "The five-paragraph skeleton: interest, adjectives about yourself, flattery about the company, restated résumé, look forward to discussing. Hiring managers could hum it."
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "can you provide the prompts you used for ChatGPT?",
+        "from": "an SLP on a transition thread, r/SLPcareertransitions"
+      },
+      {
+        "type": "h",
+        "text": "How to use it without producing the slop"
+      },
+      {
+        "type": "steps",
+        "items": [
+          "Never ask it to write the bullet. Give it your sentence, your number and the posting, and ask it to rewrite that sentence in the posting's vocabulary.",
+          "Make it interview you first. Ask it to ask you five questions about the bullet before it rewrites anything, and answer them out loud. The answers are the material.",
+          "Paste the posting and ask which of your bullets map to which requirement, and which requirements have no evidence behind them at all. That gap list is worth more than any prose it will hand you.",
+          "Feed it a sample of your own writing, an email or a message you actually sent, so the draft comes back in a voice you can edit rather than one you have to fumigate.",
+          "Delete every sentence that could appear on another applicant's page unchanged. If a teacher leaving the classroom could send it as written, it is doing nothing for you.",
+          "Read the whole thing aloud. Anything you would not say to a colleague standing in front of you comes out on that pass."
+        ]
+      },
+      {
+        "type": "example",
+        "title": "Generated, then remembered",
+        "before": "Adept at leveraging strong communication skills to spearhead results-driven outcomes across diverse stakeholder populations in fast-paced clinical environments.",
+        "after": "Rebuilt the referral intake form and the evaluation schedule after the backlog hit [11] weeks, and brought it to [4] weeks in one term without adding staff."
+      },
+      {
+        "type": "callout",
+        "tone": "soft",
+        "title": "The specifics are the part no model can generate",
+        "text": "The tool was not in your IEP meetings. It does not know the caseload hit 62 in March, that you trained 14 people through the EMR switch, or that the front office would only let you touch the note template. Those details are the reason you are the only person who can send your application, and generic output erases exactly them."
+      },
+      {
         "type": "ask",
-        "label": "What they thought you were applying for",
-        "prompt": "After the seven-second test: what job did they think you were applying for?",
-        "lines": 2
+        "label": "Three details only you could write",
+        "prompt": "Write three details only you could put in an application: a number, a tool, and something you built.",
+        "lines": 4
       }
     ],
     "takeaways": [
       "The first pass is about 7.4 seconds and it only reaches the top third of page one, so rewrite the summary, skills and first three bullets first.",
       "The 75 percent auto-rejection figure comes from a 2012 sales pitch. Systems rank and humans reject, and the knockout questions on the application form are the real automatic filter.",
-      "Formatting rules exist for parsing alone: single column, standard headers, no tables or graphics.",
       "Four doubts reject career changers: retention, unmappable clinical language, no proof of investment, and salary mismatch.",
-      "Know the documented SLP band ($77,730 to $114,570, median $97,870) before a form asks you for a salary number."
+      "Use the tool to interview you, to map your bullets against the posting's requirements, and to find your gaps, not to write your sentences.",
+      "Delete any sentence that could appear unchanged on another applicant's page."
     ],
     "sources": [
       "facts",
@@ -222,83 +279,7 @@
       "Size and rate are already sitting in your calendar and your caseload. Change is the one you have to construct, out of something you quietly fixed.",
       "Rebuild one number from source rather than from memory, because the interview will ask you where it came from.",
       "Bracket anything unverified and round down when you are unsure.",
-      "The numbers you mine here feed the résumé in 3.5 and the bridge statement in Module 6."
-    ],
-    "sources": [
-      "facts",
-      "forums"
-    ]
-  },
-  {
-    "id": "4.4",
-    "tldr": "One hiring manager found 35 percent of applicants had submitted identical AI-written answers, and 62 percent of employers say they reject AI-generated materials that lack personalization. The fix is in what you feed the tool and what you delete afterwards.",
-    "blocks": [
-      {
-        "type": "p",
-        "text": "Somebody counted. A hiring manager reviewing a batch of applications found that 35 percent of candidates had submitted identical answers to the same question. Word for word, from people who had never met and who each presumably felt they had written something. Picture the moment they noticed the second one, then the fifth, then the fortieth."
-      },
-      {
-        "type": "p",
-        "text": "62 percent of employers say they reject AI-generated application materials that lack personalization, and 33.5 percent of hiring managers say they can spot AI writing in under 20 seconds. That is about how long your first paragraph lives. For a career changer a generic letter is fatal, because you are the one candidate whose application had actual explaining to do."
-      },
-      {
-        "type": "h",
-        "text": "The tell-words, and the shapes"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Adept, leverage, spearheaded, cutting-edge, results-driven. The words are harmless in themselves. A recruiter has read them two hundred times this week, in that order, with no number attached to any of them.",
-          "Adjectives sitting where a number belongs. \"Significantly improved outcomes\" is what a sentence says when nobody checked the tracker.",
-          "Everything arriving in threes: three adjectives, three-item lists, three parallel clauses in every paragraph. This is my own read rather than a documented finding, but once you notice the rhythm you cannot unnotice it, and neither can the person reading forty letters.",
-          "The five-paragraph skeleton: interest, adjectives about yourself, flattery about the company, restated résumé, look forward to discussing. Hiring managers could hum it."
-        ]
-      },
-      {
-        "type": "quote",
-        "text": "can you provide the prompts you used for ChatGPT?",
-        "from": "an SLP on a transition thread, r/SLPcareertransitions"
-      },
-      {
-        "type": "h",
-        "text": "How to use it without producing the slop"
-      },
-      {
-        "type": "steps",
-        "items": [
-          "Never ask it to write the bullet. Give it your sentence, your number and the posting, and ask it to rewrite that sentence in the posting's vocabulary.",
-          "Make it interview you first. Ask it to ask you five questions about the bullet before it rewrites anything, and answer them out loud. The answers are the material.",
-          "Paste the posting and ask which of your bullets map to which requirement, and which requirements have no evidence behind them at all. That gap list is worth more than any prose it will hand you.",
-          "Feed it a sample of your own writing, an email or a message you actually sent, so the draft comes back in a voice you can edit rather than one you have to fumigate.",
-          "Delete every sentence that could appear on another applicant's page unchanged. If a teacher leaving the classroom could send it as written, it is doing nothing for you.",
-          "Read the whole thing aloud. Anything you would not say to a colleague standing in front of you comes out on that pass."
-        ]
-      },
-      {
-        "type": "example",
-        "title": "Generated, then remembered",
-        "before": "Adept at leveraging strong communication skills to spearhead results-driven outcomes across diverse stakeholder populations in fast-paced clinical environments.",
-        "after": "Rebuilt the referral intake form and the evaluation schedule after the backlog hit [11] weeks, and brought it to [4] weeks in one term without adding staff."
-      },
-      {
-        "type": "callout",
-        "tone": "soft",
-        "title": "The specifics are the part no model can generate",
-        "text": "The tool was not in your IEP meetings. It does not know the caseload hit 62 in March, that you trained 14 people through the EMR switch, or that the front office would only let you touch the note template. Those details are the reason you are the only person who can send your application, and generic output erases exactly them."
-      },
-      {
-        "type": "ask",
-        "label": "Three details only you could write",
-        "prompt": "Write three details only you could put in an application: a number, a tool, and something you built.",
-        "lines": 4
-      }
-    ],
-    "takeaways": [
-      "62 percent of employers reject AI-generated materials that lack personalization, and a third say they spot AI writing in under 20 seconds.",
-      "One hiring manager found 35 percent of applicants had submitted word-for-word identical AI answers.",
-      "Adept, leverage, spearheaded, cutting-edge and results-driven are the documented tell-words, and adjectives standing in for numbers are the wider tell.",
-      "Use the tool to interview you, to map your bullets against the posting's requirements, and to find your gaps, not to write your sentences.",
-      "Delete any sentence that could appear unchanged on another applicant's page."
+      "The numbers you mine here feed the résumé in 4.5 and the bridge statement in Module 6."
     ],
     "sources": [
       "facts",
