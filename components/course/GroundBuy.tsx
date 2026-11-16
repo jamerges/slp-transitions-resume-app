@@ -42,8 +42,8 @@ function WorkbookPage() {
       <img
         src="/course/workbook-page.png"
         width={174}
-        height={225}
-        alt="A page of the workbook titled Why leaving isn't a wasted degree, with three prompts and lines to write on"
+        height={206}
+        alt="A page of the workbook titled Your reasons for leaving, in writing: six small actions, each with a tick box, a time and a line to write on"
         style={{ width: 174, height: "auto", flexShrink: 0, border: "1px solid var(--border)", borderRadius: 4, boxShadow: "0 2px 10px rgba(27,27,30,0.08)" }}
       />
       <div style={{ paddingTop: 4 }}>

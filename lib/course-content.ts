@@ -45,10 +45,6 @@ export const contentIds: Set<string> = new Set(ALL.map((l) => l.id));
 /** The one-line summary shown under a lesson title, taken from its TL;DR. */
 export const summaryFor = (id: string): string => BY_ID[id]?.tldr || "";
 export const hasContent = (id: string) => !!BY_ID[id];
-/** Every written-answer prompt in the course, in lesson order, for the workbook. */
-export const ASKS: { id: string; label: string; prompt: string; lines: number }[] = ALL.flatMap((l) =>
-  l.blocks.filter((b): b is Extract<Block, { type: "ask" }> => b.type === "ask")
-    .map((b) => ({ id: l.id, label: b.label, prompt: b.prompt, lines: b.lines || 3 })));
 /** Word count of the prose, for the reading-time label. */
 export const wordCount = (c: LessonContent) =>
   c.blocks.reduce((n, b) => n + ("text" in b && typeof b.text === "string" ? b.text.split(/\s+/).length : "items" in b ? (b.items as any[]).map((i) => (typeof i === "string" ? i : i.label)).join(" ").split(/\s+/).length : 0), 0) + c.tldr.split(/\s+/).length;

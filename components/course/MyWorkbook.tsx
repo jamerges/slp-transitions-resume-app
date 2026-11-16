@@ -1,289 +1,225 @@
 "use client";
+import { useEffect, useRef, useState } from "react";
 import { useProgress } from "@/lib/course-progress";
-import { PATHS } from "@/lib/quiz";
-import { STAGE_META } from "./scenes";
-import { PageShell, S, Card } from "@/components/ui";
-import { DIALS } from "@/lib/course";
-import { ASKS } from "@/lib/course-content";
-import type { CourseProduct } from "@/lib/course-tiers";
+import { PageShell, S } from "@/components/ui";
+import { MODULES, MODULE_ACCENT, lessonById, moduleOf } from "@/lib/course";
+import { canOpenLesson, type CourseProduct } from "@/lib/course-tiers";
+import { WORKBOOK, answerOf, isDone, written, timeLabel, roughly, type Ctx, type WbAction } from "./workbook-model";
 
 /**
- * Your workbook: the same pages as the blank one, with the answers you have
- * already given filled in and the rest left as lines to write on. Reads the
- * progress store directly, so it is always current, and prints to PDF from
- * the browser rather than needing a generated file.
+ * Your workbook. Until 2026-11-15 this was labels over blank lines; now it is a
+ * list of small actions (components/course/workbook-model.ts), each with a tick
+ * box, a time, one line on why, and the answer you gave or a short place to
+ * write one. The tick boxes follow what you did in the lessons. Fields that no
+ * lesson saves are typed here and saved with everything else.
+ *
+ * `blank` renders the same pages with nothing filled in, which is what the
+ * blank PDFs are printed from. `printPreview` shows the print layout on screen.
  */
-const FLOORS = ["Match my SLP pay from day one", "A small dip for better conditions", "Runway for a bigger jump"];
-const VERDICT_LABEL: Record<string, string> = { workplace: "Bad workplace", fit: "Bad fit", season: "Bad season" };
-const TRADE_LABELS = [
-  { key: "move", text: "move to a new city for the right role" },
-  { key: "dip", text: "take a dip in pay for the right first door" },
-  { key: "benefits", text: "go without employer benefits for a while" },
-  { key: "commute", text: "commute again" },
-  { key: "remote", text: "work fully remote" },
-  { key: "office", text: "be in an office most days" },
-];
-const money = (n: number) => "$" + Math.round(n).toLocaleString("en-US");
-// The people list's stages, in the words the tracker uses.
-const PERSON_STAGE: Record<string, string> = { to: "to message", sent: "messaged", replied: "replied", spoke: "spoke", warm: "warm", referred: "referred you", closed: "closed" };
-const APP_STATUS: Record<string, string> = { sent: "sent", screen: "phone screen", interview: "interview", offer: "offer", no: "no" };
-const ticked = (v: unknown) => (Array.isArray(v) ? `${v.filter(Boolean).length} of ${v.length} checked` : null);
+const serif = "'Playfair Display', Georgia, serif";
+const EMPTY: Ctx = { A: {}, SH: {}, completed: [], actions: [] };
 
-function Line({ n = 1 }: { n?: number }) {
-  return <>{Array.from({ length: n }).map((_, i) => <div key={i} style={{ borderBottom: "1px solid var(--border)", height: 26 }} />)}</>;
+// One set of print rules, applied when printing and (for checking layout) under .wb-as-print.
+const printRules = (scope: string) => `
+  ${scope} .no-print { display: none !important; }
+  ${scope} .wb-screen { display: none !important; }
+  ${scope} .wb-print { display: block !important; }
+  ${scope} .wb-sheet { box-shadow: none !important; border: none !important; padding: 0 !important; background: transparent !important; }
+  ${scope} .wb-module { break-before: page; page-break-before: always; padding-top: 0 !important; border-top: none !important; }
+  ${scope} .wb-card { break-inside: avoid; page-break-inside: avoid; }
+`;
+const CSS = `
+  .wb-print { display: none; }
+  @media print {
+    header, footer, nav, .slp-head, .slp-foot { display: none !important; }
+    body { background: #fff !important; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    ${printRules("")}
+  }
+  ${printRules(".wb-as-print")}
+  @page { size: Letter; margin: 0.6in; }
+`;
+
+function Lines({ n }: { n: number }) {
+  return <>{Array.from({ length: n }).map((_, i) => <div key={i} style={{ borderBottom: "1px solid #B9B7A4", height: 28 }} />)}</>;
 }
-function Field({ label, value, lines = 1 }: { label: string; value?: string | null; lines?: number }) {
+
+/** A field of the workbook's own: types on screen, prints as text or as lines to write on. */
+function WriteIn({ a, value, blank, onSave }: { a: WbAction; value: string; blank: boolean; onSave: (text: string) => void }) {
+  const w = a.write!;
+  const [text, setText] = useState(value);
+  const focused = useRef(false);
+  useEffect(() => { if (!focused.current) setText(value); }, [value]);
+  useEffect(() => {
+    if (text === value) return;
+    const t = setTimeout(() => onSave(text), 600);
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [text]);
+  const id = `wb-${a.id}`;
   return (
-    <div style={{ marginBottom: 14 }}>
-      <div style={{ fontSize: 12.5, fontWeight: 600, color: "var(--muted)", marginBottom: 4 }}>{label}</div>
-      {value ? <div style={{ fontSize: 15, lineHeight: 1.6, whiteSpace: "pre-wrap" }}>{value}</div> : <Line n={lines} />}
+    <div style={{ marginTop: 10 }}>
+      {w.label && <label htmlFor={id} style={{ display: "block", fontSize: 13, fontWeight: 600, marginBottom: 4 }}>{w.label}</label>}
+      {!blank && (
+        <textarea id={id} className="wb-screen" aria-label={w.label ? undefined : a.do} value={text} rows={w.lines} placeholder={w.hint || "Write it here. It saves as you type."}
+          onFocus={() => { focused.current = true; }} onBlur={() => { focused.current = false; }}
+          onChange={(e) => setText(e.target.value)}
+          style={{ width: "100%", padding: "9px 11px", border: "1px solid var(--border)", borderRadius: 10, fontFamily: "inherit", fontSize: 15, lineHeight: 1.5, resize: "vertical", background: "var(--bg)", display: "block" }} />
+      )}
+      <div className={blank ? undefined : "wb-print"}>
+        {!blank && text.trim()
+          ? <div style={{ fontSize: 14.5, lineHeight: 1.55, whiteSpace: "pre-wrap" }}>{text}</div>
+          : <>{w.hint && <div style={{ fontSize: 12, color: "var(--muted)", marginBottom: 2 }}>{w.hint}</div>}<Lines n={w.lines} /></>}
+      </div>
     </div>
   );
 }
-function Section({ n, title, sub, children }: { n: number; title: string; sub?: string; children: React.ReactNode }) {
+
+function Card({ a, c, blank, onSave, href }: { a: WbAction; c: Ctx; blank: boolean; onSave: (a: WbAction, text: string) => void; href: string | null }) {
+  const done = isDone(a, c);
+  const lines = answerOf(a, c);
   return (
-    <section style={{ breakInside: "avoid", marginBottom: 26, paddingBottom: 18, borderBottom: "1px solid var(--border)" }}>
-      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)" }}>Page {n}</div>
-      <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 21, fontWeight: 700, margin: "3px 0 2px" }}>{title}</h2>
-      {sub && <p style={{ fontSize: 13, color: "var(--muted)", margin: "0 0 12px", lineHeight: 1.55 }}>{sub}</p>}
-      {children}
-    </section>
+    <div className="wb-card" style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "14px 16px", marginBottom: 10, background: "var(--card)", border: `1px solid ${done ? "var(--accent-bg)" : "var(--border)"}`, borderRadius: 12 }}>
+      <span aria-hidden style={{ flexShrink: 0, width: 22, height: 22, marginTop: 1, borderRadius: 6, border: `2px solid ${done ? "var(--accent)" : "#8E9488"}`, background: done ? "var(--accent)" : "#fff", color: "#fff", fontSize: 14, fontWeight: 700, lineHeight: "18px", textAlign: "center" }}>{done ? "✓" : ""}</span>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ display: "flex", gap: 10, alignItems: "baseline", justifyContent: "space-between", flexWrap: "wrap" }}>
+          <div style={{ fontSize: 16, fontWeight: 600, lineHeight: 1.35, flex: "1 1 150px" }}>
+            <span style={{ position: "absolute", left: -9999 }}>{done ? "Done: " : "To do: "}</span>{a.do}
+          </div>
+          <span style={{ flexShrink: 0, fontSize: 12, fontWeight: 600, color: "var(--muted)", background: "var(--accent-bg-subtle)", borderRadius: 999, padding: "2px 9px", whiteSpace: "nowrap" }}>{timeLabel(a)}</span>
+        </div>
+        <div style={{ fontSize: 13.5, lineHeight: 1.5, color: "var(--muted)", marginTop: 3 }}>{a.why}</div>
+        {lines.length > 0 && (
+          <div style={{ marginTop: 9, padding: "8px 12px", background: "var(--accent-bg-subtle)", borderLeft: "3px solid var(--accent)", borderRadius: 6 }}>
+            {lines.map((t, i) => <div key={i} style={{ fontSize: 14.5, lineHeight: 1.55, wordBreak: "break-word" }}>{t}</div>)}
+          </div>
+        )}
+        {a.write && <WriteIn a={a} value={written(a, c)} blank={blank} onSave={(t) => onSave(a, t)} />}
+        {/* A blank copy gets a line wherever the lesson would have saved an answer. */}
+        {!a.write && blank && a.answer && !a.done && <div style={{ marginTop: 6 }}><Lines n={1} /></div>}
+        {(a.next || href) && (
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "baseline", marginTop: 8, fontSize: 12.5, color: "var(--muted)" }}>
+            {href && !done && <a className="no-print" href={href} style={{ color: "var(--accent)", fontWeight: 600 }}>Open lesson {a.lesson} {"→"}</a>}
+            {a.next && <span>Used later: {a.next}</span>}
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
 
-export default function MyWorkbook({ product }: { product?: CourseProduct }) {
-  const { p, ready } = useProgress();
-  if (!ready) return <PageShell><div style={{ ...S.wrap, padding: 40 }}>Loading your answers…</div></PageShell>;
+export default function MyWorkbook({ product, blank = false, printPreview = false }: { product?: CourseProduct; blank?: boolean; printPreview?: boolean }) {
+  const { p, ready, saveAnswer } = useProgress();
+  // Fields save into the same shared slot the lesson tools use. A ref holds the
+  // newest copy so two fields saving close together don't overwrite each other.
+  const sharedRef = useRef<Record<string, any>>({});
+  useEffect(() => { sharedRef.current = (p.answers as any).__shared || {}; }, [p.answers]);
+  const onSave = (a: WbAction, text: string) => {
+    const key = a.write?.note ? "notes" : "wb";
+    const slot = a.write?.note || a.id;
+    sharedRef.current = { ...sharedRef.current, [key]: { ...(sharedRef.current[key] || {}), [slot]: text } };
+    saveAnswer("__shared", sharedRef.current);
+  };
+
+  if (!ready) return <PageShell><div style={{ ...S.wrap, padding: 40 }}>Loading your answers{"…"}</div></PageShell>;
+
   const A = p.answers as Record<string, any>;
-  const start = A["0.2"] || {}, tree = A["0.3"] || {}, sunk = A["1.3"] || {};
-  const energy = A["1.4"] || {}, dials = A["1.5"] || {}, told = A["1.7"] || {}, cp = A["1.8"] || {};
-  const stageKey = A["1.1"]?.stage || start.stage;
-  const stage = STAGE_META.find((s) => s.key === stageKey);
-  const marks: Record<string, "up" | "down"> = energy.energy || {};
-  const gave = Object.keys(marks).filter((k) => marks[k] === "up");
-  const took = Object.keys(marks).filter((k) => marks[k] === "down");
-  const top: string[] = dials.top || [];
-  // Modules 2 to 7. Tools save into one shared slot; written answers sit in notes by lesson id.
-  const SH: Record<string, any> = A.__shared || {};
-  const notes: Record<string, string> = SH.notes || {};
-  const note = (id: string) => (notes[id] || "").trim() || null;
-  const Ask = ({ id }: { id: string }) => { const a = ASKS.find((x) => x.id === id); return a ? <Field label={a.label} value={note(id)} lines={a.lines} /> : null; };
-  const hours = Number(SH.time?.hours) || 0;
-  const pathSlug: string | undefined = start.path || top[0];
-  const people: any[] = Array.isArray(SH.contacts) ? SH.contacts.filter((c: any) => c?.name) : [];
-  const apps: any[] = Array.isArray(SH.apps) ? SH.apps.filter((a: any) => a?.company) : [];
-  const numbers: [string, string][] = Object.entries((SH.numbers || {}) as Record<string, string>).filter(([, v]) => (v || "").trim());
-  const run = SH.runway;
-  const gap = run ? run.expenses * (run.dip / 100) + run.cobra + run.loan : 0;
-  const artifact = SH.artifact?.link ? SH.artifact : null;
-  const bridge = SH.bridge?.prep || SH.bridge?.win ? SH.bridge : null;
-  const has = (ids: string[]) => ids.some((id) => note(id));
-  const later = [
-    hours > 0 || has(["2.1", "2.5"]),
-    people.length > 0 || !!SH.linkedin,
-    numbers.length > 0 || !!SH.translation?.out || apps.length > 0 || has(["4.1"]),
-    !!artifact || !!run,
-    !!bridge || !!SH.offer || has(["6.1"]),
-    has(["7.2"]),
-  ];
-  // The full program prints every page. A kit shows the later pages its lessons have written to.
-  const full = product === "os";
-  const show = (i: number) => full || later[i];
-  const first = [stage, tree.verdict, sunk.years != null, gave.length, top.length, told.who, cp.why].filter(Boolean).length;
-  const filled = first + later.filter(Boolean).length;
-  const total = 7 + (full ? 6 : later.filter(Boolean).length);
+  const c: Ctx = blank ? EMPTY : { A, SH: A.__shared || {}, completed: p.completed, actions: p.actions };
+  const access = product ? { product } : null;
+  // The edition: every action whose lesson this reader can open.
+  const mods = WORKBOOK.map((m) => ({ ...m, actions: m.actions.filter((a) => canOpenLesson(a.lesson, m.n, access)) })).filter((m) => m.actions.length);
+  const all = mods.flatMap((m) => m.actions);
+  const doneN = all.filter((a) => isDone(a, c)).length;
+  const left = all.filter((a) => !isDone(a, c));
+  const minutesLeft = left.reduce((n, a) => n + a.minutes, 0);
+  const hrefOf = (a: WbAction) => { const l = lessonById(a.lesson); return l ? `/course/${moduleOf(l).slug}/${l.id}` : null; };
+  const today = new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 
   return (
     <PageShell>
-      <style>{`
-        @media print { .no-print { display: none !important; } header, footer, nav { display: none !important; }
-          body { background:#fff !important; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .sheet { box-shadow:none !important; border:none !important; padding:0 !important; } }
-        @page { size: Letter; margin: 0.7in; }
-      `}</style>
-      <div style={{ ...S.wrap, maxWidth: 680 }}>
+      <style>{CSS}</style>
+      <div className={printPreview ? "wb-as-print" : undefined} style={{ ...S.wrap, maxWidth: 720 }}>
         <div className="no-print" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap", margin: "8px 0 14px" }}>
-          <div style={{ fontSize: 13, color: "var(--muted)" }}>
-            {filled === 0 ? "Nothing filled in yet. Your answers appear here as you work through the lessons." : `${filled} of ${total} pages have your answers on them. Blank lines are for the parts worth writing by hand.`}
+          <a href="/course" style={{ fontSize: 13.5, color: "var(--accent)", fontWeight: 600 }}>{"←"} Your lessons</a>
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            {!blank && product !== "free" && <a href="/api/course/workbook?f=pdf" style={{ ...S.btnOut, padding: "10px 16px", fontSize: 14, textDecoration: "none" }}>Blank copy (PDF)</a>}
+            <button type="button" onClick={() => window.print()} style={{ ...S.btn, padding: "10px 18px", fontSize: 14 }}>Print or save as PDF</button>
           </div>
-          <button type="button" onClick={() => window.print()} style={{ ...S.btn, padding: "11px 22px", fontSize: 14.5 }}>Print or save as PDF</button>
         </div>
 
-        <Card style={{ padding: 28 }}>
-          <div className="sheet">
-            <div style={{ background: "var(--accent)", color: "#fff", padding: "22px 26px", marginBottom: 24 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", paddingBottom: 12, borderBottom: "1px solid var(--accent-light)" }}>
-                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent-bg)" }}>Workbook</div>
-                <div style={{ fontSize: 11, letterSpacing: "0.08em", color: "#B3C4B1" }}>{new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</div>
-              </div>
-              <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 34, fontWeight: 700, margin: "20px 0 0", letterSpacing: "-0.02em" }}>Transition OS</h1>
-              <div style={{ width: 54, height: 3, background: "var(--accent-bg)", margin: "14px 0 0" }} />
-              <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 16, lineHeight: 1.45, color: "var(--accent-bg)", margin: "14px 0 0" }}>Your answers so far, with blank lines where you have not written one yet.</p>
+        <div className="wb-sheet" style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: 16, padding: "22px 20px" }}>
+          {/* Cover */}
+          <div style={{ background: "var(--accent)", color: "#fff", padding: "22px 24px", borderRadius: 10 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, paddingBottom: 12, borderBottom: "1px solid var(--accent-light)" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent-bg)" }}>Transition OS</div>
+              {!blank && <div style={{ fontSize: 11, letterSpacing: "0.06em", color: "var(--accent-bg)" }}>{today}</div>}
             </div>
-
-            <Section n={1} title="Your starting line" sub="From lesson 0.2.">
-              <Field label="What you really earn per hour now" value={start.hourly > 0 ? `$${Number(start.hourly).toFixed(2)} an hour, over ${Math.round((start.hours || 0) * (start.weeks || 0)).toLocaleString("en-US")} hours a year` : null} />
-              <Field label="The income floor the next job has to clear" value={start.floor >= 0 ? FLOORS[start.floor] + (start.floorDollars > 0 ? ` · about ${money(start.floorDollars)} a year before tax` : "") : null} />
-              <Field label="The date you are aiming at" value={start.date || null} />
-              <Field label="What you would trade" value={start.trades && Object.keys(start.trades).length ? TRADE_LABELS.filter((t) => start.trades[t.key] !== undefined).map((t) => `${start.trades[t.key] ? "Yes" : "No"}: ${t.text}`).join("\n") : null} lines={3} />
-            </Section>
-
-            <Section n={2} title="Where you are, and the verdict" sub="From lessons 1.1 and 0.3.">
-              <Field label="The stage you named" value={stage ? `${stage.n}. ${stage.name}: “${stage.belief}”` : null} />
-              <Field label="Bad workplace, bad fit, or bad season" value={tree.verdict ? VERDICT_LABEL[tree.verdict] : null} />
-              <Field label="What you would say to a CF who told you the same thing" lines={4} />
-            </Section>
-
-            <Section n={3} title="Why leaving isn’t a wasted degree" sub="From lesson 1.3.">
-              {sunk.years != null && (
-                <div style={{ fontSize: 14, color: "var(--muted)", marginBottom: 12, lineHeight: 1.6 }}>
-                  {sunk.years} years in · {money(sunk.debt || 0)} of debt · {money(sunk.salary || 0)} now
-                  {sunk.path && PATHS[sunk.path] ? ` · comparing against ${PATHS[sunk.path].label}` : ""}
-                </div>
-              )}
-              <Field label="Write it exactly as it sounds in your head. Not the reasonable version." lines={4} />
-              <Field label="Who taught you that sentence?" lines={2} />
-            </Section>
-
-            <Section n={4} title="What gave you energy, and what took it" sub="From lesson 1.4.">
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-                <div>
-                  <div style={{ fontSize: 12.5, fontWeight: 700, color: "var(--accent)", marginBottom: 6 }}>Gave energy</div>
-                  {gave.length ? gave.map((t) => <div key={t} style={{ fontSize: 14, lineHeight: 1.6 }}>· {t}</div>) : <Line n={4} />}
-                </div>
-                <div>
-                  <div style={{ fontSize: 12.5, fontWeight: 700, color: "#92400E", marginBottom: 6 }}>Took it</div>
-                  {took.length ? took.map((t) => <div key={t} style={{ fontSize: 14, lineHeight: 1.6 }}>· {t}</div>) : <Line n={4} />}
-                </div>
-              </div>
-              <div style={{ marginTop: 14 }}>
-                <div style={{ fontSize: 12.5, fontWeight: 600, color: "var(--muted)", marginBottom: 4 }}>What two people said you are good at, in their words</div>
-                {energy.outside ? <div style={{ fontSize: 15, lineHeight: 1.6, whiteSpace: "pre-wrap" }}>{energy.outside}</div> : <Line n={3} />}
-              </div>
-            </Section>
-
-            <Section n={5} title="What you can’t afford to lose" sub="From lesson 1.5.">
-              {dials.dials ? (
-                <div style={{ marginBottom: 12 }}>
-                  {DIALS.map((d: any) => (
-                    <div key={d.key} style={{ display: "flex", justifyContent: "space-between", fontSize: 14, padding: "4px 0", borderBottom: "1px solid var(--border)" }}>
-                      <span>{d.label}</span><span style={{ color: "var(--muted)" }}>{dials.dials[d.key]} / 100</span>
-                    </div>
-                  ))}
-                </div>
-              ) : <Line n={4} />}
-              <Field label="The three paths that came out of it" value={top.length ? top.map((sl) => PATHS[sl]?.label).filter(Boolean).join(", ") : null} />
-            </Section>
-
-            <Section n={6} title="What you’ll miss, and who you told" sub="From lessons 1.6 and 1.7.">
-              <Field label="Finish the sentence: I will miss being the person who …" lines={3} />
-              <Field label="The person you told" value={told.who || null} />
-              <Field label="What they said back" lines={3} />
-              <Field label="Kept private" value={Array.isArray(told.private) ? `${told.private.filter(Boolean).length} of ${told.private.length} settings and habits in place` : null} />
-            </Section>
-
-            <Section n={7} title="Pushes, pulls, and the sentence" sub="From the Module 1 checkpoint.">
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 14 }}>
-                <div>
-                  <div style={{ fontSize: 12.5, fontWeight: 700, color: "#B42318", marginBottom: 6 }}>Moving away from</div>
-                  {(cp.pushes || []).length ? cp.pushes.map((x: string, i: number) => <div key={i} style={{ fontSize: 14, lineHeight: 1.6 }}>{i + 1}. {x}</div>) : <Line n={3} />}
-                </div>
-                <div>
-                  <div style={{ fontSize: 12.5, fontWeight: 700, color: "#1E40AF", marginBottom: 6 }}>Moving toward</div>
-                  {(cp.pulls || []).length ? cp.pulls.map((x: string, i: number) => <div key={i} style={{ fontSize: 14, lineHeight: 1.6 }}>{i + 1}. {x}</div>) : <Line n={3} />}
-                </div>
-              </div>
-              <Field label="Where you're going, in one sentence" value={cp.why || null} lines={3} />
-            </Section>
-
-            {show(0) && (
-              <Section n={8} title="Your hours, and the paths you’re weighing" sub="From Module 2.">
-                <Field label="Hours a week you gave the search" value={hours > 0 ? `${hours} hours a week` : null} />
-                <Field label="The path you’re aiming at" value={pathSlug && PATHS[pathSlug] ? `${PATHS[pathSlug].label} · ${PATHS[pathSlug].range} · typically ${PATHS[pathSlug].timeline}` : null} />
-                <Ask id="2.1" /><Ask id="2.5" />
-              </Section>
-            )}
-
-            {show(1) && (
-              <Section n={9} title="The people who already made the move" sub="From Module 3. The full list, with what each person said, is under Your people.">
-                {people.length ? (
-                  <div style={{ marginBottom: 12 }}>
-                    {people.slice(0, 14).map((c: any, i: number) => (
-                      <div key={i} style={{ display: "flex", justifyContent: "space-between", gap: 12, fontSize: 14, padding: "4px 0", borderBottom: "1px solid var(--border)" }}>
-                        <span>{c.name}{c.role || c.company ? <span style={{ color: "var(--muted)" }}> · {[c.role, c.company].filter(Boolean).join(", ")}</span> : null}</span>
-                        <span style={{ color: "var(--muted)", flexShrink: 0 }}>{PERSON_STAGE[c.stage] || (c.replied ? "replied" : c.sent ? "messaged" : "to message")}</span>
-                      </div>
-                    ))}
-                    {people.length > 14 && <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 6 }}>and {people.length - 14} more in your list</div>}
-                  </div>
-                ) : <Field label="Three people to message first: name, title, company" lines={3} />}
-                <Field label="LinkedIn, one pass" value={ticked(SH.linkedin)} />
-                <Field label="What the first person who answered told you" lines={3} />
-              </Section>
-            )}
-
-            {show(2) && (
-              <Section n={10} title="Your résumé, in their words" sub="From Module 4.">
-                {numbers.length ? (
-                  <div style={{ marginBottom: 14 }}>
-                    <div style={{ fontSize: 12.5, fontWeight: 600, color: "var(--muted)", marginBottom: 4 }}>Numbers you already have</div>
-                    {numbers.map(([k, v]) => (
-                      <div key={k} style={{ display: "flex", justifyContent: "space-between", gap: 12, fontSize: 14, padding: "4px 0", borderBottom: "1px solid var(--border)" }}>
-                        <span>{k}</span><span style={{ fontWeight: 600, flexShrink: 0 }}>{v}</span>
-                      </div>
-                    ))}
-                  </div>
-                ) : <Field label="Numbers you already have: caseload, evaluations a year, people you trained" lines={3} />}
-                <Field label="One bullet, before" value={SH.translation?.mine || null} lines={2} />
-                <Field label="The same bullet, translated" value={SH.translation?.out || null} lines={2} />
-                <Ask id="4.1" />
-                <Field label="The résumé, one pass" value={ticked(SH.resume)} />
-                {apps.length ? (
-                  <div style={{ marginBottom: 14 }}>
-                    <div style={{ fontSize: 12.5, fontWeight: 600, color: "var(--muted)", marginBottom: 4 }}>Applications sent</div>
-                    {apps.slice(0, 14).map((a: any, i: number) => (
-                      <div key={i} style={{ display: "flex", justifyContent: "space-between", gap: 12, fontSize: 14, padding: "4px 0", borderBottom: "1px solid var(--border)" }}>
-                        <span>{a.role ? `${a.role}, ` : ""}{a.company}</span><span style={{ color: "var(--muted)", flexShrink: 0 }}>{APP_STATUS[a.status] || a.status}</span>
-                      </div>
-                    ))}
-                  </div>
-                ) : <Field label="The first application you sent properly: role, company, date" lines={2} />}
-              </Section>
-            )}
-
-            {show(3) && (
-              <Section n={11} title="Your proof, and your runway" sub="From Module 5.">
-                <Field label="The thing you made, and where it lives" value={artifact ? `${PATHS[artifact.slug]?.label ? PATHS[artifact.slug].label + ": " : ""}${artifact.link}` : null} lines={2} />
-                <Field label="Your runway" value={run ? `${money(run.savings)} saved against a gap of ${money(gap)} a month${gap > 0 ? `: about ${Math.floor(run.savings / gap)} months` : ""}` : null} lines={2} />
-              </Section>
-            )}
-
-            {show(4) && (
-              <Section n={12} title="The interview, and the offer" sub="From Module 6.">
-                <Field label="What you did to prepare for the move" value={bridge?.prep || null} lines={2} />
-                <Field label="Your proof, with a number in it" value={bridge?.win || null} lines={2} />
-                <Ask id="6.1" />
-                <Field label="Before you say yes" value={ticked(SH.offer)} />
-                <Field label="Your opening number, and the floor you won’t go under" lines={2} />
-              </Section>
-            )}
-
-            {show(5) && (
-              <Section n={13} title="Your first ninety days, and after" sub="From Module 7.">
-                <Ask id="7.2" />
-              </Section>
-            )}
-
-            <div style={{ fontSize: 11.5, color: "var(--muted)", lineHeight: 1.5 }}>
-              Print this again at weeks 6 and 12, so one bad Tuesday does not decide it.
-            </div>
+            <h1 style={{ fontFamily: serif, fontSize: 34, fontWeight: 700, margin: "18px 0 0", letterSpacing: "-0.02em" }}>Your workbook</h1>
+            <p style={{ fontFamily: serif, fontSize: 16.5, lineHeight: 1.45, color: "var(--accent-bg)", margin: "10px 0 0" }}>
+              {all.length} small actions. Each one has a time on it and a box to tick.
+            </p>
           </div>
-        </Card>
 
-        <div className="no-print" style={{ textAlign: "center", margin: "14px 0 34px", fontSize: 13.5 }}>
-          <a href="/course" style={{ color: "var(--accent)", fontWeight: 600 }}>← Your lessons</a>
-          <span style={{ color: "var(--light)", margin: "0 10px" }}>·</span>
-          <a href="/api/course/workbook?f=pdf" style={{ color: "var(--accent)", fontWeight: 600 }}>Blank copy to write in (PDF)</a>
+          {/* Where you are */}
+          {!blank ? (
+            <div style={{ margin: "18px 0 6px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
+                <div style={{ fontFamily: serif, fontSize: 22, fontWeight: 700 }}>{doneN} of {all.length} done</div>
+                <div style={{ fontSize: 13.5, color: "var(--muted)" }}>{left.length ? `${roughly(minutesLeft)} of actions left` : "Every action is ticked."}</div>
+              </div>
+              <div style={{ height: 8, background: "var(--accent-bg-subtle)", borderRadius: 4, overflow: "hidden", marginTop: 8 }}>
+                <div style={{ height: "100%", width: `${all.length ? (doneN / all.length) * 100 : 0}%`, background: "var(--accent)" }} />
+              </div>
+            </div>
+          ) : (
+            <div style={{ margin: "18px 0 6px", fontSize: 14.5, lineHeight: 1.6 }}>
+              <strong>How to use it.</strong> Do one action at a time, in order. Write the answer in the space under it and tick the box. Print it again at weeks 6 and 12 and see what changed.
+            </div>
+          )}
+
+          {/* The stops: one chip per module, linking down the page */}
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap", margin: "12px 0 4px" }}>
+            {mods.map((m) => { const d = m.actions.filter((a) => isDone(a, c)).length, acc = MODULE_ACCENT[m.n]; const mod = MODULES.find((x) => x.n === m.n)!; return (
+              <a key={m.n} href={`#wb-m${m.n}`} style={{ flex: "1 1 76px", textDecoration: "none", color: acc.ink, background: acc.tint, border: `1px solid ${acc.edge}`, borderRadius: 10, padding: "7px 8px", textAlign: "center" }}>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.04em" }}>{m.n} {"·"} {mod.title}</div>
+                <div style={{ fontSize: 12, marginTop: 1 }}>{blank ? `${m.actions.length} actions` : `${d} of ${m.actions.length}`}</div>
+              </a>
+            ); })}
+          </div>
+
+          {/* Do next: the first three boxes still empty */}
+          {!blank && left.length > 0 && (
+            <div className="no-print" style={{ margin: "16px 0 4px", padding: "14px 16px", border: "1.5px solid var(--accent)", borderRadius: 12, background: "var(--accent-bg-subtle)" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 8 }}>Do next</div>
+              {left.slice(0, 3).map((a) => (
+                <a key={a.id} href={hrefOf(a) || "#"} style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "baseline", padding: "6px 0", borderTop: "1px solid var(--accent-bg)", textDecoration: "none", color: "var(--text)" }}>
+                  <span style={{ fontSize: 15, fontWeight: 600 }}>{a.do}</span>
+                  <span style={{ flexShrink: 0, fontSize: 12.5, color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}>{timeLabel(a)} {"→"}</span>
+                </a>
+              ))}
+            </div>
+          )}
+
+          {/* One page per module */}
+          {mods.map((m) => { const mod = MODULES.find((x) => x.n === m.n)!, acc = MODULE_ACCENT[m.n]; const d = m.actions.filter((a) => isDone(a, c)).length; const mins = m.actions.reduce((n, a) => n + a.minutes, 0); return (
+            <section key={m.n} id={`wb-m${m.n}`} className="wb-module" style={{ paddingTop: 22, marginTop: 22, borderTop: "1px solid var(--border)" }}>
+              <div style={{ height: 4, width: 70, borderRadius: 2, background: acc.edge, marginBottom: 10 }} aria-hidden />
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: acc.ink }}>Module {m.n} {"·"} {mod.title} {"·"} {mod.week}</div>
+                <div style={{ fontSize: 12.5, color: "var(--muted)" }}>{blank ? `${m.actions.length} actions · ${roughly(mins)}` : `${d} of ${m.actions.length} done`}</div>
+              </div>
+              <h2 style={{ fontFamily: serif, fontSize: 23, fontWeight: 700, lineHeight: 1.25, margin: "4px 0 14px" }}>{m.outcome}</h2>
+              {m.actions.map((a) => <Card key={a.id} a={a} c={c} blank={blank} onSave={onSave} href={blank ? null : hrefOf(a)} />)}
+            </section>
+          ); })}
+
+          <div style={{ fontSize: 12, color: "var(--muted)", lineHeight: 1.5, marginTop: 14 }}>
+            {product === "ground"
+              ? "This is the workbook for your kit. The full program adds the actions for the rest of the ninety days."
+              : "Print this again at weeks 6 and 12, so one bad Tuesday does not decide it."}
+          </div>
         </div>
+        <div className="no-print" style={{ height: 30 }} />
       </div>
     </PageShell>
   );

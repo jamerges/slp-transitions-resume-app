@@ -218,7 +218,7 @@ export function PageShell({ children, wide = false }: { children: ReactNode; wid
 
       {/* Footer deliberately has no nav — the header already carries it, and on
           short pages the two menus stacked and read as a duplicate. */}
-      <div style={{ ...wrap, padding: "28px 0", borderTop: "1px solid var(--border)", marginTop: 32, textAlign: "center" }}>
+      <div className="slp-foot" style={{ ...wrap, padding: "28px 0", borderTop: "1px solid var(--border)", marginTop: 32, textAlign: "center" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 8 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo-icon.png" alt="" width={18} height={18} style={{ display: "block" }} />
