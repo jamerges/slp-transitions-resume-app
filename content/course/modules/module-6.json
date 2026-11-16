@@ -288,6 +288,12 @@
       {
         "type": "p",
         "text": "Pick the two questions above you would fumble today, write your answers longhand, then cut them by half. Short and specific beats complete every time."
+      },
+      {
+        "type": "ask",
+        "label": "The two questions you'd fumble, answered",
+        "prompt": "Write the two questions you would fumble today, and answer each in two sentences.",
+        "lines": 6
       }
     ],
     "takeaways": [
@@ -681,6 +687,12 @@
       {
         "type": "p",
         "text": "You will also, at some point in the first year, miss a patient or a student. That means you cared about the work, which is the same thing that made you good at it and is now making you good at this."
+      },
+      {
+        "type": "ask",
+        "label": "Your visible win by day sixty",
+        "prompt": "In the job you're aiming at, what visible win could you bank by day sixty?",
+        "lines": 3
       }
     ],
     "takeaways": [

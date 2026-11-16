@@ -2,7 +2,7 @@
 // Renders a lesson's JSON content (content/course/LESSON_SPEC.md). Built to be
 // skimmed: a TL;DR card first, numbered section headings, stat tiles, and a
 // takeaways card at the end. Body text stays short and well spaced.
-import { useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { PATHS } from "@/lib/quiz";
 import { pathImage } from "@/lib/quiz";
 import type { Block, LessonContent } from "@/lib/course-content";
@@ -47,13 +47,13 @@ export function Blocks({ content, pathSlug, tools }: { content: LessonContent; p
   return (
     <div>
       <Tldr text={content.tldr} />
-      {content.blocks.map((b, i) => <BlockView key={i} b={b} n={b.type === "h" ? ++h : h} pathSlug={pathSlug} tools={tools} />)}
+      {content.blocks.map((b, i) => <BlockView key={i} b={b} n={b.type === "h" ? ++h : h} pathSlug={pathSlug} tools={tools} lessonId={content.id} />)}
       <Takeaways items={content.takeaways} />
     </div>
   );
 }
 
-function BlockView({ b, n, pathSlug, tools }: { b: Block; n: number; pathSlug?: string; tools: Record<string, any> }) {
+function BlockView({ b, n, pathSlug, tools, lessonId }: { b: Block; n: number; pathSlug?: string; tools: Record<string, any>; lessonId: string }) {
   switch (b.type) {
     case "p": return <P><Inline text={b.text} /></P>;
     case "h": return (
@@ -125,9 +125,45 @@ function BlockView({ b, n, pathSlug, tools }: { b: Block; n: number; pathSlug?: 
       </div>
     ); }
     case "bypath": return <ByPath title={b.title} note={b.note} items={b.items} pathSlug={pathSlug} />;
+    case "ask": return <Ask id={lessonId} prompt={b.prompt} lines={b.lines || 3} shared={tools.shared} setShared={tools.setShared} />;
     case "tool": return <div style={{ margin: "4px 0 24px" }}><Tool name={b.name} pathSlug={pathSlug} shared={tools.shared} setShared={tools.setShared} finish={tools.finish} done={tools.done} synced={tools.synced} /></div>;
     default: return null;
   }
+}
+
+/** One written answer. It saves as you type and prints in the workbook under this
+ *  lesson, so a reading lesson still ends with something on paper. */
+function Ask({ id, prompt, lines, shared, setShared }: { id: string; prompt: string; lines: number; shared: Record<string, any>; setShared: (k: string, v: any) => void }) {
+  const saved: string = (shared.notes || {})[id] || "";
+  const [text, setText] = useState(saved);
+  const [state, setState] = useState<"idle" | "saved">("idle");
+  const latest = useRef({ shared, setShared });
+  latest.current = { shared, setShared };
+  // The store hydrates after first paint: take its value once it arrives.
+  const hydrated = useRef(false);
+  useEffect(() => { if (!hydrated.current && saved) { hydrated.current = true; setText(saved); } }, [saved]);
+  useEffect(() => {
+    if (text === saved) return;
+    const t = setTimeout(() => {
+      const cur = latest.current;
+      cur.setShared("notes", { ...(cur.shared.notes || {}), [id]: text });
+      hydrated.current = true;
+      setState("saved");
+    }, 700);
+    return () => clearTimeout(t);
+  }, [text, saved, id]);
+  const fieldId = `ask-${id}`;
+  return (
+    <div style={{ margin: "8px 0 24px", border: "1.5px solid var(--accent)", borderRadius: 14, background: "var(--card)", padding: "16px 18px" }}>
+      <label htmlFor={fieldId} style={{ display: "block", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 6 }}>Write it down</label>
+      <div style={{ fontSize: 16, lineHeight: 1.55, fontWeight: 600, marginBottom: 10 }}>{prompt}</div>
+      <textarea id={fieldId} value={text} onChange={(e) => { setText(e.target.value); setState("idle"); }} rows={lines}
+        style={{ width: "100%", padding: "10px 12px", border: "1px solid var(--border)", borderRadius: 10, fontFamily: font.sans, fontSize: 15.5, lineHeight: 1.55, resize: "vertical", background: "var(--bg)" }} />
+      <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 6 }}>
+        {state === "saved" || (saved && text === saved) ? <>Saved. It prints in <a href="/course/workbook" style={{ color: "var(--accent)", fontWeight: 600 }}>your workbook</a>.</> : "It saves as you type and prints in your workbook."}
+      </div>
+    </div>
+  );
 }
 
 /** A script with a version per path. The reader's path (from 0.2 or the dials) opens first; the chips switch. */

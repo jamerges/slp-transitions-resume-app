@@ -92,7 +92,7 @@ export default function LessonPage({ id, access }: { id: string; access?: { prod
               {ready && !action && done && <div style={{ marginTop: 24, color: "var(--accent)", fontWeight: 600, fontSize: 14 }}>✓ Done. It stays ticked.</div>}
             </>
           ) : !ready ? null : Comp ? (
-            <Comp answer={answers[id]} save={(v: any) => saveAnswer(id, v)} finish={finish} done={done} all={answers} />
+            <Comp answer={answers[id]} save={(v: any) => saveAnswer(id, v)} finish={finish} done={done} all={answers} product={access?.product} />
           ) : (
             <Panel tone="warm">This lesson is outlined. The content lands with the next release.</Panel>
           )}

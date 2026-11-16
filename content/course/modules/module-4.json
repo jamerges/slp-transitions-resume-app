@@ -58,6 +58,12 @@
           "If they say speech therapist, or they cannot say at all, you have found this week's work, and it is above the sheet of paper rather than below it.",
           "Keep the page. Run the same test on the same person after lesson 4.5 and watch what changes."
         ]
+      },
+      {
+        "type": "ask",
+        "label": "What they thought you were applying for",
+        "prompt": "After the seven-second test: what job did they think you were applying for?",
+        "lines": 2
       }
     ],
     "takeaways": [
@@ -279,6 +285,12 @@
         "tone": "soft",
         "title": "The specifics are the part no model can generate",
         "text": "The tool was not in your IEP meetings. It does not know the caseload hit 62 in March, that you trained 14 people through the EMR switch, or that the front office would only let you touch the note template. Those details are the reason you are the only person who can send your application, and generic output erases exactly them."
+      },
+      {
+        "type": "ask",
+        "label": "Three details only you could write",
+        "prompt": "Write three details only you could put in an application: a number, a tool, and something you built.",
+        "lines": 4
       }
     ],
     "takeaways": [

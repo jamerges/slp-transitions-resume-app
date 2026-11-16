@@ -28,12 +28,26 @@ const money = (n: number) => "$" + Math.round(n).toLocaleString("en-US");
 const rangeMid = (s: string) => { const m = s.replace(/,/g, "").match(/\d+/g)?.map(Number) || []; return m.length >= 2 ? (m[0] + m[1]) / 2 : m[0] || 0; };
 
 /* ------------------------------ 0.1 Welcome ------------------------------ */
-export function Welcome({ finish, done }: LessonProps) {
+export function Welcome({ finish, done, product }: LessonProps & { product?: string }) {
+  // Until 2026-11-15 a buyer of the kit or the full program read the visitor's
+  // welcome here: "these four lessons are free" and "after that, $19".
+  const owns = product === "os" || product === "ground";
+
   return (
     <div>
       <P>Hi. I&rsquo;m James. I was an SLP, and I now work in marketing at a health-tech company. I built this because the advice SLPs get when they want out is usually some version of &ldquo;tough it out&rdquo; or &ldquo;start over,&rdquo; and both are wrong.</P>
+      {product === "os" && (<>
+        <P>You have the whole program: seven modules, built to run over about ninety days alongside a full caseload. Start with the four lessons here. They take about twenty minutes and give you what you really earn per hour, the number your next job has to clear, a date to aim at, and whether the problem is your workplace, the work itself, or this season.</P>
+        <P>After that, each module ends in something you made or sent: your reasons in writing, three messages to people who already made the move, a r&eacute;sum&eacute; a hiring manager can read, one piece of proof, and your answers for the interview. Your workbook fills in as you go, and your people and applications live in one list.</P>
+      </>)}
+      {product === "ground" && (<>
+        <P>Your kit is open: Module 1, the first three people lessons and the two r&eacute;sum&eacute; lessons, with the workbook that keeps your answers and two printable sheets. Start with the four lessons here. They take about twenty minutes and give you what you really earn per hour, the number your next job has to clear, a date to aim at, and whether the problem is your workplace, the work itself, or this season.</P>
+        <P>The full program, the rest of the ninety days, comes later, and what you paid comes off it.</P>
+      </>)}
+      {!owns && (<>
       <P>These four lessons are free and take about twenty minutes. You&rsquo;ll see what you really earn per hour, set the number your next job has to clear, pick a date to aim at, work out whether the problem is your workplace, the work itself, or this season, and check three beliefs that keep most SLPs in the building longer than they need to be. No account, no card.</P>
       <P>After that, Getting Started for SLPs is ${GROUND_PRICE}: the first month in one kit. Your reasons in writing, with what your degree is worth now, what gave you energy and what you can&rsquo;t afford to lose; the people who already made the move, with the message that gets answered; and the r&eacute;sum&eacute; pass. Twelve lessons, the workbook that keeps your answers, and two printable sheets. The full program, the rest of the ninety days, comes later, and what you pay now comes off it.</P>
+      </>)}
       <P style={{ margin: 0 }}>You won&rsquo;t get cheerleading here, or a promise of six figures by fall. Every number comes from documented SLP transitions and public salary data, and the source sits under every lesson. Most people work through this alongside a full-time caseload, which is how it is built.</P>
       <MarkDone done={done} finish={finish} />
     </div>

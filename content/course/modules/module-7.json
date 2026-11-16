@@ -163,6 +163,12 @@
           "Mark every requirement line you have evidence for from the last month.",
           "Write the unmarked lines into the agenda for your next one-on-one, as the things you want to be doing by this time next year."
         ]
+      },
+      {
+        "type": "ask",
+        "label": "The rung above yours",
+        "prompt": "Write the title of the rung above yours, and the one requirement you have no evidence for yet.",
+        "lines": 3
       }
     ],
     "takeaways": [

@@ -62,6 +62,12 @@
       {
         "type": "p",
         "text": "Something small, real and specific to the path you chose in Module 2, built in a weekend rather than a semester. It has to come out of work you have already done, because that is the part nobody else applying can copy."
+      },
+      {
+        "type": "ask",
+        "label": "What you've already made that someone could look at",
+        "prompt": "What have you already made at work that someone outside the building could look at? Name one thing.",
+        "lines": 3
       }
     ],
     "takeaways": [
@@ -225,6 +231,12 @@
       {
         "type": "p",
         "text": "You can also change nothing: keep the job, keep the hours, and accept that the search takes longer because you are doing it in the margins. For a single earner or someone chasing forgiveness that is often the right call, and the cost is months rather than the outcome."
+      },
+      {
+        "type": "ask",
+        "label": "How you'd buy hours, and what it costs",
+        "prompt": "Which fits your year: part-time, PRN, contract, telepractice, or changing nothing? Write what it would cost you.",
+        "lines": 3
       }
     ],
     "takeaways": [

@@ -216,6 +216,12 @@
           "Count how many of them ask for a credential you already hold.",
           "Save the two you would actually take, and note the travel percentage or the license line on each."
         ]
+      },
+      {
+        "type": "ask",
+        "label": "Which of the four you'd take a call about",
+        "prompt": "Which of these four would you take a call about this month, and which catch could you live with?",
+        "lines": 3
       }
     ],
     "takeaways": [
@@ -297,6 +303,12 @@
           "Search LinkedIn for that entry title plus \"CCC-SLP\" and find three people who already made the move.",
           "Save those three profiles. You will message them in lesson 3.3."
         ]
+      },
+      {
+        "type": "ask",
+        "label": "The cluster whose bad day you could live with",
+        "prompt": "Which cluster's bad day could you live with? Write the entry title you would search for.",
+        "lines": 3
       }
     ],
     "takeaways": [
@@ -373,6 +385,12 @@
           "Find its first free step: one Rise module, the CAHIMS outline, one free course lesson, one posting's required tool.",
           "Do that first step this week and notice whether you resent it. That reaction is the cheapest data you will get."
         ]
+      },
+      {
+        "type": "ask",
+        "label": "A twelve-month path, and the hours you could give it",
+        "prompt": "If you took one of these, which would it be, and how many hours could you give it in a bad week?",
+        "lines": 3
       }
     ],
     "takeaways": [
@@ -450,6 +468,12 @@
           "Find three live postings for the job and count how many of them name it.",
           "Message two people who hold the job and ask what their employer actually required. Spend nothing until both answers agree."
         ]
+      },
+      {
+        "type": "ask",
+        "label": "The credential you were tempted to buy",
+        "prompt": "Which credential have you been tempted to buy, and how many of the three postings asked for it?",
+        "lines": 3
       }
     ],
     "takeaways": [

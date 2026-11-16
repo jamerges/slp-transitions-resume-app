@@ -23,6 +23,8 @@ export type Block =
   | { type: "paths"; note?: string }
   /** One copyable script per path, keyed by quiz slug; the reader's own path opens first. */
   | { type: "bypath"; title?: string; note?: string; items: Record<string, string> }
+  /** One written answer, saved under the lesson's id and printed in the workbook. */
+  | { type: "ask"; label: string; prompt: string; lines?: number }
   | { type: "tool"; name: string };
 
 export interface LessonContent {
@@ -43,6 +45,10 @@ export const contentIds: Set<string> = new Set(ALL.map((l) => l.id));
 /** The one-line summary shown under a lesson title, taken from its TL;DR. */
 export const summaryFor = (id: string): string => BY_ID[id]?.tldr || "";
 export const hasContent = (id: string) => !!BY_ID[id];
+/** Every written-answer prompt in the course, in lesson order, for the workbook. */
+export const ASKS: { id: string; label: string; prompt: string; lines: number }[] = ALL.flatMap((l) =>
+  l.blocks.filter((b): b is Extract<Block, { type: "ask" }> => b.type === "ask")
+    .map((b) => ({ id: l.id, label: b.label, prompt: b.prompt, lines: b.lines || 3 })));
 /** Word count of the prose, for the reading-time label. */
 export const wordCount = (c: LessonContent) =>
   c.blocks.reduce((n, b) => n + ("text" in b && typeof b.text === "string" ? b.text.split(/\s+/).length : "items" in b ? (b.items as any[]).map((i) => (typeof i === "string" ? i : i.label)).join(" ").split(/\s+/).length : 0), 0) + c.tldr.split(/\s+/).length;

@@ -80,7 +80,7 @@ const R = {
   stages: { label: "You're allowed to want out: the five stages", href: "https://slptransitions.com/youre-allowed-to-want-out/", kind: "link" as const },
   quit: { label: "Should you quit? Bad workplace, bad fit, bad season", href: "https://slptransitions.com/should-you-quit-slp/", kind: "link" as const },
   paths: { label: "The 20 paths, with sourced salary ranges", href: "https://slptransitions.com/alternative-careers-speech-pathologists-slps/", kind: "link" as const },
-  companies: { label: `${COMPANY_COUNT} companies that hire former SLPs`, href: "/companies", kind: "link" as const },
+  companies: { label: `${COMPANY_COUNT} companies that value clinical skills`, href: "/companies", kind: "link" as const },
   jobs: { label: "Open roles this week, by path", href: "/jobs", kind: "link" as const },
   suite: { label: "Career Pivot Suite (included)", href: "/", kind: "tool" as const },
   resumePost: { label: "The non-clinical SLP resume", href: "https://slptransitions.com/slp-resume-non-clinical/", kind: "link" as const },
@@ -97,7 +97,7 @@ export const MODULES: Module[] = [
     tagline: "Twenty minutes: what you really earn per hour, the pay your next job has to clear, a date to aim at, and whether it's the workplace, the work, or the season that's wrong.",
     lessons: [
       { id: "0.1", module: 0, title: "Welcome from James", type: "explainer", minutes: 3, component: "Welcome",
-        summary: `Three minutes on what's free, what's $${GROUND_PRICE}, and what you'll have by the end of today.`, sources: ["facts"] },
+        summary: "Three minutes on how this works and what you'll have by the end of today.", sources: ["facts"] },
       { id: "0.2", module: 0, title: "Your starting line", type: "interactive", minutes: 8, resources: [R.workbook1, R.workbookPdf], component: "StartingLine",
         summary: "What you really earn per hour, the salary the next job has to clear, the date you're aiming at, and what you'd trade to get there. Four numbers the rest of the program runs on.",
         action: { label: "Set my target date", prompt: "Pick the date you want to be in a new role. Ninety days from now is the default and it is realistic for the fast paths; the long builds take 6–15 months and the map adjusts.", done: "Target date set." } },
