@@ -64,11 +64,29 @@ STORIES = [
          href=f"{SITE}/slp-to-ux/"),
 ]
 
+# The hero shows three different people from the stories section below it
+# (James, 2026-11-21: don't repeat the same photos and stories twice on one
+# page). Same rule as STORIES: real photographs the subjects supplied
+# (content/guest-photos; WP media uploaded 2026-11-21), and each tag says only
+# what that person's own post says. `pos` is the CSS object-position that keeps
+# the face in frame.
+HERO_FACES = [
+    dict(photo="2026/11/jeannette-roberes-portrait-v1.jpg", name="Jeannette Roberes",
+         short="School SLP &rarr; Software Engineer", pos="50% 80%",
+         href=f"{SITE}/slp-to-software-engineer-jeannette-roberes/"),
+    dict(photo="2026/11/rachel-levy-portrait-v1.jpg", name="Rachel Levy",
+         short="SLP &rarr; Startup Co-Founder", pos="50% 25%",
+         href=f"{SITE}/slp-to-startup-cofounder-rachel-levy/"),
+    dict(photo="2026/11/meredith-harold-portrait-v1.jpg", name="Meredith Harold",
+         short="SLP &rarr; Founder, The Informed SLP", pos="50% 25%",
+         href=f"{SITE}/slp-to-founder-meredith-harold-informed-slp/"),
+]
+
 # A featured story without a headshot is not shippable — the faces are what
 # make this band land visually, and a text-only card reads as a placeholder.
 # If you have no photograph of someone, they do not go here, however good the
 # story is. Never substitute an AI-generated face.
-for _s in STORIES:
+for _s in STORIES + HERO_FACES:
     assert _s.get("photo"), f"STORIES entry {_s['name']!r} has no photograph — see the note above"
 
 # (name, low $k, high $k, timeline class) from the pillar's pay table.
@@ -375,13 +393,13 @@ def build():
     # Each photo links to that person's story. The first is tall, the other two
     # square, the last one inset so the three don't read as a grid.
     a('<div class="slp-faces">')
-    for i, s in enumerate(STORIES):
+    for i, s in enumerate(HERO_FACES):
         shape = ("tall", "sq", "sq inset")[i]
         # Above the fold, so never lazy: the two squares arrived seconds late.
         # data-skip-lazy keeps SiteGround's lazy-loader off them too.
         load = ('fetchpriority="high" ' if i == 0 else '') + 'loading="eager" data-skip-lazy class="skip-lazy"'
         a(f'<a class="slp-face {shape}" href="{s["href"]}">'
-          f'<img src="{SITE}/wp-content/uploads/{s["photo"]}" alt="{esc(s["name"])}" {load} />'
+          f'<img src="{SITE}/wp-content/uploads/{s["photo"]}" alt="{esc(s["name"])}" style="object-position:{s["pos"]}" {load} />'
           f'<span class="slp-tag"><b>{esc(s["name"])}</b>{s["short"]}</span></a>')
     a('</div>')
     a('</div></div></section>')  # grid, wrap, section
