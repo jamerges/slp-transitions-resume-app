@@ -232,6 +232,8 @@ if __name__ == "__main__":
 
     r = api(f"/wp/v2/pages/{BLOG_PAGE_ID}", "POST", {
         "content": content,
-        "meta": {"_kad_post_title": "hide", "_kad_post_vertical_padding": "hide"},
+        # unboxed + fullwidth: without them Kadence draws a white card behind the
+        # content, which showed as a white strip under the header.
+        "meta": {"_kad_post_title": "hide", "_kad_post_vertical_padding": "hide", "_kad_post_content_style": "unboxed", "_kad_post_layout": "fullwidth"},
     })
     print(f"updated /blog (page {r.get('id')}) — {len(posts)} posts, {len(content)} chars")

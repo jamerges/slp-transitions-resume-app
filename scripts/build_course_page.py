@@ -106,7 +106,7 @@ CSS = r"""
 .slp-course .slp-hero-grid{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr)}
 .slp-c-kick{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin:0 0 1rem!important}
 /* the email field and its button, used in the hero and the closing panel */
-.slp-c-form{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.8rem;max-width:30rem}
+.slp-home form.slp-c-form{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.9rem 0 0;max-width:30rem}
 .slp-c-form label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .slp-home .slp-c-form input[type=email]{flex:1 1 13rem;min-height:54px;padding:0 1.2rem;border-radius:999px;
   border:1px solid var(--line);background:#fff;font:inherit;font-size:1rem;color:var(--ink);box-shadow:none}
@@ -166,7 +166,7 @@ CSS = r"""
 .slp-home a.slp-btn-out{border:1.5px solid var(--forest);color:var(--forest)!important;background:transparent}
 .slp-home a.slp-btn-out:hover{background:var(--forest);color:#fff!important}
 /* the closing panel reuses .slp-final; its form sits on forest */
-.slp-final .slp-c-form{margin-top:0}
+.slp-home .slp-final form.slp-c-form{margin-top:0}
 .slp-final .slp-c-form input[type=email]{border-color:transparent}
 .slp-home .slp-final .slp-c-form button{background:#fff!important;color:var(--forest-dark)!important}
 .slp-home .slp-final .slp-c-form button:hover{background:var(--glow)!important}
@@ -390,7 +390,9 @@ if __name__ == "__main__":
         raise SystemExit
     content = build(upload_shots())
     found = api(f"/wp/v2/pages?slug={SLUG}&status=publish,draft,pending,private&_fields=id,status,link")
-    meta = {"_kad_post_title": "hide", "_kad_post_vertical_padding": "hide"}
+    # Same Kadence layout as the homepage: no title band, no boxed white card
+    # behind the content (that card showed as a white strip under the header).
+    meta = {"_kad_post_title": "hide", "_kad_post_vertical_padding": "hide", "_kad_post_content_style": "unboxed", "_kad_post_layout": "fullwidth"}
     if isinstance(found, list) and found:
         pid = found[0]["id"]
         r = api(f"/wp/v2/pages/{pid}", "POST", {"content": content, "title": TITLE, "meta": meta})
