@@ -81,7 +81,7 @@ export const STAGE_MAP: Record<StageKey, StageInfo> = {
     name: "Practical panic",
     here: "You've said it out loud, to a partner or to the steering wheel. Now the question is what else you could even do, and every posting seems to want someone else.",
     belief: "You'd have to start over at the bottom.",
-    truth: "Lateral moves exist, and several pay more than clinical work from day one: clinical liaison $84,000 to $135,000, customer success $75,000 to $120,000. The people who landed them did not go back to school first.",
+    truth: "Lateral moves exist: clinical liaison pays $84,000 to $135,000 and customer success $75,000 to $120,000, against an SLP median of $97,870. The people who landed them did not go back to school first.",
     move: {
       label: "Stop reading twenty paths and pick one",
       detail: "Your result on this page is the one. The first move is written under it. One path with a first move beats twenty paths with none.",

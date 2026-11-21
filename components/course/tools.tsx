@@ -8,6 +8,7 @@ import { ENERGY_PATHS } from "@/lib/course";
 import { pathImage } from "@/lib/quiz";
 import { ROLES, rolesFor, formatUpdated } from "@/lib/open-roles";
 import { COMPANIES_DB, COMPANY_COUNT } from "@/lib/companies";
+import { priceOf } from "@/lib/pricing";
 import { Btn, Panel, Slider, font } from "./ui";
 import { Script } from "./Blocks";
 
@@ -49,7 +50,7 @@ export function Tool(props: ToolProps) {
 
 /* ------------------------------ path map (2.1) ------------------------------ */
 const TIERS: { title: string; blurb: string; slugs: string[] }[] = [
-  { title: "Out in weeks", blurb: "Your license is the credential. Postings you already qualify for are live today.", slugs: ["liaison-ur", "clinical-educator", "leadership", "research-coordinator"] },
+  { title: "Your license already qualifies you", blurb: "No new credential needed. The fastest of these take weeks, and each card says how long.", slugs: ["liaison-ur", "clinical-educator", "leadership", "research-coordinator"] },
   { title: "Six to twelve months", blurb: "Some vocabulary and one proof piece, then applications.", slugs: ["customer-success", "sales-bd", "content-marketing", "instructional-design"] },
   { title: "Twelve to twenty-four months", blurb: "Real upskilling. Higher ceilings, longer runway.", slugs: ["project-management", "data-analysis", "informatics"] },
 ];
@@ -152,7 +153,7 @@ function PivotReport({ pathSlug }: ToolProps) {
   return (
     <Panel tone="soft">
       <H>Your Pivot Report</H>
-      <Muted>Included with the program. It reads your actual résumé and tells you which paths your experience already qualifies you for, the stage you&rsquo;re in, and a 30-day plan. About four minutes.</Muted>
+      <Muted>Paste your résumé and the Pivot Report names the paths your experience already fits, the stage you&rsquo;re in and a 30-day plan. It takes about four minutes and costs ${priceOf("report")}.</Muted>
       <Btn href={href}>Build my Pivot Report →</Btn>
       {p && <div style={{ fontSize: 13, color: "var(--muted)", marginTop: 10 }}>It starts from {p.label}, your current path. Change it any time.</div>}
     </Panel>
@@ -338,7 +339,7 @@ function PromptKit({ shared, setShared, pathSlug }: ToolProps) {
     { title: "Draft a first message, the interview-me way", when: "After the research. The draft is a starting point; the send is yours.", text: `I want to send a first message to ${who}${company.trim() ? ` at ${co}` : ""} asking for fifteen minutes about how they moved into ${title}. Before you draft anything, ask me five questions about why I'm writing to this person specifically and what I actually want to know. Wait for my answers. Then write the message under 90 words, no job ask, easy to decline, using my answers and nothing else. ${rules}` },
     { title: "Rehearse the fifteen minutes", when: "The night before a call. Talk out loud; type what you'd say.", text: `Role-play with me. You are ${who}, a ${title} at ${co} who used to be a clinician. I'm an SLP and I have asked you for fifteen minutes about how you got the first role. Play it realistically: you are busy, friendly, and you will get bored if I ask anything I could have Googled. Interrupt me when I do. Start by saying hello and asking what I'm hoping to get out of the call. At the end, tell me the two things I did that made you want to help and the one that made you want to end the call.` },
     { title: "Turn call notes into next steps", when: "Within an hour of hanging up, before the notes go cold.", text: `Below are my rough notes from a fifteen-minute call with ${who}, who works in ${title}. Give me:\n1. The three facts I learned, in their words where I wrote them down.\n2. The person or company they named that I should follow up with.\n3. The one thing I said I would do, as a task with a date two weeks out.\n4. A thank-you message under 60 words that quotes one specific thing they said. ${rules}\n\nNotes:\n[paste here]` },
-    { title: "Translate a posting into a checklist", when: "Before you apply, and before the hiring-manager note in 3.7.", text: `Here is a job posting for a ${title} role at ${co}, and here are numbers from my clinical work. Make a two-column list: each requirement in the posting, and which of my experiences answers it, using the posting's own words. Then list the requirements I do not meet and, for each, the cheapest honest way to close it before an interview (a named course, a small project, a conversation). Do not soften a gap and do not invent experience I did not give you.\n\nMy numbers:\n${numbers}\n\nPosting:\n[paste here]` },
+    { title: "Translate a posting into a checklist", when: "Before you apply, and before the hiring-manager note in 3.4.", text: `Here is a job posting for a ${title} role at ${co}, and here are numbers from my clinical work. Make a two-column list: each requirement in the posting, and which of my experiences answers it, using the posting's own words. Then list the requirements I do not meet and, for each, the cheapest honest way to close it before an interview (a named course, a small project, a conversation). Do not soften a gap and do not invent experience I did not give you.\n\nMy numbers:\n${numbers}\n\nPosting:\n[paste here]` },
   ];
   return (
     <div>
@@ -448,7 +449,7 @@ function SuiteLink({ pathSlug, shared }: ToolProps) {
   return (
     <Panel tone="soft">
       <H>Build it in the Suite</H>
-      <Muted>The Career Pivot Suite is included. Paste your résumé and one real posting; it translates every bullet, writes the cover letter and the LinkedIn sections, and lets you refine any of six sections until it sounds like you.</Muted>
+      <Muted>Paste your résumé and one real posting into the Career Pivot Suite. It translates every bullet, writes the cover letter and the LinkedIn sections, and lets you rewrite any of six sections until it sounds like you. The preview is free and the full package is ${priceOf("suite")}.</Muted>
       {shared.translation?.out && <div style={{ fontSize: 13.5, marginBottom: 10, padding: "8px 12px", background: "var(--card)", borderRadius: 8, border: "1px solid var(--accent-bg)" }}><b>Your saved pair:</b> {shared.translation.out}</div>}
       {shared.numbers && Object.values(shared.numbers as Record<string, string>).some((v) => (v || "").trim()) && (
         <div style={{ fontSize: 13.5, marginBottom: 10, color: "var(--accent)", fontWeight: 600 }}>Your numbers from lesson 4.3 come with you. The Suite offers to add them under your résumé.</div>
@@ -543,15 +544,15 @@ function Report({ shared, setShared, kind }: ToolProps & { kind: "questions" | "
 
 /* ------------------------------- checklists ------------------------------- */
 const LINKEDIN = [
-  "\"Share profile updates with your network\" is off, before you edit anything",
-  "Headline names the target role, not the clinical one (\"Customer Success · former SLP\", not \"CCC-SLP\")",
+  "\"Share profile updates\" is off, before you edit anything",
+  "Headline uses the target field\u2019s words first, with CCC-SLP after them. Leave \"former\" out until you have left",
   "About section opens with your pull sentence from the Module 1 checkpoint",
   "Each clinical job has three translated bullets with a number in each",
   "Skills list contains the words from three real postings for your path",
   "Photo is recent and the banner isn't a stock image of a speech bubble",
   "Open-to-work is set to recruiters only, with the target titles typed in",
   "The URL is linkedin.com/in/yourname, so it fits on a résumé",
-  "\"Who can see your connections\" is set to Only you while you search",
+  "Your connections list is hidden while you search (Settings, Visibility, Connections)",
   "Your résumé is not uploaded as Featured media (your phone number and address would be public)",
   "You follow five companies from your list and one group for the field",
   "You've sent one connection request to someone who made this move",
@@ -614,7 +615,7 @@ function ApplicationTracker({ shared, setShared, finish, done }: ToolProps) {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, marginBottom: 12 }}>
         {[["Sent", counts.sent], ["Screens", counts.screen], ["Interviews", counts.interview], ["Offers", counts.offer]].map(([l, n]) => <div key={String(l)} style={{ background: "var(--bg)", borderRadius: 10, padding: "8px 10px", textAlign: "center" }}><div style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 400, color: "var(--accent)" }}>{n}</div><div style={{ fontSize: 11.5, color: "var(--muted)" }}>{l}</div></div>)}
       </div>
-      <Muted>The documented ratio is roughly 113 tailored applications to 7 interviews to 1 offer. Tracking turns silence into a number you can plan around.</Muted>
+      <Muted>One documented search took 113 tailored applications for 7 interviews and 1 offer. Tracking turns silence into a number you can plan around.</Muted>
       {rows.length > 0 && <div style={{ overflowX: "auto", marginBottom: 10 }}><table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13.5 }}>
         <thead><tr style={{ textAlign: "left", color: "var(--muted)", fontSize: 12 }}><th style={{ padding: "6px 8px" }}>Company · role</th><th style={{ padding: "6px 8px" }}>Posted</th><th style={{ padding: "6px 8px" }}>Sent</th><th style={{ padding: "6px 8px" }}>Status</th><th /></tr></thead>
         <tbody>{rows.map((r, i) => <tr key={i} style={{ borderTop: "1px solid var(--border)" }}>

@@ -53,7 +53,7 @@ FREE_MODULE = f"{APP}/course?utm_source=slptransitions&utm_medium=course_page&ut
 LESSONS = 37
 HOURS = 8                    # 495 minutes of lessons
 ACTIONS = 47
-PATHS = 20
+PATHS = 11                   # the paths on the course's map (lib/quiz.ts PATHS); the 20-path article is a linked resource
 
 # The eight stops and what the reader holds at the end of each. The names and
 # weeks are MODULES in lib/course.ts; the outcomes are the course audit's
@@ -307,7 +307,7 @@ def build(shot_urls):
         (str(LESSONS), "lessons, each ending in one thing to do"),
         (str(HOURS), "hours of lessons, spread across twelve weeks"),
         (str(ACTIONS), "small actions in a workbook you keep"),
-        (str(PATHS), "paths compared, with pay and timelines"),
+        (str(PATHS), "paths mapped, with what each pays and how long it takes"),
     ]
     a('<section class="slp-nums"><div class="slp-wrap">'
       + "".join(f'<div class="slp-num"><b>{n}</b><span>{l}</span></div>' for n, l in nums)

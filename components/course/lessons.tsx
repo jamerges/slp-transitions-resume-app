@@ -2,14 +2,14 @@
 // Interactive lessons for Modules 0 and 1. Each receives the saved answer for
 // its lesson, a save callback, and a `finish` callback that marks the lesson
 // (and, for action lessons, the action) complete.
-import { useMemo, useState, type ReactNode, useEffect } from "react";
+import { useMemo, useRef, useState, type ReactNode, useEffect } from "react";
 import { GROUND_PRICE } from "@/lib/course-tiers";
 import SaveMyPlace from "./SaveMyPlace";
 import { PATHS } from "@/lib/quiz";
 import { DIAL_PROFILES, ENERGY_PATHS, DIALS } from "@/lib/course";
 import { Btn, Panel, Slider, font } from "./ui";
 import { Explainer } from "./Explainer";
-import { fiveStagesScenes, threeLiesScenes, STAGE_META, StageRoad } from "./scenes";
+import { fiveStagesScenes, threeLiesScenes, STAGE_META, StageRoad, LIES } from "./scenes";
 
 export interface LessonProps { answer: any; save: (v: any) => void; finish: (opts?: { action?: boolean }) => void; done: boolean }
 
@@ -121,7 +121,7 @@ export function StartingLine({ answer, save, finish, done }: LessonProps) {
     <div>
       <Panel>
         <H>1. What you are really paid per hour</H>
-        <Muted>Count the hours you actually work, including notes at home, evening meetings and the planning nobody sees. Then count the weeks you actually work. A job that pays the same salary for a forty-hour week is a raise you can measure.</Muted>
+        <Muted>Count the hours you actually work, including notes at home, evening meetings and the planning nobody sees. Then count the weeks you actually work. The same salary for fewer hours is a raise you can measure, and the same salary for more weeks is a cut. A school-year contract counts fewer weeks than a year-round job, so compare by the hour.</Muted>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }} className="tos-two-col">
           <MoneyField label="Salary now" value={salary} onChange={setSalary} placeholder="77,000" prefix="$" />
           <MoneyField label="Hours in a real week" value={hours} onChange={setHours} placeholder="50" />
@@ -143,7 +143,7 @@ export function StartingLine({ answer, save, finish, done }: LessonProps) {
         {FLOORS.map((f, i) => <Choice key={f} on={floor === i} onClick={() => setFloor(i)}>{f}</Choice>)}
         <div style={{ marginTop: 14, paddingTop: 14, borderTop: "1px solid var(--border)" }}>
           <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 4 }}>Put a dollar figure on it</div>
-          <Muted>Add up a month of rent or mortgage, loans, insurance, food, transport, childcare and savings. The floor is that month, twelve times, plus what tax takes before you see it. Social Security and Medicare alone take 7.65 percent of pay; federal and state income tax come on top, so set the slider where your last pay stub puts you.</Muted>
+          <Muted>Add up a month of rent or mortgage, loans, insurance, food, transport, childcare and savings. The floor is that month, twelve times, plus what tax takes before you see it. Social Security and Medicare take 7.65 percent of pay, and federal and state income tax come on top, so set the slider where your last pay stub puts you. If your district pays into a state pension instead of Social Security, a private employer will take 6.2 percent you aren&rsquo;t paying now.</Muted>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, alignItems: "end" }} className="tos-two-col">
             <MoneyField label="Monthly expenses" value={expenses} onChange={setExpenses} placeholder="4,800" prefix="$" />
             <label style={{ display: "block", fontSize: 13, fontWeight: 600 }}>
@@ -161,7 +161,7 @@ export function StartingLine({ answer, save, finish, done }: LessonProps) {
 
       <Panel style={{ marginTop: 14 }}>
         <H>3. A date to aim at</H>
-        <Muted>Ninety days out is the default. Fast paths (liaison, utilization review, clinical educator) fit inside it. Long builds run six to fifteen months and the map stretches to match.</Muted>
+        <Muted>Ninety days out is the default. The fastest paths (liaison and utilization review) can fit inside it. Long builds run six to fifteen months and the map stretches to match.</Muted>
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} style={{ padding: "10px 12px", fontSize: 15, border: "1px solid var(--border)", borderRadius: 8, fontFamily: font.sans }} />
       </Panel>
 
@@ -199,8 +199,30 @@ function Choice({ on, onClick, children }: { on: boolean; onClick: () => void; c
 }
 
 /* ------------------------- 0.3 / 1.1 explainers -------------------------- */
-export function ThreeLies({ finish, done }: LessonProps) {
-  return <div><Explainer title="Three lies, three guardrails" scenes={threeLiesScenes} onFinished={() => { if (!done) finish(); }} /><SaveMyPlace /></div>;
+export function ThreeLies({ answer, save, finish, done }: LessonProps) {
+  // The lesson's summary says "check which ones you're carrying" and there was
+  // nothing to check: it ended with nothing chosen (audit, 2026-11-21).
+  const [mine, setMine] = useState<string[]>(answer?.carrying || []);
+  const toggle = (lie: string) => {
+    const n = mine.includes(lie) ? mine.filter((x) => x !== lie) : [...mine, lie];
+    setMine(n); save({ carrying: n }); if (!done) finish();
+  };
+  return (
+    <div>
+      <Explainer title="Three lies, three guardrails" scenes={threeLiesScenes} onFinished={() => { if (!done) finish(); }} />
+      <Panel style={{ marginTop: 16 }} tone="soft">
+        <H>Which of these are you still carrying?</H>
+        <Muted>Tap any that still sound true this week. Each one opens what the record says.</Muted>
+        {LIES.map((x) => (
+          <div key={x.lie}>
+            <Choice on={mine.includes(x.lie)} onClick={() => toggle(x.lie)}>&ldquo;{x.lie}&rdquo;</Choice>
+            {mine.includes(x.lie) && <div className="tos-rise" style={{ fontSize: 14.5, lineHeight: 1.6, margin: "-2px 0 12px", padding: "0 4px" }}>{x.truth}</div>}
+          </div>
+        ))}
+      </Panel>
+      <SaveMyPlace />
+    </div>
+  );
 }
 
 export function FiveStages({ answer, save, finish, done }: LessonProps) {
@@ -234,7 +256,7 @@ const QS: { q: string; yes: Partial<Record<Verdict, number>>; no: Partial<Record
 const VERDICTS: Record<Verdict, { title: string; body: string; next: string }> = {
   workplace: { title: "Bad workplace", body: "The profession might be fine and your setting is not. The thing draining you is a specific administrator, building or productivity requirement. That is a job problem, and the boring truth is that changing the conditions first is faster than changing careers, and it protects you from trading one burnout for a new-field version of the same burnout.", next: "Change the conditions first: setting, hours, employer. Keep this program as the plan behind the plan. One transitioner's version, from the forums: change settings as you leave the field, not instead of leaving it. If the feeling follows you to the new setting, come back to this lesson. The verdict will have changed." },
   fit: { title: "Bad fit", body: "The conditions could be perfect and you'd still feel it. The sessions drain you. You're more interested in the data, the training, the coordination and the technology around the therapy than in the therapy. You may have switched settings already and watched the feeling follow you. That's your interests talking, and they don't usually stop.", next: "Continue. Modules 2 to 5 are built for exactly this verdict. Your first move is the next lesson, on why leaving isn't a wasted degree, so the money question stops running the decision from the background." },
-  season: { title: "Bad season", body: "Life outside work is taking everything you've got, and any job would feel impossible right now. This deserves real caution: burnt-out brains struggle with executive function, and planning a career change is one of the most executive-function-heavy things you can do.", next: "Survive the season first. Reduce hours if you can. Lower the bar. The program will hold your place and nothing expires. Make the big decision with a brain that can make it, and rerun this lesson then." },
+  season: { title: "Bad season", body: "Life outside work is taking everything you've got, and any job would feel impossible right now. This deserves real caution: burnout makes planning harder, and a career change is mostly planning.", next: "Survive the season first. Reduce hours if you can. Lower the bar. The program will hold your place and nothing expires. Make the big decision with a brain that can make it, and rerun this lesson then." },
 };
 
 export function DecisionTree({ answer, save, finish, done }: LessonProps) {
@@ -245,7 +267,12 @@ export function DecisionTree({ answer, save, finish, done }: LessonProps) {
     ans.forEach((a, i) => { if (a === null) return; const add = a ? QS[i].yes : QS[i].no; for (const k in add) s[k as Verdict] += add[k as Verdict]!; });
     return s;
   }, [ans]);
-  const verdict = (Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0]) as Verdict;
+  // "Bad season" could score 4 at most against 6 and 7 for the other two, and
+  // ties went to workplace, so a reader who said yes to both questions about
+  // life outside work was told "bad workplace" or "bad fit" 13 times in 16
+  // (audit, 2026-11-21). Two yeses there now decide it: no job fixes a season.
+  const seasonFirst = ans[2] === true && ans[3] === true;
+  const verdict: Verdict = seasonFirst ? "season" : scores.fit > scores.workplace ? "fit" : "workplace";
   const complete = ans.every((a) => a !== null);
   // Auto-save: what you pick is what is kept, with no extra button.
   useEffect(() => {
@@ -287,6 +314,7 @@ export function DecisionTree({ answer, save, finish, done }: LessonProps) {
           <Panel tone="soft">
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)" }}>Your verdict</div>
             <div style={{ fontFamily: font.serif, fontSize: 26, fontWeight: 400, margin: "4px 0 10px" }}>{VERDICTS[verdict].title}</div>
+            {seasonFirst && <P>You said yes to both questions about life outside work, so that comes first, whatever the other four answers say.</P>}
             <P>{VERDICTS[verdict].body}</P>
             <P style={{ margin: 0 }}><b>What you do first:</b> {VERDICTS[verdict].next}</P>
           </Panel>
@@ -317,7 +345,12 @@ export function SunkCost({ answer, save, finish, done }: LessonProps) {
   // Auto-save, like 1.4 and 1.5: the numbers on screen are the ones kept.
   // (A 2026-09-18 pass removed this lesson's Save button and left nothing to
   // finish it, so it could never show as done.)
+  // It used to finish on load, so the lesson ticked before anything was
+  // entered. Now the first change finishes it, and a reader whose numbers
+  // match the defaults has the button under the result.
+  const touched = useRef(false);
   useEffect(() => {
+    if (!touched.current) { touched.current = true; return; }
     save({ years, debt, salary, path, months, dip, stay10, move10 });
     if (!done) finish();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -332,7 +365,7 @@ export function SunkCost({ answer, save, finish, done }: LessonProps) {
           <label style={{ fontSize: 13, fontWeight: 600 }}>Years in the field</label>{num(years, setYears, 1)}
           <div style={{ height: 10 }} />
           <label style={{ fontSize: 13, fontWeight: 600 }}>Student debt remaining ($)</label>{num(debt, setDebt)}
-          <Muted>More than two-thirds of CSD master&rsquo;s students graduate with unpaid debt; the most common band is $10,000 to $50,000 (ASHA, 2024). The balance is the same on both sides of this page. If you&rsquo;re on PSLF or income-driven repayment, the loan is a calendar, not a leash: Module 5 covers the 120-payment count, what employers qualify, and how people time the exit. Nothing on the market covers this, and the forums ask for it more than anything except a sample r&eacute;sum&eacute;.</Muted>
+          <Muted>More than two-thirds of CSD master&rsquo;s students graduate with unpaid debt; the most common band is $10,000 to $50,000 (ASHA, 2024). The balance is the same whether you stay or go. Forgiveness is different: if you&rsquo;re counting on PSLF, payments only count while you work for a qualifying employer, so a move to a for-profit company stops the count. Lesson 5.5 covers the 120-payment count, which employers qualify and how people time the exit.</Muted>
         </Panel>
         <Panel>
           <H>Still live</H>
@@ -350,7 +383,7 @@ export function SunkCost({ answer, save, finish, done }: LessonProps) {
         <H>The next ten years, side by side</H>
         <Bars a={stay10} b={move10} labelA="Stay" labelB={`Move to ${p.label}`} />
         <div className="tos-rise" style={{ marginTop: 12, fontSize: 16 }}>
-          {diff >= 0 ? <><b style={{ color: "var(--accent)" }}>{money(diff)} more</b> over ten years, using the middle of the documented range and a {months}-month move.</> : <><b style={{ color: "#92400E" }}>{money(-diff)} less</b> over ten years at the middle of that range. On this path the pay cut is the expected outcome, so treat it as a first step rather than a destination.</>}
+          {diff >= 0 ? <><b style={{ color: "var(--accent)" }}>{money(diff)} more</b> over ten years, using the middle of the documented range and a {months}-month move.</> : <><b style={{ color: "#92400E" }}>{money(-diff)} less</b> over ten years at the middle of that range, if nobody gets a raise on either side. Put in your own salary and months before you read much into it.{path === "research-coordinator" ? " This is the one path where a pay cut is the expected outcome, so treat it as a first step." : ""}</>}
         </div>
         <Muted>These are your inputs against documented ranges, not a forecast. The range for {p.label} is {p.range}; the typical move takes {p.timeline}. {p.caveat}</Muted>
       </Panel>
@@ -368,6 +401,7 @@ export function SunkCost({ answer, save, finish, done }: LessonProps) {
         <Saved text="Saved." />
         {done && <Saved />}
       </div>
+      <MarkDone done={done} finish={finish} />
     </div>
   );
 }
@@ -546,7 +580,10 @@ export function Dials({ answer, save, finish, done, all }: LessonProps & { all?:
   }).sort((a, b) => b.fit - a.fit), [v]);
   const top = ranked.slice(0, 3);
   // Auto-save: what you pick is what is kept, with no extra button.
+  // Finishes on the first dial moved, not on load (see 1.3).
+  const moved = useRef(false);
   useEffect(() => {
+    if (!moved.current) { moved.current = true; return; }
     save({ dials: v, top: top.map((t) => t.slug) });
     if (!done) finish();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -582,6 +619,7 @@ export function Dials({ answer, save, finish, done, all }: LessonProps & { all?:
         <Saved text="Saved. These three are on your map." />
         {done && <Saved />}
       </div>
+      <MarkDone done={done} finish={finish} />
     </div>
   );
 }
@@ -592,14 +630,15 @@ const STORIES = [
   { img: "https://slptransitions.com/wp-content/uploads/2026/08/lindsey-ison-avatar-v1.jpg", name: "Lindsey Ison", was: "SLP", now: "Enablement Consultant at a tech firm", kept: "Coaching people through something difficult. Now it's software instead of therapy.", href: "https://slptransitions.com/enablement-consultant/" },
   { img: "https://slptransitions.com/wp-content/uploads/2026/08/bethany-riebock-avatar-v1.jpg", name: "Bethany Riebock", was: "Medical SLP and rehab director", now: "UX Researcher", kept: "Watching how people actually use a thing, then telling the truth about it.", href: "https://slptransitions.com/slp-to-ux/" },
 ];
-export function Identity({ finish, done }: LessonProps) {
+export function Identity({ answer, save, finish, done }: LessonProps) {
+  const [miss, setMiss] = useState<string>(answer?.miss || "");
   return (
     <div>
       <Panel>
         <P>Every SLP I&rsquo;ve interviewed who left took something with them, and it was never the title. It was the part of the work that was actually them: explaining hard things simply, holding a room of people to a plan they didn&rsquo;t want, reading a page of data and knowing what to do next. In every case, that part turned out to be the thing they were hired for.</P>
         <P>Three of them are below. Look at what each one kept.</P>
         <Quote text="I've taken a long time to grieve the loss of who I was in my previous role." from="a comment on a former SLP's essay about leaving" />
-        <P style={{ margin: 0 }}>Grief is the right word, and it&rsquo;s the word the people who left use most. One of them called leaving a completion rather than a failure. You chose this field at 22, before you knew yourself. Finishing it is allowed.</P>
+        <P style={{ margin: 0 }}>Grief is the right word, and it&rsquo;s the word the people who left use most. One of them called leaving a completion rather than a failure. You chose this field years ago, with what you knew then. Finishing it is allowed.</P>
       </Panel>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginTop: 14 }} className="tos-two-col">
         {STORIES.map((s, i) => (
@@ -615,7 +654,13 @@ export function Identity({ finish, done }: LessonProps) {
       <Panel style={{ marginTop: 14 }}>
         <H>The people you&rsquo;re leaving</H>
         <P>For a lot of SLPs the hardest part is the kids on the caseload, or the patient who asks for you by name. One school SLP wrote that leaving mid-year meant they would be &ldquo;abandoning my students.&rdquo; That pull comes from caring about them, and it deserves a plan rather than a verdict.</P>
-        <P style={{ margin: 0 }}>ASHA counts it as abandonment only when you stop services without arranging other care, and its ethics guidance says you don&rsquo;t have to stay until a replacement is hired. Reasonable notice, finished reports and a handoff for each client is how you leave well. <a href="https://www.asha.org/practice/ethics/client-abandonment/" target="_blank" rel="noreferrer">Read ASHA&rsquo;s guidance</a>.</P>
+        <P style={{ margin: 0 }}>ASHA counts it as abandonment only when you stop services without arranging other care, and its ethics guidance says you don&rsquo;t have to stay until a replacement is hired. Reasonable notice, finished reports and a handoff for each client is how you leave well. <a href="https://www.asha.org/practice/ethics/client-abandonment/" target="_blank" rel="noreferrer">Read ASHA&rsquo;s guidance</a>. Your contract is a separate question: read its resignation terms and your state&rsquo;s rules for school staff before you resign mid-year, because some states penalise leaving a school contract early.</P>
+      </Panel>
+      <Panel style={{ marginTop: 14, border: "1.5px solid var(--accent)" }}>
+        <label htmlFor="miss-16" style={{ display: "block", fontSize: 16, fontWeight: 600, lineHeight: 1.5, marginBottom: 8 }}>Finish the sentence: I will miss being the person who&hellip;</label>
+        <textarea id="miss-16" rows={2} value={miss} onChange={(e) => setMiss(e.target.value)} onBlur={() => { save({ miss }); if (miss.trim() && !done) finish(); }}
+          style={{ width: "100%", padding: "10px 12px", border: "1px solid var(--border)", borderRadius: 10, fontFamily: font.sans, fontSize: 15.5, lineHeight: 1.55, resize: "vertical", background: "var(--bg)" }} />
+        <Muted style={{ margin: "6px 0 0" }}>Name it now. It tells you what the next job has to keep, and it prints in your workbook.</Muted>
       </Panel>
       <MarkDone done={done} finish={finish} />
     </div>
@@ -627,7 +672,7 @@ const WHO = ["A partner", "A friend outside the field", "A colleague who already
 const PRIVATE = [
   "The search happens on your own device and your own email. Nothing on the work laptop, the work Wi-Fi or the district account.",
   "Your résumé and LinkedIn carry a personal email address, not the work one.",
-  "On LinkedIn, \u201cShare profile updates with your network\u201d is off, and Open to Work is set to recruiters only.",
+  "On LinkedIn, \u201cShare profile updates\u201d is off, and Open to Work is set to recruiters only. LinkedIn says it can\u2019t promise your own employer\u2019s recruiters won\u2019t see that, so leave it off if being seen would cost you.",
   "Your current supervisor is not on your reference list yet. A past supervisor, a mentor or a colleague who already left is.",
   "You know your contract\u2019s resignation window and any letter-of-intent date, or your notice period if you\u2019re in a medical setting.",
   "If someone at work asks, the sentence is the one above. It is true and it ends the conversation.",
@@ -639,7 +684,7 @@ export function TellOne({ answer, save, finish, done }: LessonProps) {
   const togglePriv = (i: number) => { const n = priv.map((x, j) => (j === i ? !x : x)); setPriv(n); save({ ...(answer || {}), who, private: n }); };
   return (
     <div>
-      <P>Keeping this to yourself is more tiring than it looks. You clear the search history, keep your face neutral in the staff room, and carry the whole thing alone. Telling one person, in one sentence, takes most of that weight off, and it doesn&rsquo;t commit you to anything.</P>
+      <P>Keeping this to yourself is more tiring than it looks. You clear the search history, keep your face neutral in the staff room, and carry the whole thing alone. Telling one person, in one sentence, takes some of that weight off, and it doesn&rsquo;t commit you to anything.</P>
       <Panel>
         <H>Who</H>
         <Muted>Someone who won&rsquo;t argue with you. Arguing comes later, if ever.</Muted>
@@ -706,7 +751,7 @@ function PushPullList({ items, setItems, draft, setDraft, tone, placeholder }: {
   );
 }
 
-export function Checkpoint1({ answer, save, finish, done, all }: LessonProps & { all: Record<string, any> }) {
+export function Checkpoint1({ answer, save, finish, done, all, product }: LessonProps & { all: Record<string, any>; product?: string }) {
   const [pushes, setPushes] = useState<string[]>(answer?.pushes || []);
   const [pulls, setPulls] = useState<string[]>(answer?.pulls || []);
   const [why, setWhy] = useState<string>(answer?.why || "");
@@ -843,7 +888,7 @@ export function Checkpoint1({ answer, save, finish, done, all }: LessonProps & {
             {sent === "ok" ? "A copy is on its way to your inbox, so your answers live somewhere other than this browser."
               : sent === "skip" ? "Your answers are saved in this browser and on your workbook page."
               : "Sending a copy to your inbox\u2026"}
-            {" "}Modules 2, 5, 6 and 7 aren&rsquo;t open yet. What you paid is credited toward them, and you&rsquo;ll get an email the day they open.
+            {product !== "os" && <>{" "}Modules 2, 5, 6 and 7 aren&rsquo;t open yet. What you paid is credited toward them, and you&rsquo;ll get an email the day they open.</>}
           </Muted>
         </Panel>
       )}

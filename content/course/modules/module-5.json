@@ -1,11 +1,11 @@
 [
   {
     "id": "5.2",
-    "tldr": "Certificates open a door only when they sit next to translated experience and something you made. Every path has one artifact that proves you can do the job, built from work you have already done: pick yours, give it two ninety-minute sessions this week, and put it where a stranger can find it.",
+    "tldr": "A certificate helps only beside translated experience and something you made. Every path has one piece of work that proves you can do the job, built from work you have already done. Pick yours, give it two ninety-minute sessions this week, and put it where a stranger can find it.",
     "blocks": [
       {
         "type": "p",
-        "text": "The first instinct, for almost everybody looking at a new field, is to go and get qualified again. Our field trains that instinct into us: another certification, another CEU, another set of letters, and it feels like progress because it feels like studying. It is also the most expensive way to stall."
+        "text": "The first instinct in a new field is to get qualified again, and our field trains it into us: another certification, another CEU, another set of letters. It feels like progress, and it is the most expensive way to stall."
       },
       {
         "type": "quote",
@@ -14,11 +14,15 @@
       },
       {
         "type": "p",
-        "text": "She got the certificate, and on its own it did nothing. What moved her was the certificate sitting next to experience a hiring manager could map, plus evidence she had already done some of the work."
+        "text": "The certificate did nothing alone. It worked once it sat beside experience a hiring manager could map and evidence of work already done."
       },
       {
         "type": "h",
-        "text": "What hiring managers actually check"
+        "text": "Hiring managers look for a title and experience before a certificate"
+      },
+      {
+        "type": "p",
+        "text": "You cannot manufacture a title, but you can manufacture evidence. Something you made on your own time answers the doubt lesson 6.1 covers: that nothing shows you have spent any of your own time on this field."
       },
       {
         "type": "quote",
@@ -26,58 +30,79 @@
         "from": "r/SLPcareertransitions"
       },
       {
-        "type": "p",
-        "text": "You cannot manufacture a title, but you can manufacture evidence. A thing you made on your own time answers the third doubt from lesson 6.1, because it proves you have spent something of yours on this field."
-      },
-      {
         "type": "h",
-        "text": "Where certificates do earn their place"
+        "text": "Pay for a certificate only where it teaches something you lack"
       },
       {
-        "type": "list",
+        "type": "p",
+        "text": "Three paths have a credential worth its fee, and in each one it supplies vocabulary or tools you do not have yet."
+      },
+      {
+        "type": "cards",
         "items": [
-          "**Project management.** The Google Project Management certificate comes up repeatedly as affordable and digestible, and it teaches you the vocabulary you need to describe work you already did. CAPM runs about $175 and PMP about $400 plus membership.",
-          "**Healthcare data.** The Google Data Analytics certificate or DataCamp gives you the tools, and the tools are genuinely missing. You cannot fake SQL.",
-          "**Clinical informatics.** CAHIMS through HIMSS is the self-serve entry credential and has no experience prerequisite, which matters because Epic certification cannot be bought at all. It requires an employer to sponsor you."
+          {
+            "title": "Project management",
+            "text": "The Google Project Management certificate is low cost and teaches the vocabulary for work you already did. CAPM and PMP come next, and PMI lists the current exam fees."
+          },
+          {
+            "title": "Healthcare data",
+            "text": "The Google Data Analytics certificate or DataCamp gives you the tools, and the tools are what you lack. You cannot fake SQL."
+          },
+          {
+            "title": "Clinical informatics",
+            "text": "CAHIMS through HIMSS is the credential you can book yourself, with no experience prerequisite. Epic certification cannot be bought: an employer has to sponsor you."
+          }
         ]
       },
       {
         "type": "callout",
         "tone": "warm",
-        "title": "Where they do not",
-        "text": "Instructional design is the clearest case. Hiring managers want the portfolio, and a $3,000 certificate buys you a portfolio identical to everyone else's from the same program. One transitioner describes bootcamp graduates arriving with generic portfolios that all look the same, which is worse than one honest piece."
+        "title": "Instructional design is where a certificate helps least",
+        "text": "Hiring managers there want the portfolio, and no certificate is required. A paid program buys you a portfolio identical to everyone else's from the same program. One transitioner describes bootcamp graduates arriving with generic portfolios that all look the same, which is worse than one honest piece."
       },
       {
         "type": "p",
-        "text": "The UX version of the same rule is the sharpest sentence I found in the research: one honest case study including the wrong turns is worth more than six polished ones."
+        "text": "UX follows the same rule: one honest case study including the wrong turns is worth more than six polished ones."
       },
       {
         "type": "p",
-        "text": "Before you pay for any of them, ask ten people who hold the title whether it mattered: required, preferred, or never came up. Ten is enough to see the pattern and few enough to do in a fortnight from the tracker. Do not take this course's word for it either. The people already in the job are the only ones who know what their own hiring manager checked."
+        "text": "Before you pay for any certificate, ask ten people who hold the title whether it was required, preferred or never came up. Ten is enough to see the pattern and few enough to reach in a fortnight from your people list. The people in the job know what their own hiring manager checked."
       },
       {
         "type": "h",
-        "text": "So what do you build"
+        "text": "Build one small piece from work you have already done"
       },
       {
         "type": "p",
-        "text": "Something small, real and specific to the path you chose in Module 2, built in a weekend rather than a semester. It has to come out of work you have already done, because that is the part nobody else applying can copy."
+        "text": "Make one thing in a few hours that lets a hiring manager think: this person has already been doing a version of my job. Keep it specific to the path you chose in Module 2 and small enough for a weekend."
+      },
+      {
+        "type": "compare",
+        "title": "What makes a proof piece work",
+        "left": {
+          "label": "Skip this",
+          "items": [
+            "A description of your interest in the role.",
+            "A sample that matches everyone else's from the same program.",
+            "A long read before the point shows."
+          ]
+        },
+        "right": {
+          "label": "Build this",
+          "items": [
+            "The target role's real work product.",
+            "Something from your own clinical work, which nobody else applying can copy.",
+            "A piece a stranger reads in under two minutes."
+          ]
+        }
+      },
+      {
+        "type": "p",
+        "text": "You may have made it already: the parent handout you redesigned because the district's version was unreadable, the tracking sheet the whole department borrowed, the training you gave twice. Then the work is picking one and writing the short note that explains your thinking."
       },
       {
         "type": "h",
-        "text": "Pick your one thing"
-      },
-      {
-        "type": "p",
-        "text": "An artifact is one thing, made in a few hours, that a hiring manager can look at and think: this person has already been doing a version of my job."
-      },
-      {
-        "type": "p",
-        "text": "The good ones come out of your real clinical work, so nobody else applying has the same one. They read in under two minutes, and they are the target role's actual work product rather than a description of your interest in it."
-      },
-      {
-        "type": "h",
-        "text": "Pick your path's brief"
+        "text": "Choose the brief for your path"
       },
       {
         "type": "tool",
@@ -85,35 +110,34 @@
       },
       {
         "type": "h",
-        "text": "Two rules that make these work"
+        "text": "Change the details and write down your thinking"
       },
       {
-        "type": "p",
-        "text": "First, use real detail changed enough to be safe: no names, no identifying details, no protected health information, and check your employer's policy before anything goes public. A rebuilt spreadsheet with your own progress-monitoring numbers is fine. A screenshot of an actual chart is not."
-      },
-      {
-        "type": "p",
-        "text": "Second, write the short process note: three or four sentences on what the problem was, what you decided and what you would do differently. That note is where the judgement shows, and judgement is what they are hiring."
+        "type": "cards",
+        "items": [
+          {
+            "title": "Make the detail safe",
+            "text": "Leave out names, identifying details and protected health information, and check your employer's policy first. A rebuilt spreadsheet is fine. A screenshot of a real chart is not."
+          },
+          {
+            "title": "Write the process note",
+            "text": "Three or four sentences on the problem, what you decided and what you would do differently. The note shows judgement, and judgement is what they hire."
+          }
+        ]
       },
       {
         "type": "example",
-        "title": "An artifact described two ways",
+        "title": "One piece described two ways",
         "before": "I made a training module about dysphagia for my portfolio.",
         "after": "I rebuilt the aspiration-precautions training I ran for nursing staff as a ten-minute Rise module, with a knowledge check at the end. The original took me three tries to get right because nurses did not need the physiology, they needed the four decision points. The module leads with those."
       },
       {
         "type": "p",
-        "text": "Three signals from four sentences: the person can teach, can edit and knows who the learner is, and none of it needed a certificate."
-      },
-      {
-        "type": "callout",
-        "tone": "soft",
-        "title": "If you have already made one",
-        "text": "Most SLPs have. The parent handout you redesigned because the district's version was unreadable. The tracking sheet the whole department borrowed. The training you gave twice. All of those already exist, and the work is picking one of them and writing the short note that explains the thinking behind it."
+        "text": "Those four sentences show a person who can teach, can edit and knows who the learner is, and none of it needed a certificate."
       },
       {
         "type": "h",
-        "text": "A schedule that works alongside a caseload"
+        "text": "Fit it into two ninety-minute sessions around your caseload"
       },
       {
         "type": "steps",
@@ -127,21 +151,60 @@
       },
       {
         "type": "p",
-        "text": "Three and a half hours across a week is the entire ask, less time than most people spend rewriting a résumé for the fourth time."
+        "text": "That is three and a half hours across one week."
       },
       {
         "type": "h",
-        "text": "When you get stuck"
+        "text": "Cut it in half if a third session looms"
       },
       {
-        "type": "p",
-        "text": "Two failure modes, both predictable. The first is scope: you start building the definitive resource rather than one small thing, and if a third session looms, cut it in half rather than finish it. The second is perfectionism, which in clinicians presents as thoroughness, and the bar here is lower than the one in your head: good enough that a stranger sees the thinking."
+        "type": "compare",
+        "title": "Two ways this stalls, and the fix for each",
+        "left": {
+          "label": "What stalls you",
+          "items": [
+            "Scope: you start building the definitive resource.",
+            "Perfectionism, which in clinicians looks like thoroughness."
+          ]
+        },
+        "right": {
+          "label": "The fix",
+          "items": [
+            "Cut the piece in half and finish the half.",
+            "Stop when a stranger can see the thinking."
+          ]
+        }
       },
       {
         "type": "callout",
         "tone": "soft",
-        "title": "What this one artefact gets you",
-        "text": "Once this exists you have an answer to what have you done to prepare, a link on your LinkedIn, something concrete to send after an informational interview, and a story for the interview question about proof. One weekend, four uses."
+        "title": "What this one piece gets you",
+        "text": "An answer to \"what have you done to prepare?\", a link on your LinkedIn, something concrete to send after an informational interview, and a story for the interview question about proof. One weekend, four uses."
+      },
+      {
+        "type": "check",
+        "items": [
+          {
+            "q": "A certificate course you have been eyeing opens enrollment tonight. What do you do first?",
+            "options": [
+              "Enroll, because a credential gets a résumé past the first screen.",
+              "Ask ten people who hold the title whether the certificate was required, preferred or never came up.",
+              "Wait until a job posting lists it as required."
+            ],
+            "answer": 1,
+            "why": "The people already in the job know what their hiring manager checked, and ten answers show the pattern before you pay."
+          },
+          {
+            "q": "You are choosing a proof piece for an instructional design role. Which one do you build?",
+            "options": [
+              "A sample course built from a certificate program's template.",
+              "A one-page summary of why you want to move into learning design.",
+              "The staff training you already ran, rebuilt as a short module with a process note."
+            ],
+            "answer": 2,
+            "why": "It is the role's real work product, it comes from your own clinical work, and the note shows your judgement."
+          }
+        ]
       }
     ],
     "action": {
@@ -150,10 +213,10 @@
       "done": "Made. That is the thing most applicants do not have, and it took you a weekend."
     },
     "takeaways": [
-      "A certificate works when it sits next to translated experience and evidence you have done some of the work.",
-      "Project management, healthcare data and clinical informatics are the three paths where a credential genuinely helps.",
-      "An artifact is one thing built from your real work that a stranger can read in two minutes.",
-      "It should be the target role's actual work product, not a description of your interest in the role.",
+      "A certificate works when it sits beside translated experience and evidence you have done some of the work.",
+      "Project management, healthcare data and clinical informatics are the three paths where a credential helps.",
+      "Ask ten people who hold the title whether the certificate mattered before you pay for it.",
+      "Your proof piece is the target role's real work product, built from your own clinical work, that a stranger can read in two minutes.",
       "Two ninety-minute sessions with two days between them, plus twenty minutes for the process note."
     ],
     "sources": [
@@ -163,34 +226,46 @@
   },
   {
     "id": "5.5",
-    "tldr": "You do not have to quit to start: part-time, PRN, contract and telepractice each buy you hours at a different price. Loan forgiveness is a payment count that leaving pauses rather than destroys. Work out three numbers before you change anything: payments left, coverage cost, and months of runway.",
+    "tldr": "You can start without quitting: four days, PRN, contract work and telepractice each buy hours at a different cost. Leaving a qualifying employer pauses your loan forgiveness count and keeps what you earned. Before you change anything, look up three numbers: payments left, what coverage would cost, and months of runway.",
     "blocks": [
       {
         "type": "p",
-        "text": "The version of leaving that lives in your head is probably a resignation letter, and that is almost never how it happens. Most documented transitions run alongside a paycheck for six to fifteen months, which is why this program is designed to fit around a caseload."
-      },
-      {
-        "type": "p",
-        "text": "The question worth answering is how to buy back three to five hours a week without giving up the income that makes the search survivable."
-      },
-      {
-        "type": "h",
-        "text": "Four ways to buy hours"
-      },
-      {
-        "type": "list",
-        "items": [
-          "**Drop to four days.** The cleanest trade if your employer allows it. Twenty percent less income for a full day a week, and that day is worth more than five scattered evenings because the search needs continuous attention.",
-          "**PRN or per-diem.** More control over volume, usually a higher hourly rate, and no benefits. Works best when someone else in the household carries health coverage.",
-          "**Contract or travel work.** Higher rates and a defined end date, which some people find easier to plan around than an open-ended notice.",
-          "**Telepractice.** Cuts the commute and often the setup and cleanup time. Presence, eLuma, Global Teletherapy and VocoVision are the platforms that come up most in transition threads."
-        ]
+        "text": "Documented transitions take six to fifteen months, so plan to search with a paycheck still coming in. The search needs three to five hours a week, and you can find them without resigning."
       },
       {
         "type": "callout",
         "tone": "warm",
-        "title": "Telehealth is a bridge, not the exit",
-        "text": "It is still clinical work, and platform contracts often pay less per hour than in-person. Its value is the time and energy it frees up, and the fact that the platforms themselves hire former clinicians into implementation, training and customer success. Do not count it as having left."
+        "title": "Check your own accounts before you act",
+        "text": "I am not a financial adviser. This lesson explains how the rules work, and what you do with your loans and insurance is your decision. Federal loan rules changed several times in 2025 and 2026. Confirm anything that touches your money in your studentaid.gov account, with your loan servicer, in your plan's COBRA notice and at healthcare.gov."
+      },
+      {
+        "type": "h",
+        "text": "You can buy back hours without resigning"
+      },
+      {
+        "type": "p",
+        "text": "Each of these four options trades income, benefits or stability for time. Pick the one whose cost you can carry."
+      },
+      {
+        "type": "cards",
+        "items": [
+          {
+            "title": "Drop to four days",
+            "text": "Twenty percent less pay buys one continuous day, worth more than five scattered evenings. Ask HR what it does to benefits, and stay at 30 hours for PSLF."
+          },
+          {
+            "title": "PRN or per diem",
+            "text": "You control the volume and give up benefits. It works best when someone else in the household carries health coverage."
+          },
+          {
+            "title": "Contract or travel work",
+            "text": "A defined end date is easier to plan around than open-ended notice. Months on a for-profit staffing agency's payroll earn no PSLF credit."
+          },
+          {
+            "title": "Telepractice",
+            "text": "It cuts the commute and often the setup and cleanup time. Presence, eLuma, Global Teletherapy and VocoVision are four of the platforms."
+          }
+        ]
       },
       {
         "type": "quote",
@@ -198,40 +273,22 @@
         "from": "an SLP on r/slp"
       },
       {
-        "type": "h",
-        "text": "What each one costs"
+        "type": "callout",
+        "tone": "warm",
+        "title": "Telehealth is still clinical work",
+        "text": "Platform contracts often pay less per hour than in-person work. What you gain is time and energy, and the platforms themselves hire former clinicians into implementation, training and customer success. Do not count it as having left."
       },
       {
         "type": "p",
-        "text": "Every option above trades income, benefits or stability for time, and which trade is open to you depends on the numbers you run in the next lesson. Two things have caught people out: whether the change affects health coverage, and whether it affects loan forgiveness if you are counting payments."
-      },
-      {
-        "type": "h",
-        "text": "The version where you change nothing"
-      },
-      {
-        "type": "p",
-        "text": "You can also change nothing: keep the job, keep the hours, and accept that the search takes longer because you are doing it in the margins. For a single earner or someone chasing forgiveness that is often the right call, and the cost is months rather than the outcome."
+        "text": "You can also change nothing: keep the job and the hours, and search in the margins. For a single earner or someone close to forgiveness, that trade costs months and protects the outcome."
       },
       {
         "type": "h",
-        "text": "Student loans, pay cuts and health insurance"
+        "text": "Leaving pauses your loan forgiveness count and keeps what you earned"
       },
       {
         "type": "p",
-        "text": "This is the lesson nobody wrote, which is strange, because it is the question that comes up most. People stay in jobs that are hurting them for a loan balance, a payment count and a health plan, and no career advice ever addresses any of the three."
-      },
-      {
-        "type": "p",
-        "text": "So here are the mechanics, with two warnings. Federal loan rules changed several times in 2025 and 2026, and some of it is still being litigated, so treat this as a map rather than a ruling. I am not a financial adviser, and every number below needs checking against your own account."
-      },
-      {
-        "type": "h",
-        "text": "Forgiveness is a count, and the count survives you leaving"
-      },
-      {
-        "type": "p",
-        "text": "Public Service Loan Forgiveness requires 120 qualifying monthly payments made after October 2007, and they do not have to be consecutive. A gap does not send you back to zero."
+        "text": "Public Service Loan Forgiveness needs 120 qualifying monthly payments on Direct Loans, made after October 2007 while you work full time for a qualifying employer. The payments do not have to be consecutive, so months at a for-profit employer add nothing and erase nothing."
       },
       {
         "type": "numbers",
@@ -242,7 +299,7 @@
           },
           {
             "value": "30 hrs",
-            "label": "a week counts as full time, and you can add jobs together to reach it"
+            "label": "a week counts as full time, and qualifying jobs can be added together to reach it"
           },
           {
             "value": "Paused",
@@ -256,25 +313,86 @@
       },
       {
         "type": "p",
-        "text": "A qualifying employer is a government body, a 501(c)(3) nonprofit, a Tribal college, or a nonprofit delivering a defined public service. Your job title inside it is irrelevant, because the employer is what qualifies rather than the work you do there."
+        "text": "Your job title is irrelevant, because the employer is what qualifies, and you have to be on that employer's own payroll."
       },
       {
-        "type": "callout",
-        "tone": "soft",
-        "title": "You can leave clinical work without leaving forgiveness",
-        "text": "Nonprofit hospital systems, universities and state agencies employ people in exactly the roles this program covers. A clinical informatics analyst inside a nonprofit health system, a research coordinator or instructional designer at a university, a reviewer at a state Disability Determination Services office, a coordinator at a school district. Same count, no caseload."
+        "type": "compare",
+        "title": "Which employers count for PSLF",
+        "left": {
+          "label": "Qualifies",
+          "items": [
+            "Federal, state, local and Tribal government, including public school districts and state universities.",
+            "501(c)(3) nonprofits, such as nonprofit hospital systems and private nonprofit colleges.",
+            "Tribal colleges, and other nonprofits that provide a defined public service."
+          ]
+        },
+        "right": {
+          "label": "Never qualifies",
+          "items": [
+            "For-profit companies, including health-tech and ed-tech startups.",
+            "For-profit staffing agencies and teletherapy companies, even when they place you in a public school.",
+            "For-profit private practices, and self-employment."
+          ]
+        }
       },
       {
         "type": "p",
-        "text": "One documented transitioner did precisely this, taking a thirteen thousand dollar pay cut to move into a state disability determination role in part to protect her forgiveness."
+        "text": "Nonprofit health systems, universities and state agencies hire for the roles this program covers, so you can leave the caseload and keep the count."
+      },
+      {
+        "type": "cards",
+        "items": [
+          {
+            "title": "Nonprofit health system",
+            "text": "Clinical informatics analyst, clinical liaison or quality improvement specialist. Check the individual hospital, because some are investor-owned."
+          },
+          {
+            "title": "University",
+            "text": "Research coordinator, instructional designer or program manager at a public or private nonprofit university."
+          },
+          {
+            "title": "State agency",
+            "text": "A role at a state Disability Determination Services office, or in state Medicaid or education."
+          },
+          {
+            "title": "School district",
+            "text": "A coordinator or administrator job on the district's own payroll, with no caseload."
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "text": "One SLP took a $13k pay cut to move into a state disability determination role, partly to keep PSLF."
+      },
+      {
+        "type": "flow",
+        "title": "Check your own PSLF case in this order",
+        "items": [
+          {
+            "label": "Count your payments",
+            "note": "Your studentaid.gov account shows your qualifying payment count."
+          },
+          {
+            "label": "Search your employer",
+            "note": "Use the EIN on your W-2 in the official PSLF employer search."
+          },
+          {
+            "label": "Certify employment",
+            "note": "File the PSLF form every year and whenever you change jobs."
+          },
+          {
+            "label": "Apply at 120",
+            "note": "Be in qualifying full-time work when you apply."
+          }
+        ]
       },
       {
         "type": "h",
-        "text": "If you are close, be careful with the last stretch"
+        "text": "Stay in qualifying work until payment 120 is made and you have applied"
       },
       {
         "type": "p",
-        "text": "You have to be in qualifying full-time employment at your 120th payment and again when you apply. That is the detail that catches people who resign at payment 118 and assume the credit banks itself."
+        "text": "You must be working full time for a qualifying employer when you make the 120th payment and again when you apply. Resign at payment 118 and the last two wait until you are back in qualifying work."
       },
       {
         "type": "quote",
@@ -283,107 +401,164 @@
       },
       {
         "type": "p",
-        "text": "If you are within a year, the usual strategy is to move sideways into a non-clinical role at another qualifying employer, which keeps the count running while changing the job. That takes longer to find than a for-profit role, so start earlier."
+        "text": "If you are within a year, a sideways move into a non-clinical role at another qualifying employer changes the job and keeps the count running. That narrows the search, so start earlier."
       },
       {
-        "type": "callout",
-        "tone": "soft",
-        "title": "Months that did not count",
-        "text": "If some of your months sat in a deferment or forbearance that earned no credit, there is a buyback option written into the regulation: you pay what a qualifying plan would have charged for those months, or show you would have owed nothing on an income-driven plan. In practice it is offered once you already have 120 months of qualifying employment, so it is a tidy-up at the end rather than a shortcut."
+        "type": "p",
+        "text": "Months in a deferment or forbearance that earned no credit can sometimes be bought back, but only once you have 120 months of qualifying employment. Ask through the PSLF reconsideration request at studentaid.gov."
       },
       {
         "type": "callout",
         "tone": "warm",
-        "title": "Check this yourself, twice",
-        "text": "Look up your own employer in the official PSLF employer search rather than assuming from the name, and file the employment certification form regularly rather than at the end. A new employer-disqualification rule took effect in July 2026 and is still being litigated, so nobody can promise you what qualifies in five years."
+        "title": "The 2026 employer rule was struck down",
+        "text": "A rule that would have let the Education Department disqualify some employers was vacated by two federal courts on June 30, 2026, the day before it was due to start. Rules can change again, so look your employer up every year and keep your certifications on file."
       },
       {
         "type": "h",
-        "text": "If your income drops, your payment can too"
+        "text": "Ask for a lower loan payment as soon as your income drops"
       },
       {
         "type": "p",
-        "text": "On an income-driven plan the payment follows your income, and federal rules let you ask for a recalculation mid-year with documentation that your income has fallen since your last tax return. You do not have to wait for the annual recertification. If you drop to four days a week, file the form."
+        "text": "On an income-driven plan you can ask your servicer to recalculate the payment as soon as your income falls, with proof of the new income. You do not have to wait for the annual recertification, so a move to four days a week is a reason to ask."
       },
       {
-        "type": "p",
-        "text": "The plans themselves are mid-reshuffle, with new ones in regulation and older ones being wound down on published dates. Check your own plan's status in your federal loan account before you count on anything, including this."
+        "type": "compare",
+        "title": "Repayment plans changed in 2026",
+        "left": {
+          "label": "Certain today",
+          "items": [
+            "SAVE ended by court order on March 10, 2026. Its borrowers must pick another plan.",
+            "The income-driven plans now are IBR, PAYE, ICR and the new Repayment Assistance Plan (RAP).",
+            "PAYE and ICR close by July 1, 2028.",
+            "Payments under RAP count toward PSLF."
+          ]
+        },
+        "right": {
+          "label": "Depends on you",
+          "items": [
+            "Which plans you can use depends on your loan types and when each loan was made.",
+            "A federal loan taken on or after July 1, 2026 can narrow your plan choices. Ask first.",
+            "Which plan costs least depends on your income and household. Your servicer can run it."
+          ]
+        }
       },
       {
         "type": "h",
-        "text": "Coverage: what a gap actually costs"
+        "text": "Price your health coverage before you give notice"
       },
       {
         "type": "p",
-        "text": "Health insurance is the second thing that keeps people in place."
+        "text": "Once you leave, you pay the whole premium your employer was mostly covering, through COBRA or a marketplace plan, and you have 60 days to choose."
       },
       {
         "type": "numbers",
         "items": [
           {
             "value": "~$777",
-            "label": "a month, the average full 2025 single premium your employer was quietly paying"
+            "label": "a month, the average full 2025 single premium your employer was quietly paying most of"
           },
           {
             "value": "~$2,250",
-            "label": "a month, the same figure for family coverage"
+            "label": "a month, the same 2025 figure for family coverage"
           },
           {
             "value": "18 mo",
-            "label": "how long COBRA usually runs, at up to 102% of the full premium"
+            "label": "how long COBRA usually runs after you leave, at up to 102% of the full premium"
           },
           {
             "value": "60 days",
-            "label": "the election window, with at least 45 more to make the first payment"
+            "label": "the COBRA election window, with at least 45 more to make the first payment"
           }
         ]
       },
       {
         "type": "p",
-        "text": "COBRA feels expensive because you finally see the whole bill your employer had been paying most of. The average worker contributed about $1,440 a year toward a single plan that actually cost $9,325."
+        "text": "COBRA feels expensive because you finally see the whole bill: in 2025 the average worker paid about $1,440 a year toward a single plan that cost $9,325. It covers most employers with 20 or more employees."
+      },
+      {
+        "type": "compare",
+        "title": "COBRA and a marketplace plan, side by side",
+        "left": {
+          "label": "COBRA",
+          "items": [
+            "Keeps your current plan, usually for up to 18 months.",
+            "Costs up to 102% of the full premium, whatever your income.",
+            "60 days to elect, then at least 45 more for the first payment.",
+            "Can be backdated to the day coverage ended, if your plan's rules allow."
+          ]
+        },
+        "right": {
+          "label": "Marketplace",
+          "items": [
+            "Quitting counts as losing coverage, and you get 60 days to enroll.",
+            "Premium tax credits depend on your household's estimated income for the whole year.",
+            "No credit above 400% of the federal poverty line.",
+            "Advance credit you turn out not to qualify for is repaid in full at tax time."
+          ]
+        }
       },
       {
         "type": "p",
-        "text": "The other option is the marketplace, where losing job-based coverage because you quit still opens a special enrollment period. Subsidies are based on your estimated income for the year rather than on whether you are employed, so a genuinely lower income for a stretch often makes the marketplace cheaper than COBRA."
-      },
-      {
-        "type": "p",
-        "text": "You have sixty days to elect COBRA and at least forty-five more to pay, and many plans make coverage retroactive to the day you lost it. Some do not, so read your plan documents. Used carefully, that window lets you go uninsured on paper while staying covered in practice if something happens."
+        "text": "A lower income for the year can make a marketplace plan cheaper than COBRA. The months you worked at full salary count toward that income, so get your real price at healthcare.gov before you decide."
       },
       {
         "type": "callout",
         "tone": "warm",
-        "title": "The mistake people make here",
-        "text": "Quitting your job opens a marketplace special enrollment period. Voluntarily dropping COBRA part way through does not. If you think the marketplace will be cheaper, compare the two before you elect COBRA rather than after, because changing your mind in month four can leave you waiting for open enrollment."
+        "title": "Compare the two before you elect COBRA",
+        "text": "Quitting your job opens a marketplace special enrollment period for 60 days. Voluntarily dropping COBRA part way through does not. If you think the marketplace will be cheaper, compare before you elect COBRA, because changing your mind in month four can leave you waiting for open enrollment."
       },
       {
         "type": "h",
-        "text": "The C's, honestly"
+        "text": "Decide about your C's before they have lapsed twelve months"
       },
       {
         "type": "p",
-        "text": "Whether to keep paying ASHA dues once you leave is a real decision with a deadline attached, and the reinstatement rules are stricter than the forums suggest."
+        "text": "Once ASHA certification has been expired for more than twelve months, reinstatement needs a passing Praxis score no more than five years old. If you sat the Praxis longer ago than that, a lapse past twelve months means sitting it again."
       },
       {
         "type": "list",
         "items": [
-          "Once certification has been expired more than twelve months, reinstatement needs a Praxis score less than five years old, plus professional development hours and a fee in the region of four hundred dollars.",
-          "In practice that means letting the C's lapse is close to a one-way door after five years, because you would be retaking the exam.",
-          "State licences are separate, and many states allow inactive status for a smaller fee. That is usually the cheaper backup plan.",
-          "Whether a specific non-clinical job requires an active licence depends on your state's practice act rather than the job title, so check the posting and the state board rather than guessing."
+          "Reinstatement also takes 10 to 30 professional development hours, depending on how long the lapse ran, and a fee of about $400.",
+          "State licences are separate. Some states, New York and Ohio among them, let a licence go inactive, and every state sets its own rules.",
+          "Whether a non-clinical job needs an active licence depends on your state's practice act, so check the posting and the state board."
         ]
       },
       {
         "type": "p",
-        "text": "People in the forums stop calling the C's a sunk cost and start calling them a fishing licence, a thing you keep because it lets you go back if you want to."
+        "text": "People in the forums call the C's a fishing licence: you keep it because it lets you go back."
       },
       {
         "type": "h",
-        "text": "Now run your own numbers"
+        "text": "Work out how many months your savings will cover"
       },
       {
         "type": "p",
-        "text": "Three inputs decide whether a bridge is possible: the income you would give up, the coverage you would pay for, and any change in the loan payment. Divide your savings by the sum of those and you have the number of months you can run."
+        "text": "Three inputs decide whether a bridge is possible: the income you would give up, the coverage you would pay for, and any change in the loan payment. Divide your savings by the sum and you have your months of runway."
+      },
+      {
+        "type": "check",
+        "items": [
+          {
+            "q": "You have 118 qualifying PSLF payments and an offer from a health-tech startup that starts next month. What happens to your count if you take it?",
+            "options": [
+              "It resets to zero, because the payments have to be consecutive.",
+              "It stays at 118 and stops until you are back in full-time work for a qualifying employer.",
+              "It keeps running, because the work is still in healthcare."
+            ],
+            "answer": 1,
+            "why": "Leaving pauses the count without erasing it, and a for-profit employer never qualifies, so the last two payments wait until you return to qualifying work."
+          },
+          {
+            "q": "You resign in March and think a marketplace plan may cost less than COBRA. When do you compare them?",
+            "options": [
+              "Before electing COBRA, inside the 60 days after your job coverage ends.",
+              "After a few months on COBRA, once you know what care you use.",
+              "At tax time, when your income for the year is known."
+            ],
+            "answer": 0,
+            "why": "Quitting opens a 60-day marketplace window, and voluntarily dropping COBRA later does not reopen it."
+          }
+        ]
       },
       {
         "type": "tool",
@@ -393,7 +568,7 @@
         "type": "callout",
         "tone": "soft",
         "title": "What to do with the answer",
-        "text": "If the runway is longer than the move, you have a choice about how fast to go. If it is shorter, you have three levers: a smaller pay dip, a shorter bridge, or one of the fast-exit paths from Module 2 that pays from day one. None of those levers is giving up."
+        "text": "If the runway is longer than the move, you choose how fast to go. If it is shorter, you have three levers: a smaller pay dip, a shorter bridge, or a fast-exit path from Module 2 that pays from day one."
       }
     ],
     "action": {
@@ -402,11 +577,11 @@
       "done": "Saved. You now know the three numbers that were making the decision for you."
     },
     "takeaways": [
-      "Most documented transitions happen alongside a paycheck over six to fifteen months.",
+      "Documented transitions take six to fifteen months, so plan to search with a paycheck still coming in.",
       "Dropping to four days buys a continuous day, which is worth more than five scattered evenings.",
-      "PSLF needs 120 qualifying payments and they do not have to be consecutive, so leaving pauses the count rather than erasing it.",
-      "You must be in qualifying employment at your 120th payment and when you apply, so do not resign at 118.",
-      "COBRA runs about 18 months at up to 102% of the full premium, and the marketplace is often cheaper if your income actually drops."
+      "PSLF needs 120 qualifying payments and they do not have to be consecutive, so leaving pauses the count and keeps what you earned.",
+      "You must be in qualifying full-time work at your 120th payment and when you apply, so do not resign at 118.",
+      "COBRA usually runs 18 months at up to 102% of the full premium, and you have 60 days to compare it with a marketplace plan."
     ],
     "sources": [
       "facts",

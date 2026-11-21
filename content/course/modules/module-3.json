@@ -1,15 +1,11 @@
 [
   {
     "id": "3.1",
-    "tldr": "Your network is almost entirely SLPs, which is why nobody in it can refer you. The people who already hold your target title sit in three places: the subreddit for that job, the professional community that serves it, and the companies on your list. LinkedIn is how you turn any of them into a name.",
+    "tldr": "Everyone you could call right now works in speech, which is why nobody in your network can refer you yet. Start with the few people you already know outside the field, then find the ones who hold your target title in three places: the subreddit for that job, the professional community that serves it, and the companies on your list.",
     "blocks": [
       {
         "type": "p",
-        "text": "You already network every day. You meet a stranger, build rapport in ten minutes, gather background, plan the next steps and write it up, and you do it with a four-year-old, a nurse and a grandmother before lunch. Networking is that skill pointed at a different person. The only thing you lack is the people."
-      },
-      {
-        "type": "p",
-        "text": "Everyone you could call right now works in speech. That is not a personal failing, it is what twelve years inside one profession does to a contact list, and it is the reason the advice to just network lands so badly. You are not short of social skills. You are short of people who work somewhere else."
+        "text": "You already do the hard part of networking every day. You meet a stranger, build rapport in ten minutes, gather background and plan the next steps, and you do it with a four-year-old, a nurse and a grandmother before lunch. What you are short of is people who work somewhere else, because years inside one profession fill a contact list with SLPs."
       },
       {
         "type": "h",
@@ -17,16 +13,27 @@
       },
       {
         "type": "p",
-        "text": "Before a single stranger, list the people in your life who work somewhere else: a partner's colleagues, a college friend in tech, the neighbour who sells software, a former classmate who left the field. A referral from someone who can vouch for you as a person carries more than any message to a stranger, and these people already will. The ask is small and specific, and it never asks for a job."
+        "text": "A referral from someone who can vouch for you as a person carries more than any message to a stranger, so list these people before you write to anyone new. The ask is small and specific, and it never asks for a job."
       },
       {
-        "type": "list",
+        "type": "cards",
         "items": [
-          "**Your grad cohort.** SLP programs are small and the cohorts stay findable. Five years out, some of them are in health-tech, ed-tech, device companies and pharma. Search the program name on LinkedIn and read where people went before you write to anyone.",
-          "**The reps who walk into your building.** The AAC device rep, the EMR trainer who ran your go-live, the feeding-product rep, the ed-tech rep who sold your district its screening platform. They hold the jobs on your map, they already know you, and taking your call is part of their job.",
-          "**The ones who already left.** The CF you supervised who never came back, the colleague who went to a vendor, your own CF supervisor if they moved on. They are the warmest cold message you will ever send.",
-          "**People who sell you things outside work.** Your realtor, your insurance agent, the person who did your taxes. They talk to everyone and they like being asked.",
-          "**Anyone you worked with before grad school.** They never knew you as an SLP, which is the point."
+          {
+            "title": "Your grad cohort",
+            "text": "Cohorts are small and stay findable. Search the program name on LinkedIn and read where people went: health tech, ed tech, device companies, pharma."
+          },
+          {
+            "title": "The reps in your building",
+            "text": "The AAC device rep, the EMR trainer who ran your go-live, the ed-tech rep who sold to your district. They hold jobs on your map and already know you."
+          },
+          {
+            "title": "Colleagues who already left",
+            "text": "The CF you supervised who never came back, the colleague who went to a vendor, your own CF supervisor. They are the warmest cold message you will send."
+          },
+          {
+            "title": "People outside healthcare",
+            "text": "Your realtor, your insurance agent, anyone you worked with before grad school. They talk to everyone, and some never knew you as an SLP."
+          }
         ]
       },
       {
@@ -36,43 +43,68 @@
       },
       {
         "type": "p",
-        "text": "Say the title. People do not guess on your behalf, and \"anything outside the clinic\" gives them nothing to remember you by. When they can't help, ask who else they know who works somewhere interesting. That second name is usually the one that matters."
+        "text": "Say the title, because people do not guess on your behalf. If you have not decided between two titles, say both and stop there. When someone can't help, ask who else they know who works somewhere interesting, since that second name is often the one that matters."
       },
       {
-        "type": "p",
-        "text": "If you honestly have not decided between two titles, say both and stop there. \"I'm looking at clinical liaison and customer success, and I'm trying to work out which\" gives them two things to remember. \"Something outside the clinic\" gives them nothing."
+        "type": "compare",
+        "title": "Give them a title to remember",
+        "left": {
+          "label": "Forgettable",
+          "items": [
+            "\"Anything outside the clinic.\"",
+            "\"Something non-clinical. I'm open.\""
+          ]
+        },
+        "right": {
+          "label": "Easy to repeat",
+          "items": [
+            "\"Clinical liaison roles.\"",
+            "\"Clinical liaison or customer success. I'm working out which.\""
+          ]
+        }
       },
       {
         "type": "h",
-        "text": "The question everyone asks and nobody follows up"
+        "text": "Ask a follow-up when someone tells you what they do"
       },
       {
         "type": "p",
-        "text": "\"What do you do for work?\" gets asked at every barbecue and answered with a nod. Stop nodding. The person across the table is a free informational interview about a company you have never heard of, and the follow-ups take a minute each."
+        "text": "The person across the table at a barbecue is a free informational interview about a company you have never heard of. Ask three of these questions and you know whether the job exists at a company that would want a clinician, which is more than a posting tells you."
       },
       {
-        "type": "list",
+        "type": "script",
+        "title": "Seven follow-ups to \"What do you do for work?\"",
+        "text": "The company: What is it called, and who would I know that competes with it?\nThe structure: Who do you report to, and does anyone report to you?\nThe clients: Does the company have customers, and who are they?\nThe role: What is your title, and has it changed since you started?\nThe tools: What software is open on your screen most of the day?\nThe output: What do you hand over at the end of a week?\nThe style: Is the work mostly with other people, or mostly alone?"
+      },
+      {
+        "type": "h",
+        "text": "Have sixty seconds ready for \"what are you looking for?\""
+      },
+      {
+        "type": "p",
+        "text": "Somewhere in the fifteen minutes they will ask, and your answer has four parts. Fill the brackets in yours tonight and say it out loud twice, so the first time you say it is before the call."
+      },
+      {
+        "type": "flow",
+        "title": "What the sixty seconds says",
         "items": [
-          "**The company.** What is it called, and who would I know that competes with it?",
-          "**The structure.** Who do you report to, and does anyone report to you?",
-          "**The clients.** Does the company have customers, and who are they?",
-          "**The role.** What is your title, and has it changed since you started?",
-          "**The tools.** What software is open on your screen most of the day?",
-          "**The output.** What do you actually hand over at the end of a week?",
-          "**The style.** Mostly with other people, or mostly alone?"
+          {
+            "label": "Your years",
+            "note": "how long, and in which setting"
+          },
+          {
+            "label": "What you'd keep",
+            "note": "the two things you'd do all day"
+          },
+          {
+            "label": "The title",
+            "note": "the role you are moving into"
+          },
+          {
+            "label": "The ask",
+            "note": "who or what you'd like to hear about"
+          }
         ]
-      },
-      {
-        "type": "p",
-        "text": "Three of those and you know whether the job exists at a company that would want a clinician, which is more than a job posting tells you."
-      },
-      {
-        "type": "h",
-        "text": "When they ask what you're looking for"
-      },
-      {
-        "type": "p",
-        "text": "Somewhere in the fifteen minutes they will ask. Have sixty seconds ready that says the years, the two things you'd do all day, the title, and the ask. Yours is below; fill the brackets tonight and say it out loud twice, because the first time it comes out of your mouth should not be on the call."
       },
       {
         "type": "bypath",
@@ -94,19 +126,19 @@
       },
       {
         "type": "h",
-        "text": "Start with what is already on your cart"
+        "text": "List the companies whose products you already use"
       },
       {
         "type": "p",
-        "text": "Before any stranger, write down every company whose product you already use at work: the EMR, the AAC vendors, the teletherapy platform, the assessment publishers, the materials catalogue, the district's documentation system, the device rep's employer. Every one of those companies hires people who can explain the clinical side to the people building and selling the thing, and you are already a reference customer. Their employees are your first cold list, and \"I've used your product with [N] clients\" is an opener nobody else applying can write."
+        "text": "Write down every company whose product you use at work: the EMR, the AAC vendors, the teletherapy platform, the assessment publishers, the materials catalogue, the district's documentation system. Each of them needs people who can explain the clinical side to the teams building and selling the product, and you already know that product as a user. Their employees are your first cold list, and \"I've used your product with [N] clients\" is an opener few other applicants can write."
       },
       {
         "type": "h",
-        "text": "Where the ones who left actually went"
+        "text": "Request to join the closed Facebook groups today"
       },
       {
         "type": "p",
-        "text": "When we read a hundred threads looking for where SLPs go for this, the same answer kept coming back, and it was not a public forum. It was private Facebook groups, named again and again by people who had already got out."
+        "text": "SLPs who already got out keep naming private Facebook groups as the place that helped them."
       },
       {
         "type": "quote",
@@ -115,39 +147,65 @@
       },
       {
         "type": "p",
-        "text": "Groups like SLP alternatives and job transitions, Alternative Careers for Introverted SLPs, and the teacher-transition groups are closed and not indexed by search. That is exactly why you have not found them: they cannot be read from the outside, and you have to request to join and wait. Do that today rather than in week eight, because approval can take a week and costs you nothing while you wait."
-      },
-      {
-        "type": "p",
-        "text": "One habit before the three places: search in the order industry, company, person, posting, and never the other way round. Typing \"non-clinical SLP\" into a job board comes up empty because nobody writes a posting for a clinician; they write it for a customer success manager and hope. Pick the industry, list the companies in it, find the people who hold the title there, and the postings find you."
+        "text": "Groups like SLP alternatives and job transitions, Alternative Careers for Introverted SLPs, and the teacher-transition groups are closed and not indexed by search, so you cannot read them from outside. Request to join today, because approval can take days and waiting costs you nothing. Read a group for a week before you post, and when you do post, ask a question, which gives someone an easy reason to reply."
       },
       {
         "type": "h",
-        "text": "The three places, in order"
+        "text": "Find the people who hold your target title in three places"
+      },
+      {
+        "type": "p",
+        "text": "Search in the order industry, company, person, posting. Typing \"non-clinical SLP\" into a job board comes up empty, because a company writes its posting for a customer success manager and never for a clinician. Pick the industry, list the companies in it, find the people who hold the title there, and the postings follow."
+      },
+      {
+        "type": "flow",
+        "title": "Search in this order",
+        "items": [
+          {
+            "label": "Industry",
+            "note": "health tech, ed tech or devices"
+          },
+          {
+            "label": "Company",
+            "note": "the ones on your list"
+          },
+          {
+            "label": "Person",
+            "note": "who holds the title there"
+          },
+          {
+            "label": "Posting",
+            "note": "last, once you know a name"
+          }
+        ]
       },
       {
         "type": "steps",
         "items": [
-          "The subreddit for the job title, not for your profession. Search Reddit for your target title and read the complaint threads first. People describe the actual daily work there in a way no job posting will, and it is the fastest way to find out whether you want it.",
-          "The professional community for that field. Instructional Design Central for ID, Mixed Methods for UX research, the Conversation Design Institute for conversation design, HIMSS and AMIA for informatics, your local PMI chapter for project management. Most are free to read.",
-          "The 188 companies on your list. This is the one nobody else can give you, because these are health-tech and ed-tech companies that value clinical skills. Every one of them has people on LinkedIn."
+          "Read the subreddit for the job title, not for your profession. Search Reddit for your target title and start with the complaint threads, where people describe the daily work in a way no posting will.",
+          "Find the professional community for that field: HIMSS and AMIA for informatics, your local PMI chapter for project management. For any other title, search the title plus \"association\" or \"community\". Many publish free articles and webinars.",
+          "Work through the companies on your list (linked under this lesson). They are health and ed-tech companies that value clinical skills, and every one of them has people on LinkedIn."
         ]
       },
       {
+        "type": "p",
+        "text": "On LinkedIn, search People rather than posts. Put a company from your list in the Current company filter and speech-language pathologist or CCC-SLP in the keyword box. The search returns people who did your job and now work at that company, and their titles show you which jobs there a clinician holds."
+      },
+      {
         "type": "h",
-        "text": "The rooms, and the wrong room"
+        "text": "At a conference, walk the exhibit hall"
       },
       {
         "type": "p",
-        "text": "Most SLPs go to one conference a year, and it is full of SLPs. The exhibit hall is the exception: for three days the companies on your list stand behind tables with the people who run their clinical teams, and almost nobody walks up to ask about working there. The right rooms for each path are smaller and further from home: HIMSS and AMIA for informatics, ATIA and Closing the Gap for AAC and assistive technology, DevLearn and Learning Solutions for instructional design, ISTE for ed-tech, and the state chapters of HIMSS and PMI, which cost a fraction and meet monthly."
+        "text": "Most SLPs go to one conference a year, and it is full of SLPs. The exhibit hall is the exception: the companies on your list stand behind tables with people from their clinical teams, and few attendees walk up to ask about working there. The rooms for each path are smaller and further from home: HIMSS and AMIA for informatics, ATIA and Closing the Gap for AAC and assistive technology, DevLearn for instructional design, ISTELive for ed tech, and the local chapters of HIMSS and PMI, which cost far less."
       },
       {
-        "type": "list",
+        "type": "steps",
         "items": [
           "Walk up to whoever is standing alone. They are relieved.",
           "Change tables between sessions if yours has closed ranks.",
-          "Ask the organiser to introduce you, and say plainly that you are new to the field and want to meet people in it. That is what organisers are for.",
-          "Say your sixty seconds, then hand the conversation back with a question about their work. People like being the expert.",
+          "Ask the organiser to introduce you, and say plainly that you are new to the field and want to meet people in it.",
+          "Say your sixty seconds, then hand the conversation back with a question about their work.",
           "Close with \"can I follow up on LinkedIn?\" and do it that night."
         ]
       },
@@ -159,21 +217,36 @@
       },
       {
         "type": "h",
-        "text": "The search that finds people like you"
+        "text": "Save three names before you write a single message"
       },
       {
         "type": "p",
-        "text": "On LinkedIn, search people rather than posts. Put a company from your list in the company filter and a term like speech-language pathologist or CCC-SLP in the keyword box. What comes back is people who did your job and now do the one you want, at a company that has hired that exact move before."
+        "text": "Save the names as you find them on your people and applications page (linked under this lesson). Lesson 3.3 sends from the same list and lesson 3.6 keeps it warm, so a name goes in once."
       },
       {
-        "type": "callout",
-        "tone": "soft",
-        "title": "Two hours a week is the whole commitment",
-        "text": "Read a group for a week before you post anything. When you do post, ask a question rather than introducing yourself, because an introduction asks the room for attention and a question gives someone an easy reason to reply."
-      },
-      {
-        "type": "p",
-        "text": "Save the names as you find them on your people and applications page (linked under this lesson). It is the same list lesson 3.3 sends from and lesson 3.6 keeps warm, so a name goes in once."
+        "type": "check",
+        "items": [
+          {
+            "q": "At a barbecue, your neighbour says she works \"in software, sort of\". What do you do next?",
+            "options": [
+              "Nod and move on, since she isn't in healthcare.",
+              "Ask what the company is called, who its customers are and what her title is.",
+              "Ask whether her company is hiring."
+            ],
+            "answer": 1,
+            "why": "Three follow-ups tell you whether the job exists at a company that would want a clinician, and a hiring question gives her nothing she can answer."
+          },
+          {
+            "q": "A former colleague asks what kind of job you want. You are torn between clinical liaison and customer success. What do you say?",
+            "options": [
+              "\"I'm not sure yet. I'll tell you when I've decided.\"",
+              "\"Anything outside the clinic, honestly.\"",
+              "\"Clinical liaison or customer success, and I'm working out which.\""
+            ],
+            "answer": 2,
+            "why": "Two titles give her two things to remember and pass on, and \"anything\" gives her nothing."
+          }
+        ]
       },
       {
         "type": "steps",
@@ -186,14 +259,11 @@
       }
     ],
     "takeaways": [
-      "Your contact list is all SLPs, so referrals have to come from people you have not met yet.",
-      "The groups where SLPs help each other leave are closed and unsearchable, which is why request to join is a week-one job.",
-      "Read the subreddit for the job title, not for your profession. The complaint threads describe the real work.",
-      "LinkedIn people search, filtered to a company on your list plus CCC-SLP, finds people who made your exact move.",
-      "Save three names before you write a single message.",
-      "Your cohort, the reps who sell into your building, and the ones who already left are warmer than any stranger. The exhibit hall is the one part of a conference full of employers rather than competitors.",
-      "Have sixty seconds ready for \"so what are you looking for?\": years, the two things you'd do all day, the title, the ask.",
-      "The companies whose products are already on your cart are your first cold list, and \"I've used your product with clients\" is an opener nobody else has."
+      "Everyone you could call works in speech, so start with the few who don't: your grad cohort, the reps in your building and the colleagues who already left.",
+      "Say the title you want. \"Anything outside the clinic\" gives people nothing to remember you by.",
+      "Have sixty seconds ready for \"what are you looking for?\": your years, the two things you'd do all day, the title, the ask.",
+      "Search in the order industry, company, person, posting. A LinkedIn people search for a company on your list plus CCC-SLP finds SLPs who already work there.",
+      "Request to join two closed Facebook groups today, and save three names before you write a single message."
     ],
     "sources": [
       "voc",
@@ -202,11 +272,11 @@
   },
   {
     "id": "3.2",
-    "tldr": "The message that gets answered is short, specific, and asks for fifteen minutes about their path with no job attached. About one in four asks never gets a reply, which is a volume problem rather than a verdict. Three templates below: the first message, the single follow-up, and the thank-you that keeps the door open.",
+    "tldr": "The message that gets answered is short, names the move they made, and asks for fifteen minutes about their path with no job attached. On a free LinkedIn account you connect first with a note under 200 characters, then send the full message. Roughly one ask in four gets no reply, which is a volume problem rather than a verdict, so you follow up once and stop.",
     "blocks": [
       {
         "type": "p",
-        "text": "Referrals decide most of the successful transitions in the file, and generic applications through Indeed and LinkedIn without one are what fails. The forum threads already suspect it. Under one exit post somebody asked whether the writer had found the job through network connections or just by submitting a résumé, and some version of that question sits under most of them."
+        "text": "Referrals decide most of the documented transitions, and generic applications through Indeed and LinkedIn without one are what fails. The ask that starts a referral is small: fifteen minutes, about how they got in, with no job attached."
       },
       {
         "type": "quote",
@@ -215,20 +285,36 @@
       },
       {
         "type": "p",
-        "text": "The ask that works is small: fifteen minutes, about how they got in, with no job attached. Nobody in the corpus reported being annoyed by a polite ask from an SLP. What they reported, repeatedly, was being asked for their actual résumé, more than twenty times under a single post, and mostly saying yes."
+        "text": "Readers of the exit posts already suspect that referrals matter. Under one post, more than twenty people asked the writer for their actual résumé, which is a far bigger ask than fifteen minutes about how one person got in."
+      },
+      {
+        "type": "h",
+        "text": "Make your first message easy to answer"
       },
       {
         "type": "p",
-        "text": "Five things make a first message answerable. You name the specific move they made, so it is obvious you are writing to them and not to forty people. You ask for a fixed and small amount of time. You attach no job ask. You make it easy to decline, which is the part most people leave out and the part that makes a stranger feel safe replying at all. And you make it easy to say yes: one direct question they could answer in a sentence, plus two time windows or a booking link, so a yes costs them thirty seconds rather than a calendar negotiation."
+        "text": "A stranger answers when the message is plainly written to them and a yes costs thirty seconds. Most people leave out the easy way to decline, and that line is what makes a stranger feel safe replying at all."
       },
       {
-        "type": "p",
-        "text": "If a message to a stranger feels like too much, the connection request is the smaller door. Three hundred characters, one specific thing from their profile, one question they can answer from the sofa. Some will not accept, and that is fine; the ones who do now recognise your name."
-      },
-      {
-        "type": "script",
-        "title": "The connection request, under 300 characters",
-        "text": "Hi [Name], I'm an SLP in [setting] looking at [target title] roles, and I noticed you made that move from [their old setting]. I'd be glad to connect, and if you don't mind, I have one question about how the first year went.\n\nIf you share a program: Hi [Name], I saw you went through [program] too and you're now at [company]. I'm an SLP looking at [target title] roles and would love to connect. If you're open to it, I have a couple of questions about how you got there."
+        "type": "cards",
+        "items": [
+          {
+            "title": "Name the move they made",
+            "text": "One specific thing shows you are writing to them and not to forty people."
+          },
+          {
+            "title": "Ask for fifteen minutes",
+            "text": "A fixed, small amount of time, with two time windows or a booking link, so a yes needs no calendar negotiation."
+          },
+          {
+            "title": "Attach no job ask",
+            "text": "No résumé and no \"are you hiring?\". Ask one direct question they could answer in a sentence."
+          },
+          {
+            "title": "Make it easy to decline",
+            "text": "Offer a one-question fallback by message in case a call is too much."
+          }
+        ]
       },
       {
         "type": "example",
@@ -238,20 +324,67 @@
       },
       {
         "type": "p",
-        "text": "The first one asks a stranger for two hours of work, attaches a résumé, and never says which title it means. The second asks for one thing, and the reader can answer it from the sofa. If Google could answer a question, don't ask a person."
+        "text": "The first message asks a stranger for two hours of work, attaches a résumé, and never says which title it means. The second asks for one thing. If Google could answer a question, don't ask a person."
+      },
+      {
+        "type": "h",
+        "text": "On LinkedIn, connect first and send the full message second"
+      },
+      {
+        "type": "p",
+        "text": "A free LinkedIn account can only message people you are connected to, so a stranger gets a connection request first. The note on that request is capped at 200 characters on a free account, and LinkedIn allows only a few notes a month, so save them for the people you most want to reach. When the notes run out, send the request bare. Either way, send the full message once they accept, or by email if you can find an address. Some people will not accept, and the ones who do now recognise your name."
+      },
+      {
+        "type": "flow",
+        "title": "The order of messages",
+        "items": [
+          {
+            "label": "Connection request",
+            "note": "a note under 200 characters"
+          },
+          {
+            "label": "Full message",
+            "note": "once they accept, or by email"
+          },
+          {
+            "label": "One follow-up",
+            "note": "seven to ten days later"
+          },
+          {
+            "label": "The call",
+            "note": "fifteen minutes, six questions"
+          },
+          {
+            "label": "Thank-you",
+            "note": "the same day"
+          }
+        ]
       },
       {
         "type": "script",
-        "title": "The first message (LinkedIn or email, under 90 words)",
-        "text": "Hi [Name], I'm an SLP in [setting] and I'm looking at [target title] roles. I found you because you made the same move, and I'd rather ask you than read another article about it.\n\nWould you be up for 15 minutes in the next couple of weeks? I'm free [two windows, e.g. Tuesday after 4 or Thursday lunchtime], or here's a link if that's easier: [booking link]. I mostly want to know how you got the first one and what you'd do differently. No job ask, I promise.\n\nIf a call is too much, one question by message would still help me: [the one thing you most want to know].\n\nEither way, thank you for putting your path somewhere someone like me could find it.\n\n[Your name]"
+        "title": "The connection request, under 200 characters once you fill it in",
+        "text": "Hi [Name], I'm an SLP looking at [target title] roles, and I saw you made that move from [their old setting]. I'd be glad to connect. I have one question about your first year, if you're open.\n\nIf you share a program:\n\nHi [Name], I saw you went through [program] too and you're now at [company]. I'm an SLP looking at [target title] roles and would love to connect and ask how you got there."
+      },
+      {
+        "type": "p",
+        "text": "Keep the full message between 50 and 125 words. Emails of that length got the best response rates in one company's analysis of its own data (Boomerang, 2016), and one to three questions did better than none or many."
+      },
+      {
+        "type": "script",
+        "title": "The first message (email, or LinkedIn once you are connected), 50 to 125 words",
+        "text": "Hi [Name], I'm an SLP in [setting] and I'm looking at [target title] roles. You made the same move, and I'd rather ask you than read another article about it.\n\nWould you be up for 15 minutes in the next couple of weeks? I'm free [two windows, e.g. Tuesday after 4 or Thursday lunchtime], or here's a link if that's easier: [booking link]. I mostly want to know how you got the first one and what you'd do differently. No job ask, I promise.\n\nIf a call is too much, one question by message would still help me: [the one thing you most want to know].\n\nEither way, thank you for putting your path somewhere I could find it.\n\n[Your name]"
       },
       {
         "type": "tool",
         "name": "message-check"
       },
       {
+        "type": "h",
+        "text": "Follow up once, then stop"
+      },
+      {
         "type": "p",
-        "text": "One follow-up, seven to ten days later, and then you stop. Silence is almost always a full inbox and a bad Tuesday. A second follow-up converts almost nobody and costs you the option of asking again in six months, when you have something new to say."
+        "text": "Send one follow-up seven to ten days later. Silence usually means a full inbox and a bad Tuesday. A second follow-up reads as pressure, and it costs you the chance to write again in six months, when you have something new to say."
       },
       {
         "type": "script",
@@ -259,15 +392,21 @@
         "text": "Hi [Name], floating this back up in case it got buried.\n\nStill would love 15 minutes on how you got into [target title]. If a call is too much, I'd happily take two sentences by message instead: what surprised you most in your first three months?\n\nThank you either way. [Your name]"
       },
       {
-        "type": "list",
-        "items": [
-          "What did you actually do yesterday? Ask for the day, not the job description.",
-          "What did your employer require, and what did they ignore on your résumé?",
-          "Which part of clinical work turned out to be the most useful, and which part did you have to unlearn?",
-          "Which groups, newsletters or communities should I be in? One answer to this turns a fifteen-minute call into a channel that keeps sending you things.",
-          "What would you do differently if you were starting this month?",
-          "Who else should I be talking to? This is the only question that turns a conversation into an introduction, so never skip it."
-        ]
+        "type": "h",
+        "text": "Bring these six questions to the call"
+      },
+      {
+        "type": "script",
+        "title": "Six questions for the fifteen minutes",
+        "text": "1. What did you actually do yesterday?\n2. What did your employer require, and what did they ignore on your résumé?\n3. Which part of clinical work turned out to be the most useful, and which part did you have to unlearn?\n4. Which groups, newsletters or communities should I be in?\n5. What would you do differently if you were starting this month?\n6. Who else should I be talking to?"
+      },
+      {
+        "type": "p",
+        "text": "Never skip the last question, because \"who else should I be talking to?\" is the one that turns a conversation into an introduction. The first asks for the day rather than the job description, and the fourth turns a fifteen-minute call into a channel that keeps sending you things."
+      },
+      {
+        "type": "h",
+        "text": "Thank them the same day, then tell them what you did"
       },
       {
         "type": "script",
@@ -276,16 +415,48 @@
       },
       {
         "type": "p",
-        "text": "Send the thank-you the same day, then do the thing you said you would do, and tell them two weeks later that you did it. The offer at the end is not decoration: a clinician's read on a product, a name from your own department, a share of something they wrote. Most will say nothing is needed, and the ones who take you up on it are the ones who forward your résumé later. Fill your setting, your target title and your name into all three templates tonight, and leave the [Name] blanks empty for the next lesson."
+        "text": "Send the thank-you the same day, do the thing you said you would do, and tell them two weeks later that you did it. In one experiment, 66% of helpers who were thanked helped again, against 32% of those who got a neutral reply (Grant & Gino, 2010, a lab scenario with students). The offer at the end can be small: a clinician's read on a product, a name from your own department, a share of something they wrote."
+      },
+      {
+        "type": "check",
+        "items": [
+          {
+            "q": "Ten days after your first message, there is still no reply. What do you do?",
+            "options": [
+              "Message again every few days until they answer.",
+              "Assume the answer is no and cross their company off your list.",
+              "Send one follow-up with a one-question fallback, then stop."
+            ],
+            "answer": 2,
+            "why": "Silence usually means a full inbox, one follow-up is polite, and a second costs you the chance to write again in six months."
+          },
+          {
+            "q": "You found an SLP who became an implementation manager. You are not connected, and your LinkedIn account is free. What do you send first?",
+            "options": [
+              "A connection request with a short note that names her move and offers one question.",
+              "Your résumé and five questions about the job.",
+              "Nothing. Apply to her company and hope she notices."
+            ],
+            "answer": 0,
+            "why": "A free account can only message connections, and a note that names her move gives her a reason to accept."
+          }
+        ]
+      },
+      {
+        "type": "steps",
+        "items": [
+          "Fill your setting, your target title and your name into the connection request, the first message and the follow-up tonight.",
+          "Run the first message through the checklist above.",
+          "Leave the [Name] blanks empty. You fill them in lesson 3.3."
+        ]
       }
     ],
     "takeaways": [
       "Referrals decide most documented transitions, and applications sent without one are what fails.",
-      "The ask is fifteen minutes about their path with no job attached.",
-      "A first message works when it names their specific move, asks for a fixed small amount of time, and makes it easy to decline.",
+      "Ask for fifteen minutes about their path, with no job attached and an easy way to decline.",
+      "On a free LinkedIn account, send a connection request with a note under 200 characters, then the full message once they accept.",
       "Follow up once, seven to ten days later, then stop.",
-      "\"Who else should I be talking to?\" is the question that turns a conversation into an introduction.",
-      "Make a yes cheap: one question, two time windows, and a one-question fallback if a call is too much."
+      "\"Who else should I be talking to?\" is the question that turns a conversation into an introduction."
     ],
     "sources": [
       "facts",
@@ -294,31 +465,58 @@
   },
   {
     "id": "3.3",
-    "tldr": "Three messages, twenty minutes, tonight. About one in four gets no answer, so three sent is usually two conversations, and one conversation is worth more than another week of reading.",
+    "tldr": "Send three messages in twenty minutes, tonight. Roughly one ask in four gets no answer, so sending three keeps a single silence from reading as a verdict, and one conversation is worth more than another week of reading.",
     "blocks": [
       {
         "type": "p",
-        "text": "Everything in this module so far has been reading. This is the first step that involves another person, and it is the one people postpone for months. It is the easiest thing in the whole program to put off and call research, which is what research becomes once you already know the answer."
-      },
-      {
-        "type": "p",
-        "text": "Three people, and they do not all have to be strangers. In order of value, an SLP who now holds the title you want, because they have already done the exact translation you are attempting. Then anyone who holds that title from any background, because they know what their employer actually required. Then someone at a company on your list, because a name inside beats a posting outside. The companies directory holds 188 health-tech and ed-tech companies that value clinical skills, and the deep-dive tool in 2.7 already listed the ones matching your path."
-      },
-      {
-        "type": "p",
-        "text": "Two filters on the three names. Prefer people who have held the title for years, ideally at more than one company, because you would not ask a first-year CF what the job is like either. And skip the visible ones. The SLP with the big account and the course gets fifty messages like yours a week; the one with three hundred connections who quietly became an EHR analyst answers every one."
-      },
-      {
-        "type": "p",
-        "text": "The conversations do two more jobs you will not notice until later. They are interview prep, because you arrive at the interview using the words people in the role actually use. And they narrow the map: after four of them you will find you have gone quiet on one path and keep asking about another. That drift is data. Cross the path off."
+        "text": "This is the step people postpone for months and call research. You already know enough to send three messages, and they do not all have to go to strangers."
       },
       {
         "type": "h",
-        "text": "Why three, and why tonight"
+        "text": "Pick three people, in this order of value"
+      },
+      {
+        "type": "cards",
+        "items": [
+          {
+            "title": "An SLP with your title",
+            "text": "They have already done the exact translation you are attempting."
+          },
+          {
+            "title": "Anyone who holds that title",
+            "text": "Whatever their background, they know what their employer actually required."
+          },
+          {
+            "title": "Someone at a target company",
+            "text": "A name inside beats a posting outside. The list from lesson 3.1 holds health and ed-tech companies that value clinical skills."
+          }
+        ]
+      },
+      {
+        "type": "compare",
+        "title": "Choose the person most likely to answer",
+        "left": {
+          "label": "Skip",
+          "items": [
+            "The SLP with the big account and a course, who gets a pile of messages like yours.",
+            "Someone a few months into the role."
+          ]
+        },
+        "right": {
+          "label": "Prefer",
+          "items": [
+            "The SLP who quietly became an EHR analyst and rarely gets asked.",
+            "Someone who has held the title for years, ideally at more than one company."
+          ]
+        }
+      },
+      {
+        "type": "h",
+        "text": "Send three so that one silence means nothing"
       },
       {
         "type": "p",
-        "text": "Three is a volume decision. About one in four gets no answer at all, so one message is a coin flip and three is a near-certainty of one real conversation. Sending three at once also stops you reading a single silence as a verdict on you. That is what ends most outreach after message one. Do it tonight, with the templates already filled in, because a tired brain will not do this on a Thursday three weeks from now."
+        "text": "Three is a volume decision. Between one in five and one in four of these asks gets no answer at all, so a single message can land in a full inbox and feel like a verdict on you. People also say yes more often than askers predict: in one set of studies, askers underestimated by as much as 50% how likely others were to agree to a direct request (Flynn & Lake, 2008). Send them tonight, with the templates already filled in, because a tired brain will not do this on a Thursday three weeks from now."
       },
       {
         "type": "quote",
@@ -326,28 +524,61 @@
         "from": "an SLP, quoted in the research file"
       },
       {
-        "type": "tool",
-        "name": "contact-tracker"
+        "type": "h",
+        "text": "Expect an ordinary Tuesday, a second name or an unlisted posting"
+      },
+      {
+        "type": "p",
+        "text": "What comes back is rarely a job. You get a description of an ordinary Tuesday, the credential their employer actually cared about, a posting that is not public yet, or a second name. The conversations are also interview prep, because you arrive at the interview using the words people in the role use. And they narrow your map: if after a few calls you have gone quiet on one path and keep asking about another, cross the first one off."
+      },
+      {
+        "type": "callout",
+        "tone": "warm",
+        "title": "Do not ask for a job in the first message",
+        "text": "The ask is fifteen minutes about their path. A job ask puts a stranger in the position of saying no to something they cannot give you, and a message they cannot say yes to is easy to leave unanswered. The referral comes later, at the end of a good conversation, when you ask who else you should be talking to."
+      },
+      {
+        "type": "check",
+        "items": [
+          {
+            "q": "You have time for one message tonight. Which of these three people gets it?",
+            "options": [
+              "An SLP with a large following who sells a career-change course.",
+              "An SLP who became an EHR analyst four years ago and rarely posts.",
+              "A customer success manager who started the job two months ago."
+            ],
+            "answer": 1,
+            "why": "The analyst has done your exact translation, has held the title for years, and gets far fewer messages than the visible account."
+          },
+          {
+            "q": "Your draft ends with \"and if your team is hiring, I'd love to be considered.\" What do you do before you send it?",
+            "options": [
+              "Leave it in, because it shows you are serious.",
+              "Move it to the first line so they see it.",
+              "Cut it, and ask only for fifteen minutes about their path."
+            ],
+            "answer": 2,
+            "why": "A job ask makes a stranger say no to something they cannot give you, and the referral comes later, when you ask who else to talk to."
+          }
+        ]
+      },
+      {
+        "type": "h",
+        "text": "Send all three before the timer runs out"
       },
       {
         "type": "steps",
         "items": [
           "Set a timer for twenty minutes.",
           "Open the three names you saved in lesson 3.1.",
-          "Paste the first-message template, change the name, the setting and the target title, and read it once for anything that sounds like a cover letter.",
+          "Paste the first-message template, or the connection-request note for anyone you are not connected to on LinkedIn. Change the name, the setting and the target title, and read it once for anything that sounds like a cover letter.",
           "Send all three before the timer runs out.",
           "Log them in the tracker with today's date, and set a reminder eight days out for the single follow-up."
         ]
       },
       {
-        "type": "callout",
-        "tone": "warm",
-        "title": "Do not ask for a job in the first message",
-        "text": "The ask is fifteen minutes about their path. A job ask puts a stranger in the position of saying no to something they cannot give you, and it is the most common reason these messages go unanswered. The referral comes later, at the end of a good conversation, when you ask who else you should be talking to."
-      },
-      {
-        "type": "p",
-        "text": "What comes back is rarely a job. It is a description of an ordinary Tuesday, the name of the credential their employer actually cared about, a posting that is not public yet, or a second name. Any one of those is worth more than another week of reading, and by Module 5 you will need one of these people to vouch for you."
+        "type": "tool",
+        "name": "contact-tracker"
       }
     ],
     "action": {
@@ -357,8 +588,8 @@
     },
     "takeaways": [
       "Message three people tonight: an SLP with your target title, anyone with that title, and someone at a company on your list.",
-      "Three is a volume decision. One message is a coin flip; three is a near-certainty of one real conversation.",
-      "Sending all three at once keeps a single silence from reading as a verdict.",
+      "Three is a volume decision. Roughly one ask in four gets no reply, and three sent keeps one silence from reading as a verdict.",
+      "Prefer people who have held the title for years, and skip the account with the big following.",
       "Never ask for a job in the first message. Ask for fifteen minutes about how they got where they are.",
       "What comes back is a real Tuesday, a credential that mattered, an unlisted posting, or a second name."
     ],
@@ -369,52 +600,60 @@
   },
   {
     "id": "3.4",
-    "tldr": "Recruiters look you up before they call, and they find you in the first place by searching the words in the job they are filling. An in-house recruiter at a company you want is worth a message when a role is live: follow up once at eight days, then stop.",
+    "tldr": "Recruiters look you up before they call, and they find you in the first place by searching the words in the job they are filling. Put those words in your headline and skills, keep the clinical history, and write to a hiring manager or in-house recruiter when a role is live: follow up once at eight days, then stop.",
     "blocks": [
       {
         "type": "p",
-        "text": "Picture the moment your application starts working. A recruiter reads the translated résumé, decides you are interesting, and does what they always do before reaching out to anybody, which is look you up. They find a headline from 2019 that says Speech-Language Pathologist, CCC-SLP, an About section about your passion for pediatric feeding, and a skills list topped by Dysphagia. Now the two documents describe different people, and the recruiter believes the free one."
+        "text": "A recruiter who likes your translated résumé looks you up before reaching out. If they find a headline that says Speech-Language Pathologist, CCC-SLP, an About section about your passion for pediatric feeding and a skills list topped by Dysphagia, the two documents describe different people, and the recruiter believes the profile."
       },
       {
         "type": "h",
-        "text": "The words a recruiter types"
+        "text": "Put the words a recruiter searches on your profile"
       },
       {
         "type": "p",
-        "text": "LinkedIn is a search engine whose power users are recruiters. The fields it weights hardest are the ones most SLPs leave in clinical language: headline, About, job titles, and the skills you have pinned to the top. Recruiters search the vocabulary of the role they are filling, so a profile written entirely in clinical terms never comes back in the results, which from the inside feels identical to being turned down. These are the terms worth having somewhere on your profile, by path."
+        "text": "Recruiters search the vocabulary of the role they are filling, so a profile written only in clinical terms never appears in their results. From the inside, that feels identical to being turned down. Put your path's terms in the headline, About, job descriptions and skills."
       },
       {
-        "type": "list",
-        "items": [
-          "**Customer success and implementation:** implementation specialist, onboarding, customer success manager, adoption, renewal, churn, health score.",
-          "**Project and program management:** project coordinator, program manager, stakeholder management, scope, timelines, Google Project Management certificate.",
-          "**Healthcare data:** healthcare analytics, quality improvement, dashboards, outcome data, SQL, discharge and falls data.",
-          "**Clinical liaison and utilization review:** clinical liaison, utilization review, admissions criteria, level-of-care review, referral development.",
-          "**Clinical informatics:** EHR analyst, clinical informatics, workflow optimization, go-live and activation support, CAHIMS. Name Epic only where you have real experience, since the certification requires employer sponsorship.",
-          "**Instructional design:** instructional design, learning experience designer, Articulate Storyline, Rise, ADDIE, e-learning.",
-          "**Clinical educator and trainer:** clinical educator, learning consultant, clinical trainer, product training, AAC implementation.",
-          "**Content and marketing:** content strategy, health content, clinical subject matter expert, plain-language writing, SEO.",
-          "**Medical and device sales:** clinical specialist, clinical application specialist, territory support, account management."
-        ]
+        "type": "bypath",
+        "title": "Search terms for your profile",
+        "note": "Your path opens first. List a tool or certificate only once it is true of you.",
+        "items": {
+          "liaison-ur": "clinical liaison, utilization review, admissions criteria, level-of-care review, referral development",
+          "customer-success": "implementation specialist, onboarding, customer success manager, adoption, renewal, churn, health score",
+          "informatics": "EHR analyst, clinical informatics, workflow optimization, go-live and activation support, CAHIMS\n\nName Epic only where you have real experience, since the certification requires employer sponsorship.",
+          "clinical-educator": "clinical educator, learning consultant, clinical trainer, product training, AAC implementation",
+          "instructional-design": "instructional design, learning experience designer, Articulate Storyline, Rise, ADDIE, e-learning",
+          "data-analysis": "healthcare analytics, quality improvement, dashboards, outcome data, SQL, discharge and falls data",
+          "project-management": "project coordinator, program manager, stakeholder management, scope, timelines, Google Project Management certificate",
+          "content-marketing": "content strategy, health content, clinical subject matter expert, plain-language writing, SEO",
+          "sales-bd": "clinical specialist, clinical application specialist, territory support, account management",
+          "research-coordinator": "clinical research coordinator, study coordinator, informed consent, protocol adherence, data collection",
+          "leadership": "clinical manager, rehabilitation program manager, director of rehabilitation, staff scheduling, clinical supervision, audits"
+        }
+      },
+      {
+        "type": "h",
+        "text": "Rewrite the headline first, because it follows you everywhere"
       },
       {
         "type": "example",
-        "title": "The headline, which follows you everywhere",
+        "title": "A headline, before and after",
         "before": "Speech-Language Pathologist, CCC-SLP | Passionate about pediatric feeding and AAC",
         "after": "Implementation & Customer Success in health tech | [8] years managing [62] client accounts and their outcomes | CCC-SLP"
       },
       {
         "type": "bypath",
         "title": "A headline that comes back in the search",
-        "note": "Target title first, the licence as an asset. Never \"seeking opportunities\" and never \"former SLP\" on its own, because nobody searches for either.",
+        "note": "Target title first, the licence as an asset. Keep a bracketed tool or certificate only if it is true of you. Never \"seeking opportunities\" and never \"former SLP\" on its own, because nobody searches for either.",
         "items": {
           "liaison-ur": "Clinical Liaison · Medical SLP, [N] yrs acute and inpatient rehab · discharge planning, payer criteria, referral relationships\n\nor\n\nUtilization Review · CCC-SLP · therapy documentation, medical necessity, payer criteria",
           "customer-success": "Customer Success / Implementation · SLP, [N] yrs · onboarding families and clinicians onto [platform type]",
           "informatics": "Clinical Informatics · EHR superuser and trainer · [EMR name] rollout, note templates, workflow",
           "clinical-educator": "Clinical Educator · AAC and dysphagia training for clinicians · [N] teams trained",
-          "instructional-design": "Instructional Designer · adult learning from [N] yrs of clinician training · Rise, Storyline",
-          "data-analysis": "Healthcare Analyst · outcome data, SQL, Tableau · [N] yrs clinical, CCC-SLP",
-          "project-management": "Project Coordinator · ran programs across [N] sites · CAPM in progress",
+          "instructional-design": "Instructional Designer · adult learning from [N] yrs of clinician training · [Rise, Storyline]",
+          "data-analysis": "Healthcare Analyst · outcome data, [SQL, Tableau] · [N] yrs clinical, CCC-SLP",
+          "project-management": "Project Coordinator · ran programs across [N] sites · [CAPM in progress]",
           "content-marketing": "Health Content Writer · [N] yrs translating clinical ideas for families and staff",
           "sales-bd": "Clinical Specialist, Sales · [N] yrs recommending and implementing [device type]",
           "research-coordinator": "Clinical Research Coordinator · CCC-SLP · consent, protocol adherence, follow-up scheduling",
@@ -422,46 +661,67 @@
         }
       },
       {
+        "type": "compare",
+        "title": "What a recruiter reads in a headline",
+        "left": {
+          "label": "Reads as undecided",
+          "items": [
+            "\"Transitioning SLP\"",
+            "\"Burnt-out SLP seeking non-clinical roles\"",
+            "\"Aspiring instructional designer\"",
+            "Four unrelated titles separated by bars"
+          ]
+        },
+        "right": {
+          "label": "Reads as decided",
+          "items": [
+            "The target title first",
+            "One line of clinical credibility with a number",
+            "CCC-SLP last, as an asset"
+          ]
+        }
+      },
+      {
         "type": "p",
-        "text": "Four headlines that say \"will take anything\", all of which SLPs actually write: \"Transitioning SLP\", \"Burnt-out SLP seeking non-clinical roles\", \"Aspiring instructional designer\", and the stack of four unrelated titles separated by bars. A recruiter reads all of them as someone who has not decided. Pick one target, or two that belong together, and let the rest of the map wait."
+        "text": "Pick one target, or two that belong together, and let the rest of the map wait."
       },
       {
         "type": "callout",
         "tone": "warm",
-        "title": "Before you touch the headline",
-        "text": "Turn off \"Share profile updates with your network\" (Settings, Visibility, then Visibility of your LinkedIn activity). Otherwise the first fix below announces itself to everyone you are connected to, and in a department of six people that includes your lead. Do the edits from a personal laptop on a personal email, never the district one. And you are allowed a LinkedIn: half your colleagues have one, and a profile is not a resignation."
+        "title": "Before you touch the profile",
+        "text": "Turn off \"Share profile updates\" (Settings & Privacy, then Visibility, under Visibility of your LinkedIn activity). On some screens the same switch is labelled \"Share job changes, education changes, and work anniversaries from profile\". Left on, LinkedIn can announce a profile edit to your connections, and in a department of six people that includes your lead. Edit from a personal laptop on a personal email, never the district one. You are allowed a LinkedIn: plenty of your colleagues have one, and a profile is not a resignation."
       },
       {
         "type": "h",
-        "text": "Four fixes, in order"
+        "text": "Fix the rest of the profile in this order"
       },
       {
         "type": "steps",
         "items": [
-          "Rewrite the headline: target-role words first, one line of bridge credibility with a number, credential last. Ten minutes, and it is the change with the largest reach, since the headline rides along on every comment and connection request you make.",
-          "Reorder your pinned skills so the target-role terms sit in the top slots and the clinical ones stay further down. Five minutes, and recruiters filter searches on exactly this field.",
+          "Rewrite the headline: target-role words first, one line of bridge credibility with a number, credential last. It takes ten minutes, and the headline shows on every comment and connection request you make.",
+          "Reorder your skills so the target-role terms sit at the top and the clinical ones further down (in the Skills section, open the edit menu and choose Reorder).",
           "Rewrite About as three short first-person paragraphs: the bridge claim with a number, two translated accomplishments, then where you are heading and what you have already done to get ready.",
-          "Translate the top three bullets under each recent role, using the same three questions from 3.2, and leave the rest alone.",
-          "Open a private browser window, search your target title plus your city the way a recruiter would, and see how far down you appear. Then search the target title plus CCC-SLP and write down the names of three people who have already made this move.",
-          "Open ten profiles of people who hold your target title and read only their certification and course sections. Whatever appears on seven of them is worth having. Whatever appears on one is what somebody sold them.",
-          "Follow five companies from your list and join one group for the field, so the feed starts showing you their openings and their people instead of the caseload discourse."
+          "Translate the top three bullets under each recent role so each says how big it was, what you did and what changed, and leave the rest alone. Lesson 4.2 goes through the method.",
+          "Set Open to Work to \"Recruiters only\" and type in your target titles. LinkedIn tries to hide this from recruiters at your own employer and says it cannot guarantee that.",
+          "Search LinkedIn for your target title plus CCC-SLP and write down three people who have already made this move. Then open ten profiles of people who hold the title and read only their certifications: whatever appears on seven is worth having, and whatever appears on one is what somebody sold them.",
+          "Follow five companies from your list and join one group for the field, so the feed shows you their openings and their people instead of the caseload discourse."
         ]
       },
       {
         "type": "callout",
         "tone": "warm",
         "title": "Do not scrub the clinician out",
-        "text": "A profile with a hole where a decade should be raises more questions than a translated one, and at speech-tech and health-tech companies the license is the qualification rather than the obstacle. Never change a title, a date or a role to something it was not. Fabrication is the one screening flag nobody recovers from, and your résumé and profile will be read side by side."
+        "text": "A profile with a hole where a decade should be raises more questions than a translated one, and at speech-tech companies the license is the qualification. Never change a title, a date or a role to something it was not. Fabrication is the one screening flag nobody recovers from, and your résumé and profile will be read side by side."
       },
       {
         "type": "callout",
         "tone": "warm",
         "title": "Everything you post sits under your name",
-        "text": "A recruiter who finds you reads the last ten things you commented on. A post about the caseload, a reply venting about administration, a like on someone else's exit rant: each one answers the retention question for them before you get to. Use LinkedIn the way you'd speak in a conference room with the hiring manager in it, and keep the venting for the closed groups."
+        "text": "A recruiter who finds you can read your recent posts and comments on your profile. A post about the caseload, a reply venting about administration, a like on someone else's exit rant: each one answers the retention question for them before you get to. Use LinkedIn the way you'd speak in a conference room with the hiring manager in it, and keep the venting for the closed groups."
       },
       {
         "type": "p",
-        "text": "The positive version, if you are aiming at content, instructional design or a clinical-education role: one or two plain pieces about something you know cold, such as how dysphagia documentation actually gets written on a unit, or what makes an AAC rollout stick after the SLP leaves. A clinician writing plainly about the work is credible in a way a career changer rarely is. Post nothing for engagement, and nothing you would not want a hiring manager to read first."
+        "text": "If you are aiming at content, instructional design or clinical education, post one or two plain pieces about something you know cold, such as how dysphagia documentation gets written on a unit, or what makes an AAC rollout stick after the SLP leaves. Post nothing for engagement, and nothing you would not want a hiring manager to read first."
       },
       {
         "type": "tool",
@@ -469,11 +729,11 @@
       },
       {
         "type": "h",
-        "text": "Recruiters, and how to follow up"
+        "text": "Answer in-house recruiters, and ignore the staffing agencies"
       },
       {
         "type": "p",
-        "text": "The word recruiter means something specific and unpleasant to most SLPs, and the threads are blunt about it."
+        "text": "The recruiters SLPs warn each other about work for clinical staffing and contract agencies, whose business is placing clinicians into caseloads at a margin."
       },
       {
         "type": "quote",
@@ -482,32 +742,38 @@
       },
       {
         "type": "p",
-        "text": "That reputation was earned by clinical staffing and contract agencies, whose business is placing bodies in caseloads at a margin. An in-house recruiter at a health-tech company is doing a different job. They have a req to fill this quarter, their success is measured on closing it, and a candidate who clearly fits is the most useful thing that can land in their inbox. One of the documented transitions in this course happened that way, when a recruiter found a self-taught SLP on LinkedIn and she ended up at $93,000."
+        "text": "An in-house recruiter at a health-tech company does a different job. They have a role to fill this quarter, and a candidate who clearly fits is the most useful thing that can land in their inbox. One documented transition happened that way: a recruiter found a self-taught SLP on LinkedIn, and she ended up at $93,000 as a software engineer."
       },
       {
-        "type": "h",
-        "text": "When to message one, and when not to"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Message when there is a live posting you match on most of the requirement lines. That gives them something to do with you.",
-          "Do not send a cold keep me in mind note. There is no req attached, so there is nothing for them to act on and no reason to remember it.",
-          "Say the target title in the first line. Recruiters read for a role, not for a person.",
-          "Name the clinical background as an asset rather than apologising for it, especially at any company selling into hospitals or schools."
-        ]
+        "type": "compare",
+        "title": "When to message a recruiter",
+        "left": {
+          "label": "Skip it",
+          "items": [
+            "A cold \"keep me in mind\" note. With no role attached, they have nothing to act on.",
+            "Any recruiter who answers \"I want out of clinical work\" with three SNF contracts."
+          ]
+        },
+        "right": {
+          "label": "Send it",
+          "items": [
+            "There is a live posting and you match most of its requirement lines.",
+            "Your first line names the target title.",
+            "You name the clinical background as an asset, without apologising for it."
+          ]
+        }
       },
       {
         "type": "p",
-        "text": "Vet them. A recruiter who answers \"I want out of clinical work\" with three SNF contracts and a PRN school posting has told you what they sell, and you can stop replying. The useful ones are narrow: there are recruiters who place only into health IT, only into device companies' clinical teams, only into learning and development. One of those covers thirty companies you could not reach on your own, and it costs nothing to connect with two of them now, with no pitch, before you need them. A cold \"keep me in mind\" message is still a waste; a connection without a message is a different thing."
+        "text": "Some recruiters place only into health IT, only into device companies' clinical teams, or only into learning and development. Connecting with two of them now, without a pitch, costs nothing and means they can find you before you need them."
       },
       {
         "type": "h",
-        "text": "Two messages worth sending"
+        "text": "When a role is live, write to the person who hires for it"
       },
       {
         "type": "p",
-        "text": "When a role is live, the person who decides is usually findable. One line of proof and one ask, and it goes to the hiring manager, not the recruiter."
+        "text": "The person who decides is usually findable on LinkedIn, and the note needs one line of proof and one ask."
       },
       {
         "type": "script",
@@ -516,7 +782,7 @@
       },
       {
         "type": "p",
-        "text": "And when a recruiter says you're not qualified, that is the start of a conversation, not the end of one. Name the gap, name what you'd do about it by the interview date, and ask a question they can say yes to."
+        "text": "If a recruiter says you're not qualified, treat it as the start of a conversation. Name the gap, say what you'd do about it by the interview date, and ask a question they can say yes to."
       },
       {
         "type": "script",
@@ -525,23 +791,41 @@
       },
       {
         "type": "h",
-        "text": "The follow-up, which is where most people quit"
+        "text": "Follow up once at eight days, and add something new"
       },
       {
         "type": "p",
-        "text": "One follow-up, eight days after the first message. It has to add something rather than repeat the ask, which usually means a line about the artifact you built or a specific question about the role. Then stop. A second follow-up does not increase your odds and it does change how you are remembered."
+        "text": "Send one follow-up eight days after the first message, and make it add something: a line about what you built, or a specific question about the role. End by asking whether the role is still open, which is easy to answer and tells you whether to keep going. Then stop. Roles get frozen and pipelines fill before anyone updates a posting, so silence from a recruiter is about the role far more often than it is about you."
       },
       {
         "type": "script",
-        "intro": "The eight-day follow-up",
-        "text": "Hi [name], following up on [role] from last week. Since I wrote, I put together [the artifact, in six words] which is close to what the posting describes under [requirement line]. Happy to send it over if it is useful. Either way, is that req still open?",
-        "note": "The last question is doing the work. It is easy to answer, and the answer tells you whether to keep going."
+        "title": "The eight-day follow-up",
+        "text": "Hi [name], following up on [role] from last week. Since I wrote, I put together [the artifact, in six words] which is close to what the posting describes under [requirement line]. Happy to send it over if it is useful. Either way, is the role still open?"
       },
       {
-        "type": "callout",
-        "tone": "soft",
-        "title": "What silence means here",
-        "text": "Silence from a recruiter is even less personal than silence from a peer, because reqs get frozen and pipelines fill before anyone updates a posting. Silence is almost always about the req and almost never about you."
+        "type": "check",
+        "items": [
+          {
+            "q": "You are about to rewrite your headline, and your department lead is one of your LinkedIn connections. What do you do first?",
+            "options": [
+              "Rewrite it tonight and hope nobody notices.",
+              "Turn off \"Share profile updates\" in Settings, then edit.",
+              "Delete your SLP jobs so the new profile looks complete."
+            ],
+            "answer": 1,
+            "why": "That switch is what announces profile edits to your connections, and deleting clinical history leaves a hole that raises more questions than a translated one."
+          },
+          {
+            "q": "A health-tech company you like has no open role that fits you. You find one of its recruiters on LinkedIn. What do you send?",
+            "options": [
+              "Nothing yet. Follow the company, and write when a role you match is posted.",
+              "A note asking them to keep you in mind.",
+              "Your résumé, in case something opens."
+            ],
+            "answer": 0,
+            "why": "With no live role there is nothing for a recruiter to act on, and a note about a posting you match gives them something to do with you."
+          }
+        ]
       },
       {
         "type": "steps",
@@ -554,10 +838,10 @@
     ],
     "takeaways": [
       "Your profile does two jobs: it corroborates the résumé, and it is how recruiters find you in the first place.",
-      "Headline, About, titles and pinned skills are the fields recruiters search, so the target-role vocabulary has to live in them.",
+      "Recruiters search the vocabulary of the role, so put those words in your headline, About, job descriptions and skills.",
+      "Turn off \"Share profile updates\" before you edit, and set Open to Work to \"Recruiters only\".",
       "Translate the history and never delete or relabel it. At speech-tech companies the clinical credential is the asset.",
-      "Only message about a live req. A cold keep me in mind note gives them nothing to act on.",
-      "One follow-up at eight days, and it has to add something new. There is no second follow-up."
+      "Message a recruiter or hiring manager only about a live role, and follow up once at eight days with something new."
     ],
     "sources": [
       "facts",
@@ -567,11 +851,11 @@
   },
   {
     "id": "3.6",
-    "tldr": "One documented search took over 500 applications without referrals, and the people who moved faster had someone on the inside. Keep two conversations warm with one short update a month, and referrals come without you asking.",
+    "tldr": "One documented search took more than 500 applications in six months, and referrals decide most successful transitions. Look for someone inside before you apply, and keep two conversations warm with one short update a month, so that a referral gets offered before you have to ask for it.",
     "blocks": [
       {
         "type": "p",
-        "text": "You can be the best of two hundred and forty-two strangers, or you can be the person somebody already mentioned. The second is not fair, and it is how most of these moves actually happened."
+        "text": "You can be the best of two hundred and forty-two strangers, or you can be the person somebody already mentioned. Referrals decide most of the documented transitions."
       },
       {
         "type": "numbers",
@@ -586,46 +870,38 @@
           },
           {
             "value": "1 in 4",
-            "label": "roughly, how many of these messages get no answer at all"
+            "label": "roughly, how many informational-interview asks get no answer"
           },
           {
             "value": "48 hrs",
-            "label": "the window where an application still gets seen"
+            "label": "the window in which an application is most likely to be seen"
           }
         ]
       },
       {
         "type": "p",
-        "text": "That 500 number belongs to somebody who got there, landed a fully remote role and now earns twenty thousand more than she did as an SLP. The volume was the tax she paid for having no referrals."
+        "text": "The 500 belongs to an SLP who landed a fully remote analyst role paying $20,000 more than their best year in the clinic. Cold applications worked for that search, and 500 was the price."
       },
       {
         "type": "h",
-        "text": "Three habits that do most of the work"
+        "text": "Do these four things every time you apply"
       },
       {
         "type": "steps",
         "items": [
           "**Apply inside 48 hours.** Postings get most of their real attention in the first day or two. A tailored application on day one beats a perfect one on day nine.",
           "**Check for an in before you hit submit.** Search the company on LinkedIn for anyone from your program, anyone with CCC-SLP in their history, anyone you have ever met. If one exists, message them first and apply second. If none exists, apply anyway and note it in the tracker.",
-          "**Message one person at the company, the same day.** Not the recruiter. Someone doing the job you applied for, ideally a former clinician. Say you applied, say the one specific thing that made you want the role, ask one question.",
-          "**Turn every conversation into a name.** At the end of any informational interview, ask who else they would talk to if they were you. That question is where a network comes from."
+          "**Message one person at the company the same day.** Pick someone doing the job you applied for, ideally a former clinician, or the hiring manager (that note is in lesson 3.4). Say you applied, name the one specific thing that made you want the role, and ask one question.",
+          "**Turn every conversation into a name.** At the end of any informational interview, ask who else they would talk to if they were you. A network grows from that question."
         ]
       },
       {
-        "type": "p",
-        "text": "You already wrote the message in lesson 3.2, so this is a twenty-minute task rather than a new skill."
-      },
-      {
         "type": "h",
-        "text": "What to ask for, and when"
+        "text": "Ask for the referral after the conversation, never in the first message"
       },
       {
         "type": "p",
-        "text": "Do not ask for a referral in a first message. Ask for twenty minutes about their work, because referrals come at the end of a conversation that already happened, and they are usually offered rather than requested."
-      },
-      {
-        "type": "p",
-        "text": "A stranger's no to a referral is rational, and knowing why makes the ask less personal. Referring you means putting their own name behind your work, sight unseen, and most people will not do that for someone they spoke to once. After a real conversation it is a different bet, and at many companies a referral that gets hired pays the referrer a bonus, so a loose acquaintance saying \"I've talked to her, she seemed serious\" costs them nothing and might pay. That is also why a referral works when you sit under the posted requirements: it is how a résumé gets read after the screen would have dropped it."
+        "text": "Ask for fifteen minutes about their work first, because referrals come at the end of a conversation that already happened, and most are offered before you request them. Referring you means putting their own name behind your work, and few people do that for someone they have never spoken to. After a real conversation the bet changes, and many companies pay an employee a bonus when someone they referred gets hired. A referral can also get a résumé read when it sits a little under the posted requirements."
       },
       {
         "type": "script",
@@ -634,37 +910,66 @@
       },
       {
         "type": "p",
-        "text": "That second question is the referral ask in the least awkward form I have found: a yes or no about a hypothetical, easy to agree to, and it gives you permission to come back. One more, near the end: what other companies do work like yours? Three names from someone inside is a better list than an hour of searching."
-      },
-      {
-        "type": "p",
-        "text": "Every name from these conversations goes on your people and applications page, with the person they suggested next in its own column. That column is where a network comes from."
-      },
-      {
-        "type": "callout",
-        "tone": "soft",
-        "title": "Why this works better for us than for most",
-        "text": "Former SLPs are unusually willing to answer other SLPs, which is part of why the response rate is as high as it is. The exit threads are full of people offering to talk, and the ones who made it out tend to remember who answered them. You are not cold-messaging strangers. You are messaging people who were you two years ago."
+        "text": "The second question is the referral ask in its least awkward form: a yes or no about a hypothetical, and it gives you permission to come back. Ask one more near the end: what other companies do work like yours? Write every name on your people and applications page, with the person they suggested next in its own column."
       },
       {
         "type": "h",
-        "text": "Keep two conversations warm"
+        "text": "Keep two conversations warm, and keep sending new messages"
       },
       {
         "type": "p",
-        "text": "Most networking advice assumes you want a network. What you want is two or three people who know what you are looking for and would forward you a posting, which is a much smaller job."
+        "text": "You need two or three people who know what you are looking for and would forward you a posting, which is a much smaller job than building a network. Two warm conversations is the floor you keep, and new messages replace one when it goes quiet. The tracker counts your week and shows who is due, and lesson 3.8 shows how to hand the research and the first draft to an AI tool."
       },
       {
-        "type": "p",
-        "text": "Smaller does not mean static. Two warm conversations is the floor you keep, and new messages are the trickle that replaces one when it goes quiet. Two a week while you are building, five a week once you are applying, and with the research and the first draft handed to the model (lesson 3.8) each one costs ten minutes rather than forty. The tracker counts your week, so the number is a fact rather than a feeling, and it tells you who is due."
+        "type": "cards",
+        "items": [
+          {
+            "title": "While you are building",
+            "text": "Two new messages a week."
+          },
+          {
+            "title": "Once you are applying",
+            "text": "Five new messages a week."
+          },
+          {
+            "title": "Every month",
+            "text": "One four-sentence update to each of your two warm contacts."
+          }
+        ]
+      },
+      {
+        "type": "flow",
+        "title": "One contact, from first message to referral",
+        "items": [
+          {
+            "label": "First message",
+            "note": "fifteen minutes, no job ask"
+          },
+          {
+            "label": "The call",
+            "note": "ends with \"who else?\""
+          },
+          {
+            "label": "Thank-you",
+            "note": "the same day"
+          },
+          {
+            "label": "Monthly update",
+            "note": "four sentences"
+          },
+          {
+            "label": "\"I'm applying now\"",
+            "note": "the message referrals come from"
+          }
+        ]
       },
       {
         "type": "h",
-        "text": "The maintenance is smaller than you think"
+        "text": "Send each person one update a month"
       },
       {
         "type": "p",
-        "text": "One message a month, per person, with one job: remind them you exist and show that you did something since last time."
+        "text": "One message a month, per person, reminds them you exist and shows that you did something since last time. The last sentence matters most, because remembering what they told you separates a relationship from a mailing list."
       },
       {
         "type": "script",
@@ -673,33 +978,55 @@
       },
       {
         "type": "p",
-        "text": "That is four sentences and ninety seconds. The last one matters most, because remembering the thing they told you is what separates a relationship from a mailing list."
+        "text": "Twice, the update becomes an ask. When the thing you build in lesson 5.2 exists, send it with \"would you look at this and tell me what a hiring manager would say?\", a small job that puts your work in front of the person most likely to pass it on. And the week you switch from building to applying, send the message below to everyone you have spoken to."
       },
       {
-        "type": "p",
-        "text": "Twice, the update becomes an ask. When the artifact from Module 5 exists, send it: \"would you look at this and tell me what a hiring manager would say?\" is a small, flattering job, and it puts your work in front of the person most likely to pass it on. And the week you switch from building to applying, one message to everyone you have spoken to: I'm applying now, for [title], and if you hear of one I'd be grateful for a nudge. That is the message referrals actually come from."
-      },
-      {
-        "type": "tool",
-        "name": "contact-tracker-warm"
-      },
-      {
-        "type": "h",
-        "text": "When somebody goes quiet"
-      },
-      {
-        "type": "p",
-        "text": "They are busy, and it is not about you. Send one follow-up after two weeks, then let it rest, and come back in six months with something new to say."
-      },
-      {
-        "type": "p",
-        "text": "And it does not stop when you land. A note twice a year to the people who helped keeps them from becoming strangers again, and it is your insurance if the new job turns out to be the wrong one."
+        "type": "script",
+        "title": "The week you start applying",
+        "text": "Hi [name], I'm applying now, for [title] roles. If you hear of one, I'd be grateful for a nudge."
       },
       {
         "type": "callout",
         "tone": "soft",
-        "title": "The thing that surprises people",
-        "text": "The conversation that produces the job is usually not the one you expected. In the documented transitions, the useful introduction tends to come third or fourth hand, from someone who was not obviously connected to the role at all. Which is an argument for keeping two warm rather than chasing the perfect one."
+        "title": "The useful introduction often comes from a loose tie",
+        "text": "A randomised study of more than 20 million LinkedIn members found that moderately weak ties, people you share some mutual connections with, led to more job moves than close ties or near-strangers (Rajkumar et al., Science, 2022). A former SLP who answered you once is that kind of tie, and the most-engaged exit posts end with an offer to message the writer."
+      },
+      {
+        "type": "h",
+        "text": "When someone goes quiet, follow up once and wait"
+      },
+      {
+        "type": "p",
+        "text": "They are busy, and the silence is not about you. Send one follow-up after two weeks, let it rest, and come back in six months with something new to say. After you land, a note twice a year to the people who helped keeps them from becoming strangers again, and they are your insurance if the new job turns out to be the wrong one."
+      },
+      {
+        "type": "check",
+        "items": [
+          {
+            "q": "A role you want was posted yesterday, and a classmate from your grad program works at the company. What do you do?",
+            "options": [
+              "Spend a week perfecting the application, then apply.",
+              "Message the classmate today, then apply inside 48 hours.",
+              "Apply, then ask the recruiter to refer you."
+            ],
+            "answer": 1,
+            "why": "An application gets most of its attention in the first two days, and someone inside who knows you is worth more than a perfect résumé on day nine."
+          },
+          {
+            "q": "A month ago you had a good fifteen-minute call with a customer success manager. What do you send her now?",
+            "options": [
+              "A four-sentence update on what you did since, ending on something she mentioned.",
+              "Nothing, because you don't want to bother her.",
+              "A request to refer you for any open role."
+            ],
+            "answer": 0,
+            "why": "One short update a month keeps the conversation warm, and referrals get offered at the end of a relationship that already exists."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "name": "contact-tracker-warm"
       }
     ],
     "action": {
@@ -708,10 +1035,10 @@
       "done": "Two warm. That is the network. It does not need to be bigger than this."
     },
     "takeaways": [
-      "Applications without referrals is the expensive route: one documented search took over 500.",
-      "Apply inside 48 hours and message someone doing the job the same day.",
-      "Never ask for a referral in a first message. Ask for twenty minutes, then ask who else you should talk to.",
-      "Two live conversations is the floor, because what you need is a couple of people who would forward you a posting rather than a network.",
+      "Applying without referrals is the expensive route: one documented search took more than 500 applications.",
+      "Apply inside 48 hours, look for someone inside first, and message someone at the company the same day.",
+      "Never ask for a referral in a first message. Ask for fifteen minutes, then ask who else you should talk to.",
+      "Two live conversations is the floor, because you need a couple of people who would forward you a posting, and that is smaller than a network.",
       "One four-sentence update a month keeps a conversation warm."
     ],
     "sources": [
@@ -721,44 +1048,51 @@
   },
   {
     "id": "3.8",
-    "tldr": "The model is good at the parts of this that are not you: research, first drafts, rehearsal, tidying notes. Hand those over, keep the specifics and the send, and never paste a client or an employer's document into it.",
+    "tldr": "An AI chat tool such as ChatGPT or Claude is good at the parts of a search that are not you: research, first drafts, rehearsal, tidying notes. Hand those over, keep the specifics and the send, and never paste a client's details or an employer's document into it.",
     "blocks": [
       {
         "type": "p",
-        "text": "Most of the hours in a search go on work that a model does well and you do slowly: reading a stranger's profile for the one thing worth mentioning, working out what a company sells, turning a page of call notes into three facts and a task, saying the first draft of anything. Lesson 4.4 set the rule for applications, and it holds here: it writes the draft, you write the sentence, and the detail that gets you hired was never in the model to begin with."
+        "text": "Most of the hours in a search go on work an AI chat tool does quickly and you do slowly: reading a stranger's profile for the one thing worth mentioning, working out what a company sells, turning a page of call notes into three facts and a task. The tool writes the draft and you write the sentence, because the detail that gets you hired was never in the tool to begin with. Lesson 4.1 applies the same rule to your résumé."
       },
       {
         "type": "h",
-        "text": "What to hand over"
+        "text": "Hand over the reading and the first draft, and keep the specifics and the send"
       },
       {
-        "type": "list",
-        "items": [
-          "**Research.** Paste a profile or a careers page and ask what a clinician would notice. Ten minutes becomes two, and the message you send afterwards names something real.",
-          "**The first draft of anything.** A message, a thank-you, an update, a cover-letter paragraph. The first draft is where people stall for a week. Let it stall the model instead, then rewrite in your words.",
-          "**Rehearsal.** It will play the customer success lead who used to be an OT and interrupt you when you ask something you could have searched. Nobody else will rehearse with you at eleven at night.",
-          "**Tidying.** Notes into next steps, a posting into a checklist, a month of activity into four sentences.",
-          "**Finding the rooms.** Which conferences, groups and newsletters your target title actually reads. It will get some of the names wrong, so treat the list as leads to verify, not a source."
-        ]
+        "type": "compare",
+        "title": "Who does what",
+        "left": {
+          "label": "Hand over",
+          "items": [
+            "Research: paste a profile or a careers page and ask what a clinician would notice.",
+            "The first draft of a message, a thank-you or an update.",
+            "Rehearsal: it plays the person you are about to call.",
+            "Tidying: notes into next steps, a posting into a checklist."
+          ]
+        },
+        "right": {
+          "label": "Keep",
+          "items": [
+            "The specifics: the caseload that hit 62 in March, the fourteen people you trained.",
+            "The send: read every message out loud before it goes.",
+            "The judgement about who to write to and whether a reply was warm.",
+            "Anything private."
+          ]
+        }
       },
       {
-        "type": "h",
-        "text": "What to keep"
+        "type": "p",
+        "text": "The first draft is where people stall for a week, so let the tool produce it and then rewrite it in your words. In rehearsal it will play the customer success lead who used to be an OT and interrupt you when you ask something you could have searched, at eleven at night when nobody else will. You can also ask it which conferences, groups and newsletters your target title reads, as long as you treat the answer as leads to verify, because it gets some names wrong."
       },
       {
-        "type": "list",
-        "items": [
-          "**The specifics.** The caseload that hit 62 in March, the fourteen people you trained through the EMR switch, the parent who said no for four months. The model was not in the room, and generic output erases exactly the thing that makes you the one candidate with a story.",
-          "**The send.** Read every message out loud before it goes. If you would not say a sentence to the person's face at the copier, cut it.",
-          "**The judgement about people.** Who to write to, who to leave alone, whether a reply was warm or polite. That is clinical judgement and you have a decade of it.",
-          "**Anything private.** See below."
-        ]
+        "type": "p",
+        "text": "Generic output erases the details that make you the one candidate with a story: the parent who said no for four months was never in the tool. If you would not say a sentence to the person's face at the copier, cut it. Deciding who to write to and who to leave alone is clinical judgement, and you already have it."
       },
       {
         "type": "callout",
         "tone": "warm",
         "title": "Never paste",
-        "text": "A client's name or anything that could identify one, a session note, a chart, an IEP, an evaluation report, an internal email, your employer's templates or policies, or a screenshot of any of those. Protected health information does not stop being protected because you removed the name. Use a personal account on a personal laptop, the same rule as 3.4, and assume anything you paste is kept."
+        "text": "A client's name or anything that could identify one, a session note, a chart, an IEP, an evaluation report, an internal email, your employer's templates or policies, or a screenshot of any of those. Protected health information does not stop being protected because you removed the name, and a personal ChatGPT or Claude account comes with no HIPAA agreement. Use a personal account on a personal laptop, the same rule as lesson 3.4, check the privacy settings for whether your chats train the tool, and assume anything you paste is kept."
       },
       {
         "type": "callout",
@@ -768,11 +1102,11 @@
       },
       {
         "type": "h",
-        "text": "The prompts, filled in with your details"
+        "text": "Copy the prompts, already filled in with your details"
       },
       {
         "type": "p",
-        "text": "Each one below carries your path and, if you mined them in 4.3, your numbers. Add the company or the person and copy. Most of them ask the model to interview you first, which is the difference between a draft built from your answers and a draft built from everyone's."
+        "text": "Each prompt below carries your path and, if you mined them in lesson 4.3, your numbers. Add the company or the person and copy. Most of them ask the tool to interview you first, so the draft is built from your answers."
       },
       {
         "type": "tool",
@@ -780,11 +1114,53 @@
       },
       {
         "type": "h",
-        "text": "What this does to the pace"
+        "text": "Send two messages a week while you build, and five once you apply"
       },
       {
         "type": "p",
-        "text": "A personalised message used to cost forty minutes: the reading, the staring, the rewrite. With the reading and the first draft handed over it costs about ten, and the limit on how many you send becomes your attention rather than the drafting. Two a week while you are building the artifact, five a week once you are applying. The tracker in 3.6 counts the week and tells you who is due, and that is the whole system: the model does the reading, the tracker does the remembering, you do the talking."
+        "text": "With the reading and the first draft handed over, a personalised message takes a fraction of the time it used to, and the limit on how many you send becomes your attention. Send two a week while you are building and five a week once you are applying. The tracker from lesson 3.6 counts the week and tells you who is due."
+      },
+      {
+        "type": "cards",
+        "items": [
+          {
+            "title": "The tool reads",
+            "text": "Profiles, careers pages and postings, and it writes the first draft."
+          },
+          {
+            "title": "The tracker remembers",
+            "text": "Who you wrote to, when, and who is due a follow-up."
+          },
+          {
+            "title": "You talk",
+            "text": "The rewrite, the send and the call are yours."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "items": [
+          {
+            "q": "You want help turning an evaluation report you wrote into a résumé bullet. What do you paste into the AI tool?",
+            "options": [
+              "The report, with the child's name removed.",
+              "Your own summary: how many evaluations a year, what you did, what changed. No client details.",
+              "A screenshot of the report instead of the text."
+            ],
+            "answer": 1,
+            "why": "Health information stays protected after the name comes off, and your own numbers are all the tool needs."
+          },
+          {
+            "q": "The draft it gives you says you \"improved outcomes by 34%\". You never gave it that figure. What do you do?",
+            "options": [
+              "Keep it, because it sounds about right.",
+              "Soften it to \"about a third\".",
+              "Delete it and use a number you can trace to your own work."
+            ],
+            "answer": 2,
+            "why": "The tool invents numbers with a straight face, and none of its numbers belongs in a message, a résumé or an interview answer."
+          }
+        ]
       },
       {
         "type": "steps",
@@ -797,7 +1173,7 @@
       }
     ],
     "takeaways": [
-      "Hand the model the research, the first draft, the rehearsal and the tidying. Keep the specifics, the send and the judgement about people.",
+      "Hand the AI tool the research, the first draft, the rehearsal and the tidying. Keep the specifics, the send and the judgement about people.",
       "Never paste anything that identifies a client, or any document that belongs to your employer. Personal account, personal laptop.",
       "It invents names and numbers with a straight face. Verify before you rely on it, and never let its numbers into a message or a résumé.",
       "Ask it to interview you before it drafts. The answers are the material.",

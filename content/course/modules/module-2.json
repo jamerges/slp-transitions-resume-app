@@ -1,60 +1,176 @@
 [
   {
     "id": "2.0",
-    "tldr": "A transition is a second job you do without pay, on top of the first one. Decide how many hours a week it gets, split them on purpose, and start the heavy applying six to eight weeks before the date you can actually start.",
+    "tldr": "A transition is a second job you do without pay, on top of the first one. Decide how many hours a week it gets, split them on purpose, and start the heavy applying at least six to eight weeks before the date you could start a new job.",
     "blocks": [
       {
-        "type": "p",
-        "text": "Nobody plans the hours. They plan the outcome, then wonder in week six why nothing has moved. The documented transitions in the research file took six to fifteen months, and the people who got there treated the search like a caseload: a fixed number of hours, a schedule, and something written down at the end of each week."
-      },
-      {
         "type": "h",
-        "text": "Split the hours before you spend them"
+        "text": "Give the search fixed hours every week"
       },
       {
         "type": "p",
-        "text": "Split whatever you can give this into three buckets, and keep the proportions even when the total changes. Roughly six parts building proof (a portfolio piece, a course, a project at work you can point to), three parts talking to people who hold the title you want, and one part reading. Most people do it backwards: ten parts reading, and a search that never leaves the browser."
+        "text": "Decide how many hours a week the search gets, then split them six parts proof, three parts people and one part reading. Documented SLP transitions took six to fifteen months, which is too long to run on leftover evenings, so treat the search like a caseload: fixed hours, a schedule, and something written down at the end of each week. Keep the proportions even when the total changes. Most people do it backwards, with ten parts reading and a search that never leaves the browser."
+      },
+      {
+        "type": "cards",
+        "items": [
+          {
+            "title": "Six parts proof",
+            "text": "A portfolio piece, a course, or a project at work you can point to."
+          },
+          {
+            "title": "Three parts people",
+            "text": "Messages and calls with people who hold the title you want."
+          },
+          {
+            "title": "One part reading",
+            "text": "Articles, postings and forums, kept to the smallest share."
+          }
+        ]
       },
       {
         "type": "tool",
         "name": "time-budget"
       },
       {
+        "type": "compare",
+        "title": "Where a week of search hours goes",
+        "left": {
+          "label": "Loses the week",
+          "items": [
+            "Refreshing job boards",
+            "Rereading the same three postings",
+            "Rewriting one bullet a fourth time"
+          ]
+        },
+        "right": {
+          "label": "Moves the search",
+          "items": [
+            "A proof block at the time of day you think best",
+            "Messages to people who hold the title you want",
+            "One short, fixed slot for new postings"
+          ]
+        }
+      },
+      {
         "type": "h",
-        "text": "When the calendar says apply"
+        "text": "Count back from the day you could start a new job"
       },
       {
         "type": "p",
-        "text": "Interviews take weeks, and two weeks' notice is the convention, so plan on starting two to four weeks after an offer. Work back from the earliest date you can start, and begin applying hard six to eight weeks before it. Everything before that window is proof and conversations, which is the work that makes the applications land."
+        "text": "Start applying hard at least six to eight weeks before the earliest date you could start. Interviews take weeks and two weeks' notice is the convention, so a start date usually falls two to four weeks after an offer. That window is the latest you can begin, and the documented searches below ran for months, so begin earlier if you can. Everything before it is proof and conversations, the work that makes applications land."
       },
       {
-        "type": "list",
+        "type": "flow",
+        "title": "Working back from your start date",
         "items": [
-          "**School setting.** Your contract has a resignation window and, in some districts, a letter-of-intent date in spring. Find both dates now. If you can start in August, the heavy applying is May and June; the proof and the conversations are the winter.",
-          "**Medical, SNF or outpatient.** Your notice period is in the handbook, and there is no season. Pick the date, count back eight weeks, and put it on the calendar today.",
-          "**Already out, or PRN.** Treat the search as the job. Fixed hours, a start time, and a log at the end of each day."
+          {
+            "label": "Proof and conversations",
+            "note": "everything before the applying window"
+          },
+          {
+            "label": "Apply hard",
+            "note": "six to eight weeks before your start date, at the latest"
+          },
+          {
+            "label": "Offer",
+            "note": "after weeks of interviews"
+          },
+          {
+            "label": "Notice",
+            "note": "two weeks by convention, or what your contract says"
+          },
+          {
+            "label": "Start date",
+            "note": "two to four weeks after the offer"
+          }
         ]
       },
       {
-        "type": "h",
-        "text": "The honest volume"
-      },
-      {
-        "type": "p",
-        "text": "One documented SLP sent 113 tailored applications over eleven months for seven interviews and one offer. Another sent more than five hundred in six months. Both are in lesson 6.6 with the tracker. The point here is only that one application a week is a year, and the calendar has to hold that."
+        "type": "cards",
+        "items": [
+          {
+            "title": "School setting",
+            "text": "Find your contract's resignation window and any spring letter-of-intent date now. For an August start, apply hard in May and June and build proof over the winter."
+          },
+          {
+            "title": "Medical, SNF or outpatient",
+            "text": "Your notice period is in the handbook, and there is no season. Pick the date, count back eight weeks, and put it on the calendar today."
+          },
+          {
+            "title": "Already out, or PRN",
+            "text": "Treat the search as the job: fixed hours, a start time, and a log at the end of each day."
+          }
+        ]
       },
       {
         "type": "callout",
-        "tone": "soft",
-        "title": "Where the hours go wrong",
-        "text": "Refreshing job boards, rereading the same three postings, and rewriting one bullet a fourth time are the ways a week disappears. Boards update daily at most. Give them one fixed slot and spend the rest on proof and people."
+        "tone": "warm",
+        "title": "On a school contract, find the last day you can resign",
+        "text": "Some states set a last penalty-free day to resign that falls weeks before the first day of school, and resigning after it can carry a penalty. Read your contract and your state's rule before you agree to a start date."
+      },
+      {
+        "type": "h",
+        "text": "Plan for more applications than feels reasonable"
+      },
+      {
+        "type": "p",
+        "text": "One documented SLP sent 113 tailored applications over eleven months for seven interviews and one offer, and another sent more than five hundred in six months. At one application a week, 113 takes more than two years, so the calendar has to hold a faster pace than that. Lesson 6.6 walks through both searches."
+      },
+      {
+        "type": "numbers",
+        "items": [
+          {
+            "value": "6–15 months",
+            "label": "what documented SLP transitions took"
+          },
+          {
+            "value": "113 → 7 → 1",
+            "label": "tailored applications, interviews and offers in one eleven-month search"
+          },
+          {
+            "value": "500+",
+            "label": "applications another SLP sent in six months"
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "tone": "warm",
+        "title": "Let an alert watch the boards",
+        "text": "Applications sent in the first day or two of a posting are the ones most likely to be seen. Set a job alert for your target title so new postings come to you, and check it in one short slot a day once your applying window opens."
+      },
+      {
+        "type": "check",
+        "items": [
+          {
+            "q": "You have six hours for the search this week. How do you spend them?",
+            "options": [
+              "About three and a half on a proof piece, two on messages and calls, and half an hour of reading",
+              "Mostly reading: articles, the subreddit and a few more postings",
+              "All six on applications, because volume is what counts"
+            ],
+            "answer": 0,
+            "why": "Six parts proof, three parts people and one part reading keeps the search out of the browser, and the heavy applying waits for the window you set."
+          },
+          {
+            "q": "You work in a school and could start a new job in August. When does the heavy applying begin?",
+            "options": [
+              "In August, once the school year has ended",
+              "In May and June, after a winter of proof and conversations",
+              "In January, before you have anything to show"
+            ],
+            "answer": 1,
+            "why": "You count back at least six to eight weeks from the start date, and an offer has to arrive before your contract's last day to resign."
+          }
+        ]
       },
       {
         "type": "steps",
         "items": [
           "Write down the hours you can give this week, then split them six, three and one.",
           "Find your resignation window and letter-of-intent date, or your notice period, and put the start of your applying window on the calendar.",
-          "Block the proof hours first, at the time of day you think best. Boards get the leftover slot."
+          "Block the proof hours first, at the time of day you think best. New postings get one short slot."
         ]
       }
     ],
@@ -65,10 +181,10 @@
     },
     "takeaways": [
       "Decide the hours a week before you decide anything else, and split them six parts proof, three parts people, one part reading.",
-      "Start the heavy applying six to eight weeks before the earliest date you can start.",
-      "School SLPs work back from the contract dates; medical SLPs from the notice period.",
+      "Start the heavy applying at least six to eight weeks before the earliest date you could start, and expect the search to outlast one window.",
+      "School SLPs work back from the contract dates, and medical SLPs from the notice period.",
       "Documented transitions took six to fifteen months, so the calendar has to hold a long search.",
-      "Job boards get one fixed slot a week. Proof and conversations get the rest."
+      "A job alert and one short slot cover the boards. Proof and conversations get the rest."
     ],
     "sources": [
       "facts",
@@ -77,11 +193,15 @@
   },
   {
     "id": "2.1",
-    "tldr": "Twenty paths, sorted by how long they take instead of how interesting they sound: the four your license already opens, the four clusters where most SLPs land, and the builds that take a year or more. Pick the tier your runway can carry.",
+    "tldr": "The map sorts the paths by how long they take instead of how interesting they sound: the four jobs your license already opens, the four clusters where most SLPs land, and the builds that take a year or more. Pick the tier your runway can carry.",
     "blocks": [
       {
+        "type": "h",
+        "text": "Pick the tier your runway can carry before you pick a job"
+      },
+      {
         "type": "p",
-        "text": "Most SLPs at this point are not choosing between careers. They are asking what exists at all. One SLP wrote that she feels dumb looking at other jobs, because she has no idea how anything works outside of speech, schools and therapy places. She had already decided. What she was short of was a list."
+        "text": "The map sorts paths by how long they take, because time is what you are short of. Choose the tier by what your bank account and your patience will carry: the top one hires on the license in your wallet, and the bottom one has the highest ceilings and the longest wait."
       },
       {
         "type": "quote",
@@ -89,12 +209,22 @@
         "from": "an SLP, r/slp"
       },
       {
-        "type": "h",
-        "text": "Sorted by time, because time is the thing you are short of"
-      },
-      {
-        "type": "p",
-        "text": "The map below is sorted by runway rather than by how interesting the jobs sound. The top tier hires you on the credential in your wallet. The middle wants some new vocabulary and one piece of proof, and the bottom is a genuine build with the highest ceilings and the longest wait. Which tier you can afford is mostly a question of what your bank account and your patience will carry, and documented transitions took six to fifteen months."
+        "type": "flow",
+        "title": "The map's three tiers",
+        "items": [
+          {
+            "label": "Out in weeks",
+            "note": "your license is the credential"
+          },
+          {
+            "label": "Six to twelve months",
+            "note": "new vocabulary and one piece of proof"
+          },
+          {
+            "label": "Twelve to twenty-four months",
+            "note": "real upskilling, higher ceilings, longer wait"
+          }
+        ]
       },
       {
         "type": "numbers",
@@ -114,22 +244,25 @@
         ]
       },
       {
-        "type": "h",
-        "text": "The map"
-      },
-      {
         "type": "tool",
         "name": "path-map"
       },
       {
-        "type": "p",
-        "text": "Two notes before you open it. Rehab management is usually an internal promotion rather than an application, so it runs on a track of its own. And clinical research coordination is the one path on this map that pays less than the job you have, at $48,000 to $72,000 against an SLP median of $97,870, which makes it a first step rather than a destination."
-      },
-      {
-        "type": "callout",
-        "tone": "warm",
-        "title": "Telehealth is a bridge, and it is still clinical",
-        "text": "Teletherapy is not on this map, but it belongs in your plan as a way to drop hours and lose the commute while you search. The door worth knowing about is that Presence, eLuma, Global Teletherapy and VocoVision all hire for the platform itself, which is a job rather than a caseload."
+        "type": "cards",
+        "items": [
+          {
+            "title": "Rehab management",
+            "text": "Usually an internal promotion and seldom an application, so it runs on a track of its own."
+          },
+          {
+            "title": "Clinical research coordination",
+            "text": "The one path where a pay cut is the expected outcome: $48,000 to $72,000 against an SLP median of $97,870. A first step, never a destination."
+          },
+          {
+            "title": "Telehealth",
+            "text": "Still clinical, so it is not on the map. It can cut your hours and commute while you search, and Presence, eLuma, Global Teletherapy and VocoVision hire non-clinical staff."
+          }
+        ]
       },
       {
         "type": "steps",
@@ -141,11 +274,11 @@
       },
       {
         "type": "h",
-        "text": "Four jobs your license already qualifies you for"
+        "text": "Four jobs hire you on the license you already hold"
       },
       {
         "type": "p",
-        "text": "These four are the shortest distance between your current badge and a non-clinical paycheck: no bootcamp, no portfolio, no certificate, no year of evenings. Clinical liaison gets called the number one non-clinical title for rehab professionals, and the reason is unglamorous. The job requires a clinician and you are one."
+        "text": "Clinical liaison, utilization review, clinical educator and case management all ask for a clinician, and you are one: no bootcamp, no portfolio, no year of evenings. Clinical liaison gets called the number one non-clinical title for rehab professionals. State Disability Determination Services is a second door into review work, and one SLP took a $13,000 pay cut to walk through it for the mobility and a PSLF-qualifying employer."
       },
       {
         "type": "numbers",
@@ -165,16 +298,47 @@
         ]
       },
       {
-        "type": "h",
-        "text": "What each one actually is, and who hires for it"
+        "type": "cards",
+        "items": [
+          {
+            "title": "Clinical or rehab liaison",
+            "text": "You read charts between a hospital and a rehab facility to judge who fits your program. Encompass Health, Select Medical and Lifepoint all hire for it."
+          },
+          {
+            "title": "Utilization review",
+            "text": "You read a request for care against the criteria that decide payment, then write the decision. Remote-heavy and fast to enter."
+          },
+          {
+            "title": "Clinical educator or trainer",
+            "text": "You train clinicians, families and school teams on a device you already prescribe. Tobii Dynavox calls it Learning Consultant. PRC-Saltillo, Lingraphica and Passy-Muir hire the same profile."
+          },
+          {
+            "title": "Case management",
+            "text": "You coordinate care across settings, insurers and discharge. $54,100 to $81,900 in the middle band, with government near $82,600 and insurance near $80,500 at the median."
+          }
+        ]
       },
       {
-        "type": "p",
-        "text": "**Clinical or rehab liaison.** You work between a hospital and a rehab facility, reading charts to judge whether a patient is appropriate for your program. You are the person the discharge planner calls at four on a Friday. The band is $84,000 to $135,000, and Encompass Health, Select Medical and Lifepoint all hire for it. The catch is that you are still inside acute care most days, and part of the job is selling even when the title never says so."
-      },
-      {
-        "type": "p",
-        "text": "**Utilization review.** You read a request for care against the criteria that decide whether it gets paid, and you write the decision. It is remote-heavy, entry is fast, and the band is $80,000 to $88,000, quoted hourly at $37 to $62. State Disability Determination Services is a second door, and one SLP took a $13,000 pay cut to walk through it for the mobility and a PSLF-qualifying employer. The catch is that you are often the person saying no, to clinicians who sound like you did last year."
+        "type": "compare",
+        "title": "The catch in each one",
+        "left": {
+          "label": "The job",
+          "items": [
+            "Clinical or rehab liaison",
+            "Utilization review",
+            "Clinical educator or trainer",
+            "Case management"
+          ]
+        },
+        "right": {
+          "label": "The catch",
+          "items": [
+            "You are still inside acute care most days, and part of the job is selling.",
+            "You often say no to clinicians who sound like you, and many postings want an RN.",
+            "Travel. Find the percentage in the posting before you fall in love with the job.",
+            "Inpatient rehab systems advertise higher pay, and many of those postings say RN required."
+          ]
+        }
       },
       {
         "type": "quote",
@@ -182,18 +346,10 @@
         "from": "an SLP who left, r/SLPcareertransitions"
       },
       {
-        "type": "p",
-        "text": "**Clinical educator or trainer at a device company.** You train clinicians, families and school teams on a device or platform you already know how to prescribe. Tobii Dynavox calls the role Learning Consultant and Glassdoor puts it at $78,000 to $116,000. PRC-Saltillo, Lingraphica and Passy-Muir hire the same profile. The catch is travel, so find the percentage in the posting before you fall in love with the job."
-      },
-      {
-        "type": "p",
-        "text": "**Case management.** You coordinate a patient's care across settings, insurers and discharge, which is the unbilled half of your week already. Medical case manager pay sits at $54,100 to $81,900 in the 25th to 75th band. The best-paying sectors are government and public administration at around $82,600 median and insurance at around $80,500. Inpatient rehab systems advertise higher numbers, and many of those postings quietly say RN required."
-      },
-      {
         "type": "callout",
         "tone": "warm",
         "title": "Picture the Wednesday before you apply",
-        "text": "All four of these keep you inside the system you are leaving, and that is the trade you are making. Picture an ordinary Wednesday in one of them: same building, same acronyms, same people, different badge, no caseload. If that reads as relief, this tier is your fastest way out and you should be applying this month. If it reads as a halfway house, spend your evenings on the later tiers and take the longer road on purpose."
+        "text": "All four keep you inside the system you are leaving, and that is the trade. Picture an ordinary Wednesday in one of them: same building, same acronyms, same people, different badge, no caseload. If that reads as relief, this tier is your fastest way out and you can apply this month. If it reads as a halfway house, spend your evenings on the later tiers and take the longer road on purpose."
       },
       {
         "type": "steps",
@@ -205,32 +361,32 @@
       },
       {
         "type": "h",
-        "text": "Where SLPs actually land"
+        "text": "Most SLPs who leave land in one of these four clusters"
       },
       {
         "type": "p",
-        "text": "When I look at where SLPs have actually landed, rather than where career articles say they could, the same four clusters keep coming back. The data analyst below sent more than five hundred applications over six months before an offer came, and she is the success story."
+        "text": "Customer success, project management, healthcare data and content are where documented SLP exits keep landing. Customer success has the best effort-to-odds ratio on the map, and at Expressable, Presence, Tobii Dynavox, PRC-Saltillo, Lingraphica and Passy-Muir your license is the credential. None of the four is quick: the data analyst below sent more than five hundred applications before an offer came."
       },
       {
-        "type": "p",
-        "text": "**Customer success, implementation and training.** Health-tech, SaaS and ed-tech companies need someone who can teach a clinician to use their product and then keep them using it, which is the job you have already done with every family who stopped practicing at home in March. The range is $75,000 to $120,000, and this cluster has the best effort-to-odds ratio on the map. One medical SLP came out at $115,000 to $120,000 as a remote SaaS manager after SV Academy's free customer success bootcamp and a paid internship. At Expressable, Presence, Tobii Dynavox, PRC-Saltillo, Lingraphica and Passy-Muir your license is the credential. The vocabulary you pick up first is churn, onboarding and health scores."
-      },
-      {
-        "type": "p",
-        "text": "**Project and program management.** A caseload is concurrent project management with worse tooling and no software license. This cluster has the most six-figure outcomes in the file. One SLP landed a six-figure IT project manager role after a fifteen-month transition and six interviews across three rounds, doubling their SLP salary. Another was an associate PM inside a year. A third was at about $90,000 salaried eighteen months in, after being paid $38 to $48 an hour as a clinician. The Google project management certificate is free to start, the CAPM costs $175, the PMP costs $400 plus a $139 PMI membership, and your clinical coordination hours can legitimately count toward the PMP's experience requirement."
-      },
-      {
-        "type": "quote",
-        "text": "no one took me seriously with a CAPM",
-        "from": "an SLP who moved into project management"
-      },
-      {
-        "type": "p",
-        "text": "**Healthcare data.** The entry point is healthcare organizations rather than big tech, at $70,000 to $105,000: hospital quality teams working falls data and discharge follow-up, behavioral health organizations, payers. One SLP with about ten years mostly in early intervention became a fully remote healthcare quality analyst at $20,000 more base than their best SLP year, after five hundred applications in six months, thirteen interview processes and four finals. She was self-taught, with free and low-cost certificates and a five-project portfolio. Another did a one-year online master's while working and came in at the same salary as their last SLP job, $15,000 below their peak home-health year, with guaranteed annual raises and 85k+ after the entry level."
-      },
-      {
-        "type": "p",
-        "text": "**Content and marketing.** Explaining a swallow study to a frightened spouse in words he can act on is the skill this cluster pays for, and the range runs $80,000 to $141,000. One SLP moved into corporate marketing after about a year of applications and wrote, \"I actually got a raise and bonus this year, whereas in my 5 years in healthcare I was given a .35 cent raise.\" Another started freelance with a single $200 article on Upwork and now runs a micro-agency. Income is lumpy at the beginning."
+        "type": "cards",
+        "items": [
+          {
+            "title": "Customer success and implementation",
+            "text": "You teach clinicians to use a product, then keep them using it. $75,000 to $120,000. The first vocabulary is churn, onboarding and health scores."
+          },
+          {
+            "title": "Project and program management",
+            "text": "A caseload is concurrent projects with worse tooling. This cluster has the most six-figure outcomes on file."
+          },
+          {
+            "title": "Healthcare data",
+            "text": "$70,000 to $105,000. Start at healthcare organizations and not big tech: hospital quality teams working falls data and discharge follow-up, behavioral health organizations, payers."
+          },
+          {
+            "title": "Content and marketing",
+            "text": "The skill is explaining a swallow study to a frightened spouse in words he can act on. $80,000 to $141,000, and income is lumpy at the beginning."
+          }
+        ]
       },
       {
         "type": "numbers",
@@ -250,18 +406,65 @@
         ]
       },
       {
-        "type": "h",
-        "text": "The door you can get in is one title below the job you want"
+        "type": "compare",
+        "title": "Four more documented moves",
+        "left": {
+          "label": "The move",
+          "items": [
+            "SLP to IT project manager",
+            "SLP to project manager",
+            "SLP to hospital data analyst",
+            "SLP to corporate marketing"
+          ]
+        },
+        "right": {
+          "label": "The numbers",
+          "items": [
+            "Six figures, double the SLP salary, after fifteen months and six interviews across three rounds",
+            "About $90,000 salaried eighteen months in, after $38 to $48 an hour as a clinician",
+            "A one-year online master's while working, then the same salary as the last SLP job",
+            "About a year of applications, then a raise and a bonus"
+          ]
+        }
       },
       {
         "type": "list",
         "items": [
-          "Customer success: implementation specialist or onboarding manager first, customer success manager after.",
-          "Project management: coordinator or associate project manager, most often inside a healthcare organization or a nonprofit.",
-          "Healthcare data: quality, reporting or operations analyst at a hospital or a behavioral health organization, not a data scientist role at a tech company.",
-          "Content and marketing: one published piece explaining something clinical to a non-clinical reader, then a health-tech or ed-tech content role.",
-          "Freelance counts as a door in content and in data, and one $200 article is a legitimate first line on a portfolio."
+          "**Customer success.** The $115,000 to $120,000 manager was a medical SLP who went through SV Academy's free customer success bootcamp and a paid internship. SV Academy now advertises sales development training, so check what it offers today.",
+          "**Project management.** Another SLP was an associate PM inside a year. The Google certificate is low-cost, and PMI's CAPM and PMP fees change, so check pmi.org before you budget. PMI counts time spent leading defined projects toward the PMP, and routine caseload work does not count. One SLP who moved wrote, \"no one took me seriously with a CAPM.\"",
+          "**Healthcare data.** The remote analyst had about ten years, mostly in early intervention, and got there through thirteen interview processes and four finals, self-taught, with free and low-cost certificates and a five-project portfolio. The master's route started $15,000 below that SLP's peak home-health year, with guaranteed annual raises and 85k+ after the entry level.",
+          "**Content and marketing.** The marketer wrote, \"I actually got a raise and bonus this year, whereas in my 5 years in healthcare I was given a .35 cent raise.\" Another SLP started freelance with a single $200 article on Upwork and now runs a micro-agency."
         ]
+      },
+      {
+        "type": "h",
+        "text": "Apply one title below the job you want"
+      },
+      {
+        "type": "p",
+        "text": "The door that opens first is one title below the job you want. Freelance counts as a door in content and in data, and one $200 article is a legitimate first line on a portfolio."
+      },
+      {
+        "type": "compare",
+        "title": "Where to aim first",
+        "left": {
+          "label": "The goal",
+          "items": [
+            "Customer success manager",
+            "Project manager",
+            "Data scientist at a tech company",
+            "Health-tech or ed-tech content role"
+          ]
+        },
+        "right": {
+          "label": "Apply here first",
+          "items": [
+            "Implementation specialist or onboarding manager",
+            "Coordinator or associate project manager, often at a healthcare organization or a nonprofit",
+            "Quality, reporting or operations analyst at a hospital or a behavioral health organization",
+            "One published piece that explains something clinical to a non-clinical reader"
+          ]
+        }
       },
       {
         "type": "steps",
@@ -273,35 +476,11 @@
       },
       {
         "type": "h",
-        "text": "Paths that take a year or more"
+        "text": "Count the months before you start a path that takes a year or more"
       },
       {
         "type": "p",
-        "text": "Everything in this lesson costs time you do not currently have. You would be doing it after the last note is written, at five or eight hours a week, for six months to two years, while still carrying a caseload. People do it anyway for the ceiling, and BLS puts the SLP median at $97,870, well below the top of this tier."
-      },
-      {
-        "type": "p",
-        "text": "**Clinical informatics and EHR analysis, six to eighteen months.** The band is $97,800 to $154,000. If you have been the superuser who fixes everyone's templates, you have been doing unpaid informatics for years. The most-read exit post in the whole corpus was this exact move: eight years in acute care and a skilled nursing facility, then a clinical analyst role at the same hospital system, hybrid, $10,000 more. The same post said, in capitals, that you do not need a secondary master's. CAHIMS through HIMSS is the one credential here you can buy for yourself, and it has no experience prerequisite."
-      },
-      {
-        "type": "p",
-        "text": "**Instructional design, six to twelve months.** Therapy goals are learning objectives, session sequencing is scaffolding, progress monitoring is evaluation, and the range is $70,000 to $100,000. The cost is a portfolio of three to five samples built in Articulate Storyline 360 or Rise, each with a short write-up of your process. Spec work is fully acceptable, so you can build every one of them from trainings you have already delivered to colleagues. No degree and no certificate is required, and the $3,000 certificate is the most common way SLPs waste money on this path. Learn the vocabulary instead: ADDIE, Kirkpatrick levels, Mayer's principles, andragogy. The field got more crowded with the wave of teachers making the same move."
-      },
-      {
-        "type": "p",
-        "text": "**UX research, twelve to twenty-four months.** Healthtech UX research runs $67,000 to $154,000 and is the realistic niche for someone with your background, because clinical fluency is the part most candidates cannot fake. The cost is two to four deep case studies, and the standard for those is higher than it looks."
-      },
-      {
-        "type": "quote",
-        "text": "One honest case study including the wrong turns is worth more than six polished AI case studies."
-      },
-      {
-        "type": "p",
-        "text": "**Software engineering, one to two years of self-teaching.** Two SLPs in the file finished it. One went from two part-time jobs, $26 an hour in a skilled nursing facility and $34 an hour at a hospital, to $80,000 starting and $93,000 after two years, using free online courses, and a recruiter found her on LinkedIn. The other reached $96,000 self-taught. This is the longest runway on the map and the least forgiving of a stop-start schedule."
-      },
-      {
-        "type": "p",
-        "text": "**Conversation design, about twelve months.** Writing what a voice assistant says, and how it recovers when a person says something unexpected, is pragmatics with a deployment pipeline. Glassdoor puts conversational designer at $68,000 to $101,800 with an average of $82,700, and the IT-sector median total pay at $96,900. Postings using the conversation designer title average lower, around $63,000. Most roles sit inside big tech and consultancies such as Amazon, Meta and Accenture, so the search is national even when the work is remote."
+        "text": "The long builds have the highest ceilings, and you pay for them in evenings: five to eight hours a week, after the last note is written, for six months to two years. BLS puts the SLP median at $97,870, well below the top of this tier. Lesson 2.5 explains the gates on Epic certification and UX research."
       },
       {
         "type": "numbers",
@@ -321,17 +500,82 @@
         ]
       },
       {
+        "type": "cards",
+        "items": [
+          {
+            "title": "Clinical informatics and EHR",
+            "text": "Six to eighteen months. The superuser who fixes everyone's templates has done this unpaid for years. CAHIMS from HIMSS is the credential you can buy yourself."
+          },
+          {
+            "title": "Instructional design",
+            "text": "Six to twelve months, $70,000 to $100,000. The cost is three to five samples in Articulate Storyline 360 or Rise, each with a short process write-up. Spec work counts."
+          },
+          {
+            "title": "Conversation design",
+            "text": "Glassdoor puts conversational designer at $68,000 to $101,800, average $82,700, and IT-sector median total pay at $96,900. The conversation designer title averages around $63,000."
+          }
+        ]
+      },
+      {
+        "type": "cards",
+        "items": [
+          {
+            "title": "UX research",
+            "text": "Healthtech is the realistic niche, because clinical fluency is the part most candidates cannot fake. The cost is two to four deep case studies."
+          },
+          {
+            "title": "Software engineering",
+            "text": "One to two years of self-teaching. One SLP started from $26 and $34 an hour in two part-time jobs. Another reached $96,000 self-taught."
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Informatics.** One widely read exit post was this move: eight years in acute care and a skilled nursing facility, then a clinical analyst role at the same hospital system, hybrid, $10,000 more. The poster had finished a second master's and still wrote, in capitals, that you do not need one.",
+          "**Instructional design.** No degree or certificate is required, so skip the paid certificate and build your samples from trainings you have already delivered. Learn the vocabulary instead: ADDIE, Kirkpatrick levels, Mayer's principles, andragogy.",
+          "**Conversation design.** You write what a voice assistant says and how it recovers when a person says something unexpected. Most roles sit inside big tech and consultancies such as Amazon, Meta and Accenture, so the search is national.",
+          "**UX research.** The standard for a case study is higher than it looks: \"One honest case study including the wrong turns is worth more than six polished AI case studies.\"",
+          "**Software.** The first of those engineers held part-time jobs at a skilled nursing facility and a hospital, taught herself with free online courses, and was found by a recruiter on LinkedIn. This runway is the longest on the map and the least forgiving of a stop-start schedule."
+        ]
+      },
+      {
         "type": "callout",
         "tone": "warm",
         "title": "Count the cost in months, using your worst week",
-        "text": "Six to eighteen months for informatics, six to twelve for instructional design, twelve to twenty-four for UX and software. Pick the number of hours a week you can give it on a bad week rather than a good one, and do the multiplication before you pay for anything. If the answer runs past the runway you set in Module 0, take a fast-tier job first and build this from inside it, on a salary, with your evenings back."
+        "text": "Six to eighteen months for informatics, six to twelve for instructional design, a year or more for UX research, and one to two years for software. Pick the number of hours a week you can give it on a bad week, and do the multiplication before you pay for anything. If the answer runs past the date you set in lesson 0.2, take a fast-tier job first and build this from inside it, on a salary, with your evenings back."
       },
       {
         "type": "steps",
         "items": [
-          "Pick one path from this lesson and write down the hours a week you can give it in a bad week.",
+          "Pick one path from this tier and write down the hours a week you can give it in a bad week.",
           "Find its first free step: one Rise module, the CAHIMS outline, one free course lesson, one posting's required tool.",
           "Do that first step this week and notice whether you resent it. That reaction is the cheapest data you will get."
+        ]
+      },
+      {
+        "type": "check",
+        "items": [
+          {
+            "q": "Your savings cover three months and you cannot take a pay cut. Which part of the map do you open first?",
+            "options": [
+              "The builds that take a year or more, because the ceilings are highest",
+              "Clinical research coordination, because entry is fast",
+              "The jobs your license already opens, such as clinical liaison"
+            ],
+            "answer": 2,
+            "why": "The first tier hires on the credential you hold, and research coordination is the one path where a pay cut is the expected outcome."
+          },
+          {
+            "q": "You want to be a customer success manager at a speech-tech company. Which posting do you apply to first?",
+            "options": [
+              "Customer success manager, since that is the goal",
+              "Implementation specialist or onboarding manager",
+              "None yet, because a certificate has to come first"
+            ],
+            "answer": 1,
+            "why": "The door that opens first is one title below the job you want, and at speech-tech companies your license is the credential."
+          }
         ]
       },
       {
@@ -342,11 +586,11 @@
       }
     ],
     "takeaways": [
-      "The map is sorted by runway, so you can compare a three-week move with a two-year build without pretending they are the same decision.",
-      "Four jobs treat your clinical license as the whole qualification: liaison, utilization review, clinical educator and case management.",
+      "The map is sorted by how long each path takes, so you can compare a move that takes weeks with a two-year build without pretending they are the same decision.",
+      "Liaison, utilization review, clinical educator and case management hire on a clinical license. Read the license line, because some postings ask for an RN.",
       "Customer success and implementation has the best effort-to-odds ratio, and at speech-tech companies your license is the credential.",
       "In all four clusters, apply to the title one rung below the one you want.",
-      "Before you commit, multiply your worst-week hours by the months, and compare that against the runway you set in Module 0."
+      "Before you commit to a long build, multiply your worst-week hours by the months, and compare that against the date you set in lesson 0.2."
     ],
     "sources": [
       "facts",
@@ -359,39 +603,85 @@
     "tldr": "You cannot buy an Epic certification, medical science liaison is gated behind a doctorate, and UX research is oversaturated. All three have a real route behind them, and all three have somebody selling the shortcut.",
     "blocks": [
       {
+        "type": "h",
+        "text": "You can only get Epic certified through an employer"
+      },
+      {
         "type": "p",
-        "text": "Every one of these three claims has a product attached to it: a course that promises Epic certification, a certificate that promises to make you a medical science liaison, a bootcamp that promises a UX research career. The claim is the part that gets repeated. The route behind it is what actually hires people."
+        "text": "Epic does not sell certification to individuals, so anyone selling you an Epic cert is selling something else with that word on the label. A sponsoring employer, usually a health system that runs Epic, pays for the training. One SLP on file became an Epic application analyst, and the most-read forum account of the move was internal, from the clinical floor into the same hospital system's analyst team. Go-live and consulting postings often ask for experience first, so read each one for what it wants. CAHIMS from HIMSS is the credential you can buy for yourself, and it asks for no health IT job first."
+      },
+      {
+        "type": "flow",
+        "title": "The route to a sponsored Epic certification",
+        "items": [
+          {
+            "label": "Superuser work",
+            "note": "templates, rollouts, the colleague everyone asks"
+          },
+          {
+            "label": "A sponsor-track role",
+            "note": "junior analyst, go-live support, or a firm like Nordic or Tegria"
+          },
+          {
+            "label": "Employer sponsors you",
+            "note": "they pay for Epic's training"
+          },
+          {
+            "label": "Epic analyst"
+          }
+        ]
       },
       {
         "type": "h",
-        "text": "Epic certification cannot be bought, only sponsored"
+        "text": "Aim at clinical liaison, because medical science liaison wants a doctorate"
       },
       {
         "type": "p",
-        "text": "Epic does not sell certification to individuals. It happens through an employer who sponsors you and pays for the training, so anyone selling you an Epic cert is selling you something else with that word on the label. The route that works is a sponsor-track junior analyst role, a go-live or activation support gig, or an implementation consulting firm such as Nordic or Tegria. All of them train clinically credible people into the software. CAHIMS from HIMSS is the credential you can buy for yourself, and it has no experience prerequisite. One SLP in the file became an Epic application analyst, and the most-read forum version of the move was internal, from the clinical floor into that hospital system's own analyst team."
+        "text": "Medical science liaison roles are effectively gated behind a PhD, PharmD or MD, and a clinical master's plus a certificate will not clear that gate. Clinical or rehab liaison at $84,000 to $135,000 is the accessible cousin, where your credential is sufficient and entry is fast. If you want the pharma side specifically, the documented route runs through clinical research, and the coordinator step is the one place on the map where a pay cut is expected."
+      },
+      {
+        "type": "flow",
+        "title": "One SLP's documented route into pharma",
+        "items": [
+          {
+            "label": "CF year"
+          },
+          {
+            "label": "University study coordinator",
+            "note": "about eighteen months"
+          },
+          {
+            "label": "Pharma patient safety",
+            "note": "$10,000 more base and a $5,000 bonus"
+          },
+          {
+            "label": "Eighteen months later",
+            "note": "another $15,000"
+          }
+        ]
       },
       {
         "type": "h",
-        "text": "Medical science liaison is doctorate-gated"
+        "text": "Go through healthtech if you still want UX research"
       },
       {
         "type": "p",
-        "text": "MSL roles are effectively gated behind a PhD, PharmD or MD, and a clinical master's plus a certificate will not clear that gate. The certificate industry around MSL exists largely to sell that hope. The accessible cousin is clinical or rehab liaison at $84,000 to $135,000, where your credential is sufficient and entry takes weeks. If it is specifically the pharma side you want, the documented route runs through clinical research. CF year to university study coordinator in about eighteen months, then pharma patient safety for $10,000 more base and a $5,000 bonus, then $15,000 more eighteen months after that."
+        "text": "UX graduate output grew about 35% in five years while openings stayed flat, which is why the field reads as open in blog posts and closed in your inbox. The SLP to UX research move rests on a single documented story, a rehab director who went through a bootcamp. If you still want it, the route is the healthtech niche at $67,000 to $154,000, and what decides it is two to four deep case studies with the wrong turns left in. Conversation design and instructional design sit next door and use most of the same skills."
       },
       {
         "type": "h",
-        "text": "UX research is oversaturated, and its niche is not"
+        "text": "Check three postings and two people before you pay for a credential"
       },
       {
         "type": "p",
-        "text": "Graduate output in UX grew about 35% in five years while openings stayed flat, which is why the field reads as open in blog posts and closed in your inbox. The SLP to UX research move rests on a single documented story, a rehab director who went through a bootcamp, so mostly aspirational is the honest description of it. If you still want it, the route is the healthtech niche at $67,000 to $154,000, and what decides it is two to four deep case studies with the wrong turns left in. Conversation design and instructional design sit next door, are less crowded, and use most of the same muscles."
+        "text": "Each of these three has a real job, a real salary band, and a gate that the person selling the shortcut leaves out. One transitioner on file spent $220 on a résumé writer and $480 on a career coach, then paid for a teacher-transition program, before the thing that finally worked."
       },
       {
         "type": "numbers",
         "items": [
           {
             "value": "$0",
-            "label": "what an individual can pay Epic for certification"
+            "label": "what you can pay Epic for certification yourself: it only comes through an employer"
           },
           {
             "value": "$84k–$135k",
@@ -404,10 +694,24 @@
         ]
       },
       {
-        "type": "callout",
-        "tone": "warm",
-        "title": "The twenty-minute check before you buy anything",
-        "text": "All three of these follow one shape: a real job, a real salary band, and a gate that the person selling the shortcut leaves out. Before you pay for a credential, find it in three live postings and message two people who hold the job to ask what their employer actually required. One transitioner in the file spent $220 on a résumé writer and $480 on a career coach, then a teacher-transition program, before the thing that finally worked. Twenty minutes of checking would have bought them a better first guess."
+        "type": "compare",
+        "title": "What gets sold, and what gets people hired",
+        "left": {
+          "label": "The shortcut",
+          "items": [
+            "A course that promises Epic certification",
+            "A certificate that promises to make you a medical science liaison",
+            "A bootcamp that promises a UX research career"
+          ]
+        },
+        "right": {
+          "label": "The real route",
+          "items": [
+            "A role at an employer that sponsors your Epic training",
+            "Clinical or rehab liaison, where your license is enough",
+            "The healthtech niche, with two to four deep case studies"
+          ]
+        }
       },
       {
         "type": "steps",
@@ -418,6 +722,31 @@
         ]
       },
       {
+        "type": "check",
+        "items": [
+          {
+            "q": "A site sells an \"Epic certification\" course to individuals, and you want to become an Epic analyst. What do you do?",
+            "options": [
+              "Buy it, since analyst postings ask for Epic certification",
+              "Skip it and look for analyst or go-live roles at employers that run Epic",
+              "Skip Epic and enrol in a second master's in informatics"
+            ],
+            "answer": 1,
+            "why": "Epic certification only comes through a sponsoring employer, so the route is a role that sponsors you, with CAHIMS as the credential you can buy yourself."
+          },
+          {
+            "q": "A posting you want lists a certificate as preferred. What comes before paying for it?",
+            "options": [
+              "Find it in three live postings and ask two people in the job what their employer required",
+              "Nothing, because preferred means required in practice",
+              "Ask the certificate's provider how many graduates get hired"
+            ],
+            "answer": 0,
+            "why": "Three postings and two people who hold the job show what employers ask for, and the seller of the credential is the one source with a reason to leave the gate out."
+          }
+        ]
+      },
+      {
         "type": "ask",
         "label": "The credential you were tempted to buy",
         "prompt": "Which credential have you been tempted to buy, and how many of the three postings asked for it?",
@@ -425,10 +754,10 @@
       }
     ],
     "takeaways": [
-      "Epic certification comes only through employer sponsorship. The ways in are sponsor-track analyst roles, go-live gigs and vendor firms like Nordic or Tegria, and CAHIMS is the credential you can buy for yourself.",
+      "Epic certification comes only through a sponsoring employer. The ways in are sponsor-track analyst roles, go-live support and firms like Nordic or Tegria, and CAHIMS is the credential you can buy for yourself.",
       "Medical science liaison is doctorate-gated, and clinical liaison at $84,000 to $135,000 is the accessible cousin.",
-      "UX research grew 35% more graduates in five years against flat openings, so the healthtech niche and two to four deep case studies are the only realistic route.",
-      "Each of these three myths has a product attached, which is why the myth keeps circulating.",
+      "UX research grew 35% more graduates in five years against flat openings, so the healthtech niche and two to four deep case studies are the realistic route.",
+      "Each of these three shortcuts has a product attached, which is why the claim keeps circulating.",
       "Check any credential against three live postings and two people who hold the job before you spend a dollar."
     ],
     "sources": [
@@ -438,11 +767,15 @@
   },
   {
     "id": "2.6",
-    "tldr": "Twenty paths is more than anyone can hold, and holding all of them is how people stay stuck for a year. The Pivot Report reads your actual résumé and returns the stage you are in, three paths with the first job title to apply for in each, and a thirty-day plan. It takes about four minutes, and you can run it against as many paths as you are curious about.",
+    "tldr": "The whole map is more than anyone can hold at once. The Pivot Report reads your actual résumé and returns the stage you are in, three paths with the first job title to apply for in each, and a thirty-day plan. It takes about four minutes.",
     "blocks": [
       {
+        "type": "h",
+        "text": "Let the report narrow the list when you cannot"
+      },
+      {
         "type": "p",
-        "text": "You have read the map, you can name six paths, and you are further from a decision than you were in week one. Twenty options do that to a tired brain, and to a burnt-out brain in particular, which one SLP described as struggling with executive function at exactly the moment a career change demands it."
+        "text": "The Pivot Report reads your résumé and returns the stage you are in, three paths with the first job title to apply for in each, and a thirty-day plan. A long map stalls a tired brain, and a burnt-out one most of all: one SLP described burnt-out brains as struggling with executive function at the moment a career change demands it."
       },
       {
         "type": "quote",
@@ -450,17 +783,24 @@
         "from": "an SLP, r/SLPcareertransitions"
       },
       {
-        "type": "h",
-        "text": "What the report does with your résumé"
-      },
-      {
-        "type": "list",
+        "type": "cards",
         "items": [
-          "A readiness profile, one of four: depleted expert, quiet researcher, restless builder, ready leaper. Each comes with the trap that profile falls into and the strength it underrates.",
-          "The stage you are actually in, tied to your own answers rather than guessed, with the one thing to focus on now and the one thing you are allowed to ignore.",
-          "Your top three paths, each with why your specific experience fits, a range, a timeline in months, the entry door, and one first move.",
-          "A week-by-week thirty-day plan, sized for someone working full time with a caseload.",
-          "Outreach templates written in your own voice, with the honest reply rate attached to them."
+          {
+            "title": "The stage you are in",
+            "text": "Tied to your own answers, with the one thing to focus on now and the one thing you are allowed to ignore."
+          },
+          {
+            "title": "Your top three paths",
+            "text": "Each with why your experience fits, a range, a timeline in months, the first title to apply for, and one first move."
+          },
+          {
+            "title": "A thirty-day plan",
+            "text": "Week by week, sized for someone working full time with a caseload."
+          },
+          {
+            "title": "Outreach messages",
+            "text": "Written in your own voice, with the honest reply rate attached to them."
+          }
         ]
       },
       {
@@ -469,21 +809,73 @@
       },
       {
         "type": "h",
-        "text": "What readiness means, and what it does not"
+        "text": "Read your watch-out line twice"
       },
       {
         "type": "p",
-        "text": "The profile describes how you are approaching the change and makes no claim about whether you are good enough. A depleted expert needs a recovery-paced plan and cannot see their own competence from where they are standing. A quiet researcher has been reading for months and needs permission more than information. A restless builder has energy, four tabs open and no single target, and a ready leaper wants tactics and no more reassurance. The useful line in each one is the watch-out, because the trap it names is usually something you have already done twice this year."
+        "text": "The useful line in your readiness profile is the watch-out, because the trap it names is usually one you have already walked into. The profile is one of four, and each comes with the trap it falls into and the strength it underrates. It describes how you are approaching the change and makes no claim about whether you are good enough."
+      },
+      {
+        "type": "cards",
+        "items": [
+          {
+            "title": "Depleted expert",
+            "text": "Needs a recovery-paced plan, and cannot see their own competence from where they are standing."
+          },
+          {
+            "title": "Quiet researcher",
+            "text": "Has been reading for months, and needs permission more than information."
+          },
+          {
+            "title": "Restless builder",
+            "text": "Has energy, four tabs open and no single target."
+          },
+          {
+            "title": "Ready leaper",
+            "text": "Wants tactics and no more reassurance."
+          }
+        ]
+      },
+      {
+        "type": "h",
+        "text": "Argue with the ranking in writing"
       },
       {
         "type": "p",
-        "text": "Read the three paths in order and notice which one you argue with, because that reaction is data. The report ranks on the evidence in your résumé, which is a different thing from what you want. If it puts clinical informatics first on the strength of an EMR rollout you barely remember, and you know you never want to open a chart again, write that down and take the second one."
+        "text": "The report ranks paths on the evidence in your résumé, which is a different thing from what you want. Read the three in order and notice which one you argue with, because that reaction is data. If it puts clinical informatics first on the strength of an EMR rollout you barely remember, and you know you never want to open a chart again, write that down and take the second one."
       },
       {
-        "type": "callout",
-        "tone": "soft",
-        "title": "One path, and the other nineteen keep",
-        "text": "Try on as many paths as you want here. Run the report again, open any of the twenty in the deep-dive, and argue with the ranking. The one place it has to narrow is Module 4, where you translate your résumé for one target at a time, because a résumé aimed at three jobs reads as aimed at none. People who switched target at week six still got there."
+        "type": "h",
+        "text": "Pick one target before you rewrite your résumé"
+      },
+      {
+        "type": "p",
+        "text": "Module 4 is where the list has to narrow to one path, because you translate your résumé for one target at a time and a résumé aimed at three jobs reads as aimed at none. Until then, try paths on: reopen the map in lesson 2.1, read the report's second and third paths, and argue with the ranking. The paths you set aside stay on the map."
+      },
+      {
+        "type": "check",
+        "items": [
+          {
+            "q": "Your report ranks clinical informatics first because of an EMR rollout you led, and you never want to open a chart again. What do you do?",
+            "options": [
+              "Aim at informatics anyway, because the report ranks on evidence",
+              "Set the report aside and reread the whole map",
+              "Write down why it is wrong for you and take the second path"
+            ],
+            "answer": 2,
+            "why": "The report ranks on what your résumé shows, which is a different thing from what you want, so disagreeing with it in writing is a legitimate way to choose."
+          },
+          {
+            "q": "You like two of your three paths equally and Module 4 starts next week. How many targets does your résumé get?",
+            "options": [
+              "One now, with the other kept as the next one to test",
+              "Both, in one résumé that covers each",
+              "Neither, until you are certain"
+            ],
+            "answer": 0,
+            "why": "A résumé aimed at more than one job reads as aimed at none, and the path you set aside stays on the map."
+          }
+        ]
       },
       {
         "type": "steps",
@@ -495,11 +887,11 @@
       }
     ],
     "takeaways": [
-      "Twenty options is a decision trap, and the fix is testing them against your own résumé rather than reading a twenty-first article.",
+      "A long list of options is a decision trap, and the fix is testing paths against your own résumé instead of reading one more article.",
       "The report reads your real résumé and returns your stage, three paths with the first job title to apply for in each, and a thirty-day plan.",
       "The readiness profile names how you are approaching this, whether that is a depleted expert who needs a recovery pace or a restless builder with four tabs open and no target. Read your watch-out line twice.",
       "It ranks paths on the evidence in your résumé, so disagreeing with it in writing is a legitimate way to choose.",
-      "Try as many paths as you like here. Module 4 is where it has to narrow to one at a time."
+      "Try paths on here. Module 4 is where the list has to narrow to one at a time."
     ],
     "sources": [
       "facts",

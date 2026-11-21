@@ -92,7 +92,7 @@ const R = {
   coverPost: { label: "The non-clinical cover letter", href: "https://slptransitions.com/slp-cover-letter-non-clinical/", kind: "link" as const },
   tracker: { label: "Outreach and application tracker (Sheets or Notion)", href: "/course/transition-os-tracker-README.md", kind: "sheet" as const },
   lists: { label: "Your people and applications", href: "/course/tracker", kind: "tool" as const },
-  storyForm: { label: "Share your story", href: "https://slptransitions.com/about/", kind: "link" as const },
+  storyForm: { label: "Share your story", href: "https://slptransitions.com/share-your-story/", kind: "link" as const },
 };
 
 export const MODULES: Module[] = [
@@ -138,7 +138,7 @@ export const MODULES: Module[] = [
     tagline: "Twenty real paths with what each one pays and how long it takes.",
     lessons: [
       { id: "2.0", module: 2, title: "How much time this takes, and when", type: "interactive", minutes: 7, summary: "", resources: [R.tracker, R.workbook1] },
-      { id: "2.1", module: 2, title: "Twenty paths, sorted by how long they take", type: "explainer", minutes: 28, summary: "", resources: [R.paths, R.jobs, R.companies] },
+      { id: "2.1", module: 2, title: "Eleven paths, sorted by how long they take", type: "explainer", minutes: 28, summary: "", resources: [R.paths, R.jobs, R.companies] },
       { id: "2.5", module: 2, title: "Epic, MSL and UX research: what they really require", type: "explainer", minutes: 6, summary: "Three claims that cost SLPs money, and the real route behind each one.", resources: [R.paths] },
       { id: "2.6", module: 2, title: "Try paths against your r\u00e9sum\u00e9", type: "interactive", minutes: 8, summary: "", resources: [R.suite] },
     ],

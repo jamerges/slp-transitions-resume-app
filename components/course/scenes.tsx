@@ -12,7 +12,7 @@ export const STAGE_META = [
     voice: "One thing I'm struggling with the most is the feeling that I'm \u2018throwing away\u2019 my degree.", from: "r/SLPcareertransitions" },
   { key: "permission", n: 3, name: "Permission-seeking", belief: "It works for other people, not me.", truth: "Jeannette, Rachel and Mattie started where you are, with no shortcut.", move: "Pick one story with your starting point. Copy its first month.",
     voice: "Has anyone left the field and regretted it?", from: "r/slp, one of the most-replied threads of the year" },
-  { key: "panic", n: 4, name: "Practical panic", belief: "I'd have to start over at the bottom.", truth: "Liaison roles pay $84k\u2013$135k and customer success $75k\u2013$120k, from day one.", move: "Pick one path and stop reading about the other nineteen.",
+  { key: "panic", n: 4, name: "Practical panic", belief: "I'd have to start over at the bottom.", truth: "Liaison roles pay $84k\u2013$135k and customer success $75k\u2013$120k. The SLP median is $97,870.", move: "Pick one path and stop reading about the other nineteen.",
     voice: "I feel dumb when I look at other jobs. I have no idea how anything works outside of speech.", from: "r/SLPcareertransitions" },
   { key: "action", n: 5, name: "Action", belief: "If I were good enough, I'd get callbacks.", truth: "You're qualified. The r\u00e9sum\u00e9 still says caseload where a recruiter needs to read clients.", move: "Fix the r\u00e9sum\u00e9 before the next application.",
     voice: "I applied to more than 500 jobs. I built a portfolio, earned certifications, rewrote my resume and cover letters dozens of times.", from: "r/SLPcareertransitions" },
@@ -41,8 +41,8 @@ export function StageRoad({ active, compact = false }: { active: number; compact
 
 export const fiveStagesScenes: Scene[] = [
   { id: "open", ms: 5200, caption: "Nobody quits clinical work in an afternoon. You leave in stages, and most of them look nothing like a decision.",
-    render: () => (<><Kicker>Module 1 · Lesson 1</Kicker><Big>Nobody leaves in an afternoon.</Big><Sub>You leave in stages. Five of them, and they repeat for almost everyone.</Sub></>) },
-  { id: "road", ms: 5600, caption: "Five stages, in order. What changes from person to person is how long you sit in each one.",
+    render: () => (<><Kicker>Module 1 · Lesson 1</Kicker><Big>Nobody leaves in an afternoon.</Big><Sub>You leave in stages. Five of them, in the words SLPs use about leaving.</Sub></>) },
+  { id: "road", ms: 5600, caption: "Five stages. What changes from person to person is how long you sit in each one.",
     render: () => (<><Kicker>The road</Kicker><StageRoad active={0} /><Sub delay={900}>How long you sit in each one usually comes down to a single belief you never checked.</Sub></>) },
   ...STAGE_META.map((s, i): Scene => ({
     id: s.key, ms: 7600,
@@ -72,8 +72,8 @@ export const fiveStagesScenes: Scene[] = [
     render: () => (<><Kicker>Still you</Kicker><Big>Your title changes, but your skills carry over.</Big><Sub>The person who explains a diagnosis to a frightened parent and tracks outcomes on sixty people at once is the person every one of these roles is hiring.</Sub></>) },
 ];
 
-const LIES = [
-  { lie: "I'd have to start over.", truth: "A few moves are a step down, and the program names them. Most aren't: liaison, utilization review and customer success pay at or above clinical from day one." },
+export const LIES = [
+  { lie: "I'd have to start over.", truth: "A few moves are a step down, and the program names them. Most aren't: liaison roles pay $84k\u2013$135k and customer success $75k\u2013$120k, against an SLP median of $97,870." },
   { lie: "I need a certificate first.", truth: "A few roles do require one, and Module 2 says which. Most hire on translated experience and proof. One transitioner got the CAPM first and said no one took her seriously until she could show the work." },
   { lie: "I'd be throwing away my degree.", truth: "For liaison, UR, clinical education and speech-tech roles the license is the qualification. For a clean break like software, it's your backup plan rather than your credential." },
 ];
