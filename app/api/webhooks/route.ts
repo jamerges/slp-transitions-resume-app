@@ -82,7 +82,7 @@ async function fulfil(session: Stripe.Checkout.Session): Promise<void> {
   // The Suite delivers on /success, the report on /report.
   const recoverUrl = `${APP_URL}/${product === "report" ? "report" : "success"}?session_id=${sessionId}`;
   const note: string[] = [
-    `product: ${product === "report" ? "$9 Pivot Report" : "$24 Career Pivot Suite"}`,
+    `product: ${product === "report" ? "Pivot Report" : "Career Pivot Suite"}`,
     `amount: $${amount}`,
     `email: ${email || "(none captured)"}`,
     `session: ${sessionId}`,

@@ -201,3 +201,5 @@ These stay parked: the employer layer and job board, the B2B hiring partners, SL
 2. Rescue the ~10 stranded report buyers with a personal note and their report. Decided 2026-09-28: yes.
 3. After the sale, the Suite goes back to $24. Decided 2026-09-28; $29-with-report stays a later experiment.
 4. ~~The cohort~~ Decided 2026-09-28: no group call yet. Phase 4 is parked.
+
+- **2026-11-21.** Homepage, blog index, site palette, logo and the app share one design. Report price now follows its Stripe price, ready for the $19 test (James creates the price and switches the env var). Fuller sample report beside the offer. Clarity on the site and on the quiz. Still to do from the same list: a report-plus-Suite option at checkout, one higher-priced offer, buyer quotes beside the buy button, and a different lead for the action stage.

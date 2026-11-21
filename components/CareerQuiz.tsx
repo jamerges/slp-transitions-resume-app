@@ -150,7 +150,7 @@ export default function CareerQuiz({
     const t = result?.top;
     const base = { item_list_id: "quiz_result", item_list_name: "Quiz result", placement: "result_menu", stage: stageKey || "none" };
     if (k === "report") {
-      track("begin_checkout", { currency: "USD", value: 9, items: [{ item_id: "pivot_report", item_name: "$9 Pivot Report", item_category: t?.slug, price: 9, quantity: 1 }], ...base });
+      track("begin_checkout", { currency: "USD", value: REPORT_PRICE, items: [{ item_id: "pivot_report", item_name: "Pivot Report", item_category: t?.slug, price: REPORT_PRICE, quantity: 1 }], ...base });
       if (t) buyReport(t);
       return;
     }
@@ -207,12 +207,12 @@ export default function CareerQuiz({
     if (!result) return;
     track("view_item", {
       currency: "USD",
-      value: 9,
+      value: REPORT_PRICE,
       items: [{
         item_id: "pivot_report",
-        item_name: "$9 Pivot Report",
+        item_name: "Pivot Report",
         item_category: result.top.slug,
-        price: 9,
+        price: REPORT_PRICE,
         quantity: 1,
       }],
       stage: stageKey || "none",
@@ -293,6 +293,7 @@ export default function CareerQuiz({
         <Card>
           <label htmlFor="quiz-gate-name" style={S.label}>First name</label>
           <input
+            data-clarity-mask="true"
             id="quiz-gate-name"
             autoComplete="given-name"
             style={{ ...S.input, marginBottom: 14 }}
@@ -305,6 +306,7 @@ export default function CareerQuiz({
           />
           <label htmlFor="quiz-gate-email" style={S.label}>Email</label>
           <input
+            data-clarity-mask="true"
             id="quiz-gate-email"
             autoComplete="email"
             inputMode="email"
@@ -396,8 +398,8 @@ export default function CareerQuiz({
                 onClick={() => {
                   track("begin_checkout", {
                     currency: "USD",
-                    value: 9,
-                    items: [{ item_id: "pivot_report", item_name: "$9 Pivot Report" }],
+                    value: REPORT_PRICE,
+                    items: [{ item_id: "pivot_report", item_name: "Pivot Report" }],
                     placement: "result_top",
                     stage: stageKey || "none",
                   });
@@ -411,6 +413,16 @@ export default function CareerQuiz({
               <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>
                 Your three paths, the first job title in each and a 30-day plan, built from the answers you just gave. It opens the moment you pay. 30-day refund, no questions.
               </div>
+              <button
+                type="button"
+                onClick={() => {
+                  track("select_content", { content_type: "report_sample", placement: "result_top", stage: stageKey || "none" });
+                  document.getElementById("report-sample")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                style={{ background: "none", border: "none", padding: "10px 6px 0", fontFamily: "inherit", fontSize: 13.5, fontWeight: 600, color: "var(--accent)", textDecoration: "underline", cursor: "pointer" }}
+              >
+                See part of a sample report ↓
+              </button>
             </>
           )}
           {offer === "suite" && (
@@ -522,7 +534,7 @@ export default function CareerQuiz({
 
             <div style={{ textAlign: "center" }}>
               {isDesktop && (
-                <div style={{ textAlign: "left", margin: "0 auto 18px", maxWidth: 470 }}>
+                <div data-clarity-mask="true" style={{ textAlign: "left", margin: "0 auto 18px", maxWidth: 470 }}>
                   <label style={{ ...S.label, marginBottom: 4 }}>
                     Paste your résumé now <span style={{ color: "var(--muted)", fontWeight: 400 }}>(optional)</span>
                   </label>
@@ -546,12 +558,12 @@ export default function CareerQuiz({
                 onClick={() => {
                   track("begin_checkout", {
                     currency: "USD",
-                    value: 9,
+                    value: REPORT_PRICE,
                     items: [{
                       item_id: "pivot_report",
-                      item_name: "$9 Pivot Report",
+                      item_name: "Pivot Report",
                       item_category: top.slug,
-                      price: 9,
+                      price: REPORT_PRICE,
                       quantity: 1,
                     }],
                     stage: stageKey || "none",
@@ -629,7 +641,7 @@ export default function CareerQuiz({
                   type="button"
                   disabled={buying}
                   onClick={() => {
-                    track("begin_checkout", { currency: "USD", value: 9, items: [{ item_id: "pivot_report", item_name: "$9 Pivot Report" }], placement: "result_offer_secondary", stage: stageKey || "none" });
+                    track("begin_checkout", { currency: "USD", value: REPORT_PRICE, items: [{ item_id: "pivot_report", item_name: "Pivot Report" }], placement: "result_offer_secondary", stage: stageKey || "none" });
                     buyReport(top);
                   }}
                   style={{ background: "none", border: "none", padding: 0, color: "var(--accent)", fontWeight: 600, cursor: "pointer", fontFamily: "inherit", fontSize: 13 }}
@@ -685,7 +697,7 @@ export default function CareerQuiz({
                 type="button"
                 disabled={buying}
                 onClick={() => {
-                  track("begin_checkout", { currency: "USD", value: 9, items: [{ item_id: "pivot_report", item_name: "$9 Pivot Report", item_category: top.slug, price: 9, quantity: 1 }], placement: "result_after_map", stage: stageKey || "none" });
+                  track("begin_checkout", { currency: "USD", value: REPORT_PRICE, items: [{ item_id: "pivot_report", item_name: "Pivot Report", item_category: top.slug, price: REPORT_PRICE, quantity: 1 }], placement: "result_after_map", stage: stageKey || "none" });
                   buyReport(top);
                 }}
                 style={{ background: "none", border: "none", padding: 0, color: "var(--accent)", fontWeight: 600, cursor: "pointer", fontFamily: "inherit", fontSize: 13 }}

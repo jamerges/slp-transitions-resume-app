@@ -1,6 +1,7 @@
 import { PageShell } from "@/components/ui";
 import { S } from "@/components/tokens";
 import CareerQuiz from "@/components/CareerQuiz";
+import Clarity from "@/components/Clarity";
 import { COMPANY_COUNT } from "@/lib/companies";
 
 export const metadata = {
@@ -24,6 +25,7 @@ export default async function QuizPage({
 
   return (
     <PageShell>
+      <Clarity />
       {/* The intro lives inside CareerQuiz so it disappears once there's a
           result — by then they've taken the quiz and just want the answer. */}
       <CareerQuiz initialPath={initialPath} initialDone={[params.done || []].flat().join(",")} showIntro={!initialPath} companyCount={COMPANY_COUNT} />

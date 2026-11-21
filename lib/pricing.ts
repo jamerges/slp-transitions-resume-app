@@ -8,8 +8,22 @@
  */
 export type PricedProduct = "report" | "suite" | "ground";
 
+/**
+ * The report's price is whatever its Stripe price charges. next.config.mjs
+ * reads STRIPE_REPORT_PRICE_ID from Stripe when the app is built and passes
+ * the amount in as NEXT_PUBLIC_REPORT_PRICE, so changing the price is one
+ * step: point that env var at another price and redeploy. Every page, email
+ * and the checkout guard then agree, and there is no second number to forget.
+ * (2026-11-21, for the $19 test. The Suite and the kit still read LIST.)
+ */
+const REPORT_FROM_STRIPE = Number(process.env.NEXT_PUBLIC_REPORT_PRICE);
+
 /** List prices, what each product costs when there is no sale. */
-export const LIST: Record<PricedProduct, number> = { report: 9, suite: 24, ground: 19 };
+export const LIST: Record<PricedProduct, number> = {
+  report: Number.isFinite(REPORT_FROM_STRIPE) && REPORT_FROM_STRIPE > 0 ? REPORT_FROM_STRIPE : 9,
+  suite: 24,
+  ground: 19,
+};
 
 /** 2026-09-21: everything is $9 for a limited time (James). */
 // The sale ends when the day ends on Oct 5 (James, 2026-09-28). Nothing flips

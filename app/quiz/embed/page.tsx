@@ -1,5 +1,6 @@
 import { S } from "@/components/tokens";
 import CareerQuiz from "@/components/CareerQuiz";
+import Clarity from "@/components/Clarity";
 import { COMPANY_COUNT } from "@/lib/companies";
 import EmbedAutoHeight from "@/components/EmbedAutoHeight";
 
@@ -23,6 +24,7 @@ export default async function QuizEmbed({
         rel="stylesheet"
       />
       <EmbedAutoHeight messageKey="slpQuizHeight" />
+      <Clarity />
       <div style={{ paddingTop: 8, paddingBottom: 24 }}>
         <CareerQuiz initialPath={path?.toLowerCase() || undefined} embedded companyCount={COMPANY_COUNT} />
       </div>
