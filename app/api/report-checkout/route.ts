@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { intakeStageLabel, sanitizeQuizSnapshot } from "@/lib/report-quiz";
 import { assertKeyPriceMatch, assertPriceAmount } from "@/lib/stripe-guard";
 import { priceOf } from "@/lib/pricing";
+import { reportPriceId } from "@/lib/report-price-id";
 import { assertReadableResume } from "@/lib/anthropic";
 import Stripe from "stripe";
 import { stashInputs } from "@/lib/stash";
@@ -15,14 +16,14 @@ function getStripe(): Stripe {
   if (!stripe) {
     const key = process.env.STRIPE_SECRET_KEY;
     if (!key) throw new Error("STRIPE_SECRET_KEY is not set");
-    assertKeyPriceMatch(key, REPORT_PRICE_ID, "STRIPE_REPORT_PRICE_ID ($9 report)");
+    assertKeyPriceMatch(key, REPORT_PRICE_ID, "the report price id (lib/report-price-id.ts)");
     stripe = new Stripe(key, { apiVersion: "2025-02-24.acacia" });
   }
   return stripe;
 }
 
-const REPORT_PRICE_ID =
-  process.env.STRIPE_REPORT_PRICE_ID || "price_1Tz6TjKyPrmclvwmJBqCzPcB";
+// Live key: the id in lib/stripe-prices.json. Test key: the env var.
+const REPORT_PRICE_ID = reportPriceId();
 
 export async function POST(req: Request) {
   try {

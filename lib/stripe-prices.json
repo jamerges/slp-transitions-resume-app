@@ -1,0 +1,8 @@
+{
+  "_note": "Live Stripe price ids that the code, not a Vercel env var, decides. Price ids are public identifiers, not secrets. See lib/report-price-id.ts.",
+  "reportLive": "price_1UeM3fKyPrmclvwmuOMMvnpq",
+  "reportLiveWas": {
+    "price_1TzOQaKyPrmclvwmBQNqO5RJ": "$9, 2026-07-31 to 2026-11-21",
+    "price_1UeM3fKyPrmclvwmuOMMvnpq": "$19, from 2026-11-21 (the price test)"
+  }
+}

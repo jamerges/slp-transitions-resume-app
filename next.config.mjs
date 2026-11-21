@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -31,10 +33,13 @@ const nextConfig = {
 // then keeps serving the last good deployment instead of one whose pages say
 // $9 while Stripe charges something else. Anywhere else it falls back to 9.
 async function reportPrice() {
-  const id = process.env.STRIPE_REPORT_PRICE_ID;
   const key = process.env.STRIPE_SECRET_KEY;
+  // Same rule as lib/report-price-id.ts: a live key uses the id in
+  // lib/stripe-prices.json, a test key uses the env var.
+  const prices = JSON.parse(readFileSync(new URL("./lib/stripe-prices.json", import.meta.url), "utf8"));
+  const id = (key || "").startsWith("sk_live") ? prices.reportLive : process.env.STRIPE_REPORT_PRICE_ID;
   const production = process.env.VERCEL_ENV === "production";
-  let why = "STRIPE_REPORT_PRICE_ID or STRIPE_SECRET_KEY is not set";
+  let why = "the report price id or STRIPE_SECRET_KEY is not set";
   if (id && key) {
     for (let attempt = 0; attempt < 3; attempt++) {
       try {

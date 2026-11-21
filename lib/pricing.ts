@@ -10,10 +10,11 @@ export type PricedProduct = "report" | "suite" | "ground";
 
 /**
  * The report's price is whatever its Stripe price charges. next.config.mjs
- * reads STRIPE_REPORT_PRICE_ID from Stripe when the app is built and passes
- * the amount in as NEXT_PUBLIC_REPORT_PRICE, so changing the price is one
- * step: point that env var at another price and redeploy. Every page, email
- * and the checkout guard then agree, and there is no second number to forget.
+ * asks Stripe what the report's price id (lib/report-price-id.ts) charges when
+ * the app is built and passes the amount in as NEXT_PUBLIC_REPORT_PRICE, so
+ * changing the price is one step: put another price id in
+ * lib/stripe-prices.json and push. Every page, email and the checkout guard
+ * then agree, and there is no second number to forget.
  * (2026-11-21, for the $19 test. The Suite and the kit still read LIST.)
  */
 const REPORT_FROM_STRIPE = Number(process.env.NEXT_PUBLIC_REPORT_PRICE);

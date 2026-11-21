@@ -1,3 +1,4 @@
+import { reportPriceId } from "@/lib/report-price-id";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { priceOf, type PricedProduct } from "@/lib/pricing";
@@ -13,7 +14,7 @@ export const dynamic = "force-dynamic";
  */
 const IDS: Record<PricedProduct, string | undefined> = {
   suite: process.env.STRIPE_PRICE_ID || "price_1TzOQ0KyPrmclvwmStUeaCoj",
-  report: process.env.STRIPE_REPORT_PRICE_ID,
+  report: reportPriceId(),
   ground: process.env.STRIPE_GROUND_PRICE_ID,
 };
 
