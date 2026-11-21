@@ -782,6 +782,28 @@ export function renderPreviewFollowupEmail(input: { jobTitle: string; score: num
   return { subject: `Your ${jobTitle} preview is still open`, html };
 }
 
+/**
+ * One note to someone who opened the Pivot Report's checkout and left without
+ * paying. Plain, from James, and it asks what stopped them before it offers
+ * the way back: a reply saying why is worth more than the sale.
+ */
+export function renderUnfinishedCheckoutEmail(input: { name?: string; pathLabel?: string; link: string; unsubUrl: string }): { subject: string; html: string } {
+  const { name, pathLabel, link, unsubUrl } = input;
+  const html = plainWrap([
+    `Hi ${esc((name || "").trim().split(/\s+/)[0] || "there")},`,
+    `You opened the checkout for your Pivot Report${pathLabel ? ` after your quiz came back as <strong>${esc(pathLabel)}</strong>` : ""} and didn&rsquo;t finish. Nothing was charged.`,
+    `If something on the page put you off, or you had a question it didn&rsquo;t answer, reply and tell me. I read every reply myself.`,
+    `If you only got interrupted, <a href="${link}" style="color:#004820;font-weight:600;">your result is still here</a>. The report is $${priceOf("report")} once, it opens the moment you pay, and you get a refund within 30 days if it doesn&rsquo;t help.`,
+    `James`,
+  ], unsubUrl, "You started a checkout at slptransitions.com.");
+  return { subject: "You stopped at the checkout", html };
+}
+
+export async function sendUnfinishedCheckoutEmail(input: { to: string; name?: string; pathLabel?: string; link: string; unsubUrl: string }): Promise<void> {
+  const { subject, html } = renderUnfinishedCheckoutEmail(input);
+  await getResend().emails.send({ from: FROM_ADDRESS, to: input.to, replyTo: REPLY_TO, subject, html });
+}
+
 export async function sendPreviewFollowupEmail(input: { to: string; jobTitle: string; score: number; link: string; until: string; unsubUrl: string }): Promise<void> {
   const { subject, html } = renderPreviewFollowupEmail(input);
   await getResend().emails.send({ from: FROM_ADDRESS, to: input.to, replyTo: REPLY_TO, subject, html });

@@ -440,10 +440,13 @@ export default function CareerQuiz({
                 }}
                 style={{ ...S.btn, marginTop: 16, padding: "13px 24px", minHeight: 46, fontSize: 15 }}
               >
-                Translate my résumé · ${priceOf("suite")} →
+                See my résumé against one posting, free →
               </button>
+              {/* Nobody at this stage had bought with the price on the button
+                  (0 of 45 by 2026-11-11), so the button names the free step and
+                  the price moves to the line under it. */}
               <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>
-                Free preview before you pay.{wasNote("suite")}
+                A match score and three of your bullets rewritten, before you pay anything. The full package is ${priceOf("suite")}{wasNote("suite")}.
               </div>
             </>
           )}
@@ -625,10 +628,10 @@ export default function CareerQuiz({
                   go(suiteHref(top));
                 }}
               >
-                Translate my résumé · ${priceOf("suite")} →
+                See my résumé against one posting, free →
               </button>
               <p style={{ fontSize: 12, color: "var(--light)", marginTop: 10, lineHeight: 1.6 }}>
-                Free preview before you pay. One-time payment, 30-day refund if it doesn&rsquo;t help.
+                The preview is free and needs no card. The full package is ${priceOf("suite")} once, with a 30-day refund if it doesn&rsquo;t help.
               </p>
             </div>
             {buyError && (
