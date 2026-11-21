@@ -38,6 +38,7 @@ export const COURSE_GROUPS = {
 
 export const WAITLIST_GROUPS = {
   ground: "198391691796809364",  // "Waitlist · Ground (opening notice)" (created 2026-09-12)
+  os: "204785698088158908",      // "Waitlist · Transition OS (opening notice)" (created 2026-11-21): the sales page's "tell me when it opens"
 } as const;
 
 export async function upsertSubscriber(input: {
