@@ -41,21 +41,25 @@ SITE = "https://slptransitions.com"
 # Leaders guests are deliberately excluded here for the same reason; those
 # interviews still live on the blog under Entrepreneurs.
 #
-# Avatars are cropped from the circular headshot inside each post's own
-# -hdr-v2 header graphic — real photographs the subjects supplied. Emily
-# Harford is NOT here despite being a good story: her post image is
-# AI-generated and no photograph of her exists. Real headshots only.
+# Photos are the real photographs the subjects supplied (content/guest-photos,
+# uploaded to WP media 3743 to 3745 on 2026-11-20 at about 500px, which is as
+# large as the hero and the story cards show them). Emily Harford is NOT here
+# despite being a good story: her post image is AI-generated and no photograph
+# of her exists. Real photographs only.
 STORIES = [
-    dict(img="caitlin-mueller-avatar-v1.jpg", name="Caitlin Mueller",
+    dict(photo="2026/11/caitlin-mueller-portrait-v1.jpg", name="Caitlin Mueller",
          was="School-based SLP", now="Marketing Manager at an AAC device maker",
+         short="School-based SLP &rarr; Marketing Manager",
          line="She took a clinical consultant job at the company first, then moved into marketing, where knowing the clinical side is the qualification.",
          href=f"{SITE}/clinical-consultant-and-marketing/"),
-    dict(img="lindsey-ison-avatar-v1.jpg", name="Lindsey Ison",
+    dict(photo="2026/11/lindsey-ison-portrait-v1.jpg", name="Lindsey Ison",
          was="SLP", now="Enablement Consultant at a tech firm",
+         short="SLP &rarr; Enablement Consultant",
          line="Still coaching people through something difficult, now it's software instead of therapy. Comparable pay, and the flexibility she left for.",
          href=f"{SITE}/enablement-consultant/"),
-    dict(img="bethany-riebock-avatar-v1.jpg", name="Bethany Riebock",
+    dict(photo="2026/11/bethany-riebock-portrait-v1.jpg", name="Bethany Riebock",
          was="Medical SLP and rehab director", now="UX Researcher",
+         short="Medical SLP &rarr; UX Researcher",
          line="Burnt out running a rehab department, she went through a UX bootcamp and into research in Silicon Valley.",
          href=f"{SITE}/slp-to-ux/"),
 ]
@@ -65,7 +69,7 @@ STORIES = [
 # If you have no photograph of someone, they do not go here, however good the
 # story is. Never substitute an AI-generated face.
 for _s in STORIES:
-    assert _s.get("img"), f"STORIES entry {_s['name']!r} has no headshot — see the note above"
+    assert _s.get("photo"), f"STORIES entry {_s['name']!r} has no photograph — see the note above"
 
 # (name, low $k, high $k, timeline class) from the pillar's pay table.
 PAY_ROWS = [
@@ -141,173 +145,176 @@ SCRIPT = """
 
 CSS = """
 <style id="slp-home-2026">
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:wght@400;500;600;700&display=swap');
 
-/* Palette since 2026-10-09: forest #004820 on cream #EFEEE1 (James's pick). */
-.slp-home{--cream:#EFEEE1;--paper:#FFFFFF;--forest:#004820;--forest-dark:#002F15;
-  --brand:#266341;--mint:#DCE1D2;--sage:#B3C4B1;--amber:#E6A83A;--line:#DAD8C6;
-  --slate:#555B52;
-  font-family:'DM Sans',system-ui,sans-serif;color:var(--forest-dark);
-  background:var(--cream);margin:0 calc(50% - 50vw);width:100vw;overflow-x:hidden}
+/* 2026-11-20 redesign (James: "looks a bit generic", pointing at osmind.org).
+   What changed is the frame the same words sit in: light serif headlines with
+   one phrase in italics, real photographs at size, a row of numbers, and one
+   saturated panel that holds the product. The comp it was built from is
+   content/design/home-direction-2026-11-20.html.
+   Palette: forest #004820 (James's pick, 2026-10-09) on a paper a shade lighter
+   than the app's cream, so the photographs and the green panels carry the page. */
+.slp-home{--page:#F8F7F0;--paper:#FFFFFF;--forest:#004820;--forest-dark:#002F15;--ink:#14201A;
+  --brand:#266341;--mint:#DCE1D2;--sage:#B3C4B1;--line:#DAD8C6;--slate:#555B52;--glow:#D9E9B4;
+  font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);line-height:1.5;
+  background:var(--page);margin:0 calc(50% - 50vw);width:100vw;overflow-x:hidden}
 .slp-home *,.slp-home *::before,.slp-home *::after{box-sizing:border-box}
-.slp-wrap{max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,48px)}
-.slp-home h1,.slp-home h2,.slp-home h3,.slp-home blockquote{
-  font-family:'Fraunces',Georgia,serif;font-weight:500;letter-spacing:-.02em;margin:0}
+.slp-wrap{max-width:1216px;margin:0 auto;padding:0 clamp(18px,4vw,48px)}
+.slp-home h1,.slp-home h2,.slp-home h3{
+  font-family:'Fraunces',Georgia,serif;font-weight:300;letter-spacing:-.015em;margin:0;color:var(--ink)}
+/* One phrase per headline is set in italics. It is the only emphasis the page uses. */
+.slp-home h1 em,.slp-home h2 em{font-style:italic;font-weight:300}
 .slp-home p{margin:0}
 .slp-home a{text-decoration:none;color:inherit}
-.slp-kicker{font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--brand);margin:0 0 1rem}
+.slp-kicker{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--brand);margin:0}
+
+/* buttons */
+.slp-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  min-height:54px;padding:.85rem 1.6rem;border-radius:999px;font-weight:600;font-size:1rem;
+  transition:transform .18s ease,background .18s ease}
+/* !important because Kadence's .entry-content a color otherwise wins */
+.slp-home a.slp-btn-primary{background:var(--forest);color:#fff!important}
+.slp-home a.slp-btn-primary:hover{background:var(--brand);transform:translateY(-2px)}
+.slp-home a.slp-btn-light{background:#fff;color:var(--forest-dark)!important}
+.slp-home a.slp-btn-light:hover{background:var(--glow);transform:translateY(-2px)}
+.slp-quiet{color:var(--forest);font-weight:600;font-size:.92rem;border-bottom:1px solid currentColor;
+  padding-bottom:.2rem}
 
 /* hero */
-.slp-hero{padding:clamp(36px,4.5vw,64px) 0 clamp(40px,5vw,64px)}
-.slp-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;
+.slp-hero{padding:clamp(32px,4.5vw,64px) 0 clamp(44px,5.5vw,76px)}
+.slp-hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);
   gap:clamp(32px,5vw,72px);align-items:center}
-.slp-video{position:relative;margin:0;width:clamp(230px,22vw,290px);aspect-ratio:9/16;border-radius:28px;overflow:hidden;
-  background:#1B1B1E;border:6px solid #fff;box-shadow:0 22px 50px rgba(0,47,21,.18)}
-.slp-video video{display:block;width:100%;height:100%;object-fit:cover}
-.slp-home .slp-sound{position:absolute;right:10px;top:10px;border:0;border-radius:999px;background:rgba(255,255,255,.92);
-  color:var(--forest-dark)!important;font:600 .78rem/1 'DM Sans',system-ui,sans-serif!important;text-transform:none!important;
-  letter-spacing:normal!important;padding:.5rem .75rem;cursor:pointer;box-shadow:none}
-.slp-hero h1{font-size:clamp(2.3rem,4.6vw,3.6rem);line-height:1.04;color:var(--forest-dark)}
-.slp-lede{font-size:clamp(1rem,1.5vw,1.18rem);line-height:1.6;color:var(--slate);
-  margin-top:1rem;max-width:34em}
+.slp-hero h1{font-size:clamp(2.6rem,5.4vw,4.75rem);line-height:1.06}
+.slp-lede{font-size:clamp(1.1rem,1.6vw,1.3rem);line-height:1.5;color:var(--slate);
+  margin-top:1.3rem!important;max-width:30em}
 .slp-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.9rem}
-.slp-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
-  min-height:56px;padding:.85rem 1.6rem;border-radius:10px;font-weight:700;font-size:1rem;
-  transition:transform .18s ease,background .18s ease}
-/* !important because Kadence's .entry-content a color otherwise wins and
-   renders near-black text on the forest button */
-.slp-home a.slp-btn-primary,.slp-home button.slp-btn-primary{background:var(--forest);color:#fff!important;
-  border:0;cursor:pointer;font-family:inherit}
-.slp-home button.slp-btn-primary:hover{background:var(--forest-dark);transform:translateY(-2px)}
-/* Kadence styles <button> with uppercase, letter-spaced text; this one should read like the others */
-.slp-home button.slp-btn{text-transform:none!important;letter-spacing:normal!important;font-size:1rem!important;line-height:1.2;box-shadow:none}
-/* pay chart */
-.slp-compare{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:clamp(22px,3.4vw,44px)}
-.slp-compare h2{font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.12;margin:0 0 .45rem;color:var(--forest-dark)}
-.slp-compare > p{font-size:.98rem;line-height:1.55;color:var(--slate)}
-.slp-legend{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;margin:1.1rem 0 1.2rem;font-size:.82rem;color:var(--slate)}
-.slp-legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:.4rem;vertical-align:-1px}
-.slp-rows{display:grid;gap:10px}
-.slp-row{display:grid;grid-template-columns:13rem minmax(0,1fr) 7.5rem;gap:1rem;align-items:center;font-size:.9rem}
-.slp-row .n{color:var(--forest-dark);font-weight:600}
-.slp-row .v{color:var(--slate);font-variant-numeric:tabular-nums;text-align:right}
-.slp-track{position:relative;height:12px;border-radius:6px;background:#E2E3D3}
-.slp-track span{position:absolute;top:0;bottom:0;border-radius:6px}
-.slp-axis{display:grid;grid-template-columns:13rem minmax(0,1fr) 7.5rem;gap:1rem;margin-top:.4rem;font-size:.74rem;color:var(--slate)}
-.slp-axis div{display:flex;justify-content:space-between}
-.t1{background:var(--forest)}.t2{background:#6E9578}.t3{background:var(--sage)}
-.slp-compare .slp-quiet{display:inline-block;margin-top:1.3rem}
-.slp-home a.slp-btn-primary:hover{background:var(--forest-dark);transform:translateY(-2px)}
-.slp-home a.slp-btn-ghost{border:1.5px solid var(--forest);color:var(--forest)!important}
-.slp-btn-ghost:hover{background:var(--mint);transform:translateY(-2px)}
-.slp-trust{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-top:1.4rem;
-  font-size:.9rem;color:var(--slate)}
+.slp-trust{margin-top:1.1rem!important;font-size:.92rem;color:var(--slate)}
 .slp-trust b{color:var(--forest);font-weight:600}
-.slp-side{font-size:.92rem;color:var(--slate);margin-top:.9rem!important}
-.slp-side a{color:var(--forest)!important;font-weight:700;border-bottom:1px solid currentColor}
+.slp-side{font-size:.92rem;color:var(--slate);margin-top:1.3rem!important}
+.slp-side a{color:var(--forest)!important;font-weight:600;border-bottom:1px solid currentColor}
+/* three real people, staggered: one tall, two square. The caption is a strip
+   under the photo, never over it: two of the three are tight headshots and an
+   overlaid tag covered the mouth and chin. */
+.slp-faces{display:grid;grid-template-columns:1.5fr 1fr;gap:16px}
+.slp-home a.slp-face{display:flex;flex-direction:column;border-radius:24px;overflow:hidden;
+  background:var(--paper);border:1px solid var(--line);transition:transform .18s ease}
+.slp-home a.slp-face:hover{transform:translateY(-3px)}
+.slp-face img{display:block;width:100%;max-width:none;object-fit:cover;object-position:50% 20%}
+.slp-face.tall{grid-row:1 / span 2}
+.slp-face.tall img{flex:1 1 0;height:0;min-height:0}
+.slp-face.sq img{aspect-ratio:1/1;flex:0 0 auto}
+.slp-face.inset{margin-right:12%}
+.slp-tag{display:block;padding:11px 14px 13px;font-size:.78rem;line-height:1.35;color:var(--slate)}
+.slp-tag b{display:block;font-size:.88rem;color:var(--ink)}
 
-/* pathway */
-.slp-proof{display:grid;gap:12px}
-.slp-proof-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;
-  padding:1.15rem 1.35rem;display:flex;flex-direction:column;gap:.15rem}
-.slp-proof-n{font-family:'Fraunces',Georgia,serif;font-size:2.15rem;line-height:1;color:var(--forest)}
-.slp-proof-l{font-size:.86rem;line-height:1.4;color:var(--slate)}
-.slp-pillar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
-  gap:clamp(16px,3vw,40px);background:var(--paper);border:1px solid var(--line);
-  border-radius:20px;padding:clamp(24px,3.4vw,44px);text-decoration:none;color:inherit;
-  transition:transform .18s ease,box-shadow .18s ease}
-.slp-pillar:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,47,21,.09)}
-.slp-pillar-body{flex:1 1 22em;min-width:0}
-.slp-pillar-body h2{font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.12;margin:0 0 .55rem;
-  color:var(--forest-dark)}
-.slp-pillar-body p{font-size:.98rem;line-height:1.55;color:var(--slate);margin:0;max-width:46em}
-.slp-pillar-cta{flex:0 0 auto;color:#fff;background:var(--forest);font-weight:700;font-size:.92rem;
-  padding:13px 24px;border-radius:10px;white-space:nowrap}
-.slp-here{display:flex;align-items:center;gap:.6rem;font-size:.72rem;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--slate);margin-bottom:2px}
-.slp-here i{width:11px;height:11px;border-radius:50%;background:var(--amber);
-  box-shadow:0 0 0 4px rgba(230,168,58,.22);display:inline-block}
+/* numbers */
+.slp-nums{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 0}
+.slp-nums .slp-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.slp-num{display:flex;gap:14px;align-items:center}
+.slp-num b{font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:2.9rem;line-height:1;
+  color:var(--forest-dark);letter-spacing:-.02em;white-space:nowrap}
+.slp-num span{font-size:.86rem;line-height:1.35;color:var(--slate)}
+
+/* the stage: one saturated panel that holds the product */
+.slp-stage-sec{padding:clamp(48px,7vw,84px) 0 clamp(20px,3vw,40px)}
+.slp-stage{border-radius:32px;color:#fff;text-align:center;
+  padding:clamp(36px,5vw,64px) clamp(18px,4.4vw,56px) clamp(28px,4.4vw,56px);
+  background:radial-gradient(1200px 520px at 85% -10%,rgba(214,232,170,.34),transparent 60%),
+    radial-gradient(900px 500px at 0% 110%,rgba(57,140,96,.55),transparent 60%),
+    linear-gradient(140deg,#002F15 0%,#004820 48%,#145C39 100%)}
+.slp-home .slp-stage h2{font-size:clamp(2rem,4vw,3.25rem);line-height:1.1;color:#fff}
+.slp-stage .slp-sub{font-size:1.05rem;color:rgba(255,255,255,.84);margin:.7rem auto 2.4rem!important;max-width:34em}
+.slp-glass-grid{display:grid;grid-template-columns:1.6fr 1fr 1.15fr;gap:18px;text-align:left}
+.slp-glass{display:block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  border-radius:20px;padding:22px;color:#fff}
+.slp-home .slp-glass h3{font-weight:400;font-size:1.25rem;color:#fff;margin:0 0 .85rem}
+.slp-row{display:grid;grid-template-columns:9.4rem minmax(0,1fr) 6.4rem;gap:.85rem;align-items:center;
+  font-size:.84rem;line-height:1.3;margin:.55rem 0;color:rgba(255,255,255,.92)}
+.slp-row .v{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.slp-track{position:relative;height:8px;border-radius:4px;background:rgba(255,255,255,.16)}
+.slp-track span{position:absolute;top:0;bottom:0;border-radius:4px}
+.t1{background:#D9E9B4}.t2{background:#9CC9A4}.t3{background:#6FA382}
+.slp-legend{display:flex;flex-wrap:wrap;gap:.3rem 1rem;margin-top:.9rem!important;font-size:.74rem;color:rgba(255,255,255,.75)}
+.slp-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:.35rem;vertical-align:-1px}
+.slp-result .k{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.slp-result .t{font-family:'Fraunces',Georgia,serif;font-size:1.7rem;line-height:1.15;margin:.5rem 0 .75rem;color:#fff}
+.slp-result .m{font-size:.95rem;color:rgba(255,255,255,.88);line-height:1.5}
+.slp-result .go{display:inline-block;margin-top:1rem;font-size:.86rem;font-weight:600;color:var(--glow);
+  border-bottom:1px solid currentColor;padding-bottom:.15rem}
+.slp-home ul.slp-stops{list-style:none!important;margin:0!important;padding:0!important}
+.slp-home ul.slp-stops li{display:flex;align-items:center;gap:.6rem;padding:.42rem 0;margin:0;
+  font-size:.9rem;line-height:1.3;color:rgba(255,255,255,.78)}
+.slp-stops li::before{content:"";width:9px;height:9px;border-radius:50%;border:1.5px solid rgba(255,255,255,.55);flex:0 0 auto}
+.slp-home ul.slp-stops li.here{color:#fff;font-weight:600}
+.slp-stops li.here::before{background:var(--glow);border-color:var(--glow)}
+.slp-stops small{margin-left:auto;font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--glow);color:var(--forest-dark);border-radius:999px;padding:.2rem .6rem;white-space:nowrap}
+.slp-stage-cta{margin-top:2.2rem}
 
 /* sections */
-.slp-sec{padding:clamp(56px,8vw,104px) 0}
-.slp-sec h2{font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.08}
-.slp-sec-intro{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
-  gap:clamp(20px,4vw,56px);align-items:end;margin-bottom:clamp(28px,4vw,52px)}
-.slp-sec-intro p{color:var(--slate);font-size:1rem;line-height:1.65}
+.slp-sec{padding:clamp(48px,7vw,84px) 0}
+.slp-sec-head{margin-bottom:clamp(24px,3.4vw,40px);max-width:42rem}
+.slp-sec h2{font-size:clamp(1.95rem,3.6vw,3rem);line-height:1.1;margin-top:.6rem}
 
-/* career cards */
-
-/* stories */
-.slp-stories{background:var(--forest-dark);color:var(--paper)}
-.slp-stories h2{color:var(--paper)}
-.slp-stories .slp-sec-intro p{color:#D6DAC9}
-.slp-story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.slp-story{background:#F7F6EE;border-radius:16px;padding:1.6rem;display:flex;flex-direction:column;
-  transition:transform .18s ease}
-.slp-story:hover{transform:translateY(-4px)}
-.slp-story-top{display:flex;align-items:center;gap:.85rem}
-.slp-story-top img{width:54px;height:54px;border-radius:50%;object-fit:cover;
-  border:2px solid var(--sage);display:block;flex:0 0 auto}
-.slp-story-top b{display:block;color:var(--forest-dark);font-size:.98rem}
-.slp-story-top small{color:var(--slate);font-size:.78rem}
-/* The before/after pair does the work the headshot used to: it is the thing a
-   reader scans for, and it does not need a photograph we do not have. */
-.slp-move{margin:.7rem 0 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem;
-  font-size:.86rem;line-height:1.3}
-.slp-was{color:var(--slate)}
-.slp-arrow{color:var(--forest);font-weight:700}
-.slp-now{color:var(--forest-dark);font-weight:700}
-.slp-story .slp-story-line{font-size:1.05rem;line-height:1.4;color:var(--forest-dark);margin:1.1rem 0 1.4rem}
-.slp-story-link{margin-top:auto;color:var(--forest);font-weight:700;font-size:.88rem}
+/* stories: the photograph leads, then where they were and where they are */
+.slp-story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.slp-story{display:block}
+.slp-story .ph{border-radius:22px;overflow:hidden;aspect-ratio:4/3.5;background:var(--mint);margin-bottom:1rem}
+.slp-story .ph img{width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 22%;display:block;
+  transition:transform .4s ease}
+.slp-story:hover .ph img{transform:scale(1.03)}
+.slp-was{font-size:.84rem;color:var(--slate)}
+.slp-now{font-family:'Fraunces',Georgia,serif;font-size:1.5rem;line-height:1.2;color:var(--ink);
+  margin:.25rem 0 .5rem;letter-spacing:-.01em}
+.slp-story .slp-story-line{font-size:.97rem;line-height:1.55;color:var(--slate);margin:0 0 .6rem}
+.slp-story-link{font-size:.9rem;font-weight:600;color:var(--forest)}
 
 /* resources */
 .slp-res{border-top:1px solid var(--line)}
 .slp-res a{display:grid;grid-template-columns:.6fr 1.1fr 1.3fr auto;gap:2rem;align-items:center;
   padding:1.5rem .25rem;border-bottom:1px solid var(--line);transition:background .18s ease,padding .18s ease}
-.slp-res a:hover{background:rgba(220,225,210,.6);padding-left:1rem;padding-right:1rem}
-.slp-res .step{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
-.slp-res b{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:1.3rem;color:var(--forest-dark)}
-.slp-res p{font-size:.9rem;line-height:1.55;color:var(--slate)}
-.slp-res .arrow{font-size:1.5rem;color:var(--forest)}
+.slp-res a:hover{background:rgba(220,225,210,.5);padding-left:1rem;padding-right:1rem}
+.slp-res .step{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
+.slp-res b{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:1.5rem;line-height:1.2;color:var(--ink);letter-spacing:-.01em}
+.slp-res p{font-size:.95rem;line-height:1.55;color:var(--slate)}
+.slp-res .arrow{font-size:1.4rem;color:var(--forest)}
 
-/* final cta */
+/* companies band and closer */
 .slp-band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.2rem;
-  background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  background:var(--paper);border:1px solid var(--line);border-radius:20px;
   padding:1.6rem 1.9rem;margin-top:clamp(28px,4vw,44px)}
-.slp-band h3{font-size:1.3rem}
-.slp-band p{font-size:.9rem;color:var(--slate);margin-top:.35rem}
-.slp-final{background:var(--mint);border:1px solid var(--sage);border-radius:18px;
-  padding:clamp(32px,5vw,64px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);
-  gap:clamp(24px,4vw,56px);align-items:center;margin-bottom:clamp(48px,7vw,88px)}
-.slp-final h2{font-size:clamp(1.85rem,3.4vw,2.8rem);line-height:1.1}
-.slp-final p{color:var(--slate);font-size:1rem;line-height:1.6;margin-top:1.1rem}
-.slp-final-actions{display:flex;flex-direction:column;gap:1rem;align-items:flex-start}
-.slp-final-actions .slp-btn{width:100%}
-.slp-quiet{color:var(--forest);font-weight:700;font-size:.9rem;border-bottom:1px solid currentColor;
-  padding-bottom:.25rem}
+.slp-home .slp-band h3{font-size:1.45rem;font-weight:400}
+.slp-band p{font-size:.95rem;color:var(--slate);margin-top:.35rem}
+.slp-final{border-radius:32px;padding:clamp(32px,4.6vw,56px);display:grid;
+  grid-template-columns:minmax(0,1.3fr) auto;gap:clamp(24px,4vw,40px);align-items:center;color:#fff;
+  margin-bottom:clamp(48px,7vw,88px);
+  background:radial-gradient(900px 400px at 100% 0%,rgba(214,232,170,.3),transparent 60%),
+    linear-gradient(140deg,#002F15,#004820 60%,#145C39)}
+.slp-home .slp-final h2{font-size:clamp(1.95rem,3.6vw,3rem);line-height:1.1;color:#fff}
+.slp-final p{color:rgba(255,255,255,.84);font-size:1.05rem;line-height:1.6;margin-top:.9rem!important;max-width:32em}
 
-@media (max-width:1000px){
+@media (max-width:900px){
   .slp-hero-grid{grid-template-columns:1fr}
-  .slp-hero-media{display:flex;justify-content:center}
-  .slp-video{width:min(240px,64vw)}
-  .slp-sec-intro{grid-template-columns:1fr;align-items:start;gap:1.1rem}
+  .slp-face.inset{margin-right:0}
+  .slp-nums .slp-wrap{grid-template-columns:1fr 1fr;gap:20px}
+  .slp-num{flex-direction:column;align-items:flex-start;gap:4px}
+  .slp-num b{font-size:2.25rem}
+  .slp-glass-grid{grid-template-columns:1fr}
   .slp-story-grid{grid-template-columns:1fr 1fr}
-  .slp-story-grid > a:last-child{grid-column:1/-1}
   .slp-res a{grid-template-columns:1fr auto;gap:.55rem 1.5rem}
   .slp-res .step,.slp-res b,.slp-res p{grid-column:1}
   .slp-res .arrow{grid-column:2;grid-row:1/4}
   .slp-final{grid-template-columns:1fr}
-  .slp-final-actions{max-width:420px}
 }
 @media (max-width:620px){
-  .slp-row{grid-template-columns:1fr auto;gap:.3rem .8rem}
-  .slp-row .slp-track{grid-column:1/-1;grid-row:2}
-  .slp-axis{grid-template-columns:1fr}.slp-axis > span{display:none}
   .slp-story-grid{grid-template-columns:1fr}
-  .slp-story-grid > a:last-child{grid-column:auto}
+  .slp-row{grid-template-columns:6.5rem minmax(0,1fr) 5rem;gap:.6rem;font-size:.78rem}
   .slp-actions{flex-direction:column;align-items:stretch}
-  .slp-btn{width:100%}
+  .slp-hero .slp-btn,.slp-final .slp-btn{width:100%}
+  .slp-tag{font-size:.72rem;padding:9px 11px 11px}
+  .slp-tag b{font-size:.82rem}
+  .slp-stage{border-radius:24px}
 }
 /* ---- scroll animation layer (added only when JS runs: .js-anim) ---- */
 .slp-home.js-anim .slp-rv{opacity:0;transform:translateY(22px);
@@ -347,11 +354,12 @@ def build():
           .format(SALE_BANNER[1], SALE_BANNER[0]))
 
     # ---- hero
-    # 2026-09-28 (second pass): question one, a sample result and three numbers
-    # in the hero read as too busy (James). Back to one message and one button,
-    # with the hype video on the right doing the showing.
+    # One message and one button (2026-09-28: a hero with a quiz question, a
+    # sample result and three numbers read as too busy). Since 2026-11-20 the
+    # right side is three real people instead of the hype video: the video was
+    # still in the old teal, and faces are what the page was missing.
     a('<section class="slp-hero"><div class="slp-wrap"><div class="slp-hero-grid"><div class="slp-hero-copy">')
-    a('<h1>Your SLP skills can take you somewhere new.</h1>')
+    a('<h1>Your SLP skills can take you <em>somewhere new.</em></h1>')
     # The subhead carries the validation the headline doesn't: permission first
     # (voice-of-customer §5.1), then the practical promise. "Want out" is the
     # reader's own phrase.
@@ -364,30 +372,36 @@ def build():
     a(f'<p class="slp-side">Have a job posting already? <a href="{APP}?{utm("home_hero_suite")}">'
       'Translate your r&eacute;sum&eacute; for it &rarr;</a></p>')
     a('</div>')
-    # The 32-second hype video (~/Desktop/slp-transitions-video, HyperFrames),
-    # re-encoded to 540x960 at 1.2MB. Muted autoplay is the only autoplay
-    # browsers allow; the button turns sound on (text only: WordPress swaps
-    # emoji for large images). Reduced-motion readers get
-    # the poster and press play themselves.
-    a('<div class="slp-hero-media"><figure class="slp-video">'
-      f'<video src="{SITE}/wp-content/uploads/2026/09/slp-hype-540.mp4" poster="{SITE}/wp-content/uploads/2026/09/slp-hype-poster.jpg" '
-      'width="540" height="960" autoplay muted loop playsinline preload="none" '
-      'aria-label="32-second video: you&rsquo;re allowed to want out, three paths and what they pay, and the free quiz"></video>'
-      '<button type="button" class="slp-sound" aria-pressed="false">Sound on</button>'
-      '</figure></div>')
-    a('<script>(function(){var f=document.querySelector(".slp-video");if(!f)return;var v=f.querySelector("video"),b=f.querySelector(".slp-sound");'
-      'var calm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;'
-      'if(calm){v.removeAttribute("autoplay");v.pause();}'
-      'b.addEventListener("click",function(){v.muted=!v.muted;if(v.paused)v.play();b.setAttribute("aria-pressed",String(!v.muted));'
-      'b.textContent=v.muted?"Sound on":"Sound off";});})();</script>')
+    # Each photo links to that person's story. The first is tall, the other two
+    # square, the last one inset so the three don't read as a grid.
+    a('<div class="slp-faces">')
+    for i, s in enumerate(STORIES):
+        shape = ("tall", "sq", "sq inset")[i]
+        # Above the fold, so never lazy: the two squares arrived seconds late.
+        # data-skip-lazy keeps SiteGround's lazy-loader off them too.
+        load = ('fetchpriority="high" ' if i == 0 else '') + 'loading="eager" data-skip-lazy class="skip-lazy"'
+        a(f'<a class="slp-face {shape}" href="{s["href"]}">'
+          f'<img src="{SITE}/wp-content/uploads/{s["photo"]}" alt="{esc(s["name"])}" {load} />'
+          f'<span class="slp-tag"><b>{esc(s["name"])}</b>{s["short"]}</span></a>')
+    a('</div>')
     a('</div></div></section>')  # grid, wrap, section
 
-    # ---- career paths
-    # One box pointing at the pillar article, not six cards. The homepage
-    # stopped being a comparison table when the article already is one.
-    # Tight top: the hero already ends in padding, and the two stacked left a
-    # dead band above this box on desktop.
-    a('<section class="slp-sec" id="career-paths" style="padding-top:0"><div class="slp-wrap">')
+    # ---- four numbers. Every one is a claim the site already makes: the
+    # pillar's count, the companies DB, the top documented salary (research-facts,
+    # with James's note that founders can pass it) and the documented timeline.
+    nums = [
+        ("20", "paths compared, with pay and timelines"),
+        (str(COMPANY_COUNT), "health and ed-tech companies that value clinical skills"),
+        ("$154k", "top documented salary, and founders can go past it"),
+        ("6&ndash;15", "months, the documented range for a move"),
+    ]
+    a('<section class="slp-nums"><div class="slp-wrap">'
+      + "".join(f'<div class="slp-num"><b>{n}</b><span>{l}</span></div>' for n, l in nums)
+      + '</div></section>')
+
+    # ---- the stage: the 20-paths chart, with a quiz result and the stage map
+    # beside it. Filled white means the pillar article here; the quiz result
+    # card is a quiet link to the quiz.
     # Eight of the twenty, drawn to one scale and coloured by how long the move
     # takes. Ranges are the 25th-75th bands in the pillar article's table
     # (content/research-facts.md); keep the two in sync.
@@ -397,41 +411,47 @@ def build():
         f'<span class="slp-track"><span class="{t}" style="left:{(lo-lo_k)/(hi_k-lo_k)*100:.1f}%;width:{(hi-lo)/(hi_k-lo_k)*100:.1f}%"></span></span>'
         f'<span class="v">${lo:g}k&ndash;${hi:g}k</span></div>'
         for n, lo, hi, t in PAY_ROWS)
-    a('<div class="slp-compare slp-rv">'
-      '<h2>Compare 20 paths in one place.</h2>'
-      '<p>Eight of them here, by pay and by how long the move usually takes.</p>'
+    a('<section class="slp-stage-sec" id="career-paths"><div class="slp-wrap"><div class="slp-stage">')
+    a('<h2>Compare 20 paths <em>in one place.</em></h2>')
+    a('<p class="slp-sub">Eight of them here, by pay and by how long the move usually takes.</p>')
+    a('<div class="slp-glass-grid" data-stagger>')
+    a('<div class="slp-glass slp-rv"><h3>What they pay</h3>'
+      f'{rows}'
       '<p class="slp-legend"><span><i class="t1"></i>Weeks to a few months</span>'
-      '<span><i class="t2"></i>6 to 12 months</span><span><i class="t3"></i>12 to 24 months</span></p>'
-      f'<div class="slp-rows">{rows}</div>'
-      '<div class="slp-axis"><span></span><div><span>$40k</span><span>$80k</span><span>$120k</span><span>$160k</span></div><span></span></div>'
-      f'<a class="slp-quiet" href="{SITE}/alternative-careers-speech-pathologists-slps/">'
-      'See all 20, with what each one asks of you &rarr;</a>'
-      '</div>')
-    a('</div></section>')
+      '<span><i class="t2"></i>6 to 12 months</span><span><i class="t3"></i>12 to 24 months</span></p></div>')
+    # The range and timeline are the customer-success path in lib/quiz.ts PATHS.
+    a(f'<a class="slp-glass slp-result slp-rv" href="{QUIZ}?{utm("home_stage_result")}">'
+      '<div class="k">A quiz result</div>'
+      '<div class="t">Customer Success / Implementation</div>'
+      '<div class="m">$75,000&ndash;$120,000<br>typically 3&ndash;9 months</div>'
+      '<span class="go">Find yours &rarr;</span></a>')
+    # The five stages, as the quiz result names them (lib/stage-map.ts).
+    a('<div class="slp-glass slp-rv"><h3>Where you are</h3><ul class="slp-stops">'
+      '<li>Private doubt</li><li>Guilt and identity</li><li>Permission-seeking</li>'
+      '<li class="here">Practical panic <small>You are here</small></li><li>Action</li></ul></div>')
+    a('</div>')
+    a(f'<div class="slp-stage-cta"><a class="slp-btn slp-btn-light" href="{SITE}/alternative-careers-speech-pathologists-slps/">'
+      'See all 20, with what each one asks of you &rarr;</a></div>')
+    a('</div></div></section>')
 
     # ---- stories
-    a('<section class="slp-sec slp-stories" id="real-stories"><div class="slp-wrap">')
-    a('<div class="slp-sec-intro"><div><p class="slp-kicker" style="color:#C9D6C3">Real transitions</p>'
-      '<h2>See where other SLPs actually landed.</h2></div></div>')
+    a('<section class="slp-sec" id="real-stories"><div class="slp-wrap">')
+    a('<div class="slp-sec-head"><p class="slp-kicker">Real transitions</p>'
+      '<h2>See where other SLPs <em>actually landed.</em></h2></div>')
     a('<div class="slp-story-grid" data-stagger>')
     for s in STORIES:
         a(f'<a class="slp-story slp-rv" href="{s["href"]}">'
-          f'<div class="slp-story-top">'
-          f'<img src="{SITE}/wp-content/uploads/2026/08/{s["img"]}" alt="{esc(s["name"])}" width="54" height="54" loading="lazy" />'
-          f'<b>{esc(s["name"])}</b></div>'
-          f'<div class="slp-move">'
-          f'<span class="slp-was">{esc(s["was"])}</span>'
-          f'<span class="slp-arrow" aria-hidden="true">→</span>'
-          f'<span class="slp-now">{esc(s["now"])}</span></div>'
+          f'<div class="ph"><img src="{SITE}/wp-content/uploads/{s["photo"]}" alt="{esc(s["name"])}" loading="lazy" /></div>'
+          f'<div class="slp-was">{esc(s["was"])} <span aria-hidden="true">→</span></div>'
+          f'<div class="slp-now">{esc(s["now"])}</div>'
           f'<p class="slp-story-line">{esc(s["line"])}</p>'
           f'<span class="slp-story-link">Read the full transition →</span></a>')
     a('</div></div></section>')
 
     # ---- resources
-    a('<section class="slp-sec" id="resources"><div class="slp-wrap">')
-    a('<div class="slp-sec-intro"><div><p class="slp-kicker">Guides</p>'
-      + '<h2>Three reads, in the order most SLPs need them.</h2></div>'
-      + '</div>')
+    a('<section class="slp-sec" id="resources" style="padding-top:0"><div class="slp-wrap">')
+    a('<div class="slp-sec-head"><p class="slp-kicker">Guides</p>'
+      '<h2>Three reads, in the order <em>most SLPs need them.</em></h2></div>')
     a('<div class="slp-res">')
     for r in RESOURCES:
         a(f'<a class="slp-rv" href="{r["href"]}"><span class="step">{esc(r["step"])}</span>'
@@ -446,21 +466,22 @@ def build():
     a('</div></section>')
 
     # ---- who runs this. A stranger had no way to tell; only documented facts
-    # (CLAUDE.md, email identity) and a link to the About page.
+    # and a link to the About page. Marketing manager since James confirmed it
+    # on 2026-10-16 (it said content strategist until 2026-11-20).
     a('<div class="slp-wrap"><p class="slp-byline" style="display:flex;gap:14px;align-items:center;font-size:.98rem;line-height:1.6;color:var(--slate);'
       'max-width:46em;margin:0 0 clamp(28px,4vw,44px)">'
       f'<img src="{SITE}/wp-content/uploads/2026/09/james-berges-headshot-2026.jpg" alt="James Berges" width="64" height="64" loading="lazy" '
       'style="width:64px;height:64px;border-radius:50%;object-fit:cover;flex:0 0 auto;border:2px solid var(--sage)"><span>'
-      'Built by <b style="color:var(--forest-dark)">James Berges</b>, a former SLP who now works as a content strategist '
+      'Built by <b style="color:var(--forest-dark)">James Berges</b>, a former SLP who now works as a marketing manager '
       'at a mental-health-tech company and hosts the Xceptional Leaders podcast. '
       f'<a class="slp-quiet" href="{SITE}/about/">More about James &rarr;</a></span></p></div>')
 
     # ---- final cta
     a('<div class="slp-wrap"><section class="slp-final">')
-    a('<div><h2>Two minutes can make the next six months clearer.</h2>'
+    a('<div><h2>Two minutes can make the next six months <em>clearer.</em></h2>'
       '<p>Answer nine questions. You get your best-fit path, a realistic salary range, '
       'an honest timeline, and one thing to do this week.</p></div>')
-    a(f'<div class="slp-final-actions"><a class="slp-btn slp-btn-primary" href="{QUIZ}?{utm("home_final")}">Find my career path →</a></div>')
+    a(f'<div><a class="slp-btn slp-btn-light" href="{QUIZ}?{utm("home_final")}">Find my career path →</a></div>')
     a('</section></div>')
 
     a(SCRIPT)
@@ -471,7 +492,7 @@ def build():
     # Em-dashes read as an AI tell to this audience. &#45; not "-" because
     # wptexturize rewrites a spaced hyphen into an en dash, so a literal
     # hyphen has to be smuggled past it as an entity.
-    return page.replace("&mdash;", "&#45;").replace("\u2014", "&#45;")
+    return page.replace("&mdash;", "&#45;").replace("—", "&#45;")
 
 
 MAILERLITE_MARK = "MailerLite Universal"
