@@ -1,0 +1,72 @@
+{
+ "site_logo": 2995,
+ "site_icon": 3495,
+ "description": "Non-clinical careers for SLPs \u2014 real salary ranges, honest timelines, real stories",
+ "widget_media_image-5": {
+  "id": "media_image-5",
+  "id_base": "media_image",
+  "sidebar": "footer1",
+  "rendered": "<section id=\"media_image-5\" class=\"widget widget_media_image\"><img width=\"150\" height=\"150\" src=\"https://slptransitions.com/wp-content/uploads/2021/09/cropped-Paper-Airplane-Company-Logo-2-150x150.png\" class=\"image wp-image-2995  attachment-thumbnail size-thumbnail\" alt=\"\" style=\"max-width: 100%; height: auto;\" decoding=\"async\" loading=\"lazy\" srcset=\"https://slptransitions.com/wp-content/uploads/2021/09/cropped-Paper-Airplane-Company-Logo-2-150x150.png 150w, https://slptransitions.com/wp-content/uploads/2021/09/cropped-Paper-Airplane-Company-Logo-2-100x100.png 100w\" sizes=\"auto, (max-width: 150px) 100vw, 150px\" /></section>",
+  "rendered_form": "<input\n\t\t\t\ttype=\"hidden\"\n\t\t\t\tdata-property=\"size\"\n\t\t\t\tclass=\"media-widget-instance-property\"\n\t\t\t\tname=\"widget-media_image[5][size]\"\n\t\t\t\tid=\"widget-media_image-5-size\"\n\t\t\t\tvalue=\"thumbnail\"\n\t\t\t/>\n\t\t\t\t\t\t<input\n\t\t\t\ttype=\"hidden\"\n\t\t\t\tdata-property=\"width\"\n\t\t\t\tclass=\"media-widget-instance-property\"\n\t\t\t\tname=\"widget-media_image[5][width]\"\n\t\t\t\tid=\"widget-media_image-5-width\"\n\t\t\t\tvalue=\"150\"\n\t\t\t/>\n\t\t\t\t\t\t<input\n\t\t\t\ttype=\"hidden\"\n\t\t\t\tdata-property=\"height\"\n\t\t\t\tclass=\"media-widget-instance-property\"\n\t\t\t\tname=\"widget-media_image[5][height]\"\n\t\t\t\tid=\"widget-media_image-5-height\"\n\t\t\t\tvalue=\"150\"\n\t\t\t/>\n\t\t\t\t\t\t<input\n\t\t\t\ttype=\"hidden\"\n\t\t\t\tdata-property=\"caption\"\n\t\t\t\tclass=\"media-widget-instance-property\"\n\t\t\t\tname=\"widget-media_image[5][caption]\"\n\t\t\t\tid=\"widget-media_image-5-caption\"\n\t\t\t\tvalue=\"\"\n\t\t\t/>\n\t\t\t\t\t\t<input\n\t\t\t\ttype=\"hidden\"\n\t\t\t\tdata-property=\"alt\"\n\t\t\t\tclass=\"media-widget-instance-property\"\n\t\t\t\tname=\"widget-media_image[5][alt]\"\n\t\t\t\tid=\"widget-media_image-5-alt\"\n\t\t\t\tvalue=\"\"\n\t\t\t/>\n\t\t\t\t\t\t<input\n\t\t\t\ttype=\"hidden\"\n\t\t\t\tdata-property=\"link_type\"\n\t\t\t\tclass=\"media-widget-instance-property\"\n\t\t\t\tname=\"widget-media_image[5][link_type]\"\n\t\t\t\tid=\"widget-media_image-5-link_type\"\n\t\t\t\tvalue=\"none\"\n\t\t\t/>\n\t\t\t\t\t\t<input\n\t\t\t\ttype=\"hidden\"\n\t\t\t\tdata-property=\"link_url\"\n\t\t\t\tclass=\"media-widget-instance-property\"\n\t\t\t\tname=\"widget-media_image[5][link_url]\"\n\t\t\t\tid=\"widget-media_image-5-link_url\"\n\t\t\t\tvalue=\"\"\n\t\t\t/>\n\t\t\t\t\t\t<input\n\t\t\t\ttype=\"hidden\"\n\t\t\t\tdata-property=\"image_classes\"\n\t\t\t\tclass=\"media-widget-instance-property\"\n\t\t\t\tname=\"widget-media_image[5][image_classes]\"\n\t\t\t\tid=\"widget-media_image-5-image_classes\"\n\t\t\t\tvalue=\"\"\n\t\t\t/>\n\t\t\t\t\t\t<input\n\t\t\t\ttype=\"hidden\"\n\t\t\t\tdata-property=\"link_classes\"\n\t\t\t\tclass=\"media-widget-instance-property\"\n\t\t\t\tname=\"widget-media_image[5][link_classes]\"\n\t\t\t\tid=\"widget-media_image-5-link_classes\"\n\t\t\t\tvalue=\"\"\n\t\t\t/>\n\t\t\t\t\t\t<input\n\t\t\t\ttype=\"hidden\"\n\t\t\t\tdata-property=\"link_rel\"\n\t\t\t\tclass=\"media-widget-instance-property\"\n\t\t\t\tname=\"widget-media_image[5][link_rel]\"\n\t\t\t\tid=\"widget-media_image-5-link_rel\"\n\t\t\t\tvalue=\"\"\n\t\t\t/>\n\t\t\t\t\t\t<input\n\t\t\t\ttype=\"hidden\"\n\t\t\t\tdata-property=\"link_target_blank\"\n\t\t\t\tclass=\"media-widget-instance-property\"\n\t\t\t\tname=\"widget-media_image[5][link_target_blank]\"\n\t\t\t\tid=\"widget-media_image-5-link_target_blank\"\n\t\t\t\tvalue=\"\"\n\t\t\t/>\n\t\t\t\t\t\t<input\n\t\t\t\ttype=\"hidden\"\n\t\t\t\tdata-property=\"image_title\"\n\t\t\t\tclass=\"media-widget-instance-property\"\n\t\t\t\tname=\"widget-media_image[5][image_title]\"\n\t\t\t\tid=\"widget-media_image-5-image_title\"\n\t\t\t\tvalue=\"\"\n\t\t\t/>\n\t\t\t\t\t\t<input\n\t\t\t\ttype=\"hidden\"\n\t\t\t\tdata-property=\"attachment_id\"\n\t\t\t\tclass=\"media-widget-instance-property\"\n\t\t\t\tname=\"widget-media_image[5][attachment_id]\"\n\t\t\t\tid=\"widget-media_image-5-attachment_id\"\n\t\t\t\tvalue=\"2995\"\n\t\t\t/>\n\t\t\t\t\t\t<input\n\t\t\t\ttype=\"hidden\"\n\t\t\t\tdata-property=\"url\"\n\t\t\t\tclass=\"media-widget-instance-property\"\n\t\t\t\tname=\"widget-media_image[5][url]\"\n\t\t\t\tid=\"widget-media_image-5-url\"\n\t\t\t\tvalue=\"https://slptransitions.com/wp-content/uploads/2021/09/cropped-Paper-Airplane-Company-Logo-2-150x150.png\"\n\t\t\t/>\n\t\t\t\t\t\t<input\n\t\t\t\ttype=\"hidden\"\n\t\t\t\tdata-property=\"title\"\n\t\t\t\tclass=\"media-widget-instance-property\"\n\t\t\t\tname=\"widget-media_image[5][title]\"\n\t\t\t\tid=\"widget-media_image-5-title\"\n\t\t\t\tvalue=\"\"\n\t\t\t/>",
+  "instance": {
+   "encoded": "YToxNTp7czo0OiJzaXplIjtzOjk6InRodW1ibmFpbCI7czo1OiJ3aWR0aCI7aToxNTA7czo2OiJoZWlnaHQiO2k6MTUwO3M6NzoiY2FwdGlvbiI7czowOiIiO3M6MzoiYWx0IjtzOjA6IiI7czo5OiJsaW5rX3R5cGUiO3M6NDoibm9uZSI7czo4OiJsaW5rX3VybCI7czowOiIiO3M6MTM6ImltYWdlX2NsYXNzZXMiO3M6MDoiIjtzOjEyOiJsaW5rX2NsYXNzZXMiO3M6MDoiIjtzOjg6ImxpbmtfcmVsIjtzOjA6IiI7czoxNzoibGlua190YXJnZXRfYmxhbmsiO2I6MDtzOjExOiJpbWFnZV90aXRsZSI7czowOiIiO3M6MTM6ImF0dGFjaG1lbnRfaWQiO2k6Mjk5NTtzOjM6InVybCI7czoxMDM6Imh0dHBzOi8vc2xwdHJhbnNpdGlvbnMuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDIxLzA5L2Nyb3BwZWQtUGFwZXItQWlycGxhbmUtQ29tcGFueS1Mb2dvLTItMTUweDE1MC5wbmciO3M6NToidGl0bGUiO3M6MDoiIjt9",
+   "hash": "066874e6e0a92296addb526c293f1437",
+   "raw": {
+    "size": "thumbnail",
+    "width": 150,
+    "height": 150,
+    "caption": "",
+    "alt": "",
+    "link_type": "none",
+    "link_url": "",
+    "image_classes": "",
+    "link_classes": "",
+    "link_rel": "",
+    "link_target_blank": false,
+    "image_title": "",
+    "attachment_id": 2995,
+    "url": "https://slptransitions.com/wp-content/uploads/2021/09/cropped-Paper-Airplane-Company-Logo-2-150x150.png",
+    "title": ""
+   }
+  },
+  "_links": {
+   "self": [
+    {
+     "href": "https://slptransitions.com/wp-json/wp/v2/widgets/media_image-5",
+     "targetHints": {
+      "allow": [
+       "GET",
+       "POST",
+       "PUT",
+       "PATCH",
+       "DELETE"
+      ]
+     }
+    }
+   ],
+   "collection": [
+    {
+     "href": "https://slptransitions.com/wp-json/wp/v2/widgets"
+    }
+   ],
+   "about": [
+    {
+     "embeddable": true,
+     "href": "https://slptransitions.com/wp-json/wp/v2/widget-types/media_image"
+    }
+   ],
+   "wp:sidebar": [
+    {
+     "href": "https://slptransitions.com/wp-json/wp/v2/sidebars/footer1/"
+    }
+   ],
+   "curies": [
+    {
+     "name": "wp",
+     "href": "https://api.w.org/{rel}",
+     "templated": true
+    }
+   ]
+  }
+ }
+}

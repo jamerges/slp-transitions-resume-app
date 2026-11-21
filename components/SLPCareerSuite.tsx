@@ -5,8 +5,7 @@ import { useReducedMotion } from "./course/ui";
 import { SALE, priceOf, wasNote, wasOf } from "@/lib/pricing";
 import { numbersAsText } from "@/components/course/tools";
 import {
-  S, Card, CopyButton, Chip, ProgressBar, CoverageTable, focusB, blurB,
-} from "./ui";
+  S, Card, CopyButton, Chip, ProgressBar, CoverageTable, focusB, blurB, SERIF, FOREST_PANEL } from "./ui";
 import {
   ROLE_OPTIONS, INDUSTRY_OPTIONS, NOT_SURE_OPTION, NOT_SURE_LABEL, WORK_PREFERENCES, STAGE_OPTIONS,
   getRelevantStories, COMPANY_COUNT,
@@ -593,7 +592,7 @@ export default function SLPCareerSuite() {
   const renderWelcome = () => (
     <div style={{ ...S.wrap, textAlign: "center", padding: "48px 0 20px" }}>
       <span style={S.tag}>Free preview · No account</span>
-      <h1 style={{ ...S.h1, fontSize: 36, marginTop: 16 }}>Your SLP résumé, translated<br />into a career you actually want.</h1>
+      <h1 style={{ ...S.h1, fontSize: "clamp(31px, 6.2vw, 46px)", lineHeight: 1.08, marginTop: 18, textWrap: "balance" }}>Your SLP résumé, translated into <em>a career you actually want.</em></h1>
       <p style={{ ...S.p, maxWidth: 520, margin: "0 auto 28px", fontSize: 16 }}>Upload your résumé and one job posting. See exactly how your clinical experience maps to that role, in the words a hiring manager reads.</p>
       <button style={S.btn} onClick={() => setStep(STEPS.RESUME)}
         onMouseEnter={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent-light)")}
@@ -685,9 +684,14 @@ export default function SLPCareerSuite() {
 
       {/* The page used to end on a card with no button: a reader who scrolled
           through the package to decide had to scroll back up to start. */}
-      <div style={{ margin: "22px 0 8px" }}>
-        <button style={S.btn} onClick={() => setStep(STEPS.RESUME)}>Start your translation →</button>
-        <p style={{ fontSize: 13, color: "var(--muted)", marginTop: 10 }}>Free preview first. You pay only if you want the full package.</p>
+      {/* The one saturated panel on the page, the same device the homepage
+          uses for its closing call (2026-11-21). */}
+      <div style={{ ...FOREST_PANEL, margin: "26px 0 14px", padding: "clamp(28px, 5vw, 42px) 22px" }}>
+        <div style={{ fontFamily: SERIF, fontWeight: 300, fontSize: "clamp(25px, 4.8vw, 34px)", lineHeight: 1.14, letterSpacing: "-0.01em", marginBottom: 18 }}>
+          See three of your bullets <em>translated.</em>
+        </div>
+        <button style={{ ...S.btn, background: "#fff", color: "#002F15" }} onClick={() => setStep(STEPS.RESUME)}>Start your translation →</button>
+        <p style={{ fontSize: 13, color: "rgba(255,255,255,.84)", margin: "12px 0 0" }}>Free preview first. You pay only if you want the full package.</p>
       </div>
 
       <Card style={{ marginTop: 8, textAlign: "left" }}>
@@ -1239,7 +1243,7 @@ export default function SLPCareerSuite() {
 
         <Card highlight>
           <div style={{ textAlign: "center" }}>
-            <div style={{ fontSize: 56, fontWeight: 700, color: "var(--accent)", fontFamily: "'Playfair Display', Georgia, serif", lineHeight: 1 }}>{matchScore}%</div>
+            <div style={{ fontSize: 56, fontWeight: 300, color: "var(--accent)", fontFamily: "'Fraunces', Georgia, serif", lineHeight: 1 }}>{matchScore}%</div>
             <div style={{ fontSize: 15, fontWeight: 600, color: "var(--accent)", marginBottom: 10 }}>{levelLabel(matchLevel)}</div>
             {/* Left-aligned: nine centred lines on a phone have no edge to read down. */}
             <p style={{ fontSize: 14.5, color: "var(--text)", margin: 0, lineHeight: 1.6, textAlign: "left" }}>{snapshot}</p>

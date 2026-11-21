@@ -2,7 +2,8 @@
    server renderer drops custom properties from inline styles, which silently
    killed every border and button colour on server-rendered pages. */
 :root {
-  /* Palette since 2026-10-09: forest #004820 on cream #EFEEE1 (James's pick). */
+  /* Palette since 2026-10-09: forest #004820 on cream (James's pick). The page
+     itself went a shade lighter on 2026-11-20, #F8F7F0, to match the homepage. */
   --accent: #004820;
   --accent-light: #266341;
   --accent-bg: #DCE1D2;
@@ -12,7 +13,7 @@
   /* Was #9CA3AF (2.4:1, failed WCAG AA for the small print it styles: refund lines,
      field hints, footers). Now the --muted grey, 5.5:1 on the cream --bg. */
   --light: #5B6157;
-  --bg: #EFEEE1;
+  --bg: #F8F7F0;
   --card: #FFFFFF;
   --border: #DAD8C6;
   --warn: #DC6803;
@@ -24,7 +25,7 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {
-  background: #EFEEE1;
+  background: #F8F7F0;
   color: #1B1B1E;
   font-family: -apple-system, BlinkMacSystemFont, 'DM Sans', 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;

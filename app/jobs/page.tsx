@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { PageShell, S } from "@/components/ui";
+import { PageShell } from "@/components/ui";
+import { S } from "@/components/tokens";
 import OpenRoles from "@/components/OpenRoles";
 import { collectionLd, JsonLd } from "@/lib/seo";
 import { COMPANY_COUNT } from "@/lib/companies";
@@ -61,7 +62,7 @@ export default function JobsPage() {
         })}
       />
 
-      <h1 style={S.h1}>Open roles worth a look</h1>
+      <h1 style={S.h1}>Open roles <em>worth a look</em></h1>
       <p style={{ ...S.p, marginBottom: 8 }}>
         {ROLES.length} openings pulled this week from the job boards of companies that
         hire former SLPs, {remote} of them remote. Grouped by the same career paths
@@ -80,7 +81,7 @@ export default function JobsPage() {
         }}
       >
         <div>
-          <div style={{ fontSize: 20, fontWeight: 700, fontFamily: "'Playfair Display', Georgia, serif", lineHeight: 1.25 }}>
+          <div style={{ fontSize: 20, fontWeight: 400, fontFamily: "'Fraunces', Georgia, serif", lineHeight: 1.25 }}>
             Here are {COMPANY_COUNT} companies that hire former SLPs
           </div>
           <div style={{ fontSize: 14, color: "var(--muted)", marginTop: 4, lineHeight: 1.55 }}>

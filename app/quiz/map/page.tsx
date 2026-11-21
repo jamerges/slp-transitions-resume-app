@@ -1,4 +1,5 @@
-import { PageShell, S, Card } from "@/components/ui";
+import { PageShell, Card } from "@/components/ui";
+import { S } from "@/components/tokens";
 import StageMap from "@/components/StageMap";
 import PrintButton from "@/components/PrintButton";
 import { PATHS, STAGES, type StageKey } from "@/lib/quiz";

@@ -44,7 +44,7 @@ export default function SaveMyPlace({ compact = false }: { compact?: boolean }) 
   return (
     <Panel tone="soft" style={{ marginTop: compact ? 0 : 16, marginBottom: compact ? 14 : 0 }}>
       <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 6 }}>Save your place</div>
-      <div style={{ fontFamily: font.serif, fontSize: compact ? 18 : 20, fontWeight: 700, lineHeight: 1.25, marginBottom: 8 }}>Email me my starting line and a link back to it</div>
+      <div style={{ fontFamily: font.serif, fontSize: compact ? 18 : 20, fontWeight: 400, lineHeight: 1.25, marginBottom: 8 }}>Email me my starting line and a link back to it</div>
       <p style={{ fontSize: 13.5, lineHeight: 1.55, margin: "0 0 10px", color: "var(--text)" }}>
         Right now this lives in this browser only. The email carries {floor ? <>your number, <b>{floor}</b>,</> : "your number"}{date ? <> your date, <b>{date}</b>,</> : ""}{verdict ? <> your verdict, <b>{verdict}</b>,</> : ""} and a link that opens all of it on any device. No password, nothing else sent unless you ask.
       </p>

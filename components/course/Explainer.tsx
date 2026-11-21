@@ -77,7 +77,7 @@ function Ctl({ children, onClick, disabled, label, primary }: { children: ReactN
 
 /* ----------------------------- scene helpers ----------------------------- */
 export const Big = ({ children, delay = 0 }: { children: ReactNode; delay?: number }) => (
-  <div className="tos-rise" style={{ animationDelay: `${delay}ms`, fontFamily: font.serif, fontSize: "clamp(22px, 4vw, 40px)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.01em", color: "var(--text)", maxWidth: "22ch" }}>{children}</div>
+  <div className="tos-rise" style={{ animationDelay: `${delay}ms`, fontFamily: font.serif, fontSize: "clamp(22px, 4vw, 40px)", fontWeight: 300, lineHeight: 1.15, letterSpacing: "-0.01em", color: "var(--text)", maxWidth: "22ch" }}>{children}</div>
 );
 export const Sub = ({ children, delay = 200 }: { children: ReactNode; delay?: number }) => (
   <div className="tos-rise" style={{ animationDelay: `${delay}ms`, fontSize: "clamp(14px, 2vw, 18px)", color: "var(--muted)", marginTop: 12, maxWidth: "48ch", lineHeight: 1.5 }}>{children}</div>

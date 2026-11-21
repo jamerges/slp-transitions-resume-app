@@ -1,4 +1,5 @@
 "use client";
+import { FOREST_PANEL } from "@/components/tokens";
 import { MODULES, BADGES, LESSONS, moduleOf, MODULE_ACCENT, type Lesson } from "@/lib/course";
 import { GROUND_PRICE } from "@/lib/course-tiers";
 import { PATHS } from "@/lib/quiz";
@@ -45,10 +46,10 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
     <CourseShell xp={p.xp} pct={pct} note={NOTE[held]}>
       {/* ---------------- hero: the map ---------------- */}
       <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) 320px", gap: 22, alignItems: "stretch" }} className="tos-two-col">
-        <Panel style={{ background: "linear-gradient(160deg, #002F15 0%, #004820 100%)", color: "#fff", border: "none", padding: "clamp(20px, 4vw, 32px)" }}>
+        <Panel style={{ background: FOREST_PANEL.background, color: "#fff", border: "none", padding: "clamp(20px, 4vw, 32px)" }}>
           <div style={{ fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", opacity: 0.8 }}>Transition OS</div>
-          <h1 style={{ fontFamily: font.serif, fontSize: "clamp(26px, 4vw, 38px)", fontWeight: 700, lineHeight: 1.12, margin: "6px 0 10px" }}>
-            Your SLP skills transfer.
+          <h1 style={{ fontFamily: font.serif, fontSize: "clamp(26px, 4vw, 38px)", fontWeight: 300, lineHeight: 1.12, margin: "6px 0 10px" }}>
+            Your SLP skills <em>transfer.</em>
           </h1>
           <div style={{ fontSize: 15, lineHeight: 1.6, opacity: 0.92, maxWidth: 560 }}>
             {!ready ? "" : !stage
@@ -82,13 +83,13 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)" }}>Next up</div>
             {next ? (
               <>
-                <div style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 700, margin: "6px 0 4px", lineHeight: 1.2 }}>{next.title}</div>
+                <div style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 400, margin: "6px 0 4px", lineHeight: 1.2 }}>{next.title}</div>
                 <div style={{ fontSize: 13, color: "var(--muted)" }}>Module {next.module} · {next.minutes} min · {next.type}</div>
                 <p style={{ fontSize: 14, lineHeight: 1.55, margin: "10px 0 14px" }}>{next.summary}</p>
               </>
             ) : (
               <>
-                <div style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 700, margin: "6px 0 6px", lineHeight: 1.2 }}>You&rsquo;re through everything that&rsquo;s open.</div>
+                <div style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 400, margin: "6px 0 6px", lineHeight: 1.2 }}>You&rsquo;re through everything that&rsquo;s open.</div>
                 <p style={{ fontSize: 14, lineHeight: 1.55, margin: "0 0 14px" }}>
                   Your answers are on your workbook page, and you can change any of them whenever you want.
                 </p>
@@ -105,7 +106,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
       <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) 320px", gap: 22, marginTop: 22 }} className="tos-two-col">
         <div>
           <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 10 }}>
-            <h2 style={{ fontFamily: font.serif, fontSize: 24, fontWeight: 700, margin: 0 }}>Your lessons</h2>
+            <h2 style={{ fontFamily: font.serif, fontSize: 24, fontWeight: 400, margin: 0 }}>Your lessons</h2>
             <span style={{ fontSize: 13, color: "var(--muted)" }}>{visitor
               ? `${m0.lessons.length} free lessons · ${m0.lessons.reduce((s, l) => s + l.minutes, 0)} min`
               : `${p.completed.length} of ${LESSONS.length} lessons · ${LESSONS.reduce((s, l) => s + l.minutes, 0)} min total`}</span>
@@ -132,7 +133,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10, flexWrap: "wrap" }}>
                     <div style={{ minWidth: 0 }}>
                       <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: locked ? "var(--light)" : (MODULE_ACCENT[m.n]?.ink || "var(--accent)") }}>{m.phase} · {m.week}{m.n === 0 && <span style={{ marginLeft: 8, padding: "2px 7px", borderRadius: 999, background: "var(--accent-bg)", color: "var(--accent)", fontSize: 10 }}>Free</span>}</div>
-                      <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 700, margin: "2px 0" }}>{m.title}</div>
+                      <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 400, margin: "2px 0" }}>{m.title}</div>
                       <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.5, maxWidth: "56ch" }}>{m.tagline}</div>
                     </div>
                     <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
@@ -163,7 +164,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10, flexWrap: "wrap" }}>
                   <div style={{ minWidth: 0 }}>
                     <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--light)" }}>Full program · Weeks 2–12</div>
-                    <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 700, margin: "2px 0" }}>The rest of the program</div>
+                    <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 400, margin: "2px 0" }}>The rest of the program</div>
                     <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.5, maxWidth: "56ch" }}>Twenty paths with real pay and timelines, the people to talk to, your résumé rewritten, one piece of proof, and the interviews. What you pay for Module 1 is credited toward it.</div>
                   </div>
                   <span style={{ fontSize: 12, color: "var(--light)", background: "#F3F4F6", padding: "4px 10px", borderRadius: 999, flexShrink: 0 }}>Coming soon</span>
@@ -189,7 +190,7 @@ export default function Dashboard({ access }: { access: { product: CourseProduct
           {visitor && (
             <Panel tone="soft" style={{ marginBottom: 14 }}>
               <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 6 }}>The first month · ${GROUND_PRICE}</div>
-              <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 700, lineHeight: 1.2, marginBottom: 8 }}>{GROUND_NAME}</div>
+              <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 400, lineHeight: 1.2, marginBottom: 8 }}>{GROUND_NAME}</div>
               <p style={{ fontSize: 13.5, lineHeight: 1.55, margin: "0 0 12px", color: "var(--text)" }}>Twelve lessons across the first month: your reasons in writing, the people who already made the move, and the r&eacute;sum&eacute; pass, with the workbook and two printable sheets.</p>
               <Btn href="/course/ground" outline style={{ width: "100%", textAlign: "center" }}>{"See what's in it →"}</Btn>
               <div style={{ fontSize: 13, marginTop: 12, lineHeight: 1.5 }}>Already bought it? <a href="/course/find" style={{ color: "var(--accent)", fontWeight: 600 }}>Get your link sent again &rarr;</a></div>

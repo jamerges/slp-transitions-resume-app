@@ -21,7 +21,7 @@ export default function FindResults() {
   return (
     <PageShell>
       <div style={{ maxWidth: 520, margin: "0 auto", padding: "40px 0 80px" }}>
-        <h1 style={{ fontFamily: font.serif, fontSize: 30, fontWeight: 700, margin: "0 0 8px" }}>Find your results</h1>
+        <h1 style={{ fontFamily: font.serif, fontSize: 30, fontWeight: 300, margin: "0 0 8px" }}>Find your results</h1>
         <p style={{ fontSize: 15.5, lineHeight: 1.65, color: "var(--muted)", margin: "0 0 20px" }}>There&rsquo;s no login. Your Career Pivot Suite package or Pivot Report lives at a link, and that link was in your purchase email. Enter the address you bought with and we&rsquo;ll send the links again.</p>
         <Panel>
           {state === "sent" ? (

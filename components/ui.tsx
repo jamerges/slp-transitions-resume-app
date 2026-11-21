@@ -3,37 +3,9 @@
 import { useState, type CSSProperties, type ReactNode } from "react";
 import SaleBanner from "./SaleBanner";
 
-export const V: Record<string, string> = {
-  "--accent": "#004820",
-  "--accent-light": "#266341",
-  "--accent-bg": "#DCE1D2",
-  "--accent-bg-subtle": "#E5E7D9",
-  "--text": "#1B1B1E",
-  "--muted": "#5B6157",
-  "--light": "#5B6157",
-  "--bg": "#EFEEE1",
-  "--card": "#FFFFFF",
-  "--border": "#DAD8C6",
-  "--warn": "#DC6803",
-  "--warn-bg": "#FEF3C7",
-  "--err": "#DC2626",
-  "--err-bg": "#FEE2E2",
-};
+import { V, S, SERIF, FONTS_HREF, FOREST_PANEL } from "./tokens";
 
-export const S = {
-  root: { ...V, fontFamily: "'DM Sans', sans-serif", color: "var(--text)", background: "var(--bg)", minHeight: "100vh", padding: "0 16px" } as CSSProperties,
-  wrap: { maxWidth: 680, margin: "0 auto" } as CSSProperties,
-  h1: { fontFamily: "'Playfair Display', Georgia, serif", fontSize: 34, fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.02em", marginBottom: 12 } as CSSProperties,
-  h2: { fontFamily: "'Playfair Display', Georgia, serif", fontSize: 24, fontWeight: 600, lineHeight: 1.3, marginBottom: 8 } as CSSProperties,
-  h3: { fontSize: 16, fontWeight: 600, marginBottom: 6 } as CSSProperties,
-  p: { fontSize: 15, lineHeight: 1.65, color: "var(--muted)", marginBottom: 20 } as CSSProperties,
-  label: { display: "block", fontSize: 14, fontWeight: 500, marginBottom: 6 } as CSSProperties,
-  input: { width: "100%", padding: "10px 14px", fontSize: 15, border: "1px solid var(--border)", borderRadius: 8, background: "var(--card)", fontFamily: "'DM Sans', sans-serif", outline: "none", boxSizing: "border-box" } as CSSProperties,
-  textarea: { width: "100%", padding: "12px 14px", fontSize: 15, border: "1px solid var(--border)", borderRadius: 8, background: "var(--card)", fontFamily: "'DM Sans', sans-serif", outline: "none", resize: "vertical", minHeight: 120, lineHeight: 1.6, boxSizing: "border-box" } as CSSProperties,
-  btn: { padding: "12px 28px", fontSize: 15, fontWeight: 600, background: "var(--accent)", color: "#fff", border: "none", borderRadius: 8, cursor: "pointer", fontFamily: "'DM Sans', sans-serif", transition: "all 0.2s" } as CSSProperties,
-  btnOut: { padding: "10px 24px", fontSize: 14, fontWeight: 500, background: "transparent", color: "var(--accent)", border: "1.5px solid var(--accent)", borderRadius: 8, cursor: "pointer", fontFamily: "'DM Sans', sans-serif" } as CSSProperties,
-  tag: { display: "inline-block", padding: "3px 10px", fontSize: 11, fontWeight: 600, borderRadius: 4, background: "var(--accent-bg)", color: "var(--accent)", letterSpacing: "0.04em", textTransform: "uppercase" as const } as CSSProperties,
-};
+export { V, S, SERIF, FONTS_HREF, FOREST_PANEL };
 
 export const focusB = (e: any) => (e.target.style.borderColor = "var(--accent)");
 export const blurB = (e: any) => (e.target.style.borderColor = "var(--border)");
@@ -74,7 +46,7 @@ export function Card({
       style={{
         background: highlight ? "var(--accent-bg-subtle)" : "var(--card)",
         border: `1px solid ${highlight ? "var(--accent-bg)" : "var(--border)"}`,
-        borderRadius: 12,
+        borderRadius: 18,
         padding: 24,
         marginBottom: 16,
         ...style,
@@ -184,7 +156,7 @@ export function PageShell({ children, wide = false }: { children: ReactNode; wid
   const wrap = wide ? { ...S.wrap, maxWidth: 1100 } : S.wrap;
   return (
     <div style={S.root}>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+      <link href={FONTS_HREF} rel="stylesheet" />
       <SaleBanner />
       {/* Spacing and the phone layout live in globals.css (.slp-head, .slp-nav):
           inline styles can't carry a media query, and until 2026-11-11 a phone
@@ -195,7 +167,7 @@ export function PageShell({ children, wide = false }: { children: ReactNode; wid
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo-icon.png" alt="" width={34} height={34} style={{ display: "block" }} />
             <div>
-              <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 20, fontWeight: 700, color: "var(--accent)", lineHeight: 1.15 }}>SLP Transitions</div>
+              <div style={{ fontFamily: SERIF, fontSize: 21, fontWeight: 500, color: "var(--accent)", lineHeight: 1.15, letterSpacing: "-0.01em" }}>SLP Transitions</div>
               <div className="slp-head-sub" style={{ fontSize: 13, color: "var(--muted)" }}>Career Pivot Suite</div>
             </div>
           </a>
@@ -222,7 +194,7 @@ export function PageShell({ children, wide = false }: { children: ReactNode; wid
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 8 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo-icon.png" alt="" width={18} height={18} style={{ display: "block" }} />
-          <span style={{ fontSize: 13, fontWeight: 600, color: "var(--accent)", fontFamily: "'Playfair Display', Georgia, serif" }}>SLP Transitions</span>
+          <span style={{ fontSize: 14, fontWeight: 500, color: "var(--accent)", fontFamily: SERIF }}>SLP Transitions</span>
         </div>
         <p style={{ fontSize: 12, color: "var(--light)", margin: 0 }}>
           Your degree isn't a prison. Your skills can translate outside of clinical work.

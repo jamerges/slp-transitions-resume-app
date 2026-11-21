@@ -78,7 +78,7 @@ export default function LessonPage({ id, access }: { id: string; access?: { prod
             <span style={{ fontSize: 12, color: "var(--muted)" }}>{lesson.minutes} min</span>
             {done && <span style={{ fontSize: 12, color: "var(--accent)", fontWeight: 700 }}>✓ Completed</span>}
           </div>
-          <h1 style={{ fontFamily: font.serif, fontSize: "clamp(26px, 4vw, 36px)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.01em", margin: "0 0 8px" }}>{lesson.title}</h1>
+          <h1 style={{ fontFamily: font.serif, fontSize: "clamp(26px, 4vw, 36px)", fontWeight: 300, lineHeight: 1.15, letterSpacing: "-0.01em", margin: "0 0 8px" }}>{lesson.title}</h1>
           {/* Authored lessons open with their own TL;DR card, so the summary
               would just repeat it. */}
           {!content && <p style={{ fontSize: 16, color: "var(--muted)", lineHeight: 1.6, margin: "0 0 22px" }}>{lesson.summary}</p>}

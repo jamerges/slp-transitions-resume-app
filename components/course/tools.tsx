@@ -13,7 +13,7 @@ import { Script } from "./Blocks";
 
 export interface ToolProps { name: string; pathSlug?: string; shared: Record<string, any>; setShared: (key: string, v: any) => void; finish?: (o?: { action?: boolean }) => void; done?: boolean; /** true = saved to the purchase and shown on any device; false = this browser only */ synced?: boolean | null }
 
-const H = ({ children }: { children: ReactNode }) => <h3 style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 700, margin: "0 0 8px" }}>{children}</h3>;
+const H = ({ children }: { children: ReactNode }) => <h3 style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 400, margin: "0 0 8px" }}>{children}</h3>;
 const Muted = ({ children }: { children: ReactNode }) => <p style={{ fontSize: 13.5, lineHeight: 1.6, color: "var(--muted)", margin: "0 0 12px" }}>{children}</p>;
 const input: React.CSSProperties = { width: "100%", padding: "9px 12px", fontSize: 14.5, border: "1px solid var(--border)", borderRadius: 8, fontFamily: font.sans, background: "var(--card)" };
 const money = (n: number) => "$" + Math.round(n).toLocaleString("en-US");
@@ -120,7 +120,7 @@ export function PathMap({ shared }: ToolProps) {
         return (
         <div key={t.title} className="tos-rise" style={{ animationDelay: `${ti * 120}ms`, marginBottom: 18 }}>
           <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 8 }}>
-            <span style={{ fontFamily: font.serif, fontSize: 19, fontWeight: 700 }}>{t.title}</span><span style={{ fontSize: 13, color: "var(--muted)" }}>{t.blurb}</span>
+            <span style={{ fontFamily: font.serif, fontSize: 19, fontWeight: 400 }}>{t.title}</span><span style={{ fontSize: 13, color: "var(--muted)" }}>{t.blurb}</span>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(210px, 1fr))", gap: 10 }}>
             {slugs.map((s) => { const p = PATHS[s]; const on = open === s; const fit = fits(s); const low = underFloor(s); return (
@@ -253,7 +253,7 @@ function ContactTracker({ shared, setShared, finish, done, pathSlug, synced, goa
       <Muted>{goal === "three" ? "Three messages is the action for this lesson. Add the three names, copy each message with their name already in it, send, and log it." : "Everyone you are talking to, in one place. Log what happened and it tells you who is due and what the next touch is."}</Muted>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, marginBottom: 12 }} className="tos-two-col">
         {[["Due now", dueRows.length], ["Sent this week", `${sentThisWeek} of ${weekGoal}`], ["In conversation", rows.filter((r) => IN_CONVERSATION.includes(stageOf(r))).length], ["Referred you", rows.filter((r) => stageOf(r) === "referred").length]].map(([l, n]) => (
-          <div key={String(l)} style={{ background: "var(--bg)", borderRadius: 10, padding: "8px 10px", textAlign: "center" }}><div style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 700 }}>{n}</div><div style={{ fontSize: 11.5, color: "var(--muted)" }}>{l}</div></div>
+          <div key={String(l)} style={{ background: "var(--bg)", borderRadius: 10, padding: "8px 10px", textAlign: "center" }}><div style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 400 }}>{n}</div><div style={{ fontSize: 11.5, color: "var(--muted)" }}>{l}</div></div>
         ))}
       </div>
       <div style={{ fontSize: 12.5, color: "var(--muted)", marginBottom: 12 }}>{budgetHours ? `${weekGoal} a week, from the ${budgetHours} hours you set in lesson 2.0.` : "Three a week until you set your hours in lesson 2.0."} Two while you are building, five once you are applying.</div>
@@ -469,13 +469,13 @@ function TimeBudget({ shared, setShared }: ToolProps) {
       <Muted>Be honest rather than ambitious. Six real hours beat fifteen imagined ones, and you can raise it later.</Muted>
       <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
         <input type="range" min={1} max={20} step={1} value={hours} onChange={(e) => setShared("time", { ...v, hours: Number(e.target.value) })} style={{ flex: 1, minWidth: 180 }} />
-        <div style={{ fontFamily: font.serif, fontSize: 26, fontWeight: 700, minWidth: 90 }}>{hours} hrs</div>
+        <div style={{ fontFamily: font.serif, fontSize: 26, fontWeight: 400, minWidth: 90 }}>{hours} hrs</div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, marginTop: 14 }} className="tos-two-col">
         {[["Proof", proof, "a portfolio piece, a course, a project at work"], ["People", people, "messages, calls, the closed groups"], ["Reading", read, "articles, this course, the subreddit"]].map(([k, n, hint]) => (
           <div key={String(k)} style={{ padding: 12, borderRadius: 10, border: "1px solid var(--border)", background: "var(--card)" }}>
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "var(--muted)" }}>{k as string}</div>
-            <div style={{ fontFamily: font.serif, fontSize: 24, fontWeight: 700, margin: "2px 0" }}>{n as number} hrs</div>
+            <div style={{ fontFamily: font.serif, fontSize: 24, fontWeight: 400, margin: "2px 0" }}>{n as number} hrs</div>
             <div style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.45 }}>{hint as string}</div>
           </div>
         ))}
@@ -612,7 +612,7 @@ function ApplicationTracker({ shared, setShared, finish, done }: ToolProps) {
     <Panel>
       <H>Applications</H>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, marginBottom: 12 }}>
-        {[["Sent", counts.sent], ["Screens", counts.screen], ["Interviews", counts.interview], ["Offers", counts.offer]].map(([l, n]) => <div key={String(l)} style={{ background: "var(--bg)", borderRadius: 10, padding: "8px 10px", textAlign: "center" }}><div style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 700, color: "var(--accent)" }}>{n}</div><div style={{ fontSize: 11.5, color: "var(--muted)" }}>{l}</div></div>)}
+        {[["Sent", counts.sent], ["Screens", counts.screen], ["Interviews", counts.interview], ["Offers", counts.offer]].map(([l, n]) => <div key={String(l)} style={{ background: "var(--bg)", borderRadius: 10, padding: "8px 10px", textAlign: "center" }}><div style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 400, color: "var(--accent)" }}>{n}</div><div style={{ fontSize: 11.5, color: "var(--muted)" }}>{l}</div></div>)}
       </div>
       <Muted>The documented ratio is roughly 113 tailored applications to 7 interviews to 1 offer. Tracking turns silence into a number you can plan around.</Muted>
       {rows.length > 0 && <div style={{ overflowX: "auto", marginBottom: 10 }}><table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13.5 }}>

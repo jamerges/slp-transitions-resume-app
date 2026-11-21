@@ -13,7 +13,7 @@ import { fiveStagesScenes, threeLiesScenes, STAGE_META, StageRoad } from "./scen
 
 export interface LessonProps { answer: any; save: (v: any) => void; finish: (opts?: { action?: boolean }) => void; done: boolean }
 
-const H = ({ children }: { children: ReactNode }) => <h3 style={{ fontFamily: font.serif, fontSize: 21, fontWeight: 700, margin: "0 0 10px" }}>{children}</h3>;
+const H = ({ children }: { children: ReactNode }) => <h3 style={{ fontFamily: font.serif, fontSize: 21, fontWeight: 400, margin: "0 0 10px" }}>{children}</h3>;
 const P = ({ children, style = {} }: { children: ReactNode; style?: any }) => <p style={{ fontSize: 15, lineHeight: 1.65, color: "var(--text)", margin: "0 0 14px", ...style }}>{children}</p>;
 const Muted = ({ children, style = {} }: { children: ReactNode; style?: any }) => <p style={{ fontSize: 13, lineHeight: 1.6, color: "var(--muted)", margin: "0 0 12px", ...style }}>{children}</p>;
 const Quote = ({ text, from }: { text: string; from: string }) => (
@@ -286,7 +286,7 @@ export function DecisionTree({ answer, save, finish, done }: LessonProps) {
           </div>
           <Panel tone="soft">
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)" }}>Your verdict</div>
-            <div style={{ fontFamily: font.serif, fontSize: 26, fontWeight: 700, margin: "4px 0 10px" }}>{VERDICTS[verdict].title}</div>
+            <div style={{ fontFamily: font.serif, fontSize: 26, fontWeight: 400, margin: "4px 0 10px" }}>{VERDICTS[verdict].title}</div>
             <P>{VERDICTS[verdict].body}</P>
             <P style={{ margin: 0 }}><b>What you do first:</b> {VERDICTS[verdict].next}</P>
           </Panel>
@@ -647,7 +647,7 @@ export function TellOne({ answer, save, finish, done }: LessonProps) {
       </Panel>
       <Panel tone="soft" style={{ marginTop: 14 }}>
         <H>The sentence</H>
-        <div style={{ fontFamily: font.serif, fontSize: 22, lineHeight: 1.35 }}>&ldquo;I&rsquo;m looking at what else I could do with my SLP background.&rdquo;</div>
+        <div style={{ fontFamily: font.serif, fontWeight: 400, fontSize: 22, lineHeight: 1.35 }}>&ldquo;I&rsquo;m looking at what else I could do with my SLP background.&rdquo;</div>
         <Muted>No plan. No date. No defence. If they ask what, say &ldquo;I don&rsquo;t know yet, I&rsquo;m finding out.&rdquo; That answer is true and it ends the conversation on your terms.</Muted>
       </Panel>
       <Panel style={{ marginTop: 14 }}>
@@ -752,7 +752,7 @@ export function Checkpoint1({ answer, save, finish, done, all }: LessonProps & {
 
       <Panel style={{ marginBottom: 14 }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 4 }}>
-          <span style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 700, color: "#B91C1C" }}>01</span>
+          <span style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 400, color: "#B91C1C" }}>01</span>
           <H>I want to leave or change my situation because…</H>
         </div>
         <Muted>The frictions pushing you. Be exhaustive and unpolished. &ldquo;My caseload went to 68 in October and nobody mentioned it&rdquo; is more use than &ldquo;workload issues&rdquo;.</Muted>
@@ -761,7 +761,7 @@ export function Checkpoint1({ answer, save, finish, done, all }: LessonProps & {
 
       <Panel style={{ marginBottom: 14 }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 4 }}>
-          <span style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 700, color: "var(--accent)" }}>02</span>
+          <span style={{ fontFamily: font.serif, fontSize: 22, fontWeight: 400, color: "var(--accent)" }}>02</span>
           <H>I want my next chapter to give me…</H>
         </div>
         <Muted>The outcomes pulling you. Concrete again: &ldquo;control over when I do focused work&rdquo; beats &ldquo;flexibility&rdquo;.</Muted>

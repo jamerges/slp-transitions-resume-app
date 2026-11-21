@@ -1,4 +1,5 @@
-import { PageShell, S } from "@/components/ui";
+import { PageShell } from "@/components/ui";
+import { S } from "@/components/tokens";
 import CareerQuiz from "@/components/CareerQuiz";
 import { COMPANY_COUNT } from "@/lib/companies";
 

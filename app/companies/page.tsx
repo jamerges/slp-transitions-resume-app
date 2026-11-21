@@ -1,4 +1,5 @@
-import { PageShell, S } from "@/components/ui";
+import { PageShell } from "@/components/ui";
+import { S } from "@/components/tokens";
 import CompaniesDirectory from "@/components/CompaniesDirectory";
 import { COMPANIES_DB } from "@/lib/companies";
 
@@ -20,7 +21,7 @@ export default function CompaniesPage() {
 
   return (
     <PageShell wide>
-      <h1 style={S.h1}>Companies that hire former SLPs</h1>
+      <h1 style={S.h1}>Companies that hire <em>former SLPs</em></h1>
       <p style={{ ...S.p, marginBottom: 8 }}>
         {total} ed-tech, health-tech, and speech companies, {speech} of them founded or
         staffed by speech-language pathologists. Filter by the kind of company, or

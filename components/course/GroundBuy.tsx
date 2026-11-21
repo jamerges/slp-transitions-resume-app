@@ -143,7 +143,7 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
             <div style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 6 }}>
               Where you said you are &middot; stage {stageInfo.n}, {stageInfo.name}
             </div>
-            <p style={{ fontSize: 16, fontWeight: 600, margin: "0 0 6px", fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic" }}>&ldquo;{stageInfo.belief}&rdquo;</p>
+            <p style={{ fontSize: 16, fontWeight: 500, margin: "0 0 6px", fontFamily: "'Fraunces', Georgia, serif", fontStyle: "italic" }}>&ldquo;{stageInfo.belief}&rdquo;</p>
             <p style={{ fontSize: 14, color: "var(--muted)", margin: 0, lineHeight: 1.6 }}>The first lesson is the five stages and what keeps people at each one. The kit is built for this one.</p>
           </Card>
         )}
@@ -210,7 +210,7 @@ export default function GroundBuy({ stage, path, canceled, badLink, alreadyHas, 
         <div style={{ fontSize: 13.5, color: "var(--muted)", margin: "0 0 10px" }}>Already bought it? <a href="/course/find" style={{ color: "var(--accent)", fontWeight: 600 }}>Get your link sent again &rarr;</a></div>
         <Card style={{ border: "1.5px solid var(--accent)" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
-            <div><div style={{ fontSize: 30, fontWeight: 700, fontFamily: "'Playfair Display', Georgia, serif" }}>${GROUND_PRICE}{GROUND_PRICE < GROUND_LIST_PRICE && <s style={{ fontSize: 18, fontWeight: 400, color: "var(--muted)", marginLeft: 8 }}>${GROUND_LIST_PRICE}</s>}</div><div style={{ fontSize: 13, color: "var(--muted)" }}>{GROUND_PRICE < GROUND_LIST_PRICE ? `${SALE.note}, once, no subscription` : "once, no subscription"}</div></div>
+            <div><div style={{ fontSize: 30, fontWeight: 300, fontFamily: "'Fraunces', Georgia, serif" }}>${GROUND_PRICE}{GROUND_PRICE < GROUND_LIST_PRICE && <s style={{ fontSize: 18, fontWeight: 400, color: "var(--muted)", marginLeft: 8 }}>${GROUND_LIST_PRICE}</s>}</div><div style={{ fontSize: 13, color: "var(--muted)" }}>{GROUND_PRICE < GROUND_LIST_PRICE ? `${SALE.note}, once, no subscription` : "once, no subscription"}</div></div>
             <div style={{ fontSize: 13.5, color: "var(--muted)", maxWidth: 300, lineHeight: 1.55 }}>Credited in full toward the full program when it launches, so you never pay for this twice. 30-day refund by replying to one email.</div>
           </div>
           {live ? (

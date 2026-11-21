@@ -186,7 +186,7 @@ export function stageFromLabel(label?: string | null): StageKey | null {
   if (!label) return null;
   return STAGE_KEYS.find((k) => STAGES[k].label === label) || null;
 }
-/** Result card for a path: public/quiz/<slug>.png, from scripts/make_quiz_path_images.py. */
+/** Result card for a path: public/quiz/<slug>.png, from scripts/quiz-cards/render.py. */
 export const pathImage = (slug: string) => `/quiz/${slug}.png`;
 
 export interface QuizOption {

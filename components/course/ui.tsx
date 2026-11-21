@@ -3,7 +3,7 @@ import { useEffect, useState, type CSSProperties, type ReactNode } from "react";
 import { S } from "@/components/ui";
 import { BADGES, type BadgeId } from "@/lib/course";
 
-export const font = { serif: "'Playfair Display', Georgia, serif", sans: "'DM Sans', -apple-system, sans-serif" };
+export const font = { serif: "'Fraunces', Georgia, serif", sans: "'DM Sans', -apple-system, sans-serif" };
 
 export function useReducedMotion() {
   const [r, setR] = useState(false);
@@ -48,14 +48,14 @@ export function Pill({ children, tone = "accent", style }: { children: ReactNode
 export function CourseShell({ children, xp, pct, right, note }: { children: ReactNode; xp: number; pct: number; right?: ReactNode; note?: ReactNode }) {
   return (
     <div style={{ ...S.root, padding: 0 }}>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet" />
       <div style={{ background: "var(--card)", borderBottom: "1px solid var(--border)", position: "sticky", top: 0, zIndex: 20 }}>
         <div style={{ maxWidth: 1040, margin: "0 auto", padding: "12px 16px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
           <a href="/course" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", color: "inherit" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo-icon.png" alt="" width={30} height={30} style={{ display: "block" }} />
             <div style={{ lineHeight: 1.1 }}>
-              <div style={{ fontFamily: font.serif, fontSize: 18, fontWeight: 700, color: "var(--accent)" }}>Transition OS</div>
+              <div style={{ fontFamily: font.serif, fontSize: 18, fontWeight: 500, color: "var(--accent)" }}>Transition OS</div>
               <div style={{ fontSize: 11, color: "var(--muted)", letterSpacing: "0.04em", textTransform: "uppercase" }}>SLP Transitions · 90-day program</div>
             </div>
           </a>
@@ -91,7 +91,7 @@ export function UnlockToast({ xp, badges, onDone }: { xp: number; badges: BadgeI
         {defs.map((d) => (
           <div key={d.id} style={{ marginBottom: 8 }}>
             <div style={{ fontSize: 40, lineHeight: 1 }}>{d.icon}</div>
-            <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 700, marginTop: 6 }}>{d.label}</div>
+            <div style={{ fontFamily: font.serif, fontSize: 20, fontWeight: 400, marginTop: 6 }}>{d.label}</div>
             <div style={{ fontSize: 13, color: "var(--muted)", marginTop: 2, maxWidth: 300 }}>{d.blurb}</div>
           </div>
         ))}

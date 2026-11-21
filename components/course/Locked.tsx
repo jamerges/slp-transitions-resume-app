@@ -23,7 +23,7 @@ function GroundCheckout() {
   };
   return (
     <>
-      <button type="button" onClick={buy} disabled={busy} style={{ padding: "13px 28px", fontSize: 15.5, fontWeight: 600, background: "var(--accent)", color: "#fff", border: "none", borderRadius: 10, cursor: "pointer", fontFamily: "inherit", opacity: busy ? 0.7 : 1 }}>
+      <button type="button" onClick={buy} disabled={busy} style={{ padding: "13px 28px", fontSize: 15.5, fontWeight: 600, background: "var(--accent)", color: "#fff", border: "none", borderRadius: 999, cursor: "pointer", fontFamily: "inherit", opacity: busy ? 0.7 : 1 }}>
         {busy ? "Opening checkout…" : `Get Module 1 · $${GROUND_PRICE} →`}
       </button>
       {err && <div style={{ fontSize: 13, color: "var(--warn)", marginTop: 10 }}>{err}</div>}
@@ -42,7 +42,7 @@ export default function LockedLesson({ moduleN, moduleTitle, lessonTitle, lesson
       <div style={{ maxWidth: 640, margin: "30px auto" }}>
         <Panel style={{ padding: 28, textAlign: "center" }}>
           <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)" }}>Module {moduleN} · {moduleTitle}</div>
-          <h1 style={{ fontFamily: font.serif, fontSize: 28, margin: "8px 0 10px" }}>{lessonTitle}</h1>
+          <h1 style={{ fontFamily: font.serif, fontWeight: 300, fontSize: 28, margin: "8px 0 10px" }}>{lessonTitle}</h1>
           {ground ? (
             <>
               <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--muted)", margin: "0 0 6px" }}>This lesson is in <strong>{GROUND_NAME}</strong>, the first month in one kit: your reasons in writing, the people who already made the move, and the r&eacute;sum&eacute; pass, with the workbook.</p>

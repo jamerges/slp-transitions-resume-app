@@ -16,7 +16,7 @@ import { WORKBOOK, answerOf, isDone, written, timeLabel, roughly, type Ctx, type
  * `blank` renders the same pages with nothing filled in, which is what the
  * blank PDFs are printed from. `printPreview` shows the print layout on screen.
  */
-const serif = "'Playfair Display', Georgia, serif";
+const serif = "'Fraunces', Georgia, serif";
 const EMPTY: Ctx = { A: {}, SH: {}, completed: [], actions: [] };
 
 // One set of print rules, applied when printing and (for checking layout) under .wb-as-print.
@@ -149,13 +149,13 @@ export default function MyWorkbook({ product, blank = false, printPreview = fals
 
         <div className="wb-sheet" style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: 16, padding: "22px 20px" }}>
           {/* Cover */}
-          <div style={{ background: "var(--accent)", color: "#fff", padding: "22px 24px", borderRadius: 10 }}>
+          <div style={{ background: "var(--accent)", color: "#fff", padding: "22px 24px", borderRadius: 14 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, paddingBottom: 12, borderBottom: "1px solid var(--accent-light)" }}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent-bg)" }}>Transition OS</div>
               {!blank && <div style={{ fontSize: 11, letterSpacing: "0.06em", color: "var(--accent-bg)" }}>{today}</div>}
             </div>
-            <h1 style={{ fontFamily: serif, fontSize: 34, fontWeight: 700, margin: "18px 0 0", letterSpacing: "-0.02em" }}>Your workbook</h1>
-            <p style={{ fontFamily: serif, fontSize: 16.5, lineHeight: 1.45, color: "var(--accent-bg)", margin: "10px 0 0" }}>
+            <h1 style={{ fontFamily: serif, fontSize: 34, fontWeight: 300, margin: "18px 0 0", letterSpacing: "-0.02em" }}>Your workbook</h1>
+            <p style={{ fontFamily: serif, fontWeight: 500, fontSize: 16.5, lineHeight: 1.45, color: "var(--accent-bg)", margin: "10px 0 0" }}>
               {all.length} small actions. Each one has a time on it and a box to tick.
             </p>
           </div>
@@ -164,7 +164,7 @@ export default function MyWorkbook({ product, blank = false, printPreview = fals
           {!blank ? (
             <div style={{ margin: "18px 0 6px" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
-                <div style={{ fontFamily: serif, fontSize: 22, fontWeight: 700 }}>{doneN} of {all.length} done</div>
+                <div style={{ fontFamily: serif, fontSize: 22, fontWeight: 400 }}>{doneN} of {all.length} done</div>
                 <div style={{ fontSize: 13.5, color: "var(--muted)" }}>{left.length ? `${roughly(minutesLeft)} of actions left` : "Every action is ticked."}</div>
               </div>
               <div style={{ height: 8, background: "var(--accent-bg-subtle)", borderRadius: 4, overflow: "hidden", marginTop: 8 }}>
@@ -208,7 +208,7 @@ export default function MyWorkbook({ product, blank = false, printPreview = fals
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: acc.ink }}>Module {m.n} {"·"} {mod.title} {"·"} {mod.week}</div>
                 <div style={{ fontSize: 12.5, color: "var(--muted)" }}>{blank ? `${m.actions.length} actions · ${roughly(mins)}` : `${d} of ${m.actions.length} done`}</div>
               </div>
-              <h2 style={{ fontFamily: serif, fontSize: 23, fontWeight: 700, lineHeight: 1.25, margin: "4px 0 14px" }}>{m.outcome}</h2>
+              <h2 style={{ fontFamily: serif, fontSize: 23, fontWeight: 400, lineHeight: 1.25, margin: "4px 0 14px" }}>{m.outcome}</h2>
               {m.actions.map((a) => <Card key={a.id} a={a} c={c} blank={blank} onSave={onSave} href={blank ? null : hrefOf(a)} />)}
             </section>
           ); })}

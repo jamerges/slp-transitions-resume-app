@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { PageShell, S } from "@/components/ui";
+import { PageShell } from "@/components/ui";
+import { S } from "@/components/tokens";
 import { collectionLd, roleItems, JsonLd } from "@/lib/seo";
 import {
   PATH_LIST,

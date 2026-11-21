@@ -61,7 +61,7 @@ export default function StageMap({
 
       {/* you are here */}
       <div style={kicker}>You&rsquo;re here · stage {info.n} of 5</div>
-      <div style={{ fontSize: print ? 19 : 21, fontWeight: 700, fontFamily: "'Playfair Display', Georgia, serif", margin: "4px 0 2px", color: "var(--text)" }}>{info.name}</div>
+      <div style={{ fontSize: print ? 19 : 21, fontWeight: 400, fontFamily: "'Fraunces', Georgia, serif", margin: "4px 0 2px", color: "var(--text)" }}>{info.name}</div>
       <p style={muted}>{info.here}</p>
 
       <div style={{ marginTop: 14 }}>
@@ -76,7 +76,7 @@ export default function StageMap({
         <div style={{ fontSize: print ? 15 : 16.5, fontWeight: 700, margin: "4px 0 4px", color: "var(--text)" }}>{info.move.label}</div>
         <p style={{ ...body, margin: 0 }}>{info.move.detail}</p>
         {href && info.move.cta && !print && !hideCta && (
-          <a href={href} {...linkProps} style={{ display: "inline-block", marginTop: 12, padding: "10px 18px", background: "var(--accent)", color: "#fff", borderRadius: 8, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>
+          <a href={href} {...linkProps} style={{ display: "inline-block", marginTop: 12, padding: "10px 18px", background: "var(--accent)", color: "#fff", borderRadius: 999, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>
             {info.move.cta} →
           </a>
         )}

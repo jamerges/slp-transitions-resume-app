@@ -53,10 +53,10 @@ export default function StartHere() {
         <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
           <div style={{ flexGrow: 1, minWidth: 0 }}>
             {tag && <div style={{ display: "inline-block", fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--accent)", background: "var(--accent-bg)", padding: "3px 9px", borderRadius: 4, marginBottom: 8 }}>{tag}</div>}
-            <div style={{ fontSize: lead ? 19 : 16, fontWeight: 700, fontFamily: lead ? "'Playfair Display', Georgia, serif" : undefined }}>{p.name}</div>
+            <div style={{ fontSize: lead ? 19 : 16, fontWeight: 400, fontFamily: lead ? "'Fraunces', Georgia, serif" : undefined }}>{p.name}</div>
             <div style={{ fontSize: lead ? 15 : 14, marginTop: 4 }}>{p.answers}</div>
             <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 4 }}>{p.detail}</div>
-            <span style={{ display: "inline-block", marginTop: lead ? 14 : 10, padding: lead ? "11px 18px" : "8px 14px", borderRadius: 8, background: "var(--accent)", color: "#fff", fontSize: lead ? 15 : 13.5, fontWeight: 600 }}>
+            <span style={{ display: "inline-block", marginTop: lead ? 14 : 10, padding: lead ? "11px 18px" : "8px 14px", borderRadius: 999, background: "var(--accent)", color: "#fff", fontSize: lead ? 15 : 13.5, fontWeight: 600 }}>
               {p.button ? <>{p.button}&nbsp;&rarr;</> : <>{p.cta.via} &middot; ${p.price}{wasOf(k) && <s style={{ opacity: 0.7, fontWeight: 400, marginLeft: 6 }}>${wasOf(k)}</s>}&nbsp;&rarr;</>}
             </span>
           </div>
@@ -70,7 +70,7 @@ export default function StartHere() {
     <PageShell>
       <div style={{ ...S.wrap, maxWidth: 660 }}>
         <div style={{ textAlign: "center", marginTop: 10 }}>
-          <h1 style={{ ...S.h1, fontSize: 38, margin: "0 0 10px", lineHeight: 1.15 }}>Where are you?</h1>
+          <h1 style={{ ...S.h1, fontSize: "clamp(32px, 6vw, 44px)", margin: "0 0 10px", lineHeight: 1.1 }}>Where <em>are you?</em></h1>
           <p style={{ ...S.p, fontSize: 17, maxWidth: 480, margin: "0 auto 22px" }}>
             Everyone who leaves goes through the same five stages. Pick the one that sounds like this week and see your next move. Health-tech and ed-tech companies need people who have done the clinical work, and that is the part you already have.
           </p>

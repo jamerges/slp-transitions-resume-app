@@ -21,7 +21,7 @@ export default function FindCourse() {
   return (
     <div style={{ maxWidth: 520, margin: "0 auto", padding: "48px 16px 80px" }}>
       <a href="/course" style={{ fontSize: 13, color: "var(--muted)", textDecoration: "none" }}>&larr; Transition OS</a>
-      <h1 style={{ fontFamily: font.serif, fontSize: 30, fontWeight: 700, margin: "12px 0 8px" }}>Find your course link</h1>
+      <h1 style={{ fontFamily: font.serif, fontSize: 30, fontWeight: 300, margin: "12px 0 8px" }}>Find your course link</h1>
       <p style={{ fontSize: 15.5, lineHeight: 1.65, color: "var(--muted)", margin: "0 0 20px" }}>There is no password. The link in your purchase email is your login, and it opens your lessons, your answers and your people list on any device. Lost the email? Enter the address you bought with and it comes again.</p>
       <Panel>
         {state === "sent" ? (

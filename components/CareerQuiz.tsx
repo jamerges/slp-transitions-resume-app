@@ -731,7 +731,7 @@ export default function CareerQuiz({
     <div style={{ ...S.wrap, maxWidth: 620 }}>
       {showIntro && idx === 0 && (
         <div style={{ textAlign: "center", marginBottom: 24 }}>
-          <h1 style={{ ...S.h1, fontSize: 30 }}>Which direction actually fits you?</h1>
+          <h1 style={{ ...S.h1, fontSize: "clamp(29px, 5.6vw, 40px)" }}>Which direction <em>actually fits you?</em></h1>
           <p style={{ ...S.p, maxWidth: 520, margin: "0 auto" }}>
             Nine questions, about two minutes. Built from documented SLP transitions, so you'll get real
             salary ranges, real timelines, and the honest catch for whichever path comes up.

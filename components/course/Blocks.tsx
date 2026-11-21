@@ -110,7 +110,7 @@ function BlockView({ b, n, pathSlug, tools, lessonId }: { b: Block; n: number; p
   switch (b.type) {
     case "p": return <P><Inline text={b.text} /></P>;
     case "h": return (
-      <h2 style={{ display: "flex", alignItems: "baseline", gap: 12, fontFamily: font.serif, fontSize: 24, fontWeight: 700, lineHeight: 1.25, margin: "30px 0 12px" }}>
+      <h2 style={{ display: "flex", alignItems: "baseline", gap: 12, fontFamily: font.serif, fontSize: 24, fontWeight: 400, lineHeight: 1.25, margin: "30px 0 12px" }}>
         <span aria-hidden style={{ fontFamily: font.sans, fontSize: 12, fontWeight: 700, color: "var(--accent)", background: "var(--accent-bg-subtle)", borderRadius: 6, padding: "3px 8px", letterSpacing: "0.04em" }}>{String(n).padStart(2, "0")}</span>
         <span><Inline text={b.text} /></span>
       </h2>
@@ -130,7 +130,7 @@ function BlockView({ b, n, pathSlug, tools, lessonId }: { b: Block; n: number; p
       <div style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(4, b.items.length)}, 1fr)`, gap: 10, margin: "4px 0 20px" }} className="tos-two-col">
         {b.items.map((it, i) => (
           <div key={i} className="tos-rise" style={{ animationDelay: `${i * 80}ms`, background: "var(--card)", border: "1px solid var(--border)", borderRadius: 12, padding: "14px 14px 12px" }}>
-            <div style={{ fontFamily: font.serif, fontSize: 24, fontWeight: 700, color: "var(--accent)", lineHeight: 1.1 }}>{it.value}</div>
+            <div style={{ fontFamily: font.serif, fontSize: 24, fontWeight: 400, color: "var(--accent)", lineHeight: 1.1 }}>{it.value}</div>
             <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 6, lineHeight: 1.4 }}>{it.label}</div>
           </div>
         ))}

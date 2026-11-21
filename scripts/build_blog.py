@@ -25,20 +25,23 @@ CATS_NAV = [("Guides", "guides"), ("Real Transitions", "real-transitions"),
 
 CSS = """
 <style id="slp-blog-2026">
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600;700&display=swap');
-.slp-blog{--bg:#EFEEE1;--paper:#FFFFFF;--forest:#004820;--forest-dark:#002F15;
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=DM+Sans:wght@400;500;600;700&display=swap');
+.slp-blog{--bg:#F8F7F0;--paper:#FFFFFF;--forest:#004820;--forest-dark:#002F15;
   --brand:#266341;--line:#DAD8C6;--slate:#555B52;
-  font-family:'DM Sans',system-ui,sans-serif;color:var(--forest-dark);
+  font-family:'DM Sans',system-ui,sans-serif;color:#14201A;line-height:1.5;
   background:var(--bg);margin:0 calc(50% - 50vw);width:100vw}
 .slp-blog *,.slp-blog *::before,.slp-blog *::after{box-sizing:border-box}
 .slp-blog a{text-decoration:none;color:inherit}
 .slp-bwrap{max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,48px)}
 .slp-blog h1,.slp-blog h2,.slp-blog h3{font-family:'Fraunces',Georgia,serif;
-  font-weight:500;letter-spacing:-.02em;margin:0}
+  font-weight:400;letter-spacing:-.015em;margin:0}
+/* Same headline voice as the homepage since 2026-11-21: light, one phrase in italics. */
+.slp-blog h1{font-weight:300}
+.slp-blog h1 em{font-style:italic}
 .slp-blog p{margin:0}
 
 .slp-bhead{display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem;
-  flex-wrap:wrap;padding:clamp(36px,5vw,60px) 0 1.4rem;border-bottom:1px solid var(--forest-dark)}
+  flex-wrap:wrap;padding:clamp(36px,5vw,60px) 0 1.4rem;border-bottom:1px solid var(--line)}
 .slp-bhead h1{font-size:clamp(2.2rem,4.5vw,3.4rem)}
 .slp-cats{display:flex;flex-wrap:wrap;gap:1.4rem}
 .slp-cats a{font-size:.76rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
@@ -47,7 +50,7 @@ CSS = """
 
 .slp-feat{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);
   gap:clamp(28px,4vw,64px);padding:clamp(30px,4vw,52px) 0}
-.slp-feat-main img{width:100%;aspect-ratio:1200/630;object-fit:cover;border-radius:12px;
+.slp-feat-main img{width:100%;aspect-ratio:1200/630;object-fit:cover;border-radius:22px;
   border:1px solid var(--line);display:block}
 .slp-feat-main h2{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.12;margin:1.3rem 0 .8rem}
 .slp-feat-main p{color:var(--slate);font-size:1.02rem;line-height:1.6;max-width:44em}
@@ -56,13 +59,13 @@ CSS = """
 .slp-new h3{font-size:1.5rem;margin-bottom:.4rem}
 .slp-new a{display:block;padding:1.05rem 0;border-bottom:1px solid var(--line)}
 .slp-new a:first-of-type{border-top:1px solid var(--line)}
-.slp-new b{display:block;font-family:'Fraunces',Georgia,serif;font-weight:500;
+.slp-new b{display:block;font-family:'Fraunces',Georgia,serif;font-weight:400;
   font-size:1.08rem;line-height:1.3;margin-top:.35rem}
 .slp-new a:hover b{color:var(--forest)}
 
 .slp-bgrid{display:grid;grid-template-columns:repeat(3,1fr);
   gap:clamp(24px,3vw,40px) clamp(20px,2.5vw,32px);padding:clamp(20px,3vw,40px) 0 clamp(56px,7vw,88px)}
-.slp-bcard img{width:100%;aspect-ratio:1200/630;object-fit:cover;border-radius:10px;
+.slp-bcard img{width:100%;aspect-ratio:1200/630;object-fit:cover;border-radius:18px;
   border:1px solid var(--line);display:block;transition:transform .2s ease}
 .slp-bcard:hover img{transform:translateY(-3px)}
 .slp-bcard .slp-kick{display:block;margin:.85rem 0 .3rem}
@@ -183,7 +186,7 @@ def build(posts, newest=None):
     a.append('<div class="slp-blog"><div class="slp-bwrap">')
 
     # header row: serif title + category nav (Osmind's top strip)
-    a.append('<div class="slp-bhead"><h1>The SLP Transitions blog</h1><nav class="slp-cats">')
+    a.append('<div class="slp-bhead"><h1>The SLP Transitions <em>blog</em></h1><nav class="slp-cats">')
     for name, slug in CATS_NAV:
         a.append(f'<a href="{SITE}/category/{slug}/">{esc(name)}</a>')
     a.append('</nav></div>')

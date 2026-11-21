@@ -70,7 +70,7 @@ export default function ProductMenu({
               <div style={{ fontSize: 15, fontWeight: 700, color: "var(--text)" }}>{p.name}</div>
               <div style={{ fontSize: 13.5, color: "var(--text)", marginTop: 3 }}>{p.answers}</div>
               <div style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 3 }}>{p.detail}{!p.button && wasOf(k) && <> <b style={{ color: "var(--accent)" }}>${p.price} {SALE.note}.</b></>}</div>
-              <span style={{ display: "inline-block", marginTop: 10, padding: "8px 14px", borderRadius: 8, fontSize: 13.5, fontWeight: 600, ...(quiet ? { border: "1.5px solid var(--accent)", color: "var(--accent)", background: "transparent" } : { background: "var(--accent)", color: "#fff" }) }}>
+              <span style={{ display: "inline-block", marginTop: 10, padding: "8px 14px", borderRadius: 999, fontSize: 13.5, fontWeight: 600, ...(quiet ? { border: "1.5px solid var(--accent)", color: "var(--accent)", background: "transparent" } : { background: "var(--accent)", color: "#fff" }) }}>
                 {p.button ? <>{p.button}&nbsp;&rarr;</> : <>{href ? p.cta.via : p.cta.direct} &middot; ${p.price}{wasOf(k) && <s style={{ opacity: 0.7, fontWeight: 400, marginLeft: 6 }}>${wasOf(k)}</s>}&nbsp;&rarr;</>}
               </span>
             </div>
