@@ -25,7 +25,15 @@ export type Block =
   | { type: "bypath"; title?: string; note?: string; items: Record<string, string> }
   /** One written answer, saved under the lesson's id and printed in the workbook. */
   | { type: "ask"; label: string; prompt: string; lines?: number }
-  | { type: "tool"; name: string };
+  | { type: "tool"; name: string }
+  /** Two columns set against each other: what most people do and what works. */
+  | { type: "compare"; title?: string; left: { label: string; items: string[] }; right: { label: string; items: string[] } }
+  /** A sequence drawn with arrows: a search order, a funnel, the stages of hiring. */
+  | { type: "flow"; title?: string; items: { label: string; note?: string }[] }
+  /** Two to four parallel ideas side by side. */
+  | { type: "cards"; items: { title: string; text: string }[] }
+  /** One or two situation questions that make the reader use the lesson. */
+  | { type: "check"; items: { q: string; options: string[]; answer: number; why: string }[] };
 
 export interface LessonContent {
   id: string;
@@ -45,6 +53,11 @@ export const contentIds: Set<string> = new Set(ALL.map((l) => l.id));
 /** The one-line summary shown under a lesson title, taken from its TL;DR. */
 export const summaryFor = (id: string): string => BY_ID[id]?.tldr || "";
 export const hasContent = (id: string) => !!BY_ID[id];
-/** Word count of the prose, for the reading-time label. */
-export const wordCount = (c: LessonContent) =>
-  c.blocks.reduce((n, b) => n + ("text" in b && typeof b.text === "string" ? b.text.split(/\s+/).length : "items" in b ? (b.items as any[]).map((i) => (typeof i === "string" ? i : i.label)).join(" ").split(/\s+/).length : 0), 0) + c.tldr.split(/\s+/).length;
+/** Every word a reader would read in a block, whatever its shape. */
+const wordsIn = (v: unknown): number =>
+  typeof v === "string" ? v.split(/\s+/).filter(Boolean).length
+  : Array.isArray(v) ? v.reduce((n: number, x) => n + wordsIn(x), 0)
+  : v && typeof v === "object" ? Object.entries(v as Record<string, unknown>).reduce((n, [k, x]) => (k === "type" || k === "name" || k === "tone" || k === "answer" ? n : n + wordsIn(x)), 0)
+  : 0;
+/** Word count of the lesson, for the reading-time label. */
+export const wordCount = (c: LessonContent) => c.blocks.reduce((n, b) => n + wordsIn(b), 0);

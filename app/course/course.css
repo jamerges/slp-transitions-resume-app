@@ -32,3 +32,14 @@
   .tos-strike::after { animation: none; transform: none; }
 }
 @media (max-width: 720px) { .tos-two-col { grid-template-columns: 1fr !important; } .tos-hide-sm { display: none !important; } }
+
+/* A `flow` block: a sequence with arrows, across on a wide screen and down on a
+   phone. The arrow is drawn between items, never after the last one. */
+.tos-flow { display: flex; gap: 26px; align-items: stretch; }
+.tos-flow > li { position: relative; flex: 1 1 0; min-width: 0; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 14px 14px 13px; }
+.tos-flow > li + li::before { content: "\2192"; position: absolute; left: -21px; top: 50%; transform: translateY(-50%); color: var(--accent); font-size: 17px; font-weight: 700; }
+.tos-flow-n { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+@media (max-width: 720px) {
+  .tos-flow { flex-direction: column; gap: 24px; }
+  .tos-flow > li + li::before { content: "\2193"; left: 20px; top: -22px; transform: none; }
+}

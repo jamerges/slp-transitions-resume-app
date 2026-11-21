@@ -62,6 +62,8 @@ export default function LessonPage({ id, access }: { id: string; access?: { prod
   const Comp = lesson.component ? COMPONENTS[lesson.component] : null;
   const video = VIDEOS[id];
   const action = content?.action || lesson.action;
+  // The lesson before this one, in one line: its first key point.
+  const prevPoint = prev ? contentFor(prev.id)?.takeaways?.[0] : undefined;
 
   return (
     <CourseShell xp={p.xp} pct={pct} note={access?.product === "ground" ? `Your kit is open: Module 1, the first three people lessons and the two r\u00e9sum\u00e9 lessons. ${synced ? "Progress is saved to your purchase." : "Progress is saved in this browser."}` : synced ? "Progress is saved to your purchase, on any device." : undefined}>
@@ -89,8 +91,10 @@ export default function LessonPage({ id, access }: { id: string; access?: { prod
               saved progress wait for the store to hydrate. */}
           {content ? (
             <>
-              <Blocks content={content} pathSlug={pathSlug} tools={{ shared, setShared, finish, done, synced }} hasVideo={!!video} />
-              {ready && action && <ActionCard action={action} done={done} onDo={() => finish({ action: true })} />}
+              <Blocks content={content} pathSlug={pathSlug} tools={{ shared, setShared, finish, done, synced }} hasVideo={!!video}
+                recap={prevPoint ? { point: prevPoint, href: `/course/${moduleOf(prev!).slug}/${prev!.id}`, title: prev!.title } : null} />
+              {ready && action && <ActionCard action={action} done={done} onDo={() => finish({ action: true })}
+                when={(shared.plan || {})[id]} onWhen={(w) => setShared("plan", { ...(shared.plan || {}), [id]: w })} />}
               {ready && !action && !done && <div style={{ marginTop: 24 }}><Btn onClick={() => finish()}>Mark as done</Btn></div>}
               {ready && !action && done && <div style={{ marginTop: 24, color: "var(--accent)", fontWeight: 600, fontSize: 14 }}>✓ Done. It stays ticked.</div>}
             </>
@@ -165,7 +169,11 @@ function Video({ v, title }: { v: LessonVideo; title: string }) {
   );
 }
 
-function ActionCard({ action, done, onDo }: { action: { label: string; prompt: string; done: string }; done: boolean; onDo: () => void }) {
+// People who decide when they will do a thing do it more often than people who
+// only mean to, so the card asks for a day before it offers the button. The
+// choice is saved with the rest of the lesson's answers and shown on return.
+const WHEN = ["Today", "Tomorrow", "This weekend", "Next week"];
+function ActionCard({ action, done, onDo, when, onWhen }: { action: { label: string; prompt: string; done: string }; done: boolean; onDo: () => void; when?: string; onWhen?: (w: string) => void }) {
   return (
     <div className="tos-rise" style={{ marginTop: 26, border: `2px solid ${done ? "var(--accent-bg)" : "var(--accent)"}`, borderRadius: 16, overflow: "hidden", background: "var(--card)" }}>
       <div style={{ padding: "10px 18px", background: done ? "var(--accent-bg-subtle)" : "var(--accent)", color: done ? "var(--accent)" : "#fff", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
@@ -173,6 +181,18 @@ function ActionCard({ action, done, onDo }: { action: { label: string; prompt: s
       </div>
       <div style={{ padding: "16px 18px" }}>
         <p style={{ fontSize: 15.5, lineHeight: 1.65, margin: "0 0 14px" }}>{done ? action.done : action.prompt}</p>
+        {!done && onWhen && (
+          <div style={{ margin: "0 0 16px" }}>
+            <div style={{ fontSize: 13.5, fontWeight: 600, marginBottom: 8 }}>When will you do it?</div>
+            <div role="group" aria-label="When will you do it?" style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              {WHEN.map((w) => (
+                <button key={w} type="button" aria-pressed={when === w} onClick={() => onWhen(w)}
+                  style={{ padding: "8px 14px", borderRadius: 999, fontFamily: font.sans, fontSize: 14, cursor: "pointer", fontWeight: when === w ? 600 : 400,
+                    border: `1.5px solid ${when === w ? "var(--accent)" : "var(--border)"}`, background: when === w ? "var(--accent-bg-subtle)" : "var(--card)", color: when === w ? "var(--accent)" : "var(--text)" }}>{w}</button>
+              ))}
+            </div>
+          </div>
+        )}
         {!done && <Btn onClick={onDo}>{action.label}</Btn>}
       </div>
     </div>

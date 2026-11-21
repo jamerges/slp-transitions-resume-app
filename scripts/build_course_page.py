@@ -72,22 +72,22 @@ STOPS = [
 # Real screens from the course (content/course/sales-page/, uploaded once).
 SHOTS = [
     dict(file="transition-os-paths-map.jpg", alt="The paths map from the course: twelve non-clinical paths in three groups by how long the move takes, each with its salary range.",
-         title="Twenty paths, sorted by how long each one takes",
-         line="See what each path pays and how long the move took the SLPs who made it. Anything under your income floor is flagged."),
+         title="Which jobs you could move into, and how long each takes",
+         line="You see what each path pays and how long the move took the SLPs who made it. Anything under your income floor is flagged."),
     dict(file="transition-os-starting-line.jpg", alt="The starting line lesson: fields for salary, hours in a real week and weeks worked, then three choices for an income floor.",
-         title="The number your next job has to clear",
+         title="The salary your next job has to clear",
          line="Count the hours you really work and you get your real hourly rate. Add a month of costs and you get the salary to hold out for."),
     dict(file="transition-os-workbook-page.jpg", alt="A workbook page titled Your reasons for leaving, in writing: six small actions, each with a tick box and a time.",
-         title="A workbook that fills in as you go",
-         line=f"Every answer you give lands in a workbook of {ACTIONS} small actions, each with a time on it. Print it, or keep it open beside the lessons."),
+         title="Everything you decide, kept in one place",
+         line=f"Your answers land in a workbook of {ACTIONS} small actions, each with a time on it, so you always know the next small thing to do."),
 ]
 
 ALSO = [
-    "Message scripts for eleven paths, with the person&rsquo;s name already filled in",
-    "A list of everyone you&rsquo;re talking to that tells you who is due a follow-up",
-    "A practice interviewer for the five questions every career changer gets",
-    f"{home.COMPANY_COUNT} health and ed-tech companies that value clinical skills, and this week&rsquo;s open roles",
-    "Twelve weekly emails with one action each. Reply to any of them and James answers",
+    "Send messages that get answered: scripts for eleven paths, with the person&rsquo;s name already filled in",
+    "Know who is due a follow-up, without keeping a spreadsheet",
+    "Practise the five questions every career changer gets, out loud, before a real interview",
+    f"Know where to look: {home.COMPANY_COUNT} health and ed-tech companies that value clinical skills, and this week&rsquo;s open roles",
+    "Get one email a week with one thing to do. Reply to any of them and James answers",
 ]
 
 HEADSHOT = f"{SITE}/wp-content/uploads/2026/09/james-berges-headshot-2026.jpg"
@@ -128,15 +128,24 @@ CSS = r"""
 .slp-c-author img,.slp-c-author video{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;max-width:none}
 .slp-c-author figcaption{padding:16px 20px 18px;font-size:.88rem;line-height:1.45;color:var(--slate)}
 .slp-c-author figcaption b{display:block;font-size:1rem;color:var(--ink)}
-/* eight stops, inside the forest panel */
-.slp-c-stops{display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left}
-.slp-c-stop{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:16px 18px;
-  display:grid;grid-template-columns:2.1rem 1fr;gap:.2rem .8rem;align-items:start}
-.slp-c-stop i{grid-row:1 / span 2;font-style:normal;font-family:'Fraunces',Georgia,serif;font-size:1.7rem;line-height:1;color:var(--glow)}
-.slp-c-stop b{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:1.2rem;line-height:1.2;color:#fff}
-.slp-c-stop b small{font-family:'DM Sans',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(255,255,255,.7);margin-left:.5rem;white-space:nowrap}
-.slp-c-stop span{grid-column:2;font-size:.93rem;line-height:1.45;color:rgba(255,255,255,.86)}
+/* the stops as a trail, inside the forest panel */
+.slp-c-trail{position:relative;max-width:58rem;margin:0 auto;text-align:left}
+.slp-c-trail::before{content:"";position:absolute;left:50%;top:34px;bottom:34px;margin-left:-1px;border-left:2px dashed rgba(255,255,255,.4)}
+.slp-home .slp-c-trail ol{list-style:none!important;margin:0!important;padding:14px 0!important;display:grid;gap:14px}
+.slp-home .slp-c-leg{margin:0;display:grid;grid-template-columns:minmax(0,1fr) 64px minmax(0,1fr);align-items:center}
+.slp-c-leg i{grid-column:2;grid-row:1;justify-self:center;position:relative;z-index:1;width:46px;height:46px;border-radius:50%;
+  display:grid;place-items:center;font-style:normal;font-family:'Fraunces',Georgia,serif;font-size:1.35rem;line-height:1;
+  background:var(--glow);color:var(--forest-dark);box-shadow:0 0 0 6px rgba(0,47,21,.55)}
+.slp-c-leg .card{grid-column:1;grid-row:1;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:15px 18px}
+.slp-c-leg .when{grid-column:3;grid-row:1;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.slp-c-leg:nth-child(even) .card{grid-column:3}
+.slp-c-leg:nth-child(even) .when{grid-column:1;text-align:right}
+.slp-c-leg .card b{display:block;font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:1.3rem;line-height:1.2;color:#fff;margin-bottom:.2rem}
+.slp-c-leg .card span{display:block;font-size:.95rem;line-height:1.45;color:rgba(255,255,255,.88)}
+.slp-home p.slp-c-cap{position:relative;z-index:1;width:max-content;max-width:100%;margin:0 auto!important;text-align:center;
+  background:#fff;color:var(--forest-dark);border-radius:999px;padding:.55rem 1.2rem;font-size:.93rem;line-height:1.3}
+.slp-c-cap b{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);margin-right:.6rem}
+.slp-home p.slp-c-cap.end{background:var(--glow)}
 /* three real screens */
 .slp-c-shots{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 /* Each screen is shown a third larger than the frame and cropped from its top
@@ -176,7 +185,12 @@ CSS = r"""
 @media (max-width:900px){
   .slp-course .slp-hero-grid{grid-template-columns:1fr}
   .slp-c-author{max-width:24rem}
-  .slp-c-stops{grid-template-columns:1fr}
+  .slp-c-trail::before{left:23px}
+  .slp-home .slp-c-leg{grid-template-columns:46px minmax(0,1fr);column-gap:14px;align-items:start}
+  .slp-c-leg i{grid-column:1;grid-row:1 / span 2;justify-self:start;margin-top:4px}
+  .slp-c-leg .when,.slp-c-leg:nth-child(even) .when{grid-column:2;grid-row:1;text-align:left;margin-bottom:.35rem}
+  .slp-c-leg .card,.slp-c-leg:nth-child(even) .card{grid-column:2;grid-row:2}
+  .slp-home p.slp-c-cap{margin:0!important;text-align:left;border-radius:16px}
   .slp-c-shots{grid-template-columns:1fr;max-width:30rem}
   .slp-home ul.slp-c-also{grid-template-columns:1fr}
   .slp-c-two{grid-template-columns:1fr}
@@ -299,20 +313,32 @@ def build(shot_urls):
       + "".join(f'<div class="slp-num"><b>{n}</b><span>{l}</span></div>' for n, l in nums)
       + '</div></section>')
 
-    # ---- the eight stops
+    # ---- the eight stops, drawn as a trail: a dashed line down the middle with a
+    # numbered marker for each stop, cards alternating either side and the
+    # weeks on the other side of the line. On a phone the line runs down the
+    # left. (James, 2026-11-21: make it look like a journey.)
     a('<section class="slp-stage-sec" id="program"><div class="slp-wrap"><div class="slp-stage">')
-    a('<h2>Eight stops, <em>in the order that works.</em></h2>')
-    a('<p class="slp-sub">Most SLPs start at the r&eacute;sum&eacute;. You start with the decision and the people, '
+    # The heading names the reader's problem (not knowing where to begin), not the program's shape.
+    a('<h2>Know what to do this week, <em>and what can wait.</em></h2>')
+    a('<p class="slp-sub">Most SLPs start with the r&eacute;sum&eacute; and stall. You start with the decision and the people, '
       'so the r&eacute;sum&eacute; has somewhere to go.</p>')
-    a('<div class="slp-c-stops" data-stagger>')
+    a('<div class="slp-c-trail">')
+    a('<p class="slp-c-cap"><b>Today</b>You want out, or you think you might</p>')
+    a('<ol>')
     for i, (name, when, ends) in enumerate(STOPS):
-        a(f'<div class="slp-c-stop slp-rv"><i>{i}</i><b>{name}<small>{when}</small></b><span>{ends}</span></div>')
+        a(f'<li class="slp-c-leg slp-rv"><span class="when">{when}</span><i>{i}</i>'
+          f'<div class="card"><b>{name}</b><span>{ends}</span></div></li>')
+    a('</ol>')
+    a('<p class="slp-c-cap end"><b>Where it leads</b>Interviews for work outside the clinic</p>')
     a('</div></div></div></section>')
 
     # ---- what it looks like: three real screens, then what else is inside
     a('<section class="slp-sec" id="inside"><div class="slp-wrap">')
-    a('<div class="slp-sec-head"><p class="slp-kicker">Inside the program</p>'
-      '<h2>Short lessons, and <em>tools that do the sums.</em></h2></div>')
+    # Was "Short lessons, and tools that do the sums": James, "bullshit
+    # metacommentary". A heading says what the reader finds out, never what the
+    # lessons are like.
+    a('<div class="slp-sec-head"><p class="slp-kicker">What you work out</p>'
+      '<h2>What you could do, what it pays, <em>and whether you can afford it.</em></h2></div>')
     a('<div class="slp-c-shots" data-stagger>')
     for s in SHOTS:
         a(f'<div class="slp-c-shot slp-rv"><div class="ph"><img src="{shot_urls[s["file"]]}" alt="{home.esc(s["alt"])}" loading="lazy" /></div>'
@@ -324,7 +350,7 @@ def build(shot_urls):
     # ---- who it is for, said straight, beside a note from James
     a('<section class="slp-sec" style="padding-top:0"><div class="slp-wrap"><div class="slp-c-two">')
     a('<div><div class="slp-sec-head" style="margin-bottom:1.4rem"><p class="slp-kicker">Who it&rsquo;s for</p>'
-      '<h2>Built for an SLP <em>with a full caseload.</em></h2></div>'
+      '<h2>You can do this <em>with a full caseload.</em></h2></div>'
       '<p>You want out, or you think you might, and you can&rsquo;t yet name what else you could do. '
       'The lessons are short, and each week asks for one or two things you can do after work.</p>'
       '<p><b>Ninety days gets you to interviews.</b> It can&rsquo;t promise an offer, and the transitions on record took six to fifteen months. '
@@ -346,7 +372,7 @@ def build(shot_urls):
 
     # ---- the free module: try it before anything else
     a('<section class="slp-sec" style="padding-top:0"><div class="slp-wrap"><div class="slp-c-free">'
-      '<div><h3>Try the first twenty minutes, free.</h3>'
+      '<div><h3>Start with twenty minutes, free.</h3>'
       '<p>Know the number your next job has to clear, the date you&rsquo;re aiming at, and whether it&rsquo;s the workplace, '
       'the work or the season that&rsquo;s wrong. No account, no card.</p></div>'
       f'<a class="slp-btn slp-btn-out" href="{FREE_MODULE}">Start the free module &rarr;</a>'

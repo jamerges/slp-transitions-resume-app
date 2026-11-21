@@ -75,6 +75,27 @@ the format instead of telling the reader something.
 **Test:** does this sentence tell them what to do or what they get? If it tells
 them what the page *is*, cut it.
 
+**Headlines and subheads are where this fails most, and James has no patience
+for it.** On 2026-11-21 the course sales page shipped with "Short lessons, and
+tools that do the sums." His words: "what does this mean ... this is bullshit
+metacommentary. every headline and subheadline should speak to the customer and
+their needs, feeling like the problem and solution are identified, not be
+self-referential."
+
+| Shipped | Why it failed | Fixed |
+|---|---|---|
+| "Short lessons, and tools that do the sums." | Describes the lessons | "What you could do, what it pays, and whether you can afford it." |
+| "Eight stops, in the order that works." | Counts the program's parts | "Know what to do this week, and what can wait." |
+| "Built for an SLP with a full caseload." | The product talking about how it was built | "You can do this with a full caseload." |
+| "A workbook that fills in as you go" | Names the mechanic | "Everything you decide, kept in one place" |
+| "Inside the program" (a kicker) | A label for the section | "What you work out" |
+
+**Before a page ships, list every heading, subhead and card title on its own and
+read the list cold.** Each one must name the reader's problem or what they will
+know, have or be able to do. If the subject of the sentence is the product, the
+lessons, the page or a count of things, rewrite it with "you" as the subject.
+The same rule holds for section headings inside lessons.
+
 ### 2. It names the mechanic, not the outcome
 
 > "they don't need to know they're getting check-ins, just delete or change it to
