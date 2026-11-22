@@ -110,6 +110,53 @@
       },
       {
         "type": "h",
+        "text": "Try the work in a small way first if a build feels too big"
+      },
+      {
+        "type": "p",
+        "text": "SLPs who made the move tried the work in small ways before they built anything, and each of these four comes from someone who did it."
+      },
+      {
+        "type": "cards",
+        "items": [
+          {
+            "title": "Fix one process at work",
+            "text": "An SLP reworked the clinic's scheduling, wished it were the whole job, and now works in process improvement. A Lean Six Sigma Green Belt and an Excel course came after."
+          },
+          {
+            "title": "Take one part-time or unpaid role",
+            "text": "One SLP worked part-time as a research assistant and ran an early literacy programme unpaid before a university hired them as a research coordinator."
+          },
+          {
+            "title": "Publish what you already know",
+            "text": "Meredith Harold read research for other SLPs for free and built The Informed SLP from it. Rachel Archambault's consulting practice began as an Instagram account."
+          },
+          {
+            "title": "Do one small job for a real client",
+            "text": "James wrote copy and emails for SLP businesses and built an Alexa skill at a no-code hackathon before he moved into marketing."
+          }
+        ]
+      },
+      {
+        "type": "bypath",
+        "title": "A first experiment",
+        "note": "One small test for each path. Yours opens first.",
+        "items": {
+          "liaison-ur": "Your licence is the credential here, so test the work with a conversation before you build anything.\n\n1. Ask one liaison or reviewer what yesterday looked like.\n2. Read two postings and mark every line you already do.\n\nOne SLP became a state nursing-home surveyor by applying through the state careers site, with no new degree.",
+          "clinical-educator": "Teach one thing to people outside your caseload: a staff in-service, a parent night, or a device demo for colleagues.\n\nRun it twice and write down what you changed after the first run. That note is your proof piece.",
+          "leadership": "Fix one process where you work (scheduling, referrals, or how a new CF gets started) and write down what changed.\n\nThis move is usually internal, so tell your manager you want the next lead or supervisor opening.",
+          "research-coordinator": "Look at your nearest university's staff jobs for research assistant or study coordinator work. Part-time counts.\n\nSLPs who made this move started there, and one went on to patient safety work at a pharmaceutical company. Expect a pay cut at the start.",
+          "customer-success": "Pick one product you already use at work (an AAC device, an EMR, a therapy platform) and write the one-page guide you wish new staff had.\n\nThen message one customer success person at that company. One SLP who made this move had no certificate: a LinkedIn profile, conversations with people at the companies, and a rewritten résumé.",
+          "sales-bd": "Ask a rep who calls on your building whether you can sit in on one demo.\n\nAfterwards write down the three objections you heard and how the rep answered each. Bring that page to your next conversation with someone in sales.",
+          "content-marketing": "Do one small job for a real business: a parent email, a product page, or three posts for a private practice or an SLP seller.\n\nJames's first marketing work was copy and email for SLP businesses.",
+          "instructional-design": "Rebuild one training you have already given as a ten-minute module, with one knowledge check at the end.\n\nHiring managers here ask for the portfolio, so this experiment is also your proof piece.",
+          "project-management": "Run one real project at work with a start, an end and other people in it: a screening day, or a new documentation template.\n\nKeep the plan, the dates and what slipped. The low-cost Google certificate teaches the vocabulary for what you just did.",
+          "data-analysis": "Take one question your department argues about and answer it in a spreadsheet, with totals that identify nobody.\n\nThen take a spreadsheet course. One SLP who moved into process improvement had to pass an Excel test at the interview.",
+          "informatics": "Volunteer as the superuser for your building's next EMR or documentation change, and keep a list of every fix you asked for.\n\nEpic certification needs an employer to sponsor it, so being the person inside a rollout is the test you can run now."
+        }
+      },
+      {
+        "type": "h",
         "text": "Change the details and write down your thinking"
       },
       {
