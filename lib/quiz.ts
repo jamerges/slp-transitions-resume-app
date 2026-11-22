@@ -212,7 +212,7 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "done",
     section: "Your experience",
     prompt: "Which of these have you actually done?",
-    help: "Pick everything that applies. This matters more than what you enjoy, because it's what opens doors.",
+    help: "Pick all that apply.",
     multi: true,
     options: [
       { label: "Been a superuser or helped roll out an EMR / documentation system", scores: { informatics: 4, "project-management": 1 } },
@@ -241,7 +241,6 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "regret",
     section: "What energizes you",
     prompt: "If a door opened tomorrow, what would you regret not trying?",
-    help: "Ignore feasibility for a second. That's what the rest of the quiz is for.",
     options: [
       { label: "Running projects and programs at scale", scores: { "project-management": 3, leadership: 2 } },
       { label: "Working with the data behind the decisions", scores: { "data-analysis": 3, informatics: 1, "research-coordinator": 2 } },
@@ -263,7 +262,6 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "income",
     section: "Your reality",
     prompt: "What's your honest income requirement for the next role?",
-    help: "No judgment. This genuinely changes which paths are realistic right now.",
     options: [
       { label: "I need to match or beat my SLP pay from day one", scores: { "liaison-ur": 3, "customer-success": 2, informatics: 2, "instructional-design": -2, "content-marketing": -1, "research-coordinator": -4, "sales-bd": 3, leadership: 2 } },
       { label: "I can take a small dip for better conditions", scores: { "customer-success": 1, "project-management": 1, "research-coordinator": 2, "sales-bd": 1 } },
@@ -286,7 +284,7 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "people",
     section: "How you like to work",
     prompt: "Day to day, how much live people-time do you want?",
-    help: "This is about your calendar: how many hours of live human interaction feel right. The next question is about the field itself; they're different dials.",
+    help: "Hours with people, whatever the subject.",
     options: [
       { label: "I still love 1:1. I want better conditions and pay, not less contact", scores: { "clinical-educator": 3, "customer-success": 2, "liaison-ur": 1, "sales-bd": 2, leadership: 1 } },
       { label: "I want people contact, as accounts and colleagues rather than a caseload", scores: { "customer-success": 3, "liaison-ur": 2, "project-management": 1, "research-coordinator": 1, "sales-bd": 3, leadership: 3 } },
@@ -298,7 +296,7 @@ export const QUESTIONS: QuizQuestion[] = [
     id: "proximity",
     section: "How you like to work",
     prompt: "And how close do you want to stay to the clinical world?",
-    help: "Subject matter, not people-time. Plenty of roles are deep in the clinical world with almost no live sessions, and vice versa.",
+    help: "The subject matter, not the people-time.",
     options: [
       { label: "I want to stay close to clinical. That knowledge is my edge", scores: { "liaison-ur": 3, informatics: 2, "clinical-educator": 3, "research-coordinator": 1, "sales-bd": 2, leadership: 3 } },
       { label: "Clinical-adjacent, but out of direct care", scores: { "customer-success": 2, informatics: 2, "instructional-design": 1, "research-coordinator": 3, "sales-bd": 2, leadership: 1 } },

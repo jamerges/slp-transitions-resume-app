@@ -55,6 +55,9 @@ Owner: James Berges (jamoberges@gmail.com) — SLP → growth marketer; hosts th
 - Upstash Redis via `lib/stash.ts` (inputs + results, 7-day TTL). Not configured locally — payloads >450 chars fail checkout in dev; short test payloads fit Stripe metadata and work.
 - Resend (`send.slptransitions.com`, verified) for transactional; MailerLite for marketing list (~2,500 subs, cold — see content/list-reactivation.md before ANY blast).
 
+## Quiz screen stripped down (2026-11-22, James: "less busy, easier to focus and complete, with less text")
+- A question screen in `components/CareerQuiz.tsx` is now nine progress segments with "N of 9", the question, and the answers. Removed: the intro paragraph (one line stays: "Nine questions, about two minutes."), the percentage, the section tag, the hints under the options, the 37-second stage video under question one, and the radio circles on single-choice questions (tick boxes stay where several can be picked). Help lines in `lib/quiz.ts` are a few words or gone. Question prompts and option labels are unchanged, because scoring, saved answers and the report prompt read them. **Do not add explanatory text back to a question screen.**
+
 ## Course pass (2026-11-21): accuracy, short view, visual blocks
 James: "make my course more useful (make sure all advice is valid and useful) and easy to use ... more visual, less walls of text (i'll add video later though)".
 - **Every lesson opens in its short view, video or not** (`components/course/Blocks.tsx`): a line recalling the last lesson's first point, the TL;DR, the key points, then each section as its heading, its first sentence and whatever in it can be done, copied or looked at. A section's prose opens with "Read this part", and "Full lesson" opens all of it. The reader's choice is remembered (`tos:lesson-view:v2`).

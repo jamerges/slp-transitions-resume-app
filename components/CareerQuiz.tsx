@@ -744,19 +744,26 @@ export default function CareerQuiz({
 
   return (
     <div style={{ ...S.wrap, maxWidth: 620 }}>
+      {/* One thing per screen (James, 2026-11-22: "less busy, easier to focus").
+          Gone from here: the intro paragraph, the percentage, the section tag,
+          the long help lines, the hints under the options and the video under
+          question one. What is left is where you are, the question and the answers. */}
       {showIntro && idx === 0 && (
-        <div style={{ textAlign: "center", marginBottom: 24 }}>
-          <h1 style={{ ...S.h1, fontSize: "clamp(29px, 5.6vw, 40px)" }}>Which direction <em>actually fits you?</em></h1>
-          <p style={{ ...S.p, maxWidth: 520, margin: "0 auto" }}>
-            Nine questions, about two minutes. Built from documented SLP transitions, so you'll get real
-            salary ranges, real timelines, and the honest catch for whichever path comes up.
-          </p>
+        <div style={{ textAlign: "center", marginBottom: 26 }}>
+          <h1 style={{ ...S.h1, fontSize: "clamp(29px, 5.6vw, 40px)", marginBottom: 8 }}>Which direction <em>actually fits you?</em></h1>
+          <p style={{ ...S.p, margin: 0 }}>Nine questions, about two minutes.</p>
         </div>
       )}
-      <ProgressBar step={idx + 1} total={QUESTIONS.length} />
-      <div style={{ ...S.tag, marginTop: 6, marginBottom: 2 }}>{q.section}</div>
-      <h2 style={{ ...S.h2, fontSize: 25, marginBottom: q.help ? 8 : 20, marginTop: 8 }}>{q.prompt}</h2>
-      {q.help && <p style={{ ...S.p, marginBottom: 20, fontSize: 14 }}>{q.help}</p>}
+      <div style={{ marginBottom: 26 }} role="progressbar" aria-valuemin={1} aria-valuemax={QUESTIONS.length} aria-valuenow={idx + 1} aria-label={`Question ${idx + 1} of ${QUESTIONS.length}`}>
+        <div style={{ display: "flex", gap: 5 }}>
+          {QUESTIONS.map((_, i) => (
+            <span key={i} style={{ flex: 1, height: 4, borderRadius: 2, background: i <= idx ? "var(--accent)" : "var(--border)", transition: "background 0.3s" }} />
+          ))}
+        </div>
+        <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 8 }}>{idx + 1} of {QUESTIONS.length}</div>
+      </div>
+      <h2 style={{ ...S.h2, fontSize: "clamp(24px, 4.6vw, 30px)", lineHeight: 1.18, marginBottom: q.help ? 6 : 20, marginTop: 0 }}>{q.prompt}</h2>
+      {q.help && <p style={{ ...S.p, marginBottom: 20, fontSize: 14.5 }}>{q.help}</p>}
 
       <div style={{ marginBottom: 18 }}>
         {q.options.map((o) => {
@@ -772,13 +779,13 @@ export default function CareerQuiz({
                 gap: 12,
                 width: "100%",
                 textAlign: "left",
-                padding: "13px 15px",
+                padding: "15px 18px",
                 border: `1.5px solid ${sel ? "var(--accent)" : "var(--border)"}`,
                 background: sel ? "var(--accent-bg-subtle)" : "var(--card)",
-                borderRadius: 10,
+                borderRadius: 14,
                 cursor: "pointer",
-                marginBottom: 8,
-                fontSize: 15,
+                marginBottom: 10,
+                fontSize: 16,
                 lineHeight: 1.45,
                 color: sel ? "var(--accent)" : "var(--text)",
                 fontWeight: sel ? 600 : 400,
@@ -788,7 +795,7 @@ export default function CareerQuiz({
               onMouseEnter={(e) => { if (!sel) e.currentTarget.style.borderColor = "var(--accent-light)"; }}
               onMouseLeave={(e) => { if (!sel) e.currentTarget.style.borderColor = "var(--border)"; }}
             >
-              <span
+              {q.multi && <span
                 aria-hidden
                 style={{
                   flexShrink: 0,
@@ -807,7 +814,7 @@ export default function CareerQuiz({
                 }}
               >
                 {sel ? "✓" : ""}
-              </span>
+              </span>}
               <span style={{ flex: 1 }}>{o.label}</span>
             </button>
           );
@@ -823,38 +830,10 @@ export default function CareerQuiz({
             onMouseEnter={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent-light)")}
             onMouseLeave={(e) => ((e.target as HTMLButtonElement).style.background = "var(--accent)")}
           >
-            {selected.length
-              ? `Continue with ${selected.length} selected →`
-              : isLast
-              ? "See my result →"
-              : "None of these yet, continue →"}
+            {selected.length ? "Continue →" : isLast ? "See my result →" : "None of these, continue →"}
           </button>
-          <p style={{ fontSize: 13, color: "var(--light)", textAlign: "center", marginTop: 10 }}>
-            Select as many as apply, then continue.
-          </p>
         </>
-      ) : (
-        <p style={{ fontSize: 13, color: "var(--light)", textAlign: "center", marginTop: 2 }}>
-          {isLast ? "Pick one to see your result." : "Pick the closest one. There's no wrong answer."}
-        </p>
-      )}
-
-      {/* First screen only, below the question so it never delays a start: the five
-          stages in 37 seconds (Remotion StageJourney-Homepage), for the reader who
-          hesitates before answering. Reduced motion gets the still. */}
-      {showIntro && idx === 0 && (
-        <div style={{ marginTop: 34, textAlign: "center" }}>
-          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 10 }}>Not sure where you are? The five stages, in 37 seconds</div>
-          {reducedMotion ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src="/marketing/stage-journey-poster.jpg" width={1280} height={720} alt="I haven't told anyone. I search at 11pm, clear the history, and show up Monday as the person who says everything is fine." style={{ display: "block", width: "100%", height: "auto", borderRadius: 12, border: "1px solid var(--border)" }} />
-          ) : (
-            <video src="/marketing/stage-journey.mp4" poster="/marketing/stage-journey-poster.jpg" width={1920} height={1080} autoPlay muted loop playsInline preload="metadata"
-              aria-label="The five stages SLPs go through before leaving clinical work, from private doubt to action, and which tool fits each."
-              style={{ display: "block", width: "100%", height: "auto", borderRadius: 12, border: "1px solid var(--border)", background: "#FAFAF9" }} />
-          )}
-        </div>
-      )}
+      ) : null}
 
       {idx > 0 && (
         <div style={{ textAlign: "center", marginTop: 14 }}>
