@@ -24,7 +24,7 @@ export default async function QuizPage({
   const initialPath = (params.path || params.result || "").toLowerCase() || undefined;
 
   return (
-    <PageShell>
+    <PageShell bare>
       <Clarity />
       {/* The intro lives inside CareerQuiz so it disappears once there's a
           result — by then they've taken the quiz and just want the answer. */}

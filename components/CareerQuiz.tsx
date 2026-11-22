@@ -815,7 +815,7 @@ export default function CareerQuiz({
               >
                 {sel ? "✓" : ""}
               </span>}
-              <span style={{ flex: 1 }}>{o.label}</span>
+              <span style={{ flex: 1 }}>{o.short || o.label}</span>
             </button>
           );
         })}

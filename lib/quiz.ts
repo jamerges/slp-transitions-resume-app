@@ -190,7 +190,10 @@ export function stageFromLabel(label?: string | null): StageKey | null {
 export const pathImage = (slug: string) => `/quiz/${slug}.png`;
 
 export interface QuizOption {
+  /** The full answer. Scoring, saved answers and the report prompt read this: never change it lightly. */
   label: string;
+  /** What the button shows (2026-11-22: a few words, so the screen is quick to scan). */
+  short?: string;
   scores: Partial<Record<string, number>>;
 }
 export interface QuizQuestion {
@@ -215,14 +218,14 @@ export const QUESTIONS: QuizQuestion[] = [
     help: "Pick all that apply.",
     multi: true,
     options: [
-      { label: "Been a superuser or helped roll out an EMR / documentation system", scores: { informatics: 4, "project-management": 1 } },
-      { label: "Supervised CFs or students, or trained colleagues", scores: { "instructional-design": 2, "clinical-educator": 3, "customer-success": 1, leadership: 2 } },
-      { label: "Built a program, caseload system, or workflow from scratch", scores: { "project-management": 4, "research-coordinator": 1, leadership: 2 } },
-      { label: "Tracked and analyzed outcome data beyond what was required", scores: { "data-analysis": 4, informatics: 1, "research-coordinator": 2 } },
-      { label: "Handled authorizations, appeals, or insurance documentation", scores: { "liaison-ur": 4, "research-coordinator": 1, "sales-bd": 1 } },
-      { label: "Chosen, trialed, or implemented AAC or assistive tech", scores: { "customer-success": 2, "clinical-educator": 3, "sales-bd": 2 } },
-      { label: "Created materials or trainings that other people reused", scores: { "instructional-design": 4, "content-marketing": 3 } },
-      { label: "Not yet. My experience is mostly direct treatment", scores: {} },
+      { label: "Been a superuser or helped roll out an EMR / documentation system", short: "Helped roll out an EMR", scores: { informatics: 4, "project-management": 1 } },
+      { label: "Supervised CFs or students, or trained colleagues", short: "Supervised or trained others", scores: { "instructional-design": 2, "clinical-educator": 3, "customer-success": 1, leadership: 2 } },
+      { label: "Built a program, caseload system, or workflow from scratch", short: "Built a program or workflow", scores: { "project-management": 4, "research-coordinator": 1, leadership: 2 } },
+      { label: "Tracked and analyzed outcome data beyond what was required", short: "Analyzed outcome data", scores: { "data-analysis": 4, informatics: 1, "research-coordinator": 2 } },
+      { label: "Handled authorizations, appeals, or insurance documentation", short: "Handled authorizations or appeals", scores: { "liaison-ur": 4, "research-coordinator": 1, "sales-bd": 1 } },
+      { label: "Chosen, trialed, or implemented AAC or assistive tech", short: "Set up AAC or assistive tech", scores: { "customer-success": 2, "clinical-educator": 3, "sales-bd": 2 } },
+      { label: "Created materials or trainings that other people reused", short: "Made materials others reused", scores: { "instructional-design": 4, "content-marketing": 3 } },
+      { label: "Not yet. My experience is mostly direct treatment", short: "None yet, mostly treatment", scores: {} },
     ],
   },
   {
@@ -230,11 +233,11 @@ export const QUESTIONS: QuizQuestion[] = [
     section: "What energizes you",
     prompt: "When work feels genuinely good, what are you doing?",
     options: [
-      { label: "Creating order from chaos: designing systems, moving projects forward", scores: { "project-management": 3, informatics: 1, "research-coordinator": 2, leadership: 3 } },
-      { label: "Helping one person get unstuck, in real time", scores: { "customer-success": 2, "clinical-educator": 2, "liaison-ur": 1, "sales-bd": 1 } },
-      { label: "Finding the pattern in messy information", scores: { "data-analysis": 3, informatics: 2, "research-coordinator": 2 } },
-      { label: "Making something other people use: a resource, a guide, a tool", scores: { "instructional-design": 3, "content-marketing": 2 } },
-      { label: "Winning someone over to a plan they were unsure about", scores: { "customer-success": 2, "liaison-ur": 2, "content-marketing": 1, "sales-bd": 4, leadership: 2 } },
+      { label: "Creating order from chaos: designing systems, moving projects forward", short: "Creating order from chaos", scores: { "project-management": 3, informatics: 1, "research-coordinator": 2, leadership: 3 } },
+      { label: "Helping one person get unstuck, in real time", short: "Helping one person get unstuck", scores: { "customer-success": 2, "clinical-educator": 2, "liaison-ur": 1, "sales-bd": 1 } },
+      { label: "Finding the pattern in messy information", short: "Finding the pattern in a mess", scores: { "data-analysis": 3, informatics: 2, "research-coordinator": 2 } },
+      { label: "Making something other people use: a resource, a guide, a tool", short: "Making something people use", scores: { "instructional-design": 3, "content-marketing": 2 } },
+      { label: "Winning someone over to a plan they were unsure about", short: "Winning someone over", scores: { "customer-success": 2, "liaison-ur": 2, "content-marketing": 1, "sales-bd": 4, leadership: 2 } },
     ],
   },
   {
@@ -242,12 +245,12 @@ export const QUESTIONS: QuizQuestion[] = [
     section: "What energizes you",
     prompt: "If a door opened tomorrow, what would you regret not trying?",
     options: [
-      { label: "Running projects and programs at scale", scores: { "project-management": 3, leadership: 2 } },
-      { label: "Working with the data behind the decisions", scores: { "data-analysis": 3, informatics: 1, "research-coordinator": 2 } },
-      { label: "Teaching, training, or designing how people learn", scores: { "instructional-design": 3, "clinical-educator": 2 } },
-      { label: "Being the trusted expert clients rely on", scores: { "customer-success": 3, "liaison-ur": 2, "sales-bd": 2 } },
-      { label: "Telling the story: writing, content, marketing", scores: { "content-marketing": 3 } },
-      { label: "Leading a team or running a department", scores: { leadership: 3, "project-management": 1 } },
+      { label: "Running projects and programs at scale", short: "Running projects", scores: { "project-management": 3, leadership: 2 } },
+      { label: "Working with the data behind the decisions", short: "Working with data", scores: { "data-analysis": 3, informatics: 1, "research-coordinator": 2 } },
+      { label: "Teaching, training, or designing how people learn", short: "Teaching and training", scores: { "instructional-design": 3, "clinical-educator": 2 } },
+      { label: "Being the trusted expert clients rely on", short: "Being the trusted expert", scores: { "customer-success": 3, "liaison-ur": 2, "sales-bd": 2 } },
+      { label: "Telling the story: writing, content, marketing", short: "Writing and marketing", scores: { "content-marketing": 3 } },
+      { label: "Leading a team or running a department", short: "Leading a team", scores: { leadership: 3, "project-management": 1 } },
     ],
   },
   {
@@ -263,10 +266,10 @@ export const QUESTIONS: QuizQuestion[] = [
     section: "Your reality",
     prompt: "What's your honest income requirement for the next role?",
     options: [
-      { label: "I need to match or beat my SLP pay from day one", scores: { "liaison-ur": 3, "customer-success": 2, informatics: 2, "instructional-design": -2, "content-marketing": -1, "research-coordinator": -4, "sales-bd": 3, leadership: 2 } },
-      { label: "I can take a small dip for better conditions", scores: { "customer-success": 1, "project-management": 1, "research-coordinator": 2, "sales-bd": 1 } },
-      { label: "I have runway and can invest 6–12 months in a bigger jump", scores: { "data-analysis": 2, informatics: 2, "project-management": 2 } },
-      { label: "Income matters less than hours and flexibility right now", scores: { "content-marketing": 2, "instructional-design": 1, "liaison-ur": 1, "research-coordinator": 3, "sales-bd": -1, leadership: -1 } },
+      { label: "I need to match or beat my SLP pay from day one", short: "Match my SLP pay from day one", scores: { "liaison-ur": 3, "customer-success": 2, informatics: 2, "instructional-design": -2, "content-marketing": -1, "research-coordinator": -4, "sales-bd": 3, leadership: 2 } },
+      { label: "I can take a small dip for better conditions", short: "A small dip is fine", scores: { "customer-success": 1, "project-management": 1, "research-coordinator": 2, "sales-bd": 1 } },
+      { label: "I have runway and can invest 6–12 months in a bigger jump", short: "I have 6 to 12 months of runway", scores: { "data-analysis": 2, informatics: 2, "project-management": 2 } },
+      { label: "Income matters less than hours and flexibility right now", short: "Hours matter more than pay", scores: { "content-marketing": 2, "instructional-design": 1, "liaison-ur": 1, "research-coordinator": 3, "sales-bd": -1, leadership: -1 } },
     ],
   },
   {
@@ -274,10 +277,10 @@ export const QUESTIONS: QuizQuestion[] = [
     section: "Your reality",
     prompt: "Realistically, how much time can you put in outside of work?",
     options: [
-      { label: "Almost none. I'm running on empty", scores: { "liaison-ur": 3, "customer-success": 2, "clinical-educator": 1, "research-coordinator": 3, "data-analysis": -2, "instructional-design": -1, "sales-bd": 1, leadership: 1 } },
-      { label: "A couple of hours a week", scores: { "customer-success": 1, informatics: 1, "research-coordinator": 2, "sales-bd": 1, leadership: 1 } },
-      { label: "A few hours a week, consistently", scores: { "instructional-design": 2, "project-management": 2, "content-marketing": 2 } },
-      { label: "I'm ready to go hard for a defined stretch", scores: { "data-analysis": 3, informatics: 2, "project-management": 2 } },
+      { label: "Almost none. I'm running on empty", short: "Almost none", scores: { "liaison-ur": 3, "customer-success": 2, "clinical-educator": 1, "research-coordinator": 3, "data-analysis": -2, "instructional-design": -1, "sales-bd": 1, leadership: 1 } },
+      { label: "A couple of hours a week", short: "A couple of hours a week", scores: { "customer-success": 1, informatics: 1, "research-coordinator": 2, "sales-bd": 1, leadership: 1 } },
+      { label: "A few hours a week, consistently", short: "A few hours, every week", scores: { "instructional-design": 2, "project-management": 2, "content-marketing": 2 } },
+      { label: "I'm ready to go hard for a defined stretch", short: "A lot, for a set stretch", scores: { "data-analysis": 3, informatics: 2, "project-management": 2 } },
     ],
   },
   {
@@ -286,10 +289,10 @@ export const QUESTIONS: QuizQuestion[] = [
     prompt: "Day to day, how much live people-time do you want?",
     help: "Hours with people, whatever the subject.",
     options: [
-      { label: "I still love 1:1. I want better conditions and pay, not less contact", scores: { "clinical-educator": 3, "customer-success": 2, "liaison-ur": 1, "sales-bd": 2, leadership: 1 } },
-      { label: "I want people contact, as accounts and colleagues rather than a caseload", scores: { "customer-success": 3, "liaison-ur": 2, "project-management": 1, "research-coordinator": 1, "sales-bd": 3, leadership: 3 } },
-      { label: "I'd rather influence people through systems, data, or content", scores: { "data-analysis": 3, informatics: 2, "content-marketing": 2, "instructional-design": 2, "research-coordinator": 2, "sales-bd": -1, leadership: -1 } },
-      { label: "I want as little live people-time as possible for a while", scores: { "data-analysis": 3, informatics: 3, "instructional-design": 1, "content-marketing": 1, "research-coordinator": 2, "sales-bd": -2, leadership: -2 } },
+      { label: "I still love 1:1. I want better conditions and pay, not less contact", short: "Lots. I still love 1:1", scores: { "clinical-educator": 3, "customer-success": 2, "liaison-ur": 1, "sales-bd": 2, leadership: 1 } },
+      { label: "I want people contact, as accounts and colleagues rather than a caseload", short: "Some, with colleagues and clients", scores: { "customer-success": 3, "liaison-ur": 2, "project-management": 1, "research-coordinator": 1, "sales-bd": 3, leadership: 3 } },
+      { label: "I'd rather influence people through systems, data, or content", short: "Little. I'd rather build things", scores: { "data-analysis": 3, informatics: 2, "content-marketing": 2, "instructional-design": 2, "research-coordinator": 2, "sales-bd": -1, leadership: -1 } },
+      { label: "I want as little live people-time as possible for a while", short: "As little as possible", scores: { "data-analysis": 3, informatics: 3, "instructional-design": 1, "content-marketing": 1, "research-coordinator": 2, "sales-bd": -2, leadership: -2 } },
     ],
   },
   {
@@ -298,10 +301,10 @@ export const QUESTIONS: QuizQuestion[] = [
     prompt: "And how close do you want to stay to the clinical world?",
     help: "The subject matter, not the people-time.",
     options: [
-      { label: "I want to stay close to clinical. That knowledge is my edge", scores: { "liaison-ur": 3, informatics: 2, "clinical-educator": 3, "research-coordinator": 1, "sales-bd": 2, leadership: 3 } },
-      { label: "Clinical-adjacent, but out of direct care", scores: { "customer-success": 2, informatics: 2, "instructional-design": 1, "research-coordinator": 3, "sales-bd": 2, leadership: 1 } },
-      { label: "I want a clean break into business or tech", scores: { "project-management": 2, "data-analysis": 2, "content-marketing": 2, "sales-bd": 1, leadership: -1 } },
-      { label: "I honestly don't know yet", scores: {} },
+      { label: "I want to stay close to clinical. That knowledge is my edge", short: "Close. It's my edge", scores: { "liaison-ur": 3, informatics: 2, "clinical-educator": 3, "research-coordinator": 1, "sales-bd": 2, leadership: 3 } },
+      { label: "Clinical-adjacent, but out of direct care", short: "Nearby, out of direct care", scores: { "customer-success": 2, informatics: 2, "instructional-design": 1, "research-coordinator": 3, "sales-bd": 2, leadership: 1 } },
+      { label: "I want a clean break into business or tech", short: "A clean break", scores: { "project-management": 2, "data-analysis": 2, "content-marketing": 2, "sales-bd": 1, leadership: -1 } },
+      { label: "I honestly don't know yet", short: "I don't know yet", scores: {} },
     ],
   },
   {
@@ -309,10 +312,10 @@ export const QUESTIONS: QuizQuestion[] = [
     section: "How you like to work",
     prompt: "What's your relationship with new tools and software?",
     options: [
-      { label: "I'm the one colleagues come to for help", scores: { informatics: 3, "data-analysis": 1, "clinical-educator": 1, leadership: 1 } },
-      { label: "I actively enjoy learning new platforms", scores: { informatics: 2, "instructional-design": 2, "data-analysis": 2, "research-coordinator": 1 } },
-      { label: "I learn what I need, when I need it", scores: { "customer-success": 1, "project-management": 1, "content-marketing": 2, "research-coordinator": 2, "sales-bd": 1, leadership: 1 } },
-      { label: "I'd rather work with people than systems", scores: { "clinical-educator": 2, "customer-success": 2, "liaison-ur": 1, "sales-bd": 2, leadership: 1 } },
+      { label: "I'm the one colleagues come to for help", short: "Colleagues come to me for help", scores: { informatics: 3, "data-analysis": 1, "clinical-educator": 1, leadership: 1 } },
+      { label: "I actively enjoy learning new platforms", short: "I enjoy learning them", scores: { informatics: 2, "instructional-design": 2, "data-analysis": 2, "research-coordinator": 1 } },
+      { label: "I learn what I need, when I need it", short: "I learn what I need", scores: { "customer-success": 1, "project-management": 1, "content-marketing": 2, "research-coordinator": 2, "sales-bd": 1, leadership: 1 } },
+      { label: "I'd rather work with people than systems", short: "I'd rather work with people", scores: { "clinical-educator": 2, "customer-success": 2, "liaison-ur": 1, "sales-bd": 2, leadership: 1 } },
     ],
   },
 ];

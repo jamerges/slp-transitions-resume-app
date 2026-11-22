@@ -152,7 +152,9 @@ const NAV = [
 
 // `wide` widens the content column for grid-heavy pages (the companies
 // directory); the 680px default is tuned for reading, not for cards.
-export function PageShell({ children, wide = false }: { children: ReactNode; wide?: boolean }) {
+// `bare` drops the header links, for a page with one job (the quiz): the logo
+// still goes home.
+export function PageShell({ children, wide = false, bare = false }: { children: ReactNode; wide?: boolean; bare?: boolean }) {
   const wrap = wide ? { ...S.wrap, maxWidth: 1100 } : S.wrap;
   return (
     <div style={S.root}>
@@ -171,7 +173,7 @@ export function PageShell({ children, wide = false }: { children: ReactNode; wid
               <div className="slp-head-sub" style={{ fontSize: 13, color: "var(--muted)" }}>Career Pivot Suite</div>
             </div>
           </a>
-          <nav className="no-print slp-nav">
+{!bare && (<nav className="no-print slp-nav">
             {NAV.map((n) => (
               <a
                 key={n.label}
@@ -182,7 +184,7 @@ export function PageShell({ children, wide = false }: { children: ReactNode; wid
                 {n.label}
               </a>
             ))}
-          </nav>
+          </nav>)}
         </div>
       </div>
 
